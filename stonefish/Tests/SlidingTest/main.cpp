@@ -45,6 +45,8 @@ int main(int argc, const char * argv[])
     h.showActuators = false;
     h.showForces = false;
     h.showJoints = false;
+
+    const char* DATA_DIR_PATH = "/home/jorge/Documents/Code/silver2_stonefish/stonefish/Tests/Data/";
     
     SlidingTestManager simulationManager(500.0);
     SlidingTestApp app(std::string(DATA_DIR_PATH), s, h, &simulationManager);

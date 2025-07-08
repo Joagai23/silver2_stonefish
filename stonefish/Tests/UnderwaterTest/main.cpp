@@ -49,6 +49,8 @@ int main(int argc, const char * argv[])
     h.showSensors = false;
     h.showActuators = false;
     h.showForces = false;
+
+    const char* DATA_DIR_PATH = "/home/jorge/Documents/Code/silver2_stonefish/stonefish/Tests/Data/";
     
     UnderwaterTestManager simulationManager(200.0);
     simulationManager.setRealtimeFactor(1.0);

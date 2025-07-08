@@ -24,6 +24,9 @@ void MySimulationManager::BuildScenario()
     AddStaticEntity(plane, sf::I4());
 
     //Create object
-    sf::Sphere* sph = new sf::Sphere("Sphere", 0.1, sf::I4(), "Aluminium", sf::BodyPhysicsMode::SURFACE, "red");
+    sf::BodyPhysicsSettings phy_settings;
+    phy_settings.mode = sf::BodyPhysicsMode::SURFACE;
+
+    sf::Sphere* sph = new sf::Sphere("Sphere", phy_settings, 0.1, sf::I4(), "Aluminium", "red");
     AddSolidEntity(sph, sf::Transform(sf::IQ(), sf::Vector3(0.0,0.0,-1.0)));
 }

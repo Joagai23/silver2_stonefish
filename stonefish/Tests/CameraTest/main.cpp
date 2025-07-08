@@ -44,6 +44,8 @@ int main(int argc, const char * argv[])
     h.showSensors = false;
     h.showActuators = false;
     h.showForces = false;
+
+    const char* DATA_DIR_PATH = "/home/jorge/Documents/Code/silver2_stonefish/stonefish/Tests/Data/";
     
     CameraTestManager* simulationManager = new CameraTestManager(100.0);
     sf::GraphicalSimulationApp app("CameraTest", std::string(DATA_DIR_PATH), s, h, simulationManager);

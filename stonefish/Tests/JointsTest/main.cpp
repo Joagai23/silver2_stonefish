@@ -47,6 +47,8 @@ int main(int argc, const char * argv[])
     h.showForces = false;
     h.showJoints = true;
     
+    const char* DATA_DIR_PATH = "/home/jorge/Documents/Code/silver2_stonefish/stonefish/Tests/Data/";
+
     JointsTestManager simulationManager(1000.0);
     JointsTestApp app(std::string(DATA_DIR_PATH), s, h, &simulationManager);
     app.Run();

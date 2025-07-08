@@ -28,6 +28,8 @@
 
 int main(int argc, const char * argv[])
 {
+    const char* DATA_DIR_PATH = "/home/jorge/Documents/Code/silver2_stonefish/stonefish/Tests/Data/";
+    
     ConsoleTestManager* simulationManager = new ConsoleTestManager(500.0);
     ConsoleTestApp app(std::string(DATA_DIR_PATH), simulationManager);
     app.Run(true);

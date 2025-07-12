@@ -11,6 +11,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF) # For strict standard compliance
 
+# Define Data Dir
+add_definitions(-DDATA_DIR_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/data/\")
+
 # Add the current directory to the include path so the .h files can be found
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 

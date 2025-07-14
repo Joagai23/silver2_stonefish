@@ -15,7 +15,7 @@ MySimulationManager::MySimulationManager(sf::Scalar stepsPerSecond) : Simulation
 void MySimulationManager::BuildScenario()
 {   
     // Should not do this!
-    const std::string DataPath = "/home/jorge/Documents/Code/silver2_stonefish/Tutorials/SimpleSimulator/data/";
+    const std::string DataPath = "/home/jorge/Documents/Code/silver2_stonefish/SimpleSimulator/data/";
     //Physical materials
     CreateMaterial("LightAluminium", 1250.0, 0.8);
     CreateMaterial("Steel", 7810.0, 0.9);
@@ -54,7 +54,7 @@ void MySimulationManager::BuildScenario()
     phy_settings.mode = sf::BodyPhysicsMode::SUBMERGED;
 
     // Create Objects
-    sf::Polyhedron* body = new sf::Polyhedron("MainBody", phy_settings, DataPath + "Body.obj", sf::Scalar(0.1), sf::I4(), "LightAluminium", "red");
+    sf::Polyhedron* body = new sf::Polyhedron("MainBody", phy_settings, DataPath + "Crab.obj", sf::Scalar(1), sf::I4(), "LightAluminium", "red");
     //body->ScalePhysicalPropertiesToArbitraryMass(140.0);
 
     sf::Box* box = new sf::Box("Box", phy_settings, sf::Vector3(0.5, 0.75, 0.3), sf::I4(), "LightAluminium", "red");

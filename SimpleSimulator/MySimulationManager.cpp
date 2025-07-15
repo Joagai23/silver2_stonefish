@@ -30,13 +30,16 @@ void MySimulationManager::BuildScenario()
     CreateLook("silver", sf::Color::RGB(1.0f, 1.0f, 1.0f), 0.9f, 0.f, 0.f, "", DataPath + "SILVER_UV.png");
 
     //Create environment
-    EnableOcean(0.0);
+    /*EnableOcean(0.0);
     getOcean()->setWaterType(0.2);
     getOcean()->AddVelocityField(new sf::Jet(sf::Vector3(0,0,1.0), sf::VY(), 0.3, 5.0));
     getOcean()->AddVelocityField(new sf::Uniform(sf::Vector3(1.0,0.0,0.0)));
     //getOcean()->EnableCurrents();
     getAtmosphere()->SetSunPosition(0.0, 60.0);
-    getNED()->Init(41.77737, 3.03376, 0.0);
+    getNED()->Init(41.77737, 3.03376, 0.0);*/
+
+    sf::Plane* plane = new sf::Plane("Ground", 10000.0, "Steel", "gray");
+    AddStaticEntity(plane, sf::I4());
 
     // Create Lights
     sf::Light* spot = new sf::Light("Spot", 0.02, 50.0, sf::Color::BlackBody(5000.0), 100.0);

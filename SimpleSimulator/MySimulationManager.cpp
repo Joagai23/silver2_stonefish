@@ -27,8 +27,7 @@ void MySimulationManager::BuildScenario()
     CreateLook("gray", sf::Color::Gray(0.5f), 0.3f, 0.2f);
     CreateLook("red", sf::Color::RGB(1.f,0.f,0.f), 0.1f, 0.f);
     CreateLook("seabed", sf::Color::RGB(0.7f, 0.7f, 0.5f), 0.9f, 0.f, 0.f, "", DataPath + "sand_normal.png");
-    CreateLook("silver", sf::Color::RGB(1.0f, 1.0f, 1.0f), 1.0f, 0.f, 0.f, "", DataPath + "SILVER_UV.png");
-    CreateLook("magic_cube", sf::Color::RGB(1.f, 1.f, 1.f), 1.0f, 0.f, 0.f, DataPath + "CubeMaterial.png");
+    CreateLook("silver_uv", sf::Color::RGB(1.0f, 1.0f, 1.0f), 1.0f, 0.f, 0.f, DataPath + "silver_uv.png");
 
     //Create environment
     /*EnableOcean(0.0);
@@ -59,14 +58,12 @@ void MySimulationManager::BuildScenario()
     phy_settings.mode = sf::BodyPhysicsMode::SUBMERGED;
 
     // Create Objects
-    sf::Polyhedron* body = new sf::Polyhedron("MainBody", phy_settings, DataPath + "Body.obj", sf::Scalar(1), sf::I4(), "LightAluminium", "silver");
+    sf::Polyhedron* body = new sf::Polyhedron("MainBody", phy_settings, DataPath + "Body.obj", sf::Scalar(1), sf::I4(), "LightAluminium", "silver_uv");
     //body->ScalePhysicalPropertiesToArbitraryMass(140.0);
 
     sf::Box* box = new sf::Box("Box", phy_settings, sf::Vector3(0.5, 0.75, 0.3), sf::I4(), "LightAluminium", "red");
-    sf::Polyhedron* magic_cube = new sf::Polyhedron("MagicCube", phy_settings, DataPath + "Cube29.obj", sf::Scalar(1), sf::I4(), "LightAluminium", "magic_cube");
     
     // Instantiate Models
     AddSolidEntity(body, sf::Transform(sf::IQ(), sf::Vector3(0.0, 0.0, 2.0)));
     AddSolidEntity(box, sf::Transform(sf::IQ(), sf::Vector3(2.0, 0.0, 1.0)));
-    AddSolidEntity(magic_cube, sf::Transform(sf::IQ(), sf::Vector3(-2.0, 0.0, 1.0)));
 }

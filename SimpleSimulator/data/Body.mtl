@@ -1,7 +1,7 @@
 # Blender 4.4.3 MTL File: 'None'
 # www.blender.org
 
-newmtl lambert2SG.007
+newmtl lambert2SG.008
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -9,4 +9,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 1
-map_Kd /home/jorge/Documents/Code/silver2_stonefish/SimpleSimulator/data/SILVER_UV.png
+map_Kd ../MAYA MODELS/Stonefish/SILVER_UV.png

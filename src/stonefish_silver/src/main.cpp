@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 
     SilverManager manager(500.0);
     manager.setRealtimeFactor(1.0);
-    sf::GraphicalSimulationApp app("Stonefish Silver2 Simulator", "path_to_data", s, h, &manager);
+    sf::GraphicalSimulationApp app("Stonefish Silver2 Simulator", "../data", s, h, &manager);
     app.Run();
 
     return 0;

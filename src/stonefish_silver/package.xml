@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>stonefish_silver</name>
+  <version>0.0.1</version>
+  <description>Custom Stonefish simulation for the SILVER2 robot</description>
+  <maintainer email="jaguirregomezcorta@icm.csic.es">Jorge Aguirregomezcorta Aina</maintainer>
+  <license>Apache License 2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>stonefish_ros2</depend>
+  <depend>ament_index_cpp</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

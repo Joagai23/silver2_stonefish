@@ -16,7 +16,7 @@ SilverManager::SilverManager(sf::Scalar stepsPerSecond) : SimulationManager(step
 void SilverManager::BuildScenario()
 {   
     // Should not do this!
-    const std::string DataPath = "/home/jorge/Documents/Code/silver2_stonefish/silver/data/";
+    const std::string DataPath = "/home/jorge/Documents/Code/silver2_stonefish/src/stonefish_silver/data/";
     //Physical materials
     CreateMaterial("LightAluminium", 100.0, 0.8);
     CreateMaterial("Steel", 7810.0, 0.9);

@@ -4,3 +4,9 @@
 [submodule "stonefish"]
 	path = stonefish
 	url = https://github.com/patrykcieslak/stonefish
+[submodule "src/stonefish_ros2"]
+	path = src/stonefish_ros2
+	url = https://github.com/patrykcieslak/stonefish_ros2
+[submodule "src/stonefish"]
+	path = src/stonefish
+	url = https://github.com/patrykcieslak/stonefish

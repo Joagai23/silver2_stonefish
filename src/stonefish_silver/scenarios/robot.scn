@@ -1,0 +1,16 @@
+<!-- main.scn -->
+<?xml version="1.0"?>
+<scenario>
+    <!-- some definitions -->
+    <include file="robot.scn">
+        <arg name="robot_name" value="GIRONA500"/>
+    </include>
+</scenario>
+
+<!-- robot.scn -->
+<?xml version="1.0"?>
+<scenario>
+    <robot name="$(arg robot_name)" fixed="false">
+        <!-- robot definitions -->
+    </robot>
+</scenario>

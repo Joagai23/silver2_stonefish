@@ -1,16 +1,27 @@
-<!-- main.scn -->
-<?xml version="1.0"?>
-<scenario>
-    <!-- some definitions -->
-    <include file="robot.scn">
-        <arg name="robot_name" value="GIRONA500"/>
-    </include>
-</scenario>
 
-<!-- robot.scn -->
 <?xml version="1.0"?>
 <scenario>
-    <robot name="$(arg robot_name)" fixed="false">
-        <!-- robot definitions -->
+    <!-- Physical materials -->
+    <materials>
+        <material name="LightAluminium" density="100.0" restitution="0.8"/>
+    </materials>
+    
+    <!-- Graphical materials -->
+    <looks>
+        <look name="Silver" rgb="1.0 1.0 1.0" roughness="1.0" texture="silver_uv.png"/>
+    </looks>
+
+    <!-- Robot Definition -->
+    <robot name="$(arg silver_robot)" fixed="false" self_collisions="false">
+        <!-- Main Body -->
+        <base_link name="MainBody" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Body.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </base_link>
+        <world_transform xyz="0.0 0.0 -1.5" rpy="0.0 0.0 0.0"/>
     </robot>
 </scenario>

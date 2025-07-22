@@ -11,9 +11,15 @@
         <look name="Silver" rgb="1.0 1.0 1.0" roughness="1.0" texture="silver_uv.png"/>
     </looks>
 
+    <!--
+        TO DO:
+            - Change Joint Type to Revolute
+    -->
+
     <!-- Robot Definition -->
-    <robot name="$(arg silver_robot)" fixed="false" self_collisions="false">
+    <robot name="$(arg silver_robot)" fixed="false" self_collisions="false">     
         <!-- Main Body -->
+        <world_transform xyz="0.0 0.0 -1.5" rpy="0.0 0.0 0.0"/>
         <base_link name="MainBody" type="model" physics="submerged">
             <physical>
                 <mesh filename="Body.obj" scale="1.0"/>
@@ -22,6 +28,287 @@
             <material name="LightAluminium"/>
             <look name="Silver"/>
         </base_link>
-        <world_transform xyz="0.0 0.0 -1.5" rpy="0.0 0.0 0.0"/>
+        
+        <!-- Leg 0 -->
+        <!-- Coxa L0 -->
+        <link name="Coxa_L0" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Coxa.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L0_Coxa" type="fixed">
+            <parent name="MainBody"/>
+            <child name="Coxa_L0"/>
+            <origin xyz="1.62 0.98 0.28" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+        <!-- Femur L0 -->
+        <link name="Femur_L0" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Femur.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L0_Femur" type="fixed">
+            <parent name="Coxa_L0"/>
+            <child name="Femur_L0"/>
+            <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+        <!-- Tibia L0 -->
+        <link name="Tibia_L0" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Tibia.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L0_Tibia" type="fixed">
+            <parent name="Femur_L0"/>
+            <child name="Tibia_L0"/>
+            <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+
+        <!-- Leg 1 -->
+        <!-- Coxa L1 -->
+        <link name="Coxa_L1" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Coxa.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L1_Coxa" type="fixed">
+            <parent name="MainBody"/>
+            <child name="Coxa_L1"/>
+            <origin xyz="1.62 -0.15 0.28" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+        <!-- Femur L1 -->
+        <link name="Femur_L1" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Femur.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L1_Femur" type="fixed">
+            <parent name="Coxa_L1"/>
+            <child name="Femur_L1"/>
+            <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+        <!-- Tibia L1 -->
+        <link name="Tibia_L1" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Tibia.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L1_Tibia" type="fixed">
+            <parent name="Femur_L1"/>
+            <child name="Tibia_L1"/>
+            <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+
+        <!-- Leg 2 -->
+        <!-- Coxa L2 -->
+        <link name="Coxa_L2" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L2_Coxa" type="fixed">
+            <parent name="MainBody"/>
+            <child name="Coxa_L2"/>
+            <origin xyz="1.62 -1.27 0.28" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+        <!-- Femur L2 -->
+        <link name="Femur_L2" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L2_Femur" type="fixed">
+            <parent name="Coxa_L2"/>
+            <child name="Femur_L2"/>
+            <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+        <!-- Tibia L2 -->
+        <link name="Tibia_L2" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L2_Tibia" type="fixed">
+            <parent name="Femur_L2"/>
+            <child name="Tibia_L2"/>
+            <origin xyz="1.85 -0.03 0.23" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+
+        <!-- Leg 3 -->
+        <!-- Coxa L3 -->
+        <link name="Coxa_L3" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L3_Coxa" type="fixed">
+            <parent name="MainBody"/>
+            <child name="Coxa_L3"/>
+            <origin xyz="-1.62 0.98 0.28" rpy="0.0 0.0 3.14"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+        <!-- Femur L3 -->
+        <link name="Femur_L3" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L3_Femur" type="fixed">
+            <parent name="Coxa_L3"/>
+            <child name="Femur_L3"/>
+            <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+        <!-- Tibia L3 -->
+        <link name="Tibia_L3" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L3_Tibia" type="fixed">
+            <parent name="Femur_L3"/>
+            <child name="Tibia_L3"/>
+            <origin xyz="1.85 -0.03 0.23" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+
+        <!-- Leg 4 -->
+        <!-- Coxa L4 -->
+        <link name="Coxa_L4" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L4_Coxa" type="fixed">
+            <parent name="MainBody"/>
+            <child name="Coxa_L4"/>
+            <origin xyz="-1.62 -0.15 0.28" rpy="0.0 0.0 3.14"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+        <!-- Femur L4 -->
+        <link name="Femur_L4" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L4_Femur" type="fixed">
+            <parent name="Coxa_L4"/>
+            <child name="Femur_L4"/>
+            <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+        <!-- Tibia L4 -->
+        <link name="Tibia_L4" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L4_Tibia" type="fixed">
+            <parent name="Femur_L4"/>
+            <child name="Tibia_L4"/>
+            <origin xyz="1.85 -0.03 0.23" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+
+        <!-- Leg 5 -->
+        <!-- Coxa L5 -->
+        <link name="Coxa_L5" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Coxa.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L5_Coxa" type="fixed">
+            <parent name="MainBody"/>
+            <child name="Coxa_L5"/>
+            <origin xyz="-1.62 -1.27 0.28" rpy="0.0 0.0 3.14"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+        <!-- Femur L5 -->
+        <link name="Femur_L5" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Femur.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L5_Femur" type="fixed">
+            <parent name="Coxa_L5"/>
+            <child name="Femur_L5"/>
+            <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+        <!-- Tibia L5 -->
+        <link name="Tibia_L5" type="model" physics="submerged">
+            <physical>
+                <mesh filename="Tibia.obj" scale="1.0"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </physical>
+            <material name="LightAluminium"/>
+            <look name="Silver"/>
+        </link>
+        <joint name="Joint_L5_Tibia" type="fixed">
+            <parent name="Femur_L5"/>
+            <child name="Tibia_L5"/>
+            <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
     </robot>
 </scenario>

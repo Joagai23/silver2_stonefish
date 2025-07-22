@@ -1,4 +1,4 @@
-<scenario>
+<scenario> 
     <!-- Physical materials -->
     <materials>
         <material name="LightAluminium" density="100.0" restitution="0.8"/>

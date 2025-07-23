@@ -1,0 +1,15 @@
+<map id="sf::JointSensor" name="sf::JointSensor">
+<area shape="rect" id="Node000001" title="An abstract class representing a sensor attached to a joint." alt="" coords="158,152,273,177"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_force_torque.html" title="A class representing a 6&#45;axis force/torque sensor." alt="" coords="5,225,124,251"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,186,90,228,88,223,178,181"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_rotary_encoder.html" title="A class representing a rotary encoder with &quot;infinite&quot; resolution." alt="" coords="147,225,283,251"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="218,191,218,225,213,225,213,191"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1_torque.html" title="A class representing a torque sensor." alt="" coords="308,225,392,251"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="250,181,329,223,327,227,248,186"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_scalar_sensor.html" title="An abstract class representing a scalar sensor." alt="" coords="153,79,278,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,118,218,152,213,152,213,118"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_sensor.html" title="An abstract class representing a sensor." alt="" coords="173,5,258,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="218,44,218,79,213,79,213,44"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1_real_rotary_encoder.html" title="A class representing a rotary encoder with a specified resolution." alt="" coords="133,299,298,324"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="218,264,218,299,213,299,213,264"/>
+</map>

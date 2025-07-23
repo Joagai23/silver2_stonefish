@@ -1,0 +1,262 @@
+\doxysection{INS.\+cpp}
+\hypertarget{_i_n_s_8cpp_source}{}\label{_i_n_s_8cpp_source}\index{Library/src/sensors/scalar/INS.cpp@{Library/src/sensors/scalar/INS.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ INS.cpp}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 21/10/2021.}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2021-\/2025\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}sensors/scalar/INS.h"{}}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/NED.h"{}}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}entities/MovingEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}sensors/Sample.h"{}}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00034}00034\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00037}\mbox{\hyperlink{classsf_1_1_i_n_s_add21b0c9deb6b3cdab55ec1c6f4b83bc}{00037}}\ \mbox{\hyperlink{classsf_1_1_i_n_s_add21b0c9deb6b3cdab55ec1c6f4b83bc}{INS::INS}}(std::string\ uniqueName,\ Scalar\ frequency,\ \textcolor{keywordtype}{int}\ historyLength)\ :\ \mbox{\hyperlink{classsf_1_1_link_sensor}{LinkSensor}}(uniqueName,\ frequency,\ historyLength)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00039}00039\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}North"{}},\ QuantityType::LENGTH));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00040}00040\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}East"{}},\ QuantityType::LENGTH));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00041}00041\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Depth"{}},\ QuantityType::LENGTH));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00042}00042\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Altitude"{}},\ QuantityType::LENGTH));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00043}00043\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Latitude"{}},\ QuantityType::ANGLE));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00044}00044\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Longitude"{}},\ QuantityType::ANGLE));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00045}00045\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Body\ velocity\ X"{}},\ QuantityType::LENGTH));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00046}00046\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Body\ velocity\ Y"{}},\ QuantityType::LENGTH));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00047}00047\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Body\ velocity\ Z"{}},\ QuantityType::LENGTH));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00048}00048\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Roll"{}},\ QuantityType::ANGLE));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00049}00049\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Pitch"{}},\ QuantityType::ANGLE));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00050}00050\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Yaw"{}},\ QuantityType::ANGLE));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00051}00051\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Roll\ rate"{}},\ QuantityType::ANGULAR\_VELOCITY));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00052}00052\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Pitch\ rate"{}},\ QuantityType::ANGULAR\_VELOCITY));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00053}00053\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Yaw\ rate"{}},\ QuantityType::ANGULAR\_VELOCITY));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00054}00054\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Body\ acceleration\ X"{}},\ QuantityType::ACCELERATION));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00055}00055\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Body\ acceleration\ Y"{}},\ QuantityType::ACCELERATION));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00056}00056\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Body\ acceleration\ Z"{}},\ QuantityType::ACCELERATION));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00057}00057\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00058}00058\ \ \ \ \ gpsName\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00059}00059\ \ \ \ \ dvlName\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00060}00060\ \ \ \ \ pressName\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00061}00061\ \ \ \ \ imuNoise\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00062}00062\ \ \ \ \ out\ =\ I4();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00065}\mbox{\hyperlink{classsf_1_1_i_n_s_aec17d55cf9b49cf04875890091fe4ad5}{00065}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_i_n_s_aec17d55cf9b49cf04875890091fe4ad5}{INS::Reset}}()}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00066}00066\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_ab842b496d665bec0731a119fe198d093}{ScalarSensor::Reset}}();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00068}00068\ \ \ \ \ ned\ =\ V0();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00069}00069\ \ \ \ \ velocity\ =\ V0();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00070}00070\ \ \ \ \ altitude\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00071}00071\ \ \ \ \ Scalar\ height;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_aa36445796ad9dce3633ca6e2c10a591a}{getNED}}()-\/>\mbox{\hyperlink{classsf_1_1_n_e_d_ac230e5672d3ac1c8319a967143a5e8ef}{Ned2Geodetic}}(0.0,\ 0.0,\ 0.0,\ latitude,\ longitude,\ height);}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00075}\mbox{\hyperlink{classsf_1_1_i_n_s_a5d152ac456ac0f85499c050c3ead8f03}{00075}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_i_n_s_a5d152ac456ac0f85499c050c3ead8f03}{INS::InternalUpdate}}(Scalar\ dt)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00076}00076\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00077}00077\ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{now}}\ =\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_a245c0389451cc870f8eb06b9edf75e6d}{getSimulationTime}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00078}00078\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/\ internal\ sensors}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//get\ sensor\ frame\ in\ world}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00081}00081\ \ \ \ \ Transform\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}\ =\ \mbox{\hyperlink{classsf_1_1_link_sensor_a5e16f6535744918e0aa39262d80112b7}{getSensorFrame}}();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00082}00082\ \ \ \ \ Vector3\ R\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getOrigin()\ -\/\ attach-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_a37e1fa92db298276d1352738ded92526}{getCGTransform}}().getOrigin();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//get\ angular\ velocity}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00084}00084\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getBasis().inverse()\ *\ attach-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_a9e20568f444667a60a706f3b0ab4edf5}{getAngularVelocity}}();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//get\ acceleration}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00086}00086\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acc}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getBasis().inverse()\ *\ (}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attach-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_a9724a62bd3a79ef4205b6d4ae4c32e56}{getLinearAcceleration}}()\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ attach-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_ac00ef4984c0022a22e1f9282502257a5}{getAngularAcceleration}}().cross(R)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ attach-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_a9e20568f444667a60a706f3b0ab4edf5}{getAngularVelocity}}().cross(attach-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_a9e20568f444667a60a706f3b0ab4edf5}{getAngularVelocity}}().cross(R))}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );\ \textcolor{comment}{//\ NO\ GRAVITY}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//get\ angular\ acceleration}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00092}00092\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{aacc}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getBasis().inverse()\ *\ attach-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_ac00ef4984c0022a22e1f9282502257a5}{getAngularAcceleration}}();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//noise}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{if}(imuNoise)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}.setX(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}.x()\ +\ avNoiseX(randomGenerator));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}.setY(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}.y()\ +\ avNoiseY(randomGenerator));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}.setZ(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}.z()\ +\ avNoiseZ(randomGenerator));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acc}}.setX(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acc}}.x()\ +\ accNoiseX(randomGenerator));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acc}}.setY(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acc}}.y()\ +\ accNoiseY(randomGenerator));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acc}}.setZ(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acc}}.z()\ +\ accNoiseZ(randomGenerator));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//Predict\ (implicit\ Euler)}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00106}00106\ \ \ \ \ velocity\ +=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acc}}\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dt}};\ \textcolor{comment}{//In\ body\ frame\ (accumulated\ velocity)}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00107}00107\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/\ external\ sensors}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00109}00109\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_d_v_l}{DVL}}*\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dvl}};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{if}(dvlName\ !=\ \textcolor{stringliteral}{"{}"{}}\ \&\&\ (\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dvl}}\ =\ (\mbox{\hyperlink{classsf_1_1_d_v_l}{DVL}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>getSimulationManager()-\/>getSensor(dvlName))\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{comment}{//Correct\ velocities}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00111}00111\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dvl}}-\/>getLastSample();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{ts}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.\mbox{\hyperlink{classsf_1_1_sample_a3ed7eed28044b7b610df4c8ff03a84f0}{getTimestamp}}();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{ts}}\ >=\ 0.0\ \&\&\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{now}}-\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{ts}}\ <=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dt}})\ \textcolor{comment}{//Is\ DVL\ valid?}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dvlTrans}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dvl}}-\/>getSensorFrame();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{avv}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getBasis()\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}};\ \textcolor{comment}{//\ Includes\ noise}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ velocity\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getBasis().inverse()*\ (}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dvlTrans}}.getBasis()\ *\ Vector3(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.getValue(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.getValue(1),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.getValue(2))\ \textcolor{comment}{//\ Pure\ linear\ velocity\ component}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{avv}}.cross(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getOrigin()\ -\/\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dvlTrans}}.getOrigin())\ \textcolor{comment}{//\ Angular\ velocity\ component}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ altitude\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.getValue(3);}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00124}00124\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00126}00126\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dp}}\ =\ velocity\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dt}};\ \textcolor{comment}{//In\ body\ frame}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00127}00127\ \ \ \ \ ned\ +=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getBasis()\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dp}};\ \textcolor{comment}{//In\ NED\ frame}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00128}00128\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00129}00129\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_g_p_s}{GPS}}*\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{gps}};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{if}(gpsName\ !=\ \textcolor{stringliteral}{"{}"{}}\ \&\&\ (\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{gps}}\ =\ (\mbox{\hyperlink{classsf_1_1_g_p_s}{GPS}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>getSimulationManager()-\/>getSensor(gpsName))\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{comment}{//Correct\ global\ position}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00131}00131\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{gps}}-\/>getLastSample();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{ts}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.\mbox{\hyperlink{classsf_1_1_sample_a3ed7eed28044b7b610df4c8ff03a84f0}{getTimestamp}}();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{ts}}\ >=\ 0.0\ \&\&\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{now}}-\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{ts}}\ <=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dt}}\ \&\&\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.getValue(0)\ <=\ Scalar(90)\ \&\&\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.getValue(1)\ <=\ Scalar(180))\ \textcolor{comment}{//Is\ GPS\ valid?}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ trans\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getOrigin()\ -\/\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{gps}}-\/>getSensorFrame().getOrigin();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ ned.setX(trans.x()\ +\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.getValue(2));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ ned.setY(trans.y()\ +\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.getValue(3));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00140}00140\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00142}00142\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_pressure}{Pressure}}*\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{press}};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00143}00143\ \ \ \ \ \textcolor{keywordflow}{if}(pressName\ !=\ \textcolor{stringliteral}{"{}"{}}\ \&\&\ (\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{press}}\ =\ (\mbox{\hyperlink{classsf_1_1_pressure}{Pressure}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>getSimulationManager()-\/>getSensor(pressName))\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{comment}{//Correct\ depth}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00144}00144\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{press}}-\/>getLastSample();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{ts}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.\mbox{\hyperlink{classsf_1_1_sample_a3ed7eed28044b7b610df4c8ff03a84f0}{getTimestamp}}();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{ts}}\ >=\ 0.0\ \&\&\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{now}}-\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{ts}}\ <=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dt}})\ \textcolor{comment}{//Is\ pressure\ valid?}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_ocean}{Ocean}}*\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{liq}}\ =\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_a150f2c4256196749b8d96e1bcbbb3e5c}{getOcean}}();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{liq}}\ !=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{NULL}})}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ rho\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{liq}}-\/>\mbox{\hyperlink{classsf_1_1_ocean_ae772c575770d953e61e6dbff56c623cf}{getLiquid}}().density;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ g\ =\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_aabec3fadafe52939d92e282684a6aa01}{getGravity}}().z();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ depth\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}.getValue(0)/(rho*g);}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ned.setZ(depth\ +\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getOrigin().z()\ -\/\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{press}}-\/>getSensorFrame().getOrigin().z()\ );\ \textcolor{comment}{//Depth\ at\ INS\ frame}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00158}00158\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//transformed\ output}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00161}00161\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{nedo}}\ =\ ned\ +\ (\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}.getBasis()\ *\ out.getOrigin());}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00162}00162\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{velo}}\ =\ out.getBasis().inverse()\ *\ (velocity\ +\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}.cross(out.getOrigin()));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00163}00163\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{avo}}\ =\ out.getBasis().inverse()\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00164}00164\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acco}}\ =\ out.getBasis().inverse()\ *\ (\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acc}}\ +\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{aacc}}.cross(out.getOrigin())\ +\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}.cross(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{av}}.cross(out.getOrigin())));\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00165}00165\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//compute\ geodetic\ position}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00167}00167\ \ \ \ \ Scalar\ height;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00168}00168\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_aa36445796ad9dce3633ca6e2c10a591a}{getNED}}()-\/>\mbox{\hyperlink{classsf_1_1_n_e_d_ac230e5672d3ac1c8319a967143a5e8ef}{Ned2Geodetic}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{nedo}}.x(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{nedo}}.y(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{nedo}}.z(),\ latitude,\ longitude,\ height);}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00169}00169\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00170}00170\ \ \ \ \ \textcolor{comment}{//get\ angles}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00171}00171\ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{yaw}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{pitch}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{roll}};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00172}00172\ \ \ \ \ (\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{imuTrans}}\ *\ out).\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{getBasis}}().getEulerYPR(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{yaw}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{pitch}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{roll}});}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{comment}{//record\ sample}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00175}00175\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}\{std::vector<Scalar>(}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{nedo}}.x(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{nedo}}.y(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{nedo}}.z(),\ altitude,\ latitude,\ longitude,}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{velo}}.x(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{velo}}.y(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{velo}}.z(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{roll}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{pitch}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{yaw}},\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{avo}}.x(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{avo}}.y(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{avo}}.z(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acco}}.x(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acco}}.y(),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{acco}}.z()\}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ )\};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00180}00180\ \ \ \ \ AddSampleToHistory(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}});\ \textcolor{comment}{//Adds\ noise.....:(}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00181}00181\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00183}\mbox{\hyperlink{classsf_1_1_i_n_s_a88b9798dd1e1c0f3a37c979b7ec78518}{00183}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_i_n_s_a88b9798dd1e1c0f3a37c979b7ec78518}{INS::ConnectGPS}}(\textcolor{keyword}{const}\ std::string\&\ name)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00184}00184\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00185}00185\ \ \ \ \ gpsName\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00186}00186\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00188}\mbox{\hyperlink{classsf_1_1_i_n_s_a990823baee9d0fbb39a5d463db263662}{00188}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_i_n_s_a990823baee9d0fbb39a5d463db263662}{INS::ConnectDVL}}(\textcolor{keyword}{const}\ std::string\&\ name)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00189}00189\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00190}00190\ \ \ \ \ dvlName\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00191}00191\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00193}\mbox{\hyperlink{classsf_1_1_i_n_s_add6c5f5c3ca10d4f5071bb0d26e32597}{00193}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_i_n_s_add6c5f5c3ca10d4f5071bb0d26e32597}{INS::ConnectPressure}}(\textcolor{keyword}{const}\ std::string\&\ name)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00194}00194\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00195}00195\ \ \ \ \ pressName\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00196}00196\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00198}\mbox{\hyperlink{classsf_1_1_i_n_s_a0a53282e7e6e501c701e6f035e78ad5b}{00198}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_i_n_s_a0a53282e7e6e501c701e6f035e78ad5b}{INS::setOutputFrame}}(\textcolor{keyword}{const}\ Transform\&\ T)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00199}00199\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00200}00200\ \ \ \ \ out\ =\ T;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00201}00201\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00203}\mbox{\hyperlink{classsf_1_1_i_n_s_aa71c950d948c7b57d87d0de52791b65c}{00203}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_i_n_s_aa71c950d948c7b57d87d0de52791b65c}{INS::setRange}}(Vector3\ angularVelocityMax,\ Vector3\ linearAccelerationMax)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00204}00204\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00205}00205\ \ \ \ \ channels[12].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angularVelocityMax}}.x(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00206}00206\ \ \ \ \ channels[13].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angularVelocityMax}}.y(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00207}00207\ \ \ \ \ channels[14].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angularVelocityMax}}.z(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00208}00208\ \ \ \ \ channels[12].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angularVelocityMax}}.x(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00209}00209\ \ \ \ \ channels[13].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angularVelocityMax}}.y(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00210}00210\ \ \ \ \ channels[14].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angularVelocityMax}}.z(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00211}00211\ \ \ \ \ channels[15].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{linearAccelerationMax}}.x(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00212}00212\ \ \ \ \ channels[16].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{linearAccelerationMax}}.y(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00213}00213\ \ \ \ \ channels[17].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{linearAccelerationMax}}.z(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00214}00214\ \ \ \ \ channels[15].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{linearAccelerationMax}}.x(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00215}00215\ \ \ \ \ channels[16].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{linearAccelerationMax}}.y(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00216}00216\ \ \ \ \ channels[17].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{linearAccelerationMax}}.z(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00217}00217\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00218}00218\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00219}\mbox{\hyperlink{classsf_1_1_i_n_s_a68c3363ab94118d02089d50fcffdff41}{00219}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_i_n_s_a68c3363ab94118d02089d50fcffdff41}{INS::setNoise}}(Vector3\ angularVelocityStdDev,\ Vector3\ linearAccelerationStdDev)}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00220}00220\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00221}00221\ \ \ \ \ avNoiseX\ =\ std::normal\_distribution<Scalar>(Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angularVelocityStdDev}}.x(),\ Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00222}00222\ \ \ \ \ avNoiseY\ =\ std::normal\_distribution<Scalar>(Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angularVelocityStdDev}}.y(),\ Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00223}00223\ \ \ \ \ avNoiseZ\ =\ std::normal\_distribution<Scalar>(Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angularVelocityStdDev}}.z(),\ Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00224}00224\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00225}00225\ \ \ \ \ accNoiseX\ =\ std::normal\_distribution<Scalar>(Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{linearAccelerationStdDev}}.x(),\ Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00226}00226\ \ \ \ \ accNoiseY\ =\ std::normal\_distribution<Scalar>(Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{linearAccelerationStdDev}}.y(),\ Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00227}00227\ \ \ \ \ accNoiseZ\ =\ std::normal\_distribution<Scalar>(Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{linearAccelerationStdDev}}.z(),\ Scalar(0),\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00229}00229\ \ \ \ \ imuNoise\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00230}00230\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00232}\mbox{\hyperlink{classsf_1_1_i_n_s_a7f78a39dbc8b4a1ee446f8b0b4b115a2}{00232}}\ ScalarSensorType\ \mbox{\hyperlink{classsf_1_1_i_n_s_a7f78a39dbc8b4a1ee446f8b0b4b115a2}{INS::getScalarSensorType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00233}00233\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00234}00234\ \ \ \ \ \textcolor{keywordflow}{return}\ ScalarSensorType::INS;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00235}00235\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00237}\mbox{\hyperlink{classsf_1_1_i_n_s_a14fc5015eb83acc8e0901e021bec14c9}{00237}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_i_n_s_a14fc5015eb83acc8e0901e021bec14c9}{INS::Render}}()}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00238}00238\ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00239}00239\ \ \ \ \ std::vector<Renderable>\ items\ =\ \mbox{\hyperlink{classsf_1_1_link_sensor_acd14122b21065cb5ec664c9e3d996e47}{LinkSensor::Render}}();}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00240}00240\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_sensor_a7ed0e8bb0e676260491b2460d7b66b6c}{isRenderable}}())}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00241}00241\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::SENSOR\_CS;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(\mbox{\hyperlink{classsf_1_1_link_sensor_a5e16f6535744918e0aa39262d80112b7}{getSensorFrame}}()\ *\ out);}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::SENSOR\_LINES;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(\mbox{\hyperlink{classsf_1_1_link_sensor_a5e16f6535744918e0aa39262d80112b7}{getSensorFrame}}());}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0.f));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ item.points.push\_back(glVectorFromVector(out.getOrigin()));}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00252}00252\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00253}00253\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00254}00254\ \}}
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{_i_n_s_8cpp_source_l00256}00256\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,473 @@
+\doxysection{sf\+::Static\+Entity Class Reference}
+\hypertarget{classsf_1_1_static_entity}{}\label{classsf_1_1_static_entity}\index{sf::StaticEntity@{sf::StaticEntity}}
+
+
+An abstract class defining a static simulation entity.  
+
+
+
+
+{\ttfamily \#include $<$Static\+Entity.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Static\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classsf_1_1_static_entity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Static\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{classsf_1_1_static_entity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_static_entity_aa09e9e7dbfb04fde30839ff288aa1f6b}{Static\+Entity}} (std\+::string unique\+Name, std\+::string material, std\+::string look)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_static_entity_a4bdc114a92c7590a16b08e0dd4b17f88}{\texorpdfstring{$\sim$}{\string~}\+Static\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_static_entity_a70d1dabc2e2d97bac3c86fa778d60457}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_static_entity_a1eecdbd972983b8433fd2bc936c7e6bf}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A method used to add the static entity to the simulation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_static_entity_a7f68bf68ad0723ea12831306f21f82dd}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to add the static entity to the simulation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_static_entity_aa91923eceb798f551aa86b94d009c8a9}{get\+AABB}} (Vector3 \&min, Vector3 \&max)
+\begin{DoxyCompactList}\small\item\em A method returning the extents of the entity axis alligned bounding box. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_static_entity_a23e9ad6d0a22e76fb95477a94225ac77}{set\+Transform}} (const Transform \&trans)
+\begin{DoxyCompactList}\small\item\em A method used to set new origin of the entity in the world frame. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_static_entity_a7ede529c457583a94ed082542ed504e9}{get\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the transformation of the entity origin in the world frame. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsf_1_1_material}{Material}} \mbox{\hyperlink{classsf_1_1_static_entity_aba2acc18469051d26587576d7af6853f}{get\+Material}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the material of the entity. \end{DoxyCompactList}\item 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_static_entity_a37b3873f6e28fb50b4d6cd7d458e579c}{get\+Rigid\+Body}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the rigid body associated with the entity. \end{DoxyCompactList}\item 
+Entity\+Type \mbox{\hyperlink{classsf_1_1_static_entity_a5a11ad9fa4f02d0234c30e75a272d7b0}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the entity. \end{DoxyCompactList}\item 
+virtual Static\+Entity\+Type \mbox{\hyperlink{classsf_1_1_static_entity_a07174ca49eb86936ebbc95795adc37b6}{get\+Static\+Type}} ()=0
+\begin{DoxyCompactList}\small\item\em A method returninf the type of the static entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_static_entity_a2c3b43de1bc3111daf285aad1adcf0ef}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set display mode used for the body. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_entity}{sf\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_entity_a89127a850fa48fe25fbf6f5a355f7f9c}{Entity}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_entity_a4b728d6d4ff242dc0b4f116822cccd33}{\texorpdfstring{$\sim$}{\string~}\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_entity_a5b92af995ae80397f64cb97fe3d6a866}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method used to set if the entity should be renderable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_entity_a1560e090759bc9491609e38b69ff1033}{is\+Renderable}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the entity is renderable. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_static_entity_ad4a6e0fb7cc69f16b45c085a5b3bf9fc}{Group\+Transform}} (std\+::vector$<$ \mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*} $>$ \&objects, const Transform \&centre, const Transform \&transform)
+\begin{DoxyCompactList}\small\item\em A static method used to transform a group of static entities together (useful to change the position of multiple linked objects). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classsf_1_1_static_entity_ab9450b22119342f82486f39d4380b697}{Build\+Rigid\+Body}} (bt\+Collision\+Shape \texorpdfstring{$\ast$}{*}shape)
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_static_entity_a9208a2c15110bcae982adecdb978d655}{Build\+Graphical\+Object}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_static_entity_a288f87bcdd9612ce73f18a46faf44930}{rigid\+Body}}
+\item 
+\mbox{\hyperlink{structsf_1_1_material}{Material}} \mbox{\hyperlink{classsf_1_1_static_entity_a151382f16e6700e839407efc91515511}{mat}}
+\item 
+\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_static_entity_accdcd6d53b46fa1ffddb81ad4f7d2f87}{phy\+Mesh}}
+\item 
+int \mbox{\hyperlink{classsf_1_1_static_entity_a449e02f3d9ce470ade9d92d6ebabd734}{look\+Id}}
+\item 
+int \mbox{\hyperlink{classsf_1_1_static_entity_a539339db2c3465408e6cdfbafe26d1f8}{phy\+Object\+Id}}
+\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_static_entity_a0dec64ed7ce43586918f23037709424a}{dm}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class defining a static simulation entity. 
+
+Definition at line \mbox{\hyperlink{_static_entity_8h_source_l00040}{40}} of file \mbox{\hyperlink{_static_entity_8h_source}{Static\+Entity.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_static_entity_aa09e9e7dbfb04fde30839ff288aa1f6b}\label{classsf_1_1_static_entity_aa09e9e7dbfb04fde30839ff288aa1f6b} 
+\index{sf::StaticEntity@{sf::StaticEntity}!StaticEntity@{StaticEntity}}
+\index{StaticEntity@{StaticEntity}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{StaticEntity()}{StaticEntity()}}
+{\footnotesize\ttfamily sf\+::\+Static\+Entity\+::\+Static\+Entity (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{std\+::string}]{material,  }\item[{std\+::string}]{look }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the entity \\
+\hline
+{\em material} & the name of the material the entity is made of \\
+\hline
+{\em look} & the name of the graphical material used for rendering \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_a4bdc114a92c7590a16b08e0dd4b17f88}\label{classsf_1_1_static_entity_a4bdc114a92c7590a16b08e0dd4b17f88} 
+\index{sf::StaticEntity@{sf::StaticEntity}!````~StaticEntity@{\texorpdfstring{$\sim$}{\string~}StaticEntity}}
+\index{````~StaticEntity@{\texorpdfstring{$\sim$}{\string~}StaticEntity}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}StaticEntity()}{\string~StaticEntity()}}
+{\footnotesize\ttfamily sf\+::\+Static\+Entity\+::\texorpdfstring{$\sim$}{\string~}\+Static\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_static_entity_a1eecdbd972983b8433fd2bc936c7e6bf}\label{classsf_1_1_static_entity_a1eecdbd972983b8433fd2bc936c7e6bf} 
+\index{sf::StaticEntity@{sf::StaticEntity}!AddToSimulation@{AddToSimulation}}
+\index{AddToSimulation@{AddToSimulation}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{AddToSimulation()}{AddToSimulation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void sf\+::\+Static\+Entity\+::\+Add\+To\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to add the static entity to the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & a pointer to the simulation manager \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_entity_a2f625f494d182ad8418104accceabd93}{sf\+::\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_a7f68bf68ad0723ea12831306f21f82dd}\label{classsf_1_1_static_entity_a7f68bf68ad0723ea12831306f21f82dd} 
+\index{sf::StaticEntity@{sf::StaticEntity}!AddToSimulation@{AddToSimulation}}
+\index{AddToSimulation@{AddToSimulation}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{AddToSimulation()}{AddToSimulation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void sf\+::\+Static\+Entity\+::\+Add\+To\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sm,  }\item[{const Transform \&}]{origin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to add the static entity to the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & a pointer to the simulation manager \\
+\hline
+{\em origin} & a transformation of the entity origin in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_terrain_a605d8f214d62fbb45354537142768b6d}{sf\+::\+Terrain}}.
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00153}{153}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_a9208a2c15110bcae982adecdb978d655}\label{classsf_1_1_static_entity_a9208a2c15110bcae982adecdb978d655} 
+\index{sf::StaticEntity@{sf::StaticEntity}!BuildGraphicalObject@{BuildGraphicalObject}}
+\index{BuildGraphicalObject@{BuildGraphicalObject}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{BuildGraphicalObject()}{BuildGraphicalObject()}}
+{\footnotesize\ttfamily void sf\+::\+Static\+Entity\+::\+Build\+Graphical\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_ab9450b22119342f82486f39d4380b697}\label{classsf_1_1_static_entity_ab9450b22119342f82486f39d4380b697} 
+\index{sf::StaticEntity@{sf::StaticEntity}!BuildRigidBody@{BuildRigidBody}}
+\index{BuildRigidBody@{BuildRigidBody}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{BuildRigidBody()}{BuildRigidBody()}}
+{\footnotesize\ttfamily void sf\+::\+Static\+Entity\+::\+Build\+Rigid\+Body (\begin{DoxyParamCaption}\item[{bt\+Collision\+Shape \texorpdfstring{$\ast$}{*}}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_aa91923eceb798f551aa86b94d009c8a9}\label{classsf_1_1_static_entity_aa91923eceb798f551aa86b94d009c8a9} 
+\index{sf::StaticEntity@{sf::StaticEntity}!getAABB@{getAABB}}
+\index{getAABB@{getAABB}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{getAABB()}{getAABB()}}
+{\footnotesize\ttfamily void sf\+::\+Static\+Entity\+::get\+AABB (\begin{DoxyParamCaption}\item[{Vector3 \&}]{min,  }\item[{Vector3 \&}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the extents of the entity axis alligned bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & a point located at the minimum coordinate corner \\
+\hline
+{\em max} & a point located at the maximum coordinate corner \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_entity_a989d883e8c21f924558d7ab5da044931}{sf\+::\+Entity}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_plane_a86f5719fdfaaa93323ab9372c054a013}{sf\+::\+Plane}}, and \mbox{\hyperlink{classsf_1_1_terrain_aa788c9f5a0ff74520fd12fd0e53357d3}{sf\+::\+Terrain}}.
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_aba2acc18469051d26587576d7af6853f}\label{classsf_1_1_static_entity_aba2acc18469051d26587576d7af6853f} 
+\index{sf::StaticEntity@{sf::StaticEntity}!getMaterial@{getMaterial}}
+\index{getMaterial@{getMaterial}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{getMaterial()}{getMaterial()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_material}{Material}} sf\+::\+Static\+Entity\+::get\+Material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the material of the entity. 
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_a37b3873f6e28fb50b4d6cd7d458e579c}\label{classsf_1_1_static_entity_a37b3873f6e28fb50b4d6cd7d458e579c} 
+\index{sf::StaticEntity@{sf::StaticEntity}!getRigidBody@{getRigidBody}}
+\index{getRigidBody@{getRigidBody}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{getRigidBody()}{getRigidBody()}}
+{\footnotesize\ttfamily bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} sf\+::\+Static\+Entity\+::get\+Rigid\+Body (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the rigid body associated with the entity. 
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_a07174ca49eb86936ebbc95795adc37b6}\label{classsf_1_1_static_entity_a07174ca49eb86936ebbc95795adc37b6} 
+\index{sf::StaticEntity@{sf::StaticEntity}!getStaticType@{getStaticType}}
+\index{getStaticType@{getStaticType}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{getStaticType()}{getStaticType()}}
+{\footnotesize\ttfamily virtual Static\+Entity\+Type sf\+::\+Static\+Entity\+::get\+Static\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method returninf the type of the static entity. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_obstacle_a89465e6c3e257951fe597f5806e87d43}{sf\+::\+Obstacle}}, \mbox{\hyperlink{classsf_1_1_plane_ac802dbc2f0fc83f64a767261ef6f967d}{sf\+::\+Plane}}, and \mbox{\hyperlink{classsf_1_1_terrain_acf044c09fe458c017180c70ebbf682c8}{sf\+::\+Terrain}}.
+
+\Hypertarget{classsf_1_1_static_entity_a7ede529c457583a94ed082542ed504e9}\label{classsf_1_1_static_entity_a7ede529c457583a94ed082542ed504e9} 
+\index{sf::StaticEntity@{sf::StaticEntity}!getTransform@{getTransform}}
+\index{getTransform@{getTransform}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{getTransform()}{getTransform()}}
+{\footnotesize\ttfamily Transform sf\+::\+Static\+Entity\+::get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the transformation of the entity origin in the world frame. 
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_a5a11ad9fa4f02d0234c30e75a272d7b0}\label{classsf_1_1_static_entity_a5a11ad9fa4f02d0234c30e75a272d7b0} 
+\index{sf::StaticEntity@{sf::StaticEntity}!getType@{getType}}
+\index{getType@{getType}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Entity\+Type sf\+::\+Static\+Entity\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the entity. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_entity_aba0c0ef819595be1aab5a6d9ba7c0c91}{sf\+::\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_ad4a6e0fb7cc69f16b45c085a5b3bf9fc}\label{classsf_1_1_static_entity_ad4a6e0fb7cc69f16b45c085a5b3bf9fc} 
+\index{sf::StaticEntity@{sf::StaticEntity}!GroupTransform@{GroupTransform}}
+\index{GroupTransform@{GroupTransform}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{GroupTransform()}{GroupTransform()}}
+{\footnotesize\ttfamily void sf\+::\+Static\+Entity\+::\+Group\+Transform (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*} $>$ \&}]{objects,  }\item[{const Transform \&}]{centre,  }\item[{const Transform \&}]{transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method used to transform a group of static entities together (useful to change the position of multiple linked objects). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & a vector holiding a list of pointers to the objects that are to be transformed \\
+\hline
+{\em centre} & the center of the transformation in the world frame \\
+\hline
+{\em transform} & the transformation to be applied to the group in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_a70d1dabc2e2d97bac3c86fa778d60457}\label{classsf_1_1_static_entity_a70d1dabc2e2d97bac3c86fa778d60457} 
+\index{sf::StaticEntity@{sf::StaticEntity}!Render@{Render}}
+\index{Render@{Render}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Static\+Entity\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the entity. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_entity_a8c40136ba3685b83f1a86532536f7b19}{sf\+::\+Entity}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_obstacle_a74cc6c13f788437c4f0a3820b426ff15}{sf\+::\+Obstacle}}.
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_a2c3b43de1bc3111daf285aad1adcf0ef}\label{classsf_1_1_static_entity_a2c3b43de1bc3111daf285aad1adcf0ef} 
+\index{sf::StaticEntity@{sf::StaticEntity}!setDisplayMode@{setDisplayMode}}
+\index{setDisplayMode@{setDisplayMode}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{setDisplayMode()}{setDisplayMode()}}
+{\footnotesize\ttfamily void sf\+::\+Static\+Entity\+::set\+Display\+Mode (\begin{DoxyParamCaption}\item[{Display\+Mode}]{m }\end{DoxyParamCaption})}
+
+
+
+A method used to set display mode used for the body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & flag defining the display mode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00097}{97}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_static_entity_a23e9ad6d0a22e76fb95477a94225ac77}\label{classsf_1_1_static_entity_a23e9ad6d0a22e76fb95477a94225ac77} 
+\index{sf::StaticEntity@{sf::StaticEntity}!setTransform@{setTransform}}
+\index{setTransform@{setTransform}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{setTransform()}{setTransform()}}
+{\footnotesize\ttfamily void sf\+::\+Static\+Entity\+::set\+Transform (\begin{DoxyParamCaption}\item[{const Transform \&}]{trans }\end{DoxyParamCaption})}
+
+
+
+A method used to set new origin of the entity in the world frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trans} & a transformation of the entity origin in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_static_entity_8cpp_source}{Static\+Entity.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_static_entity_a0dec64ed7ce43586918f23037709424a}\label{classsf_1_1_static_entity_a0dec64ed7ce43586918f23037709424a} 
+\index{sf::StaticEntity@{sf::StaticEntity}!dm@{dm}}
+\index{dm@{dm}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{dm}{dm}}
+{\footnotesize\ttfamily Display\+Mode sf\+::\+Static\+Entity\+::dm\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8h_source_l00122}{122}} of file \mbox{\hyperlink{_static_entity_8h_source}{Static\+Entity.\+h}}.
+
+\Hypertarget{classsf_1_1_static_entity_a449e02f3d9ce470ade9d92d6ebabd734}\label{classsf_1_1_static_entity_a449e02f3d9ce470ade9d92d6ebabd734} 
+\index{sf::StaticEntity@{sf::StaticEntity}!lookId@{lookId}}
+\index{lookId@{lookId}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{lookId}{lookId}}
+{\footnotesize\ttfamily int sf\+::\+Static\+Entity\+::look\+Id\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8h_source_l00120}{120}} of file \mbox{\hyperlink{_static_entity_8h_source}{Static\+Entity.\+h}}.
+
+\Hypertarget{classsf_1_1_static_entity_a151382f16e6700e839407efc91515511}\label{classsf_1_1_static_entity_a151382f16e6700e839407efc91515511} 
+\index{sf::StaticEntity@{sf::StaticEntity}!mat@{mat}}
+\index{mat@{mat}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{mat}{mat}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_material}{Material}} sf\+::\+Static\+Entity\+::mat\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8h_source_l00117}{117}} of file \mbox{\hyperlink{_static_entity_8h_source}{Static\+Entity.\+h}}.
+
+\Hypertarget{classsf_1_1_static_entity_accdcd6d53b46fa1ffddb81ad4f7d2f87}\label{classsf_1_1_static_entity_accdcd6d53b46fa1ffddb81ad4f7d2f87} 
+\index{sf::StaticEntity@{sf::StaticEntity}!phyMesh@{phyMesh}}
+\index{phyMesh@{phyMesh}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{phyMesh}{phyMesh}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}\texorpdfstring{$\ast$}{*} sf\+::\+Static\+Entity\+::phy\+Mesh\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8h_source_l00118}{118}} of file \mbox{\hyperlink{_static_entity_8h_source}{Static\+Entity.\+h}}.
+
+\Hypertarget{classsf_1_1_static_entity_a539339db2c3465408e6cdfbafe26d1f8}\label{classsf_1_1_static_entity_a539339db2c3465408e6cdfbafe26d1f8} 
+\index{sf::StaticEntity@{sf::StaticEntity}!phyObjectId@{phyObjectId}}
+\index{phyObjectId@{phyObjectId}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{phyObjectId}{phyObjectId}}
+{\footnotesize\ttfamily int sf\+::\+Static\+Entity\+::phy\+Object\+Id\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8h_source_l00121}{121}} of file \mbox{\hyperlink{_static_entity_8h_source}{Static\+Entity.\+h}}.
+
+\Hypertarget{classsf_1_1_static_entity_a288f87bcdd9612ce73f18a46faf44930}\label{classsf_1_1_static_entity_a288f87bcdd9612ce73f18a46faf44930} 
+\index{sf::StaticEntity@{sf::StaticEntity}!rigidBody@{rigidBody}}
+\index{rigidBody@{rigidBody}!sf::StaticEntity@{sf::StaticEntity}}
+\doxysubsubsection{\texorpdfstring{rigidBody}{rigidBody}}
+{\footnotesize\ttfamily bt\+Rigid\+Body\texorpdfstring{$\ast$}{*} sf\+::\+Static\+Entity\+::rigid\+Body\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_static_entity_8h_source_l00116}{116}} of file \mbox{\hyperlink{_static_entity_8h_source}{Static\+Entity.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/entities/Static\+Entity.\+h\item 
+Library/src/entities/Static\+Entity.\+cpp\end{DoxyCompactItemize}

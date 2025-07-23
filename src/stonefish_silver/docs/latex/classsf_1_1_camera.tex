@@ -1,0 +1,480 @@
+\doxysection{sf\+::Camera Class Reference}
+\hypertarget{classsf_1_1_camera}{}\label{classsf_1_1_camera}\index{sf::Camera@{sf::Camera}}
+
+
+An abstract class representing a camera type sensor.  
+
+
+
+
+{\ttfamily \#include $<$Camera.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Camera\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_camera__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Camera\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classsf_1_1_camera__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_camera_aeb5eb620ca22f28797cbbe4b326bf502}{Camera}} (std\+::string unique\+Name, unsigned int resolutionX, unsigned int resolutionY, Scalar horiz\+FOVDeg, Scalar frequency)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_camera_aad088fd0fd4251cd01241b2830ddb12d}{\texorpdfstring{$\sim$}{\string~}\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_camera_a2573a5fa3ff14b022cae3e93be5e781a}{New\+Data\+Ready}} (void \texorpdfstring{$\ast$}{*}data, unsigned int index=0)=0
+\begin{DoxyCompactList}\small\item\em A method used to inform about new data. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_camera_a634bfc5cc912f01b7f5c2bd9a1b8ea35}{Setup\+Camera}} (const Vector3 \&eye, const Vector3 \&dir, const Vector3 \&up)=0
+\begin{DoxyCompactList}\small\item\em A method used to setup the Open\+GL camera transformation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_camera_a0a5420ed6151ff87c2b19b8bdab2378c}{Update\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em A method updating the transform of the camera. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_camera_a103f1cf1257b72583a8dc7e181249843}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the camera dummy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_camera_a36dd144db3efbefa984b66386252bbfb}{set\+Display\+On\+Screen}} (bool display, unsigned int x, unsigned int y, float scale)
+\begin{DoxyCompactList}\small\item\em A method to set if the camera image should be displayed in the main window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1}{get\+Display\+On\+Screen}} (unsigned int \&x, unsigned int \&y, float \&scale) const
+\begin{DoxyCompactList}\small\item\em A method informing if the camera image should be displayed in the main window. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_camera_ad37850eb7a5ed736ca040a82c12b6670}{get\+Horizontal\+FOV}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the horizontal field of view of the camera \mbox{[}deg\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_camera_a4799622b0a6d8e248194f1f2ee6abd66}{get\+Resolution}} (unsigned int \&x, unsigned int \&y) const
+\begin{DoxyCompactList}\small\item\em A method returning the resolution of the camera image. \end{DoxyCompactList}\item 
+virtual void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_camera_ab192f82ec45eda0c4b4854c59f453191}{get\+Image\+Data\+Pointer}} (unsigned int index=0)=0
+\begin{DoxyCompactList}\small\item\em A method returning the pointer to the image data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_vision_sensor}{sf\+::\+Vision\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_vision_sensor_af41022e651cd70b6b35f2db1df41865a}{Vision\+Sensor}} (std\+::string unique\+Name, Scalar frequency)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_vision_sensor_a02d14bd65e0336c75b45ec7191db92c2}{\texorpdfstring{$\sim$}{\string~}\+Vision\+Sensor}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_vision_sensor_a91ebad0fc4a9a53d95ffd1ce6b34e5b3}{Internal\+Update}} (Scalar dt)=0
+\begin{DoxyCompactList}\small\item\em A method performing internal sensor state update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_a3322f3d63ea68552af2e200f64f096cc}{Attach\+To\+World}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the sensor to the world frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_a684221c5df06d848939b698215e43a5f}{Attach\+To\+Static}} (\mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the sensor to a static body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_aec472750b0b3152244ee876d25b4b078}{Attach\+To\+Solid}} (\mbox{\hyperlink{classsf_1_1_moving_entity}{Moving\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the sensor to a moving body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_a7704e51003f026485516c6eda975bde8}{set\+Relative\+Sensor\+Frame}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to set the sensor frame in the body frame. \end{DoxyCompactList}\item 
+Sensor\+Type \mbox{\hyperlink{classsf_1_1_vision_sensor_a3731ddd51f7409f5552e63dcf70ba1a6}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em A method returning the type of the sensor. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_vision_sensor_a6c72f9b87b43148b0414171cb79d9d99}{get\+Sensor\+Frame}} () const override
+\begin{DoxyCompactList}\small\item\em A method returning the sensor measurement frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_aeccae84ef012884a1e1d959be668002b}{get\+Sensor\+Velocity}} (Vector3 \&linear, Vector3 \&angular) const override
+\begin{DoxyCompactList}\small\item\em A method returning the velocity of the sensor measurement frame. \end{DoxyCompactList}\item 
+virtual Vision\+Sensor\+Type \mbox{\hyperlink{classsf_1_1_vision_sensor_a53bac3b4f357e545a33a379a8e70f379}{get\+Vision\+Sensor\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning the type of the vision sensor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_vision_sensor_a78651f227d3eaac69eb697eb59be46c6}{get\+Open\+GLView}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the underlaying \doxylink{classsf_1_1_open_g_l_view}{Open\+GLView} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_sensor}{sf\+::\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_sensor_a4fa5066daa661b490da39847a33f7f9e}{Sensor}} (std\+::string unique\+Name, Scalar frequency)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_sensor_a3cbf4a52d00e960c54f2e48fe65a8d9e}{\texorpdfstring{$\sim$}{\string~}\+Sensor}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_sensor_a21e4c9bec38f3ef1be7f118b49dd0ac4}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em A method that resets the sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a98d2a4098ed80b201ff5bbd6806d4186}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method that updates the sensor readings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a0ea8c6219ae2902d628173d3e6f15598}{Mark\+Data\+Old}} ()
+\begin{DoxyCompactList}\small\item\em A method used to mark data as old. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_sensor_a3c5344ec8a22c66287ef5fd7cbb713b5}{is\+New\+Data\+Available}} () const
+\begin{DoxyCompactList}\small\item\em A method to check if new data is available. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a8ee40c7aac3f5bbe96ed518f9154a461}{set\+Update\+Frequency}} (Scalar f)
+\begin{DoxyCompactList}\small\item\em A method to set the sampling rate of the sensor. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_sensor_a23907adaf9595dd7c090f6ed45221b92}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the sensor\textquotesingle{}s name. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_sensor_ae901e626d7d21bef292270913595feb6}{get\+Update\+Frequency}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the sampling rate of the sensor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_sensor_a75ad0f90629cf1abcbb5037019bd1bc8}{is\+Enabled}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the sensor is enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_sensor_a7ed0e8bb0e676260491b2460d7b66b6c}{is\+Renderable}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the sensor is renderable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a74a5a0831e01e07013ba8b9320b3fd08}{set\+Enabled}} (bool en)
+\begin{DoxyCompactList}\small\item\em A method to set if the sensor is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_afbfa0a29c2630172237d3676cc7d8a31}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method to set if the sensor is renderable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a0e76030532c4d10f55413d561289a8a1}{set\+Visual}} (const std\+::string \&mesh\+Filename, Scalar scale, const std\+::string \&look)
+\begin{DoxyCompactList}\small\item\em A method to set the visual representation of the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_camera_ab8b158c60f72076580bad8c51a6ecaa9}{fovH}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_camera_a30e888edd85e4a1cfb857f2607692a3a}{resX}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_camera_a490a60e4b4c6931f2c23ee948c736d44}{resY}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_camera_a5f5f3133294014d64a7827643383c2d7}{screenX}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_camera_af91bbeb274a51c8aab99166ba5bc0cf6}{screenY}}
+\item 
+float \mbox{\hyperlink{classsf_1_1_camera_a0bbd8c0ff96c1a41925996ef92322f0c}{screen\+Scale}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_camera_a1c5843ccc96af10481d7ca4e1ffb5462}{screen}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_sensor}{sf\+::\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_sensor_a43d8bcedc897b7918cc4f019986057a0}{freq}}
+\item 
+SDL\+\_\+mutex \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_sensor_a32f058239946917dfa6c2c0becf924aa}{update\+Mutex}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_vision_sensor}{sf\+::\+Vision\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Init\+Graphics} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_sensor}{sf\+::\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::random\+\_\+device \mbox{\hyperlink{classsf_1_1_sensor_aaae6aef349de11ef7cdbf211688ff04d}{random\+Device}}
+\item 
+static std\+::mt19937 \mbox{\hyperlink{classsf_1_1_sensor_afc04af9b6666291829b792963ee558ad}{random\+Generator}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class representing a camera type sensor. 
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00034}{34}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_camera_aeb5eb620ca22f28797cbbe4b326bf502}\label{classsf_1_1_camera_aeb5eb620ca22f28797cbbe4b326bf502} 
+\index{sf::Camera@{sf::Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily sf\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{unsigned int}]{resolutionX,  }\item[{unsigned int}]{resolutionY,  }\item[{Scalar}]{horiz\+FOVDeg,  }\item[{Scalar}]{frequency }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the sensor \\
+\hline
+{\em resolutionX} & the horizontal resolution \mbox{[}pix\mbox{]} \\
+\hline
+{\em resolutionY} & the vertical resolution\mbox{[}pix\mbox{]} \\
+\hline
+{\em horiz\+FOVDeg} & the horizontal field of view \mbox{[}deg\mbox{]} \\
+\hline
+{\em frequency} & the sampling frequency of the sensor \mbox{[}Hz\mbox{]} (-\/1 if updated every simulation step) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_camera_aad088fd0fd4251cd01241b2830ddb12d}\label{classsf_1_1_camera_aad088fd0fd4251cd01241b2830ddb12d} 
+\index{sf::Camera@{sf::Camera}!````~Camera@{\texorpdfstring{$\sim$}{\string~}Camera}}
+\index{````~Camera@{\texorpdfstring{$\sim$}{\string~}Camera}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Camera()}{\string~Camera()}}
+{\footnotesize\ttfamily sf\+::\+Camera\+::\texorpdfstring{$\sim$}{\string~}\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1}\label{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1} 
+\index{sf::Camera@{sf::Camera}!getDisplayOnScreen@{getDisplayOnScreen}}
+\index{getDisplayOnScreen@{getDisplayOnScreen}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{getDisplayOnScreen()}{getDisplayOnScreen()}}
+{\footnotesize\ttfamily bool sf\+::\+Camera\+::get\+Display\+On\+Screen (\begin{DoxyParamCaption}\item[{unsigned int \&}]{x,  }\item[{unsigned int \&}]{y,  }\item[{float \&}]{scale }\end{DoxyParamCaption}) const}
+
+
+
+A method informing if the camera image should be displayed in the main window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & referece to the x position of the image in the window \mbox{[}px\mbox{]} \\
+\hline
+{\em y} & reference to the y position of the image in the window \mbox{[}px\mbox{]} \\
+\hline
+{\em scale} & reference to the scaling factor of the image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a flag indicating if the view should be displayed 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_camera_ad37850eb7a5ed736ca040a82c12b6670}\label{classsf_1_1_camera_ad37850eb7a5ed736ca040a82c12b6670} 
+\index{sf::Camera@{sf::Camera}!getHorizontalFOV@{getHorizontalFOV}}
+\index{getHorizontalFOV@{getHorizontalFOV}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{getHorizontalFOV()}{getHorizontalFOV()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Camera\+::get\+Horizontal\+FOV (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the horizontal field of view of the camera \mbox{[}deg\mbox{]}. 
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_camera_ab192f82ec45eda0c4b4854c59f453191}\label{classsf_1_1_camera_ab192f82ec45eda0c4b4854c59f453191} 
+\index{sf::Camera@{sf::Camera}!getImageDataPointer@{getImageDataPointer}}
+\index{getImageDataPointer@{getImageDataPointer}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{getImageDataPointer()}{getImageDataPointer()}}
+{\footnotesize\ttfamily virtual void \texorpdfstring{$\ast$}{*} sf\+::\+Camera\+::get\+Image\+Data\+Pointer (\begin{DoxyParamCaption}\item[{unsigned int}]{index = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method returning the pointer to the image data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the Open\+GL camera for which the data pointer is requested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the image data buffer 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_color_camera_a808874413bfea00bfddc21e9bcf808b0}{sf\+::\+Color\+Camera}}, \mbox{\hyperlink{classsf_1_1_depth_camera_a3d0c799047ff95ecb8e11f77fd48053d}{sf\+::\+Depth\+Camera}}, \mbox{\hyperlink{classsf_1_1_event_based_camera_a4895fc797a5e5f6056e043791834893f}{sf\+::\+Event\+Based\+Camera}}, \mbox{\hyperlink{classsf_1_1_f_l_s_ad156ec4e22cf14048b7f5051c4c6f82b}{sf\+::\+FLS}}, \mbox{\hyperlink{classsf_1_1_m_s_i_s_ade583617aeb942af2633f8a7f0085b64}{sf\+::\+MSIS}}, \mbox{\hyperlink{classsf_1_1_multibeam2_a0260b2007bc94b2bc8547b78d0ed73e3}{sf\+::\+Multibeam2}}, \mbox{\hyperlink{classsf_1_1_optical_flow_camera_a48aff00ffff8a5afc2471b00e3e90848}{sf\+::\+Optical\+Flow\+Camera}}, \mbox{\hyperlink{classsf_1_1_segmentation_camera_a8345a9c461f693f8b746b61a518057f0}{sf\+::\+Segmentation\+Camera}}, \mbox{\hyperlink{classsf_1_1_s_s_s_a7e1c73ecfb73bd2566dce514a816d82c}{sf\+::\+SSS}}, and \mbox{\hyperlink{classsf_1_1_thermal_camera_a0d2cba706c194cadf79010ccb962906f}{sf\+::\+Thermal\+Camera}}.
+
+\Hypertarget{classsf_1_1_camera_a4799622b0a6d8e248194f1f2ee6abd66}\label{classsf_1_1_camera_a4799622b0a6d8e248194f1f2ee6abd66} 
+\index{sf::Camera@{sf::Camera}!getResolution@{getResolution}}
+\index{getResolution@{getResolution}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{getResolution()}{getResolution()}}
+{\footnotesize\ttfamily void sf\+::\+Camera\+::get\+Resolution (\begin{DoxyParamCaption}\item[{unsigned int \&}]{x,  }\item[{unsigned int \&}]{y }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the resolution of the camera image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & a reference to a variable that will store the horizontal resolution \mbox{[}pix\mbox{]} \\
+\hline
+{\em y} & a reference to a variable that will store the vertical resolution \mbox{[}pix\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_camera_a2573a5fa3ff14b022cae3e93be5e781a}\label{classsf_1_1_camera_a2573a5fa3ff14b022cae3e93be5e781a} 
+\index{sf::Camera@{sf::Camera}!NewDataReady@{NewDataReady}}
+\index{NewDataReady@{NewDataReady}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{NewDataReady()}{NewDataReady()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Camera\+::\+New\+Data\+Ready (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{data,  }\item[{unsigned int}]{index = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method used to inform about new data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & a pointer to the Open\+GL texture data \\
+\hline
+{\em index} & the id of the Open\+GL camera uploading the data \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_color_camera_aed9e9522353c4c142a117af9889835d2}{sf\+::\+Color\+Camera}}, \mbox{\hyperlink{classsf_1_1_depth_camera_ac8279d57f90d13667a69526fe909405b}{sf\+::\+Depth\+Camera}}, \mbox{\hyperlink{classsf_1_1_event_based_camera_accad2678ae415b2615442b8ed1543655}{sf\+::\+Event\+Based\+Camera}}, \mbox{\hyperlink{classsf_1_1_f_l_s_ad1605ffe74b717193bf615564ddf8db4}{sf\+::\+FLS}}, \mbox{\hyperlink{classsf_1_1_m_s_i_s_a13e054dd65a6543a7f6475523f230ecb}{sf\+::\+MSIS}}, \mbox{\hyperlink{classsf_1_1_multibeam2_a3522e32a5a86fa3aea769677cc957ae0}{sf\+::\+Multibeam2}}, \mbox{\hyperlink{classsf_1_1_optical_flow_camera_ad7ffa153a956ce1a66cacff006080f65}{sf\+::\+Optical\+Flow\+Camera}}, \mbox{\hyperlink{classsf_1_1_segmentation_camera_a9310b80f9f327b95bbf2750dd470966f}{sf\+::\+Segmentation\+Camera}}, \mbox{\hyperlink{classsf_1_1_s_s_s_a67dae37506209b5f92b54c4980020e62}{sf\+::\+SSS}}, and \mbox{\hyperlink{classsf_1_1_thermal_camera_a4f00c260dc6dd3f6f0ed354dddec2101}{sf\+::\+Thermal\+Camera}}.
+
+\Hypertarget{classsf_1_1_camera_a103f1cf1257b72583a8dc7e181249843}\label{classsf_1_1_camera_a103f1cf1257b72583a8dc7e181249843} 
+\index{sf::Camera@{sf::Camera}!Render@{Render}}
+\index{Render@{Render}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Camera\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the camera dummy. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_sensor_a6e4955d7a77bbba84c2bdfb9a57c8388}{sf\+::\+Sensor}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_f_l_s_aa77fcda309d2a87e06379ce97aef2f3e}{sf\+::\+FLS}}, \mbox{\hyperlink{classsf_1_1_m_s_i_s_a457054e83ec514cc35b6930cf37b0768}{sf\+::\+MSIS}}, \mbox{\hyperlink{classsf_1_1_multibeam2_a3b4b7347d6262476c455cde75cf2dbdc}{sf\+::\+Multibeam2}}, and \mbox{\hyperlink{classsf_1_1_s_s_s_ab1a234e93c7258467bbc101b1ea7eb3c}{sf\+::\+SSS}}.
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_camera_a36dd144db3efbefa984b66386252bbfb}\label{classsf_1_1_camera_a36dd144db3efbefa984b66386252bbfb} 
+\index{sf::Camera@{sf::Camera}!setDisplayOnScreen@{setDisplayOnScreen}}
+\index{setDisplayOnScreen@{setDisplayOnScreen}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{setDisplayOnScreen()}{setDisplayOnScreen()}}
+{\footnotesize\ttfamily void sf\+::\+Camera\+::set\+Display\+On\+Screen (\begin{DoxyParamCaption}\item[{bool}]{display,  }\item[{unsigned int}]{x,  }\item[{unsigned int}]{y,  }\item[{float}]{scale }\end{DoxyParamCaption})}
+
+
+
+A method to set if the camera image should be displayed in the main window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em display} & show image in the program window? \\
+\hline
+{\em x} & position of the image in the window \mbox{[}px\mbox{]} \\
+\hline
+{\em y} & position of the image in the window \mbox{[}px\mbox{]} \\
+\hline
+{\em scale} & scaling factor of the image \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_camera_a634bfc5cc912f01b7f5c2bd9a1b8ea35}\label{classsf_1_1_camera_a634bfc5cc912f01b7f5c2bd9a1b8ea35} 
+\index{sf::Camera@{sf::Camera}!SetupCamera@{SetupCamera}}
+\index{SetupCamera@{SetupCamera}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{SetupCamera()}{SetupCamera()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Camera\+::\+Setup\+Camera (\begin{DoxyParamCaption}\item[{const Vector3 \&}]{eye,  }\item[{const Vector3 \&}]{dir,  }\item[{const Vector3 \&}]{up }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method used to setup the Open\+GL camera transformation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eye} & the position of the camera eye \mbox{[}m\mbox{]} \\
+\hline
+{\em dir} & a unit vector parallel to the optical axis of the camera \\
+\hline
+{\em up} & a unit vector pointing up (from center of image to the top edge of the image) \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_color_camera_aa3c2e030652c25565c12415042c03b81}{sf\+::\+Color\+Camera}}, \mbox{\hyperlink{classsf_1_1_depth_camera_a8063f48a3f3ae4cc0435887df2475bad}{sf\+::\+Depth\+Camera}}, \mbox{\hyperlink{classsf_1_1_event_based_camera_a6a31738e45cc5755bc6fa0e165b19c35}{sf\+::\+Event\+Based\+Camera}}, \mbox{\hyperlink{classsf_1_1_f_l_s_a90b254d10d247e311f79aeb04ae8b31f}{sf\+::\+FLS}}, \mbox{\hyperlink{classsf_1_1_m_s_i_s_ad80436be080a872630e6240dd3347b43}{sf\+::\+MSIS}}, \mbox{\hyperlink{classsf_1_1_multibeam2_aafa156d0f42011e3e69e7db23dda98d9}{sf\+::\+Multibeam2}}, \mbox{\hyperlink{classsf_1_1_optical_flow_camera_ac38bd492bd7459d2f6042c5d98f3016d}{sf\+::\+Optical\+Flow\+Camera}}, \mbox{\hyperlink{classsf_1_1_segmentation_camera_a583f776706282e25c293d83c5c76aa40}{sf\+::\+Segmentation\+Camera}}, \mbox{\hyperlink{classsf_1_1_s_s_s_a226eb73bd4c73484d0d82e3ca5202a43}{sf\+::\+SSS}}, and \mbox{\hyperlink{classsf_1_1_thermal_camera_a1d7fe52a12a5843e5d40e94c2ec50a47}{sf\+::\+Thermal\+Camera}}.
+
+\Hypertarget{classsf_1_1_camera_a0a5420ed6151ff87c2b19b8bdab2378c}\label{classsf_1_1_camera_a0a5420ed6151ff87c2b19b8bdab2378c} 
+\index{sf::Camera@{sf::Camera}!UpdateTransform@{UpdateTransform}}
+\index{UpdateTransform@{UpdateTransform}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{UpdateTransform()}{UpdateTransform()}}
+{\footnotesize\ttfamily void sf\+::\+Camera\+::\+Update\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method updating the transform of the camera. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_vision_sensor_a5f9fa1ac94ed43427c1841f7b8494b9d}{sf\+::\+Vision\+Sensor}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_multibeam2_ae53137b22a82235af21f618e20ea9e67}{sf\+::\+Multibeam2}}.
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_camera_ab8b158c60f72076580bad8c51a6ecaa9}\label{classsf_1_1_camera_ab8b158c60f72076580bad8c51a6ecaa9} 
+\index{sf::Camera@{sf::Camera}!fovH@{fovH}}
+\index{fovH@{fovH}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{fovH}{fovH}}
+{\footnotesize\ttfamily Scalar sf\+::\+Camera\+::fovH\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00107}{107}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_camera_a30e888edd85e4a1cfb857f2607692a3a}\label{classsf_1_1_camera_a30e888edd85e4a1cfb857f2607692a3a} 
+\index{sf::Camera@{sf::Camera}!resX@{resX}}
+\index{resX@{resX}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{resX}{resX}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Camera\+::resX\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00108}{108}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_camera_a490a60e4b4c6931f2c23ee948c736d44}\label{classsf_1_1_camera_a490a60e4b4c6931f2c23ee948c736d44} 
+\index{sf::Camera@{sf::Camera}!resY@{resY}}
+\index{resY@{resY}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{resY}{resY}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Camera\+::resY\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00109}{109}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_camera_a1c5843ccc96af10481d7ca4e1ffb5462}\label{classsf_1_1_camera_a1c5843ccc96af10481d7ca4e1ffb5462} 
+\index{sf::Camera@{sf::Camera}!screen@{screen}}
+\index{screen@{screen}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily bool sf\+::\+Camera\+::screen\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00113}{113}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_camera_a0bbd8c0ff96c1a41925996ef92322f0c}\label{classsf_1_1_camera_a0bbd8c0ff96c1a41925996ef92322f0c} 
+\index{sf::Camera@{sf::Camera}!screenScale@{screenScale}}
+\index{screenScale@{screenScale}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{screenScale}{screenScale}}
+{\footnotesize\ttfamily float sf\+::\+Camera\+::screen\+Scale\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00112}{112}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_camera_a5f5f3133294014d64a7827643383c2d7}\label{classsf_1_1_camera_a5f5f3133294014d64a7827643383c2d7} 
+\index{sf::Camera@{sf::Camera}!screenX@{screenX}}
+\index{screenX@{screenX}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{screenX}{screenX}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Camera\+::screenX\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00110}{110}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_camera_af91bbeb274a51c8aab99166ba5bc0cf6}\label{classsf_1_1_camera_af91bbeb274a51c8aab99166ba5bc0cf6} 
+\index{sf::Camera@{sf::Camera}!screenY@{screenY}}
+\index{screenY@{screenY}!sf::Camera@{sf::Camera}}
+\doxysubsubsection{\texorpdfstring{screenY}{screenY}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Camera\+::screenY\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00111}{111}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/sensors/vision/Camera.\+h\item 
+Library/src/sensors/vision/Camera.\+cpp\end{DoxyCompactItemize}

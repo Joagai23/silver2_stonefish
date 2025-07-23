@@ -1,0 +1,554 @@
+\doxysection{sf\+::Open\+GLLight Class Reference}
+\hypertarget{classsf_1_1_open_g_l_light}{}\label{classsf_1_1_open_g_l_light}\index{sf::OpenGLLight@{sf::OpenGLLight}}
+
+
+An abstract class implementing an Open\+GL light.  
+
+
+
+
+{\ttfamily \#include $<$Open\+GLLight.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Open\+GLLight\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{classsf_1_1_open_g_l_light__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Open\+GLLight\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_open_g_l_light__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_light_afe05370cc1cf95fbcd477fa009f6d277}{Open\+GLLight}} (glm\+::vec3 position, GLfloat radius, glm\+::vec3 color, GLfloat lum)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_open_g_l_light_a1c6f10e61e91e3dc5293c75e43832693}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLLight}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_open_g_l_light_afdf236df23c03a79374950355c66cd03}{Init\+Shadowmap}} (GLint shadowmap\+Layer)
+\begin{DoxyCompactList}\small\item\em A method creating shadowmap textures. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_open_g_l_light_a5acc89515b7f87e996a71b2eaf61eef3}{Bake\+Shadowmap}} (\mbox{\hyperlink{classsf_1_1_open_g_l_pipeline}{Open\+GLPipeline}} \texorpdfstring{$\ast$}{*}pipe)
+\begin{DoxyCompactList}\small\item\em A method implementing rendering of shadowmaps. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_open_g_l_light_a3efc232506b0590e6b3062290fd75d28}{Show\+Shadow\+Map}} (glm\+::vec4 rect)
+\begin{DoxyCompactList}\small\item\em A method to display generated shadow map on screen. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_open_g_l_light_a4b99ece9838b27fc714a10fd71dfbb88}{Setup\+Shader}} (\mbox{\hyperlink{structsf_1_1_light_u_b_o}{Light\+UBO}} \texorpdfstring{$\ast$}{*}ubo)=0
+\begin{DoxyCompactList}\small\item\em A method to set up light data in Lights UBO. \end{DoxyCompactList}\item 
+virtual Light\+Type \mbox{\hyperlink{classsf_1_1_open_g_l_light_a328e1ec7f14a4324ff35c83376caf3bb}{get\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning the type of the light. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_light_a4789d8d2e2296c449c5128b146152a7f}{Update\+Position}} (glm\+::vec3 p)
+\begin{DoxyCompactList}\small\item\em A method used to update position of light. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_open_g_l_light_a9289619c55bc5c28b990ade0fba807ec}{Update\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em A method that updates light transformation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_light_aa61776ab236ed23a6d4ae3fc0d4c25d0}{Switch\+On}} ()
+\begin{DoxyCompactList}\small\item\em A method to switch on the light. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_light_a73a5ef1aea67b980651f7bf408ae0b59}{Switch\+Off}} ()
+\begin{DoxyCompactList}\small\item\em A method to switch off the light. \end{DoxyCompactList}\item 
+glm\+::vec4 \mbox{\hyperlink{classsf_1_1_open_g_l_light_ae841ac487ae3d0abe83a92f9c5327ea8}{get\+Color\+Li}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the color and intensity of the light. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_light_a20bc0143f05f335eff096a11b701b9b0}{get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the position of the light. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_light_a930d30f7815d8b0370b7ea524af195ab}{get\+Source\+Radius}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the radius of the light source. \end{DoxyCompactList}\item 
+\Hypertarget{classsf_1_1_open_g_l_light_af28d2a9a68829aea8a34aba0d824ab13}\label{classsf_1_1_open_g_l_light_af28d2a9a68829aea8a34aba0d824ab13} 
+glm\+::quat {\bfseries get\+Orientation} ()
+\begin{DoxyCompactList}\small\item\em A method returning the orientation of the light. \end{DoxyCompactList}\item 
+virtual glm\+::mat4 \mbox{\hyperlink{classsf_1_1_open_g_l_light_ae21dd6d012eeac0c64bd019efb314258}{get\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the model matrix of the light. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_open_g_l_light_a5cd6bf0841d073a6537fa2887fe21ce3}{get\+Source\+Object}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the light source object id. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_light_a53080b8146b5ef47e9a2d8e881cbf2da}{is\+Active}} ()
+\begin{DoxyCompactList}\small\item\em A method informing if the light is active. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_light_a0eec4da4a5e163c53ad4723628f3c077}{operator$<$}} (const \mbox{\hyperlink{classsf_1_1_open_g_l_light}{Open\+GLLight}} \&l)
+\begin{DoxyCompactList}\small\item\em An operator used to sort lights by type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_light_a11256c35b95d8e56167fd53257e63f7a}{Init}} (std\+::vector$<$ \mbox{\hyperlink{classsf_1_1_open_g_l_light}{Open\+GLLight}} \texorpdfstring{$\ast$}{*} $>$ \&lights)
+\begin{DoxyCompactList}\small\item\em A static method to initialize data buffers for all lights in the scene. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_light_a7daca8deb33ab8bbd51272db1aacf499}{Destroy}} ()
+\begin{DoxyCompactList}\small\item\em A static method to destroy the common data. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_light_a30e17e63ecc036e2730e323d85d93164}{Set\+Camera}} (\mbox{\hyperlink{classsf_1_1_open_g_l_camera}{Open\+GLCamera}} \texorpdfstring{$\ast$}{*}view)
+\begin{DoxyCompactList}\small\item\em A static method to set the current view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec4 \mbox{\hyperlink{classsf_1_1_open_g_l_light_aa35724518367f0fcdfc0fac049ca9e46}{color\+Li}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_light_a76ebe2f7d7edf4ab954c6bddad868a84}{active}}
+\item 
+int \mbox{\hyperlink{classsf_1_1_open_g_l_light_abfd863b34f9594ff327ddb0405744bb6}{source\+Object}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_light_ab289cf807f22103406c07b831e39f431}{spot\+Shadow\+Array\+Tex}} = 0
+\item 
+static GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_light_ae5ab9de089df3b4c3844b28fb3f2bb9a}{spot\+Shadow\+Sampler}} = 0
+\item 
+static GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_light_a9abcf2e6902cdd10de5334b275a5d375}{spot\+Depth\+Sampler}} = 0
+\item 
+static \mbox{\hyperlink{classsf_1_1_open_g_l_camera}{Open\+GLCamera}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_light_ac7363a16110f8024b75d7a9f81db630a}{active\+View}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class implementing an Open\+GL light. 
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8h_source_l00047}{47}} of file \mbox{\hyperlink{_open_g_l_light_8h_source}{Open\+GLLight.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_open_g_l_light_afe05370cc1cf95fbcd477fa009f6d277}\label{classsf_1_1_open_g_l_light_afe05370cc1cf95fbcd477fa009f6d277} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!OpenGLLight@{OpenGLLight}}
+\index{OpenGLLight@{OpenGLLight}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{OpenGLLight()}{OpenGLLight()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLLight\+::\+Open\+GLLight (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{position,  }\item[{GLfloat}]{radius,  }\item[{glm\+::vec3}]{color,  }\item[{GLfloat}]{lum }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the position of the light in world frame \mbox{[}m\mbox{]} \\
+\hline
+{\em radius} & the radius of the light source \mbox{[}m\mbox{]} \\
+\hline
+{\em color} & the color of the light \\
+\hline
+{\em lum} & the luminous power of the light \mbox{[}lm\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a1c6f10e61e91e3dc5293c75e43832693}\label{classsf_1_1_open_g_l_light_a1c6f10e61e91e3dc5293c75e43832693} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!````~OpenGLLight@{\texorpdfstring{$\sim$}{\string~}OpenGLLight}}
+\index{````~OpenGLLight@{\texorpdfstring{$\sim$}{\string~}OpenGLLight}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLLight()}{\string~OpenGLLight()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLLight\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLLight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_open_g_l_light_a5acc89515b7f87e996a71b2eaf61eef3}\label{classsf_1_1_open_g_l_light_a5acc89515b7f87e996a71b2eaf61eef3} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!BakeShadowmap@{BakeShadowmap}}
+\index{BakeShadowmap@{BakeShadowmap}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{BakeShadowmap()}{BakeShadowmap()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Bake\+Shadowmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_pipeline}{Open\+GLPipeline}} \texorpdfstring{$\ast$}{*}}]{pipe }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing rendering of shadowmaps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipe} & a pointer to the Open\+GL pipeline \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_open_g_l_spot_light_a29b59352e88b6805ad9ce04d12ebaa67}{sf\+::\+Open\+GLSpot\+Light}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a7daca8deb33ab8bbd51272db1aacf499}\label{classsf_1_1_open_g_l_light_a7daca8deb33ab8bbd51272db1aacf499} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{Destroy()}{Destroy()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to destroy the common data. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00169}{169}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_ae841ac487ae3d0abe83a92f9c5327ea8}\label{classsf_1_1_open_g_l_light_ae841ac487ae3d0abe83a92f9c5327ea8} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!getColorLi@{getColorLi}}
+\index{getColorLi@{getColorLi}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{getColorLi()}{getColorLi()}}
+{\footnotesize\ttfamily glm\+::vec4 sf\+::\+Open\+GLLight\+::get\+Color\+Li (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the color and intensity of the light. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a20bc0143f05f335eff096a11b701b9b0}\label{classsf_1_1_open_g_l_light_a20bc0143f05f335eff096a11b701b9b0} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLLight\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the position of the light. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a5cd6bf0841d073a6537fa2887fe21ce3}\label{classsf_1_1_open_g_l_light_a5cd6bf0841d073a6537fa2887fe21ce3} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!getSourceObject@{getSourceObject}}
+\index{getSourceObject@{getSourceObject}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{getSourceObject()}{getSourceObject()}}
+{\footnotesize\ttfamily int sf\+::\+Open\+GLLight\+::get\+Source\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the light source object id. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a930d30f7815d8b0370b7ea524af195ab}\label{classsf_1_1_open_g_l_light_a930d30f7815d8b0370b7ea524af195ab} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!getSourceRadius@{getSourceRadius}}
+\index{getSourceRadius@{getSourceRadius}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{getSourceRadius()}{getSourceRadius()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLLight\+::get\+Source\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the radius of the light source. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_ae21dd6d012eeac0c64bd019efb314258}\label{classsf_1_1_open_g_l_light_ae21dd6d012eeac0c64bd019efb314258} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!getTransform@{getTransform}}
+\index{getTransform@{getTransform}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{getTransform()}{getTransform()}}
+{\footnotesize\ttfamily glm\+::mat4 sf\+::\+Open\+GLLight\+::get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the model matrix of the light. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_open_g_l_spot_light_ac4f4e8cb77d6f285e447d7094f8d77d4}{sf\+::\+Open\+GLSpot\+Light}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a328e1ec7f14a4324ff35c83376caf3bb}\label{classsf_1_1_open_g_l_light_a328e1ec7f14a4324ff35c83376caf3bb} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!getType@{getType}}
+\index{getType@{getType}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual Light\+Type sf\+::\+Open\+GLLight\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method returning the type of the light. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_open_g_l_point_light_a0377dd15adbeba0b4f60aacc9737a340}{sf\+::\+Open\+GLPoint\+Light}}, and \mbox{\hyperlink{classsf_1_1_open_g_l_spot_light_a74a098f96895f4f03b51c7e83bb73a70}{sf\+::\+Open\+GLSpot\+Light}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a11256c35b95d8e56167fd53257e63f7a}\label{classsf_1_1_open_g_l_light_a11256c35b95d8e56167fd53257e63f7a} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!Init@{Init}}
+\index{Init@{Init}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Init (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classsf_1_1_open_g_l_light}{Open\+GLLight}} \texorpdfstring{$\ast$}{*} $>$ \&}]{lights }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to initialize data buffers for all lights in the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lights} & a list of Open\+GL lights in the scene \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_afdf236df23c03a79374950355c66cd03}\label{classsf_1_1_open_g_l_light_afdf236df23c03a79374950355c66cd03} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!InitShadowmap@{InitShadowmap}}
+\index{InitShadowmap@{InitShadowmap}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{InitShadowmap()}{InitShadowmap()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Init\+Shadowmap (\begin{DoxyParamCaption}\item[{GLint}]{shadowmap\+Layer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method creating shadowmap textures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shadowmap\+Layer} & the shadowmap texture layer related to this light \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_open_g_l_spot_light_a00cd9f1e2650628d98fb370b5c1f0bbf}{sf\+::\+Open\+GLSpot\+Light}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a53080b8146b5ef47e9a2d8e881cbf2da}\label{classsf_1_1_open_g_l_light_a53080b8146b5ef47e9a2d8e881cbf2da} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!isActive@{isActive}}
+\index{isActive@{isActive}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLLight\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method informing if the light is active. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a0eec4da4a5e163c53ad4723628f3c077}\label{classsf_1_1_open_g_l_light_a0eec4da4a5e163c53ad4723628f3c077} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLLight\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsf_1_1_open_g_l_light}{Open\+GLLight}} \&}]{l }\end{DoxyParamCaption})}
+
+
+
+An operator used to sort lights by type. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a30e17e63ecc036e2730e323d85d93164}\label{classsf_1_1_open_g_l_light_a30e17e63ecc036e2730e323d85d93164} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!SetCamera@{SetCamera}}
+\index{SetCamera@{SetCamera}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{SetCamera()}{SetCamera()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Set\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_camera}{Open\+GLCamera}} \texorpdfstring{$\ast$}{*}}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to set the current view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & a pointer to the current view \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a4b99ece9838b27fc714a10fd71dfbb88}\label{classsf_1_1_open_g_l_light_a4b99ece9838b27fc714a10fd71dfbb88} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!SetupShader@{SetupShader}}
+\index{SetupShader@{SetupShader}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{SetupShader()}{SetupShader()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Open\+GLLight\+::\+Setup\+Shader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_light_u_b_o}{Light\+UBO}} \texorpdfstring{$\ast$}{*}}]{ubo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method to set up light data in Lights UBO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ubo} & a pointer to the light UBO structure \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_open_g_l_point_light_a719b3eac22af7b6ee38ab7626e8070e5}{sf\+::\+Open\+GLPoint\+Light}}, and \mbox{\hyperlink{classsf_1_1_open_g_l_spot_light_a663770574371185d4a2120f6f68d54b0}{sf\+::\+Open\+GLSpot\+Light}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a3efc232506b0590e6b3062290fd75d28}\label{classsf_1_1_open_g_l_light_a3efc232506b0590e6b3062290fd75d28} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!ShowShadowMap@{ShowShadowMap}}
+\index{ShowShadowMap@{ShowShadowMap}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{ShowShadowMap()}{ShowShadowMap()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Show\+Shadow\+Map (\begin{DoxyParamCaption}\item[{glm\+::vec4}]{rect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method to display generated shadow map on screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & a rectangle in which to display the texture \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_open_g_l_spot_light_a02d5e046958c821c9f5370bc1b923813}{sf\+::\+Open\+GLSpot\+Light}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a73a5ef1aea67b980651f7bf408ae0b59}\label{classsf_1_1_open_g_l_light_a73a5ef1aea67b980651f7bf408ae0b59} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!SwitchOff@{SwitchOff}}
+\index{SwitchOff@{SwitchOff}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{SwitchOff()}{SwitchOff()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Switch\+Off (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method to switch off the light. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_aa61776ab236ed23a6d4ae3fc0d4c25d0}\label{classsf_1_1_open_g_l_light_aa61776ab236ed23a6d4ae3fc0d4c25d0} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!SwitchOn@{SwitchOn}}
+\index{SwitchOn@{SwitchOn}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{SwitchOn()}{SwitchOn()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Switch\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method to switch on the light. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a4789d8d2e2296c449c5128b146152a7f}\label{classsf_1_1_open_g_l_light_a4789d8d2e2296c449c5128b146152a7f} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!UpdatePosition@{UpdatePosition}}
+\index{UpdatePosition@{UpdatePosition}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{UpdatePosition()}{UpdatePosition()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Update\+Position (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{p }\end{DoxyParamCaption})}
+
+
+
+A method used to update position of light. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & a new position of the light in world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a9289619c55bc5c28b990ade0fba807ec}\label{classsf_1_1_open_g_l_light_a9289619c55bc5c28b990ade0fba807ec} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!UpdateTransform@{UpdateTransform}}
+\index{UpdateTransform@{UpdateTransform}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{UpdateTransform()}{UpdateTransform()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLLight\+::\+Update\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that updates light transformation. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_open_g_l_spot_light_ade214e9bb0bfc716336a20736a0062bc}{sf\+::\+Open\+GLSpot\+Light}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8cpp_source_l00097}{97}} of file \mbox{\hyperlink{_open_g_l_light_8cpp_source}{Open\+GLLight.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_open_g_l_light_a76ebe2f7d7edf4ab954c6bddad868a84}\label{classsf_1_1_open_g_l_light_a76ebe2f7d7edf4ab954c6bddad868a84} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!active@{active}}
+\index{active@{active}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLLight\+::active\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8h_source_l00145}{145}} of file \mbox{\hyperlink{_open_g_l_light_8h_source}{Open\+GLLight.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_ac7363a16110f8024b75d7a9f81db630a}\label{classsf_1_1_open_g_l_light_ac7363a16110f8024b75d7a9f81db630a} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!activeView@{activeView}}
+\index{activeView@{activeView}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{activeView}{activeView}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_open_g_l_camera}{Open\+GLCamera}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLLight\+::active\+View = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8h_source_l00151}{151}} of file \mbox{\hyperlink{_open_g_l_light_8h_source}{Open\+GLLight.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_aa35724518367f0fcdfc0fac049ca9e46}\label{classsf_1_1_open_g_l_light_aa35724518367f0fcdfc0fac049ca9e46} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!colorLi@{colorLi}}
+\index{colorLi@{colorLi}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{colorLi}{colorLi}}
+{\footnotesize\ttfamily glm\+::vec4 sf\+::\+Open\+GLLight\+::color\+Li\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8h_source_l00144}{144}} of file \mbox{\hyperlink{_open_g_l_light_8h_source}{Open\+GLLight.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_abfd863b34f9594ff327ddb0405744bb6}\label{classsf_1_1_open_g_l_light_abfd863b34f9594ff327ddb0405744bb6} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!sourceObject@{sourceObject}}
+\index{sourceObject@{sourceObject}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{sourceObject}{sourceObject}}
+{\footnotesize\ttfamily int sf\+::\+Open\+GLLight\+::source\+Object\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8h_source_l00146}{146}} of file \mbox{\hyperlink{_open_g_l_light_8h_source}{Open\+GLLight.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_a9abcf2e6902cdd10de5334b275a5d375}\label{classsf_1_1_open_g_l_light_a9abcf2e6902cdd10de5334b275a5d375} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!spotDepthSampler@{spotDepthSampler}}
+\index{spotDepthSampler@{spotDepthSampler}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{spotDepthSampler}{spotDepthSampler}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLLight\+::spot\+Depth\+Sampler = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8h_source_l00150}{150}} of file \mbox{\hyperlink{_open_g_l_light_8h_source}{Open\+GLLight.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_ab289cf807f22103406c07b831e39f431}\label{classsf_1_1_open_g_l_light_ab289cf807f22103406c07b831e39f431} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!spotShadowArrayTex@{spotShadowArrayTex}}
+\index{spotShadowArrayTex@{spotShadowArrayTex}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{spotShadowArrayTex}{spotShadowArrayTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLLight\+::spot\+Shadow\+Array\+Tex = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8h_source_l00148}{148}} of file \mbox{\hyperlink{_open_g_l_light_8h_source}{Open\+GLLight.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_light_ae5ab9de089df3b4c3844b28fb3f2bb9a}\label{classsf_1_1_open_g_l_light_ae5ab9de089df3b4c3844b28fb3f2bb9a} 
+\index{sf::OpenGLLight@{sf::OpenGLLight}!spotShadowSampler@{spotShadowSampler}}
+\index{spotShadowSampler@{spotShadowSampler}!sf::OpenGLLight@{sf::OpenGLLight}}
+\doxysubsubsection{\texorpdfstring{spotShadowSampler}{spotShadowSampler}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLLight\+::spot\+Shadow\+Sampler = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_light_8h_source_l00149}{149}} of file \mbox{\hyperlink{_open_g_l_light_8h_source}{Open\+GLLight.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/graphics/Open\+GLLight.\+h\item 
+Library/src/graphics/Open\+GLLight.\+cpp\end{DoxyCompactItemize}

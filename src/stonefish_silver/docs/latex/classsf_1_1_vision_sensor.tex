@@ -1,0 +1,374 @@
+\doxysection{sf\+::Vision\+Sensor Class Reference}
+\hypertarget{classsf_1_1_vision_sensor}{}\label{classsf_1_1_vision_sensor}\index{sf::VisionSensor@{sf::VisionSensor}}
+
+
+An abstract class representing a vision sensor.  
+
+
+
+
+{\ttfamily \#include $<$Vision\+Sensor.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Vision\+Sensor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_vision_sensor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Vision\+Sensor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classsf_1_1_vision_sensor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_vision_sensor_af41022e651cd70b6b35f2db1df41865a}{Vision\+Sensor}} (std\+::string unique\+Name, Scalar frequency)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_vision_sensor_a02d14bd65e0336c75b45ec7191db92c2}{\texorpdfstring{$\sim$}{\string~}\+Vision\+Sensor}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_vision_sensor_a91ebad0fc4a9a53d95ffd1ce6b34e5b3}{Internal\+Update}} (Scalar dt)=0
+\begin{DoxyCompactList}\small\item\em A method performing internal sensor state update. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_vision_sensor_a5f9fa1ac94ed43427c1841f7b8494b9d}{Update\+Transform}} ()=0
+\begin{DoxyCompactList}\small\item\em A method performing sensor transformation update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_a3322f3d63ea68552af2e200f64f096cc}{Attach\+To\+World}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the sensor to the world frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_a684221c5df06d848939b698215e43a5f}{Attach\+To\+Static}} (\mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the sensor to a static body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_aec472750b0b3152244ee876d25b4b078}{Attach\+To\+Solid}} (\mbox{\hyperlink{classsf_1_1_moving_entity}{Moving\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the sensor to a moving body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_a7704e51003f026485516c6eda975bde8}{set\+Relative\+Sensor\+Frame}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to set the sensor frame in the body frame. \end{DoxyCompactList}\item 
+Sensor\+Type \mbox{\hyperlink{classsf_1_1_vision_sensor_a3731ddd51f7409f5552e63dcf70ba1a6}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em A method returning the type of the sensor. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_vision_sensor_a6c72f9b87b43148b0414171cb79d9d99}{get\+Sensor\+Frame}} () const override
+\begin{DoxyCompactList}\small\item\em A method returning the sensor measurement frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_aeccae84ef012884a1e1d959be668002b}{get\+Sensor\+Velocity}} (Vector3 \&linear, Vector3 \&angular) const override
+\begin{DoxyCompactList}\small\item\em A method returning the velocity of the sensor measurement frame. \end{DoxyCompactList}\item 
+virtual Vision\+Sensor\+Type \mbox{\hyperlink{classsf_1_1_vision_sensor_a53bac3b4f357e545a33a379a8e70f379}{get\+Vision\+Sensor\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning the type of the vision sensor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_vision_sensor_a78651f227d3eaac69eb697eb59be46c6}{get\+Open\+GLView}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the underlaying \doxylink{classsf_1_1_open_g_l_view}{Open\+GLView} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_sensor}{sf\+::\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_sensor_a4fa5066daa661b490da39847a33f7f9e}{Sensor}} (std\+::string unique\+Name, Scalar frequency)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_sensor_a3cbf4a52d00e960c54f2e48fe65a8d9e}{\texorpdfstring{$\sim$}{\string~}\+Sensor}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_sensor_a21e4c9bec38f3ef1be7f118b49dd0ac4}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em A method that resets the sensor. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_sensor_a6e4955d7a77bbba84c2bdfb9a57c8388}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a98d2a4098ed80b201ff5bbd6806d4186}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method that updates the sensor readings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a0ea8c6219ae2902d628173d3e6f15598}{Mark\+Data\+Old}} ()
+\begin{DoxyCompactList}\small\item\em A method used to mark data as old. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_sensor_a3c5344ec8a22c66287ef5fd7cbb713b5}{is\+New\+Data\+Available}} () const
+\begin{DoxyCompactList}\small\item\em A method to check if new data is available. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a8ee40c7aac3f5bbe96ed518f9154a461}{set\+Update\+Frequency}} (Scalar f)
+\begin{DoxyCompactList}\small\item\em A method to set the sampling rate of the sensor. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_sensor_a23907adaf9595dd7c090f6ed45221b92}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the sensor\textquotesingle{}s name. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_sensor_ae901e626d7d21bef292270913595feb6}{get\+Update\+Frequency}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the sampling rate of the sensor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_sensor_a75ad0f90629cf1abcbb5037019bd1bc8}{is\+Enabled}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the sensor is enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_sensor_a7ed0e8bb0e676260491b2460d7b66b6c}{is\+Renderable}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the sensor is renderable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a74a5a0831e01e07013ba8b9320b3fd08}{set\+Enabled}} (bool en)
+\begin{DoxyCompactList}\small\item\em A method to set if the sensor is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_afbfa0a29c2630172237d3676cc7d8a31}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method to set if the sensor is renderable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a0e76030532c4d10f55413d561289a8a1}{set\+Visual}} (const std\+::string \&mesh\+Filename, Scalar scale, const std\+::string \&look)
+\begin{DoxyCompactList}\small\item\em A method to set the visual representation of the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classsf_1_1_vision_sensor_ac233eadb72a55d7701a07ed0300e9589}\label{classsf_1_1_vision_sensor_ac233eadb72a55d7701a07ed0300e9589} 
+virtual void {\bfseries Init\+Graphics} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_sensor}{sf\+::\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_sensor_a43d8bcedc897b7918cc4f019986057a0}{freq}}
+\item 
+SDL\+\_\+mutex \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_sensor_a32f058239946917dfa6c2c0becf924aa}{update\+Mutex}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_sensor}{sf\+::\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::random\+\_\+device \mbox{\hyperlink{classsf_1_1_sensor_aaae6aef349de11ef7cdbf211688ff04d}{random\+Device}}
+\item 
+static std\+::mt19937 \mbox{\hyperlink{classsf_1_1_sensor_afc04af9b6666291829b792963ee558ad}{random\+Generator}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class representing a vision sensor. 
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8h_source_l00043}{43}} of file \mbox{\hyperlink{_vision_sensor_8h_source}{Vision\+Sensor.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_vision_sensor_af41022e651cd70b6b35f2db1df41865a}\label{classsf_1_1_vision_sensor_af41022e651cd70b6b35f2db1df41865a} 
+\index{sf::VisionSensor@{sf::VisionSensor}!VisionSensor@{VisionSensor}}
+\index{VisionSensor@{VisionSensor}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{VisionSensor()}{VisionSensor()}}
+{\footnotesize\ttfamily sf\+::\+Vision\+Sensor\+::\+Vision\+Sensor (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{Scalar}]{frequency }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the sensor \\
+\hline
+{\em frequency} & the sampling frequency of the sensor \mbox{[}Hz\mbox{]} (0 if updated every simulation step) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{_vision_sensor_8cpp_source}{Vision\+Sensor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a02d14bd65e0336c75b45ec7191db92c2}\label{classsf_1_1_vision_sensor_a02d14bd65e0336c75b45ec7191db92c2} 
+\index{sf::VisionSensor@{sf::VisionSensor}!````~VisionSensor@{\texorpdfstring{$\sim$}{\string~}VisionSensor}}
+\index{````~VisionSensor@{\texorpdfstring{$\sim$}{\string~}VisionSensor}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VisionSensor()}{\string~VisionSensor()}}
+{\footnotesize\ttfamily sf\+::\+Vision\+Sensor\+::\texorpdfstring{$\sim$}{\string~}\+Vision\+Sensor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_vision_sensor_8cpp_source}{Vision\+Sensor.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_vision_sensor_aec472750b0b3152244ee876d25b4b078}\label{classsf_1_1_vision_sensor_aec472750b0b3152244ee876d25b4b078} 
+\index{sf::VisionSensor@{sf::VisionSensor}!AttachToSolid@{AttachToSolid}}
+\index{AttachToSolid@{AttachToSolid}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{AttachToSolid()}{AttachToSolid()}}
+{\footnotesize\ttfamily void sf\+::\+Vision\+Sensor\+::\+Attach\+To\+Solid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_moving_entity}{Moving\+Entity}} \texorpdfstring{$\ast$}{*}}]{body,  }\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method used to attach the sensor to a moving body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & a pointer to the moving body \\
+\hline
+{\em origin} & the place where the sensor should be attached in the body origin frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_vision_sensor_8cpp_source}{Vision\+Sensor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a684221c5df06d848939b698215e43a5f}\label{classsf_1_1_vision_sensor_a684221c5df06d848939b698215e43a5f} 
+\index{sf::VisionSensor@{sf::VisionSensor}!AttachToStatic@{AttachToStatic}}
+\index{AttachToStatic@{AttachToStatic}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{AttachToStatic()}{AttachToStatic()}}
+{\footnotesize\ttfamily void sf\+::\+Vision\+Sensor\+::\+Attach\+To\+Static (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*}}]{body,  }\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method used to attach the sensor to a static body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & a pointer to the static body \\
+\hline
+{\em origin} & the place where the sensor should be attached in the body origin frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{_vision_sensor_8cpp_source}{Vision\+Sensor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a3322f3d63ea68552af2e200f64f096cc}\label{classsf_1_1_vision_sensor_a3322f3d63ea68552af2e200f64f096cc} 
+\index{sf::VisionSensor@{sf::VisionSensor}!AttachToWorld@{AttachToWorld}}
+\index{AttachToWorld@{AttachToWorld}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{AttachToWorld()}{AttachToWorld()}}
+{\footnotesize\ttfamily void sf\+::\+Vision\+Sensor\+::\+Attach\+To\+World (\begin{DoxyParamCaption}\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method used to attach the sensor to the world frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & the place where the sensor should be attached in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{_vision_sensor_8cpp_source}{Vision\+Sensor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a78651f227d3eaac69eb697eb59be46c6}\label{classsf_1_1_vision_sensor_a78651f227d3eaac69eb697eb59be46c6} 
+\index{sf::VisionSensor@{sf::VisionSensor}!getOpenGLView@{getOpenGLView}}
+\index{getOpenGLView@{getOpenGLView}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{getOpenGLView()}{getOpenGLView()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*} sf\+::\+Vision\+Sensor\+::get\+Open\+GLView (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method returning a pointer to the underlaying \doxylink{classsf_1_1_open_g_l_view}{Open\+GLView} object. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_color_camera_a4b3a1519e30044f64d79156278d398ef}{sf\+::\+Color\+Camera}}, \mbox{\hyperlink{classsf_1_1_depth_camera_a0a6cc9efeaac8bdfc826a792fee15609}{sf\+::\+Depth\+Camera}}, \mbox{\hyperlink{classsf_1_1_event_based_camera_a2ba434203b45c43bed9206458aa7f6e9}{sf\+::\+Event\+Based\+Camera}}, \mbox{\hyperlink{classsf_1_1_f_l_s_a40736fe8d4ca4686987cc2997452a374}{sf\+::\+FLS}}, \mbox{\hyperlink{classsf_1_1_m_s_i_s_a8ac96812936bcd05fa2e8fb28c366835}{sf\+::\+MSIS}}, \mbox{\hyperlink{classsf_1_1_multibeam2_a32851807e4ff3bd44d82c283b3413ab6}{sf\+::\+Multibeam2}}, \mbox{\hyperlink{classsf_1_1_optical_flow_camera_aa54580b10ba59d9bc3b64cfd7fd32e3f}{sf\+::\+Optical\+Flow\+Camera}}, \mbox{\hyperlink{classsf_1_1_segmentation_camera_a554b47fabc168c33876d89cba5343bd1}{sf\+::\+Segmentation\+Camera}}, \mbox{\hyperlink{classsf_1_1_s_s_s_abdee853afcabee3640325750989e1892}{sf\+::\+SSS}}, and \mbox{\hyperlink{classsf_1_1_thermal_camera_a62f9bb8c12783c9131f7da547f52c61c}{sf\+::\+Thermal\+Camera}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a6c72f9b87b43148b0414171cb79d9d99}\label{classsf_1_1_vision_sensor_a6c72f9b87b43148b0414171cb79d9d99} 
+\index{sf::VisionSensor@{sf::VisionSensor}!getSensorFrame@{getSensorFrame}}
+\index{getSensorFrame@{getSensorFrame}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{getSensorFrame()}{getSensorFrame()}}
+{\footnotesize\ttfamily Transform sf\+::\+Vision\+Sensor\+::get\+Sensor\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method returning the sensor measurement frame. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_sensor_aafe871b6787fd19586c4212efb33e6c7}{sf\+::\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_vision_sensor_8cpp_source}{Vision\+Sensor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_aeccae84ef012884a1e1d959be668002b}\label{classsf_1_1_vision_sensor_aeccae84ef012884a1e1d959be668002b} 
+\index{sf::VisionSensor@{sf::VisionSensor}!getSensorVelocity@{getSensorVelocity}}
+\index{getSensorVelocity@{getSensorVelocity}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{getSensorVelocity()}{getSensorVelocity()}}
+{\footnotesize\ttfamily void sf\+::\+Vision\+Sensor\+::get\+Sensor\+Velocity (\begin{DoxyParamCaption}\item[{Vector3 \&}]{linear,  }\item[{Vector3 \&}]{angular }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method returning the velocity of the sensor measurement frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em linear} & output of the linear velocity of the sensor measurement frame \mbox{[}m/s\mbox{]} \\
+\hline
+{\em angular} & output of the angular velocity of the sensor measurement frame \mbox{[}rad/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_sensor_ad02d1cafa030ea1e07872bf875f7aad0}{sf\+::\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_vision_sensor_8cpp_source}{Vision\+Sensor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a3731ddd51f7409f5552e63dcf70ba1a6}\label{classsf_1_1_vision_sensor_a3731ddd51f7409f5552e63dcf70ba1a6} 
+\index{sf::VisionSensor@{sf::VisionSensor}!getType@{getType}}
+\index{getType@{getType}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Sensor\+Type sf\+::\+Vision\+Sensor\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method returning the type of the sensor. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_sensor_ad8bf530fe395f79f887eca0fe6fc8112}{sf\+::\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_vision_sensor_8cpp_source}{Vision\+Sensor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a53bac3b4f357e545a33a379a8e70f379}\label{classsf_1_1_vision_sensor_a53bac3b4f357e545a33a379a8e70f379} 
+\index{sf::VisionSensor@{sf::VisionSensor}!getVisionSensorType@{getVisionSensorType}}
+\index{getVisionSensorType@{getVisionSensorType}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{getVisionSensorType()}{getVisionSensorType()}}
+{\footnotesize\ttfamily virtual Vision\+Sensor\+Type sf\+::\+Vision\+Sensor\+::get\+Vision\+Sensor\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method returning the type of the vision sensor. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_color_camera_a0d7cf806ca20b92a486fc87aaec340e8}{sf\+::\+Color\+Camera}}, \mbox{\hyperlink{classsf_1_1_depth_camera_aec1da5faf9143a83f548fee217941207}{sf\+::\+Depth\+Camera}}, \mbox{\hyperlink{classsf_1_1_event_based_camera_af3aa834a2e42183b993d8bac1baefc23}{sf\+::\+Event\+Based\+Camera}}, \mbox{\hyperlink{classsf_1_1_f_l_s_a6ea173ca7930eea87f47e219b1378bc2}{sf\+::\+FLS}}, \mbox{\hyperlink{classsf_1_1_m_s_i_s_a1a00ae4475c52dcd77a09111f33d5c1e}{sf\+::\+MSIS}}, \mbox{\hyperlink{classsf_1_1_multibeam2_a983e3d2e17b92b23195d0a7be0eb3991}{sf\+::\+Multibeam2}}, \mbox{\hyperlink{classsf_1_1_optical_flow_camera_a929404b0c230a83002433e512c57d931}{sf\+::\+Optical\+Flow\+Camera}}, \mbox{\hyperlink{classsf_1_1_segmentation_camera_a8316cf93a5a28d6efbeabb0772ba31ce}{sf\+::\+Segmentation\+Camera}}, \mbox{\hyperlink{classsf_1_1_s_s_s_a0139fb97bb3d4baa7bbdb8ebdd947539}{sf\+::\+SSS}}, and \mbox{\hyperlink{classsf_1_1_thermal_camera_a5b53085a002f4529de92034a755968cf}{sf\+::\+Thermal\+Camera}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a91ebad0fc4a9a53d95ffd1ce6b34e5b3}\label{classsf_1_1_vision_sensor_a91ebad0fc4a9a53d95ffd1ce6b34e5b3} 
+\index{sf::VisionSensor@{sf::VisionSensor}!InternalUpdate@{InternalUpdate}}
+\index{InternalUpdate@{InternalUpdate}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{InternalUpdate()}{InternalUpdate()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Vision\+Sensor\+::\+Internal\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method performing internal sensor state update. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & the time stamp of the simulation \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_sensor_a9d56588d2d0b417d5021ff616ccb5014}{sf\+::\+Sensor}}.
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_color_camera_a7257c00fc234a61ee78575187b72fda7}{sf\+::\+Color\+Camera}}, \mbox{\hyperlink{classsf_1_1_depth_camera_a3784488a37abbb3a6b67fe54daf5d467}{sf\+::\+Depth\+Camera}}, \mbox{\hyperlink{classsf_1_1_event_based_camera_a1b7db5510d3e19718b12f88f1ef19ee7}{sf\+::\+Event\+Based\+Camera}}, \mbox{\hyperlink{classsf_1_1_f_l_s_a7c2e24c8ab315afe24c02bf9a3a9a45b}{sf\+::\+FLS}}, \mbox{\hyperlink{classsf_1_1_m_s_i_s_ab7cb03ec2a9071ed3e97fab52313c3ea}{sf\+::\+MSIS}}, \mbox{\hyperlink{classsf_1_1_multibeam2_aa1badb6a1678e5c882383356d16d748b}{sf\+::\+Multibeam2}}, \mbox{\hyperlink{classsf_1_1_optical_flow_camera_abd711692d2cfe0f1b5d6b52552d64cb2}{sf\+::\+Optical\+Flow\+Camera}}, \mbox{\hyperlink{classsf_1_1_segmentation_camera_a896725a4d8f59df9d17fcbe68768ba13}{sf\+::\+Segmentation\+Camera}}, \mbox{\hyperlink{classsf_1_1_s_s_s_a9854144ff2a4aad0d049df627d31c46f}{sf\+::\+SSS}}, and \mbox{\hyperlink{classsf_1_1_thermal_camera_ac3471b887b775d89e642108abb9911a8}{sf\+::\+Thermal\+Camera}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a7704e51003f026485516c6eda975bde8}\label{classsf_1_1_vision_sensor_a7704e51003f026485516c6eda975bde8} 
+\index{sf::VisionSensor@{sf::VisionSensor}!setRelativeSensorFrame@{setRelativeSensorFrame}}
+\index{setRelativeSensorFrame@{setRelativeSensorFrame}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{setRelativeSensorFrame()}{setRelativeSensorFrame()}}
+{\footnotesize\ttfamily void sf\+::\+Vision\+Sensor\+::set\+Relative\+Sensor\+Frame (\begin{DoxyParamCaption}\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method used to set the sensor frame in the body frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & a tranformation from the body frame to the sensor frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_vision_sensor_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_vision_sensor_8cpp_source}{Vision\+Sensor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_vision_sensor_a5f9fa1ac94ed43427c1841f7b8494b9d}\label{classsf_1_1_vision_sensor_a5f9fa1ac94ed43427c1841f7b8494b9d} 
+\index{sf::VisionSensor@{sf::VisionSensor}!UpdateTransform@{UpdateTransform}}
+\index{UpdateTransform@{UpdateTransform}!sf::VisionSensor@{sf::VisionSensor}}
+\doxysubsubsection{\texorpdfstring{UpdateTransform()}{UpdateTransform()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Vision\+Sensor\+::\+Update\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method performing sensor transformation update. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_camera_a0a5420ed6151ff87c2b19b8bdab2378c}{sf\+::\+Camera}}, and \mbox{\hyperlink{classsf_1_1_multibeam2_ae53137b22a82235af21f618e20ea9e67}{sf\+::\+Multibeam2}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/sensors/Vision\+Sensor.\+h\item 
+Library/src/sensors/Vision\+Sensor.\+cpp\end{DoxyCompactItemize}

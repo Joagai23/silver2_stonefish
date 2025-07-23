@@ -1,0 +1,1401 @@
+\doxysection{sf\+::Open\+GLContent Class Reference}
+\hypertarget{classsf_1_1_open_g_l_content}{}\label{classsf_1_1_open_g_l_content}\index{sf::OpenGLContent@{sf::OpenGLContent}}
+
+
+A class implementing Open\+GL content management and core rendering funtions.  
+
+
+
+
+{\ttfamily \#include $<$Open\+GLContent.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_content_aab020dd1de7e9fafce5eedacb1c501c4}{Open\+GLContent}} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_content_a7adec1ba8640304955025a7638491470}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLContent}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_aad124c18301b0f6ec6042469280a06f9}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing necessary initializations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a78dd30f69087c00c5569cf88c01ce8ee}{Destroy\+Content}} ()
+\begin{DoxyCompactList}\small\item\em A method that destroys all created Open\+GL content. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a235f5774c3e89aeaf59cf52e32289548}{Set\+Viewport\+Size}} (unsigned int width, unsigned int height)
+\begin{DoxyCompactList}\small\item\em A method to set the current rendering viewport size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_acd6837f0206ecebabd602c23b95efbab}{Set\+Projection\+Matrix}} (glm\+::mat4 P)
+\begin{DoxyCompactList}\small\item\em A method to set current projection matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a70e446eee57bcb6837cb1f2fb6e8c69a}{Set\+View\+Matrix}} (glm\+::mat4 V)
+\begin{DoxyCompactList}\small\item\em A method to set current view matrix. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{classsf_1_1_open_g_l_content_a8f2555cbc8901562e9fe82ff757e3138}{Get\+View\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the view matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_acd2ecbd33d26d7be1c52b0edaf882489}{Set\+Drawing\+Mode}} (Drawing\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method to set the current drawing mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a45edb1a33bec329dbabf74e3f2a179fa}{Set\+Current\+View}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}v)
+\begin{DoxyCompactList}\small\item\em A method to set current view. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a6513dcdb004b4b24e7c11632c7c590c2}{Bind\+Base\+Vertex\+Array}} ()
+\begin{DoxyCompactList}\small\item\em A method that binds the base vertex array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a2421a35943fe8d903d5235f82c11d391}{Draw\+SAQ}} ()
+\begin{DoxyCompactList}\small\item\em A method to draw a screen-\/aligned quad. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a920cbfd5267387ece9aff4f21d76635a}{Draw\+Textured\+SAQ}} (GLuint texture, glm\+::vec4 color=glm\+::vec4(1.f))
+\begin{DoxyCompactList}\small\item\em A method to draw a textured screen-\/aligned quad. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a2185c75674108e8727e05247e79af2f5}{Draw\+Textured\+Quad}} (GLfloat x, GLfloat y, GLfloat width, GLfloat height, GLuint texture, glm\+::vec4 color=glm\+::vec4(1.f))
+\begin{DoxyCompactList}\small\item\em A method to draw a textured quad (2D texture). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a2510c1cd4b734a4cb687b66ad9493aa9}{Draw\+Textured\+Quad}} (GLfloat x, GLfloat y, GLfloat width, GLfloat height, GLuint texture, GLint z, bool array=true)
+\begin{DoxyCompactList}\small\item\em A method to draw a textured quad (array or 3D texture). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_acc130ed416811ac1fa3dde37196c02d4}{Draw\+Cubemap\+Cross}} (GLuint texture)
+\begin{DoxyCompactList}\small\item\em A method to display a cubemap texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a48ccd63b7f6607f6c94711905d0c4679}{Draw\+Coord\+System}} (glm\+::mat4 M, GLfloat size)
+\begin{DoxyCompactList}\small\item\em A method to draw a Cartesian coord system with color-\/coded axes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a7b303b8fc8cde9d5ba06deee942085e2}{Draw\+Ellipsoid}} (glm\+::mat4 M, glm\+::vec3 radii, glm\+::vec4 color)
+\begin{DoxyCompactList}\small\item\em A method to draw an ellipsoid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_aaba73f01cb8aa550224683fef900e334}{Draw\+Cylinder}} (glm\+::mat4 M, glm\+::vec3 dims, glm\+::vec4 color)
+\begin{DoxyCompactList}\small\item\em A method to draw a cylinder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a24925185438bf0e78ca952f46afdd973}{Draw\+Primitives}} (Primitive\+Type type, std\+::vector$<$ glm\+::vec3 $>$ \&vertices, glm\+::vec4 color, glm\+::mat4 M=glm\+::mat4(1.f))
+\begin{DoxyCompactList}\small\item\em A method to draw primitives. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a52aacc2393c8e0481c250267cc2f514d}{Draw\+Object}} (int object\+Id, int look\+Id, const glm\+::mat4 \&M)
+\begin{DoxyCompactList}\small\item\em A method to draw an object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_aecc69f18e49799447e3d09c5be30ae03}{Draw\+Light\+Source}} (unsigned int light\+Id)
+\begin{DoxyCompactList}\small\item\em A method to draw the light source. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a12ce3771a479e5e6aa8ea0309e627220}{Add\+View}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view)
+\begin{DoxyCompactList}\small\item\em A method to add a view to the list of views. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a06c838bdf819b8de052bf10c448b8d2b}{Add\+Light}} (\mbox{\hyperlink{classsf_1_1_open_g_l_light}{Open\+GLLight}} \texorpdfstring{$\ast$}{*}light)
+\begin{DoxyCompactList}\small\item\em A method to add light to the list of lights. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_open_g_l_content_a4409cb13d46d3fb15982b9d1155ed8c9}{Build\+Object}} (\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
+\begin{DoxyCompactList}\small\item\em A method to build a graphical object from a mesh structure. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_open_g_l_content_a639337556eaebd2424a3c8e01b59e5bc}{Create\+Simple\+Look}} (const std\+::string \&name, glm\+::vec3 rgb\+Color, GLfloat specular, GLfloat shininess, GLfloat reflectivity=0.f, const std\+::string \&albedo\+Texture\+Path="{}"{})
+\begin{DoxyCompactList}\small\item\em A method to create a new simple look. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_open_g_l_content_ac995f1fe3fd943bd85de1243c1d993ad}{Create\+Physical\+Look}} (const std\+::string \&name, glm\+::vec3 rgb\+Color, GLfloat roughness, GLfloat metalness=0.f, GLfloat reflectivity=0.f, const std\+::string \&albedo\+Texture\+Path="{}"{}, const std\+::string \&normal\+Map\+Path="{}"{}, const std\+::string \&temperature\+Map\+Path="{}"{}, glm\+::vec2 temperature\+Range=glm\+::vec2(20.f))
+\begin{DoxyCompactList}\small\item\em A method to create a new physical look. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a9947edb34f08da9e0fc402bf97ce3e74}{Use\+Look}} (const \mbox{\hyperlink{structsf_1_1_look}{Look}} \&look, bool texturable, const glm\+::mat4 \&M)
+\begin{DoxyCompactList}\small\item\em A method to use a look. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_aab5e30b3cb2a934dd99b40b791b32753}{get\+View}} (size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to a view. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classsf_1_1_open_g_l_content_a4918ab5479acb81ae2027523b9a283ae}{get\+Views\+Count}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the number of views. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_light}{Open\+GLLight}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_ad0e6be4f3e820bc5c9f8831b7714340d}{get\+Light}} (size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to a light. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classsf_1_1_open_g_l_content_afce258462f092d3726dd3e3056d3a8e2}{get\+Lights\+Count}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the number of lights. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a4bb8f1b71ce5676c35b6dc8519342063}{Setup\+Lights}} ()
+\begin{DoxyCompactList}\small\item\em A method that updates lights UBO. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_open_g_l_content_a77c0377aa9491448109e271d035f967d}{get\+Look\+Id}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em A method returing the id of a look. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structsf_1_1_object}{Object}} \& \mbox{\hyperlink{classsf_1_1_open_g_l_content_a6d9eff1abcd608fb54d4116f5d81b446}{get\+Object}} (size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em A method returning a reference to the object structure. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structsf_1_1_look}{Look}} \& \mbox{\hyperlink{classsf_1_1_open_g_l_content_a64199d7be907875a22669ca2902baf93}{get\+Look}} (size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em A method returning a reference to the look structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_content_a3891203aab9ceba191a870069f63edd7}{Load\+Texture}} (const std\+::string \&filename, bool srgb=true, bool alpha=false, GLfloat anisotropy=0.f, bool internal=false)
+\begin{DoxyCompactList}\small\item\em A static method to load a texture. \end{DoxyCompactList}\item 
+static GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_content_a7387e1ca39671b3f3786637089b5b809}{Load\+Internal\+Texture}} (const std\+::string \&filename, bool srgb=true, bool alpha=false, GLfloat anisotropy=0.f)
+\begin{DoxyCompactList}\small\item\em A static method to load an internal texture. \end{DoxyCompactList}\item 
+static GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{Generate\+Texture}} (GLenum target, glm\+::uvec3 dimensions, GLenum internal\+Format, GLenum format, GLenum type, const void \texorpdfstring{$\ast$}{*}data, Filtering\+Mode fm, bool repeat, bool anisotropy=false)
+\begin{DoxyCompactList}\small\item\em A static method to generate a new texture. \end{DoxyCompactList}\item 
+static GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_content_a96b9148e3657e1a454ba336741c349cb}{Generate\+Framebuffer}} (const std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_f_b_o_texture}{FBOTexture}} $>$ \&textures)
+\begin{DoxyCompactList}\small\item\em A static method to create a framebuffer object. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_aa1848874b692968ddc5bdd3e80c57470}{Load\+Mesh}} (const std\+::string \&filename, GLfloat scale, bool smooth)
+\begin{DoxyCompactList}\small\item\em A static method to load a mesh from a file. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_a2b421871c85dfedbee37beb3aee2290e}{Build\+Plane}} (GLfloat half\+Extents, GLfloat uv\+Scale=1.f)
+\begin{DoxyCompactList}\small\item\em A static method to build a graphical plane object. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_a9d11cb25cdf60fd53f92e302bd1604fe}{Build\+Box}} (glm\+::vec3 half\+Extents, unsigned int subdivisions=3, unsigned int uv\+Mode=0)
+\begin{DoxyCompactList}\small\item\em A static method to build a graphical box object. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_ac4397533ddc31a82afcb2a323dcb664b}{Build\+Sphere}} (GLfloat radius, unsigned int subdivisions=3)
+\begin{DoxyCompactList}\small\item\em A static method to build a graphical sphere object. The volume of the discretized sphere is equal to the volume of an analytical sphere. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_a026b0bb13c1d9a4afc74d66b74064066}{Build\+Cylinder}} (GLfloat radius, GLfloat height, unsigned int slices=24)
+\begin{DoxyCompactList}\small\item\em A static method to build a graphical cylinder object. The volume of the discretized cylinder is equal to the volume of an analytical cylinder. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_a928f928c070ec02b9e1a91d84ac4bcea}{Build\+Torus}} (GLfloat major\+Radius, GLfloat minor\+Radius, unsigned int major\+Slices=48, unsigned int minor\+Slices=24)
+\begin{DoxyCompactList}\small\item\em A static method to build a graphical torus object. The volume of the discretized torus is equal to the volume of an analytical torus. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_a80ddbdde60968773dc602e90f8cdb8a4}{Build\+Wing}} (GLfloat base\+Chord\+Length, GLfloat tip\+Chord\+Length, GLfloat max\+Camber, GLfloat max\+Camber\+Pos, GLfloat profile\+Thickness, GLfloat wing\+Length)
+\begin{DoxyCompactList}\small\item\em A static method to build a graphical wing object. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_content_a30d91c1d72f1e1c2cad8940ed1451955}{Build\+Terrain}} (GLfloat \texorpdfstring{$\ast$}{*}heightfield, int sizeX, int sizeY, GLfloat scaleX, GLfloat scaleY, GLfloat max\+Height, GLfloat uv\+Scale=1.f)
+\begin{DoxyCompactList}\small\item\em A static method to build a graphical terrain object. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a11cea72197d596a0c39977bc3702544e}{Transform\+Mesh}} (\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh, const Transform \&T)
+\begin{DoxyCompactList}\small\item\em A static method to transform mesh vertices. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_content_aecf51ea0ba9eeb5d169cbcc4a12b7fcc}{Check\+And\+Repair\+Face\+Vertex\+Order}} (\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
+\begin{DoxyCompactList}\small\item\em A static method to check if normals correspond to the vertex order and fix the errors. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a0519f666ecf672bbf4d2fab1be11d69a}{Smooth\+Normals}} (\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
+\begin{DoxyCompactList}\small\item\em A static method to smooth the mesh normals. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a325aef52c476a81d47f260ece8ae1917}{Compute\+Tangents}} (\mbox{\hyperlink{structsf_1_1_texturable_mesh}{Texturable\+Mesh}} \texorpdfstring{$\ast$}{*}mesh)
+\begin{DoxyCompactList}\small\item\em A static method to compute tangent and bitangent vectors. \end{DoxyCompactList}\item 
+static GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_content_a7f725690800968326bd030c0faa53127}{Compute\+Average\+Face\+Area}} (\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
+\begin{DoxyCompactList}\small\item\em A method to compute average face size. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a8ebc4d1bf1dde1554286d3b4f510bf27}{Subdivide}} (\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh, bool ico\+Mode=false)
+\begin{DoxyCompactList}\small\item\em A method to subdivide the mesh. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_content_accfc09d1a001597d8baae5f80a2d6a81}{Refine}} (\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh, GLfloat size\+Threshold)
+\begin{DoxyCompactList}\small\item\em A method to uniformize mesh face sizes. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a0006036ee5434cc3e87398ac19928e79}{AABB}} (\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh, glm\+::vec3 \&min, glm\+::vec3 \&max)
+\begin{DoxyCompactList}\small\item\em A method to compute the axis-\/aligned bounding box of a mesh. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_content_a0fe725d356a1523edcea16bec31b56b3}{AABS}} (\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh, GLfloat \&bs\+Radius, glm\+::vec3 \&bs\+Center\+Offset)
+\begin{DoxyCompactList}\small\item\em A method to compute the axis-\/aligned bounding sphere of a mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing Open\+GL content management and core rendering funtions. 
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8h_source_l00095}{95}} of file \mbox{\hyperlink{_open_g_l_content_8h_source}{Open\+GLContent.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_open_g_l_content_aab020dd1de7e9fafce5eedacb1c501c4}\label{classsf_1_1_open_g_l_content_aab020dd1de7e9fafce5eedacb1c501c4} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!OpenGLContent@{OpenGLContent}}
+\index{OpenGLContent@{OpenGLContent}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{OpenGLContent()}{OpenGLContent()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLContent\+::\+Open\+GLContent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a7adec1ba8640304955025a7638491470}\label{classsf_1_1_open_g_l_content_a7adec1ba8640304955025a7638491470} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!````~OpenGLContent@{\texorpdfstring{$\sim$}{\string~}OpenGLContent}}
+\index{````~OpenGLContent@{\texorpdfstring{$\sim$}{\string~}OpenGLContent}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLContent()}{\string~OpenGLContent()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLContent\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLContent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00483}{483}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_open_g_l_content_a0006036ee5434cc3e87398ac19928e79}\label{classsf_1_1_open_g_l_content_a0006036ee5434cc3e87398ac19928e79} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!AABB@{AABB}}
+\index{AABB@{AABB}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{AABB()}{AABB()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+AABB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh,  }\item[{glm\+::vec3 \&}]{min,  }\item[{glm\+::vec3 \&}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A method to compute the axis-\/aligned bounding box of a mesh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to a mesh structure \\
+\hline
+{\em min} & a reference to a variable that will store the min corner \\
+\hline
+{\em max} & a reference to a variable that will store the max corner \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02632}{2632}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a0fe725d356a1523edcea16bec31b56b3}\label{classsf_1_1_open_g_l_content_a0fe725d356a1523edcea16bec31b56b3} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!AABS@{AABS}}
+\index{AABS@{AABS}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{AABS()}{AABS()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+AABS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh,  }\item[{GLfloat \&}]{bs\+Radius,  }\item[{glm\+::vec3 \&}]{bs\+Center\+Offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A method to compute the axis-\/aligned bounding sphere of a mesh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to a mesh structure \\
+\hline
+{\em bs\+Radius} & a reference to a variable that will store the sphere radius \\
+\hline
+{\em bs\+Center\+Offset} & a reference to a variable that will store the sphere center position \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02665}{2665}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a06c838bdf819b8de052bf10c448b8d2b}\label{classsf_1_1_open_g_l_content_a06c838bdf819b8de052bf10c448b8d2b} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!AddLight@{AddLight}}
+\index{AddLight@{AddLight}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{AddLight()}{AddLight()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Add\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_light}{Open\+GLLight}} \texorpdfstring{$\ast$}{*}}]{light }\end{DoxyParamCaption})}
+
+
+
+A method to add light to the list of lights. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em light} & a pointer to a light object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01130}{1130}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a12ce3771a479e5e6aa8ea0309e627220}\label{classsf_1_1_open_g_l_content_a12ce3771a479e5e6aa8ea0309e627220} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!AddView@{AddView}}
+\index{AddView@{AddView}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{AddView()}{AddView()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Add\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}}]{view }\end{DoxyParamCaption})}
+
+
+
+A method to add a view to the list of views. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & a pointer to a view object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01112}{1112}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a6513dcdb004b4b24e7c11632c7c590c2}\label{classsf_1_1_open_g_l_content_a6513dcdb004b4b24e7c11632c7c590c2} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!BindBaseVertexArray@{BindBaseVertexArray}}
+\index{BindBaseVertexArray@{BindBaseVertexArray}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{BindBaseVertexArray()}{BindBaseVertexArray()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Bind\+Base\+Vertex\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that binds the base vertex array. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00597}{597}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a9d11cb25cdf60fd53f92e302bd1604fe}\label{classsf_1_1_open_g_l_content_a9d11cb25cdf60fd53f92e302bd1604fe} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!BuildBox@{BuildBox}}
+\index{BuildBox@{BuildBox}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{BuildBox()}{BuildBox()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::\+Build\+Box (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{half\+Extents,  }\item[{unsigned int}]{subdivisions = {\ttfamily 3},  }\item[{unsigned int}]{uv\+Mode = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to build a graphical box object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em half\+Extents} & the dimensions of the box (half of side lengths) \mbox{[}m\mbox{]} \\
+\hline
+{\em subdivisions} & number of subdivisions used when generating the mesh (needed for hydrodynamics) \\
+\hline
+{\em uv\+Mode} & texture coordinates generation mode (0 -\/ texture cross, 1 -\/ same texture on all faces, 2 -\/ coordinates synced with dimensions (for grid)) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the allocated mesh structure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01423}{1423}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a026b0bb13c1d9a4afc74d66b74064066}\label{classsf_1_1_open_g_l_content_a026b0bb13c1d9a4afc74d66b74064066} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!BuildCylinder@{BuildCylinder}}
+\index{BuildCylinder@{BuildCylinder}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{BuildCylinder()}{BuildCylinder()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::\+Build\+Cylinder (\begin{DoxyParamCaption}\item[{GLfloat}]{radius,  }\item[{GLfloat}]{height,  }\item[{unsigned int}]{slices = {\ttfamily 24} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to build a graphical cylinder object. The volume of the discretized cylinder is equal to the volume of an analytical cylinder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & the radius of the cylinder \mbox{[}m\mbox{]} \\
+\hline
+{\em height} & the height of the cylinder \mbox{[}m\mbox{]} \\
+\hline
+{\em slices} & number of slices used when computing the cylinder \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the allocated mesh structure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01843}{1843}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a4409cb13d46d3fb15982b9d1155ed8c9}\label{classsf_1_1_open_g_l_content_a4409cb13d46d3fb15982b9d1155ed8c9} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!BuildObject@{BuildObject}}
+\index{BuildObject@{BuildObject}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{BuildObject()}{BuildObject()}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Open\+GLContent\+::\+Build\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})}
+
+
+
+A method to build a graphical object from a mesh structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to the mesh structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an id of the built object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01039}{1039}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a2b421871c85dfedbee37beb3aee2290e}\label{classsf_1_1_open_g_l_content_a2b421871c85dfedbee37beb3aee2290e} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!BuildPlane@{BuildPlane}}
+\index{BuildPlane@{BuildPlane}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{BuildPlane()}{BuildPlane()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::\+Build\+Plane (\begin{DoxyParamCaption}\item[{GLfloat}]{half\+Extents,  }\item[{GLfloat}]{uv\+Scale = {\ttfamily 1.f} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to build a graphical plane object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em half\+Extents} & the size of the plane \mbox{[}m\mbox{]} \\
+\hline
+{\em uv\+Scale} & scaling of the texture coordinates \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the allocated mesh structure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01376}{1376}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_ac4397533ddc31a82afcb2a323dcb664b}\label{classsf_1_1_open_g_l_content_ac4397533ddc31a82afcb2a323dcb664b} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!BuildSphere@{BuildSphere}}
+\index{BuildSphere@{BuildSphere}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{BuildSphere()}{BuildSphere()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::\+Build\+Sphere (\begin{DoxyParamCaption}\item[{GLfloat}]{radius,  }\item[{unsigned int}]{subdivisions = {\ttfamily 3} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to build a graphical sphere object. The volume of the discretized sphere is equal to the volume of an analytical sphere. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & the radius of the sphere \mbox{[}m\mbox{]} \\
+\hline
+{\em subdivisions} & number of subdivisions used when generating the mesh (needed for hydrodynamics) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the allocated mesh structure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01681}{1681}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a30d91c1d72f1e1c2cad8940ed1451955}\label{classsf_1_1_open_g_l_content_a30d91c1d72f1e1c2cad8940ed1451955} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!BuildTerrain@{BuildTerrain}}
+\index{BuildTerrain@{BuildTerrain}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{BuildTerrain()}{BuildTerrain()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::\+Build\+Terrain (\begin{DoxyParamCaption}\item[{GLfloat \texorpdfstring{$\ast$}{*}}]{heightfield,  }\item[{int}]{sizeX,  }\item[{int}]{sizeY,  }\item[{GLfloat}]{scaleX,  }\item[{GLfloat}]{scaleY,  }\item[{GLfloat}]{max\+Height,  }\item[{GLfloat}]{uv\+Scale = {\ttfamily 1.f} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to build a graphical terrain object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heightfield} & a pointer to the heightfield data \\
+\hline
+{\em sizeX} & the size of the data in X \\
+\hline
+{\em sizeY} & the size of the data in Y \\
+\hline
+{\em scaleX} & the scale of the terrain in X \\
+\hline
+{\em scaleY} & the scale of the terrain in Y \\
+\hline
+{\em max\+Height} & the height of the terrain \mbox{[}m\mbox{]} \\
+\hline
+{\em uv\+Scale} & scaling of the texture coordinates \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the allocated mesh structure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02255}{2255}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a928f928c070ec02b9e1a91d84ac4bcea}\label{classsf_1_1_open_g_l_content_a928f928c070ec02b9e1a91d84ac4bcea} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!BuildTorus@{BuildTorus}}
+\index{BuildTorus@{BuildTorus}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{BuildTorus()}{BuildTorus()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::\+Build\+Torus (\begin{DoxyParamCaption}\item[{GLfloat}]{major\+Radius,  }\item[{GLfloat}]{minor\+Radius,  }\item[{unsigned int}]{major\+Slices = {\ttfamily 48},  }\item[{unsigned int}]{minor\+Slices = {\ttfamily 24} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to build a graphical torus object. The volume of the discretized torus is equal to the volume of an analytical torus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em major\+Radius} & the radius of the torus \mbox{[}m\mbox{]} \\
+\hline
+{\em minor\+Radius} & the radius of the tube \mbox{[}m\mbox{]} \\
+\hline
+{\em major\+Slices} & number of slices used when computing the torus \\
+\hline
+{\em minor\+Slices} & number of slices used when computing the torus \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the allocated mesh structure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01931}{1931}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a80ddbdde60968773dc602e90f8cdb8a4}\label{classsf_1_1_open_g_l_content_a80ddbdde60968773dc602e90f8cdb8a4} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!BuildWing@{BuildWing}}
+\index{BuildWing@{BuildWing}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{BuildWing()}{BuildWing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::\+Build\+Wing (\begin{DoxyParamCaption}\item[{GLfloat}]{base\+Chord\+Length,  }\item[{GLfloat}]{tip\+Chord\+Length,  }\item[{GLfloat}]{max\+Camber,  }\item[{GLfloat}]{max\+Camber\+Pos,  }\item[{GLfloat}]{profile\+Thickness,  }\item[{GLfloat}]{wing\+Length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to build a graphical wing object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em base\+Chord\+Length} & the length of the chord at the base of the wing \mbox{[}m\mbox{]} \\
+\hline
+{\em tip\+Chord\+Length} & the length of the chord at the tip of the wing \mbox{[}m\mbox{]} \\
+\hline
+{\em max\+Camber} & the camber of the wing \\
+\hline
+{\em max\+Camper} & pos the position of the max camber point \\
+\hline
+{\em profile\+Thickness} & the thickness of the profile \mbox{[}m\mbox{]} \\
+\hline
+{\em wing\+Length} & the length of the wing \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the allocated mesh structure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01980}{1980}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_aecf51ea0ba9eeb5d169cbcc4a12b7fcc}\label{classsf_1_1_open_g_l_content_aecf51ea0ba9eeb5d169cbcc4a12b7fcc} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!CheckAndRepairFaceVertexOrder@{CheckAndRepairFaceVertexOrder}}
+\index{CheckAndRepairFaceVertexOrder@{CheckAndRepairFaceVertexOrder}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{CheckAndRepairFaceVertexOrder()}{CheckAndRepairFaceVertexOrder()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Check\+And\+Repair\+Face\+Vertex\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to check if normals correspond to the vertex order and fix the errors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to a mesh structure \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02332}{2332}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a7f725690800968326bd030c0faa53127}\label{classsf_1_1_open_g_l_content_a7f725690800968326bd030c0faa53127} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!ComputeAverageFaceArea@{ComputeAverageFaceArea}}
+\index{ComputeAverageFaceArea@{ComputeAverageFaceArea}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{ComputeAverageFaceArea()}{ComputeAverageFaceArea()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLContent\+::\+Compute\+Average\+Face\+Area (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A method to compute average face size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to a mesh structure \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02512}{2512}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a325aef52c476a81d47f260ece8ae1917}\label{classsf_1_1_open_g_l_content_a325aef52c476a81d47f260ece8ae1917} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!ComputeTangents@{ComputeTangents}}
+\index{ComputeTangents@{ComputeTangents}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{ComputeTangents()}{ComputeTangents()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Compute\+Tangents (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_texturable_mesh}{Texturable\+Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to compute tangent and bitangent vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to a mesh structure \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02409}{2409}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_ac995f1fe3fd943bd85de1243c1d993ad}\label{classsf_1_1_open_g_l_content_ac995f1fe3fd943bd85de1243c1d993ad} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!CreatePhysicalLook@{CreatePhysicalLook}}
+\index{CreatePhysicalLook@{CreatePhysicalLook}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{CreatePhysicalLook()}{CreatePhysicalLook()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Open\+GLContent\+::\+Create\+Physical\+Look (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{glm\+::vec3}]{rgb\+Color,  }\item[{GLfloat}]{roughness,  }\item[{GLfloat}]{metalness = {\ttfamily 0.f},  }\item[{GLfloat}]{reflectivity = {\ttfamily 0.f},  }\item[{const std\+::string \&}]{albedo\+Texture\+Path = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{normal\+Map\+Path = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{temperature\+Map\+Path = {\ttfamily "{}"{}},  }\item[{glm\+::vec2}]{temperature\+Range = {\ttfamily glm\+:\+:vec2(20.f)} }\end{DoxyParamCaption})}
+
+
+
+A method to create a new physical look. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the look \\
+\hline
+{\em rgb\+Color} & the diffuse color \\
+\hline
+{\em roughness} & the roughness of the surface \\
+\hline
+{\em metalness} & the amount of metal look \\
+\hline
+{\em relfectivity} & the amount of reflection \\
+\hline
+{\em albedo\+Texture\+Path} & a path to the texture file specifying albedo color \\
+\hline
+{\em normal\+Map\+Path} & a path to the texture file specifying surface normal (bump mapping) \\
+\hline
+{\em temperature\+Map\+Path} & a path to the texture file specifying surface temperature \\
+\hline
+{\em temperature\+Range} & a pair of values specifying the temperature range represented by the thermal map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the actual name of the created look 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01093}{1093}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a639337556eaebd2424a3c8e01b59e5bc}\label{classsf_1_1_open_g_l_content_a639337556eaebd2424a3c8e01b59e5bc} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!CreateSimpleLook@{CreateSimpleLook}}
+\index{CreateSimpleLook@{CreateSimpleLook}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{CreateSimpleLook()}{CreateSimpleLook()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Open\+GLContent\+::\+Create\+Simple\+Look (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{glm\+::vec3}]{rgb\+Color,  }\item[{GLfloat}]{specular,  }\item[{GLfloat}]{shininess,  }\item[{GLfloat}]{reflectivity = {\ttfamily 0.f},  }\item[{const std\+::string \&}]{albedo\+Texture\+Path = {\ttfamily "{}"{}} }\end{DoxyParamCaption})}
+
+
+
+A method to create a new simple look. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the look \\
+\hline
+{\em rgb\+Color} & the diffuse color \\
+\hline
+{\em specular} & the specular strength \\
+\hline
+{\em shininess} & the shininess factor \\
+\hline
+{\em reflectivity} & the amount of reflection \\
+\hline
+{\em albedo\+Texture\+Path} & a path to the texture file specifying albedo color \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the actual name of the created look 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01078}{1078}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a78dd30f69087c00c5569cf88c01ce8ee}\label{classsf_1_1_open_g_l_content_a78dd30f69087c00c5569cf88c01ce8ee} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DestroyContent@{DestroyContent}}
+\index{DestroyContent@{DestroyContent}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DestroyContent()}{DestroyContent()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Destroy\+Content (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that destroys all created Open\+GL content. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00522}{522}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a48ccd63b7f6607f6c94711905d0c4679}\label{classsf_1_1_open_g_l_content_a48ccd63b7f6607f6c94711905d0c4679} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawCoordSystem@{DrawCoordSystem}}
+\index{DrawCoordSystem@{DrawCoordSystem}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawCoordSystem()}{DrawCoordSystem()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Coord\+System (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{M,  }\item[{GLfloat}]{size }\end{DoxyParamCaption})}
+
+
+
+A method to draw a Cartesian coord system with color-\/coded axes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em M} & the model matrix \\
+\hline
+{\em size} & the length of the axes \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00694}{694}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_acc130ed416811ac1fa3dde37196c02d4}\label{classsf_1_1_open_g_l_content_acc130ed416811ac1fa3dde37196c02d4} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawCubemapCross@{DrawCubemapCross}}
+\index{DrawCubemapCross@{DrawCubemapCross}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawCubemapCross()}{DrawCubemapCross()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Cubemap\+Cross (\begin{DoxyParamCaption}\item[{GLuint}]{texture }\end{DoxyParamCaption})}
+
+
+
+A method to display a cubemap texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture} & the id of the texture \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00668}{668}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_aaba73f01cb8aa550224683fef900e334}\label{classsf_1_1_open_g_l_content_aaba73f01cb8aa550224683fef900e334} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawCylinder@{DrawCylinder}}
+\index{DrawCylinder@{DrawCylinder}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawCylinder()}{DrawCylinder()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Cylinder (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{M,  }\item[{glm\+::vec3}]{dims,  }\item[{glm\+::vec4}]{color }\end{DoxyParamCaption})}
+
+
+
+A method to draw a cylinder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em M} & the model matrix \\
+\hline
+{\em dims} & the dimensions of the cylinder \mbox{[}m\mbox{]} \\
+\hline
+{\em color} & the color to be used when rendering \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00718}{718}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a7b303b8fc8cde9d5ba06deee942085e2}\label{classsf_1_1_open_g_l_content_a7b303b8fc8cde9d5ba06deee942085e2} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawEllipsoid@{DrawEllipsoid}}
+\index{DrawEllipsoid@{DrawEllipsoid}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawEllipsoid()}{DrawEllipsoid()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Ellipsoid (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{M,  }\item[{glm\+::vec3}]{radii,  }\item[{glm\+::vec4}]{color }\end{DoxyParamCaption})}
+
+
+
+A method to draw an ellipsoid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em M} & the model matrix \\
+\hline
+{\em radii} & a vector of 3 radiuses of the ellipsoid \\
+\hline
+{\em color} & the color to be used when rendering \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00731}{731}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_aecc69f18e49799447e3d09c5be30ae03}\label{classsf_1_1_open_g_l_content_aecc69f18e49799447e3d09c5be30ae03} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawLightSource@{DrawLightSource}}
+\index{DrawLightSource@{DrawLightSource}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawLightSource()}{DrawLightSource()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Light\+Source (\begin{DoxyParamCaption}\item[{unsigned int}]{light\+Id }\end{DoxyParamCaption})}
+
+
+
+A method to draw the light source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em light\+Id} & the id of the light \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00846}{846}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a52aacc2393c8e0481c250267cc2f514d}\label{classsf_1_1_open_g_l_content_a52aacc2393c8e0481c250267cc2f514d} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawObject@{DrawObject}}
+\index{DrawObject@{DrawObject}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawObject()}{DrawObject()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Object (\begin{DoxyParamCaption}\item[{int}]{object\+Id,  }\item[{int}]{look\+Id,  }\item[{const glm\+::mat4 \&}]{M }\end{DoxyParamCaption})}
+
+
+
+A method to draw an object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+Id} & the id of the graphical object \\
+\hline
+{\em look\+Id} & the id of the graphical material \\
+\hline
+{\em M} & the model matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00793}{793}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a24925185438bf0e78ca952f46afdd973}\label{classsf_1_1_open_g_l_content_a24925185438bf0e78ca952f46afdd973} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawPrimitives@{DrawPrimitives}}
+\index{DrawPrimitives@{DrawPrimitives}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawPrimitives()}{DrawPrimitives()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Primitives (\begin{DoxyParamCaption}\item[{Primitive\+Type}]{type,  }\item[{std\+::vector$<$ glm\+::vec3 $>$ \&}]{vertices,  }\item[{glm\+::vec4}]{color,  }\item[{glm\+::mat4}]{M = {\ttfamily glm\+:\+:mat4(1.f)} }\end{DoxyParamCaption})}
+
+
+
+A method to draw primitives. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & the type of the primitive \\
+\hline
+{\em vertices} & a list of vertices of the primitives \\
+\hline
+{\em color} & the color to be used when drawing \\
+\hline
+{\em M} & the model matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00744}{744}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a2421a35943fe8d903d5235f82c11d391}\label{classsf_1_1_open_g_l_content_a2421a35943fe8d903d5235f82c11d391} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawSAQ@{DrawSAQ}}
+\index{DrawSAQ@{DrawSAQ}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawSAQ()}{DrawSAQ()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+SAQ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method to draw a screen-\/aligned quad. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00602}{602}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a2510c1cd4b734a4cb687b66ad9493aa9}\label{classsf_1_1_open_g_l_content_a2510c1cd4b734a4cb687b66ad9493aa9} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawTexturedQuad@{DrawTexturedQuad}}
+\index{DrawTexturedQuad@{DrawTexturedQuad}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawTexturedQuad()}{DrawTexturedQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Textured\+Quad (\begin{DoxyParamCaption}\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{width,  }\item[{GLfloat}]{height,  }\item[{GLuint}]{texture,  }\item[{GLint}]{z,  }\item[{bool}]{array = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+A method to draw a textured quad (array or 3D texture). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x coordinate of the quad origin \\
+\hline
+{\em y} & the y coordinate of the quad origin \\
+\hline
+{\em width} & the width of the quad \\
+\hline
+{\em height} & the height of the quad \\
+\hline
+{\em texture} & the id of the texture \\
+\hline
+{\em z} & the layer of the texture \\
+\hline
+{\em array} & has to be set to true if texture is an array texture \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00641}{641}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a2185c75674108e8727e05247e79af2f5}\label{classsf_1_1_open_g_l_content_a2185c75674108e8727e05247e79af2f5} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawTexturedQuad@{DrawTexturedQuad}}
+\index{DrawTexturedQuad@{DrawTexturedQuad}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawTexturedQuad()}{DrawTexturedQuad()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Textured\+Quad (\begin{DoxyParamCaption}\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{width,  }\item[{GLfloat}]{height,  }\item[{GLuint}]{texture,  }\item[{glm\+::vec4}]{color = {\ttfamily glm\+:\+:vec4(1.f)} }\end{DoxyParamCaption})}
+
+
+
+A method to draw a textured quad (2D texture). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x coordinate of the quad origin \\
+\hline
+{\em y} & the y coordinate of the quad origin \\
+\hline
+{\em width} & the width of the quad \\
+\hline
+{\em height} & the height of the quad \\
+\hline
+{\em texture} & the id of the texture \\
+\hline
+{\em color} & a color that is multiplied with the texture color \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00624}{624}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a920cbfd5267387ece9aff4f21d76635a}\label{classsf_1_1_open_g_l_content_a920cbfd5267387ece9aff4f21d76635a} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!DrawTexturedSAQ@{DrawTexturedSAQ}}
+\index{DrawTexturedSAQ@{DrawTexturedSAQ}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{DrawTexturedSAQ()}{DrawTexturedSAQ()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Draw\+Textured\+SAQ (\begin{DoxyParamCaption}\item[{GLuint}]{texture,  }\item[{glm\+::vec4}]{color = {\ttfamily glm\+:\+:vec4(1.f)} }\end{DoxyParamCaption})}
+
+
+
+A method to draw a textured screen-\/aligned quad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture} & the id of the texture \\
+\hline
+{\em color} & a color that is multiplied with the texture color \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00609}{609}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_aad124c18301b0f6ec6042469280a06f9}\label{classsf_1_1_open_g_l_content_aad124c18301b0f6ec6042469280a06f9} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method implementing necessary initializations. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00515}{515}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a96b9148e3657e1a454ba336741c349cb}\label{classsf_1_1_open_g_l_content_a96b9148e3657e1a454ba336741c349cb} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!GenerateFramebuffer@{GenerateFramebuffer}}
+\index{GenerateFramebuffer@{GenerateFramebuffer}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{GenerateFramebuffer()}{GenerateFramebuffer()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLContent\+::\+Generate\+Framebuffer (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_f_b_o_texture}{FBOTexture}} $>$ \&}]{textures }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to create a framebuffer object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em textures} & a vector of framebuffer textures \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a framebuffer object handle 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01318}{1318}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}\label{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!GenerateTexture@{GenerateTexture}}
+\index{GenerateTexture@{GenerateTexture}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{GenerateTexture()}{GenerateTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLContent\+::\+Generate\+Texture (\begin{DoxyParamCaption}\item[{GLenum}]{target,  }\item[{glm\+::uvec3}]{dimensions,  }\item[{GLenum}]{internal\+Format,  }\item[{GLenum}]{format,  }\item[{GLenum}]{type,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{data,  }\item[{Filtering\+Mode}]{fm,  }\item[{bool}]{repeat,  }\item[{bool}]{anisotropy = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to generate a new texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & the Open\+GL texture target enum \\
+\hline
+{\em dimensions} & the dimensions of the texture \mbox{[}px\mbox{]} \\
+\hline
+{\em internal\+Format} & the Open\+GL internal texture format enum \\
+\hline
+{\em format} & the Open\+GL texture format enum \\
+\hline
+{\em type} & the Open\+GL data type enum \\
+\hline
+{\em data} & a pointer to the data of the texture or NULL \\
+\hline
+{\em fm} & the filtering mode \\
+\hline
+{\em repeat} & a flag indicating if texture repeat mode should be used \\
+\hline
+{\em anisotropy} & a flag indicating if anisotropic filtering should be enabled \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a texture handle 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01230}{1230}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_ad0e6be4f3e820bc5c9f8831b7714340d}\label{classsf_1_1_open_g_l_content_ad0e6be4f3e820bc5c9f8831b7714340d} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!getLight@{getLight}}
+\index{getLight@{getLight}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{getLight()}{getLight()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_open_g_l_light}{Open\+GLLight}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::get\+Light (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to a light. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the index of the light \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the light object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01136}{1136}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_afce258462f092d3726dd3e3056d3a8e2}\label{classsf_1_1_open_g_l_content_afce258462f092d3726dd3e3056d3a8e2} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!getLightsCount@{getLightsCount}}
+\index{getLightsCount@{getLightsCount}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{getLightsCount()}{getLightsCount()}}
+{\footnotesize\ttfamily size\+\_\+t sf\+::\+Open\+GLContent\+::get\+Lights\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the number of lights. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01144}{1144}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a64199d7be907875a22669ca2902baf93}\label{classsf_1_1_open_g_l_content_a64199d7be907875a22669ca2902baf93} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!getLook@{getLook}}
+\index{getLook@{getLook}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{getLook()}{getLook()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structsf_1_1_look}{Look}} \& sf\+::\+Open\+GLContent\+::get\+Look (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+A method returning a reference to the look structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the id of the look \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01163}{1163}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a77c0377aa9491448109e271d035f967d}\label{classsf_1_1_open_g_l_content_a77c0377aa9491448109e271d035f967d} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!getLookId@{getLookId}}
+\index{getLookId@{getLookId}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{getLookId()}{getLookId()}}
+{\footnotesize\ttfamily int sf\+::\+Open\+GLContent\+::get\+Look\+Id (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+A method returing the id of a look. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the look \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the id of the corresponding look structure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01149}{1149}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a6d9eff1abcd608fb54d4116f5d81b446}\label{classsf_1_1_open_g_l_content_a6d9eff1abcd608fb54d4116f5d81b446} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!getObject@{getObject}}
+\index{getObject@{getObject}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{getObject()}{getObject()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structsf_1_1_object}{Object}} \& sf\+::\+Open\+GLContent\+::get\+Object (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+A method returning a reference to the object structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the id of the object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01158}{1158}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_aab5e30b3cb2a934dd99b40b791b32753}\label{classsf_1_1_open_g_l_content_aab5e30b3cb2a934dd99b40b791b32753} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!getView@{getView}}
+\index{getView@{getView}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::get\+View (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to a view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the index of the view \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the view object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01117}{1117}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a8f2555cbc8901562e9fe82ff757e3138}\label{classsf_1_1_open_g_l_content_a8f2555cbc8901562e9fe82ff757e3138} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!GetViewMatrix@{GetViewMatrix}}
+\index{GetViewMatrix@{GetViewMatrix}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{GetViewMatrix()}{GetViewMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 sf\+::\+Open\+GLContent\+::\+Get\+View\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the view matrix. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00572}{572}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a4918ab5479acb81ae2027523b9a283ae}\label{classsf_1_1_open_g_l_content_a4918ab5479acb81ae2027523b9a283ae} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!getViewsCount@{getViewsCount}}
+\index{getViewsCount@{getViewsCount}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{getViewsCount()}{getViewsCount()}}
+{\footnotesize\ttfamily size\+\_\+t sf\+::\+Open\+GLContent\+::get\+Views\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the number of views. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01125}{1125}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a7387e1ca39671b3f3786637089b5b809}\label{classsf_1_1_open_g_l_content_a7387e1ca39671b3f3786637089b5b809} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!LoadInternalTexture@{LoadInternalTexture}}
+\index{LoadInternalTexture@{LoadInternalTexture}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{LoadInternalTexture()}{LoadInternalTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLContent\+::\+Load\+Internal\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{bool}]{srgb = {\ttfamily true},  }\item[{bool}]{alpha = {\ttfamily false},  }\item[{GLfloat}]{anisotropy = {\ttfamily 0.f} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to load an internal texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the name of the texture file \\
+\hline
+{\em srgb} & a flag to indicate if the texture is in SRGB space (non-\/linear) \\
+\hline
+{\em alpha} & a flag to indicate if the texture has transparency \\
+\hline
+{\em anisotropy} & defines maximum anisotropic filtering \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the id of the loaded texture 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01225}{1225}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_aa1848874b692968ddc5bdd3e80c57470}\label{classsf_1_1_open_g_l_content_aa1848874b692968ddc5bdd3e80c57470} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!LoadMesh@{LoadMesh}}
+\index{LoadMesh@{LoadMesh}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{LoadMesh()}{LoadMesh()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLContent\+::\+Load\+Mesh (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{GLfloat}]{scale,  }\item[{bool}]{smooth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to load a mesh from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & a path to the model file \\
+\hline
+{\em scale} & the scale of the model \\
+\hline
+{\em smooth} & a flag to decide if model normals should be smoothed after loading \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the allocated mesh structure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02292}{2292}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a3891203aab9ceba191a870069f63edd7}\label{classsf_1_1_open_g_l_content_a3891203aab9ceba191a870069f63edd7} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{LoadTexture()}{LoadTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLContent\+::\+Load\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{bool}]{srgb = {\ttfamily true},  }\item[{bool}]{alpha = {\ttfamily false},  }\item[{GLfloat}]{anisotropy = {\ttfamily 0.f},  }\item[{bool}]{internal = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to load a texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the path to the texture file \\
+\hline
+{\em srgb} & a flag to indicate if the texture is in SRGB space (non-\/linear) \\
+\hline
+{\em alpha} & a flag to indicate if the texture has transparency \\
+\hline
+{\em anisotropy} & defines maximum anisotropic filtering \\
+\hline
+{\em internal} & a flag to indicate if the texture is an internal resource \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the id of the loaded texture 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l01172}{1172}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_accfc09d1a001597d8baae5f80a2d6a81}\label{classsf_1_1_open_g_l_content_accfc09d1a001597d8baae5f80a2d6a81} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!Refine@{Refine}}
+\index{Refine@{Refine}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{Refine()}{Refine()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Refine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh,  }\item[{GLfloat}]{size\+Threshold }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A method to uniformize mesh face sizes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to a mesh structure \\
+\hline
+{\em size\+Threshold} & faces with an area larger than this parameter multiplied by average face size are subdivided \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02566}{2566}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a45edb1a33bec329dbabf74e3f2a179fa}\label{classsf_1_1_open_g_l_content_a45edb1a33bec329dbabf74e3f2a179fa} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!SetCurrentView@{SetCurrentView}}
+\index{SetCurrentView@{SetCurrentView}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{SetCurrentView()}{SetCurrentView()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Set\+Current\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}}]{v }\end{DoxyParamCaption})}
+
+
+
+A method to set current view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & a pointer to a view object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00577}{577}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_acd2ecbd33d26d7be1c52b0edaf882489}\label{classsf_1_1_open_g_l_content_acd2ecbd33d26d7be1c52b0edaf882489} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!SetDrawingMode@{SetDrawingMode}}
+\index{SetDrawingMode@{SetDrawingMode}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{SetDrawingMode()}{SetDrawingMode()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Set\+Drawing\+Mode (\begin{DoxyParamCaption}\item[{Drawing\+Mode}]{m }\end{DoxyParamCaption})}
+
+
+
+A method to set the current drawing mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & drawing mode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00592}{592}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_acd6837f0206ecebabd602c23b95efbab}\label{classsf_1_1_open_g_l_content_acd6837f0206ecebabd602c23b95efbab} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!SetProjectionMatrix@{SetProjectionMatrix}}
+\index{SetProjectionMatrix@{SetProjectionMatrix}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{SetProjectionMatrix()}{SetProjectionMatrix()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Set\+Projection\+Matrix (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{P }\end{DoxyParamCaption})}
+
+
+
+A method to set current projection matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P} & projection matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00560}{560}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a4bb8f1b71ce5676c35b6dc8519342063}\label{classsf_1_1_open_g_l_content_a4bb8f1b71ce5676c35b6dc8519342063} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!SetupLights@{SetupLights}}
+\index{SetupLights@{SetupLights}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{SetupLights()}{SetupLights()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Setup\+Lights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that updates lights UBO. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00894}{894}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a70e446eee57bcb6837cb1f2fb6e8c69a}\label{classsf_1_1_open_g_l_content_a70e446eee57bcb6837cb1f2fb6e8c69a} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!SetViewMatrix@{SetViewMatrix}}
+\index{SetViewMatrix@{SetViewMatrix}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{SetViewMatrix()}{SetViewMatrix()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Set\+View\+Matrix (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{V }\end{DoxyParamCaption})}
+
+
+
+A method to set current view matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em V} & view matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00566}{566}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a235f5774c3e89aeaf59cf52e32289548}\label{classsf_1_1_open_g_l_content_a235f5774c3e89aeaf59cf52e32289548} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!SetViewportSize@{SetViewportSize}}
+\index{SetViewportSize@{SetViewportSize}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{SetViewportSize()}{SetViewportSize()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Set\+Viewport\+Size (\begin{DoxyParamCaption}\item[{unsigned int}]{width,  }\item[{unsigned int}]{height }\end{DoxyParamCaption})}
+
+
+
+A method to set the current rendering viewport size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & the width of the viewport \\
+\hline
+{\em height} & the height of the viewport \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00555}{555}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a0519f666ecf672bbf4d2fab1be11d69a}\label{classsf_1_1_open_g_l_content_a0519f666ecf672bbf4d2fab1be11d69a} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!SmoothNormals@{SmoothNormals}}
+\index{SmoothNormals@{SmoothNormals}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{SmoothNormals()}{SmoothNormals()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Smooth\+Normals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to smooth the mesh normals. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to a mesh structure \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02371}{2371}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a8ebc4d1bf1dde1554286d3b4f510bf27}\label{classsf_1_1_open_g_l_content_a8ebc4d1bf1dde1554286d3b4f510bf27} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!Subdivide@{Subdivide}}
+\index{Subdivide@{Subdivide}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{Subdivide()}{Subdivide()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Subdivide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh,  }\item[{bool}]{ico\+Mode = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A method to subdivide the mesh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to a mesh structure \\
+\hline
+{\em ico\+Mode} & the icosahedron mode flag \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02520}{2520}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a11cea72197d596a0c39977bc3702544e}\label{classsf_1_1_open_g_l_content_a11cea72197d596a0c39977bc3702544e} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!TransformMesh@{TransformMesh}}
+\index{TransformMesh@{TransformMesh}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{TransformMesh()}{TransformMesh()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Transform\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh,  }\item[{const Transform \&}]{T }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to transform mesh vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & a pointer to a mesh structure \\
+\hline
+{\em T} & the transformation to be applied \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l02306}{2306}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_content_a9947edb34f08da9e0fc402bf97ce3e74}\label{classsf_1_1_open_g_l_content_a9947edb34f08da9e0fc402bf97ce3e74} 
+\index{sf::OpenGLContent@{sf::OpenGLContent}!UseLook@{UseLook}}
+\index{UseLook@{UseLook}!sf::OpenGLContent@{sf::OpenGLContent}}
+\doxysubsubsection{\texorpdfstring{UseLook()}{UseLook()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLContent\+::\+Use\+Look (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structsf_1_1_look}{Look}} \&}]{look,  }\item[{bool}]{texturable,  }\item[{const glm\+::mat4 \&}]{M }\end{DoxyParamCaption})}
+
+
+
+A method to use a look. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em look} & a reference to the look structure \\
+\hline
+{\em texturable} & a flag determining if the object rendered is texturable \\
+\hline
+{\em M} & the model matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_content_8cpp_source_l00924}{924}} of file \mbox{\hyperlink{_open_g_l_content_8cpp_source}{Open\+GLContent.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/graphics/Open\+GLContent.\+h\item 
+Library/src/graphics/Open\+GLContent.\+cpp\end{DoxyCompactItemize}

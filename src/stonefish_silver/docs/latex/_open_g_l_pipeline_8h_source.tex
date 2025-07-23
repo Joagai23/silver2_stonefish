@@ -1,0 +1,107 @@
+\doxysection{Open\+GLPipeline.\+h}
+\hypertarget{_open_g_l_pipeline_8h_source}{}\label{_open_g_l_pipeline_8h_source}\index{Library/include/graphics/OpenGLPipeline.h@{Library/include/graphics/OpenGLPipeline.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00019}00019\ \textcolor{comment}{//\ \ OpenGLPipeline.h}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 30/03/2014.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2014-\/2019\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_OpenGLPipeline\_\_}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_OpenGLPipeline\_\_}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_thread.h>}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}StonefishCommon.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLDataStructs.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00034}00034\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{class\ }SimulationManager;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{class\ }OpenGLContent;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{class\ }OpenGLCamera;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00041}\mbox{\hyperlink{classsf_1_1_open_g_l_pipeline}{00041}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_open_g_l_pipeline}{OpenGLPipeline}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline}{OpenGLPipeline}}(\mbox{\hyperlink{structsf_1_1_render_settings}{RenderSettings}}\ s,\ \mbox{\hyperlink{structsf_1_1_helper_settings}{HelperSettings}}\ h);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a417ccfb903da5d1d6b04d88084675941}{\string~OpenGLPipeline}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a20374b19197e3455001ffaf6e8d1e78b}{Render}}(\mbox{\hyperlink{classsf_1_1_simulation_manager}{SimulationManager}}*\ sim);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a723f0a79bd138fa8ce18832369e5b26c}{AddToDrawingQueue}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\&\ r);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a723f0a79bd138fa8ce18832369e5b26c}{AddToDrawingQueue}}(\textcolor{keyword}{const}\ std::vector<Renderable>\&\ r);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a5088893002c477b294326ea54e182862}{AddToSelectedDrawingQueue}}(\textcolor{keyword}{const}\ std::vector<Renderable>\&\ r);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a22d0137ac31472185daff672d31c6846}{DrawObjects}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a7c6e89ad39809e929a40b13aef3662cf}{DrawLights}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a034e0bcbc5f1b63393ac49828a4ca781}{DrawDisplay}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a6ee732b0ec1671e9c2016fb1112d40ce}{PurgeDrawingQueue}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a4ee92326eae1a6b40aec26567692d07e}{PurgeSelectedDrawingQueue}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a7f54427e9bffb916a2ca1593bb013936}{isDrawingQueueEmpty}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ SDL\_mutex*\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a7b3f32a3a5d3ea1fc9708ea387080724}{getDrawingQueueMutex}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_render_settings}{RenderSettings}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a74550be17450b199bfb3cf857ac3ce9b}{getRenderSettings}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_helper_settings}{HelperSettings}}\&\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a81ffa8ea7741b05fa761d6719c2078dd}{getHelperSettings}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ GLuint\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a3b6eace573a615e384c6eea6fc12c51f}{getScreenTexture}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00107}00107\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_content}{OpenGLContent}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a546da4ff40f73c9b8b2631bf79c258d1}{getContent}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00110}00110\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00111}00111\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ PerformDrawingQueueCopy(\mbox{\hyperlink{classsf_1_1_simulation_manager}{SimulationManager}}*\ sim);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawHelpers();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00115}00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_render_settings}{RenderSettings}}\ rSettings;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_helper_settings}{HelperSettings}}\ hSettings;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ std::vector<Renderable>\ drawingQueue;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00118}00118\ \ \ \ \ \ \ \ \ std::vector<Renderable>\ drawingQueueCopy;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00119}00119\ \ \ \ \ \ \ \ \ std::vector<Renderable>\ selectedDrawingQueue;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00120}00120\ \ \ \ \ \ \ \ \ std::vector<Renderable>\ selectedDrawingQueueCopy;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ SDL\_mutex*\ drawingQueueMutex;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ std::deque<unsigned\ int>\ viewsQueue;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ GLuint\ screenFBO;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ GLuint\ screenTex;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_content}{OpenGLContent}}*\ content;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ Scalar\ lastSimTime;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00127}00127\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_pipeline_8h_source_l00130}00130\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,7 @@
+<map id="sf::Light" name="sf::Light">
+<area shape="rect" id="Node000001" title="A class representing a light of two common types: omni and spot." alt="" coords="30,152,103,177"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_link_actuator.html" title="An abstract class representing an actuator that can be attached to a rigid body." alt="" coords="5,79,128,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,118,69,152,64,152,64,118"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_actuator.html" title="An abstract class representing any actuator." alt="" coords="19,5,115,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,44,69,79,64,79,64,44"/>
+</map>

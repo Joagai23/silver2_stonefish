@@ -1,0 +1,144 @@
+\doxysection{Wing.\+cpp}
+\hypertarget{_wing_8cpp_source}{}\label{_wing_8cpp_source}\index{Library/src/entities/solids/Wing.cpp@{Library/src/entities/solids/Wing.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Wing.cpp}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieślak\ on\ 17/01/2019.}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2019-\/2021\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}entities/solids/Wing.h"{}}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}utils/GeometryFileUtil.h"{}}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00031}00031\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00034}\mbox{\hyperlink{classsf_1_1_wing_a7948aaac233094f15dba3010c4c6e69d}{00034}}\ \mbox{\hyperlink{classsf_1_1_wing_a7948aaac233094f15dba3010c4c6e69d}{Wing::Wing}}(std::string\ uniqueName,\ \mbox{\hyperlink{structsf_1_1_body_physics_settings}{BodyPhysicsSettings}}\ phy,\ Scalar\ baseChordLength,\ Scalar\ tipChordLength,}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ Scalar\ maxCamber,\ Scalar\ maxCamberPos,\ Scalar\ profileThickness,\ Scalar\ wingLength,\ \textcolor{keyword}{const}\ Transform\&\ origin,\ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ std::string\ material,\ std::string\ look,\ Scalar\ thickness)}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}(uniqueName,\ phy,\ material,\ look,\ thickness)}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00039}00039\ \ \ \ \ T\_O2G\ =\ T\_O2C\ =\ origin;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00040}00040\ \ \ \ \ baseChordLength\ =\ baseChordLength\ <=\ Scalar(0)\ ?\ Scalar(1)\ :\ baseChordLength;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00041}00041\ \ \ \ \ tipChordLength\ =\ tipChordLength\ <\ Scalar(0)\ ?\ baseChordLength\ :\ tipChordLength;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00042}00042\ \ \ \ \ maxCamber\ =\ maxCamber\ <\ Scalar(0)\ ?\ Scalar(0)\ :\ (maxCamber\ >\ Scalar(100)\ ?\ Scalar(100)\ :\ maxCamber);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00043}00043\ \ \ \ \ maxCamberPos\ =\ maxCamberPos\ <\ Scalar(0)\ ?\ Scalar(0)\ :\ (maxCamberPos\ >\ Scalar(100)\ ?\ Scalar(100)\ :\ maxCamberPos);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00044}00044\ \ \ \ \ profileThickness\ =\ profileThickness\ <\ Scalar(1)\ ?\ Scalar(1)\ :\ (profileThickness\ >\ Scalar(40)\ ?\ Scalar(40)\ :\ profileThickness);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00045}00045\ \ \ \ \ wingLength\ =\ wingLength\ <\ Scalar(0)\ ?\ Scalar(0)\ :\ wingLength;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00046}00046\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//1.\ Build\ wing\ geometry}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00048}00048\ \ \ \ \ phyMesh\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a80ddbdde60968773dc602e90f8cdb8a4}{OpenGLContent::BuildWing}}((GLfloat)baseChordLength,\ (GLfloat)tipChordLength,\ (GLfloat)maxCamber,\ (GLfloat)maxCamberPos,}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (GLfloat)profileThickness,\ (GLfloat)wingLength);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00050}00050\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//2.\ Compute\ physical\ properties}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00052}00052\ \ \ \ \ Vector3\ CG;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00053}00053\ \ \ \ \ Matrix3\ Irot;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00054}00054\ \ \ \ \ ComputePhysicalProperties(phyMesh,\ thickness,\ mat.density,\ mass,\ CG,\ volume,\ surface,\ Ipri,\ Irot);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00055}00055\ \ \ \ \ T\_CG2C.setOrigin(-\/CG);\ \textcolor{comment}{//Set\ CG\ position}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00056}00056\ \ \ \ \ T\_CG2C\ =\ Transform(Irot,\ Vector3(0,0,0)).inverse()\ *\ T\_CG2C;\ \textcolor{comment}{//Align\ CG\ frame\ to\ principal\ axes\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00057}00057\ \ \ \ \ T\_CG2O\ =\ T\_CG2C\ *\ T\_O2C.inverse();}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00058}00058\ \ \ \ \ T\_CG2G\ =\ T\_CG2O\ *\ T\_O2G;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00059}00059\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//3.\ Compute\ hydrodynamic\ properties}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00061}00061\ \ \ \ \ ComputeFluidDynamicsApprox(GeometryApproxType::ELLIPSOID);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00062}00062\ \ \ \ \ T\_O2H\ =\ T\_CG2O.inverse()\ *\ T\_CG2H;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00063}00063\ \ \ \ \ P\_CB\ =\ Vector3(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00066}\mbox{\hyperlink{classsf_1_1_wing_a259493ba5860f348f29f42b7092eeafc}{00066}}\ \mbox{\hyperlink{classsf_1_1_wing_a7948aaac233094f15dba3010c4c6e69d}{Wing::Wing}}(std::string\ uniqueName,\ \mbox{\hyperlink{structsf_1_1_body_physics_settings}{BodyPhysicsSettings}}\ phy,\ Scalar\ baseChordLength,\ Scalar\ tipChordLength,\ std::string\ NACA,\ Scalar\ wingLength,\ \textcolor{keyword}{const}\ Transform\&\ origin,\ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ std::string\ material,\ std::string\ look,\ Scalar\ thickness)}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}(uniqueName,\ phy,\ material,\ look,\ thickness)}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00069}00069\ \{}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00070}00070\ \ \ \ \ T\_O2G\ =\ T\_O2C\ =\ origin;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00071}00071\ \ \ \ \ baseChordLength\ =\ baseChordLength\ <=\ Scalar(0)\ ?\ Scalar(1)\ :\ baseChordLength;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00072}00072\ \ \ \ \ tipChordLength\ =\ tipChordLength\ <\ Scalar(0)\ ?\ baseChordLength\ :\ tipChordLength;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00073}00073\ \ \ \ \ wingLength\ =\ wingLength\ <\ Scalar(0)\ ?\ Scalar(0)\ :\ wingLength;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00074}00074\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00075}00075\ \ \ \ \ Scalar\ maxCamber(0);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00076}00076\ \ \ \ \ Scalar\ maxCamberPos(0);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00077}00077\ \ \ \ \ Scalar\ profileThickness(20);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00078}00078\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//1.\ Decode\ NACA}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{if}(NACA.length()\ ==\ 4)}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00081}00081\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nacaCode[4];}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(NACA[i]\ >=\ \textcolor{charliteral}{'0'}\ \&\&\ NACA[i]\ <=\ \textcolor{charliteral}{'9'})}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nacaCode[i]\ =\ NACA[i]\ -\/\ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i==4)\ \textcolor{comment}{//Decode}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ maxCamber\ =\ (Scalar)nacaCode[0];}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ maxCamberPos\ =\ (Scalar)nacaCode[1]\ *\ 10.0;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ profileThickness\ =\ (Scalar)nacaCode[2]\ *\ 10.0\ +\ (Scalar)nacaCode[3];}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00098}00098\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//2.\ Build\ wing\ geometry}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00100}00100\ \ \ \ \ phyMesh\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a80ddbdde60968773dc602e90f8cdb8a4}{OpenGLContent::BuildWing}}((GLfloat)baseChordLength,\ (GLfloat)tipChordLength,\ (GLfloat)maxCamber,\ (GLfloat)maxCamberPos,}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (GLfloat)profileThickness,\ (GLfloat)wingLength);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00102}00102\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00103}00103\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//3.\ Compute\ physical\ properties}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00105}00105\ \ \ \ \ Vector3\ CG;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00106}00106\ \ \ \ \ Matrix3\ Irot;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00107}00107\ \ \ \ \ ComputePhysicalProperties(phyMesh,\ thickness,\ mat.density,\ mass,\ CG,\ volume,\ surface,\ Ipri,\ Irot);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00108}00108\ \ \ \ \ T\_CG2C.setOrigin(-\/CG);\ \textcolor{comment}{//Set\ CG\ position}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00109}00109\ \ \ \ \ T\_CG2C\ =\ Transform(Irot,\ Vector3(0,0,0)).inverse()\ *\ T\_CG2C;\ \textcolor{comment}{//Align\ CG\ frame\ to\ principal\ axes\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00110}00110\ \ \ \ \ T\_CG2O\ =\ T\_CG2C\ *\ T\_O2C.inverse();}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00111}00111\ \ \ \ \ T\_CG2G\ =\ T\_CG2O\ *\ T\_O2G;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//4.\ Compute\ hydrodynamic\ properties}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00114}00114\ \ \ \ \ ComputeFluidDynamicsApprox(GeometryApproxType::ELLIPSOID);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00115}00115\ \ \ \ \ T\_O2H\ =\ T\_CG2O.inverse()\ *\ T\_CG2H;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00116}00116\ \ \ \ \ P\_CB\ =\ Vector3(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00117}00117\ \}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00118}00118\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00119}\mbox{\hyperlink{classsf_1_1_wing_a5900c24b6b2985919f1373df70781bfc}{00119}}\ SolidType\ \mbox{\hyperlink{classsf_1_1_wing_a5900c24b6b2985919f1373df70781bfc}{Wing::getSolidType}}()}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00120}00120\ \{}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{return}\ SolidType::WING;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00123}00123\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00124}\mbox{\hyperlink{classsf_1_1_wing_a7d1825637b8c314b642c49c706f29631}{00124}}\ btCollisionShape*\ \mbox{\hyperlink{classsf_1_1_wing_a7d1825637b8c314b642c49c706f29631}{Wing::BuildCollisionShape}}()}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00125}00125\ \{}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00126}00126\ \ \ \ \ btConvexHullShape*\ convex\ =\ \textcolor{keyword}{new}\ btConvexHullShape();}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<phyMesh-\/>getNumOfVertices();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00128}00128\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ glm::vec3\ pos\ =\ phyMesh-\/>getVertexPos(i);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ Vector3\ v(pos.x,\ pos.y,\ pos.z);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ convex-\/>addPoint(v);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00132}00132\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{comment}{//convex-\/>optimizeConvexHull();}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00134}00134\ \ \ \ \ convex-\/>setMargin(0);}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00135}00135\ \ \ \ \ \textcolor{keywordflow}{return}\ convex;}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00136}00136\ \}}
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_wing_8cpp_source_l00138}00138\ \}}
+
+\end{DoxyCode}

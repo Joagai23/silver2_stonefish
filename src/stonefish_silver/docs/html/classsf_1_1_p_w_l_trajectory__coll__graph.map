@@ -1,0 +1,5 @@
+<map id="sf::PWLTrajectory" name="sf::PWLTrajectory">
+<area shape="rect" id="Node000001" title="A class representing a piece&#45;wise linear trajectory." alt="" coords="5,79,137,104"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_trajectory.html" title="An abstract class representing a trajectory (time parametrized path)." alt="" coords="19,5,124,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,44,74,79,69,79,69,44"/>
+</map>

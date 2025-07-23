@@ -1,0 +1,1436 @@
+\doxysection{sf\+::Open\+GLCamera Class Reference}
+\hypertarget{classsf_1_1_open_g_l_camera}{}\label{classsf_1_1_open_g_l_camera}\index{sf::OpenGLCamera@{sf::OpenGLCamera}}
+
+
+An abstract class implementing a camera view.  
+
+
+
+
+{\ttfamily \#include $<$Open\+GLCamera.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Open\+GLCamera\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_open_g_l_camera__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Open\+GLCamera\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_open_g_l_camera__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_camera_af2d6408fcb285615c7596385cf060452}{Open\+GLCamera}} (GLint originX, GLint originY, GLint width, GLint height, glm\+::vec2 range)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a80b51442680c334d6b9d51be090c7a6b}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLCamera}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a9f69340110ca14e4e6ffa4454d6280ea}{Draw\+LDR}} (GLuint destination\+FBO, bool updated)
+\begin{DoxyCompactList}\small\item\em A method to render the low dynamic range (final) image to the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a4906e5c58aabc7bf421eac1bfea5a82f}{Draw\+AO}} (GLfloat intensity)
+\begin{DoxyCompactList}\small\item\em A method drawing the ambient occlusion effect. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a3bfc1a7fee593a4cbd9061c545d14a46}{Draw\+SSR}} ()
+\begin{DoxyCompactList}\small\item\em A method drawing the screen-\/space refflections effect. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_acd018ff6d6980ca7c83513e43bbbf95c}{Generate\+Bloom}} ()
+\begin{DoxyCompactList}\small\item\em A method generating a bloom effect. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a9b381c644a8ce64d1f3fc848c3fae171}{Draw\+Bloom}} (GLfloat amount)
+\begin{DoxyCompactList}\small\item\em A method drawing the bloom effect. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ac1dadbb73c3abb83d20ede172bb2f8f1}{Set\+Projection}} ()
+\begin{DoxyCompactList}\small\item\em A method to set current projection matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a35cbfc6dd6664ed5df3b05ae062939a6}{Set\+View\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em A method to set current view matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ade913184d49c40dfab9a095511abacbd}{Set\+Render\+Buffers}} (GLuint color\+Buffer\+Index, bool normal\+Buffer, bool clear\+Buffers)
+\begin{DoxyCompactList}\small\item\em A method used to determine which buffers are drawn during rendering. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a31bf00709397f7d2e3afe73bc43def5b}{Ray}} (GLint x, GLint y)
+\begin{DoxyCompactList}\small\item\em A method to generate a ray in world space (picking). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a6b07f941fadb65bdb2cf9d3154cd6d86}{Generate\+Linear\+Depth}} (bool front)
+\begin{DoxyCompactList}\small\item\em A method to generate a linear depth texture from the normal depth buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a27191abc3673d812588fd70e96bd350d}{Show\+Scene\+Texture}} (glm\+::vec4 rect)
+\begin{DoxyCompactList}\small\item\em A method to show the color texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_af769e1931fc8030ce0e4fd7f66e21ed8}{Show\+Linear\+Depth\+Texture}} (glm\+::vec4 rect, bool front\+Face)
+\begin{DoxyCompactList}\small\item\em A method to show the depth texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a2b5dc77840d5c5f8a2f8b0bff9495e5a}{Show\+View\+Normal\+Texture}} (glm\+::vec4 rect)
+\begin{DoxyCompactList}\small\item\em A method to show the view-\/normal texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a409e6f76586c6676bba6906c17a543f6}{Show\+Depth\+Stencil\+Texture}} (glm\+::vec4 rect)
+\begin{DoxyCompactList}\small\item\em A method to show the depth-\/stencil texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a94a633c856af9c5fc525accada4216cc}{Show\+Deinterleaved\+Depth\+Texture}} (glm\+::vec4 rect, GLuint index)
+\begin{DoxyCompactList}\small\item\em A method to show the deinterleaved depth texture (HBAO). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_acf67a7d7d6658c17c1678f0a72e5dd8c}{Show\+Deinterleaved\+AOTexture}} (glm\+::vec4 rect, GLuint index)
+\begin{DoxyCompactList}\small\item\em A method to show the deinterleaved ambient occlusion texture (HBAO). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_afa3bb00a423ae3d59b0d657a0ebc466b}{Show\+Ambient\+Occlusion}} (glm\+::vec4 rect)
+\begin{DoxyCompactList}\small\item\em A method to show the ambient occlusion texture (HBAO). \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ae135ed129bec62a71b790dd07b990d02}{Get\+Projection\+Matrix}} () const override
+\begin{DoxyCompactList}\small\item\em A method that returns the projection matrix. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a75fed12fa5de473f817cc2fb54f99b36}{Get\+FOVX}} () const override
+\begin{DoxyCompactList}\small\item\em A method that returns the horizontal field of view. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_camera_af53a1ce39b6ae00274e21e4672dd068a}{Get\+FOVY}} () const override
+\begin{DoxyCompactList}\small\item\em A method that returns the vertical field of view. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ac2ef9c1c9b295c2367a26a0668b9efb3}{Get\+Near\+Clip}} () const override
+\begin{DoxyCompactList}\small\item\em A method that returns the near clip plane distance. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a97b17a5045d4c478a8b34c7e2e5c8a1d}{Get\+Far\+Clip}} () const override
+\begin{DoxyCompactList}\small\item\em A method that returns the far clip plane distance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a339cf2ed8e6444d80716519330e5e5ed}{set\+Exposure\+Compensation}} (GLfloat ec)
+\begin{DoxyCompactList}\small\item\em A method to set the exposure compensation factor. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a113eac94908505dedaeb24ce80e27a55}{get\+Exposure\+Compensation}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the exposure compensation factor. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a39fd2b225b7c6451d91eab30047a8fd8}{get\+Postprocess\+FBO}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the postprocessing framebuffer of the camera. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a77948f08d222400d0a232bf6bea310fd}{get\+Quater\+Postprocess\+FBO}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the quater resolution postprocessing framebuffer of the camera. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a0cf5ac49b601fb075300035190110e7f}{get\+Color\+Texture}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the id of the color texture. \end{DoxyCompactList}\item 
+\Hypertarget{classsf_1_1_open_g_l_camera_a596e92947de6a44ce422deadc29dc1e2}\label{classsf_1_1_open_g_l_camera_a596e92947de6a44ce422deadc29dc1e2} 
+GLuint {\bfseries get\+Final\+Texture} ()
+\begin{DoxyCompactList}\small\item\em A method returning the id of the final texture. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a6baba6ba19eae2d469b60da75086a5ff}{get\+AOTexture}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the id of the ambient occlusion texture. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a830522fd9d6cdff292c7af51fe875525}{get\+Linear\+Depth\+Texture}} (bool front\+Face)
+\begin{DoxyCompactList}\small\item\em A method returning the id of the linear depth texture. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a1cdf5699655c8d602d6c394c5232b543}{get\+Postprocess\+Texture}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the id of a postprocessing texture. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_aa047acbfc4fc7651039e9d2a643d3788}{get\+Quater\+Postprocess\+Texture}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the id of a quater resolution postprocessing texture. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_aa39c2444eb875b0f96c56c2f581ef899}{get\+Last\+Active\+Color\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the id of the last used color buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ace8be6f75ff380d9e962b05bfec3ca37}{has\+AO}} ()
+\begin{DoxyCompactList}\small\item\em A method informing if view is using ambient occlusion. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a945bc07ec66a02f28cb187f0cd309c7c}{using\+Tone\+Mapping}} ()
+\begin{DoxyCompactList}\small\item\em A method informing if HDR tone mapping is enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a59232313848249e4f7cf4d29f1ffe5da}{using\+Auto\+Exposure}} ()
+\begin{DoxyCompactList}\small\item\em A method informing if auto exposure function is enabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_open_g_l_view}{sf\+::\+Open\+GLView}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_view_a7370ff61aa8c4a8695e2d5728675e5bd}{Open\+GLView}} (GLint originX, GLint originY, GLint width, GLint height)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_open_g_l_view_a5b4b34ee2d8bc7dc0b82b3bc818a71a2}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLView}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_open_g_l_view_a957e6d117ce82c4a6bd05ea639e6a9a1}{Update\+Transform}} ()=0
+\begin{DoxyCompactList}\small\item\em A method that updates view world transform. \end{DoxyCompactList}\item 
+virtual glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_view_a3004c25e0ea08a246baaa7e4de0b8e08}{Get\+Eye\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em A method that returns eye position. \end{DoxyCompactList}\item 
+virtual glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_view_af014795803f1871aefee3be8f850ef91}{Get\+Looking\+Direction}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning a unit vector parallel to the optical axis of the camera. \end{DoxyCompactList}\item 
+virtual glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_view_a5ff43bff477d57cc34f56fd3cb1f34f2}{Get\+Up\+Direction}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning a unit vector pointing to the top edge of the image. \end{DoxyCompactList}\item 
+virtual glm\+::mat4 \mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{Get\+View\+Matrix}} () const =0
+\begin{DoxyCompactList}\small\item\em A method that returns the view matrix. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_view_a21fc921521be07cb3bf94ead40eebcee}{Get\+Log\+Depth\+Constant}} () const
+\begin{DoxyCompactList}\small\item\em A method that return logarithmic depth constant. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_open_g_l_view_abb9c6cd942de9272f9a688b2a9d44eaf}{needs\+Update}} ()=0
+\begin{DoxyCompactList}\small\item\em A method that checks if the view needs to be updated. \end{DoxyCompactList}\item 
+virtual View\+Type \mbox{\hyperlink{classsf_1_1_open_g_l_view_ac795a316a072da2b4190abf841e2d8bc}{get\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning the type of the view. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_view_a8414ca27c24bba6d03ef6dbbe781bfd7}{Set\+Viewport}} ()
+\begin{DoxyCompactList}\small\item\em A method that sets the current viewport. \end{DoxyCompactList}\item 
+GLint \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_view_ac53cf3b78d408ed133ab753e7e09a39b}{Get\+Viewport}} () const
+\begin{DoxyCompactList}\small\item\em A method that returns the viewport origin and size. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_view_a74ac244cc20a3b2eccea2b8465651b6e}{get\+Render\+FBO}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the rendering framebuffer of the view. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structsf_1_1_view_u_b_o}{View\+UBO}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_view_af543f29936865c8188fe72734b7bd9fa}{get\+View\+UBOData}} () const
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the view UBO data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_view_a6a04b2231d2137085090262c67be8f8f}{set\+Enabled}} (bool en)
+\begin{DoxyCompactList}\small\item\em A method to set if the view is enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_view_a8087553841ae91b68c51985af0a7dec7}{is\+Enabled}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a flag saying if the view is enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_view_a6eab8c460b0fad02e9ff6888c7d9a62e}{is\+Continuous}} ()
+\begin{DoxyCompactList}\small\item\em A method saying if the view works in continuous update mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a3ca969f092d7cd7270ad293421961844}{Init}} (const \mbox{\hyperlink{structsf_1_1_render_settings}{Render\+Settings}} \&r\+Settings)
+\begin{DoxyCompactList}\small\item\em A static method to load shaders. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a14a435633cfece30b8582393c5750460}{Destroy}} ()
+\begin{DoxyCompactList}\small\item\em A static method to destroy shaders. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_open_g_l_view}{sf\+::\+Open\+GLView}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_view_a26325a55c76b871a7a9a68a4b8c039cc}{Extract\+Frustum\+From\+VP}} (glm\+::vec4 frustum\mbox{[}6\mbox{]}, const glm\+::mat4 \&VP)
+\begin{DoxyCompactList}\small\item\em A method extracting frustium planes from the view-\/projection matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a714872bdd58637aac82a7bfbca762e1b}{render\+Color\+Tex}} \mbox{[}2\mbox{]}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a56d115499954d0d8b3a9ab975970f057}{render\+View\+Normal\+Tex}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a7342506f95a9702789ab72e8bbf96004}{render\+Depth\+Stencil\+Tex}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a962e0edc6fe55e813818471ce6ae988a}{histogram\+SSBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_af493aa1381d7c545c13ca9fcb40db2f1}{histogram\+Bins}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a04d8938c8122baa15e694ba297f25ea1}{histogram\+Range}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ac04fe3bf0392ab7e48d5b26f0f0f8467}{exposure\+Tex}}
+\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a95a95971583dd6d8f24e9ea92d150beb}{exposure\+Comp}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_camera_abb134c14875cfef68185122a659de473}{auto\+Exposure}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a1eb08e97996f9de4a9a42f2d819e234a}{tone\+Mapping}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_camera_af6e3e8eb09fe98a0bba810def5adab6e}{anti\+Aliasing}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_af492091f750e8a1c76b769ff1b0f626c}{last\+Active\+Render\+Color\+Buffer}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a5d52d650899886cc55e08222ba6bde0c}{linear\+Depth\+FBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a35582f7935ea2e6fd5ee11d263d115a6}{linear\+Depth\+Tex}} \mbox{[}2\mbox{]}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_aa087cad9841bd01b598de433954f2fca}{postprocess\+FBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_aedeccb4973a6f647a53f4b7620c24ffc}{postprocess\+Tex}} \mbox{[}2\mbox{]}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a3fb00d6696f47f7b1202b3cce68a3270}{postprocess\+Stencil\+Tex}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a0a44621d24d5ac3c77156b0c7f263616}{quater\+Postprocess\+FBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a26ddd466aac7c72b899c8e84e0c58c64}{quater\+Postprocess\+Tex}} \mbox{[}2\mbox{]}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_aa11a09c281a8cb0b15b7d94e8a1cd481}{ao\+Blur\+Tex}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a38d5efdee7135b6097a8230927ae6ef4}{ao\+Result\+Tex}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a53724bf443c8d5f36556d49766365a41}{ao\+Depth\+Array\+Tex}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a99949928ecd8af30962c79ac259a3733}{ao\+Result\+Array\+Tex}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_af96b44d54230042566ccbd55751e3e0d}{ao\+Final\+FBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ae7fdda6369ca9ecae0a68a6957987e30}{ao\+Deinterleave\+FBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a902ccbd0b84cd3b5a5d34fe9cfe20de9}{ao\+Calc\+FBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a35b5a9c144cada7c117e30d67a1cc9da}{ao\+Data\+UBO}}
+\item 
+\mbox{\hyperlink{structsf_1_1_a_o_data}{AOData}} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a39f7d0d86483a69d6dd8b25c662e5e5a}{ao\+Data}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a2145ff32c70ef2f46ca88a08431d3117}{ao\+Factor}}
+\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a7efe8d9c6e4b48047c1b00a8f88cc0a1}{fovx}}
+\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ae64d9fecef8445c9c0bc06b8fa2ca9ff}{near}}
+\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a1755a87d56cf4ad3b32dead2d83af20e}{far}}
+\item 
+glm\+::mat4 \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ae5baccbfeec493390fd69d1ed75c4352}{projection}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_open_g_l_view}{sf\+::\+Open\+GLView}}}
+\begin{DoxyCompactItemize}
+\item 
+GLint \mbox{\hyperlink{classsf_1_1_open_g_l_view_aac467a72d089b6d45bb190ae07f6d168}{originX}}
+\item 
+GLint \mbox{\hyperlink{classsf_1_1_open_g_l_view_ab060c0ba1a37f954b543235790f8e429}{originY}}
+\item 
+GLint \mbox{\hyperlink{classsf_1_1_open_g_l_view_a0cb353f9ab0088418c44edda979300e4}{viewport\+Width}}
+\item 
+GLint \mbox{\hyperlink{classsf_1_1_open_g_l_view_a5c79f3a7fa27b4bb2a789f294c4dda66}{viewport\+Height}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_view_a6e67b08a51dd9b592d9f3f4ee1ac1676}{render\+FBO}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_view_a0cab9ce33e19db36dd9b7e6731f0987c}{enabled}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_view_a4720968df6af181fb58f67379f01f547}{continuous}}
+\item 
+\mbox{\hyperlink{structsf_1_1_view_u_b_o}{View\+UBO}} \mbox{\hyperlink{classsf_1_1_open_g_l_view_a61f092bf5e131bc7cfa56aff810ca3c4}{view\+UBOData}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a9e1deabd9b046a16818432829f4c91e5}{tonemapping\+Shaders}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a2a0163959e64466a0fe6a5198b7f8531}{depth\+Linearize\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a0537e9b44e1ac3f8b298615ad57d5be4}{ao\+Deinterleave\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ab62090bfb084fccce9a4611ee36dc266}{ao\+Calc\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_af3308a4622cbc411e84727d13ac680d4}{ao\+Reinterleave\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ac07c586ac00b44a65d26d57b1b5117bb}{ao\+Blur\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ae50b7d84513364788395a800f16f721f}{ssr\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a0bda95d4c429957111468d0f221b4af9}{fxaa\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a3a45bab4640ae7166d1038664809c747}{flip\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a6251f69242951296e8f49d63f3ebe7a0}{ssr\+Blur}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_camera_aa9311c2628487d90cdec7aecbcc213c4}{bloom\+Blur}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class implementing a camera view. 
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00069}{69}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_open_g_l_camera_af2d6408fcb285615c7596385cf060452}\label{classsf_1_1_open_g_l_camera_af2d6408fcb285615c7596385cf060452} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!OpenGLCamera@{OpenGLCamera}}
+\index{OpenGLCamera@{OpenGLCamera}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{OpenGLCamera()}{OpenGLCamera()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLCamera\+::\+Open\+GLCamera (\begin{DoxyParamCaption}\item[{GLint}]{originX,  }\item[{GLint}]{originY,  }\item[{GLint}]{width,  }\item[{GLint}]{height,  }\item[{glm\+::vec2}]{range }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originX} & the x coordinate of the view origin in the program window \mbox{[}px\mbox{]} \\
+\hline
+{\em originY} & the y coordinate of the view origin in the program window \mbox{[}px\mbox{]} \\
+\hline
+{\em width} & the width of the view \mbox{[}px\mbox{]} \\
+\hline
+{\em height} & the height of the view \mbox{[}px\mbox{]} \\
+\hline
+{\em range} & the minimum and maximum rendering distance of the camera \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a80b51442680c334d6b9d51be090c7a6b}\label{classsf_1_1_open_g_l_camera_a80b51442680c334d6b9d51be090c7a6b} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!````~OpenGLCamera@{\texorpdfstring{$\sim$}{\string~}OpenGLCamera}}
+\index{````~OpenGLCamera@{\texorpdfstring{$\sim$}{\string~}OpenGLCamera}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLCamera()}{\string~OpenGLCamera()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLCamera\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLCamera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_open_g_l_camera_a14a435633cfece30b8582393c5750460}\label{classsf_1_1_open_g_l_camera_a14a435633cfece30b8582393c5750460} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{Destroy()}{Destroy()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to destroy shaders. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00950}{950}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a4906e5c58aabc7bf421eac1bfea5a82f}\label{classsf_1_1_open_g_l_camera_a4906e5c58aabc7bf421eac1bfea5a82f} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!DrawAO@{DrawAO}}
+\index{DrawAO@{DrawAO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{DrawAO()}{DrawAO()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Draw\+AO (\begin{DoxyParamCaption}\item[{GLfloat}]{intensity }\end{DoxyParamCaption})}
+
+
+
+A method drawing the ambient occlusion effect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intensity} & a factor defining how much of AO should be applied \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00461}{461}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a9b381c644a8ce64d1f3fc848c3fae171}\label{classsf_1_1_open_g_l_camera_a9b381c644a8ce64d1f3fc848c3fae171} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!DrawBloom@{DrawBloom}}
+\index{DrawBloom@{DrawBloom}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{DrawBloom()}{DrawBloom()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Draw\+Bloom (\begin{DoxyParamCaption}\item[{GLfloat}]{amount }\end{DoxyParamCaption})}
+
+
+
+A method drawing the bloom effect. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00687}{687}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a9f69340110ca14e4e6ffa4454d6280ea}\label{classsf_1_1_open_g_l_camera_a9f69340110ca14e4e6ffa4454d6280ea} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!DrawLDR@{DrawLDR}}
+\index{DrawLDR@{DrawLDR}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{DrawLDR()}{DrawLDR()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Draw\+LDR (\begin{DoxyParamCaption}\item[{GLuint}]{destination\+FBO,  }\item[{bool}]{updated }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method to render the low dynamic range (final) image to the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em destination\+FBO} & the id of the framebuffer used as the destination for rendering \\
+\hline
+{\em updated} & a flag indicating if view content was updated \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_a667d02f6f69b5aab922905d564643be9}{sf\+::\+Open\+GLView}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_af6067f39857f23ae504a7adc95ded126}{sf\+::\+Open\+GLEvent\+Based\+Camera}}, and \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_aee2b5b9201e33add14c335fb7a410adb}{sf\+::\+Open\+GLReal\+Camera}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00703}{703}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a3bfc1a7fee593a4cbd9061c545d14a46}\label{classsf_1_1_open_g_l_camera_a3bfc1a7fee593a4cbd9061c545d14a46} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!DrawSSR@{DrawSSR}}
+\index{DrawSSR@{DrawSSR}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{DrawSSR()}{DrawSSR()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Draw\+SSR (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method drawing the screen-\/space refflections effect. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00580}{580}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_acd018ff6d6980ca7c83513e43bbbf95c}\label{classsf_1_1_open_g_l_camera_acd018ff6d6980ca7c83513e43bbbf95c} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!GenerateBloom@{GenerateBloom}}
+\index{GenerateBloom@{GenerateBloom}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{GenerateBloom()}{GenerateBloom()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Generate\+Bloom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method generating a bloom effect. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00645}{645}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a6b07f941fadb65bdb2cf9d3154cd6d86}\label{classsf_1_1_open_g_l_camera_a6b07f941fadb65bdb2cf9d3154cd6d86} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!GenerateLinearDepth@{GenerateLinearDepth}}
+\index{GenerateLinearDepth@{GenerateLinearDepth}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{GenerateLinearDepth()}{GenerateLinearDepth()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Generate\+Linear\+Depth (\begin{DoxyParamCaption}\item[{bool}]{front }\end{DoxyParamCaption})}
+
+
+
+A method to generate a linear depth texture from the normal depth buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em front} & a flag indicating if the depth should be generated for front or back faces \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00444}{444}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a6baba6ba19eae2d469b60da75086a5ff}\label{classsf_1_1_open_g_l_camera_a6baba6ba19eae2d469b60da75086a5ff} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!getAOTexture@{getAOTexture}}
+\index{getAOTexture@{getAOTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{getAOTexture()}{getAOTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::get\+AOTexture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the id of the ambient occlusion texture. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00351}{351}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a0cf5ac49b601fb075300035190110e7f}\label{classsf_1_1_open_g_l_camera_a0cf5ac49b601fb075300035190110e7f} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!getColorTexture@{getColorTexture}}
+\index{getColorTexture@{getColorTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{getColorTexture()}{getColorTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::get\+Color\+Texture (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the id of the color texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the texture in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Open\+GL id of the texture 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00341}{341}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a113eac94908505dedaeb24ce80e27a55}\label{classsf_1_1_open_g_l_camera_a113eac94908505dedaeb24ce80e27a55} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!getExposureCompensation@{getExposureCompensation}}
+\index{getExposureCompensation@{getExposureCompensation}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{getExposureCompensation()}{getExposureCompensation()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLCamera\+::get\+Exposure\+Compensation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the exposure compensation factor. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00336}{336}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a97b17a5045d4c478a8b34c7e2e5c8a1d}\label{classsf_1_1_open_g_l_camera_a97b17a5045d4c478a8b34c7e2e5c8a1d} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!GetFarClip@{GetFarClip}}
+\index{GetFarClip@{GetFarClip}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{GetFarClip()}{GetFarClip()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLCamera\+::\+Get\+Far\+Clip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that returns the far clip plane distance. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_a89362c254b59e32c9ac4bdb13e32a771}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00272}{272}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a75fed12fa5de473f817cc2fb54f99b36}\label{classsf_1_1_open_g_l_camera_a75fed12fa5de473f817cc2fb54f99b36} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!GetFOVX@{GetFOVX}}
+\index{GetFOVX@{GetFOVX}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{GetFOVX()}{GetFOVX()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLCamera\+::\+Get\+FOVX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that returns the horizontal field of view. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_ae7a38a684fdadc61ed766a7e25c6a6f9}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00256}{256}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_af53a1ce39b6ae00274e21e4672dd068a}\label{classsf_1_1_open_g_l_camera_af53a1ce39b6ae00274e21e4672dd068a} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!GetFOVY@{GetFOVY}}
+\index{GetFOVY@{GetFOVY}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{GetFOVY()}{GetFOVY()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLCamera\+::\+Get\+FOVY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that returns the vertical field of view. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_ae631bc18744031bfd238b99014b21f34}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00261}{261}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_aa39c2444eb875b0f96c56c2f581ef899}\label{classsf_1_1_open_g_l_camera_aa39c2444eb875b0f96c56c2f581ef899} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!getLastActiveColorBuffer@{getLastActiveColorBuffer}}
+\index{getLastActiveColorBuffer@{getLastActiveColorBuffer}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{getLastActiveColorBuffer()}{getLastActiveColorBuffer()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::get\+Last\+Active\+Color\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the id of the last used color buffer. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00372}{372}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a830522fd9d6cdff292c7af51fe875525}\label{classsf_1_1_open_g_l_camera_a830522fd9d6cdff292c7af51fe875525} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!getLinearDepthTexture@{getLinearDepthTexture}}
+\index{getLinearDepthTexture@{getLinearDepthTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{getLinearDepthTexture()}{getLinearDepthTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::get\+Linear\+Depth\+Texture (\begin{DoxyParamCaption}\item[{bool}]{front\+Face }\end{DoxyParamCaption})}
+
+
+
+A method returning the id of the linear depth texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em front\+Face} & a flag to decide if front or back face depth is requested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Open\+GL id of the texture 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00346}{346}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ac2ef9c1c9b295c2367a26a0668b9efb3}\label{classsf_1_1_open_g_l_camera_ac2ef9c1c9b295c2367a26a0668b9efb3} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!GetNearClip@{GetNearClip}}
+\index{GetNearClip@{GetNearClip}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{GetNearClip()}{GetNearClip()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLCamera\+::\+Get\+Near\+Clip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that returns the near clip plane distance. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_a9e4c128860f2b1d08d431ebdb52697c5}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00267}{267}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a39fd2b225b7c6451d91eab30047a8fd8}\label{classsf_1_1_open_g_l_camera_a39fd2b225b7c6451d91eab30047a8fd8} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!getPostprocessFBO@{getPostprocessFBO}}
+\index{getPostprocessFBO@{getPostprocessFBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{getPostprocessFBO()}{getPostprocessFBO()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::get\+Postprocess\+FBO (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the postprocessing framebuffer of the camera. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00326}{326}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a1cdf5699655c8d602d6c394c5232b543}\label{classsf_1_1_open_g_l_camera_a1cdf5699655c8d602d6c394c5232b543} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!getPostprocessTexture@{getPostprocessTexture}}
+\index{getPostprocessTexture@{getPostprocessTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{getPostprocessTexture()}{getPostprocessTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::get\+Postprocess\+Texture (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the id of a postprocessing texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the texture in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Open\+GL id of the texture 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00356}{356}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ae135ed129bec62a71b790dd07b990d02}\label{classsf_1_1_open_g_l_camera_ae135ed129bec62a71b790dd07b990d02} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!GetProjectionMatrix@{GetProjectionMatrix}}
+\index{GetProjectionMatrix@{GetProjectionMatrix}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{GetProjectionMatrix()}{GetProjectionMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 sf\+::\+Open\+GLCamera\+::\+Get\+Projection\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that returns the projection matrix. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_aae95d77fc472462ec4a38ccd4921b82b}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00251}{251}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a77948f08d222400d0a232bf6bea310fd}\label{classsf_1_1_open_g_l_camera_a77948f08d222400d0a232bf6bea310fd} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!getQuaterPostprocessFBO@{getQuaterPostprocessFBO}}
+\index{getQuaterPostprocessFBO@{getQuaterPostprocessFBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{getQuaterPostprocessFBO()}{getQuaterPostprocessFBO()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::get\+Quater\+Postprocess\+FBO (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the quater resolution postprocessing framebuffer of the camera. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00331}{331}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_aa047acbfc4fc7651039e9d2a643d3788}\label{classsf_1_1_open_g_l_camera_aa047acbfc4fc7651039e9d2a643d3788} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!getQuaterPostprocessTexture@{getQuaterPostprocessTexture}}
+\index{getQuaterPostprocessTexture@{getQuaterPostprocessTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{getQuaterPostprocessTexture()}{getQuaterPostprocessTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::get\+Quater\+Postprocess\+Texture (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the id of a quater resolution postprocessing texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the texture in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Open\+GL id of the texture 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00364}{364}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ace8be6f75ff380d9e962b05bfec3ca37}\label{classsf_1_1_open_g_l_camera_ace8be6f75ff380d9e962b05bfec3ca37} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!hasAO@{hasAO}}
+\index{hasAO@{hasAO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{hasAO()}{hasAO()}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLCamera\+::has\+AO (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method informing if view is using ambient occlusion. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00377}{377}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a3ca969f092d7cd7270ad293421961844}\label{classsf_1_1_open_g_l_camera_a3ca969f092d7cd7270ad293421961844} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!Init@{Init}}
+\index{Init@{Init}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structsf_1_1_render_settings}{Render\+Settings}} \&}]{r\+Settings }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to load shaders. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00793}{793}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a31bf00709397f7d2e3afe73bc43def5b}\label{classsf_1_1_open_g_l_camera_a31bf00709397f7d2e3afe73bc43def5b} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!Ray@{Ray}}
+\index{Ray@{Ray}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{Ray()}{Ray()}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLCamera\+::\+Ray (\begin{DoxyParamCaption}\item[{GLint}]{x,  }\item[{GLint}]{y }\end{DoxyParamCaption})}
+
+
+
+A method to generate a ray in world space (picking). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x coordinate in window frame \\
+\hline
+{\em y} & the y coordinate in window frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a unit vector constituting the ray 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00277}{277}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a339cf2ed8e6444d80716519330e5e5ed}\label{classsf_1_1_open_g_l_camera_a339cf2ed8e6444d80716519330e5e5ed} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!setExposureCompensation@{setExposureCompensation}}
+\index{setExposureCompensation@{setExposureCompensation}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{setExposureCompensation()}{setExposureCompensation()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::set\+Exposure\+Compensation (\begin{DoxyParamCaption}\item[{GLfloat}]{ec }\end{DoxyParamCaption})}
+
+
+
+A method to set the exposure compensation factor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ec} & exposure compensation factor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00321}{321}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ac1dadbb73c3abb83d20ede172bb2f8f1}\label{classsf_1_1_open_g_l_camera_ac1dadbb73c3abb83d20ede172bb2f8f1} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!SetProjection@{SetProjection}}
+\index{SetProjection@{SetProjection}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{SetProjection()}{SetProjection()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Set\+Projection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method to set current projection matrix. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00392}{392}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ade913184d49c40dfab9a095511abacbd}\label{classsf_1_1_open_g_l_camera_ade913184d49c40dfab9a095511abacbd} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!SetRenderBuffers@{SetRenderBuffers}}
+\index{SetRenderBuffers@{SetRenderBuffers}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{SetRenderBuffers()}{SetRenderBuffers()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Set\+Render\+Buffers (\begin{DoxyParamCaption}\item[{GLuint}]{color\+Buffer\+Index,  }\item[{bool}]{normal\+Buffer,  }\item[{bool}]{clear\+Buffers }\end{DoxyParamCaption})}
+
+
+
+A method used to determine which buffers are drawn during rendering. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color\+Buffer\+Index} & the id of the color buffer to be used for rendering \\
+\hline
+{\em normal\+Buffer} & a flag indicating if normal buffer should be written \\
+\hline
+{\em clear\+Buffers} & a flag indicating if buffers should be cleared \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00402}{402}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a35cbfc6dd6664ed5df3b05ae062939a6}\label{classsf_1_1_open_g_l_camera_a35cbfc6dd6664ed5df3b05ae062939a6} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!SetViewTransform@{SetViewTransform}}
+\index{SetViewTransform@{SetViewTransform}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{SetViewTransform()}{SetViewTransform()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Set\+View\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method to set current view matrix. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00397}{397}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_afa3bb00a423ae3d59b0d657a0ebc466b}\label{classsf_1_1_open_g_l_camera_afa3bb00a423ae3d59b0d657a0ebc466b} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!ShowAmbientOcclusion@{ShowAmbientOcclusion}}
+\index{ShowAmbientOcclusion@{ShowAmbientOcclusion}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{ShowAmbientOcclusion()}{ShowAmbientOcclusion()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Show\+Ambient\+Occlusion (\begin{DoxyParamCaption}\item[{glm\+::vec4}]{rect }\end{DoxyParamCaption})}
+
+
+
+A method to show the ambient occlusion texture (HBAO). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & the rectangle in which to render the texture on screen \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00697}{697}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_acf67a7d7d6658c17c1678f0a72e5dd8c}\label{classsf_1_1_open_g_l_camera_acf67a7d7d6658c17c1678f0a72e5dd8c} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!ShowDeinterleavedAOTexture@{ShowDeinterleavedAOTexture}}
+\index{ShowDeinterleavedAOTexture@{ShowDeinterleavedAOTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{ShowDeinterleavedAOTexture()}{ShowDeinterleavedAOTexture()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Show\+Deinterleaved\+AOTexture (\begin{DoxyParamCaption}\item[{glm\+::vec4}]{rect,  }\item[{GLuint}]{index }\end{DoxyParamCaption})}
+
+
+
+A method to show the deinterleaved ambient occlusion texture (HBAO). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & the rectangle in which to render the texture on screen \\
+\hline
+{\em index} & the id of the sample \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00438}{438}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a94a633c856af9c5fc525accada4216cc}\label{classsf_1_1_open_g_l_camera_a94a633c856af9c5fc525accada4216cc} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!ShowDeinterleavedDepthTexture@{ShowDeinterleavedDepthTexture}}
+\index{ShowDeinterleavedDepthTexture@{ShowDeinterleavedDepthTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{ShowDeinterleavedDepthTexture()}{ShowDeinterleavedDepthTexture()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Show\+Deinterleaved\+Depth\+Texture (\begin{DoxyParamCaption}\item[{glm\+::vec4}]{rect,  }\item[{GLuint}]{index }\end{DoxyParamCaption})}
+
+
+
+A method to show the deinterleaved depth texture (HBAO). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & the rectangle in which to render the texture on screen \\
+\hline
+{\em index} & the id of the sample \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00432}{432}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a409e6f76586c6676bba6906c17a543f6}\label{classsf_1_1_open_g_l_camera_a409e6f76586c6676bba6906c17a543f6} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!ShowDepthStencilTexture@{ShowDepthStencilTexture}}
+\index{ShowDepthStencilTexture@{ShowDepthStencilTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{ShowDepthStencilTexture()}{ShowDepthStencilTexture()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Show\+Depth\+Stencil\+Texture (\begin{DoxyParamCaption}\item[{glm\+::vec4}]{rect }\end{DoxyParamCaption})}
+
+
+
+A method to show the depth-\/stencil texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & the rectangle in which to render the texture on screen \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00427}{427}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_af769e1931fc8030ce0e4fd7f66e21ed8}\label{classsf_1_1_open_g_l_camera_af769e1931fc8030ce0e4fd7f66e21ed8} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!ShowLinearDepthTexture@{ShowLinearDepthTexture}}
+\index{ShowLinearDepthTexture@{ShowLinearDepthTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{ShowLinearDepthTexture()}{ShowLinearDepthTexture()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Show\+Linear\+Depth\+Texture (\begin{DoxyParamCaption}\item[{glm\+::vec4}]{rect,  }\item[{bool}]{front\+Face }\end{DoxyParamCaption})}
+
+
+
+A method to show the depth texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & the rectangle in which to render the texture on screen \\
+\hline
+{\em front\+Face} & a flag to decide if front or back face depth should be displayed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00417}{417}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a27191abc3673d812588fd70e96bd350d}\label{classsf_1_1_open_g_l_camera_a27191abc3673d812588fd70e96bd350d} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!ShowSceneTexture@{ShowSceneTexture}}
+\index{ShowSceneTexture@{ShowSceneTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{ShowSceneTexture()}{ShowSceneTexture()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Show\+Scene\+Texture (\begin{DoxyParamCaption}\item[{glm\+::vec4}]{rect }\end{DoxyParamCaption})}
+
+
+
+A method to show the color texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & the rectangle in which to render the texture on screen \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00412}{412}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a2b5dc77840d5c5f8a2f8b0bff9495e5a}\label{classsf_1_1_open_g_l_camera_a2b5dc77840d5c5f8a2f8b0bff9495e5a} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!ShowViewNormalTexture@{ShowViewNormalTexture}}
+\index{ShowViewNormalTexture@{ShowViewNormalTexture}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{ShowViewNormalTexture()}{ShowViewNormalTexture()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLCamera\+::\+Show\+View\+Normal\+Texture (\begin{DoxyParamCaption}\item[{glm\+::vec4}]{rect }\end{DoxyParamCaption})}
+
+
+
+A method to show the view-\/normal texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & the rectangle in which to render the texture on screen \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00422}{422}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a59232313848249e4f7cf4d29f1ffe5da}\label{classsf_1_1_open_g_l_camera_a59232313848249e4f7cf4d29f1ffe5da} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!usingAutoExposure@{usingAutoExposure}}
+\index{usingAutoExposure@{usingAutoExposure}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{usingAutoExposure()}{usingAutoExposure()}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLCamera\+::using\+Auto\+Exposure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method informing if auto exposure function is enabled. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00387}{387}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a945bc07ec66a02f28cb187f0cd309c7c}\label{classsf_1_1_open_g_l_camera_a945bc07ec66a02f28cb187f0cd309c7c} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!usingToneMapping@{usingToneMapping}}
+\index{usingToneMapping@{usingToneMapping}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{usingToneMapping()}{usingToneMapping()}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLCamera\+::using\+Tone\+Mapping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method informing if HDR tone mapping is enabled. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8cpp_source_l00382}{382}} of file \mbox{\hyperlink{_open_g_l_camera_8cpp_source}{Open\+GLCamera.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_open_g_l_camera_af6e3e8eb09fe98a0bba810def5adab6e}\label{classsf_1_1_open_g_l_camera_af6e3e8eb09fe98a0bba810def5adab6e} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!antiAliasing@{antiAliasing}}
+\index{antiAliasing@{antiAliasing}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{antiAliasing}{antiAliasing}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLCamera\+::anti\+Aliasing\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00274}{274}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ac07c586ac00b44a65d26d57b1b5117bb}\label{classsf_1_1_open_g_l_camera_ac07c586ac00b44a65d26d57b1b5117bb} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoBlurShader@{aoBlurShader}}
+\index{aoBlurShader@{aoBlurShader}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoBlurShader}{aoBlurShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::ao\+Blur\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00310}{310}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_aa11a09c281a8cb0b15b7d94e8a1cd481}\label{classsf_1_1_open_g_l_camera_aa11a09c281a8cb0b15b7d94e8a1cd481} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoBlurTex@{aoBlurTex}}
+\index{aoBlurTex@{aoBlurTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoBlurTex}{aoBlurTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::ao\+Blur\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00287}{287}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a902ccbd0b84cd3b5a5d34fe9cfe20de9}\label{classsf_1_1_open_g_l_camera_a902ccbd0b84cd3b5a5d34fe9cfe20de9} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoCalcFBO@{aoCalcFBO}}
+\index{aoCalcFBO@{aoCalcFBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoCalcFBO}{aoCalcFBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::ao\+Calc\+FBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00293}{293}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ab62090bfb084fccce9a4611ee36dc266}\label{classsf_1_1_open_g_l_camera_ab62090bfb084fccce9a4611ee36dc266} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoCalcShader@{aoCalcShader}}
+\index{aoCalcShader@{aoCalcShader}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoCalcShader}{aoCalcShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::ao\+Calc\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00308}{308}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a39f7d0d86483a69d6dd8b25c662e5e5a}\label{classsf_1_1_open_g_l_camera_a39f7d0d86483a69d6dd8b25c662e5e5a} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoData@{aoData}}
+\index{aoData@{aoData}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoData}{aoData}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_a_o_data}{AOData}} sf\+::\+Open\+GLCamera\+::ao\+Data\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00295}{295}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a35b5a9c144cada7c117e30d67a1cc9da}\label{classsf_1_1_open_g_l_camera_a35b5a9c144cada7c117e30d67a1cc9da} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoDataUBO@{aoDataUBO}}
+\index{aoDataUBO@{aoDataUBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoDataUBO}{aoDataUBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::ao\+Data\+UBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00294}{294}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ae7fdda6369ca9ecae0a68a6957987e30}\label{classsf_1_1_open_g_l_camera_ae7fdda6369ca9ecae0a68a6957987e30} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoDeinterleaveFBO@{aoDeinterleaveFBO}}
+\index{aoDeinterleaveFBO@{aoDeinterleaveFBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoDeinterleaveFBO}{aoDeinterleaveFBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::ao\+Deinterleave\+FBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00292}{292}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a0537e9b44e1ac3f8b298615ad57d5be4}\label{classsf_1_1_open_g_l_camera_a0537e9b44e1ac3f8b298615ad57d5be4} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoDeinterleaveShader@{aoDeinterleaveShader}}
+\index{aoDeinterleaveShader@{aoDeinterleaveShader}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoDeinterleaveShader}{aoDeinterleaveShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::ao\+Deinterleave\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00307}{307}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a53724bf443c8d5f36556d49766365a41}\label{classsf_1_1_open_g_l_camera_a53724bf443c8d5f36556d49766365a41} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoDepthArrayTex@{aoDepthArrayTex}}
+\index{aoDepthArrayTex@{aoDepthArrayTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoDepthArrayTex}{aoDepthArrayTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::ao\+Depth\+Array\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00289}{289}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a2145ff32c70ef2f46ca88a08431d3117}\label{classsf_1_1_open_g_l_camera_a2145ff32c70ef2f46ca88a08431d3117} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoFactor@{aoFactor}}
+\index{aoFactor@{aoFactor}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoFactor}{aoFactor}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::ao\+Factor\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00298}{298}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_af96b44d54230042566ccbd55751e3e0d}\label{classsf_1_1_open_g_l_camera_af96b44d54230042566ccbd55751e3e0d} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoFinalFBO@{aoFinalFBO}}
+\index{aoFinalFBO@{aoFinalFBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoFinalFBO}{aoFinalFBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::ao\+Final\+FBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00291}{291}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_af3308a4622cbc411e84727d13ac680d4}\label{classsf_1_1_open_g_l_camera_af3308a4622cbc411e84727d13ac680d4} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoReinterleaveShader@{aoReinterleaveShader}}
+\index{aoReinterleaveShader@{aoReinterleaveShader}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoReinterleaveShader}{aoReinterleaveShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::ao\+Reinterleave\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00309}{309}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a99949928ecd8af30962c79ac259a3733}\label{classsf_1_1_open_g_l_camera_a99949928ecd8af30962c79ac259a3733} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoResultArrayTex@{aoResultArrayTex}}
+\index{aoResultArrayTex@{aoResultArrayTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoResultArrayTex}{aoResultArrayTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::ao\+Result\+Array\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00290}{290}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a38d5efdee7135b6097a8230927ae6ef4}\label{classsf_1_1_open_g_l_camera_a38d5efdee7135b6097a8230927ae6ef4} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!aoResultTex@{aoResultTex}}
+\index{aoResultTex@{aoResultTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{aoResultTex}{aoResultTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::ao\+Result\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00288}{288}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_abb134c14875cfef68185122a659de473}\label{classsf_1_1_open_g_l_camera_abb134c14875cfef68185122a659de473} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!autoExposure@{autoExposure}}
+\index{autoExposure@{autoExposure}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{autoExposure}{autoExposure}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLCamera\+::auto\+Exposure\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00272}{272}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_aa9311c2628487d90cdec7aecbcc213c4}\label{classsf_1_1_open_g_l_camera_aa9311c2628487d90cdec7aecbcc213c4} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!bloomBlur@{bloomBlur}}
+\index{bloomBlur@{bloomBlur}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{bloomBlur}{bloomBlur}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::bloom\+Blur = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00315}{315}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a2a0163959e64466a0fe6a5198b7f8531}\label{classsf_1_1_open_g_l_camera_a2a0163959e64466a0fe6a5198b7f8531} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!depthLinearizeShader@{depthLinearizeShader}}
+\index{depthLinearizeShader@{depthLinearizeShader}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{depthLinearizeShader}{depthLinearizeShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::depth\+Linearize\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00306}{306}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a95a95971583dd6d8f24e9ea92d150beb}\label{classsf_1_1_open_g_l_camera_a95a95971583dd6d8f24e9ea92d150beb} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!exposureComp@{exposureComp}}
+\index{exposureComp@{exposureComp}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{exposureComp}{exposureComp}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLCamera\+::exposure\+Comp\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00271}{271}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ac04fe3bf0392ab7e48d5b26f0f0f8467}\label{classsf_1_1_open_g_l_camera_ac04fe3bf0392ab7e48d5b26f0f0f8467} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!exposureTex@{exposureTex}}
+\index{exposureTex@{exposureTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{exposureTex}{exposureTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::exposure\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00270}{270}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a1755a87d56cf4ad3b32dead2d83af20e}\label{classsf_1_1_open_g_l_camera_a1755a87d56cf4ad3b32dead2d83af20e} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!far@{far}}
+\index{far@{far}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{far}{far}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLCamera\+::far\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00301}{301}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a3a45bab4640ae7166d1038664809c747}\label{classsf_1_1_open_g_l_camera_a3a45bab4640ae7166d1038664809c747} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!flipShader@{flipShader}}
+\index{flipShader@{flipShader}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{flipShader}{flipShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::flip\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00313}{313}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a7efe8d9c6e4b48047c1b00a8f88cc0a1}\label{classsf_1_1_open_g_l_camera_a7efe8d9c6e4b48047c1b00a8f88cc0a1} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!fovx@{fovx}}
+\index{fovx@{fovx}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{fovx}{fovx}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLCamera\+::fovx\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00299}{299}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a0bda95d4c429957111468d0f221b4af9}\label{classsf_1_1_open_g_l_camera_a0bda95d4c429957111468d0f221b4af9} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!fxaaShader@{fxaaShader}}
+\index{fxaaShader@{fxaaShader}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{fxaaShader}{fxaaShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::fxaa\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00312}{312}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_af493aa1381d7c545c13ca9fcb40db2f1}\label{classsf_1_1_open_g_l_camera_af493aa1381d7c545c13ca9fcb40db2f1} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!histogramBins@{histogramBins}}
+\index{histogramBins@{histogramBins}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{histogramBins}{histogramBins}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::histogram\+Bins\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00268}{268}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a04d8938c8122baa15e694ba297f25ea1}\label{classsf_1_1_open_g_l_camera_a04d8938c8122baa15e694ba297f25ea1} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!histogramRange@{histogramRange}}
+\index{histogramRange@{histogramRange}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{histogramRange}{histogramRange}}
+{\footnotesize\ttfamily glm\+::vec2 sf\+::\+Open\+GLCamera\+::histogram\+Range\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00269}{269}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a962e0edc6fe55e813818471ce6ae988a}\label{classsf_1_1_open_g_l_camera_a962e0edc6fe55e813818471ce6ae988a} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!histogramSSBO@{histogramSSBO}}
+\index{histogramSSBO@{histogramSSBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{histogramSSBO}{histogramSSBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::histogram\+SSBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00267}{267}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_af492091f750e8a1c76b769ff1b0f626c}\label{classsf_1_1_open_g_l_camera_af492091f750e8a1c76b769ff1b0f626c} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!lastActiveRenderColorBuffer@{lastActiveRenderColorBuffer}}
+\index{lastActiveRenderColorBuffer@{lastActiveRenderColorBuffer}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{lastActiveRenderColorBuffer}{lastActiveRenderColorBuffer}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::last\+Active\+Render\+Color\+Buffer\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00275}{275}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a5d52d650899886cc55e08222ba6bde0c}\label{classsf_1_1_open_g_l_camera_a5d52d650899886cc55e08222ba6bde0c} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!linearDepthFBO@{linearDepthFBO}}
+\index{linearDepthFBO@{linearDepthFBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{linearDepthFBO}{linearDepthFBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::linear\+Depth\+FBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00278}{278}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a35582f7935ea2e6fd5ee11d263d115a6}\label{classsf_1_1_open_g_l_camera_a35582f7935ea2e6fd5ee11d263d115a6} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!linearDepthTex@{linearDepthTex}}
+\index{linearDepthTex@{linearDepthTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{linearDepthTex}{linearDepthTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::linear\+Depth\+Tex\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00279}{279}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ae64d9fecef8445c9c0bc06b8fa2ca9ff}\label{classsf_1_1_open_g_l_camera_ae64d9fecef8445c9c0bc06b8fa2ca9ff} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!near@{near}}
+\index{near@{near}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{near}{near}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLCamera\+::near\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00300}{300}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_aa087cad9841bd01b598de433954f2fca}\label{classsf_1_1_open_g_l_camera_aa087cad9841bd01b598de433954f2fca} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!postprocessFBO@{postprocessFBO}}
+\index{postprocessFBO@{postprocessFBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{postprocessFBO}{postprocessFBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::postprocess\+FBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00280}{280}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a3fb00d6696f47f7b1202b3cce68a3270}\label{classsf_1_1_open_g_l_camera_a3fb00d6696f47f7b1202b3cce68a3270} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!postprocessStencilTex@{postprocessStencilTex}}
+\index{postprocessStencilTex@{postprocessStencilTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{postprocessStencilTex}{postprocessStencilTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::postprocess\+Stencil\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00282}{282}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_aedeccb4973a6f647a53f4b7620c24ffc}\label{classsf_1_1_open_g_l_camera_aedeccb4973a6f647a53f4b7620c24ffc} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!postprocessTex@{postprocessTex}}
+\index{postprocessTex@{postprocessTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{postprocessTex}{postprocessTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::postprocess\+Tex\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00281}{281}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ae5baccbfeec493390fd69d1ed75c4352}\label{classsf_1_1_open_g_l_camera_ae5baccbfeec493390fd69d1ed75c4352} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!projection@{projection}}
+\index{projection@{projection}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{projection}{projection}}
+{\footnotesize\ttfamily glm\+::mat4 sf\+::\+Open\+GLCamera\+::projection\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00302}{302}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a0a44621d24d5ac3c77156b0c7f263616}\label{classsf_1_1_open_g_l_camera_a0a44621d24d5ac3c77156b0c7f263616} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!quaterPostprocessFBO@{quaterPostprocessFBO}}
+\index{quaterPostprocessFBO@{quaterPostprocessFBO}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{quaterPostprocessFBO}{quaterPostprocessFBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::quater\+Postprocess\+FBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00283}{283}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a26ddd466aac7c72b899c8e84e0c58c64}\label{classsf_1_1_open_g_l_camera_a26ddd466aac7c72b899c8e84e0c58c64} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!quaterPostprocessTex@{quaterPostprocessTex}}
+\index{quaterPostprocessTex@{quaterPostprocessTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{quaterPostprocessTex}{quaterPostprocessTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::quater\+Postprocess\+Tex\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00284}{284}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a714872bdd58637aac82a7bfbca762e1b}\label{classsf_1_1_open_g_l_camera_a714872bdd58637aac82a7bfbca762e1b} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!renderColorTex@{renderColorTex}}
+\index{renderColorTex@{renderColorTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{renderColorTex}{renderColorTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::render\+Color\+Tex\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00264}{264}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a7342506f95a9702789ab72e8bbf96004}\label{classsf_1_1_open_g_l_camera_a7342506f95a9702789ab72e8bbf96004} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!renderDepthStencilTex@{renderDepthStencilTex}}
+\index{renderDepthStencilTex@{renderDepthStencilTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{renderDepthStencilTex}{renderDepthStencilTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::render\+Depth\+Stencil\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00266}{266}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a56d115499954d0d8b3a9ab975970f057}\label{classsf_1_1_open_g_l_camera_a56d115499954d0d8b3a9ab975970f057} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!renderViewNormalTex@{renderViewNormalTex}}
+\index{renderViewNormalTex@{renderViewNormalTex}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{renderViewNormalTex}{renderViewNormalTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLCamera\+::render\+View\+Normal\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00265}{265}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a6251f69242951296e8f49d63f3ebe7a0}\label{classsf_1_1_open_g_l_camera_a6251f69242951296e8f49d63f3ebe7a0} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!ssrBlur@{ssrBlur}}
+\index{ssrBlur@{ssrBlur}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{ssrBlur}{ssrBlur}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::ssr\+Blur = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00314}{314}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_ae50b7d84513364788395a800f16f721f}\label{classsf_1_1_open_g_l_camera_ae50b7d84513364788395a800f16f721f} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!ssrShader@{ssrShader}}
+\index{ssrShader@{ssrShader}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{ssrShader}{ssrShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::ssr\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00311}{311}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a1eb08e97996f9de4a9a42f2d819e234a}\label{classsf_1_1_open_g_l_camera_a1eb08e97996f9de4a9a42f2d819e234a} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!toneMapping@{toneMapping}}
+\index{toneMapping@{toneMapping}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{toneMapping}{toneMapping}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLCamera\+::tone\+Mapping\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00273}{273}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_camera_a9e1deabd9b046a16818432829f4c91e5}\label{classsf_1_1_open_g_l_camera_a9e1deabd9b046a16818432829f4c91e5} 
+\index{sf::OpenGLCamera@{sf::OpenGLCamera}!tonemappingShaders@{tonemappingShaders}}
+\index{tonemappingShaders@{tonemappingShaders}!sf::OpenGLCamera@{sf::OpenGLCamera}}
+\doxysubsubsection{\texorpdfstring{tonemappingShaders}{tonemappingShaders}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLCamera\+::tonemapping\+Shaders = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_camera_8h_source_l00305}{305}} of file \mbox{\hyperlink{_open_g_l_camera_8h_source}{Open\+GLCamera.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/graphics/Open\+GLCamera.\+h\item 
+Library/src/graphics/Open\+GLCamera.\+cpp\end{DoxyCompactItemize}

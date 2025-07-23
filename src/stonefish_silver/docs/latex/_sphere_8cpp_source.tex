@@ -1,0 +1,86 @@
+\doxysection{Sphere.\+cpp}
+\hypertarget{_sphere_8cpp_source}{}\label{_sphere_8cpp_source}\index{Library/src/entities/solids/Sphere.cpp@{Library/src/entities/solids/Sphere.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Sphere.cpp}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 1/30/13.}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2013-\/2019\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}entities/solids/Sphere.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00030}00030\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00033}\mbox{\hyperlink{classsf_1_1_sphere_ab787c0824ac7a8df37016b96310db415}{00033}}\ \mbox{\hyperlink{classsf_1_1_sphere_ab787c0824ac7a8df37016b96310db415}{Sphere::Sphere}}(std::string\ uniqueName,\ \mbox{\hyperlink{structsf_1_1_body_physics_settings}{BodyPhysicsSettings}}\ phy,\ Scalar\ radius,\ \textcolor{keyword}{const}\ Transform\&\ origin,\ std::string\ material,\ std::string\ look,\ Scalar\ thickness)}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00034}00034\ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}(uniqueName,\ phy,\ material,\ look,\ thickness)}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00036}00036\ \ \ \ \ r\ =\ radius;}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00037}00037\ \ \ \ \ T\_O2G\ =\ T\_O2C\ =\ T\_O2H\ =\ origin;}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00038}00038\ \ \ \ \ T\_CG2O\ =\ origin.inverse();}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00039}00039\ \ \ \ \ T\_CG2C\ =\ T\_CG2G\ =\ I4();}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00040}00040\ \ \ \ \ P\_CB\ =\ Vector3(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00041}00041\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//Calculate\ physical\ properties}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{if}(thick\ >\ Scalar(0)\ \&\&\ thick/Scalar(2)\ <\ r)}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ Scalar\ r1\ =\ r\ -\/\ thick/Scalar(2);}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ Scalar\ r2\ =\ r\ +\ thick/Scalar(2);}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ volume\ =\ Scalar(4)/Scalar(3)*M\_PI*(r2*r2*r2\ -\/\ r1*r1*r1);}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ surface\ =\ Scalar(4)*M\_PI*r2*r2;}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ mass\ =\ volume\ *\ mat.density;}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ Scalar\ I\ =\ Scalar(2)/Scalar(5)*mass*((r2*r2*r2*r2*r2\ -\/\ r1*r1*r1*r1*r1)/(r2*r2*r2\ -\/\ r1*r1*r1));}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ Ipri\ =\ Vector3(I,I,I);}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00052}00052\ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ volume\ =\ Scalar(4)/Scalar(3)*M\_PI*r*r*r;}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ surface\ =\ Scalar(4)*M\_PI*r*r;}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ mass\ =\ volume\ *\ mat.density;}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ Scalar\ I\ =\ Scalar(2)/Scalar(5)*mass*r*r;}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ Ipri\ =\ Vector3(I,I,I);}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//Build\ geometry}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00063}00063\ \ \ \ \ phyMesh\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_ac4397533ddc31a82afcb2a323dcb664b}{OpenGLContent::BuildSphere}}((GLfloat)r);}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00064}00064\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//Compute\ hydrodynamic\ properties}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00066}00066\ \ \ \ \ ComputeFluidDynamicsApprox(\ GeometryApproxType::SPHERE);}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//dragCoeff\ =\ Vector3(Scalar(0.47)*M\_PI*radius*radius,\ Scalar(0.47)*M\_PI*radius*radius,\ Scalar(0.47)*M\_PI*radius*radius);}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00070}\mbox{\hyperlink{classsf_1_1_sphere_aa44aba8f5967ede114a4c1ed767734f1}{00070}}\ SolidType\ \mbox{\hyperlink{classsf_1_1_sphere_aa44aba8f5967ede114a4c1ed767734f1}{Sphere::getSolidType}}()}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00071}00071\ \{}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{return}\ SolidType::SPHERE;}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00075}\mbox{\hyperlink{classsf_1_1_sphere_a54dda65202fa99f34f25dc6dfde229e9}{00075}}\ btCollisionShape*\ \mbox{\hyperlink{classsf_1_1_sphere_a54dda65202fa99f34f25dc6dfde229e9}{Sphere::BuildCollisionShape}}()}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00076}00076\ \{}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ btSphereShape(r);\ \textcolor{comment}{//Note:\ Entire\ radius\ is\ a\ collision\ margin.}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00078}00078\ \}}
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_sphere_8cpp_source_l00080}00080\ \}}
+
+\end{DoxyCode}

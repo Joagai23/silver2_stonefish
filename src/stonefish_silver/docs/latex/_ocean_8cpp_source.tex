@@ -1,0 +1,325 @@
+\doxysection{Ocean.\+cpp}
+\hypertarget{_ocean_8cpp_source}{}\label{_ocean_8cpp_source}\index{Library/src/entities/forcefields/Ocean.cpp@{Library/src/entities/forcefields/Ocean.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Ocean.cpp}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 19/10/17.}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright(c)\ 2017-\/2023\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}entities/forcefields/Ocean.h"{}}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}utils/SystemUtil.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}entities/forcefields/VelocityField.h"{}}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}entities/SolidEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLFlatOcean.h"{}}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLRealOcean.h"{}}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}actuators/Thruster.h"{}}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00038}00038\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00041}\mbox{\hyperlink{classsf_1_1_ocean_a4dabd6ebdd0f58936f79f2fdaafcc968}{00041}}\ \mbox{\hyperlink{classsf_1_1_ocean_a4dabd6ebdd0f58936f79f2fdaafcc968}{Ocean::Ocean}}(std::string\ uniqueName,\ Scalar\ waves,\ \mbox{\hyperlink{structsf_1_1_fluid}{Fluid}}\ l)\ :\ \mbox{\hyperlink{classsf_1_1_forcefield_entity}{ForcefieldEntity}}(uniqueName)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00043}00043\ \ \ \ \ ghost-\/>setCollisionFlags(ghost-\/>getCollisionFlags()\ |\ btCollisionObject::CF\_STATIC\_OBJECT);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00044}00044\ \ \ \ \ oceanState\ =\ waves\ >\ Scalar(2.0)\ ?\ Scalar(2.0)\ :\ waves;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00045}00045\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00046}00046\ \ \ \ \ Scalar\ size(100000);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00047}00047\ \ \ \ \ depth\ =\ size;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00048}00048\ \ \ \ \ Vector3\ halfExtents\ =\ Vector3(size/Scalar(2),\ size/Scalar(2),\ size/Scalar(2));}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00049}00049\ \ \ \ \ ghost-\/>setWorldTransform(Transform(Quaternion::getIdentity(),\ Vector3(0,\ 0,\ size/Scalar(2)\ -\/\ oceanState*Scalar(3))));\ \textcolor{comment}{//Move\ ocean\ influence\ zone\ a\ bit\ up\ to\ account\ for\ waves}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00050}00050\ \ \ \ \ ghost-\/>setCollisionShape(\textcolor{keyword}{new}\ btBoxShape(halfExtents));}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00052}00052\ \ \ \ \ currents\ =\ std::vector<VelocityField*>(0);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00053}00053\ \ \ \ \ currentsEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00054}00054\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00055}00055\ \ \ \ \ liquid\ =\ l;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00056}00056\ \ \ \ \ wavesDebug.type\ =\ RenderableType::HYDRO\_POINTS;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00057}00057\ \ \ \ \ wavesDebug.model\ =\ glm::mat4(1.f);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00058}00058\ \ \ \ \ waterType\ =\ Scalar(0.0);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00059}00059\ \ \ \ \ glOcean\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00062}\mbox{\hyperlink{classsf_1_1_ocean_a0e7a4b450c1b4866bf040cb8dfb11cb5}{00062}}\ \mbox{\hyperlink{classsf_1_1_ocean_a0e7a4b450c1b4866bf040cb8dfb11cb5}{Ocean::\string~Ocean}}()}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00063}00063\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}(currents.size()\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<currents.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ currents[i];}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ currents.clear();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00070}00070\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{if}(glOcean\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ glOcean;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00075}\mbox{\hyperlink{classsf_1_1_ocean_ac454b2fea353e02915d30b6237576997}{00075}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_ocean_ac454b2fea353e02915d30b6237576997}{Ocean::hasWaves}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00076}00076\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{return}\ oceanState\ >\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00078}00078\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00080}\mbox{\hyperlink{classsf_1_1_ocean_ab932be505daa61a0bfdaa36fea4b6039}{00080}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_ocean_ab932be505daa61a0bfdaa36fea4b6039}{Ocean::hasParticles}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00081}00081\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}(glOcean\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glOcean-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_af1542c2ac89a3b7547df43d75c6822a1}{getParticlesEnabled}}();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00088}\mbox{\hyperlink{classsf_1_1_ocean_aa2d7b0f6d9c7fd8e850050c118dbc598}{00088}}\ Scalar\ \mbox{\hyperlink{classsf_1_1_ocean_aa2d7b0f6d9c7fd8e850050c118dbc598}{Ocean::getWaterType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00089}00089\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{return}\ waterType;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00093}\mbox{\hyperlink{classsf_1_1_ocean_a049d6aa6b46ac32ac4d4e961729ba970}{00093}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean}{OpenGLOcean}}*\ \mbox{\hyperlink{classsf_1_1_ocean_a049d6aa6b46ac32ac4d4e961729ba970}{Ocean::getOpenGLOcean}}()}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00094}00094\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{return}\ glOcean;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00098}\mbox{\hyperlink{classsf_1_1_ocean_a48e25ebce631f7ed4a3bf77b48d24df0}{00098}}\ ForcefieldType\ \mbox{\hyperlink{classsf_1_1_ocean_a48e25ebce631f7ed4a3bf77b48d24df0}{Ocean::getForcefieldType}}()}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00099}00099\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ ForcefieldType::OCEAN;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00103}\mbox{\hyperlink{classsf_1_1_ocean_ae772c575770d953e61e6dbff56c623cf}{00103}}\ \mbox{\hyperlink{structsf_1_1_fluid}{Fluid}}\ \mbox{\hyperlink{classsf_1_1_ocean_ae772c575770d953e61e6dbff56c623cf}{Ocean::getLiquid}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00104}00104\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{return}\ liquid;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00108}\mbox{\hyperlink{classsf_1_1_ocean_abbfeefb09c9f525756398a0b1ead6fee}{00108}}\ \mbox{\hyperlink{classsf_1_1_velocity_field}{VelocityField}}*\ \mbox{\hyperlink{classsf_1_1_ocean_abbfeefb09c9f525756398a0b1ead6fee}{Ocean::getCurrent}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00109}00109\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{if}(index\ <\ currents.size())}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ currents[index];}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00116}\mbox{\hyperlink{classsf_1_1_ocean_a3748e8d2de6d43f6942af8763c0b8d28}{00116}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_ocean_a3748e8d2de6d43f6942af8763c0b8d28}{Ocean::setWaterType}}(Scalar\ jerlov)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00117}00117\ \{\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{if}(glOcean\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00119}00119\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ waterType\ =\ jerlov\ >\ Scalar(1)\ ?\ Scalar(1)\ :\ (jerlov\ <\ Scalar(0)\ ?\ Scalar(0)\ :\ jerlov);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ glOcean-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a2477f6a3457932c545e9e2e59df55bb6}{setWaterType}}((\textcolor{keywordtype}{float})waterType);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00125}\mbox{\hyperlink{classsf_1_1_ocean_a7479fd4cb922809c626f613b81c26e46}{00125}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_ocean_a7479fd4cb922809c626f613b81c26e46}{Ocean::setParticles}}(\textcolor{keywordtype}{bool}\ enabled)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00126}00126\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{if}(glOcean\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ glOcean-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_aa855b12b0fd4a39ca98861545c60dcf3}{setParticles}}(enabled);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00129}00129\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00131}\mbox{\hyperlink{classsf_1_1_ocean_a3f0b9ec84aeeac2a38f0dd46b370a757}{00131}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_ocean_a3f0b9ec84aeeac2a38f0dd46b370a757}{Ocean::SetConditions}}(Scalar\ waterTemp)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00132}00132\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{keywordflow}{if}(glOcean\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ glOcean-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a7bebb7ceda5c0ab735133b773419b8d7}{setWaterTemperature}}((\textcolor{keywordtype}{float})waterTemp);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00137}\mbox{\hyperlink{classsf_1_1_ocean_a89983491ffaa6ef870f3ae3651c4ab0d}{00137}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_ocean_a89983491ffaa6ef870f3ae3651c4ab0d}{Ocean::AddVelocityField}}(\mbox{\hyperlink{classsf_1_1_velocity_field}{VelocityField}}*\ field)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00138}00138\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00139}00139\ \ \ \ \ currents.push\_back(field);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00140}00140\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00142}\mbox{\hyperlink{classsf_1_1_ocean_ae4d0c2faafb69bed99908e818027c027}{00142}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_ocean_ae4d0c2faafb69bed99908e818027c027}{Ocean::IsInsideFluid}}(\textcolor{keyword}{const}\ Vector3\&\ point)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00143}00143\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsf_1_1_ocean_a9b7cbe2dadd41356c5d771cfec8f038a}{GetDepth}}(point)\ >=\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00145}00145\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00147}00147\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classsf_1_1_ocean_a9b7cbe2dadd41356c5d771cfec8f038a}{Ocean::GetDepth}}(\textcolor{keyword}{const}\ glm::vec3\&\ point)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00148}00148\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00149}00149\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_ocean_ac454b2fea353e02915d30b6237576997}{hasWaves}}())\ \textcolor{comment}{//Geometric\ waves}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00150}00150\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ GLfloat\ waveHeight\ =\ glOcean-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a8f5954b3795d6b4ee4d0cb4c8551794b}{ComputeWaveHeight}}(point.x,\ point.y);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ glm::vec3\ wavePoint(point.x,\ point.y,\ waveHeight);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00153}00153\ \textcolor{preprocessor}{\#ifdef\ DEBUG\_WAVES}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ wavesDebug.points.push\_back(wavePoint);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00155}00155\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ point.z\ -\/\ waveHeight;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00157}00157\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00158}00158\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//Flat\ surface}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00159}00159\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ glm::vec3\ wavePoint(point.x,\ point.y,\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00161}00161\ \textcolor{preprocessor}{\#ifdef\ DEBUG\_WAVES\ \ }}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ wavesDebug.points.push\_back(wavePoint);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00163}00163\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ point.z;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00165}00165\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00166}00166\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00168}\mbox{\hyperlink{classsf_1_1_ocean_a9b7cbe2dadd41356c5d771cfec8f038a}{00168}}\ Scalar\ \mbox{\hyperlink{classsf_1_1_ocean_a9b7cbe2dadd41356c5d771cfec8f038a}{Ocean::GetDepth}}(\textcolor{keyword}{const}\ Vector3\&\ point)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00169}00169\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00170}00170\ \ \ \ \ \textcolor{keywordflow}{return}\ Scalar(\mbox{\hyperlink{classsf_1_1_ocean_a9b7cbe2dadd41356c5d771cfec8f038a}{GetDepth}}(glm::vec3((GLfloat)point.getX(),\ (GLfloat)point.getY(),\ (GLfloat)point.getZ())));}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00171}00171\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00173}\mbox{\hyperlink{classsf_1_1_ocean_a0fd753dfa5f3fa1fb98bf449b194d2b1}{00173}}\ Scalar\ \mbox{\hyperlink{classsf_1_1_ocean_a0fd753dfa5f3fa1fb98bf449b194d2b1}{Ocean::GetPressure}}(\textcolor{keyword}{const}\ Vector3\&\ point)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00174}00174\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00175}00175\ \ \ \ \ Scalar\ g\ =\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_aabec3fadafe52939d92e282684a6aa01}{getGravity}}().getZ();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00176}00176\ \ \ \ \ Scalar\ d\ =\ \mbox{\hyperlink{classsf_1_1_ocean_a9b7cbe2dadd41356c5d771cfec8f038a}{GetDepth}}(point);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00177}00177\ \ \ \ \ Scalar\ pressure\ =\ d\ >\ Scalar(0)\ ?\ d*liquid.density*g\ :\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{return}\ pressure;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00179}00179\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00181}\mbox{\hyperlink{classsf_1_1_ocean_a387dc4923d2088b0e4b0c266eeb0b8e3}{00181}}\ Vector3\ \mbox{\hyperlink{classsf_1_1_ocean_a387dc4923d2088b0e4b0c266eeb0b8e3}{Ocean::GetFluidVelocity}}(\textcolor{keyword}{const}\ Vector3\&\ point)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00182}00182\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{if}(currentsEnabled)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00184}00184\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ Vector3\ fv\ =\ V0();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<currents.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(currents[i]-\/>isEnabled())}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fv\ +=\ currents[i]-\/>GetVelocityAtPoint(point);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fv;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{keywordflow}{return}\ V0();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00194}00194\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00196}00196\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_ocean_a387dc4923d2088b0e4b0c266eeb0b8e3}{Ocean::GetFluidVelocity}}(\textcolor{keyword}{const}\ glm::vec3\&\ point)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00197}00197\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00198}00198\ \ \ \ \ \textcolor{keywordflow}{return}\ glVectorFromVector(\mbox{\hyperlink{classsf_1_1_ocean_a387dc4923d2088b0e4b0c266eeb0b8e3}{GetFluidVelocity}}(Vector3(point.x,\ point.y,\ point.z)));}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00199}00199\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00201}\mbox{\hyperlink{classsf_1_1_ocean_ae12159f3b3ffd327b6cb69d94b9c7ae8}{00201}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_ocean_ae12159f3b3ffd327b6cb69d94b9c7ae8}{Ocean::EnableCurrents}}()}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00202}00202\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00203}00203\ \ \ \ \ currentsEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00204}00204\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00206}\mbox{\hyperlink{classsf_1_1_ocean_a9696aec8eab7f9a31fee3728eb5fc561}{00206}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_ocean_a9696aec8eab7f9a31fee3728eb5fc561}{Ocean::DisableCurrents}}()}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00207}00207\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00208}00208\ \ \ \ \ currentsEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00209}00209\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00211}\mbox{\hyperlink{classsf_1_1_ocean_aee04f6c24dc52bad6838f0780ed23b70}{00211}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_ocean_aee04f6c24dc52bad6838f0780ed23b70}{Ocean::UpdateCurrentsData}}()}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00212}00212\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00213}00213\ \ \ \ \ \textcolor{keywordflow}{if}(glOcean\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ glOcean-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_aaf070e090fabaeda8038adaf90a62a5e}{UpdateOceanCurrentsData}}(glOceanCurrentsUBOData);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00215}00215\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00217}\mbox{\hyperlink{classsf_1_1_ocean_a2a98ca79f1089dd7d6ff522260145435}{00217}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_ocean_a2a98ca79f1089dd7d6ff522260145435}{Ocean::ApplyFluidForces}}(btDynamicsWorld*\ world,\ btCollisionObject*\ co,\ \textcolor{keywordtype}{bool}\ recompute)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00218}00218\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00219}00219\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_entity}{Entity}}*\ ent;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00220}00220\ \ \ \ \ btRigidBody*\ rb\ =\ btRigidBody::upcast(co);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00221}00221\ \ \ \ \ btMultiBodyLinkCollider*\ mbl\ =\ btMultiBodyLinkCollider::upcast(co);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00222}00222\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00223}00223\ \ \ \ \ \textcolor{keywordflow}{if}(rb\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00224}00224\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rb-\/>isStaticOrKinematicObject())}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ ent\ =\ (\mbox{\hyperlink{classsf_1_1_entity}{Entity}}*)rb-\/>getUserPointer();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00229}00229\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00230}00230\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(mbl\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00231}00231\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(mbl-\/>isStaticOrKinematicObject())}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ ent\ =\ (\mbox{\hyperlink{classsf_1_1_entity}{Entity}}*)mbl-\/>getUserPointer();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00236}00236\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00237}00237\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00239}00239\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00240}00240\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_hydrodynamics_settings}{HydrodynamicsSettings}}\ settings;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00241}00241\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00242}00242\ \ \ \ \ \textcolor{keywordflow}{if}(ent-\/>\mbox{\hyperlink{classsf_1_1_entity_aba0c0ef819595be1aab5a6d9ba7c0c91}{getType}}()\ ==\ EntityType::SOLID)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00243}00243\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(recompute)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ settings.dampingForces\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ settings.reallisticBuoyancy\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*)ent)-\/>ComputeHydrodynamicForces(settings,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*)ent)-\/>ApplyHydrodynamicForces();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00252}00252\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00253}00253\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00255}\mbox{\hyperlink{classsf_1_1_ocean_a968236ba6cd6142fd2b13005f31eb79e}{00255}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_ocean_a968236ba6cd6142fd2b13005f31eb79e}{Ocean::InitGraphics}}(SDL\_mutex*\ hydrodynamics)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00256}00256\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00257}00257\ \ \ \ \ \textcolor{keywordflow}{if}(oceanState\ >\ 0.0)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ glOcean\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean}{OpenGLRealOcean}}(depth,\ oceanState,\ hydrodynamics);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00259}00259\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ glOcean\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_open_g_l_flat_ocean}{OpenGLFlatOcean}}(depth);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00261}00261\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_ocean_a3748e8d2de6d43f6942af8763c0b8d28}{setWaterType}}(0.2);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00262}00262\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00264}\mbox{\hyperlink{classsf_1_1_ocean_a8621922710bfaf692c1476506dd9d650}{00264}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_ocean_a8621922710bfaf692c1476506dd9d650}{Ocean::Render}}()}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00265}00265\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00266}00266\ \ \ \ \ std::vector<Actuator*>\ act;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00267}00267\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsf_1_1_ocean_a8621922710bfaf692c1476506dd9d650}{Render}}(act);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00270}\mbox{\hyperlink{classsf_1_1_ocean_a12394fe73eddd30bae047b4662892fea}{00270}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_ocean_a8621922710bfaf692c1476506dd9d650}{Ocean::Render}}(\textcolor{keyword}{const}\ std::vector<Actuator*>\&\ act)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00271}00271\ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00272}00272\ \ \ \ \ std::vector<Renderable>\ items(0);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00273}00273\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00274}00274\ \ \ \ \ \textcolor{comment}{//Update\ currents\ data}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00275}00275\ \ \ \ \ glOceanCurrentsUBOData.gravity\ =\ glm::vec3(0.f,0.f,9.81f);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00276}00276\ \ \ \ \ glOceanCurrentsUBOData.numCurrents\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00278}00278\ \ \ \ \ \textcolor{keywordflow}{if}(currentsEnabled)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00279}00279\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<currents.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(currents[i]-\/>isEnabled())}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Renderable>\ citems\ =\ currents[i]-\/>Render(glOceanCurrentsUBOData.currents[glOceanCurrentsUBOData.numCurrents]);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.insert(items.end(),\ citems.begin(),\ citems.end());}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++glOceanCurrentsUBOData.numCurrents;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00287}00287\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00288}00288\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00289}00289\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<act.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(act[i]-\/>\mbox{\hyperlink{classsf_1_1_forcefield_entity_ac3ff5ea2a10d941039b258d9e9442c72}{getType}}()\ ==\ ActuatorType::THRUSTER)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_thruster}{Thruster}}*\ th\ =\ (\mbox{\hyperlink{classsf_1_1_thruster}{Thruster}}*)act[i];}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ thFrame\ =\ th-\/>\mbox{\hyperlink{classsf_1_1_link_actuator_a2a206c10015fd2ab7d4a517af5906311}{getActuatorFrame}}();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ thPos\ =\ thFrame.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ thDir\ =\ -\/thFrame.getBasis().getColumn(0);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ R\ =\ th-\/>\mbox{\hyperlink{classsf_1_1_thruster_a11ae2b620b0653f61202c02c78f3c164}{getPropellerDiameter}}()/Scalar(2);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ vel\ =\ (th-\/>\mbox{\hyperlink{classsf_1_1_thruster_acd5be5ff5204def1aee6b808b4bf510f}{isPropellerRight}}()\ ?\ Scalar(0.1)\ :\ Scalar(-\/0.1))\ *\ th-\/>\mbox{\hyperlink{classsf_1_1_thruster_a7d9f37712e882dd6ca18d00c8a8cb579}{getThrust}}();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ glOceanCurrentsUBOData.currents[glOceanCurrentsUBOData.numCurrents].posR\ =\ glm::vec4((GLfloat)thPos.getX(),\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (GLfloat)thPos.getY(),\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (GLfloat)thPos.getZ(),\ (GLfloat)R);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ glOceanCurrentsUBOData.currents[glOceanCurrentsUBOData.numCurrents].dirV\ =\ glm::vec4((GLfloat)thDir.getX(),}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (GLfloat)thDir.getY(),}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (GLfloat)thDir.getZ(),}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (GLfloat)vel);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ glOceanCurrentsUBOData.currents[glOceanCurrentsUBOData.numCurrents].params\ =\ glm::vec3(0.f);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ glOceanCurrentsUBOData.currents[glOceanCurrentsUBOData.numCurrents].type\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ ++glOceanCurrentsUBOData.numCurrents;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00310}00310\ \ \ \ \ \textcolor{keywordflow}{if}(wavesDebug.points.size()\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00311}00311\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ items.push\_back(wavesDebug);}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ wavesDebug.points.clear();}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00314}00314\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00317}00317\ \}}
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_ocean_8cpp_source_l00319}00319\ \}}
+
+\end{DoxyCode}

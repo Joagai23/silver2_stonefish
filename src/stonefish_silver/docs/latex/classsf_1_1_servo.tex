@@ -1,0 +1,404 @@
+\doxysection{sf\+::Servo Class Reference}
+\hypertarget{classsf_1_1_servo}{}\label{classsf_1_1_servo}\index{sf::Servo@{sf::Servo}}
+
+
+A class implementing a position/velocity servo motor.  
+
+
+
+
+{\ttfamily \#include $<$Servo.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Servo\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classsf_1_1_servo__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Servo\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_servo__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_servo_a7fd8edfd2501884b028432b63d6090a6}{Servo}} (std\+::string unique\+Name, Scalar position\+Gain, Scalar velocity\+Gain, Scalar max\+Torque)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_servo_aca7b935fb584743b46484c94a4760457}{Attach\+To\+Joint}} (\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*}multibody, unsigned int joint\+Id)
+\begin{DoxyCompactList}\small\item\em A method used to attach the actuator to the specified joint of a rigid multibody. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_servo_add05dead7575b933b156d4e9a997e3aa}{Attach\+To\+Joint}} (\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*}joint)
+\begin{DoxyCompactList}\small\item\em A method used to attach the actuator to a discrete joint. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_servo_aed2297ca611fcbd33d7e7af4823f0cb1}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method used to update the internal state of the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_servo_a309bff99783a38d82a02cbfeb851c3e0}{set\+Control\+Mode}} (Servo\+Control\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method to set the desired control mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_servo_a83c3e36072a743fd95446da50ab4cabe}{set\+Desired\+Position}} (Scalar pos)
+\begin{DoxyCompactList}\small\item\em A method to set the desired position setpoint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_servo_ad98f971ed820e93a51d5eec90a42aca7}{set\+Desired\+Velocity}} (Scalar vel)
+\begin{DoxyCompactList}\small\item\em A method to set the desired velocity setpoint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_servo_ad7cd2ffccb0a1e67cfe5e55a90ba7f0c}{set\+Max\+Velocity}} (Scalar vel)
+\begin{DoxyCompactList}\small\item\em A method to set the maximum velocity of the servo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_servo_a1c7af37c63bb6ecd99556fec6d1bf544}{set\+Max\+Torque}} (Scalar tau)
+\begin{DoxyCompactList}\small\item\em A method to set the maximum torque applied by the servo. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_servo_a0a7f62a51a2781bf284c3c0c5ddc789f}{get\+Desired\+Position}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the desired position setpoint. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_servo_a9a22f44306600d26075c080569abca0e}{get\+Desired\+Velocity}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the desired velocity setpoint. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_servo_a4b3f3c92cefd1f164fe186bac264e510}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the position of the servo motor. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_servo_ade74feff9eea7d767884fb3959c2d64e}{get\+Velocity}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the velocity of the servo motor. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_servo_a7b26d6ada5bf5b8ee57d97a46d66256b}{get\+Effort}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the effort of the servo motor (force or torque). \end{DoxyCompactList}\item 
+Actuator\+Type \mbox{\hyperlink{classsf_1_1_servo_add527969e459be202c23b75fe812432b}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_joint_actuator}{sf\+::\+Joint\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_joint_actuator_aa5b611903e340b4214d0cd83a5dbcd6e}{Joint\+Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_joint_actuator_a7bdca161b0958f08eecf596dc62c9ae1}{get\+Joint\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the joint that the actuator is driving. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_actuator_a0bdcfb3e2bad01b7e3524efcea3dd646}{Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_actuator_ab1702a858f2c750da3259d8b3d574268}{\texorpdfstring{$\sim$}{\string~}\+Actuator}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_actuator_a10c5e76c82bb29f60d2f8d199c9c47b0}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_afe4e4fcdb0e13f9efbc665994e77d145}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set display mode used for the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a7e3ae31d3cfed62d68a0445b7a03f026}{set\+Watchdog}} (Scalar timeout)
+\begin{DoxyCompactList}\small\item\em A method used to set the watchdog timeout. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_actuator_a3a074b11358493cb251139c475507d2d}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a86dec171a3761123d92363a71b716385}{Reset\+Watchdog}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_joint_actuator}{sf\+::\+Joint\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_actuator_a5a9f92ec272791761aed0661aa792000}{fe}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_joint_actuator_a913da21fc3b74a75dcf4bee1b363e4fb}{j\+Id}}
+\item 
+\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_actuator_a6addf28cc11d43cf03a733e30f2c60d9}{j}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_actuator_a1ca99e4bb5c8efa1670fdd09f1d52ead}{dm}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing a position/velocity servo motor. 
+
+Definition at line \mbox{\hyperlink{_servo_8h_source_l00037}{37}} of file \mbox{\hyperlink{_servo_8h_source}{Servo.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_servo_a7fd8edfd2501884b028432b63d6090a6}\label{classsf_1_1_servo_a7fd8edfd2501884b028432b63d6090a6} 
+\index{sf::Servo@{sf::Servo}!Servo@{Servo}}
+\index{Servo@{Servo}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{Servo()}{Servo()}}
+{\footnotesize\ttfamily sf\+::\+Servo\+::\+Servo (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{Scalar}]{position\+Gain,  }\item[{Scalar}]{velocity\+Gain,  }\item[{Scalar}]{max\+Torque }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the servo motor \\
+\hline
+{\em position\+Gain} & a gain factor used in position control \\
+\hline
+{\em velocity\+Gain} & a gain factor used in velocity control \\
+\hline
+{\em max\+Torque} & the maximum torque that the motor can generate \mbox{[}Nm\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_servo_aca7b935fb584743b46484c94a4760457}\label{classsf_1_1_servo_aca7b935fb584743b46484c94a4760457} 
+\index{sf::Servo@{sf::Servo}!AttachToJoint@{AttachToJoint}}
+\index{AttachToJoint@{AttachToJoint}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{AttachToJoint()}{AttachToJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void sf\+::\+Servo\+::\+Attach\+To\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*}}]{multibody,  }\item[{unsigned int}]{joint\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to attach the actuator to the specified joint of a rigid multibody. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em multibody} & a pointer to the multibody \\
+\hline
+{\em joint\+Id} & the index of the multibody joint to be actuated \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_joint_actuator_a9cf03f5ea09353353adc7b1146dfcdd5}{sf\+::\+Joint\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00166}{166}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_add05dead7575b933b156d4e9a997e3aa}\label{classsf_1_1_servo_add05dead7575b933b156d4e9a997e3aa} 
+\index{sf::Servo@{sf::Servo}!AttachToJoint@{AttachToJoint}}
+\index{AttachToJoint@{AttachToJoint}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{AttachToJoint()}{AttachToJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void sf\+::\+Servo\+::\+Attach\+To\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*}}]{joint }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to attach the actuator to a discrete joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em joint} & a pointer to a joint object \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_joint_actuator_ac954665cee9439e801da37c9fd1d1a5a}{sf\+::\+Joint\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_a0a7f62a51a2781bf284c3c0c5ddc789f}\label{classsf_1_1_servo_a0a7f62a51a2781bf284c3c0c5ddc789f} 
+\index{sf::Servo@{sf::Servo}!getDesiredPosition@{getDesiredPosition}}
+\index{getDesiredPosition@{getDesiredPosition}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{getDesiredPosition()}{getDesiredPosition()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Servo\+::get\+Desired\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the desired position setpoint. 
+
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_a9a22f44306600d26075c080569abca0e}\label{classsf_1_1_servo_a9a22f44306600d26075c080569abca0e} 
+\index{sf::Servo@{sf::Servo}!getDesiredVelocity@{getDesiredVelocity}}
+\index{getDesiredVelocity@{getDesiredVelocity}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{getDesiredVelocity()}{getDesiredVelocity()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Servo\+::get\+Desired\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the desired velocity setpoint. 
+
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_a7b26d6ada5bf5b8ee57d97a46d66256b}\label{classsf_1_1_servo_a7b26d6ada5bf5b8ee57d97a46d66256b} 
+\index{sf::Servo@{sf::Servo}!getEffort@{getEffort}}
+\index{getEffort@{getEffort}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{getEffort()}{getEffort()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Servo\+::get\+Effort (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the effort of the servo motor (force or torque). 
+
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00158}{158}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_a4b3f3c92cefd1f164fe186bac264e510}\label{classsf_1_1_servo_a4b3f3c92cefd1f164fe186bac264e510} 
+\index{sf::Servo@{sf::Servo}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Servo\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the position of the servo motor. 
+
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_add527969e459be202c23b75fe812432b}\label{classsf_1_1_servo_add527969e459be202c23b75fe812432b} 
+\index{sf::Servo@{sf::Servo}!getType@{getType}}
+\index{getType@{getType}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Actuator\+Type sf\+::\+Servo\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the actuator. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_actuator_a3b1831e870e2b800590271823d034c88}{sf\+::\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_ade74feff9eea7d767884fb3959c2d64e}\label{classsf_1_1_servo_ade74feff9eea7d767884fb3959c2d64e} 
+\index{sf::Servo@{sf::Servo}!getVelocity@{getVelocity}}
+\index{getVelocity@{getVelocity}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Servo\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the velocity of the servo motor. 
+
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_a309bff99783a38d82a02cbfeb851c3e0}\label{classsf_1_1_servo_a309bff99783a38d82a02cbfeb851c3e0} 
+\index{sf::Servo@{sf::Servo}!setControlMode@{setControlMode}}
+\index{setControlMode@{setControlMode}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{setControlMode()}{setControlMode()}}
+{\footnotesize\ttfamily void sf\+::\+Servo\+::set\+Control\+Mode (\begin{DoxyParamCaption}\item[{Servo\+Control\+Mode}]{m }\end{DoxyParamCaption})}
+
+
+
+A method to set the desired control mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & control mode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_a83c3e36072a743fd95446da50ab4cabe}\label{classsf_1_1_servo_a83c3e36072a743fd95446da50ab4cabe} 
+\index{sf::Servo@{sf::Servo}!setDesiredPosition@{setDesiredPosition}}
+\index{setDesiredPosition@{setDesiredPosition}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{setDesiredPosition()}{setDesiredPosition()}}
+{\footnotesize\ttfamily void sf\+::\+Servo\+::set\+Desired\+Position (\begin{DoxyParamCaption}\item[{Scalar}]{pos }\end{DoxyParamCaption})}
+
+
+
+A method to set the desired position setpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & the desired angular pos \mbox{[}rad\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_ad98f971ed820e93a51d5eec90a42aca7}\label{classsf_1_1_servo_ad98f971ed820e93a51d5eec90a42aca7} 
+\index{sf::Servo@{sf::Servo}!setDesiredVelocity@{setDesiredVelocity}}
+\index{setDesiredVelocity@{setDesiredVelocity}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{setDesiredVelocity()}{setDesiredVelocity()}}
+{\footnotesize\ttfamily void sf\+::\+Servo\+::set\+Desired\+Velocity (\begin{DoxyParamCaption}\item[{Scalar}]{vel }\end{DoxyParamCaption})}
+
+
+
+A method to set the desired velocity setpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vel} & the desired angular velocity \mbox{[}rad/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_a1c7af37c63bb6ecd99556fec6d1bf544}\label{classsf_1_1_servo_a1c7af37c63bb6ecd99556fec6d1bf544} 
+\index{sf::Servo@{sf::Servo}!setMaxTorque@{setMaxTorque}}
+\index{setMaxTorque@{setMaxTorque}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{setMaxTorque()}{setMaxTorque()}}
+{\footnotesize\ttfamily void sf\+::\+Servo\+::set\+Max\+Torque (\begin{DoxyParamCaption}\item[{Scalar}]{tau }\end{DoxyParamCaption})}
+
+
+
+A method to set the maximum torque applied by the servo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tau} & the max torque \mbox{[}Nm\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_ad7cd2ffccb0a1e67cfe5e55a90ba7f0c}\label{classsf_1_1_servo_ad7cd2ffccb0a1e67cfe5e55a90ba7f0c} 
+\index{sf::Servo@{sf::Servo}!setMaxVelocity@{setMaxVelocity}}
+\index{setMaxVelocity@{setMaxVelocity}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{setMaxVelocity()}{setMaxVelocity()}}
+{\footnotesize\ttfamily void sf\+::\+Servo\+::set\+Max\+Velocity (\begin{DoxyParamCaption}\item[{Scalar}]{vel }\end{DoxyParamCaption})}
+
+
+
+A method to set the maximum velocity of the servo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vel} & the maximum allowed servo velocity \mbox{[}rad/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+\Hypertarget{classsf_1_1_servo_aed2297ca611fcbd33d7e7af4823f0cb1}\label{classsf_1_1_servo_aed2297ca611fcbd33d7e7af4823f0cb1} 
+\index{sf::Servo@{sf::Servo}!Update@{Update}}
+\index{Update@{Update}!sf::Servo@{sf::Servo}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void sf\+::\+Servo\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to update the internal state of the actuator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & the time step of the simulation \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_actuator_afe9be563b1e1819330bb61386d443b62}{sf\+::\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_servo_8cpp_source_l00199}{199}} of file \mbox{\hyperlink{_servo_8cpp_source}{Servo.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Servo.\+h\item 
+Library/src/actuators/Servo.\+cpp\end{DoxyCompactItemize}

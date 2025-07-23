@@ -1,0 +1,1951 @@
+\doxysection{sf\+::Simulation\+Manager Class Reference}
+\hypertarget{classsf_1_1_simulation_manager}{}\label{classsf_1_1_simulation_manager}\index{sf::SimulationManager@{sf::SimulationManager}}
+
+
+An abstract class managing the simulation world, the solver settings and implementing custom physics callbacks.  
+
+
+
+
+{\ttfamily \#include $<$Simulation\+Manager.\+h$>$}
+
+
+
+Collaboration diagram for sf\+::Simulation\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classsf_1_1_simulation_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_simulation_manager_a6ff4ec7898b36e21c11d29f812a6cb87}{Simulation\+Manager}} (Scalar steps\+Per\+Second=Scalar(60), Solver\+Type st=SOLVER\+\_\+\+SI, Collision\+Filtering\+Type cft=COLLISION\+\_\+\+EXCLUSIVE)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_simulation_manager_a993abd05ddada18f2cf0ff13c737dd20}{\texorpdfstring{$\sim$}{\string~}\+Simulation\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+\Hypertarget{classsf_1_1_simulation_manager_acd0e294ef2ce404cbffac12acecaf2b5}\label{classsf_1_1_simulation_manager_acd0e294ef2ce404cbffac12acecaf2b5} 
+virtual void {\bfseries Build\+Scenario} ()=0
+\begin{DoxyCompactList}\small\item\em A method used to construct simulation scenario. This has to be implemented by the subclass. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_manager_aaf3535a74f31db4dad576d82b24e958c}{Simulation\+Step\+Completed}} (Scalar time\+Step)
+\begin{DoxyCompactList}\small\item\em A method called after the simulation step is completed. Useful to implement interaction with outside code. \end{DoxyCompactList}\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{classsf_1_1_simulation_manager_ad93ea0c409c9576e0bb1e7dfa2c12c74}{get\+Simulation\+Clock}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the current simulation clock time in us (overriding allows for external time source). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_manager_ac96cf015c4ffc8f73cc0232f65567337}{Simulation\+Clock\+Sleep}} (uint64\+\_\+t us)
+\begin{DoxyCompactList}\small\item\em A method sleeping for a given simulation clock time (overriding allows for external time source). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_simulation_manager_a4ba2eb6916c8812565a5c2eac4d03323}{Solve\+ICProblem}} ()
+\begin{DoxyCompactList}\small\item\em A method solving the initial conditions problem. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_manager_a857ee2b9d6f9602309af8be3a05a6a9a}{Destroy\+Scenario}} ()
+\begin{DoxyCompactList}\small\item\em A method cleaning the simulation world. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_simulation_manager_a03be93f0717f109546e71f91bd7e171f}{Start\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em A method which starts the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_ae316a111552578bee0e585aea607db49}{Stop\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em A method which stops the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a3d35329fd7b0a439b9bd65de0262fe79}{Resume\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em A method that resumes the paused simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a6fedc8ebc70ce333563c44f154d455cc}{Restart\+Scenario}} ()
+\begin{DoxyCompactList}\small\item\em A method which restarts the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a0948bd4772f65613f23f85e8b7fb09be}{Advance\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em A method that steps the simulation based on real time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a181a668572d358370b5788b3b082e59f}{Step\+Simulation}} (Scalar time\+Step)
+\begin{DoxyCompactList}\small\item\em A method that performs on simulation step of specified period. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a1accfcb843b0a73e6e1082a86b009285}{Update\+Drawing\+Queue}} ()
+\begin{DoxyCompactList}\small\item\em A method updating the drawing queue (thread safe) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a2d7f1779ae0b3dae0b0e6b29e7de0d22}{Add\+Entity}} (\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}ent)
+\begin{DoxyCompactList}\small\item\em A method that adds any type of entity to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a55649ee4418bedebcf4e618257720e3a}{Add\+Robot}} (\mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method that adds a robotic system to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a042d39aea73c40636fae5c029110f933}{Add\+Static\+Entity}} (\mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*}ent, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method that adds a static body to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a39ab8cadf5d316c91b03b56f2f096139}{Add\+Animated\+Entity}} (\mbox{\hyperlink{classsf_1_1_animated_entity}{Animated\+Entity}} \texorpdfstring{$\ast$}{*}ent)
+\begin{DoxyCompactList}\small\item\em A method that adds an animated rigid body to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_aa17acc0a4e7a7c2e21bb5cd512cfdf45}{Add\+Solid\+Entity}} (\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}ent, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method that adds a dynamic rigid body to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_aab39d62a245ddf4aa6c7304b46326420}{Remove\+Solid\+Entity}} (\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}ent)
+\begin{DoxyCompactList}\small\item\em A method that removes a dynamic rigid body from the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_adfbb4f34774e77087acad2c62061e10b}{Add\+Featherstone\+Entity}} (\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*}ent, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method that adds a rigid multibody to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_ae52901f940495b5811eb49a0ca08db98}{Remove\+Featherstone\+Entity}} (\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*}ent)
+\begin{DoxyCompactList}\small\item\em A method that removes a rigid multibody from the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_ad436ef2b37cf3e66d26aee11310b8670}{Add\+Joint}} (\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*}jnt)
+\begin{DoxyCompactList}\small\item\em A method that adds a discrete joint to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_af58cf6697044ae9844eddbda22f543b6}{Remove\+Joint}} (\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*}jnt)
+\begin{DoxyCompactList}\small\item\em A method that removes a discrete joint from the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a7cf2d54d2a09d8baf0cdaf8db47b0a7d}{Add\+Actuator}} (\mbox{\hyperlink{classsf_1_1_actuator}{Actuator}} \texorpdfstring{$\ast$}{*}act)
+\begin{DoxyCompactList}\small\item\em A method that adds an actuator to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a079d30156d73a2e47a1d03814ed34ee8}{Add\+Sensor}} (\mbox{\hyperlink{classsf_1_1_sensor}{Sensor}} \texorpdfstring{$\ast$}{*}sens)
+\begin{DoxyCompactList}\small\item\em A method that adds a sensor to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_ae58b626e9c9147cdece06a4da827ca53}{Add\+Comm}} (\mbox{\hyperlink{classsf_1_1_comm}{Comm}} \texorpdfstring{$\ast$}{*}comm)
+\begin{DoxyCompactList}\small\item\em A method that adds a communication device to the simulation world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_afb8b58e5bd8618e89e4802741fcf83f1}{Add\+Contact}} (\mbox{\hyperlink{classsf_1_1_contact}{Contact}} \texorpdfstring{$\ast$}{*}cnt)
+\begin{DoxyCompactList}\small\item\em A method that adds contact monitoring between two entities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a2c2ab6a295ae0628c91f576a85e3b0c2}{Enable\+Collision}} (const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}entA, const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}entB)
+\begin{DoxyCompactList}\small\item\em A method that enables collision between specified entities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a946520055f75a0594d60a1464f2e4421}{Disable\+Collision}} (const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}entA, const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}entB)
+\begin{DoxyCompactList}\small\item\em A method that disables collision between specified entities. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_simulation_manager_af7daa72d752f306da291ddbe2bf8aa31}{Check\+Collision}} (const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}entA, const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}entB)
+\begin{DoxyCompactList}\small\item\em A method that checks if collision is enabled between specified entities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a8e26aa3b13f245fc222e76db5ef3bca7}{Enable\+Ocean}} (Scalar waves=Scalar(0), \mbox{\hyperlink{structsf_1_1_fluid}{Fluid}} f=\mbox{\hyperlink{structsf_1_1_fluid}{Fluid}}())
+\begin{DoxyCompactList}\small\item\em A method used to enable ocean simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_af8b3e75eac84858c7adceac29745cecc}{Enable\+Atmosphere}} ()
+\begin{DoxyCompactList}\small\item\em A method used to enable atmosphere simulation. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}, int $>$ \mbox{\hyperlink{classsf_1_1_simulation_manager_ae76de9674bd2d0a367bf294ba5e89a34}{Pick\+Entity}} (Vector3 eye, Vector3 ray)
+\begin{DoxyCompactList}\small\item\em A method used to pick an entity by shooting a camera ray. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a4acb82f103d52cfeb9f901806d089fb4}{set\+Steps\+Per\+Second}} (Scalar steps)
+\begin{DoxyCompactList}\small\item\em A method that sets new valve for the amount of simulation steps in a second. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a3aca093b6299284cb01f5905fc39fc64}{set\+Call\+Simulation\+Step\+Completed}} (bool call)
+\begin{DoxyCompactList}\small\item\em A method to set a flag that enables automatic calling of the Simulation\+Step\+Completed method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_aa7712fcda4e629a52fa8bb490353c93f}{set\+Fluid\+Dynamics\+Prescaler}} (unsigned int presc)
+\begin{DoxyCompactList}\small\item\em A method that directly sets the fluid dynamics prescaler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a5d049ae2e7c08fb7d6305ed7fe1bc6ef}{set\+Realtime\+Factor}} (Scalar f)
+\begin{DoxyCompactList}\small\item\em A method that sets how simulation time relates to real time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a5add4158cff10127ec8e69e89a9a2660}{set\+ICSolver\+Params}} (bool use\+Gravity, Scalar time\+Step=Scalar(0.\+001), unsigned int max\+Iterations=100000, Scalar max\+Time=BT\+\_\+\+LARGE\+\_\+\+FLOAT, Scalar linear\+Tolerance=Scalar(1e-\/6), Scalar angular\+Tolerance=Scalar(1e-\/6))
+\begin{DoxyCompactList}\small\item\em A method used to setup the initial conditions solver. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a1abf812d153136dc8bc239008f6d075e}{set\+Solver\+Params}} (Scalar erp, Scalar stop\+Erp, Scalar erp2, Scalar global\+Damping, Scalar global\+Friction, Scalar linear\+Sleeping\+Threshold, Scalar angular\+Sleeping\+Threshold)
+\begin{DoxyCompactList}\small\item\em A method used to change some global solver params for stability tuning. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_abbdefafbd60e91cd5048af83503d89a1}{set\+Solid\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method that sets the display mode of dynamical rigid bodies. \end{DoxyCompactList}\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_simulation_manager_a0c8941dcc795694e4cdc611b210a223a}{get\+Solid\+Display\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em A method that returns the display style of dynamical podies. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_simulation_manager_ae8a0b0d824ecaebe8ff5de0018a48f90}{get\+Cpu\+Usage}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the usage of the CPU by the physics computation in percent. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_simulation_manager_a4744294bcb19a0a16f7825fd1ecacab5}{get\+Steps\+Per\+Second}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the current number of steps per second used. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_simulation_manager_a690c845c39c49a1a1d6101cabedb7ddc}{get\+Call\+Simulation\+Step\+Completed}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the flag that enables automatic calling of the Simulation\+Step\+Completed method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a15cc9694aac5b37013c164110e59ca7a}{get\+World\+AABB}} (Vector3 \&min, Vector3 \&max)
+\begin{DoxyCompactList}\small\item\em A method returning the axis-\/aligned bounding box of the simulation world. \end{DoxyCompactList}\item 
+Collision\+Filtering\+Type \mbox{\hyperlink{classsf_1_1_simulation_manager_abfe6ad4c6fce1a5ffda6898e315cc579}{get\+Collision\+Filter}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the collision filtering used in simulation. \end{DoxyCompactList}\item 
+Solver\+Type \mbox{\hyperlink{classsf_1_1_simulation_manager_a4f1beb169aa78035e0004ff91728c93a}{get\+Solver\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of solver used. \end{DoxyCompactList}\item 
+bt\+Soft\+Body\+World\+Info \& \mbox{\hyperlink{classsf_1_1_simulation_manager_aa5ed978198a455d27f66fa83df88cecb}{get\+Soft\+Body\+World\+Info}} ()
+\begin{DoxyCompactList}\small\item\em A method returning soft body world information. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a196fbd3ea50226dc34e97f36b820e638}{get\+Robot}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning a robot by index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_abae693fb794f7d1fdc9cdcb5f4f9b1d2}{get\+Robot}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em A method returning a robot by name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a0ff3303ec532b86638aa63d234c5da16}{get\+Entity}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning an entity by index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a6b0ba1486afb04594bc81e254d4156c1}{get\+Entity}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em A method returning an entity by name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_acdb64376f08218dabc3e5aea2c03b66d}{get\+Joint}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning a joint by index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a9a46ff7fcb1f10d64a5e70f4e3cdcb9c}{get\+Joint}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em A method returning a joint by name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact}{Contact}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a094984ffd4e63be84e925ede4bd3014f}{get\+Contact}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning a contact by index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact}{Contact}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_af31e57f74a8d8966e0b02fff58bc5122}{get\+Contact}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em A method returning a contact by name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact}{Contact}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_ad925800ebc0ffa3da9150388008b7fc9}{get\+Contact}} (\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}entA, \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}entB)
+\begin{DoxyCompactList}\small\item\em A method returning a contavt by entity pair. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_actuator}{Actuator}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a195d6de87151a6c65fa91533a8d33896}{get\+Actuator}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning an actuator by index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_actuator}{Actuator}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a40e9a0afc00cd348dbd7cede244d1a74}{get\+Actuator}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em A method returning an actuator by name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_sensor}{Sensor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_ad0d2fd2be4da7923458f2109475f5bfb}{get\+Sensor}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning a sensor by index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_sensor}{Sensor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_aeb921bf62ed6e0bd4af73b9778f78940}{get\+Sensor}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em A method returning a sensor by name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_comm}{Comm}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a93d3083154b1ca33a2d3517628c879fe}{get\+Comm}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning a communication device by index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_comm}{Comm}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a96ee6f23d17735b799d26fc1ec024f95}{get\+Comm}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em A method returning a communication device by name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_n_e_d}{NED}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_aa36445796ad9dce3633ca6e2c10a591a}{get\+NED}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the \doxylink{classsf_1_1_n_e_d}{NED} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_ocean}{Ocean}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a150f2c4256196749b8d96e1bcbbb3e5c}{get\+Ocean}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the ocean object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_atmosphere}{Atmosphere}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_aa2342b556ded91a7180c314dbd6d04d5}{get\+Atmosphere}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the atmosphere object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_ab6566a3fd168f3950f698f21e8cf520f}{set\+Gravity}} (Scalar gravity\+Constant)
+\begin{DoxyCompactList}\small\item\em A method setting the gravity constant used in the simulation. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_simulation_manager_aabec3fadafe52939d92e282684a6aa01}{get\+Gravity}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the gravity vector. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_simulation_manager_a245c0389451cc870f8eb06b9edf75e6d}{get\+Simulation\+Time}} (bool apply\+Offset=false) const
+\begin{DoxyCompactList}\small\item\em A method returning the simulation time in seconds. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_simulation_manager_a9c96c9c0678381a33176b262653c04ef}{get\+Realtime\+Factor}} () const
+\begin{DoxyCompactList}\small\item\em A method informing about the relation between the simulated time and real time. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_material_manager}{Material\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a335e766c2e5e0b6527e19b636fcddb5a}{get\+Material\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the material manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_name_manager}{Name\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_afcb008e029072138b4f402902510c340}{get\+Name\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the name manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_performance_monitor}{Performance\+Monitor}} \& \mbox{\hyperlink{classsf_1_1_simulation_manager_a3dfc80d448ffe70bc85d78a6a53b1ad9}{get\+Performance\+Monitor}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a reference to the performance monitor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_trackball}{Open\+GLTrackball}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a355d14425afb88e46f872d63a39da98f}{get\+Trackball}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the trackball view. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_simulation_manager_ad1aab9f3c562b5c57fd7b09f573713b2}{is\+Simulation\+Fresh}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the simulation is freshly started. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_simulation_manager_a9968072aea44eafacd80dee2510d01cc}{is\+Ocean\+Enabled}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the ocean is enabled in the simulation. \end{DoxyCompactList}\item 
+bt\+Soft\+Multi\+Body\+Dynamics\+World \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a85874bbc029b20de51ad22a06f00d42c}{get\+Dynamics\+World}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the Bullet dynamics world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a4b387385bfaa0dae1c40d8660f981457}{get\+Sleeping\+Thresholds}} (Scalar \&linear, Scalar \&angular) const
+\begin{DoxyCompactList}\small\item\em A method returning the simulation sleeping settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_manager_a064b044a012e18d34dd890057367d455}{get\+Joint\+Erp}} (Scalar \&erp, Scalar \&stop\+Erp) const
+\begin{DoxyCompactList}\small\item\em A method returning the simulation setup related to joint constraints. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_simulation_manager_a860316d469a2c8917212fcc93a247ec9}{Create\+Material}} (const std\+::string \&unique\+Name, Scalar density, Scalar restitution)
+\begin{DoxyCompactList}\small\item\em A method that creates a new material. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_simulation_manager_a93d8e76bafdccf56530b90ea0eef4774}{Set\+Materials\+Interaction}} (const std\+::string \&first\+Material\+Name, const std\+::string \&second\+Material\+Name, Scalar static\+Fric\+Coeff, Scalar dynamic\+Fric\+Coeff)
+\begin{DoxyCompactList}\small\item\em A method that sets interaction between a pair of materials. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_simulation_manager_ab404cd11c84341567b68488437dcf8e9}{Create\+Look}} (const std\+::string \&name, \mbox{\hyperlink{structsf_1_1_color}{Color}} color, float roughness, float metalness=0.f, float reflectivity=0.f, const std\+::string \&albedo\+Texture\+Path="{}"{}, const std\+::string \&normal\+Texture\+Path="{}"{}, const std\+::string \&temperature\+Texture\+Path="{}"{}, const std\+::pair$<$ float, float $>$ \&temperature\+Range=std\+::make\+\_\+pair(20.f, 20.f))
+\begin{DoxyCompactList}\small\item\em A method used to create a rendering look. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_simulation_manager_a03800ec5470335613eaa7e60dd8b69ba}{Solve\+ICTick\+Callback}} (bt\+Dynamics\+World \texorpdfstring{$\ast$}{*}world, Scalar time\+Step)
+\item 
+static void \mbox{\hyperlink{classsf_1_1_simulation_manager_a917fb009c923945ea13491e2817aaf5e}{Simulation\+Tick\+Callback}} (bt\+Dynamics\+World \texorpdfstring{$\ast$}{*}world, Scalar time\+Step)
+\item 
+static void \mbox{\hyperlink{classsf_1_1_simulation_manager_ace766f35a45ffb47536db171132562e7}{Simulation\+Post\+Tick\+Callback}} (bt\+Dynamics\+World \texorpdfstring{$\ast$}{*}world, Scalar time\+Step)
+\item 
+static bool \mbox{\hyperlink{classsf_1_1_simulation_manager_ac91f669af0a5df5a5928bdba23a7fab2}{Custom\+Material\+Combiner\+Callback}} (bt\+Manifold\+Point \&cp, const bt\+Collision\+Object\+Wrapper \texorpdfstring{$\ast$}{*}col\+Obj0\+Wrap, int part\+Id0, int index0, const bt\+Collision\+Object\+Wrapper \texorpdfstring{$\ast$}{*}col\+Obj1\+Wrap, int part\+Id1, int index1)
+\item 
+static bool \mbox{\hyperlink{classsf_1_1_simulation_manager_ac3a33fbb19a053cb1bf3ec33a681943a}{Contact\+Info\+Update\+Callback}} (bt\+Manifold\+Point \&cp, void \texorpdfstring{$\ast$}{*}body0, void \texorpdfstring{$\ast$}{*}body1)
+\item 
+static bool \mbox{\hyperlink{classsf_1_1_simulation_manager_ade55bd09dfb497f3c910713d2e77af17}{Contact\+Info\+Destroy\+Callback}} (void \texorpdfstring{$\ast$}{*}user\+Persistent\+Data)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Soft\+Multi\+Body\+Dynamics\+World \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a314e0e43b318fa0979b3f6ce9ea51c88}{dynamics\+World}}
+\item 
+bt\+Multi\+Body\+Constraint\+Solver \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a1b5c136547231928972effeaf58f1f80}{mb\+Solver}}
+\item 
+bt\+Soft\+Body\+Solver \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a7b1ae5e6a07444b48225c2344232ab6c}{sb\+Solver}}
+\item 
+bt\+Soft\+Body\+World\+Info \mbox{\hyperlink{classsf_1_1_simulation_manager_a78a375f29125c2f6959af3a411de08c1}{sb\+Info}}
+\item 
+bt\+Collision\+Dispatcher \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a569482988d13654be16e65762607c65b}{dw\+Dispatcher}}
+\item 
+bt\+Broadphase\+Interface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a7446b37eed3c8c522abd18e7ca9db85c}{dw\+Broadphase}}
+\item 
+bt\+Default\+Collision\+Configuration \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a6d2d12480fbc2ec0b139b07705e21e13}{dw\+Collision\+Config}}
+\item 
+\mbox{\hyperlink{classsf_1_1_material_manager}{Material\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_manager_a6b22b75789c922c58f71b724cc4e4d65}{material\+Manager}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classsf_1_1_simulation_manager_a0bbd67f5af2a7bfbeec47d519ad831e2}{Open\+GLPipeline}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class managing the simulation world, the solver settings and implementing custom physics callbacks. 
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00069}{69}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_simulation_manager_a6ff4ec7898b36e21c11d29f812a6cb87}\label{classsf_1_1_simulation_manager_a6ff4ec7898b36e21c11d29f812a6cb87} 
+\index{sf::SimulationManager@{sf::SimulationManager}!SimulationManager@{SimulationManager}}
+\index{SimulationManager@{SimulationManager}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{SimulationManager()}{SimulationManager()}}
+{\footnotesize\ttfamily sf\+::\+Simulation\+Manager\+::\+Simulation\+Manager (\begin{DoxyParamCaption}\item[{Scalar}]{steps\+Per\+Second = {\ttfamily Scalar(60)},  }\item[{Solver\+Type}]{st = {\ttfamily SOLVER\+\_\+SI},  }\item[{Collision\+Filtering\+Type}]{cft = {\ttfamily COLLISION\+\_\+EXCLUSIVE} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em steps\+Per\+Second} & number of simulation steps per second (inverse of sample time) \\
+\hline
+{\em st} & type of solver that should be used \\
+\hline
+{\em cft} & type of collision filtering used \\
+\hline
+{\em ht} & type of hydrodynamics computations \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a993abd05ddada18f2cf0ff13c737dd20}\label{classsf_1_1_simulation_manager_a993abd05ddada18f2cf0ff13c737dd20} 
+\index{sf::SimulationManager@{sf::SimulationManager}!````~SimulationManager@{\texorpdfstring{$\sim$}{\string~}SimulationManager}}
+\index{````~SimulationManager@{\texorpdfstring{$\sim$}{\string~}SimulationManager}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SimulationManager()}{\string~SimulationManager()}}
+{\footnotesize\ttfamily sf\+::\+Simulation\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Simulation\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_simulation_manager_a7cf2d54d2a09d8baf0cdaf8db47b0a7d}\label{classsf_1_1_simulation_manager_a7cf2d54d2a09d8baf0cdaf8db47b0a7d} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddActuator@{AddActuator}}
+\index{AddActuator@{AddActuator}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddActuator()}{AddActuator()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Actuator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_actuator}{Actuator}} \texorpdfstring{$\ast$}{*}}]{act }\end{DoxyParamCaption})}
+
+
+
+A method that adds an actuator to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em act} & a pointer to the actuator object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00295}{295}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a39ab8cadf5d316c91b03b56f2f096139}\label{classsf_1_1_simulation_manager_a39ab8cadf5d316c91b03b56f2f096139} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddAnimatedEntity@{AddAnimatedEntity}}
+\index{AddAnimatedEntity@{AddAnimatedEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddAnimatedEntity()}{AddAnimatedEntity()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Animated\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_animated_entity}{Animated\+Entity}} \texorpdfstring{$\ast$}{*}}]{ent }\end{DoxyParamCaption})}
+
+
+
+A method that adds an animated rigid body to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ent} & a pointer to the animated object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ae58b626e9c9147cdece06a4da827ca53}\label{classsf_1_1_simulation_manager_ae58b626e9c9147cdece06a4da827ca53} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddComm@{AddComm}}
+\index{AddComm@{AddComm}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddComm()}{AddComm()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Comm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_comm}{Comm}} \texorpdfstring{$\ast$}{*}}]{comm }\end{DoxyParamCaption})}
+
+
+
+A method that adds a communication device to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comm} & a pointer to the comm object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00266}{266}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_afb8b58e5bd8618e89e4802741fcf83f1}\label{classsf_1_1_simulation_manager_afb8b58e5bd8618e89e4802741fcf83f1} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddContact@{AddContact}}
+\index{AddContact@{AddContact}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddContact()}{AddContact()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Contact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_contact}{Contact}} \texorpdfstring{$\ast$}{*}}]{cnt }\end{DoxyParamCaption})}
+
+
+
+A method that adds contact monitoring between two entities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & pointer to the contact object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00301}{301}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a2d7f1779ae0b3dae0b0e6b29e7de0d22}\label{classsf_1_1_simulation_manager_a2d7f1779ae0b3dae0b0e6b29e7de0d22} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddEntity@{AddEntity}}
+\index{AddEntity@{AddEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddEntity()}{AddEntity()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{ent }\end{DoxyParamCaption})}
+
+
+
+A method that adds any type of entity to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ent} & a pointer to the entity \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_adfbb4f34774e77087acad2c62061e10b}\label{classsf_1_1_simulation_manager_adfbb4f34774e77087acad2c62061e10b} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddFeatherstoneEntity@{AddFeatherstoneEntity}}
+\index{AddFeatherstoneEntity@{AddFeatherstoneEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddFeatherstoneEntity()}{AddFeatherstoneEntity()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Featherstone\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*}}]{ent,  }\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method that adds a rigid multibody to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ent} & a pointer to the multibody object \\
+\hline
+{\em origin} & a pose of the multibody base link in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00196}{196}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ad436ef2b37cf3e66d26aee11310b8670}\label{classsf_1_1_simulation_manager_ad436ef2b37cf3e66d26aee11310b8670} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddJoint@{AddJoint}}
+\index{AddJoint@{AddJoint}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddJoint()}{AddJoint()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*}}]{jnt }\end{DoxyParamCaption})}
+
+
+
+A method that adds a discrete joint to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jnt} & a pointer to the joint object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00272}{272}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a55649ee4418bedebcf4e618257720e3a}\label{classsf_1_1_simulation_manager_a55649ee4418bedebcf4e618257720e3a} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddRobot@{AddRobot}}
+\index{AddRobot@{AddRobot}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddRobot()}{AddRobot()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Robot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot,  }\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method that adds a robotic system to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em robot} & a pointer to the robot object \\
+\hline
+{\em origin} & a pose of the robot in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a079d30156d73a2e47a1d03814ed34ee8}\label{classsf_1_1_simulation_manager_a079d30156d73a2e47a1d03814ed34ee8} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddSensor@{AddSensor}}
+\index{AddSensor@{AddSensor}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddSensor()}{AddSensor()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Sensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_sensor}{Sensor}} \texorpdfstring{$\ast$}{*}}]{sens }\end{DoxyParamCaption})}
+
+
+
+A method that adds a sensor to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sens} & a pointer to the sensor object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00260}{260}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_aa17acc0a4e7a7c2e21bb5cd512cfdf45}\label{classsf_1_1_simulation_manager_aa17acc0a4e7a7c2e21bb5cd512cfdf45} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddSolidEntity@{AddSolidEntity}}
+\index{AddSolidEntity@{AddSolidEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddSolidEntity()}{AddSolidEntity()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Solid\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}}]{ent,  }\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method that adds a dynamic rigid body to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ent} & a pointer to the dynamic body object \\
+\hline
+{\em origin} & a pose of the body in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00173}{173}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a042d39aea73c40636fae5c029110f933}\label{classsf_1_1_simulation_manager_a042d39aea73c40636fae5c029110f933} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AddStaticEntity@{AddStaticEntity}}
+\index{AddStaticEntity@{AddStaticEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AddStaticEntity()}{AddStaticEntity()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Add\+Static\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*}}]{ent,  }\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method that adds a static body to the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ent} & a pointer to the static body object \\
+\hline
+{\em origin} & a pose of the body in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00155}{155}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a0948bd4772f65613f23f85e8b7fb09be}\label{classsf_1_1_simulation_manager_a0948bd4772f65613f23f85e8b7fb09be} 
+\index{sf::SimulationManager@{sf::SimulationManager}!AdvanceSimulation@{AdvanceSimulation}}
+\index{AdvanceSimulation@{AdvanceSimulation}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{AdvanceSimulation()}{AdvanceSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Advance\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that steps the simulation based on real time. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01063}{1063}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_af7daa72d752f306da291ddbe2bf8aa31}\label{classsf_1_1_simulation_manager_af7daa72d752f306da291ddbe2bf8aa31} 
+\index{sf::SimulationManager@{sf::SimulationManager}!CheckCollision@{CheckCollision}}
+\index{CheckCollision@{CheckCollision}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{CheckCollision()}{CheckCollision()}}
+{\footnotesize\ttfamily int sf\+::\+Simulation\+Manager\+::\+Check\+Collision (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entA,  }\item[{const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entB }\end{DoxyParamCaption})}
+
+
+
+A method that checks if collision is enabled between specified entities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entA} & a pointer to the first entity \\
+\hline
+{\em entB} & a pointer to the second entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00310}{310}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ade55bd09dfb497f3c910713d2e77af17}\label{classsf_1_1_simulation_manager_ade55bd09dfb497f3c910713d2e77af17} 
+\index{sf::SimulationManager@{sf::SimulationManager}!ContactInfoDestroyCallback@{ContactInfoDestroyCallback}}
+\index{ContactInfoDestroyCallback@{ContactInfoDestroyCallback}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{ContactInfoDestroyCallback()}{ContactInfoDestroyCallback()}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+Manager\+::\+Contact\+Info\+Destroy\+Callback (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{user\+Persistent\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01696}{1696}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ac3a33fbb19a053cb1bf3ec33a681943a}\label{classsf_1_1_simulation_manager_ac3a33fbb19a053cb1bf3ec33a681943a} 
+\index{sf::SimulationManager@{sf::SimulationManager}!ContactInfoUpdateCallback@{ContactInfoUpdateCallback}}
+\index{ContactInfoUpdateCallback@{ContactInfoUpdateCallback}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{ContactInfoUpdateCallback()}{ContactInfoUpdateCallback()}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+Manager\+::\+Contact\+Info\+Update\+Callback (\begin{DoxyParamCaption}\item[{bt\+Manifold\+Point \&}]{cp,  }\item[{void \texorpdfstring{$\ast$}{*}}]{body0,  }\item[{void \texorpdfstring{$\ast$}{*}}]{body1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01688}{1688}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ab404cd11c84341567b68488437dcf8e9}\label{classsf_1_1_simulation_manager_ab404cd11c84341567b68488437dcf8e9} 
+\index{sf::SimulationManager@{sf::SimulationManager}!CreateLook@{CreateLook}}
+\index{CreateLook@{CreateLook}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{CreateLook()}{CreateLook()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Simulation\+Manager\+::\+Create\+Look (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{\mbox{\hyperlink{structsf_1_1_color}{Color}}}]{color,  }\item[{float}]{roughness,  }\item[{float}]{metalness = {\ttfamily 0.f},  }\item[{float}]{reflectivity = {\ttfamily 0.f},  }\item[{const std\+::string \&}]{albedo\+Texture\+Path = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{normal\+Texture\+Path = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{temperature\+Texture\+Path = {\ttfamily "{}"{}},  }\item[{const std\+::pair$<$ float, float $>$ \&}]{temperature\+Range = {\ttfamily std\+:\+:make\+\_\+pair(20.f,~20.f)} }\end{DoxyParamCaption})}
+
+
+
+A method used to create a rendering look. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the look \\
+\hline
+{\em color} & a color of the material \\
+\hline
+{\em roughness} & how smooth the material looks \\
+\hline
+{\em metalness} & how metallic the material looks \\
+\hline
+{\em reflectivity} & how reflective the material is \\
+\hline
+{\em albedo\+Texture\+Path} & a path to a texture specifying albedo color \\
+\hline
+{\em normal\+Texture\+Path} & a path to a texture specifying surface normal (bump mapping) \\
+\hline
+{\em temperature\+Texture\+Path} & a path to a texture specifying temperature distribution \\
+\hline
+{\em temperature\+Range} & a range of temperatures represented by the texture values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the actual name of the created look 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01225}{1225}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a860316d469a2c8917212fcc93a247ec9}\label{classsf_1_1_simulation_manager_a860316d469a2c8917212fcc93a247ec9} 
+\index{sf::SimulationManager@{sf::SimulationManager}!CreateMaterial@{CreateMaterial}}
+\index{CreateMaterial@{CreateMaterial}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{CreateMaterial()}{CreateMaterial()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Simulation\+Manager\+::\+Create\+Material (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{unique\+Name,  }\item[{Scalar}]{density,  }\item[{Scalar}]{restitution }\end{DoxyParamCaption})}
+
+
+
+A method that creates a new material. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the material \\
+\hline
+{\em density} & a density of the material \mbox{[}kg\texorpdfstring{$\ast$}{*}m\texorpdfstring{$^\wedge$}{\string^}-\/3\mbox{]} \\
+\hline
+{\em restitution} & a restitution factor \texorpdfstring{$<$}{<}0,1\texorpdfstring{$>$}{>} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a name of the created material 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01215}{1215}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ac91f669af0a5df5a5928bdba23a7fab2}\label{classsf_1_1_simulation_manager_ac91f669af0a5df5a5928bdba23a7fab2} 
+\index{sf::SimulationManager@{sf::SimulationManager}!CustomMaterialCombinerCallback@{CustomMaterialCombinerCallback}}
+\index{CustomMaterialCombinerCallback@{CustomMaterialCombinerCallback}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{CustomMaterialCombinerCallback()}{CustomMaterialCombinerCallback()}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+Manager\+::\+Custom\+Material\+Combiner\+Callback (\begin{DoxyParamCaption}\item[{bt\+Manifold\+Point \&}]{cp,  }\item[{const bt\+Collision\+Object\+Wrapper \texorpdfstring{$\ast$}{*}}]{col\+Obj0\+Wrap,  }\item[{int}]{part\+Id0,  }\item[{int}]{index0,  }\item[{const bt\+Collision\+Object\+Wrapper \texorpdfstring{$\ast$}{*}}]{col\+Obj1\+Wrap,  }\item[{int}]{part\+Id1,  }\item[{int}]{index1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01235}{1235}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a857ee2b9d6f9602309af8be3a05a6a9a}\label{classsf_1_1_simulation_manager_a857ee2b9d6f9602309af8be3a05a6a9a} 
+\index{sf::SimulationManager@{sf::SimulationManager}!DestroyScenario@{DestroyScenario}}
+\index{DestroyScenario@{DestroyScenario}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{DestroyScenario()}{DestroyScenario()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Destroy\+Scenario (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method cleaning the simulation world. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00885}{885}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a946520055f75a0594d60a1464f2e4421}\label{classsf_1_1_simulation_manager_a946520055f75a0594d60a1464f2e4421} 
+\index{sf::SimulationManager@{sf::SimulationManager}!DisableCollision@{DisableCollision}}
+\index{DisableCollision@{DisableCollision}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{DisableCollision()}{DisableCollision()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Disable\+Collision (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entA,  }\item[{const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entB }\end{DoxyParamCaption})}
+
+
+
+A method that disables collision between specified entities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entA} & a pointer to the first entity \\
+\hline
+{\em entB} & a pointer to the second entity \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00339}{339}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_af8b3e75eac84858c7adceac29745cecc}\label{classsf_1_1_simulation_manager_af8b3e75eac84858c7adceac29745cecc} 
+\index{sf::SimulationManager@{sf::SimulationManager}!EnableAtmosphere@{EnableAtmosphere}}
+\index{EnableAtmosphere@{EnableAtmosphere}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{EnableAtmosphere()}{EnableAtmosphere()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Enable\+Atmosphere (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method used to enable atmosphere simulation. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00242}{242}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a2c2ab6a295ae0628c91f576a85e3b0c2}\label{classsf_1_1_simulation_manager_a2c2ab6a295ae0628c91f576a85e3b0c2} 
+\index{sf::SimulationManager@{sf::SimulationManager}!EnableCollision@{EnableCollision}}
+\index{EnableCollision@{EnableCollision}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{EnableCollision()}{EnableCollision()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Enable\+Collision (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entA,  }\item[{const \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entB }\end{DoxyParamCaption})}
+
+
+
+A method that enables collision between specified entities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entA} & a pointer to the first entity \\
+\hline
+{\em entB} & a pointer to the second entity \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00322}{322}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a8e26aa3b13f245fc222e76db5ef3bca7}\label{classsf_1_1_simulation_manager_a8e26aa3b13f245fc222e76db5ef3bca7} 
+\index{sf::SimulationManager@{sf::SimulationManager}!EnableOcean@{EnableOcean}}
+\index{EnableOcean@{EnableOcean}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{EnableOcean()}{EnableOcean()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Enable\+Ocean (\begin{DoxyParamCaption}\item[{Scalar}]{waves = {\ttfamily Scalar(0)},  }\item[{\mbox{\hyperlink{structsf_1_1_fluid}{Fluid}}}]{f = {\ttfamily \mbox{\hyperlink{structsf_1_1_fluid}{Fluid}}()} }\end{DoxyParamCaption})}
+
+
+
+A method used to enable ocean simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em waves} & the state of the ocean (waves enabled when \texorpdfstring{$>$}{>}0) \\
+\hline
+{\em f} & a pointer to a liquid that will feel the ocean (if left blank defaults to water) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00219}{219}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a40e9a0afc00cd348dbd7cede244d1a74}\label{classsf_1_1_simulation_manager_a40e9a0afc00cd348dbd7cede244d1a74} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getActuator@{getActuator}}
+\index{getActuator@{getActuator}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getActuator()}{getActuator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_actuator}{Actuator}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Actuator (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+A method returning an actuator by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name of the actuator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to an actuator object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00462}{462}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a195d6de87151a6c65fa91533a8d33896}\label{classsf_1_1_simulation_manager_a195d6de87151a6c65fa91533a8d33896} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getActuator@{getActuator}}
+\index{getActuator@{getActuator}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getActuator()}{getActuator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_actuator}{Actuator}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Actuator (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning an actuator by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the actuator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to an actuator object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00454}{454}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_aa2342b556ded91a7180c314dbd6d04d5}\label{classsf_1_1_simulation_manager_aa2342b556ded91a7180c314dbd6d04d5} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getAtmosphere@{getAtmosphere}}
+\index{getAtmosphere@{getAtmosphere}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getAtmosphere()}{getAtmosphere()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_atmosphere}{Atmosphere}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Atmosphere (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the atmosphere object. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00515}{515}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a690c845c39c49a1a1d6101cabedb7ddc}\label{classsf_1_1_simulation_manager_a690c845c39c49a1a1d6101cabedb7ddc} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getCallSimulationStepCompleted@{getCallSimulationStepCompleted}}
+\index{getCallSimulationStepCompleted@{getCallSimulationStepCompleted}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getCallSimulationStepCompleted()}{getCallSimulationStepCompleted()}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+Manager\+::get\+Call\+Simulation\+Step\+Completed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the flag that enables automatic calling of the Simulation\+Step\+Completed method. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00609}{609}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_abfe6ad4c6fce1a5ffda6898e315cc579}\label{classsf_1_1_simulation_manager_abfe6ad4c6fce1a5ffda6898e315cc579} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getCollisionFilter@{getCollisionFilter}}
+\index{getCollisionFilter@{getCollisionFilter}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getCollisionFilter()}{getCollisionFilter()}}
+{\footnotesize\ttfamily Collision\+Filtering\+Type sf\+::\+Simulation\+Manager\+::get\+Collision\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the collision filtering used in simulation. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00393}{393}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a96ee6f23d17735b799d26fc1ec024f95}\label{classsf_1_1_simulation_manager_a96ee6f23d17735b799d26fc1ec024f95} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getComm@{getComm}}
+\index{getComm@{getComm}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getComm()}{getComm()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_comm}{Comm}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Comm (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+A method returning a communication device by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name of the communication device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a comm object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00496}{496}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a93d3083154b1ca33a2d3517628c879fe}\label{classsf_1_1_simulation_manager_a93d3083154b1ca33a2d3517628c879fe} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getComm@{getComm}}
+\index{getComm@{getComm}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getComm()}{getComm()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_comm}{Comm}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Comm (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning a communication device by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the communication device \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a comm object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00488}{488}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_af31e57f74a8d8966e0b02fff58bc5122}\label{classsf_1_1_simulation_manager_af31e57f74a8d8966e0b02fff58bc5122} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getContact@{getContact}}
+\index{getContact@{getContact}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getContact()}{getContact()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact}{Contact}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Contact (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+A method returning a contact by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name of the contact \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a contact object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00384}{384}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ad925800ebc0ffa3da9150388008b7fc9}\label{classsf_1_1_simulation_manager_ad925800ebc0ffa3da9150388008b7fc9} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getContact@{getContact}}
+\index{getContact@{getContact}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getContact()}{getContact()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact}{Contact}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Contact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entA,  }\item[{\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entB }\end{DoxyParamCaption})}
+
+
+
+A method returning a contavt by entity pair. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entA} & a pointer to the first entity \\
+\hline
+{\em entB} & a pointer to the sencond entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a contact object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00357}{357}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a094984ffd4e63be84e925ede4bd3014f}\label{classsf_1_1_simulation_manager_a094984ffd4e63be84e925ede4bd3014f} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getContact@{getContact}}
+\index{getContact@{getContact}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getContact()}{getContact()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact}{Contact}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Contact (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning a contact by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the contact \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a contact object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00376}{376}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ae8a0b0d824ecaebe8ff5de0018a48f90}\label{classsf_1_1_simulation_manager_ae8a0b0d824ecaebe8ff5de0018a48f90} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getCpuUsage@{getCpuUsage}}
+\index{getCpuUsage@{getCpuUsage}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getCpuUsage()}{getCpuUsage()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Simulation\+Manager\+::get\+Cpu\+Usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the usage of the CPU by the physics computation in percent. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00619}{619}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a85874bbc029b20de51ad22a06f00d42c}\label{classsf_1_1_simulation_manager_a85874bbc029b20de51ad22a06f00d42c} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getDynamicsWorld@{getDynamicsWorld}}
+\index{getDynamicsWorld@{getDynamicsWorld}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getDynamicsWorld()}{getDynamicsWorld()}}
+{\footnotesize\ttfamily bt\+Soft\+Multi\+Body\+Dynamics\+World \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Dynamics\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the Bullet dynamics world. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00520}{520}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a6b0ba1486afb04594bc81e254d4156c1}\label{classsf_1_1_simulation_manager_a6b0ba1486afb04594bc81e254d4156c1} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getEntity@{getEntity}}
+\index{getEntity@{getEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getEntity()}{getEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Entity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+A method returning an entity by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name of the entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to an entity object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00428}{428}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a0ff3303ec532b86638aa63d234c5da16}\label{classsf_1_1_simulation_manager_a0ff3303ec532b86638aa63d234c5da16} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getEntity@{getEntity}}
+\index{getEntity@{getEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getEntity()}{getEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Entity (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning an entity by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to an entity object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00420}{420}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_aabec3fadafe52939d92e282684a6aa01}\label{classsf_1_1_simulation_manager_aabec3fadafe52939d92e282684a6aa01} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getGravity@{getGravity}}
+\index{getGravity@{getGravity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getGravity()}{getGravity()}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Simulation\+Manager\+::get\+Gravity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the gravity vector. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00663}{663}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a9a46ff7fcb1f10d64a5e70f4e3cdcb9c}\label{classsf_1_1_simulation_manager_a9a46ff7fcb1f10d64a5e70f4e3cdcb9c} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getJoint@{getJoint}}
+\index{getJoint@{getJoint}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getJoint()}{getJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Joint (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+A method returning a joint by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name of the joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a joint object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00445}{445}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_acdb64376f08218dabc3e5aea2c03b66d}\label{classsf_1_1_simulation_manager_acdb64376f08218dabc3e5aea2c03b66d} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getJoint@{getJoint}}
+\index{getJoint@{getJoint}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getJoint()}{getJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Joint (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning a joint by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to an joint object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00437}{437}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a064b044a012e18d34dd890057367d455}\label{classsf_1_1_simulation_manager_a064b044a012e18d34dd890057367d455} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getJointErp@{getJointErp}}
+\index{getJointErp@{getJointErp}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getJointErp()}{getJointErp()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::get\+Joint\+Erp (\begin{DoxyParamCaption}\item[{Scalar \&}]{erp,  }\item[{Scalar \&}]{stop\+Erp }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the simulation setup related to joint constraints. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00731}{731}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a335e766c2e5e0b6527e19b636fcddb5a}\label{classsf_1_1_simulation_manager_a335e766c2e5e0b6527e19b636fcddb5a} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getMaterialManager@{getMaterialManager}}
+\index{getMaterialManager@{getMaterialManager}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getMaterialManager()}{getMaterialManager()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_material_manager}{Material\+Manager}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Material\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the material manager. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00555}{555}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_afcb008e029072138b4f402902510c340}\label{classsf_1_1_simulation_manager_afcb008e029072138b4f402902510c340} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getNameManager@{getNameManager}}
+\index{getNameManager@{getNameManager}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getNameManager()}{getNameManager()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_name_manager}{Name\+Manager}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Name\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the name manager. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00560}{560}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_aa36445796ad9dce3633ca6e2c10a591a}\label{classsf_1_1_simulation_manager_aa36445796ad9dce3633ca6e2c10a591a} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getNED@{getNED}}
+\index{getNED@{getNED}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getNED()}{getNED()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_n_e_d}{NED}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+NED (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the \doxylink{classsf_1_1_n_e_d}{NED} object. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00505}{505}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a150f2c4256196749b8d96e1bcbbb3e5c}\label{classsf_1_1_simulation_manager_a150f2c4256196749b8d96e1bcbbb3e5c} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getOcean@{getOcean}}
+\index{getOcean@{getOcean}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getOcean()}{getOcean()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_ocean}{Ocean}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Ocean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the ocean object. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00510}{510}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a3dfc80d448ffe70bc85d78a6a53b1ad9}\label{classsf_1_1_simulation_manager_a3dfc80d448ffe70bc85d78a6a53b1ad9} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getPerformanceMonitor@{getPerformanceMonitor}}
+\index{getPerformanceMonitor@{getPerformanceMonitor}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getPerformanceMonitor()}{getPerformanceMonitor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_performance_monitor}{Performance\+Monitor}} \& sf\+::\+Simulation\+Manager\+::get\+Performance\+Monitor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a reference to the performance monitor. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00565}{565}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a9c96c9c0678381a33176b262653c04ef}\label{classsf_1_1_simulation_manager_a9c96c9c0678381a33176b262653c04ef} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getRealtimeFactor@{getRealtimeFactor}}
+\index{getRealtimeFactor@{getRealtimeFactor}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getRealtimeFactor()}{getRealtimeFactor()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Simulation\+Manager\+::get\+Realtime\+Factor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method informing about the relation between the simulated time and real time. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00627}{627}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_abae693fb794f7d1fdc9cdcb5f4f9b1d2}\label{classsf_1_1_simulation_manager_abae693fb794f7d1fdc9cdcb5f4f9b1d2} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getRobot@{getRobot}}
+\index{getRobot@{getRobot}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getRobot()}{getRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Robot (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+A method returning a robot by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name of the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a robot object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00411}{411}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a196fbd3ea50226dc34e97f36b820e638}\label{classsf_1_1_simulation_manager_a196fbd3ea50226dc34e97f36b820e638} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getRobot@{getRobot}}
+\index{getRobot@{getRobot}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getRobot()}{getRobot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Robot (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning a robot by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a robot object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00403}{403}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_aeb921bf62ed6e0bd4af73b9778f78940}\label{classsf_1_1_simulation_manager_aeb921bf62ed6e0bd4af73b9778f78940} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getSensor@{getSensor}}
+\index{getSensor@{getSensor}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getSensor()}{getSensor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_sensor}{Sensor}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Sensor (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+A method returning a sensor by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name of the sensor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a sensor object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00479}{479}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ad0d2fd2be4da7923458f2109475f5bfb}\label{classsf_1_1_simulation_manager_ad0d2fd2be4da7923458f2109475f5bfb} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getSensor@{getSensor}}
+\index{getSensor@{getSensor}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getSensor()}{getSensor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_sensor}{Sensor}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Sensor (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning a sensor by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the sensor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a sensor object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00471}{471}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ad93ea0c409c9576e0bb1e7dfa2c12c74}\label{classsf_1_1_simulation_manager_ad93ea0c409c9576e0bb1e7dfa2c12c74} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getSimulationClock@{getSimulationClock}}
+\index{getSimulationClock@{getSimulationClock}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getSimulationClock()}{getSimulationClock()}}
+{\footnotesize\ttfamily uint64\+\_\+t sf\+::\+Simulation\+Manager\+::get\+Simulation\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the current simulation clock time in us (overriding allows for external time source). 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00544}{544}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a245c0389451cc870f8eb06b9edf75e6d}\label{classsf_1_1_simulation_manager_a245c0389451cc870f8eb06b9edf75e6d} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getSimulationTime@{getSimulationTime}}
+\index{getSimulationTime@{getSimulationTime}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getSimulationTime()}{getSimulationTime()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Simulation\+Manager\+::get\+Simulation\+Time (\begin{DoxyParamCaption}\item[{bool}]{apply\+Offset = {\ttfamily false} }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the simulation time in seconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em apply\+Offset} & a flag deciding if the offset between simulation time and real time should be applied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the time of simulation in seconds 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00530}{530}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a4b387385bfaa0dae1c40d8660f981457}\label{classsf_1_1_simulation_manager_a4b387385bfaa0dae1c40d8660f981457} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getSleepingThresholds@{getSleepingThresholds}}
+\index{getSleepingThresholds@{getSleepingThresholds}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getSleepingThresholds()}{getSleepingThresholds()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::get\+Sleeping\+Thresholds (\begin{DoxyParamCaption}\item[{Scalar \&}]{linear,  }\item[{Scalar \&}]{angular }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the simulation sleeping settings. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00725}{725}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_aa5ed978198a455d27f66fa83df88cecb}\label{classsf_1_1_simulation_manager_aa5ed978198a455d27f66fa83df88cecb} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getSoftBodyWorldInfo@{getSoftBodyWorldInfo}}
+\index{getSoftBodyWorldInfo@{getSoftBodyWorldInfo}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getSoftBodyWorldInfo()}{getSoftBodyWorldInfo()}}
+{\footnotesize\ttfamily bt\+Soft\+Body\+World\+Info \& sf\+::\+Simulation\+Manager\+::get\+Soft\+Body\+World\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning soft body world information. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00653}{653}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a0c8941dcc795694e4cdc611b210a223a}\label{classsf_1_1_simulation_manager_a0c8941dcc795694e4cdc611b210a223a} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getSolidDisplayMode@{getSolidDisplayMode}}
+\index{getSolidDisplayMode@{getSolidDisplayMode}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getSolidDisplayMode()}{getSolidDisplayMode()}}
+{\footnotesize\ttfamily Display\+Mode sf\+::\+Simulation\+Manager\+::get\+Solid\+Display\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method that returns the display style of dynamical podies. 
+
+\begin{DoxyReturn}{Returns}
+flag defining the display style 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00715}{715}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a4f1beb169aa78035e0004ff91728c93a}\label{classsf_1_1_simulation_manager_a4f1beb169aa78035e0004ff91728c93a} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getSolverType@{getSolverType}}
+\index{getSolverType@{getSolverType}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getSolverType()}{getSolverType()}}
+{\footnotesize\ttfamily Solver\+Type sf\+::\+Simulation\+Manager\+::get\+Solver\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the type of solver used. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00398}{398}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a4744294bcb19a0a16f7825fd1ecacab5}\label{classsf_1_1_simulation_manager_a4744294bcb19a0a16f7825fd1ecacab5} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getStepsPerSecond@{getStepsPerSecond}}
+\index{getStepsPerSecond@{getStepsPerSecond}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getStepsPerSecond()}{getStepsPerSecond()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Simulation\+Manager\+::get\+Steps\+Per\+Second (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the current number of steps per second used. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00614}{614}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a355d14425afb88e46f872d63a39da98f}\label{classsf_1_1_simulation_manager_a355d14425afb88e46f872d63a39da98f} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getTrackball@{getTrackball}}
+\index{getTrackball@{getTrackball}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getTrackball()}{getTrackball()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_open_g_l_trackball}{Open\+GLTrackball}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::get\+Trackball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the trackball view. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00570}{570}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a15cc9694aac5b37013c164110e59ca7a}\label{classsf_1_1_simulation_manager_a15cc9694aac5b37013c164110e59ca7a} 
+\index{sf::SimulationManager@{sf::SimulationManager}!getWorldAABB@{getWorldAABB}}
+\index{getWorldAABB@{getWorldAABB}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{getWorldAABB()}{getWorldAABB()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::get\+World\+AABB (\begin{DoxyParamCaption}\item[{Vector3 \&}]{min,  }\item[{Vector3 \&}]{max }\end{DoxyParamCaption})}
+
+
+
+A method returning the axis-\/aligned bounding box of the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & a position of the minimum corner \\
+\hline
+{\em max} & a position of the maximum corner \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00635}{635}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a9968072aea44eafacd80dee2510d01cc}\label{classsf_1_1_simulation_manager_a9968072aea44eafacd80dee2510d01cc} 
+\index{sf::SimulationManager@{sf::SimulationManager}!isOceanEnabled@{isOceanEnabled}}
+\index{isOceanEnabled@{isOceanEnabled}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{isOceanEnabled()}{isOceanEnabled()}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+Manager\+::is\+Ocean\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method informing if the ocean is enabled in the simulation. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00720}{720}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ad1aab9f3c562b5c57fd7b09f573713b2}\label{classsf_1_1_simulation_manager_ad1aab9f3c562b5c57fd7b09f573713b2} 
+\index{sf::SimulationManager@{sf::SimulationManager}!isSimulationFresh@{isSimulationFresh}}
+\index{isSimulationFresh@{isSimulationFresh}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{isSimulationFresh()}{isSimulationFresh()}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+Manager\+::is\+Simulation\+Fresh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method informing if the simulation is freshly started. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00525}{525}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ae76de9674bd2d0a367bf294ba5e89a34}\label{classsf_1_1_simulation_manager_ae76de9674bd2d0a367bf294ba5e89a34} 
+\index{sf::SimulationManager@{sf::SimulationManager}!PickEntity@{PickEntity}}
+\index{PickEntity@{PickEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{PickEntity()}{PickEntity()}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}, int $>$ sf\+::\+Simulation\+Manager\+::\+Pick\+Entity (\begin{DoxyParamCaption}\item[{Vector3}]{eye,  }\item[{Vector3}]{ray }\end{DoxyParamCaption})}
+
+
+
+A method used to pick an entity by shooting a camera ray. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eye} & the position of the camera eye in the world frame \\
+\hline
+{\em ray} & a unit vector representing the ray generated in the world frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the hit entity and the index of the child collision shape 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01191}{1191}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ae52901f940495b5811eb49a0ca08db98}\label{classsf_1_1_simulation_manager_ae52901f940495b5811eb49a0ca08db98} 
+\index{sf::SimulationManager@{sf::SimulationManager}!RemoveFeatherstoneEntity@{RemoveFeatherstoneEntity}}
+\index{RemoveFeatherstoneEntity@{RemoveFeatherstoneEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{RemoveFeatherstoneEntity()}{RemoveFeatherstoneEntity()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Remove\+Featherstone\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*}}]{ent }\end{DoxyParamCaption})}
+
+
+
+A method that removes a rigid multibody from the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ent} & a pointer to the multibody object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_af58cf6697044ae9844eddbda22f543b6}\label{classsf_1_1_simulation_manager_af58cf6697044ae9844eddbda22f543b6} 
+\index{sf::SimulationManager@{sf::SimulationManager}!RemoveJoint@{RemoveJoint}}
+\index{RemoveJoint@{RemoveJoint}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{RemoveJoint()}{RemoveJoint()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Remove\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*}}]{jnt }\end{DoxyParamCaption})}
+
+
+
+A method that removes a discrete joint from the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jnt} & a pointer to the joint object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00281}{281}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_aab39d62a245ddf4aa6c7304b46326420}\label{classsf_1_1_simulation_manager_aab39d62a245ddf4aa6c7304b46326420} 
+\index{sf::SimulationManager@{sf::SimulationManager}!RemoveSolidEntity@{RemoveSolidEntity}}
+\index{RemoveSolidEntity@{RemoveSolidEntity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{RemoveSolidEntity()}{RemoveSolidEntity()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Remove\+Solid\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}}]{ent }\end{DoxyParamCaption})}
+
+
+
+A method that removes a dynamic rigid body from the simulation world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ent} & a pointer to the dynamic body object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a6fedc8ebc70ce333563c44f154d455cc}\label{classsf_1_1_simulation_manager_a6fedc8ebc70ce333563c44f154d455cc} 
+\index{sf::SimulationManager@{sf::SimulationManager}!RestartScenario@{RestartScenario}}
+\index{RestartScenario@{RestartScenario}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{RestartScenario()}{RestartScenario()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Restart\+Scenario (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method which restarts the simulation. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00867}{867}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a3d35329fd7b0a439b9bd65de0262fe79}\label{classsf_1_1_simulation_manager_a3d35329fd7b0a439b9bd65de0262fe79} 
+\index{sf::SimulationManager@{sf::SimulationManager}!ResumeSimulation@{ResumeSimulation}}
+\index{ResumeSimulation@{ResumeSimulation}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{ResumeSimulation()}{ResumeSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Resume\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that resumes the paused simulation. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00995}{995}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a3aca093b6299284cb01f5905fc39fc64}\label{classsf_1_1_simulation_manager_a3aca093b6299284cb01f5905fc39fc64} 
+\index{sf::SimulationManager@{sf::SimulationManager}!setCallSimulationStepCompleted@{setCallSimulationStepCompleted}}
+\index{setCallSimulationStepCompleted@{setCallSimulationStepCompleted}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{setCallSimulationStepCompleted()}{setCallSimulationStepCompleted()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::set\+Call\+Simulation\+Step\+Completed (\begin{DoxyParamCaption}\item[{bool}]{call }\end{DoxyParamCaption})}
+
+
+
+A method to set a flag that enables automatic calling of the Simulation\+Step\+Completed method. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00602}{602}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_aa7712fcda4e629a52fa8bb490353c93f}\label{classsf_1_1_simulation_manager_aa7712fcda4e629a52fa8bb490353c93f} 
+\index{sf::SimulationManager@{sf::SimulationManager}!setFluidDynamicsPrescaler@{setFluidDynamicsPrescaler}}
+\index{setFluidDynamicsPrescaler@{setFluidDynamicsPrescaler}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{setFluidDynamicsPrescaler()}{setFluidDynamicsPrescaler()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::set\+Fluid\+Dynamics\+Prescaler (\begin{DoxyParamCaption}\item[{unsigned int}]{presc }\end{DoxyParamCaption})}
+
+
+
+A method that directly sets the fluid dynamics prescaler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em presc} & a prescaler used to compute the update frequency of fluid dynamics computations \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00587}{587}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ab6566a3fd168f3950f698f21e8cf520f}\label{classsf_1_1_simulation_manager_ab6566a3fd168f3950f698f21e8cf520f} 
+\index{sf::SimulationManager@{sf::SimulationManager}!setGravity@{setGravity}}
+\index{setGravity@{setGravity}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{setGravity()}{setGravity()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::set\+Gravity (\begin{DoxyParamCaption}\item[{Scalar}]{gravity\+Constant }\end{DoxyParamCaption})}
+
+
+
+A method setting the gravity constant used in the simulation. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00658}{658}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a5add4158cff10127ec8e69e89a9a2660}\label{classsf_1_1_simulation_manager_a5add4158cff10127ec8e69e89a9a2660} 
+\index{sf::SimulationManager@{sf::SimulationManager}!setICSolverParams@{setICSolverParams}}
+\index{setICSolverParams@{setICSolverParams}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{setICSolverParams()}{setICSolverParams()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::set\+ICSolver\+Params (\begin{DoxyParamCaption}\item[{bool}]{use\+Gravity,  }\item[{Scalar}]{time\+Step = {\ttfamily Scalar(0.001)},  }\item[{unsigned int}]{max\+Iterations = {\ttfamily 100000},  }\item[{Scalar}]{max\+Time = {\ttfamily BT\+\_\+LARGE\+\_\+FLOAT},  }\item[{Scalar}]{linear\+Tolerance = {\ttfamily Scalar(1e-\/6)},  }\item[{Scalar}]{angular\+Tolerance = {\ttfamily Scalar(1e-\/6)} }\end{DoxyParamCaption})}
+
+
+
+A method used to setup the initial conditions solver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em use\+Gravity} & specifies if gravity should be enabled during IC solving \\
+\hline
+{\em time\+Step} & a time step used during IC solving \\
+\hline
+{\em max\+Iterations} & a maximum number of iterations simulated \\
+\hline
+{\em max\+Time} & a maximum time of solving \\
+\hline
+{\em linear\+Tolerance} & a tolerance of change of position between two steps \\
+\hline
+{\em angular\+Tolerance} & a tolerance of change of angles between two steps \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00668}{668}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a93d8e76bafdccf56530b90ea0eef4774}\label{classsf_1_1_simulation_manager_a93d8e76bafdccf56530b90ea0eef4774} 
+\index{sf::SimulationManager@{sf::SimulationManager}!SetMaterialsInteraction@{SetMaterialsInteraction}}
+\index{SetMaterialsInteraction@{SetMaterialsInteraction}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{SetMaterialsInteraction()}{SetMaterialsInteraction()}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+Manager\+::\+Set\+Materials\+Interaction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{first\+Material\+Name,  }\item[{const std\+::string \&}]{second\+Material\+Name,  }\item[{Scalar}]{static\+Fric\+Coeff,  }\item[{Scalar}]{dynamic\+Fric\+Coeff }\end{DoxyParamCaption})}
+
+
+
+A method that sets interaction between a pair of materials. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Material\+Name} & a name of the first material \\
+\hline
+{\em second\+Material\+Name} & a name of the second material \\
+\hline
+{\em static\+Fric\+Coeff} & a coefficient of static friction between materials \\
+\hline
+{\em dynamic\+Fric\+Coeff} & a coefficient of dynamic friction between materials \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+was the interaction was set properly? 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01220}{1220}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a5d049ae2e7c08fb7d6305ed7fe1bc6ef}\label{classsf_1_1_simulation_manager_a5d049ae2e7c08fb7d6305ed7fe1bc6ef} 
+\index{sf::SimulationManager@{sf::SimulationManager}!setRealtimeFactor@{setRealtimeFactor}}
+\index{setRealtimeFactor@{setRealtimeFactor}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{setRealtimeFactor()}{setRealtimeFactor()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::set\+Realtime\+Factor (\begin{DoxyParamCaption}\item[{Scalar}]{f }\end{DoxyParamCaption})}
+
+
+
+A method that sets how simulation time relates to real time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & a multiple of real time (1.\+0 = real time) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00595}{595}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_abbdefafbd60e91cd5048af83503d89a1}\label{classsf_1_1_simulation_manager_abbdefafbd60e91cd5048af83503d89a1} 
+\index{sf::SimulationManager@{sf::SimulationManager}!setSolidDisplayMode@{setSolidDisplayMode}}
+\index{setSolidDisplayMode@{setSolidDisplayMode}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{setSolidDisplayMode()}{setSolidDisplayMode()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::set\+Solid\+Display\+Mode (\begin{DoxyParamCaption}\item[{Display\+Mode}]{m }\end{DoxyParamCaption})}
+
+
+
+A method that sets the display mode of dynamical rigid bodies. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & a flag that defines the display style of dynamical bodies \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00695}{695}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a1abf812d153136dc8bc239008f6d075e}\label{classsf_1_1_simulation_manager_a1abf812d153136dc8bc239008f6d075e} 
+\index{sf::SimulationManager@{sf::SimulationManager}!setSolverParams@{setSolverParams}}
+\index{setSolverParams@{setSolverParams}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{setSolverParams()}{setSolverParams()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::set\+Solver\+Params (\begin{DoxyParamCaption}\item[{Scalar}]{erp,  }\item[{Scalar}]{stop\+Erp,  }\item[{Scalar}]{erp2,  }\item[{Scalar}]{global\+Damping,  }\item[{Scalar}]{global\+Friction,  }\item[{Scalar}]{linear\+Sleeping\+Threshold,  }\item[{Scalar}]{angular\+Sleeping\+Threshold }\end{DoxyParamCaption})}
+
+
+
+A method used to change some global solver params for stability tuning. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em erp} & error reduction for constraint solving \\
+\hline
+{\em stop\+Erp} & error reduction for constraint limit solving \\
+\hline
+{\em erp2} & error reduction for contact solving \\
+\hline
+{\em global\+Damping} & damping added globally to all dynamic bodies \\
+\hline
+{\em global\+Friction} & friction added globally to all dynamic bodies \\
+\hline
+{\em linear\+Sleeping\+Threshold} & a linear velocity below which the dynamic bodies will sleep \mbox{[}m/s\mbox{]} \\
+\hline
+{\em angular\+Sleeping\+Threshold} & an angular velocity below which the dynamic bodies will sleep \mbox{[}rad/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00678}{678}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a4acb82f103d52cfeb9f901806d089fb4}\label{classsf_1_1_simulation_manager_a4acb82f103d52cfeb9f901806d089fb4} 
+\index{sf::SimulationManager@{sf::SimulationManager}!setStepsPerSecond@{setStepsPerSecond}}
+\index{setStepsPerSecond@{setStepsPerSecond}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{setStepsPerSecond()}{setStepsPerSecond()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::set\+Steps\+Per\+Second (\begin{DoxyParamCaption}\item[{Scalar}]{steps }\end{DoxyParamCaption})}
+
+
+
+A method that sets new valve for the amount of simulation steps in a second. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em steps} & number steps of simulation per second \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00575}{575}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ac96cf015c4ffc8f73cc0232f65567337}\label{classsf_1_1_simulation_manager_ac96cf015c4ffc8f73cc0232f65567337} 
+\index{sf::SimulationManager@{sf::SimulationManager}!SimulationClockSleep@{SimulationClockSleep}}
+\index{SimulationClockSleep@{SimulationClockSleep}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{SimulationClockSleep()}{SimulationClockSleep()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Simulation\+Clock\+Sleep (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{us }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method sleeping for a given simulation clock time (overriding allows for external time source). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em us} & time to sleep in simulation time \mbox{[}us\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00549}{549}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ace766f35a45ffb47536db171132562e7}\label{classsf_1_1_simulation_manager_ace766f35a45ffb47536db171132562e7} 
+\index{sf::SimulationManager@{sf::SimulationManager}!SimulationPostTickCallback@{SimulationPostTickCallback}}
+\index{SimulationPostTickCallback@{SimulationPostTickCallback}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{SimulationPostTickCallback()}{SimulationPostTickCallback()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Simulation\+Post\+Tick\+Callback (\begin{DoxyParamCaption}\item[{bt\+Dynamics\+World \texorpdfstring{$\ast$}{*}}]{world,  }\item[{Scalar}]{time\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01619}{1619}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_aaf3535a74f31db4dad576d82b24e958c}\label{classsf_1_1_simulation_manager_aaf3535a74f31db4dad576d82b24e958c} 
+\index{sf::SimulationManager@{sf::SimulationManager}!SimulationStepCompleted@{SimulationStepCompleted}}
+\index{SimulationStepCompleted@{SimulationStepCompleted}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{SimulationStepCompleted()}{SimulationStepCompleted()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Simulation\+Step\+Completed (\begin{DoxyParamCaption}\item[{Scalar}]{time\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method called after the simulation step is completed. Useful to implement interaction with outside code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+Step} & amount of time that passed in the simulation world \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01128}{1128}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a917fb009c923945ea13491e2817aaf5e}\label{classsf_1_1_simulation_manager_a917fb009c923945ea13491e2817aaf5e} 
+\index{sf::SimulationManager@{sf::SimulationManager}!SimulationTickCallback@{SimulationTickCallback}}
+\index{SimulationTickCallback@{SimulationTickCallback}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{SimulationTickCallback()}{SimulationTickCallback()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Simulation\+Tick\+Callback (\begin{DoxyParamCaption}\item[{bt\+Dynamics\+World \texorpdfstring{$\ast$}{*}}]{world,  }\item[{Scalar}]{time\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01487}{1487}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a4ba2eb6916c8812565a5c2eac4d03323}\label{classsf_1_1_simulation_manager_a4ba2eb6916c8812565a5c2eac4d03323} 
+\index{sf::SimulationManager@{sf::SimulationManager}!SolveICProblem@{SolveICProblem}}
+\index{SolveICProblem@{SolveICProblem}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{SolveICProblem()}{SolveICProblem()}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+Manager\+::\+Solve\+ICProblem (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method solving the initial conditions problem. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01008}{1008}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a03800ec5470335613eaa7e60dd8b69ba}\label{classsf_1_1_simulation_manager_a03800ec5470335613eaa7e60dd8b69ba} 
+\index{sf::SimulationManager@{sf::SimulationManager}!SolveICTickCallback@{SolveICTickCallback}}
+\index{SolveICTickCallback@{SolveICTickCallback}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{SolveICTickCallback()}{SolveICTickCallback()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Solve\+ICTick\+Callback (\begin{DoxyParamCaption}\item[{bt\+Dynamics\+World \texorpdfstring{$\ast$}{*}}]{world,  }\item[{Scalar}]{time\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01382}{1382}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a03be93f0717f109546e71f91bd7e171f}\label{classsf_1_1_simulation_manager_a03be93f0717f109546e71f91bd7e171f} 
+\index{sf::SimulationManager@{sf::SimulationManager}!StartSimulation@{StartSimulation}}
+\index{StartSimulation@{StartSimulation}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{StartSimulation()}{StartSimulation()}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+Manager\+::\+Start\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method which starts the simulation. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l00970}{970}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a181a668572d358370b5788b3b082e59f}\label{classsf_1_1_simulation_manager_a181a668572d358370b5788b3b082e59f} 
+\index{sf::SimulationManager@{sf::SimulationManager}!StepSimulation@{StepSimulation}}
+\index{StepSimulation@{StepSimulation}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{StepSimulation()}{StepSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Step\+Simulation (\begin{DoxyParamCaption}\item[{Scalar}]{time\+Step }\end{DoxyParamCaption})}
+
+
+
+A method that performs on simulation step of specified period. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01102}{1102}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_ae316a111552578bee0e585aea607db49}\label{classsf_1_1_simulation_manager_ae316a111552578bee0e585aea607db49} 
+\index{sf::SimulationManager@{sf::SimulationManager}!StopSimulation@{StopSimulation}}
+\index{StopSimulation@{StopSimulation}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{StopSimulation()}{StopSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Stop\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method which stops the simulation. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01003}{1003}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a1accfcb843b0a73e6e1082a86b009285}\label{classsf_1_1_simulation_manager_a1accfcb843b0a73e6e1082a86b009285} 
+\index{sf::SimulationManager@{sf::SimulationManager}!UpdateDrawingQueue@{UpdateDrawingQueue}}
+\index{UpdateDrawingQueue@{UpdateDrawingQueue}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{UpdateDrawingQueue()}{UpdateDrawingQueue()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+Manager\+::\+Update\+Drawing\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method updating the drawing queue (thread safe) 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8cpp_source_l01136}{1136}} of file \mbox{\hyperlink{_simulation_manager_8cpp_source}{Simulation\+Manager.\+cpp}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classsf_1_1_simulation_manager_a0bbd67f5af2a7bfbeec47d519ad831e2}\label{classsf_1_1_simulation_manager_a0bbd67f5af2a7bfbeec47d519ad831e2} 
+\index{sf::SimulationManager@{sf::SimulationManager}!OpenGLPipeline@{OpenGLPipeline}}
+\index{OpenGLPipeline@{OpenGLPipeline}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{OpenGLPipeline}{OpenGLPipeline}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline}{Open\+GLPipeline}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00071}{71}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_simulation_manager_a7446b37eed3c8c522abd18e7ca9db85c}\label{classsf_1_1_simulation_manager_a7446b37eed3c8c522abd18e7ca9db85c} 
+\index{sf::SimulationManager@{sf::SimulationManager}!dwBroadphase@{dwBroadphase}}
+\index{dwBroadphase@{dwBroadphase}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{dwBroadphase}{dwBroadphase}}
+{\footnotesize\ttfamily bt\+Broadphase\+Interface\texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::dw\+Broadphase\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00551}{551}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a6d2d12480fbc2ec0b139b07705e21e13}\label{classsf_1_1_simulation_manager_a6d2d12480fbc2ec0b139b07705e21e13} 
+\index{sf::SimulationManager@{sf::SimulationManager}!dwCollisionConfig@{dwCollisionConfig}}
+\index{dwCollisionConfig@{dwCollisionConfig}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{dwCollisionConfig}{dwCollisionConfig}}
+{\footnotesize\ttfamily bt\+Default\+Collision\+Configuration\texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::dw\+Collision\+Config\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00552}{552}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a569482988d13654be16e65762607c65b}\label{classsf_1_1_simulation_manager_a569482988d13654be16e65762607c65b} 
+\index{sf::SimulationManager@{sf::SimulationManager}!dwDispatcher@{dwDispatcher}}
+\index{dwDispatcher@{dwDispatcher}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{dwDispatcher}{dwDispatcher}}
+{\footnotesize\ttfamily bt\+Collision\+Dispatcher\texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::dw\+Dispatcher\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00550}{550}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a314e0e43b318fa0979b3f6ce9ea51c88}\label{classsf_1_1_simulation_manager_a314e0e43b318fa0979b3f6ce9ea51c88} 
+\index{sf::SimulationManager@{sf::SimulationManager}!dynamicsWorld@{dynamicsWorld}}
+\index{dynamicsWorld@{dynamicsWorld}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{dynamicsWorld}{dynamicsWorld}}
+{\footnotesize\ttfamily bt\+Soft\+Multi\+Body\+Dynamics\+World\texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::dynamics\+World\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00546}{546}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a6b22b75789c922c58f71b724cc4e4d65}\label{classsf_1_1_simulation_manager_a6b22b75789c922c58f71b724cc4e4d65} 
+\index{sf::SimulationManager@{sf::SimulationManager}!materialManager@{materialManager}}
+\index{materialManager@{materialManager}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{materialManager}{materialManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_material_manager}{Material\+Manager}}\texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::material\+Manager\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00554}{554}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a1b5c136547231928972effeaf58f1f80}\label{classsf_1_1_simulation_manager_a1b5c136547231928972effeaf58f1f80} 
+\index{sf::SimulationManager@{sf::SimulationManager}!mbSolver@{mbSolver}}
+\index{mbSolver@{mbSolver}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{mbSolver}{mbSolver}}
+{\footnotesize\ttfamily bt\+Multi\+Body\+Constraint\+Solver\texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::mb\+Solver\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00547}{547}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a78a375f29125c2f6959af3a411de08c1}\label{classsf_1_1_simulation_manager_a78a375f29125c2f6959af3a411de08c1} 
+\index{sf::SimulationManager@{sf::SimulationManager}!sbInfo@{sbInfo}}
+\index{sbInfo@{sbInfo}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{sbInfo}{sbInfo}}
+{\footnotesize\ttfamily bt\+Soft\+Body\+World\+Info sf\+::\+Simulation\+Manager\+::sb\+Info\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00549}{549}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_manager_a7b1ae5e6a07444b48225c2344232ab6c}\label{classsf_1_1_simulation_manager_a7b1ae5e6a07444b48225c2344232ab6c} 
+\index{sf::SimulationManager@{sf::SimulationManager}!sbSolver@{sbSolver}}
+\index{sbSolver@{sbSolver}!sf::SimulationManager@{sf::SimulationManager}}
+\doxysubsubsection{\texorpdfstring{sbSolver}{sbSolver}}
+{\footnotesize\ttfamily bt\+Soft\+Body\+Solver\texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+Manager\+::sb\+Solver\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_manager_8h_source_l00548}{548}} of file \mbox{\hyperlink{_simulation_manager_8h_source}{Simulation\+Manager.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/core/Simulation\+Manager.\+h\item 
+Library/src/core/Simulation\+Manager.\+cpp\end{DoxyCompactItemize}

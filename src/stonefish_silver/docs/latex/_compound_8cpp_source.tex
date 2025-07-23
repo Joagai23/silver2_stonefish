@@ -1,0 +1,652 @@
+\doxysection{Compound.\+cpp}
+\hypertarget{_compound_8cpp_source}{}\label{_compound_8cpp_source}\index{Library/src/entities/solids/Compound.cpp@{Library/src/entities/solids/Compound.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Compound.cpp}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 19/09/17.}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2017-\/2018\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}entities/solids/Compound.h"{}}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}utils/GeometryFileUtil.h"{}}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00032}00032\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00035}\mbox{\hyperlink{classsf_1_1_compound_a523d1bb935edc13ec76948129d1159f1}{00035}}\ \mbox{\hyperlink{classsf_1_1_compound_a523d1bb935edc13ec76948129d1159f1}{Compound::Compound}}(std::string\ uniqueName,\ \mbox{\hyperlink{structsf_1_1_body_physics_settings}{BodyPhysicsSettings}}\ phy,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ firstExternalPart,\ \textcolor{keyword}{const}\ Transform\&\ origin)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00036}00036\ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}(uniqueName,\ phy,\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}},\ Scalar(-\/1))}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//All\ transformations\ are\ zero\ -\/>\ transforming\ the\ origin\ of\ a\ compound\ body\ doesn't\ make\ sense...}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00039}00039\ \ \ \ \ phyMesh\ =\ NULL;\ \textcolor{comment}{//\ There\ is\ no\ single\ mesh}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00040}00040\ \ \ \ \ volume\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00041}00041\ \ \ \ \ mass\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00042}00042\ \ \ \ \ Ipri\ =\ Vector3(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00043}00043\ \ \ \ \ displayInternals\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00044}00044\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_compound_a5f7405a015a2c143129a8768fecbb74c}{AddExternalPart}}(firstExternalPart,\ origin);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00048}\mbox{\hyperlink{classsf_1_1_compound_a7610b3390f61490ba9d5216a14802248}{00048}}\ \mbox{\hyperlink{classsf_1_1_compound_a7610b3390f61490ba9d5216a14802248}{Compound::\string~Compound}}()}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<parts.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ parts[i].solid;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00052}00052\ \ \ \ \ parts.clear();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00055}\mbox{\hyperlink{classsf_1_1_compound_ac6ed347b0a80005d6dca3e1467d0063f}{00055}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_compound_ac6ed347b0a80005d6dca3e1467d0063f}{Compound::setDisplayInternalParts}}(\textcolor{keywordtype}{bool}\ enabled)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00056}00056\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00057}00057\ \ \ \ \ displayInternals\ =\ enabled;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00060}\mbox{\hyperlink{classsf_1_1_compound_a29b3cadc8945b9e2c4b6420067ac8cda}{00060}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_compound_a29b3cadc8945b9e2c4b6420067ac8cda}{Compound::isDisplayingInternalParts}}()}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00061}00061\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ displayInternals;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00065}\mbox{\hyperlink{classsf_1_1_compound_a83dc7942320dd644f79216617575e97c}{00065}}\ Scalar\ \mbox{\hyperlink{classsf_1_1_compound_a83dc7942320dd644f79216617575e97c}{Compound::getAugmentedMass}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00066}00066\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{return}\ mass\ +\ aMass.x();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00070}\mbox{\hyperlink{classsf_1_1_compound_a9cb4eb2faf8ba766e842946d7ff10d61}{00070}}\ Vector3\ \mbox{\hyperlink{classsf_1_1_compound_a9cb4eb2faf8ba766e842946d7ff10d61}{Compound::getAugmentedInertia}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00071}00071\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{return}\ Ipri;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00074}00074\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00075}\mbox{\hyperlink{classsf_1_1_compound_a27a9b37b6dffe118d183614ce725f1bf}{00075}}\ \mbox{\hyperlink{structsf_1_1_material}{Material}}\ \mbox{\hyperlink{classsf_1_1_moving_entity_ae740632e74b4344722f6a54728799da6}{Compound::getMaterial}}(\textcolor{keywordtype}{size\_t}\ partId)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00076}00076\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{if}(partId\ <\ parts.size())}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ parts[partId].solid-\/>getMaterial();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structsf_1_1_material}{Material}}();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00083}\mbox{\hyperlink{classsf_1_1_compound_adebc8c8aaffb6e528f34ee9f31dab609}{00083}}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classsf_1_1_compound_adebc8c8aaffb6e528f34ee9f31dab609}{Compound::getPartId}}(\textcolor{keywordtype}{size\_t}\ collisionShapeId)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00084}00084\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{if}(collisionShapeId\ <\ collisionPartId.size())}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ collisionPartId[collisionShapeId];}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00091}\mbox{\hyperlink{classsf_1_1_compound_adca6f0b004d2ce2083a54c8185a3034d}{00091}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_compound_part}{CompoundPart}}\ \mbox{\hyperlink{classsf_1_1_compound_adca6f0b004d2ce2083a54c8185a3034d}{Compound::getPart}}(\textcolor{keywordtype}{size\_t}\ partId)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00092}00092\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00094}00094\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ parts.at(partId);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ std::exception\&\ e)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00098}00098\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_compound_part}{CompoundPart}}\ nopart;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ nopart.solid\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nopart;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00104}00104\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00105}\mbox{\hyperlink{classsf_1_1_compound_ad91ff864c9fc99a6feb8718af231ed63}{00105}}\ SolidType\ \mbox{\hyperlink{classsf_1_1_compound_ad91ff864c9fc99a6feb8718af231ed63}{Compound::getSolidType}}()}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00106}00106\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{return}\ SolidType::COMPOUND;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00108}00108\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00110}\mbox{\hyperlink{classsf_1_1_compound_a762201cdacd0a11d61a9598b3913d733}{00110}}\ std::vector<Vector3>*\ \mbox{\hyperlink{classsf_1_1_compound_a762201cdacd0a11d61a9598b3913d733}{Compound::getMeshVertices}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00111}00111\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00112}00112\ \ \ \ \ std::vector<Vector3>*\ pVert\ =\ \textcolor{keyword}{new}\ std::vector<Vector3>(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<parts.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00115}00115\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(parts[i].isExternal)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Vector3>*\ pPartVert\ =\ parts[i].solid-\/>getMeshVertices();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ phyMeshTrans\ =\ parts[i].origin\ *\ parts[i].solid-\/>getO2GTransform();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ h=0;\ h\ <\ pPartVert-\/>size();\ ++h)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v\ =\ phyMeshTrans\ *\ pPartVert-\/>at(h);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pVert-\/>push\_back(v);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ pPartVert;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00129}00129\ \ \ \ \ \textcolor{keywordflow}{return}\ pVert;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00131}00131\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00132}\mbox{\hyperlink{classsf_1_1_compound_ac70989848bbfbcb4e9e7d912167e7780}{00132}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_compound_ac70989848bbfbcb4e9e7d912167e7780}{Compound::AddInternalPart}}(\mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solid,\ \textcolor{keyword}{const}\ Transform\&\ origin,\ \textcolor{keywordtype}{bool}\ alwaysVisible)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00133}00133\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00134}00134\ \ \ \ \ \textcolor{keywordflow}{if}(solid\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00135}00135\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_compound_part}{CompoundPart}}\ part;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ part.solid\ =\ solid;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ part.origin\ =\ origin;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ part.isExternal\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ part.alwaysVisible\ =\ alwaysVisible;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ parts.push\_back(part);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ RecalculatePhysicalProperties();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00146}\mbox{\hyperlink{classsf_1_1_compound_a5f7405a015a2c143129a8768fecbb74c}{00146}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_compound_a5f7405a015a2c143129a8768fecbb74c}{Compound::AddExternalPart}}(\mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solid,\ \textcolor{keyword}{const}\ Transform\&\ origin)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00147}00147\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{if}(solid\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00149}00149\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_compound_part}{CompoundPart}}\ part;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ part.solid\ =\ solid;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ part.origin\ =\ origin;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ part.isExternal\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ part.alwaysVisible\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ parts.push\_back(part);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ RecalculatePhysicalProperties();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00157}00157\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00158}00158\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00160}00160\ \textcolor{keywordtype}{void}\ Compound::RecalculatePhysicalProperties()}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00161}00161\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{comment}{//Calculate\ rigid\ body\ properties}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00163}00163\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00164}00164\ \textcolor{comment}{\ \ \ \ \ \ 1.\ Calculate\ compound\ mass\ and\ compound\ CG\ (sum\ of\ location\ -\/\ local\ *\ m\ /\ M)}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00165}00165\ \textcolor{comment}{\ \ \ \ \ \ 2.\ Calculate\ inertia\ of\ part\ in\ global\ frame\ and\ compound\ CG\ (rotate\ and\ translate\ inertia\ tensor)\ 3x3}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00166}00166\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ and\ calculate\ compound\ inertia\ 3x3\ (sum\ of\ parts\ inertia)}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00167}00167\ \textcolor{comment}{\ \ \ \ \ \ 3.\ Calculate\ primary\ moments\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00168}00168\ \textcolor{comment}{\ \ \ \ \ \ 4.\ Find\ primary\ axes\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00169}00169\ \textcolor{comment}{\ \ \ \ \ \ 5.\ Rotate\ frame\ to\ match\ primary\ axes\ and\ move\ to\ CG}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00170}00170\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00171}00171\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{comment}{//1.\ Calculate\ compound\ mass,\ CG\ and\ CB}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00173}00173\ \ \ \ \ Vector3\ compoundCG(0,0,0);\ \textcolor{comment}{//In\ compound\ body\ origin\ frame}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00174}00174\ \ \ \ \ Vector3\ compoundCB(0,0,0);\ \textcolor{comment}{//In\ compound\ body\ origin\ frame}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00175}00175\ \ \ \ \ Scalar\ compoundMass(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00176}00176\ \ \ \ \ Scalar\ compoundAugmentedMass(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00177}00177\ \ \ \ \ Scalar\ compoundVolume(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00178}00178\ \ \ \ \ Scalar\ compoundSurface(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00179}00179\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00180}00180\ \ \ \ \ T\_CG2O\ =\ T\_CG2C\ =\ T\_CG2G\ =\ Transform::getIdentity();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00181}00181\ \ \ \ \ P\_CB\ =\ Vector3(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<parts.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00184}00184\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Mechanical\ parameters}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ compoundMass\ +=\ parts[i].solid-\/>getMass();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ compoundAugmentedMass\ +=\ parts[i].isExternal\ ?\ parts[i].solid-\/>getAugmentedMass()\ :\ parts[i].solid-\/>getMass();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ compoundCG\ +=\ (parts[i].origin\ *\ parts[i].solid-\/>getCG2OTransform().inverse()).getOrigin()\ *\ parts[i].solid-\/>getMass();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(parts[i].solid-\/>isBuoyant())}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ compoundVolume\ +=\ parts[i].solid-\/>getVolume();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ compoundCB\ +=\ parts[i].origin\ *\ parts[i].solid-\/>getCG2OTransform().inverse()\ *\ parts[i].solid-\/>getCB()\ *\ parts[i].solid-\/>getVolume();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(parts[i].isExternal)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ compoundSurface\ +=\ parts[i].solid-\/>getSurface();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00198}00198\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00199}00199\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{comment}{//Set\ transform\ origin}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00201}00201\ \ \ \ \ compoundCG\ /=\ compoundMass;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00202}00202\ \ \ \ \ \textcolor{keywordflow}{if}(compoundVolume\ >\ Scalar(0))\ compoundCB\ /=\ compoundVolume;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00203}00203\ \ \ \ \ T\_CG2O.setOrigin(-\/compoundCG);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00204}00204\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00205}00205\ \ \ \ \ \textcolor{comment}{//2.\ Calculate\ compound\ inertia\ matrix}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00206}00206\ \ \ \ \ Matrix3\ I\ =\ Matrix3(0,0,0,0,0,0,0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00208}00208\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<parts.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00209}00209\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Calculate\ inertia\ matrix\ 3x3\ of\ solid\ in\ the\ compound\ body\ origin\ frame\ and\ transform\ to\ CB}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ Vector3\ solidPriInertia\ =\ parts[i].isExternal\ ?\ parts[i].solid-\/>getAugmentedInertia()\ :\ parts[i].solid-\/>getInertia();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ Matrix3\ solidInertia\ =\ Matrix3(solidPriInertia.x(),\ 0,\ 0,\ 0,\ solidPriInertia.y(),\ 0,\ 0,\ 0,\ solidPriInertia.z());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Rotate\ inertia\ tensor\ from\ part\ CG\ to\ compound\ CG}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ Transform\ compToPart\ =\ T\_CG2O\ *\ parts[i].origin\ *\ parts[i].solid-\/>getCG2OTransform().inverse();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ solidInertia\ =\ compToPart.getBasis()\ *\ solidInertia\ *\ compToPart.getBasis().transpose();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Translate\ inertia\ tensor\ from\ part\ CG\ to\ compound\ CG}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ Vector3\ t\ =\ compToPart.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ Scalar\ m\ =\ parts[i].isExternal\ ?\ parts[i].solid-\/>getAugmentedMass()\ :\ parts[i].solid-\/>getMass();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ solidInertia\ +=\ Matrix3(t.y()*t.y()+t.z()*t.z(),\ \ \ \ \ \ \ \ \ \ \ \ -\/t.x()*t.y(),\ \ \ \ \ \ \ \ \ \ \ \ -\/t.x()*t.z(),}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/t.y()*t.x(),\ t.x()*t.x()+t.z()*t.z(),\ \ \ \ \ \ \ \ \ \ \ \ -\/t.y()*t.z(),}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/t.z()*t.x(),\ \ \ \ \ \ \ \ \ \ \ \ -\/t.z()*t.y(),\ t.x()*t.x()+t.y()*t.y()).scaled(Vector3(m,\ m,\ m));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Accumulate\ inertia\ tensor}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ I\ +=\ solidInertia;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00227}00227\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00228}00228\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00229}00229\ \ \ \ \ \textcolor{comment}{//3.\ Find\ compound\ moments\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00230}00230\ \ \ \ \ Vector3\ compoundPriInertia(I.getRow(0).getX(),\ I.getRow(1).getY(),\ I.getRow(2).getZ());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00231}00231\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00232}00232\ \ \ \ \ \textcolor{comment}{//Check\ if\ inertia\ matrix\ is\ not\ diagonal}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00233}00233\ \ \ \ \ \textcolor{keywordflow}{if}(!(btFuzzyZero(I.getRow(0).getY())\ \&\&\ btFuzzyZero(I.getRow(0).getZ())}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \&\&\ btFuzzyZero(I.getRow(1).getX())\ \&\&\ btFuzzyZero(I.getRow(1).getZ())}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \&\&\ btFuzzyZero(I.getRow(2).getX())\ \&\&\ btFuzzyZero(I.getRow(2).getY())))}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00236}00236\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \textcolor{comment}{//3.1.\ Calculate\ principal\ moments\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ Scalar\ T\ =\ I[0][0]\ +\ I[1][1]\ +\ I[2][2];\ \textcolor{comment}{//Ixx\ +\ Iyy\ +\ Izz}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ Scalar\ II\ =\ I[0][0]*I[1][1]\ +\ I[0][0]*I[2][2]\ +\ I[1][1]*I[2][2]\ -\/\ I[0][1]*I[0][1]\ -\/\ I[0][2]*I[0][2]\ -\/\ I[1][2]*I[1][2];\ \textcolor{comment}{//Ixx\ Iyy\ +\ Ixx\ Izz\ +\ Iyy\ Izz\ -\/\ Ixy\string^2\ -\/\ Ixz\string^2\ -\/\ Iyz\string^2}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ Scalar\ U\ =\ btSqrt(T*T-\/Scalar(3.)*II)/Scalar(3.);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ Scalar\ theta\ =\ btAcos((-\/Scalar(2.)*T*T*T\ +\ Scalar(9.)*T*II\ -\/\ Scalar(27.)*I.determinant())/(Scalar(54.)*U*U*U));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ Scalar\ A\ =\ T/Scalar(3.)\ -\/\ Scalar(2.)*U*btCos(theta/Scalar(3.));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ Scalar\ B\ =\ T/Scalar(3.)\ -\/\ Scalar(2.)*U*btCos(theta/Scalar(3.)\ -\/\ Scalar(2.)*M\_PI/Scalar(3.));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ Scalar\ C\ =\ T/Scalar(3.)\ -\/\ Scalar(2.)*U*btCos(theta/Scalar(3.)\ +\ Scalar(2.)*M\_PI/Scalar(3.));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ compoundPriInertia\ =\ Vector3(A,\ B,\ C);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00246}00246\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \textcolor{comment}{//3.2.\ Calculate\ principal\ axes\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ Matrix3\ L;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ Vector3\ axis1,axis2,axis3;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ axis1\ =\ FindInertialAxis(I,\ A);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ axis2\ =\ FindInertialAxis(I,\ B);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ axis3\ =\ axis1.cross(axis2);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ axis2\ =\ axis3.cross(axis1);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00254}00254\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{comment}{//3.3.\ Rotate\ body\ so\ that\ principal\ axes\ are\ parallel\ to\ (x,y,z)\ system}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ Matrix3\ rotMat(axis1[0],axis2[0],axis3[0],\ axis1[1],axis2[1],axis3[1],\ axis1[2],axis2[2],axis3[2]);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ T\_CG2O\ =\ Transform(rotMat,\ Vector3(0,0,0)).inverse()\ *\ T\_CG2O;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00258}00258\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00259}00259\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00260}00260\ \ \ \ \ T\_CG2C\ =\ T\_CG2G\ =\ T\_CG2O;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00261}00261\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00262}00262\ \ \ \ \ \textcolor{comment}{//Move\ CB\ to\ compound\ CG\ frame}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00263}00263\ \ \ \ \ P\_CB\ =\ T\_CG2O\ *\ compoundCB;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00264}00264\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00265}00265\ \ \ \ \ mass\ =\ compoundMass;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00266}00266\ \ \ \ \ aMass.setX(compoundAugmentedMass\ -\/\ compoundMass);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00267}00267\ \ \ \ \ aMass.setY(compoundAugmentedMass\ -\/\ compoundMass);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00268}00268\ \ \ \ \ aMass.setZ(compoundAugmentedMass\ -\/\ compoundMass);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00269}00269\ \ \ \ \ volume\ =\ compoundVolume;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00270}00270\ \ \ \ \ surface\ =\ compoundSurface;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00271}00271\ \ \ \ \ Ipri\ =\ compoundPriInertia;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00272}00272\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00274}\mbox{\hyperlink{classsf_1_1_compound_a8375a34c79fd9a18fd98a1e92e3c85ac}{00274}}\ btCollisionShape*\ \mbox{\hyperlink{classsf_1_1_compound_a8375a34c79fd9a18fd98a1e92e3c85ac}{Compound::BuildCollisionShape}}()}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00275}00275\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00276}00276\ \ \ \ \ \textcolor{comment}{//Build\ collision\ shape\ from\ external\ parts}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00277}00277\ \ \ \ \ btCompoundShape*\ colShape\ =\ \textcolor{keyword}{new}\ btCompoundShape();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00278}00278\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i<parts.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00279}00279\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(parts[i].isExternal)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ childTrans\ =\ parts[i].origin\ *\ parts[i].solid-\/>getCG2OTransform().inverse()\ *\ parts[i].solid-\/>getCG2CTransform();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ btCollisionShape*\ partColShape\ =\ parts[i].solid-\/>BuildCollisionShape();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ colShape-\/>addChildShape(childTrans,\ partColShape);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ collisionPartId.push\_back(i);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00287}00287\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00288}00288\ \ \ \ \ \textcolor{keywordflow}{return}\ colShape;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00289}00289\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00291}\mbox{\hyperlink{classsf_1_1_compound_acffdf49aa459e0117f7c9d216e517178}{00291}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_compound_acffdf49aa459e0117f7c9d216e517178}{Compound::ComputeHydrodynamicForces}}(\mbox{\hyperlink{structsf_1_1_hydrodynamics_settings}{HydrodynamicsSettings}}\ settings,\ \mbox{\hyperlink{classsf_1_1_ocean}{Ocean}}*\ ocn)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00292}00292\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00293}00293\ \ \ \ \ \textcolor{keywordflow}{if}(phy.mode\ !=\ BodyPhysicsMode::FLOATING\ \&\&\ phy.mode\ !=\ BodyPhysicsMode::SUBMERGED)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00294}00294\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00295}00295\ \ \ \ \ submerged.points.clear();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00297}00297\ \ \ \ \ BodyFluidPosition\ bf\ =\ CheckBodyFluidPosition(ocn);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00298}00298\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00299}00299\ \ \ \ \ \textcolor{comment}{//If\ completely\ outside\ fluid\ just\ set\ all\ torques\ and\ forces\ to\ 0}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00300}00300\ \ \ \ \ \textcolor{keywordflow}{if}(bf\ ==\ BodyFluidPosition::OUTSIDE)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00301}00301\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ Fb.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ Tb.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ Fdq.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ Tdq.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ Fdf.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ Tdf.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ Swet\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ Vsub\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00311}00311\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00312}00312\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00313}00313\ \ \ \ \ \textcolor{keywordflow}{if}(bf\ ==\ BodyFluidPosition::INSIDE)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00314}00314\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Compute\ buoyancy\ based\ on\ CB\ position}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_solid_entity_a518eb4bacd1ca0207fc654682fe68834}{isBuoyant}}())}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ Fb\ =\ -\/volume*ocn-\/>\mbox{\hyperlink{classsf_1_1_ocean_ae772c575770d953e61e6dbff56c623cf}{getLiquid}}().density\ *\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_aabec3fadafe52939d92e282684a6aa01}{getGravity}}();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ Tb\ =\ (\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}()\ *\ P\_CB\ -\/\ \mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}().getOrigin()).cross(Fb);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(settings.dampingForces)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Set\ zero}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ Fdq.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ Tdq.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ Fdf.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ Tdf.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Get\ velocity\ data}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_a2800e9aa22c9cfdeca9f64bbcad87e74}{getLinearVelocity}}();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ omega\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_ad71d7839ac6517de93ebf0d83e5145de}{getAngularVelocity}}();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Create\ temporary\ vectors\ for\ summing}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Fdqp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Tdqp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Fdfp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Tdfp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<parts.size();\ ++i)\ \textcolor{comment}{//Go\ through\ all\ parts}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(parts[i].isExternal\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ (parts[i].solid-\/>getBodyPhysicsMode()\ ==\ BodyPhysicsMode::SUBMERGED}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ||\ parts[i].solid-\/>getBodyPhysicsMode()\ ==\ BodyPhysicsMode::FLOATING))\ \textcolor{comment}{//Compute\ drag\ only\ for\ external\ parts}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ T\_C\_part\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{getOTransform}}()\ *\ parts[i].origin\ *\ parts[i].solid-\/>getO2CTransform();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ T\_O\_part\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{getOTransform}}()\ *\ parts[i].origin;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_solid_entity_ae51826999e47166d3c3d44e5865698a5}{ComputeHydrodynamicForcesSubmerged}}(parts[i].solid-\/>getPhysicsMesh(),\ ocn,\ \mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}(),\ T\_C\_part,\ v,\ omega,\ Fdqp,\ Tdqp,\ Fdfp,\ Tdfp);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Cd,\ Cf;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parts[i].solid-\/>getHydrodynamicCoefficients(Cd,\ Cf);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_solid_entity_ade798feefe939f16a32d2d1cf9238580}{CorrectHydrodynamicForces}}(ocn,\ Fdqp,\ Tdqp,\ Fdfp,\ Tdfp,\ Cd,\ Cf,\ T\_O\_part);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fdq\ +=\ Fdqp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tdq\ +=\ Tdqp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fdf\ +=\ Fdfp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tdf\ +=\ Tdfp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ Swet\ =\ surface;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ Vsub\ =\ volume;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00361}00361\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00362}00362\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//CROSSING\ FLUID\ SURFACE\ (compound\ body\ but\ not\ necessarily\ all\ parts!)}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00363}00363\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(settings.reallisticBuoyancy\ ||\ settings.dampingForces)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Clear\ forces\ that\ will\ be\ recomputed}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(settings.reallisticBuoyancy)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fb.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tb.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(settings.dampingForces)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fdq.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tdq.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fdf.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tdf.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ Swet\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ Vsub\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Get\ velocity\ data}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_a2800e9aa22c9cfdeca9f64bbcad87e74}{getLinearVelocity}}();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ omega\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_ad71d7839ac6517de93ebf0d83e5145de}{getAngularVelocity}}();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Create\ temporary\ vectors\ for\ summing}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Fbp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Tbp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Fdqp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Tdqp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Fdfp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Tdfp(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ Swetp(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ Vsubp(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<parts.size();\ ++i)\ \textcolor{comment}{//Loop\ through\ all\ parts}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(parts[i].solid-\/>getBodyPhysicsMode()\ !=\ BodyPhysicsMode::SUBMERGED}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ parts[i].solid-\/>getBodyPhysicsMode()\ !=\ BodyPhysicsMode::FLOATING)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ T\_C\_part\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{getOTransform}}()\ *\ parts[i].origin\ *\ parts[i].solid-\/>getO2CTransform();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ T\_O\_part\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{getOTransform}}()\ *\ parts[i].origin;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_hydrodynamics_settings}{HydrodynamicsSettings}}\ pSettings\ =\ settings;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pSettings.reallisticBuoyancy\ \&=\ parts[i].solid-\/>isBuoyant();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00408}00408\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(parts[i].isExternal)\ \textcolor{comment}{//Compute\ buoyancy\ and\ drag}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_solid_entity_aca17bb485bead86d14be4f4a97172f66}{ComputeHydrodynamicForcesSurface}}(pSettings,\ parts[i].solid-\/>getPhysicsMesh(),\ ocn,\ \mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}(),\ T\_C\_part,\ v,\ omega,\ Fbp,\ Tbp,\ Fdqp,\ Tdqp,\ Fdfp,\ Tdfp,\ Swetp,\ Vsubp,\ submerged);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Cd,\ Cf;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parts[i].solid-\/>getHydrodynamicCoefficients(Cd,\ Cf);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_solid_entity_ade798feefe939f16a32d2d1cf9238580}{CorrectHydrodynamicForces}}(ocn,\ Fdqp,\ Tdqp,\ Fdfp,\ Tdfp,\ Cd,\ Cf,\ T\_O\_part);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fb\ +=\ Fbp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tb\ +=\ Tbp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fdq\ +=\ Fdqp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tdq\ +=\ Tdqp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fdf\ +=\ Fdfp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tdf\ +=\ Tdfp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Swet\ +=\ Swetp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vsub\ +=\ Vsubp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pSettings.reallisticBuoyancy)\ \textcolor{comment}{//Compute\ only\ buoyancy}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pSettings.dampingForces\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_solid_entity_aca17bb485bead86d14be4f4a97172f66}{ComputeHydrodynamicForcesSurface}}(pSettings,\ parts[i].solid-\/>getPhysicsMesh(),\ ocn,\ \mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}(),\ T\_C\_part,\ v,\ omega,\ Fbp,\ Tbp,\ Fdqp,\ Tdqp,\ Fdfp,\ Tdfp,\ Swetp,\ Vsubp,\ submerged);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fb\ +=\ Fbp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tb\ +=\ Tbp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vsub\ +=\ Vsubp;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00434}00434\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00435}00435\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00437}\mbox{\hyperlink{classsf_1_1_compound_a830c2a846d70b8cd616244827c14af1b}{00437}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_compound_a830c2a846d70b8cd616244827c14af1b}{Compound::ComputeAerodynamicForces}}(\mbox{\hyperlink{classsf_1_1_atmosphere}{Atmosphere}}*\ atm)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00438}00438\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00439}00439\ \ \ \ \ \textcolor{keywordflow}{if}(phy.mode\ !=\ BodyPhysicsMode::AERODYNAMIC)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00440}00440\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00441}00441\ \ \ \ \ \textcolor{comment}{//Set\ zero}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00442}00442\ \ \ \ \ Fda.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00443}00443\ \ \ \ \ Tda.setZero();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00445}00445\ \ \ \ \ \textcolor{comment}{//Get\ velocity\ data}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00446}00446\ \ \ \ \ Vector3\ v\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_a2800e9aa22c9cfdeca9f64bbcad87e74}{getLinearVelocity}}();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00447}00447\ \ \ \ \ Vector3\ omega\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_ad71d7839ac6517de93ebf0d83e5145de}{getAngularVelocity}}();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00449}00449\ \ \ \ \ \textcolor{comment}{//Create\ temporary\ vectors\ for\ summing}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00450}00450\ \ \ \ \ Vector3\ Fdap(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00451}00451\ \ \ \ \ Vector3\ Tdap(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00453}00453\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<parts.size();\ ++i)\ \textcolor{comment}{//Go\ through\ all\ parts}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(parts[i].isExternal)\ \textcolor{comment}{//Compute\ drag\ only\ for\ external\ parts}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ T\_C\_part\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{getOTransform}}()\ *\ parts[i].origin\ *\ parts[i].solid-\/>getO2CTransform();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_solid_entity_a31fbc4e2a743d4c58ef5e8183ebd4f01}{SolidEntity::ComputeAerodynamicForces}}(parts[i].solid-\/>getPhysicsMesh(),\ atm,\ \mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}(),\ T\_C\_part,\ v,\ omega,\ Fdap,\ Tdap);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ parts[i].solid-\/>CorrectAerodynamicForces(atm,\ Fdap,\ Tdap);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ Fda\ +=\ Fdap;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ Tda\ +=\ Tdap;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00462}00462\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00463}00463\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00464}\mbox{\hyperlink{classsf_1_1_compound_aeeb4420d7c656151a02134da6e31e324}{00464}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_compound_aeeb4420d7c656151a02134da6e31e324}{Compound::BuildGraphicalObject}}()}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00465}00465\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00466}00466\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<parts.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ parts[i].solid-\/>BuildGraphicalObject();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00468}00468\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00469}00469\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00470}\mbox{\hyperlink{classsf_1_1_compound_ac81074fb357e053a8b530ad7f453c1f0}{00470}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_compound_a3ff53bf4332cbd69a1a5e797299c9e43}{Compound::Render}}(\textcolor{keywordtype}{size\_t}\ partId)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00471}00471\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00472}00472\ \ \ \ \ std::vector<Renderable>\ items(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00473}00473\ \ \ \ \ Transform\ oCompoundTrans\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{getOTransform}}();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00474}00474\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00475}00475\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00476}00476\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((parts.at(partId).isExternal\ \&\&\ !displayInternals)\ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ (!parts.at(partId).isExternal\ \&\&\ displayInternals)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ (parts.at(partId).alwaysVisible))}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::SOLID;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ item.materialName\ =\ parts.at(partId).solid-\/>getMaterial().name;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dm\ ==\ DisplayMode::GRAPHICAL)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ oTrans\ =\ oCompoundTrans\ *\ parts.at(partId).origin\ *\ parts.at(partId).solid-\/>getO2GTransform();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.objectId\ =\ parts.at(partId).solid-\/>getGraphicalObject();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.lookId\ =\ parts.at(partId).solid-\/>getLook();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(oTrans);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.cor\ =\ glVectorFromVector(\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}().getOrigin());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.vel\ =\ glVectorFromVector(\mbox{\hyperlink{classsf_1_1_solid_entity_a2800e9aa22c9cfdeca9f64bbcad87e74}{getLinearVelocity}}());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.avel\ =\ glVectorFromVector(\mbox{\hyperlink{classsf_1_1_solid_entity_ad71d7839ac6517de93ebf0d83e5145de}{getAngularVelocity}}());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(dm\ ==\ DisplayMode::PHYSICAL)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ oTrans\ =\ oCompoundTrans\ *\ parts.at(partId).origin\ *\ parts.at(partId).solid-\/>getO2CTransform();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.objectId\ =\ parts.at(partId).solid-\/>getPhysicalObject();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.lookId\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(oTrans);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.cor\ =\ glVectorFromVector(\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}().getOrigin());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.vel\ =\ glVectorFromVector(\mbox{\hyperlink{classsf_1_1_solid_entity_a2800e9aa22c9cfdeca9f64bbcad87e74}{getLinearVelocity}}());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.avel\ =\ glVectorFromVector(\mbox{\hyperlink{classsf_1_1_solid_entity_ad71d7839ac6517de93ebf0d83e5145de}{getAngularVelocity}}());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00509}00509\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00510}00510\ \textcolor{preprocessor}{\#ifndef\ DEBUG\_HYDRO}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ GeometryApproxType\ atype;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ std::vector<Scalar>\ aparams;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ parts.at(partId).solid-\/>getGeometryApprox(atype,\ aparams);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(oCompoundTrans\ *\ parts.at(partId).origin\ *\ parts.at(partId).solid-\/>getO2HTransform());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(atype)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ GeometryApproxType::AUTO:}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ GeometryApproxType::SPHERE:}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::HYDRO\_ELLIPSOID;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)aparams[0],\ (GLfloat)aparams[0],\ (GLfloat)aparams[0]));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ GeometryApproxType::CYLINDER:}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::HYDRO\_CYLINDER;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)aparams[0],\ (GLfloat)aparams[0],\ (GLfloat)aparams[1]));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ GeometryApproxType::ELLIPSOID:}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::HYDRO\_ELLIPSOID;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)aparams[0],\ (GLfloat)aparams[1],\ (GLfloat)aparams[2]));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00539}00539\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00540}00540\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00541}00541\ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ std::exception\&\ e)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00542}00542\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Error\ finding\ part\ id}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00544}00544\ \ \ \ \ \}\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00545}00545\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00546}00546\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00547}00547\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00548}00548\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00549}\mbox{\hyperlink{classsf_1_1_compound_a3ff53bf4332cbd69a1a5e797299c9e43}{00549}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_compound_a3ff53bf4332cbd69a1a5e797299c9e43}{Compound::Render}}()}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00550}00550\ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00551}00551\ \ \ \ \ std::vector<Renderable>\ items(0);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00552}00552\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00553}00553\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_entity_a1560e090759bc9491609e38b69ff1033}{isRenderable}}())}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00554}00554\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00555}00555\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::SOLID\_CS;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00558}00558\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ Vector3\ cbWorld\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}()\ *\ P\_CB;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::HYDRO\_CS;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(Transform(Quaternion::getIdentity(),\ cbWorld));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(volume,\ volume,\ volume));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ item.points.clear();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<parts.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Renderable>\ partItems\ =\ \mbox{\hyperlink{classsf_1_1_compound_a3ff53bf4332cbd69a1a5e797299c9e43}{Render}}(i);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ items.insert(items.end(),\ partItems.begin(),\ partItems.end());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00571}00571\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00572}00572\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00573}00573\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Forces}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ Vector3\ cg\ =\ \mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}().getOrigin();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00575}00575\ \ \ \ \ \ \ \ \ glm::vec3\ cgv((GLfloat)cg.x(),\ (GLfloat)cg.y(),\ (GLfloat)cg.z());}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00576}00576\ \ \ \ \ \ \ \ \ item.points.clear();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ item.points.push\_back(cgv);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ item.model\ =\ glm::mat4(1.f);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00579}00579\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00580}00580\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::FORCE\_BUOYANCY;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ item.points.push\_back(cgv\ +\ glm::vec3((GLfloat)Fb.x(),\ (GLfloat)Fb.y(),\ (GLfloat)Fb.z())/1000.f);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00584}00584\ \ \ \ \ \ \ \ \ item.points.pop\_back();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00585}00585\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::FORCE\_LINEAR\_DRAG;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ item.points.push\_back(cgv\ +\ glm::vec3((GLfloat)Fdf.x(),\ (GLfloat)Fdf.y(),\ (GLfloat)Fdf.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00587}00587\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00588}00588\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00589}00589\ \ \ \ \ \ \ \ \ item.points.pop\_back();}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00590}00590\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::FORCE\_QUADRATIC\_DRAG;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00591}00591\ \ \ \ \ \ \ \ \ item.points.push\_back(cgv\ +\ glm::vec3((GLfloat)Fdq.x(),\ (GLfloat)Fdq.y(),\ (GLfloat)Fdq.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00592}00592\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00593}00593\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00594}00594\ \textcolor{preprocessor}{\#ifdef\ DEBUG\_HYDRO}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00595}00595\ \ \ \ \ \ \ \ \ items.push\_back(submerged);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00596}00596\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00597}00597\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::HYDRO\_LINES;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00598}00598\ \ \ \ \ \ \ \ \ item.model\ =\ glm::mat4(1.f);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00599}00599\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \ Vector3\ min,\ max;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_solid_entity_ac8b39b6a3289609bf981edeb6ce54dc1}{getAABB}}(min,\ max);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00602}00602\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)min.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00604}00604\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)min.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00605}00605\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00606}00606\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)min.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00607}00607\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)max.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00608}00608\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00609}00609\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)min.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00610}00610\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)min.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00611}00611\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)max.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00613}00613\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)max.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00614}00614\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00615}00615\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)min.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00616}00616\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)max.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00617}00617\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00618}00618\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)min.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00619}00619\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)min.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00620}00620\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)min.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00622}00622\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)min.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00623}00623\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00624}00624\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)min.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00625}00625\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)max.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00626}00626\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)max.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00628}00628\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)max.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00629}00629\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00630}00630\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)max.y(),\ (GLfloat)min.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00631}00631\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)max.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00632}00632\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00633}00633\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)min.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00634}00634\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)max.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00635}00635\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00636}00636\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)min.x(),\ (GLfloat)max.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00637}00637\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3((GLfloat)max.x(),\ (GLfloat)max.y(),\ (GLfloat)max.z()));}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00638}00638\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00639}00639\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00640}00640\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00641}00641\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00642}00642\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00643}00643\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00644}00644\ \}}
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00645}00645\ }
+\DoxyCodeLine{\Hypertarget{_compound_8cpp_source_l00646}00646\ \}}
+
+\end{DoxyCode}

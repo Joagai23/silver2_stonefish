@@ -1,0 +1,158 @@
+\doxysection{Performance\+Monitor.\+cpp}
+\hypertarget{_performance_monitor_8cpp_source}{}\label{_performance_monitor_8cpp_source}\index{Library/src/utils/PerformanceMonitor.cpp@{Library/src/utils/PerformanceMonitor.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ PerformanceMonitor.cpp}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 02/09/2022.}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2022\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}utils/PerformanceMonitor.h"{}}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00029}00029\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00032}00032\ PerformanceMonitor::PerformanceMonitor(\textcolor{keywordtype}{size\_t}\ averageMaxCount)}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00034}00034\ \ \ \ \ maxCount\ =\ averageMaxCount;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00035}00035\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00036}00036\ \ \ \ \ simTime\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00037}00037\ \ \ \ \ simFinished\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00038}00038\ \ \ \ \ phyTime\ =\ std::deque<double>(0);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00039}00039\ \ \ \ \ phyTimeAvg\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00040}00040\ \ \ \ \ hydroTime\ =\ std::deque<double>(0);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00041}00041\ \ \ \ \ hydroTimeAvg\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00042}00042\ \ \ \ \ updateMtx\ =\ SDL\_CreateMutex();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00045}00045\ PerformanceMonitor::\string~PerformanceMonitor()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00046}00046\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00047}00047\ \ \ \ \ SDL\_DestroyMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00050}00050\ \textcolor{keywordtype}{void}\ PerformanceMonitor::SimulationStarted()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00051}00051\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00052}00052\ \ \ \ \ SDL\_LockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00053}00053\ \ \ \ \ simStart\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00054}00054\ \ \ \ \ simTime\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00055}00055\ \ \ \ \ simFinished\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00056}00056\ \ \ \ \ phyTime.clear();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00057}00057\ \ \ \ \ phyTimeAvg\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00058}00058\ \ \ \ \ hydroTime.clear();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00059}00059\ \ \ \ \ hydroTimeAvg\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00060}00060\ \ \ \ \ SDL\_UnlockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00063}00063\ \textcolor{keywordtype}{void}\ PerformanceMonitor::SimulationFinished()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00064}00064\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00065}00065\ \ \ \ \ SDL\_LockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{auto}\ simEnd\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00067}00067\ \ \ \ \ simTime\ =\ std::chrono::duration\_cast<std::chrono::seconds>(simEnd\ -\/\ simStart).count();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00068}00068\ \ \ \ \ simFinished\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00069}00069\ \ \ \ \ SDL\_UnlockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00072}00072\ \textcolor{keywordtype}{void}\ PerformanceMonitor::PhysicsStarted()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00073}00073\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00074}00074\ \ \ \ \ phyStart\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00077}00077\ \textcolor{keywordtype}{void}\ PerformanceMonitor::PhysicsFinished()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00078}00078\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00079}00079\ \ \ \ \ Update(phyStart,\ phyTime,\ phyTimeAvg);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00082}00082\ \textcolor{keywordtype}{void}\ PerformanceMonitor::HydrodynamicsStarted()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00083}00083\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00084}00084\ \ \ \ \ hydroStart\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00087}00087\ \textcolor{keywordtype}{void}\ PerformanceMonitor::HydrodynamicsFinished()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00088}00088\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00089}00089\ \ \ \ \ Update(hydroStart,\ hydroTime,\ hydroTimeAvg);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00092}00092\ \textcolor{keywordtype}{double}\ PerformanceMonitor::getSimulationTime()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00093}00093\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00094}00094\ \ \ \ \ SDL\_LockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{if}(!simFinished)}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ simEnd\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ simTime\ =\ std::chrono::duration\_cast<std::chrono::seconds>(simEnd\ -\/\ simStart).count();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordtype}{double}\ simTimeCopy\ =\ simTime;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00101}00101\ \ \ \ \ SDL\_UnlockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{return}\ simTimeCopy;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00105}00105\ \textcolor{keywordtype}{double}\ PerformanceMonitor::getPhysicsTime()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00106}00106\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00107}00107\ \ \ \ \ SDL\_LockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ phyTime.back();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00109}00109\ \ \ \ \ SDL\_UnlockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00111}00111\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00113}00113\ \textcolor{keywordtype}{double}\ PerformanceMonitor::getPhysicsTimeAverage()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00114}00114\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00115}00115\ \ \ \ \ SDL\_LockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ phyTimeAvg;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00117}00117\ \ \ \ \ SDL\_UnlockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00119}00119\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00121}00121\ \textcolor{keywordtype}{double}\ PerformanceMonitor::getHydrodynamicsTime()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00122}00122\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00123}00123\ \ \ \ \ SDL\_LockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ hydroTime.back();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00125}00125\ \ \ \ \ SDL\_UnlockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00127}00127\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00129}00129\ \textcolor{keywordtype}{double}\ PerformanceMonitor::getHydrodynamicsTimeAverage()}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00130}00130\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00131}00131\ \ \ \ \ SDL\_LockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ hydroTimeAvg;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00133}00133\ \ \ \ \ SDL\_UnlockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00134}00134\ \ \ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00137}00137\ \textcolor{keywordtype}{void}\ PerformanceMonitor::Update(\textcolor{keyword}{const}\ std::chrono::high\_resolution\_clock::time\_point\&\ start,\ std::deque<double>\&\ times,\ \textcolor{keywordtype}{double}\&\ average)}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00138}00138\ \{}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//\ Compute\ elapsed\ time}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{keyword}{auto}\ end\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00141}00141\ \ \ \ \ SDL\_LockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{keywordtype}{double}\ elapsed\ =\ std::chrono::duration\_cast<std::chrono::microseconds>(end\ -\/\ start).count();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00143}00143\ \ \ \ \ \textcolor{comment}{//\ Update\ averaging\ queue}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00144}00144\ \ \ \ \ times.push\_back(elapsed);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00145}00145\ \ \ \ \ \textcolor{keywordflow}{if}(times.size()\ >\ maxCount)}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ times.pop\_front();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00147}00147\ \ \ \ \ \textcolor{comment}{//\ Update\ average}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00148}00148\ \ \ \ \ average\ =\ std::accumulate(times.begin(),\ times.end(),\ 0.0)\ /\ (double)times.size();}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00149}00149\ \ \ \ \ SDL\_UnlockMutex(updateMtx);}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00150}00150\ \}}
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_performance_monitor_8cpp_source_l00152}00152\ \}}
+
+\end{DoxyCode}

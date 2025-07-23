@@ -1,0 +1,835 @@
+\doxysection{sf\+::Scenario\+Parser Class Reference}
+\hypertarget{classsf_1_1_scenario_parser}{}\label{classsf_1_1_scenario_parser}\index{sf::ScenarioParser@{sf::ScenarioParser}}
+
+
+A class that implements parsing of XML files describing a simulation scenario.  
+
+
+
+
+{\ttfamily \#include $<$Scenario\+Parser.\+h$>$}
+
+
+
+Collaboration diagram for sf\+::Scenario\+Parser\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{classsf_1_1_scenario_parser__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_scenario_parser_afa5807239cb693ded4b1263be2a2b4af}{Scenario\+Parser}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a18f3df260eb06d4604e78263168b1d3f}{Parse}} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em A method used to parse a scenario description file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_scenario_parser_adee659dc11c2166a47a59d52e5548d71}{Save\+Log}} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em A method saving the log to a text file. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_console_message}{Console\+Message}} $>$ \mbox{\hyperlink{classsf_1_1_scenario_parser_a205ab3deb96012cafe859566c8ce9107}{get\+Log}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a copy of the log. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_scenario_parser_aa9589733260ffbd91316bf08daa872d6}{get\+Simulation\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em A method used to get the pointer to the associated simulation manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_acabbf72c6af8b2f3f21dbda2facd4057}{Pre\+Process}} (XMLNode \texorpdfstring{$\ast$}{*}root, const std\+::map$<$ std\+::string, std\+::string $>$ \&args=std\+::map$<$ std\+::string, std\+::string $>$())
+\begin{DoxyCompactList}\small\item\em A method used to pre-\/process the xml description file after loading. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a37a4f1ca55a27902a7f5716297648643}{Replace\+Arguments}} (XMLNode \texorpdfstring{$\ast$}{*}node, const std\+::map$<$ std\+::string, std\+::string $>$ \&args)
+\begin{DoxyCompactList}\small\item\em A method used to replace the arguments passed to the include files. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a2548cacf1ce7e5fa75e5fd52d381833c}{Evaluate\+Math}} (XMLNode \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em A method used to evaluate mathematical expressions. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_adb602c29ec6c2eb893a7c59b13f92e69}{Include\+Files}} (XMLNode \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em A method that includes content of possibly multiple files inside the processed file. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a4d1a25ecd8eea93a1f5b5bdafcbba431}{Parse\+Solver}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse solver configuration. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a7b1eb73c6c9b90bbd30bac6651ba5ecd}{Parse\+Environment}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse environment configuration. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_ab1e744d1ff3951281656d2064277714b}{Parse\+Materials}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse the physical materials information. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a5a34d133a99bb840eb9b5d3fcb52d324}{Parse\+Looks}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse the graphical materials information. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_velocity_field}{Velocity\+Field}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_scenario_parser_a4858bdce82972a819cee3135bdf97ec6}{Parse\+Velocity\+Field}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse a definition of a velocity field (current, wind). \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a1063389a35a916f1d8bd5eac3703a4b8}{Parse\+Static}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse a static object description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a4e93c0716865f1482593438f297aa581}{Parse\+Animated}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse an animated object description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a7ee983d3613672b8613d5a873d168f22}{Parse\+Dynamic}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse a dynamic object description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a3512230062f30b69c9f2e69f255f1f14}{Parse\+Solid}} (XMLElement \texorpdfstring{$\ast$}{*}element, \mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}\&solid, std\+::string ns="{}"{}, bool compound\+Part=false)
+\begin{DoxyCompactList}\small\item\em A method used to parse a dynamic object description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a57d39c42d6caa1e95ae1bc22afb15e89}{Parse\+Robot}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse a robot description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a9aa77e2c47aea248df76e830af05d53a}{Parse\+Link}} (XMLElement \texorpdfstring{$\ast$}{*}element, \mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot, \mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}\&link)
+\begin{DoxyCompactList}\small\item\em A method used to parse a single robot link description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a21714ab7584f11b77ed83070e27978c3}{Parse\+Joint}} (XMLElement \texorpdfstring{$\ast$}{*}element, \mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot)
+\begin{DoxyCompactList}\small\item\em A method used to parse a single robot joint description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a627fa32a88502ae55e922f3b73086b0b}{Parse\+Actuator}} (XMLElement \texorpdfstring{$\ast$}{*}element, \mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot)
+\begin{DoxyCompactList}\small\item\em A method used to parse a single robot actuator description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_ae2a009179db92d54f7d40179024d7823}{Parse\+Sensor}} (XMLElement \texorpdfstring{$\ast$}{*}element, \mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}robot)
+\begin{DoxyCompactList}\small\item\em A method used to parse a single robot sensor description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a4e46a007262279d4e24d40783a048eeb}{Parse\+Sensor}} (XMLElement \texorpdfstring{$\ast$}{*}element, \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}ent=nullptr)
+\begin{DoxyCompactList}\small\item\em A method used to parse a description of a sensor attached to single body or world. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_actuator}{Actuator}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_scenario_parser_ac2dc86fe5686d78de226343496d95fa3}{Parse\+Actuator}} (XMLElement \texorpdfstring{$\ast$}{*}element, const std\+::string \&name\+Prefix)
+\begin{DoxyCompactList}\small\item\em A method used to parse a description of an actuator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_sensor}{Sensor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_scenario_parser_a9e3f19cb25fe8d430b121a399d773cf8}{Parse\+Sensor}} (XMLElement \texorpdfstring{$\ast$}{*}element, const std\+::string \&name\+Prefix)
+\begin{DoxyCompactList}\small\item\em A method used to parse a description of a sensor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_light}{Light}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_scenario_parser_aafe3af7142df041094d5b40e0ecd3405}{Parse\+Light}} (XMLElement \texorpdfstring{$\ast$}{*}element, const std\+::string \&name\+Prefix)
+\begin{DoxyCompactList}\small\item\em A method used to parse a description of a light source. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_comm}{Comm}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_scenario_parser_aee9344536c1856f8dd5e43c05b97b43a}{Parse\+Comm}} (XMLElement \texorpdfstring{$\ast$}{*}element, const std\+::string \&name\+Prefix)
+\begin{DoxyCompactList}\small\item\em A method used to parse a communication device description. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a9922a1ab5c01099935547c8809f321cc}{Parse\+Contact}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse a single contact description. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_fixed_joint}{Fixed\+Joint}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_scenario_parser_a2aac1efa4d1043faff040f61c5b68f64}{Parse\+Glue}} (XMLElement \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em A method used to parse a single glue joint description. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_scenario_parser_ac88f0ee7607fbd543d169cfaec7ecc21}{Get\+Full\+Path}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em A method to get the full file path depending on the format of the passed string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_scenario_parser_a555f5a21b5e7a305d63de6bab2ba9097}{is\+Graphical\+Sim}} ()
+\begin{DoxyCompactList}\small\item\em A method informing if the simulation is working in graphical mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_console}{Console}} \mbox{\hyperlink{classsf_1_1_scenario_parser_a8c43c8bcf038785b72d884477b25d532}{log}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that implements parsing of XML files describing a simulation scenario. 
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8h_source_l00052}{52}} of file \mbox{\hyperlink{_scenario_parser_8h_source}{Scenario\+Parser.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_scenario_parser_afa5807239cb693ded4b1263be2a2b4af}\label{classsf_1_1_scenario_parser_afa5807239cb693ded4b1263be2a2b4af} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ScenarioParser@{ScenarioParser}}
+\index{ScenarioParser@{ScenarioParser}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ScenarioParser()}{ScenarioParser()}}
+{\footnotesize\ttfamily sf\+::\+Scenario\+Parser\+::\+Scenario\+Parser (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sm }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & a pointer to the simulation manager \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_scenario_parser_a2548cacf1ce7e5fa75e5fd52d381833c}\label{classsf_1_1_scenario_parser_a2548cacf1ce7e5fa75e5fd52d381833c} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!EvaluateMath@{EvaluateMath}}
+\index{EvaluateMath@{EvaluateMath}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{EvaluateMath()}{EvaluateMath()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Evaluate\+Math (\begin{DoxyParamCaption}\item[{XMLNode \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to evaluate mathematical expressions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & a pointer to a node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00429}{429}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_ac88f0ee7607fbd543d169cfaec7ecc21}\label{classsf_1_1_scenario_parser_ac88f0ee7607fbd543d169cfaec7ecc21} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!GetFullPath@{GetFullPath}}
+\index{GetFullPath@{GetFullPath}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{GetFullPath()}{GetFullPath()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Scenario\+Parser\+::\+Get\+Full\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A method to get the full file path depending on the format of the passed string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & a file path candidate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+full file path 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l04891}{4891}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a205ab3deb96012cafe859566c8ce9107}\label{classsf_1_1_scenario_parser_a205ab3deb96012cafe859566c8ce9107} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!getLog@{getLog}}
+\index{getLog@{getLog}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{getLog()}{getLog()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_console_message}{Console\+Message}} $>$ sf\+::\+Scenario\+Parser\+::get\+Log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a copy of the log. 
+
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_aa9589733260ffbd91316bf08daa872d6}\label{classsf_1_1_scenario_parser_aa9589733260ffbd91316bf08daa872d6} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!getSimulationManager@{getSimulationManager}}
+\index{getSimulationManager@{getSimulationManager}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{getSimulationManager()}{getSimulationManager()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*} sf\+::\+Scenario\+Parser\+::get\+Simulation\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method used to get the pointer to the associated simulation manager. 
+
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00108}{108}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_adb602c29ec6c2eb893a7c59b13f92e69}\label{classsf_1_1_scenario_parser_adb602c29ec6c2eb893a7c59b13f92e69} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!IncludeFiles@{IncludeFiles}}
+\index{IncludeFiles@{IncludeFiles}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{IncludeFiles()}{IncludeFiles()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Include\+Files (\begin{DoxyParamCaption}\item[{XMLNode \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method that includes content of possibly multiple files inside the processed file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & a pointer to a node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00481}{481}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a555f5a21b5e7a305d63de6bab2ba9097}\label{classsf_1_1_scenario_parser_a555f5a21b5e7a305d63de6bab2ba9097} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!isGraphicalSim@{isGraphicalSim}}
+\index{isGraphicalSim@{isGraphicalSim}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{isGraphicalSim()}{isGraphicalSim()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::is\+Graphical\+Sim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A method informing if the simulation is working in graphical mode. 
+
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l05015}{5015}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a18f3df260eb06d4604e78263168b1d3f}\label{classsf_1_1_scenario_parser_a18f3df260eb06d4604e78263168b1d3f} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!Parse@{Parse}}
+\index{Parse@{Parse}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{Parse()}{Parse()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to parse a scenario description file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & path to the scenario description file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_ac2dc86fe5686d78de226343496d95fa3}\label{classsf_1_1_scenario_parser_ac2dc86fe5686d78de226343496d95fa3} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseActuator@{ParseActuator}}
+\index{ParseActuator@{ParseActuator}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseActuator()}{ParseActuator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_actuator}{Actuator}} \texorpdfstring{$\ast$}{*} sf\+::\+Scenario\+Parser\+::\+Parse\+Actuator (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{const std\+::string \&}]{name\+Prefix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a description of an actuator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em name\+Prefix} & a string added at the beginning of the actuator name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to actuator 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l02483}{2483}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a627fa32a88502ae55e922f3b73086b0b}\label{classsf_1_1_scenario_parser_a627fa32a88502ae55e922f3b73086b0b} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseActuator@{ParseActuator}}
+\index{ParseActuator@{ParseActuator}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseActuator()}{ParseActuator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Actuator (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{\mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a single robot actuator description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em robot} & a pointer to the robot object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l02256}{2256}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a4e93c0716865f1482593438f297aa581}\label{classsf_1_1_scenario_parser_a4e93c0716865f1482593438f297aa581} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseAnimated@{ParseAnimated}}
+\index{ParseAnimated@{ParseAnimated}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseAnimated()}{ParseAnimated()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Animated (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse an animated object description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l01187}{1187}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_aee9344536c1856f8dd5e43c05b97b43a}\label{classsf_1_1_scenario_parser_aee9344536c1856f8dd5e43c05b97b43a} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseComm@{ParseComm}}
+\index{ParseComm@{ParseComm}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseComm()}{ParseComm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_comm}{Comm}} \texorpdfstring{$\ast$}{*} sf\+::\+Scenario\+Parser\+::\+Parse\+Comm (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{const std\+::string \&}]{name\+Prefix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a communication device description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em name\+Prefix} & a string added at the beginning of the comm name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the communication device 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l04445}{4445}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a9922a1ab5c01099935547c8809f321cc}\label{classsf_1_1_scenario_parser_a9922a1ab5c01099935547c8809f321cc} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseContact@{ParseContact}}
+\index{ParseContact@{ParseContact}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseContact()}{ParseContact()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Contact (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a single contact description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l04669}{4669}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a7ee983d3613672b8613d5a873d168f22}\label{classsf_1_1_scenario_parser_a7ee983d3613672b8613d5a873d168f22} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseDynamic@{ParseDynamic}}
+\index{ParseDynamic@{ParseDynamic}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseDynamic()}{ParseDynamic()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Dynamic (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a dynamic object description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l01521}{1521}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a7b1eb73c6c9b90bbd30bac6651ba5ecd}\label{classsf_1_1_scenario_parser_a7b1eb73c6c9b90bbd30bac6651ba5ecd} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseEnvironment@{ParseEnvironment}}
+\index{ParseEnvironment@{ParseEnvironment}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseEnvironment()}{ParseEnvironment()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Environment (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse environment configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00603}{603}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a2aac1efa4d1043faff040f61c5b68f64}\label{classsf_1_1_scenario_parser_a2aac1efa4d1043faff040f61c5b68f64} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseGlue@{ParseGlue}}
+\index{ParseGlue@{ParseGlue}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseGlue()}{ParseGlue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_fixed_joint}{Fixed\+Joint}} \texorpdfstring{$\ast$}{*} sf\+::\+Scenario\+Parser\+::\+Parse\+Glue (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a single glue joint description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the fixed joint 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l04766}{4766}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a21714ab7584f11b77ed83070e27978c3}\label{classsf_1_1_scenario_parser_a21714ab7584f11b77ed83070e27978c3} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseJoint@{ParseJoint}}
+\index{ParseJoint@{ParseJoint}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseJoint()}{ParseJoint()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Joint (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{\mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a single robot joint description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em robot} & a pointer to the robot object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l02160}{2160}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_aafe3af7142df041094d5b40e0ecd3405}\label{classsf_1_1_scenario_parser_aafe3af7142df041094d5b40e0ecd3405} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseLight@{ParseLight}}
+\index{ParseLight@{ParseLight}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseLight()}{ParseLight()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_light}{Light}} \texorpdfstring{$\ast$}{*} sf\+::\+Scenario\+Parser\+::\+Parse\+Light (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{const std\+::string \&}]{name\+Prefix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a description of a light source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em name\+Prefix} & a string added at the beginning of the light name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to light 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l04391}{4391}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a9aa77e2c47aea248df76e830af05d53a}\label{classsf_1_1_scenario_parser_a9aa77e2c47aea248df76e830af05d53a} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseLink@{ParseLink}}
+\index{ParseLink@{ParseLink}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseLink()}{ParseLink()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Link (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{\mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot,  }\item[{\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}\&}]{link }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a single robot link description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em robot} & a pointer to the robot object \\
+\hline
+{\em link} & a reference to the loaded robot link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l02155}{2155}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a5a34d133a99bb840eb9b5d3fcb52d324}\label{classsf_1_1_scenario_parser_a5a34d133a99bb840eb9b5d3fcb52d324} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseLooks@{ParseLooks}}
+\index{ParseLooks@{ParseLooks}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseLooks()}{ParseLooks()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Looks (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse the graphical materials information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00792}{792}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_ab1e744d1ff3951281656d2064277714b}\label{classsf_1_1_scenario_parser_ab1e744d1ff3951281656d2064277714b} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseMaterials@{ParseMaterials}}
+\index{ParseMaterials@{ParseMaterials}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseMaterials()}{ParseMaterials()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Materials (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse the physical materials information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00721}{721}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a57d39c42d6caa1e95ae1bc22afb15e89}\label{classsf_1_1_scenario_parser_a57d39c42d6caa1e95ae1bc22afb15e89} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseRobot@{ParseRobot}}
+\index{ParseRobot@{ParseRobot}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseRobot()}{ParseRobot()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Robot (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a robot description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l01968}{1968}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a9e3f19cb25fe8d430b121a399d773cf8}\label{classsf_1_1_scenario_parser_a9e3f19cb25fe8d430b121a399d773cf8} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseSensor@{ParseSensor}}
+\index{ParseSensor@{ParseSensor}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseSensor()}{ParseSensor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_sensor}{Sensor}} \texorpdfstring{$\ast$}{*} sf\+::\+Scenario\+Parser\+::\+Parse\+Sensor (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{const std\+::string \&}]{name\+Prefix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a description of a sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em name\+Prefix} & a string added at the beginning of the sensor name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to sensor 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l03090}{3090}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a4e46a007262279d4e24d40783a048eeb}\label{classsf_1_1_scenario_parser_a4e46a007262279d4e24d40783a048eeb} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseSensor@{ParseSensor}}
+\index{ParseSensor@{ParseSensor}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseSensor()}{ParseSensor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Sensor (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{ent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a description of a sensor attached to single body or world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em ent} & a pointer to an entity (static, solid, animated) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l02398}{2398}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_ae2a009179db92d54f7d40179024d7823}\label{classsf_1_1_scenario_parser_ae2a009179db92d54f7d40179024d7823} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseSensor@{ParseSensor}}
+\index{ParseSensor@{ParseSensor}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseSensor()}{ParseSensor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Sensor (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{\mbox{\hyperlink{classsf_1_1_robot}{Robot}} \texorpdfstring{$\ast$}{*}}]{robot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a single robot sensor description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em robot} & a pointer to the robot object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l02333}{2333}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a3512230062f30b69c9f2e69f255f1f14}\label{classsf_1_1_scenario_parser_a3512230062f30b69c9f2e69f255f1f14} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseSolid@{ParseSolid}}
+\index{ParseSolid@{ParseSolid}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseSolid()}{ParseSolid()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Solid (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element,  }\item[{\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}\&}]{solid,  }\item[{std\+::string}]{ns = {\ttfamily "{}"{}},  }\item[{bool}]{compound\+Part = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a dynamic object description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+{\em solid} & a reference to the loaded solid entity \\
+\hline
+{\em ns} & an optional namespace \\
+\hline
+{\em compound\+Part} & is this solid a part of a compound body? \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l01612}{1612}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a4d1a25ecd8eea93a1f5b5bdafcbba431}\label{classsf_1_1_scenario_parser_a4d1a25ecd8eea93a1f5b5bdafcbba431} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseSolver@{ParseSolver}}
+\index{ParseSolver@{ParseSolver}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseSolver()}{ParseSolver()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Solver (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse solver configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00567}{567}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a1063389a35a916f1d8bd5eac3703a4b8}\label{classsf_1_1_scenario_parser_a1063389a35a916f1d8bd5eac3703a4b8} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseStatic@{ParseStatic}}
+\index{ParseStatic@{ParseStatic}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseStatic()}{ParseStatic()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Parse\+Static (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a static object description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00930}{930}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a4858bdce82972a819cee3135bdf97ec6}\label{classsf_1_1_scenario_parser_a4858bdce82972a819cee3135bdf97ec6} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ParseVelocityField@{ParseVelocityField}}
+\index{ParseVelocityField@{ParseVelocityField}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ParseVelocityField()}{ParseVelocityField()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_velocity_field}{Velocity\+Field}} \texorpdfstring{$\ast$}{*} sf\+::\+Scenario\+Parser\+::\+Parse\+Velocity\+Field (\begin{DoxyParamCaption}\item[{XMLElement \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to parse a definition of a velocity field (current, wind). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a pointer to the XML node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the new velocity field object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00865}{865}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_acabbf72c6af8b2f3f21dbda2facd4057}\label{classsf_1_1_scenario_parser_acabbf72c6af8b2f3f21dbda2facd4057} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!PreProcess@{PreProcess}}
+\index{PreProcess@{PreProcess}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{PreProcess()}{PreProcess()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Pre\+Process (\begin{DoxyParamCaption}\item[{XMLNode \texorpdfstring{$\ast$}{*}}]{root,  }\item[{const std\+::map$<$ std\+::string, std\+::string $>$ \&}]{args = {\ttfamily std\+:\+:map$<$std\+:\+:string,~std\+:\+:string$>$()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to pre-\/process the xml description file after loading. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & a pointer to a root node \\
+\hline
+{\em args} & a map of arguments and their values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00365}{365}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_a37a4f1ca55a27902a7f5716297648643}\label{classsf_1_1_scenario_parser_a37a4f1ca55a27902a7f5716297648643} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!ReplaceArguments@{ReplaceArguments}}
+\index{ReplaceArguments@{ReplaceArguments}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{ReplaceArguments()}{ReplaceArguments()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Replace\+Arguments (\begin{DoxyParamCaption}\item[{XMLNode \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const std\+::map$<$ std\+::string, std\+::string $>$ \&}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method used to replace the arguments passed to the include files. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & a pointer to a node \\
+\hline
+{\em args} & a map of arguments and their values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00378}{378}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scenario_parser_adee659dc11c2166a47a59d52e5548d71}\label{classsf_1_1_scenario_parser_adee659dc11c2166a47a59d52e5548d71} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!SaveLog@{SaveLog}}
+\index{SaveLog@{SaveLog}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{SaveLog()}{SaveLog()}}
+{\footnotesize\ttfamily bool sf\+::\+Scenario\+Parser\+::\+Save\+Log (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+
+
+A method saving the log to a text file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & path to the log file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8cpp_source_l00351}{351}} of file \mbox{\hyperlink{_scenario_parser_8cpp_source}{Scenario\+Parser.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_scenario_parser_a8c43c8bcf038785b72d884477b25d532}\label{classsf_1_1_scenario_parser_a8c43c8bcf038785b72d884477b25d532} 
+\index{sf::ScenarioParser@{sf::ScenarioParser}!log@{log}}
+\index{log@{log}!sf::ScenarioParser@{sf::ScenarioParser}}
+\doxysubsubsection{\texorpdfstring{log}{log}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_console}{Console}} sf\+::\+Scenario\+Parser\+::log\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_scenario_parser_8h_source_l00082}{82}} of file \mbox{\hyperlink{_scenario_parser_8h_source}{Scenario\+Parser.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/core/Scenario\+Parser.\+h\item 
+Library/src/core/Scenario\+Parser.\+cpp\end{DoxyCompactItemize}

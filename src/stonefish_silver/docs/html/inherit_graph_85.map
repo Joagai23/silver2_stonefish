@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classsf_1_1_trajectory.html" title="An abstract class representing a trajectory (time parametrized path)." alt="" coords="5,31,111,56"/>
+<area shape="rect" id="Node000001" href="$classsf_1_1_manual_trajectory.html" title="A class representing a dummy trajectory for setting the transforms and velocities manually." alt="" coords="159,5,312,31"/>
+<area shape="poly" id="edge116_Node000000_Node000001" title=" " alt="" coords="124,31,158,26,159,32,124,37"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_p_w_l_trajectory.html" title="A class representing a piece&#45;wise linear trajectory." alt="" coords="169,55,301,80"/>
+<area shape="poly" id="edge117_Node000000_Node000002" title=" " alt="" coords="124,50,170,56,169,61,124,55"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_b_s_trajectory.html" title="A class representing a B&#45;spline trajectory." alt="" coords="360,29,483,55"/>
+<area shape="poly" id="edge118_Node000002_Node000003" title=" " alt="" coords="315,54,360,48,360,53,316,59"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_c_r_trajectory.html" title="A class representing a Catmull&#45;Rom trajectory." alt="" coords="360,79,483,104"/>
+<area shape="poly" id="edge119_Node000002_Node000004" title=" " alt="" coords="316,75,360,81,360,86,315,80"/>
+</map>

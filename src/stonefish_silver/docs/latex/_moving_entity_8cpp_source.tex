@@ -1,0 +1,114 @@
+\doxysection{Moving\+Entity.\+cpp}
+\hypertarget{_moving_entity_8cpp_source}{}\label{_moving_entity_8cpp_source}\index{Library/src/entities/MovingEntity.cpp@{Library/src/entities/MovingEntity.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ MovingEntity.cpp}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 15/07/2020.}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2025\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}entities/MovingEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}core/GraphicalSimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLOceanParticles.h"{}}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00034}00034\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00037}\mbox{\hyperlink{classsf_1_1_moving_entity_a80c53bd5bbe4a89ceaa5dc0b938cba1b}{00037}}\ \mbox{\hyperlink{classsf_1_1_moving_entity_a80c53bd5bbe4a89ceaa5dc0b938cba1b}{MovingEntity::MovingEntity}}(std::string\ uniqueName,\ std::string\ material,\ std::string\ look)\ :\ \mbox{\hyperlink{classsf_1_1_entity}{Entity}}(uniqueName)}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00039}00039\ \ \ \ \ rigidBody\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00040}00040\ \ \ \ \ mat\ =\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_a335e766c2e5e0b6527e19b636fcddb5a}{getMaterialManager}}()-\/>\mbox{\hyperlink{classsf_1_1_material_manager_ae8efb251d0124fc5ff1a79082dfa0464}{getMaterial}}(material);}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>hasGraphics())}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ lookId\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>getLookId(look);}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ lookId\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00045}00045\ \ \ \ \ graObjectId\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00046}00046\ \ \ \ \ dm\ =\ DisplayMode::GRAPHICAL;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00047}00047\ \ \ \ \ particles\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00050}\mbox{\hyperlink{classsf_1_1_moving_entity_a949e6bd7fe43e55624aa90e96dbe2cd2}{00050}}\ \mbox{\hyperlink{classsf_1_1_moving_entity_a949e6bd7fe43e55624aa90e96dbe2cd2}{MovingEntity::\string~MovingEntity}}()}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00051}00051\ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{if}(particles\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ particles;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00056}\mbox{\hyperlink{classsf_1_1_moving_entity_ae740632e74b4344722f6a54728799da6}{00056}}\ \mbox{\hyperlink{structsf_1_1_material}{Material}}\ \mbox{\hyperlink{classsf_1_1_moving_entity_ae740632e74b4344722f6a54728799da6}{MovingEntity::getMaterial}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00057}00057\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00061}\mbox{\hyperlink{classsf_1_1_moving_entity_a7aa67e40eb5e529e567c8872bc097957}{00061}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_moving_entity_a7aa67e40eb5e529e567c8872bc097957}{MovingEntity::setLinearAcceleration}}(Vector3\ a)}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00062}00062\ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00063}00063\ \ \ \ \ linearAcc\ =\ a;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00066}\mbox{\hyperlink{classsf_1_1_moving_entity_a87a42db1a87153199549afbffc0af11a}{00066}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_moving_entity_a87a42db1a87153199549afbffc0af11a}{MovingEntity::setAngularAcceleration}}(Vector3\ epsilon)}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00068}00068\ \ \ \ \ angularAcc\ =\ epsilon;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00071}\mbox{\hyperlink{classsf_1_1_moving_entity_a58490e56a4b5a76dffe60dc0a1652b1f}{00071}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_moving_entity_a58490e56a4b5a76dffe60dc0a1652b1f}{MovingEntity::setDisplayMode}}(DisplayMode\ m)}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00073}00073\ \ \ \ \ dm\ =\ m;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00076}\mbox{\hyperlink{classsf_1_1_moving_entity_a75e4a8007e64bad5ee62aa67323b641d}{00076}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_moving_entity_a75e4a8007e64bad5ee62aa67323b641d}{MovingEntity::setLook}}(\textcolor{keywordtype}{int}\ newLookId)}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00077}00077\ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00078}00078\ \ \ \ \ lookId\ =\ newLookId;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00081}\mbox{\hyperlink{classsf_1_1_moving_entity_ad0eb58e51012d214c1d26e2b856c91b3}{00081}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_moving_entity_ad0eb58e51012d214c1d26e2b856c91b3}{MovingEntity::getLook}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00082}00082\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{return}\ lookId;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00086}\mbox{\hyperlink{classsf_1_1_moving_entity_aaa6513c61615456722d9c3cc5df5c071}{00086}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_moving_entity_aaa6513c61615456722d9c3cc5df5c071}{MovingEntity::getGraphicalObject}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00087}00087\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{return}\ graObjectId;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00091}\mbox{\hyperlink{classsf_1_1_moving_entity_a3234eaa3d9f02fdf1b9cfe8eb84dd73d}{00091}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_particles}{OpenGLOceanParticles}}*\ \mbox{\hyperlink{classsf_1_1_moving_entity_a3234eaa3d9f02fdf1b9cfe8eb84dd73d}{MovingEntity::getOceanParticles}}()}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00092}00092\ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{if}(particles\ ==\ \textcolor{keyword}{nullptr}\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \&\&\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>hasGraphics()\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \&\&\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>getSimulationManager()-\/>isOceanEnabled())}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ particles\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_particles}{OpenGLOceanParticles}}(STD\_OCEAN\_PARTICLES\_COUNT,\ STD\_OCEAN\_PARTICLES\_RADIUS);}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ particles;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00103}\mbox{\hyperlink{classsf_1_1_moving_entity_a3f46a9f4012e6ccc4d2086fec6a75146}{00103}}\ btRigidBody*\ \mbox{\hyperlink{classsf_1_1_moving_entity_a3f46a9f4012e6ccc4d2086fec6a75146}{MovingEntity::getRigidBody}}()}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00104}00104\ \{}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{return}\ rigidBody;}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_moving_entity_8cpp_source_l00108}00108\ \}}
+
+\end{DoxyCode}

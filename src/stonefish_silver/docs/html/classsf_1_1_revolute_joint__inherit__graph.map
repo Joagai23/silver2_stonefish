@@ -1,0 +1,5 @@
+<map id="sf::RevoluteJoint" name="sf::RevoluteJoint">
+<area shape="rect" id="Node000001" title="A class representing a revolute joint." alt="" coords="5,79,133,104"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_joint.html" title="An abstract class implementing a general joint." alt="" coords="34,5,105,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,44,72,79,67,79,67,44"/>
+</map>

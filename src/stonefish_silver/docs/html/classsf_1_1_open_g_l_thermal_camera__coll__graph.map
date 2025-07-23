@@ -1,0 +1,15 @@
+<map id="sf::OpenGLThermalCamera" name="sf::OpenGLThermalCamera">
+<area shape="rect" id="Node000001" title="A class representing a thermal camera." alt="" coords="102,271,298,296"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_open_g_l_view.html" title="An abstract class representing an OpenGL view." alt="" coords="5,168,128,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,199,186,269,183,273,91,204"/>
+<area shape="rect" id="Node000003" href="$structsf_1_1_view_u_b_o.html" title=" " alt="" coords="13,80,115,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="67,119,69,167,64,168,62,119"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_camera.html" title="An abstract class representing a camera type sensor." alt="" coords="154,168,246,193"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="203,207,203,271,197,271,197,207"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_vision_sensor.html" title="An abstract class representing a vision sensor." alt="" coords="140,80,265,105"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="205,119,203,168,198,167,199,119"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1_sensor.html" title="An abstract class representing a sensor." alt="" coords="160,5,245,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="205,45,205,80,200,80,200,45"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1_g_l_s_l_shader.html" title="A class representing a single GLSL shader." alt="" coords="270,168,389,193"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="310,205,260,249,223,273,220,268,257,245,306,201"/>
+</map>

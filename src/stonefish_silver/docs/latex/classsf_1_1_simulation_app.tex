@@ -1,0 +1,458 @@
+\doxysection{sf\+::Simulation\+App Class Reference}
+\hypertarget{classsf_1_1_simulation_app}{}\label{classsf_1_1_simulation_app}\index{sf::SimulationApp@{sf::SimulationApp}}
+
+
+An abstract class that defines an application interface hosting a simulation manager.  
+
+
+
+
+{\ttfamily \#include $<$Simulation\+App.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Simulation\+App\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_simulation_app__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Simulation\+App\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classsf_1_1_simulation_app__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_simulation_app_a5d0b35a68b485cc780830ebbb93beb97}{Simulation\+App}} (std\+::string title, std\+::string data\+Dir\+Path, \mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sim)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_simulation_app_aaab6ef3ff743850b55d0c2a25726384e}{\texorpdfstring{$\sim$}{\string~}\+Simulation\+App}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_app_a55ee7de322ceba7ec665d3739193605c}{Run}} (bool autostart=true, bool autostep=true, Scalar time\+Step=Scalar(0))
+\begin{DoxyCompactList}\small\item\em A method implementing the simulation sequence. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_app_ae6f6537f29bb92d1518578a76dd2e28e}{Start\+Simulation}} ()
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_app_a68348a3878fb99aa10e2028ceca75f4f}{Stop\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em A method that stops the simulation on demand. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_app_a68ec2bb369e86d39a4a58a2770f0a683}{Resume\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em A method that resumes the simulation on demand. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_app_ab131ce402d9b4b8ac6932fa2f3a7f226}{Step\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em A method that performs a single simulation step and necessary updates. \end{DoxyCompactList}\item 
+Simulation\+State \mbox{\hyperlink{classsf_1_1_simulation_app_aea70740a24a10e2c50757b878eae87d9}{get\+State}} () const
+\begin{DoxyCompactList}\small\item\em A method returning simulation state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{get\+Simulation\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the simulation manager. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classsf_1_1_simulation_app_ad0cd7e2ba2b6d87270fe49dc84fe8ccb}{get\+Physics\+Time}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the physics computation time. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_simulation_app_a8a0314f431c9a55904f8bb16a61b45d5}{get\+Data\+Path}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the path to the directory containing simulation data. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_simulation_app_ae68495075b5ca6d17c6f8f44deeee693}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the name of the application. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_console}{Console}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_app_a0f868c4bf91840c7dfb373d3d795c3f9}{get\+Console}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the console associated with the application. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_simulation_app_adba1d5e17754a0a50191cf9c88147f4a}{has\+Graphics}} ()=0
+\begin{DoxyCompactList}\small\item\em A method informing if the application is graphical. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classsf_1_1_simulation_app}{Simulation\+App}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{get\+App}} ()
+\begin{DoxyCompactList}\small\item\em A static method returning the pointer to the currently running application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classsf_1_1_simulation_app_a3d567777abba21b46b0180960f2925f1}{Loop}} ()
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_app_afbb87891dcffbf749afbad16eec2d30d}{Init}} ()
+\item 
+\Hypertarget{classsf_1_1_simulation_app_a6a4e409886d7d38a410f96680bddff81}\label{classsf_1_1_simulation_app_a6a4e409886d7d38a410f96680bddff81} 
+virtual void {\bfseries Loop\+Internal} ()=0
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_app_a953b9d3a9206852eb37ef61a05a82de9}{Clean\+Up}} ()
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_app_a27ad317df52513e76d74f6ac823f218a}{Quit}} ()
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_simulation_app_a802994a0920f91ca001d8b6b81926ee2}{Initialize\+Simulation}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_console}{Console}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_simulation_app_a420a4e219732dcaac4a9df6f1c0dd5d5}{console\+\_\+}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classsf_1_1_simulation_app_a96a9caa262178459f76f7f7fe6eac43d}{start\+Time\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_simulation_app_a9d13e00501e481aa7e5080853823e0fb}{autostep\+\_\+}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_simulation_app_a4f13b1ad535403a79b22fbb0da4105b2}{time\+Step\+\_\+}}
+\item 
+Simulation\+State \mbox{\hyperlink{classsf_1_1_simulation_app_a641bdb99d36df73a38bc3fefb6fd5559}{state\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class that defines an application interface hosting a simulation manager. 
+
+Definition at line \mbox{\hyperlink{_simulation_app_8h_source_l00051}{51}} of file \mbox{\hyperlink{_simulation_app_8h_source}{Simulation\+App.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_simulation_app_a5d0b35a68b485cc780830ebbb93beb97}\label{classsf_1_1_simulation_app_a5d0b35a68b485cc780830ebbb93beb97} 
+\index{sf::SimulationApp@{sf::SimulationApp}!SimulationApp@{SimulationApp}}
+\index{SimulationApp@{SimulationApp}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{SimulationApp()}{SimulationApp()}}
+{\footnotesize\ttfamily sf\+::\+Simulation\+App\+::\+Simulation\+App (\begin{DoxyParamCaption}\item[{std\+::string}]{title,  }\item[{std\+::string}]{data\+Dir\+Path,  }\item[{\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sim }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & a title for the application \\
+\hline
+{\em data\+Dir\+Path} & a path to the directory containing simulation data \\
+\hline
+{\em sim} & a pointer to the simulation manager \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_aaab6ef3ff743850b55d0c2a25726384e}\label{classsf_1_1_simulation_app_aaab6ef3ff743850b55d0c2a25726384e} 
+\index{sf::SimulationApp@{sf::SimulationApp}!````~SimulationApp@{\texorpdfstring{$\sim$}{\string~}SimulationApp}}
+\index{````~SimulationApp@{\texorpdfstring{$\sim$}{\string~}SimulationApp}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SimulationApp()}{\string~SimulationApp()}}
+{\footnotesize\ttfamily sf\+::\+Simulation\+App\+::\texorpdfstring{$\sim$}{\string~}\+Simulation\+App (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_simulation_app_a953b9d3a9206852eb37ef61a05a82de9}\label{classsf_1_1_simulation_app_a953b9d3a9206852eb37ef61a05a82de9} 
+\index{sf::SimulationApp@{sf::SimulationApp}!CleanUp@{CleanUp}}
+\index{CleanUp@{CleanUp}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{CleanUp()}{CleanUp()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Clean\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}\label{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729} 
+\index{sf::SimulationApp@{sf::SimulationApp}!getApp@{getApp}}
+\index{getApp@{getApp}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{getApp()}{getApp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_simulation_app}{Simulation\+App}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+App\+::get\+App (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method returning the pointer to the currently running application. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00158}{158}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a0f868c4bf91840c7dfb373d3d795c3f9}\label{classsf_1_1_simulation_app_a0f868c4bf91840c7dfb373d3d795c3f9} 
+\index{sf::SimulationApp@{sf::SimulationApp}!getConsole@{getConsole}}
+\index{getConsole@{getConsole}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{getConsole()}{getConsole()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_console}{Console}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+App\+::get\+Console (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the console associated with the application. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a8a0314f431c9a55904f8bb16a61b45d5}\label{classsf_1_1_simulation_app_a8a0314f431c9a55904f8bb16a61b45d5} 
+\index{sf::SimulationApp@{sf::SimulationApp}!getDataPath@{getDataPath}}
+\index{getDataPath@{getDataPath}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{getDataPath()}{getDataPath()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Simulation\+App\+::get\+Data\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the path to the directory containing simulation data. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_ae68495075b5ca6d17c6f8f44deeee693}\label{classsf_1_1_simulation_app_ae68495075b5ca6d17c6f8f44deeee693} 
+\index{sf::SimulationApp@{sf::SimulationApp}!getName@{getName}}
+\index{getName@{getName}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Simulation\+App\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the name of the application. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_ad0cd7e2ba2b6d87270fe49dc84fe8ccb}\label{classsf_1_1_simulation_app_ad0cd7e2ba2b6d87270fe49dc84fe8ccb} 
+\index{sf::SimulationApp@{sf::SimulationApp}!getPhysicsTime@{getPhysicsTime}}
+\index{getPhysicsTime@{getPhysicsTime}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{getPhysicsTime()}{getPhysicsTime()}}
+{\footnotesize\ttfamily double sf\+::\+Simulation\+App\+::get\+Physics\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the physics computation time. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}\label{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae} 
+\index{sf::SimulationApp@{sf::SimulationApp}!getSimulationManager@{getSimulationManager}}
+\index{getSimulationManager@{getSimulationManager}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{getSimulationManager()}{getSimulationManager()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+App\+::get\+Simulation\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the simulation manager. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_aea70740a24a10e2c50757b878eae87d9}\label{classsf_1_1_simulation_app_aea70740a24a10e2c50757b878eae87d9} 
+\index{sf::SimulationApp@{sf::SimulationApp}!getState@{getState}}
+\index{getState@{getState}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily Simulation\+State sf\+::\+Simulation\+App\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning simulation state. 
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_adba1d5e17754a0a50191cf9c88147f4a}\label{classsf_1_1_simulation_app_adba1d5e17754a0a50191cf9c88147f4a} 
+\index{sf::SimulationApp@{sf::SimulationApp}!hasGraphics@{hasGraphics}}
+\index{hasGraphics@{hasGraphics}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{hasGraphics()}{hasGraphics()}}
+{\footnotesize\ttfamily virtual bool sf\+::\+Simulation\+App\+::has\+Graphics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method informing if the application is graphical. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_console_simulation_app_a8f1fa6eb52c475715017a15b6e6e2323}{sf\+::\+Console\+Simulation\+App}}, and \mbox{\hyperlink{classsf_1_1_graphical_simulation_app_a49eeadfd5229bb567e1517257c81e10d}{sf\+::\+Graphical\+Simulation\+App}}.
+
+\Hypertarget{classsf_1_1_simulation_app_afbb87891dcffbf749afbad16eec2d30d}\label{classsf_1_1_simulation_app_afbb87891dcffbf749afbad16eec2d30d} 
+\index{sf::SimulationApp@{sf::SimulationApp}!Init@{Init}}
+\index{Init@{Init}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a802994a0920f91ca001d8b6b81926ee2}\label{classsf_1_1_simulation_app_a802994a0920f91ca001d8b6b81926ee2} 
+\index{sf::SimulationApp@{sf::SimulationApp}!InitializeSimulation@{InitializeSimulation}}
+\index{InitializeSimulation@{InitializeSimulation}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{InitializeSimulation()}{InitializeSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Initialize\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a3d567777abba21b46b0180960f2925f1}\label{classsf_1_1_simulation_app_a3d567777abba21b46b0180960f2925f1} 
+\index{sf::SimulationApp@{sf::SimulationApp}!Loop@{Loop}}
+\index{Loop@{Loop}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{Loop()}{Loop()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a27ad317df52513e76d74f6ac823f218a}\label{classsf_1_1_simulation_app_a27ad317df52513e76d74f6ac823f218a} 
+\index{sf::SimulationApp@{sf::SimulationApp}!Quit@{Quit}}
+\index{Quit@{Quit}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{Quit()}{Quit()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a68ec2bb369e86d39a4a58a2770f0a683}\label{classsf_1_1_simulation_app_a68ec2bb369e86d39a4a58a2770f0a683} 
+\index{sf::SimulationApp@{sf::SimulationApp}!ResumeSimulation@{ResumeSimulation}}
+\index{ResumeSimulation@{ResumeSimulation}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{ResumeSimulation()}{ResumeSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Resume\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that resumes the simulation on demand. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_console_simulation_app_ad48d112e061348e069fb8a3e751ee0e6}{sf\+::\+Console\+Simulation\+App}}, and \mbox{\hyperlink{classsf_1_1_graphical_simulation_app_a4afce1ceaeb9f6454874d38ae2c92e39}{sf\+::\+Graphical\+Simulation\+App}}.
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a55ee7de322ceba7ec665d3739193605c}\label{classsf_1_1_simulation_app_a55ee7de322ceba7ec665d3739193605c} 
+\index{sf::SimulationApp@{sf::SimulationApp}!Run@{Run}}
+\index{Run@{Run}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Run (\begin{DoxyParamCaption}\item[{bool}]{autostart = {\ttfamily true},  }\item[{bool}]{autostep = {\ttfamily true},  }\item[{Scalar}]{time\+Step = {\ttfamily Scalar(0)} }\end{DoxyParamCaption})}
+
+
+
+A method implementing the simulation sequence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em autostart} & optional flag determining if the simulation should automatically start running \\
+\hline
+{\em autostep} & optional flag determining if the simulation should automatically step \\
+\hline
+{\em time\+Step} & optional time step that will be used for each simulation update instead of real time (0 means real time) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_ae6f6537f29bb92d1518578a76dd2e28e}\label{classsf_1_1_simulation_app_ae6f6537f29bb92d1518578a76dd2e28e} 
+\index{sf::SimulationApp@{sf::SimulationApp}!StartSimulation@{StartSimulation}}
+\index{StartSimulation@{StartSimulation}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{StartSimulation()}{StartSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Start\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_console_simulation_app_aa13c1abb1dfc7b37ad190181fe7249b1}{sf\+::\+Console\+Simulation\+App}}, and \mbox{\hyperlink{classsf_1_1_graphical_simulation_app_a35d38d3e3e279a3b6a6c575d2440e0c2}{sf\+::\+Graphical\+Simulation\+App}}.
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_ab131ce402d9b4b8ac6932fa2f3a7f226}\label{classsf_1_1_simulation_app_ab131ce402d9b4b8ac6932fa2f3a7f226} 
+\index{sf::SimulationApp@{sf::SimulationApp}!StepSimulation@{StepSimulation}}
+\index{StepSimulation@{StepSimulation}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{StepSimulation()}{StepSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Step\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that performs a single simulation step and necessary updates. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_graphical_simulation_app_a583ac6f04c7ef7808950abccecf89448}{sf\+::\+Graphical\+Simulation\+App}}.
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00133}{133}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a68348a3878fb99aa10e2028ceca75f4f}\label{classsf_1_1_simulation_app_a68348a3878fb99aa10e2028ceca75f4f} 
+\index{sf::SimulationApp@{sf::SimulationApp}!StopSimulation@{StopSimulation}}
+\index{StopSimulation@{StopSimulation}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{StopSimulation()}{StopSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Simulation\+App\+::\+Stop\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that stops the simulation on demand. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_console_simulation_app_a00f5a97cdd91ee9d6f4c9ee078b297cb}{sf\+::\+Console\+Simulation\+App}}, and \mbox{\hyperlink{classsf_1_1_graphical_simulation_app_a380dfaa10be2eb307f6422d9535f71b8}{sf\+::\+Graphical\+Simulation\+App}}.
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{_simulation_app_8cpp_source}{Simulation\+App.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_simulation_app_a9d13e00501e481aa7e5080853823e0fb}\label{classsf_1_1_simulation_app_a9d13e00501e481aa7e5080853823e0fb} 
+\index{sf::SimulationApp@{sf::SimulationApp}!autostep\_@{autostep\_}}
+\index{autostep\_@{autostep\_}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{autostep\_}{autostep\_}}
+{\footnotesize\ttfamily bool sf\+::\+Simulation\+App\+::autostep\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8h_source_l00121}{121}} of file \mbox{\hyperlink{_simulation_app_8h_source}{Simulation\+App.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a420a4e219732dcaac4a9df6f1c0dd5d5}\label{classsf_1_1_simulation_app_a420a4e219732dcaac4a9df6f1c0dd5d5} 
+\index{sf::SimulationApp@{sf::SimulationApp}!console\_@{console\_}}
+\index{console\_@{console\_}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{console\_}{console\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_console}{Console}}\texorpdfstring{$\ast$}{*} sf\+::\+Simulation\+App\+::console\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8h_source_l00119}{119}} of file \mbox{\hyperlink{_simulation_app_8h_source}{Simulation\+App.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a96a9caa262178459f76f7f7fe6eac43d}\label{classsf_1_1_simulation_app_a96a9caa262178459f76f7f7fe6eac43d} 
+\index{sf::SimulationApp@{sf::SimulationApp}!startTime\_@{startTime\_}}
+\index{startTime\_@{startTime\_}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{startTime\_}{startTime\_}}
+{\footnotesize\ttfamily uint64\+\_\+t sf\+::\+Simulation\+App\+::start\+Time\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8h_source_l00120}{120}} of file \mbox{\hyperlink{_simulation_app_8h_source}{Simulation\+App.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a641bdb99d36df73a38bc3fefb6fd5559}\label{classsf_1_1_simulation_app_a641bdb99d36df73a38bc3fefb6fd5559} 
+\index{sf::SimulationApp@{sf::SimulationApp}!state\_@{state\_}}
+\index{state\_@{state\_}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{state\_}{state\_}}
+{\footnotesize\ttfamily Simulation\+State sf\+::\+Simulation\+App\+::state\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8h_source_l00123}{123}} of file \mbox{\hyperlink{_simulation_app_8h_source}{Simulation\+App.\+h}}.
+
+\Hypertarget{classsf_1_1_simulation_app_a4f13b1ad535403a79b22fbb0da4105b2}\label{classsf_1_1_simulation_app_a4f13b1ad535403a79b22fbb0da4105b2} 
+\index{sf::SimulationApp@{sf::SimulationApp}!timeStep\_@{timeStep\_}}
+\index{timeStep\_@{timeStep\_}!sf::SimulationApp@{sf::SimulationApp}}
+\doxysubsubsection{\texorpdfstring{timeStep\_}{timeStep\_}}
+{\footnotesize\ttfamily Scalar sf\+::\+Simulation\+App\+::time\+Step\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_simulation_app_8h_source_l00122}{122}} of file \mbox{\hyperlink{_simulation_app_8h_source}{Simulation\+App.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/core/Simulation\+App.\+h\item 
+Library/src/core/Simulation\+App.\+cpp\end{DoxyCompactItemize}

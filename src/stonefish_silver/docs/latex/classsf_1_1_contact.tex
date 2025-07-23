@@ -1,0 +1,294 @@
+\doxysection{sf\+::Contact Class Reference}
+\hypertarget{classsf_1_1_contact}{}\label{classsf_1_1_contact}\index{sf::Contact@{sf::Contact}}
+
+
+A class implementing a sensor measuring the contact between two entities.  
+
+
+
+
+{\ttfamily \#include $<$Contact.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_contact_a300442adb4abcb595090398c6dccfe56}{Contact}} (std\+::string \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{unique\+Name}}, \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{entityA}}, \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{entityB}}, \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{unsigned}} \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{int}} \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{history\+Length}}=1)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_ae3d017fdec50cfa3a40f70626e4f892d}{\texorpdfstring{$\sim$}{\string~}\+Contact}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} \mbox{\hyperlink{classsf_1_1_contact_a54b4db34425dcef8dfa387e797e0ca98}{Add\+Contact\+Point}} (\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}} \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{bt\+Persistent\+Manifold}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{manifold}}, \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{bool}} \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{swapped}}, Scalar \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{dt}})
+\begin{DoxyCompactList}\small\item\em A method to add a contact point to the history. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} \mbox{\hyperlink{classsf_1_1_contact_a101b04346ccaa67779f695c7ad5a1ddb}{Add\+Contact\+Point}} (\mbox{\hyperlink{structsf_1_1_contact_point}{Contact\+Point}} \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{p}})
+\begin{DoxyCompactList}\small\item\em A method to add a contact point to the history. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} \mbox{\hyperlink{classsf_1_1_contact_ab4b6ac28770590c55b2f7a8b6335f9cf}{Clear\+History}} ()
+\begin{DoxyCompactList}\small\item\em A method clearing the contact history. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} \mbox{\hyperlink{classsf_1_1_contact_abd71781cc3fc5981ca303a3e7eba4791}{Mark\+Data\+Old}} ()
+\begin{DoxyCompactList}\small\item\em A method used to mark data as old. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{bool}} \mbox{\hyperlink{classsf_1_1_contact_ad5df76147cc393fe1ed1f10b46ce04b5}{is\+New\+Data\+Available}} () \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}}
+\begin{DoxyCompactList}\small\item\em A method to check if new data is available. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} \mbox{\hyperlink{classsf_1_1_contact_a9664667f4fc47a34a9ebd7eb59b8a03c}{Save\+Contact\+Data\+To\+Octave\+File}} (\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}} std\+::string \&path, \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{bool}} \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{include\+Time}}=\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{true}})
+\begin{DoxyCompactList}\small\item\em A method that saves contact data to an Octave file. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_contact_aa7ee87720cf3891d2a0ee921601cd12a}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method that implements rendering of the contact. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} \mbox{\hyperlink{classsf_1_1_contact_a4325484266509752cba522f1099c7192}{set\+Display\+Mask}} (\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{int16\+\_\+t}} \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{mask}})
+\begin{DoxyCompactList}\small\item\em A method to set the display style of the contact. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_contact_ac18a4af16d2ebec70bc378b84a0a72d9}{get\+Name}} () \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}}
+\begin{DoxyCompactList}\small\item\em A method returning the sensor name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}} \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_contact_a88e554abd0734c353959decbb3734661}{get\+EntityA}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the first entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}} \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_contact_a6f9e99a2af046755f2faed1c1768bd12}{get\+EntityB}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the second entity. \end{DoxyCompactList}\item 
+const std\+::deque$<$ \mbox{\hyperlink{structsf_1_1_contact_point}{Contact\+Point}} $>$ \& \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{get\+History}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the history of the contact. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing a sensor measuring the contact between two entities. 
+
+Definition at line \mbox{\hyperlink{_contact_8h_source_l00070}{70}} of file \mbox{\hyperlink{_contact_8h_source}{Contact.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_contact_a300442adb4abcb595090398c6dccfe56}\label{classsf_1_1_contact_a300442adb4abcb595090398c6dccfe56} 
+\index{sf::Contact@{sf::Contact}!Contact@{Contact}}
+\index{Contact@{Contact}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{Contact()}{Contact()}}
+{\footnotesize\ttfamily sf\+::\+Contact\+::\+Contact (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entityA,  }\item[{\mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*}}]{entityB,  }\item[{\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{unsigned}} \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{int}}}]{history\+Length = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the contact \\
+\hline
+{\em entityA} & a pointer to the first entity \\
+\hline
+{\em entityB} & a pointer to the second entity \\
+\hline
+{\em history\+Length} & defines\+: 0 -\/\texorpdfstring{$>$}{>} unlimited history, \texorpdfstring{$>$}{>}0 -\/\texorpdfstring{$>$}{>} history with a specified length \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_ae3d017fdec50cfa3a40f70626e4f892d}\label{classsf_1_1_contact_ae3d017fdec50cfa3a40f70626e4f892d} 
+\index{sf::Contact@{sf::Contact}!````~Contact@{\texorpdfstring{$\sim$}{\string~}Contact}}
+\index{````~Contact@{\texorpdfstring{$\sim$}{\string~}Contact}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Contact()}{\string~Contact()}}
+{\footnotesize\ttfamily sf\+::\+Contact\+::\texorpdfstring{$\sim$}{\string~}\+Contact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_contact_a54b4db34425dcef8dfa387e797e0ca98}\label{classsf_1_1_contact_a54b4db34425dcef8dfa387e797e0ca98} 
+\index{sf::Contact@{sf::Contact}!AddContactPoint@{AddContactPoint}}
+\index{AddContactPoint@{AddContactPoint}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{AddContactPoint()}{AddContactPoint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} sf\+::\+Contact\+::\+Add\+Contact\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}} \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{bt\+Persistent\+Manifold}} \texorpdfstring{$\ast$}{*}}]{manifold,  }\item[{\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{bool}}}]{swapped,  }\item[{Scalar}]{dt }\end{DoxyParamCaption})}
+
+
+
+A method to add a contact point to the history. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manifold} & a pointer to the contact manifold \\
+\hline
+{\em swapped} & a flag indicating if the contact bodies are swapped \\
+\hline
+{\em dt} & time step of the simulation tick callback \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_a101b04346ccaa67779f695c7ad5a1ddb}\label{classsf_1_1_contact_a101b04346ccaa67779f695c7ad5a1ddb} 
+\index{sf::Contact@{sf::Contact}!AddContactPoint@{AddContactPoint}}
+\index{AddContactPoint@{AddContactPoint}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{AddContactPoint()}{AddContactPoint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} sf\+::\+Contact\+::\+Add\+Contact\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_contact_point}{Contact\+Point}}}]{p }\end{DoxyParamCaption})}
+
+
+
+A method to add a contact point to the history. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & a structure containing contact info \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_ab4b6ac28770590c55b2f7a8b6335f9cf}\label{classsf_1_1_contact_ab4b6ac28770590c55b2f7a8b6335f9cf} 
+\index{sf::Contact@{sf::Contact}!ClearHistory@{ClearHistory}}
+\index{ClearHistory@{ClearHistory}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{ClearHistory()}{ClearHistory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} sf\+::\+Contact\+::\+Clear\+History (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method clearing the contact history. 
+
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_a88e554abd0734c353959decbb3734661}\label{classsf_1_1_contact_a88e554abd0734c353959decbb3734661} 
+\index{sf::Contact@{sf::Contact}!getEntityA@{getEntityA}}
+\index{getEntityA@{getEntityA}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{getEntityA()}{getEntityA()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}} \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*} sf\+::\+Contact\+::get\+EntityA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the first entity. 
+
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_a6f9e99a2af046755f2faed1c1768bd12}\label{classsf_1_1_contact_a6f9e99a2af046755f2faed1c1768bd12} 
+\index{sf::Contact@{sf::Contact}!getEntityB@{getEntityB}}
+\index{getEntityB@{getEntityB}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{getEntityB()}{getEntityB()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}} \mbox{\hyperlink{classsf_1_1_entity}{Entity}} \texorpdfstring{$\ast$}{*} sf\+::\+Contact\+::get\+EntityB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the second entity. 
+
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}\label{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c} 
+\index{sf::Contact@{sf::Contact}!getHistory@{getHistory}}
+\index{getHistory@{getHistory}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{getHistory()}{getHistory()}}
+{\footnotesize\ttfamily const std\+::deque$<$ \mbox{\hyperlink{structsf_1_1_contact_point}{Contact\+Point}} $>$ \& sf\+::\+Contact\+::get\+History (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the history of the contact. 
+
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_ac18a4af16d2ebec70bc378b84a0a72d9}\label{classsf_1_1_contact_ac18a4af16d2ebec70bc378b84a0a72d9} 
+\index{sf::Contact@{sf::Contact}!getName@{getName}}
+\index{getName@{getName}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Contact\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the sensor name. 
+
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_ad5df76147cc393fe1ed1f10b46ce04b5}\label{classsf_1_1_contact_ad5df76147cc393fe1ed1f10b46ce04b5} 
+\index{sf::Contact@{sf::Contact}!isNewDataAvailable@{isNewDataAvailable}}
+\index{isNewDataAvailable@{isNewDataAvailable}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{isNewDataAvailable()}{isNewDataAvailable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{bool}} sf\+::\+Contact\+::is\+New\+Data\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method to check if new data is available. 
+
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_abd71781cc3fc5981ca303a3e7eba4791}\label{classsf_1_1_contact_abd71781cc3fc5981ca303a3e7eba4791} 
+\index{sf::Contact@{sf::Contact}!MarkDataOld@{MarkDataOld}}
+\index{MarkDataOld@{MarkDataOld}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{MarkDataOld()}{MarkDataOld()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} sf\+::\+Contact\+::\+Mark\+Data\+Old (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method used to mark data as old. 
+
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_aa7ee87720cf3891d2a0ee921601cd12a}\label{classsf_1_1_contact_aa7ee87720cf3891d2a0ee921601cd12a} 
+\index{sf::Contact@{sf::Contact}!Render@{Render}}
+\index{Render@{Render}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Contact\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that implements rendering of the contact. 
+
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_a9664667f4fc47a34a9ebd7eb59b8a03c}\label{classsf_1_1_contact_a9664667f4fc47a34a9ebd7eb59b8a03c} 
+\index{sf::Contact@{sf::Contact}!SaveContactDataToOctaveFile@{SaveContactDataToOctaveFile}}
+\index{SaveContactDataToOctaveFile@{SaveContactDataToOctaveFile}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{SaveContactDataToOctaveFile()}{SaveContactDataToOctaveFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} sf\+::\+Contact\+::\+Save\+Contact\+Data\+To\+Octave\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{const}} std\+::string \&}]{path,  }\item[{\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{bool}}}]{include\+Time = {\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{true}}} }\end{DoxyParamCaption})}
+
+
+
+A method that saves contact data to an Octave file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & a path to the output file \\
+\hline
+{\em include\+Time} & a flag to specify if time should be written \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00136}{136}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+\Hypertarget{classsf_1_1_contact_a4325484266509752cba522f1099c7192}\label{classsf_1_1_contact_a4325484266509752cba522f1099c7192} 
+\index{sf::Contact@{sf::Contact}!setDisplayMask@{setDisplayMask}}
+\index{setDisplayMask@{setDisplayMask}!sf::Contact@{sf::Contact}}
+\doxysubsubsection{\texorpdfstring{setDisplayMask()}{setDisplayMask()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{void}} sf\+::\+Contact\+::set\+Display\+Mask (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{int16\+\_\+t}}}]{mask }\end{DoxyParamCaption})}
+
+
+
+A method to set the display style of the contact. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & an integer which defines the rendering style \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_contact_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_contact_8cpp_source}{Contact.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/sensors/Contact.\+h\item 
+Library/src/sensors/Contact.\+cpp\end{DoxyCompactItemize}

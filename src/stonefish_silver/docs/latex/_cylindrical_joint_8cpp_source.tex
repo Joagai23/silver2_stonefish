@@ -1,0 +1,186 @@
+\doxysection{Cylindrical\+Joint.\+cpp}
+\hypertarget{_cylindrical_joint_8cpp_source}{}\label{_cylindrical_joint_8cpp_source}\index{Library/src/joints/CylindricalJoint.cpp@{Library/src/joints/CylindricalJoint.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ CylindricalJoint.cpp}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 28/03/2014.}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2014-\/2023\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}joints/CylindricalJoint.h"{}}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}entities/SolidEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00030}00030\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00033}\mbox{\hyperlink{classsf_1_1_cylindrical_joint_a03d4712c53d689f973abb399d68237ac}{00033}}\ \mbox{\hyperlink{classsf_1_1_cylindrical_joint_a03d4712c53d689f973abb399d68237ac}{CylindricalJoint::CylindricalJoint}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solidA,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solidB,\ \textcolor{keyword}{const}\ Vector3\&\ pivot,\ \textcolor{keyword}{const}\ Vector3\&\ axis,\ \textcolor{keywordtype}{bool}\ collideLinked)\ :\ \mbox{\hyperlink{classsf_1_1_joint}{Joint}}(uniqueName,\ collideLinked)}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00035}00035\ \ \ \ \ btRigidBody*\ bodyA\ =\ solidA-\/>rigidBody;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00036}00036\ \ \ \ \ btRigidBody*\ bodyB\ =\ solidB-\/>rigidBody;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00037}00037\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00038}00038\ \ \ \ \ Vector3\ sliderAxis\ =\ axis.normalized();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00039}00039\ \ \ \ \ Vector3\ v2;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{if}(fabs(sliderAxis.z())\ >\ 0.8)\ v2\ =\ Vector3(1,0,0);\ \textcolor{keywordflow}{else}\ v2\ =\ Vector3(0,0,1);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00041}00041\ \ \ \ \ Vector3\ v3\ =\ (sliderAxis.cross(v2)).normalized();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00042}00042\ \ \ \ \ v2\ =\ (v3.cross(sliderAxis)).normalized();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00043}00043\ \ \ \ \ Matrix3\ sliderBasis(sliderAxis.x(),\ v2.x(),\ v3.x(),}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sliderAxis.y(),\ v2.y(),\ v3.y(),}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sliderAxis.z(),\ v2.z(),\ v3.z());}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00046}00046\ \ \ \ \ Transform\ sliderFrame(sliderBasis,\ pivot);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00047}00047\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00048}00048\ \ \ \ \ Transform\ frameInA\ =\ bodyA-\/>getCenterOfMassTransform().inverse()\ *\ sliderFrame;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00049}00049\ \ \ \ \ Transform\ frameInB\ =\ bodyB-\/>getCenterOfMassTransform().inverse()\ *\ sliderFrame;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00050}00050\ \ \ \ \ axisInA\ =\ frameInA.getBasis().getColumn(0).normalized();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00051}00051\ \ \ \ \ pivotInA\ =\ frameInA.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00052}00052\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00053}00053\ \ \ \ \ btSliderConstraint*\ slider\ =\ \textcolor{keyword}{new}\ btSliderConstraint(*bodyA,\ *bodyB,\ frameInA,\ frameInB,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00054}00054\ \ \ \ \ slider-\/>setLowerLinLimit(1.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00055}00055\ \ \ \ \ slider-\/>setUpperLinLimit(-\/1.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00056}00056\ \ \ \ \ slider-\/>setLowerAngLimit(1.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00057}00057\ \ \ \ \ slider-\/>setUpperAngLimit(-\/1.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00058}00058\ \ \ \ \ setConstraint(slider);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00059}00059\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00060}00060\ \ \ \ \ linSigDamping\ =\ Scalar(0.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00061}00061\ \ \ \ \ linVelDamping\ =\ Scalar(0.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00062}00062\ \ \ \ \ angSigDamping\ =\ Scalar(0.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00063}00063\ \ \ \ \ angVelDamping\ =\ Scalar(0.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00064}00064\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00065}00065\ \ \ \ \ displacementIC\ =\ Scalar(0.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00066}00066\ \ \ \ \ angleIC\ =\ Scalar(0.);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00069}\mbox{\hyperlink{classsf_1_1_cylindrical_joint_ad0479634fd1a67829e5f7b0e77d2e477}{00069}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_cylindrical_joint_ad0479634fd1a67829e5f7b0e77d2e477}{CylindricalJoint::setDamping}}(Scalar\ linearConstantFactor,\ Scalar\ linearViscousFactor,\ Scalar\ angularConstantFactor,\ Scalar\ angularViscousFactor)}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00070}00070\ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00071}00071\ \ \ \ \ linSigDamping\ =\ linearConstantFactor\ >\ Scalar(0)\ ?\ linearConstantFactor\ :\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00072}00072\ \ \ \ \ linVelDamping\ =\ linearViscousFactor\ >\ Scalar(0)\ ?\ linearViscousFactor\ :\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00073}00073\ \ \ \ \ angSigDamping\ =\ angularConstantFactor\ >\ Scalar(0)\ ?\ angularConstantFactor\ :\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00074}00074\ \ \ \ \ angVelDamping\ =\ angularViscousFactor\ >\ Scalar(0)\ ?\ angularViscousFactor\ :\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00077}\mbox{\hyperlink{classsf_1_1_cylindrical_joint_ace1605328c59775cf5feb0f5d486f307}{00077}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_cylindrical_joint_ace1605328c59775cf5feb0f5d486f307}{CylindricalJoint::setLimits}}(Scalar\ linearMin,\ Scalar\ linearMax,\ Scalar\ angularMin,\ Scalar\ angularMax)}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00078}00078\ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00079}00079\ \ \ \ \ btSliderConstraint*\ slider\ =\ (btSliderConstraint*)\mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00080}00080\ \ \ \ \ slider-\/>setLowerLinLimit(linearMin);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00081}00081\ \ \ \ \ slider-\/>setUpperLinLimit(linearMax);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00082}00082\ \ \ \ \ slider-\/>setLowerAngLimit(angularMin);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00083}00083\ \ \ \ \ slider-\/>setUpperAngLimit(angularMax);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00086}\mbox{\hyperlink{classsf_1_1_cylindrical_joint_a3d0ab0a530e182a387d1efca0b4926fa}{00086}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_cylindrical_joint_a3d0ab0a530e182a387d1efca0b4926fa}{CylindricalJoint::setIC}}(Scalar\ displacement,\ Scalar\ angle)}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00087}00087\ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00088}00088\ \ \ \ \ displacementIC\ =\ displacement;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00089}00089\ \ \ \ \ angleIC\ =\ angle;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00092}\mbox{\hyperlink{classsf_1_1_cylindrical_joint_a88637605b3153b51502002ffa7c9753b}{00092}}\ JointType\ \mbox{\hyperlink{classsf_1_1_cylindrical_joint_a88637605b3153b51502002ffa7c9753b}{CylindricalJoint::getType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00093}00093\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{return}\ JointType::CYLINDRICAL;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00097}\mbox{\hyperlink{classsf_1_1_cylindrical_joint_adabb60b7620654e73b9687a25d0532e6}{00097}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_cylindrical_joint_adabb60b7620654e73b9687a25d0532e6}{CylindricalJoint::ApplyForce}}(Scalar\ F)}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00098}00098\ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00099}00099\ \ \ \ \ btRigidBody\&\ bodyA\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyA();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00100}00100\ \ \ \ \ btRigidBody\&\ bodyB\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyB();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00101}00101\ \ \ \ \ Vector3\ axis\ =\ (bodyA.getCenterOfMassTransform().getBasis()\ *\ axisInA).normalized();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00102}00102\ \ \ \ \ Vector3\ force\ =\ axis\ *\ F;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00103}00103\ \ \ \ \ bodyA.applyCentralForce(force);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00104}00104\ \ \ \ \ bodyB.applyCentralForce(-\/force);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00107}\mbox{\hyperlink{classsf_1_1_cylindrical_joint_a87118607e993fa328929b631d91924fc}{00107}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_cylindrical_joint_a87118607e993fa328929b631d91924fc}{CylindricalJoint::ApplyTorque}}(Scalar\ T)}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00108}00108\ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00109}00109\ \ \ \ \ btRigidBody\&\ bodyA\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyA();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00110}00110\ \ \ \ \ btRigidBody\&\ bodyB\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyB();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00111}00111\ \ \ \ \ Vector3\ axis\ =\ (bodyA.getCenterOfMassTransform().getBasis()\ *\ axisInA).normalized();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00112}00112\ \ \ \ \ Vector3\ torque\ =\ axis\ *\ T;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00113}00113\ \ \ \ \ bodyA.applyTorque(torque);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00114}00114\ \ \ \ \ bodyB.applyTorque(-\/torque);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00117}\mbox{\hyperlink{classsf_1_1_cylindrical_joint_aae23b6a7d5af1af6f1e4f568530b661f}{00117}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_cylindrical_joint_aae23b6a7d5af1af6f1e4f568530b661f}{CylindricalJoint::ApplyDamping}}()}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}(linSigDamping\ >\ Scalar(0.)\ ||\ linVelDamping\ >\ Scalar(0.)\ ||\ angSigDamping\ >\ Scalar(0.)\ ||\ angVelDamping\ >\ Scalar(0.))}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00120}00120\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ btRigidBody\&\ bodyA\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyA();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ btRigidBody\&\ bodyB\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyB();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ Vector3\ axis\ =\ (bodyA.getCenterOfMassTransform().getBasis()\ *\ axisInA).normalized();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ Vector3\ relativeV\ =\ bodyA.getLinearVelocity()\ -\/\ bodyB.getLinearVelocity();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ Scalar\ v\ =\ relativeV.dot(axis);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ Vector3\ relativeAV\ =\ bodyA.getAngularVelocity()\ -\/\ bodyB.getAngularVelocity();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ Scalar\ av\ =\ relativeAV.dot(axis);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(v\ !=\ Scalar(0.))}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ F\ =\ linSigDamping\ *\ v/fabs(v)\ +\ linVelDamping\ *\ v;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ force\ =\ axis\ *\ -\/F;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ bodyA.applyCentralForce(force);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ bodyB.applyCentralForce(-\/force);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(av\ !=\ Scalar(0.))}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ T\ =\ angSigDamping\ *\ av/fabs(av)\ +\ angVelDamping\ *\ av;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ torque\ =\ axis\ *\ -\/T;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ bodyA.applyTorque(torque);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ bodyB.applyTorque(-\/torque);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00147}00147\ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00149}\mbox{\hyperlink{classsf_1_1_cylindrical_joint_ab52b7517cfa39339d69b77566c58a0a9}{00149}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_cylindrical_joint_ab52b7517cfa39339d69b77566c58a0a9}{CylindricalJoint::Render}}()}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00150}00150\ \{}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00151}00151\ \ \ \ \ std::vector<Renderable>\ items(0);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00152}00152\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00153}00153\ \ \ \ \ item.model\ =\ glm::mat4(1.f);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00154}00154\ \ \ \ \ item.type\ =\ RenderableType::JOINT\_LINES;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00155}00155\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00156}00156\ \ \ \ \ btTypedConstraint*\ cyli\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00157}00157\ \ \ \ \ Vector3\ A\ =\ cyli-\/>getRigidBodyA().getCenterOfMassPosition();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00158}00158\ \ \ \ \ Vector3\ B\ =\ cyli-\/>getRigidBodyB().getCenterOfMassPosition();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00159}00159\ \ \ \ \ Vector3\ pivot\ =\ cyli-\/>getRigidBodyA().getCenterOfMassTransform()(pivotInA);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00160}00160\ \ \ \ \ Vector3\ axis\ =\ (cyli-\/>getRigidBodyA().getCenterOfMassTransform().getBasis()\ *\ axisInA).normalized();}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00161}00161\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{comment}{//calculate\ axis\ ends}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00163}00163\ \ \ \ \ Scalar\ e1\ =\ (A-\/pivot).dot(axis);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00164}00164\ \ \ \ \ Scalar\ e2\ =\ (B-\/pivot).dot(axis);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00165}00165\ \ \ \ \ Vector3\ C1\ =\ pivot\ +\ e1\ *\ axis;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00166}00166\ \ \ \ \ Vector3\ C2\ =\ pivot\ +\ e2\ *\ axis;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00167}00167\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00168}00168\ \ \ \ \ item.points.push\_back(glm::vec3(A.getX(),\ A.getY(),\ A.getZ()));}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00169}00169\ \ \ \ \ item.points.push\_back(glm::vec3(C1.getX(),\ C1.getY(),\ C1.getZ()));}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00170}00170\ \ \ \ \ item.points.push\_back(glm::vec3(B.getX(),\ B.getY(),\ B.getZ()));}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00171}00171\ \ \ \ \ item.points.push\_back(glm::vec3(C2.getX(),\ C2.getY(),\ C2.getZ()));}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00172}00172\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00173}00173\ \ \ \ \ item.points.push\_back(glm::vec3(C1.getX(),\ C1.getY(),\ C1.getZ()));}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00174}00174\ \ \ \ \ item.points.push\_back(glm::vec3(C2.getX(),\ C2.getY(),\ C2.getZ()));}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00175}00175\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00176}00176\ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00178}00178\ \}}
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_cylindrical_joint_8cpp_source_l00180}00180\ \}}
+
+\end{DoxyCode}

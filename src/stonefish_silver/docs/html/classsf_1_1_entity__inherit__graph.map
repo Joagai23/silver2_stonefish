@@ -1,0 +1,41 @@
+<map id="sf::Entity" name="sf::Entity">
+<area shape="rect" id="Node000001" title="An abstract class representing a simulation entity." alt="" coords="5,129,84,155"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_featherstone_entity.html" title="A class that implements simplified creation of multi&#45;body trees, using Roy Featherstone&#39;s algorithm." alt="" coords="132,55,296,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,119,131,89,162,78,164,83,133,94,78,124"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_forcefield_entity.html" title="An abstract class representing some kind of a force field." alt="" coords="143,104,285,129"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="97,131,142,125,143,130,98,137"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1_moving_entity.html" title="An abstract class representing a moving rigid body." alt="" coords="151,153,277,179"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="98,147,151,154,150,160,97,152"/>
+<area shape="rect" id="Node000017" href="$classsf_1_1_static_entity.html" title="An abstract class defining a static simulation entity." alt="" coords="156,276,272,301"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="73,162,200,274,196,278,69,166"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_atmosphere.html" title="A class representing the atmosphere." alt="" coords="355,5,475,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="280,96,295,89,309,77,318,65,327,53,343,40,366,28,368,33,345,44,331,56,322,68,313,81,297,94,283,101"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_ocean.html" title="A class implementing an ocean." alt="" coords="374,55,457,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="279,98,373,75,374,80,280,103"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1_trigger.html" title="A class implementing a virtual object that can be used to trigger actions." alt="" coords="373,104,458,129"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="299,114,372,114,372,119,299,119"/>
+<area shape="rect" id="Node000008" href="$classsf_1_1_animated_entity.html" title="An abstract class defining an animated simulation entity." alt="" coords="344,153,487,179"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="291,163,344,163,344,169,291,169"/>
+<area shape="rect" id="Node000009" href="$classsf_1_1_solid_entity.html" title="An abstract class representing a rigid body." alt="" coords="360,203,471,228"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="280,179,363,200,362,205,279,185"/>
+<area shape="rect" id="Node000010" href="$classsf_1_1_box.html" title="A class representing a box&#45;shaped rigid body." alt="" coords="559,55,625,80"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="477,194,485,188,502,164,508,140,515,115,533,89,557,74,560,79,537,93,520,117,514,142,507,167,489,192,480,198"/>
+<area shape="rect" id="Node000011" href="$classsf_1_1_compound.html" title="A class representing a rigid body built of multiple other rigid bodies." alt="" coords="537,104,647,129"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="473,195,485,188,500,176,509,164,518,152,533,138,554,127,556,132,536,143,522,155,513,167,503,180,488,192,475,199"/>
+<area shape="rect" id="Node000012" href="$classsf_1_1_cylinder.html" title="A class representing a cylinder&#45;shaped (cylinder axis parallel to z axis) rigid body." alt="" coords="545,153,639,179"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="474,196,545,176,546,181,475,201"/>
+<area shape="rect" id="Node000013" href="$classsf_1_1_polyhedron.html" title="A class representing a rigid body of any shape described by a polyhedron (mesh with triangle faces)." alt="" coords="535,203,649,228"/>
+<area shape="poly" id="edge12_Node000009_Node000013" title=" " alt="" coords="484,213,534,213,534,218,484,218"/>
+<area shape="rect" id="Node000014" href="$classsf_1_1_sphere.html" title="A class representing a sphere&#45;shaped rigid body." alt="" coords="549,252,635,277"/>
+<area shape="poly" id="edge13_Node000009_Node000014" title=" " alt="" coords="475,229,549,250,548,255,474,234"/>
+<area shape="rect" id="Node000015" href="$classsf_1_1_torus.html" title="A class representing a torus&#45;shaped rigid body." alt="" coords="555,301,629,327"/>
+<area shape="poly" id="edge14_Node000009_Node000015" title=" " alt="" coords="477,231,488,237,503,250,513,262,522,274,536,286,558,299,556,304,533,291,518,278,509,265,500,253,485,242,475,236"/>
+<area shape="rect" id="Node000016" href="$classsf_1_1_wing.html" title="A class representing a wing&#45;shaped rigid body. The profile of the wing is generated based on 4&#45;digit ..." alt="" coords="555,351,629,376"/>
+<area shape="poly" id="edge15_Node000009_Node000016" title=" " alt="" coords="483,233,489,237,507,262,514,287,520,312,537,336,556,349,553,354,533,340,515,314,509,289,502,265,485,241,479,237"/>
+<area shape="rect" id="Node000018" href="$classsf_1_1_obstacle.html" title="A static obstacle loaded from a file or taking one of the simple geometrical shapes." alt="" coords="366,252,465,277"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="285,278,365,268,366,273,286,283"/>
+<area shape="rect" id="Node000019" href="$classsf_1_1_plane.html" title="A class representing an infinite static plane." alt="" coords="377,301,454,327"/>
+<area shape="poly" id="edge18_Node000017_Node000019" title=" " alt="" coords="286,295,377,307,376,312,285,300"/>
+<area shape="rect" id="Node000020" href="$classsf_1_1_terrain.html" title="A class representing a heightfield terrain." alt="" coords="373,351,458,376"/>
+<area shape="poly" id="edge19_Node000017_Node000020" title=" " alt="" coords="262,304,345,336,379,348,377,353,343,340,260,309"/>
+</map>

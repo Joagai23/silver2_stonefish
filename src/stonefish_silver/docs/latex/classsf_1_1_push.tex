@@ -1,0 +1,236 @@
+\doxysection{sf\+::Push Class Reference}
+\hypertarget{classsf_1_1_push}{}\label{classsf_1_1_push}\index{sf::Push@{sf::Push}}
+
+
+A class representing a thruster.  
+
+
+
+
+{\ttfamily \#include $<$Push.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Push\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classsf_1_1_push__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Push\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_push__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_push_a88ef56a8124d71c34b429c245de84411}{Push}} (std\+::string unique\+Name, bool inverted=false)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_push_a9b61d8108e5cf955b26e7835b2cfc70a}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method used to update the internal state of the push actuator. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_push_aca2b55d78dfc97623c48ce56db3e3da2}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the push actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_push_a2b2fd275e7777a2216347cb7cd9c5aaf}{set\+Force\+Limits}} (Scalar lower, Scalar upper)
+\begin{DoxyCompactList}\small\item\em A method used to set the force limits. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_push_acd1bb67c889b59b0735459962de703b4}{set\+Force}} (Scalar f)
+\begin{DoxyCompactList}\small\item\em A method setting the new value of the desired force. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_push_a7e3e914b7a1172259606dac72bb5b19c}{get\+Force}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the current setpoint. \end{DoxyCompactList}\item 
+Actuator\+Type \mbox{\hyperlink{classsf_1_1_push_aa97c2a91b0ef451a2ed0b3eb5c722257}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_link_actuator}{sf\+::\+Link\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_link_actuator_af1419a4d8c81fd49639296a66ca58b1c}{Link\+Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_link_actuator_abb33decb20bb669f931fe9eda36943e0}{Attach\+To\+Solid}} (\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the actuator to a specified rigid body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_link_actuator_a994726375d1bac63eeaee3ffe319ecfb}{set\+Relative\+Actuator\+Frame}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to set the actuator origin frame. \end{DoxyCompactList}\item 
+virtual Transform \mbox{\hyperlink{classsf_1_1_link_actuator_a2a206c10015fd2ab7d4a517af5906311}{get\+Actuator\+Frame}} () const
+\begin{DoxyCompactList}\small\item\em A method returning actuator frame in the world frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_actuator_a0bdcfb3e2bad01b7e3524efcea3dd646}{Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_actuator_ab1702a858f2c750da3259d8b3d574268}{\texorpdfstring{$\sim$}{\string~}\+Actuator}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_afe4e4fcdb0e13f9efbc665994e77d145}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set display mode used for the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a7e3ae31d3cfed62d68a0445b7a03f026}{set\+Watchdog}} (Scalar timeout)
+\begin{DoxyCompactList}\small\item\em A method used to set the watchdog timeout. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_actuator_a3a074b11358493cb251139c475507d2d}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a86dec171a3761123d92363a71b716385}{Reset\+Watchdog}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_link_actuator}{sf\+::\+Link\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_link_actuator_a36af6645c2eb2bb3621d07641d1e4dd8}{attach}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_link_actuator_a23f23ca6eae0382d3b77ab5e76417a29}{o2a}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_actuator_a1ca99e4bb5c8efa1670fdd09f1d52ead}{dm}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a thruster. 
+
+Definition at line \mbox{\hyperlink{_push_8h_source_l00034}{34}} of file \mbox{\hyperlink{_push_8h_source}{Push.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_push_a88ef56a8124d71c34b429c245de84411}\label{classsf_1_1_push_a88ef56a8124d71c34b429c245de84411} 
+\index{sf::Push@{sf::Push}!Push@{Push}}
+\index{Push@{Push}!sf::Push@{sf::Push}}
+\doxysubsubsection{\texorpdfstring{Push()}{Push()}}
+{\footnotesize\ttfamily sf\+::\+Push\+::\+Push (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{bool}]{inverted = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the push \\
+\hline
+{\em inverted} & a flag indicating if the direction of the generated force should be reversed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_push_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_push_8cpp_source}{Push.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_push_a7e3e914b7a1172259606dac72bb5b19c}\label{classsf_1_1_push_a7e3e914b7a1172259606dac72bb5b19c} 
+\index{sf::Push@{sf::Push}!getForce@{getForce}}
+\index{getForce@{getForce}!sf::Push@{sf::Push}}
+\doxysubsubsection{\texorpdfstring{getForce()}{getForce()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Push\+::get\+Force (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the current setpoint. 
+
+
+
+Definition at line \mbox{\hyperlink{_push_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_push_8cpp_source}{Push.\+cpp}}.
+
+\Hypertarget{classsf_1_1_push_aa97c2a91b0ef451a2ed0b3eb5c722257}\label{classsf_1_1_push_aa97c2a91b0ef451a2ed0b3eb5c722257} 
+\index{sf::Push@{sf::Push}!getType@{getType}}
+\index{getType@{getType}!sf::Push@{sf::Push}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Actuator\+Type sf\+::\+Push\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the actuator. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_actuator_a3b1831e870e2b800590271823d034c88}{sf\+::\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_push_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_push_8cpp_source}{Push.\+cpp}}.
+
+\Hypertarget{classsf_1_1_push_aca2b55d78dfc97623c48ce56db3e3da2}\label{classsf_1_1_push_aca2b55d78dfc97623c48ce56db3e3da2} 
+\index{sf::Push@{sf::Push}!Render@{Render}}
+\index{Render@{Render}!sf::Push@{sf::Push}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Push\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the push actuator. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_link_actuator_aa2529f1fa02cf53b2871e79337deeec0}{sf\+::\+Link\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_push_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{_push_8cpp_source}{Push.\+cpp}}.
+
+\Hypertarget{classsf_1_1_push_acd1bb67c889b59b0735459962de703b4}\label{classsf_1_1_push_acd1bb67c889b59b0735459962de703b4} 
+\index{sf::Push@{sf::Push}!setForce@{setForce}}
+\index{setForce@{setForce}!sf::Push@{sf::Push}}
+\doxysubsubsection{\texorpdfstring{setForce()}{setForce()}}
+{\footnotesize\ttfamily void sf\+::\+Push\+::set\+Force (\begin{DoxyParamCaption}\item[{Scalar}]{f }\end{DoxyParamCaption})}
+
+
+
+A method setting the new value of the desired force. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & the desired force to be generated \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_push_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_push_8cpp_source}{Push.\+cpp}}.
+
+\Hypertarget{classsf_1_1_push_a2b2fd275e7777a2216347cb7cd9c5aaf}\label{classsf_1_1_push_a2b2fd275e7777a2216347cb7cd9c5aaf} 
+\index{sf::Push@{sf::Push}!setForceLimits@{setForceLimits}}
+\index{setForceLimits@{setForceLimits}!sf::Push@{sf::Push}}
+\doxysubsubsection{\texorpdfstring{setForceLimits()}{setForceLimits()}}
+{\footnotesize\ttfamily void sf\+::\+Push\+::set\+Force\+Limits (\begin{DoxyParamCaption}\item[{Scalar}]{lower,  }\item[{Scalar}]{upper }\end{DoxyParamCaption})}
+
+
+
+A method used to set the force limits. 
+
+
+
+Definition at line \mbox{\hyperlink{_push_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_push_8cpp_source}{Push.\+cpp}}.
+
+\Hypertarget{classsf_1_1_push_a9b61d8108e5cf955b26e7835b2cfc70a}\label{classsf_1_1_push_a9b61d8108e5cf955b26e7835b2cfc70a} 
+\index{sf::Push@{sf::Push}!Update@{Update}}
+\index{Update@{Update}!sf::Push@{sf::Push}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void sf\+::\+Push\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to update the internal state of the push actuator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & a time step of the simulation \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_actuator_afe9be563b1e1819330bb61386d443b62}{sf\+::\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_push_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_push_8cpp_source}{Push.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Push.\+h\item 
+Library/src/actuators/Push.\+cpp\end{DoxyCompactItemize}

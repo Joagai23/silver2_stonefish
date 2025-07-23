@@ -1,0 +1,93 @@
+\doxysection{Revolute\+Joint.\+h}
+\hypertarget{_revolute_joint_8h_source}{}\label{_revolute_joint_8h_source}\index{Library/include/joints/RevoluteJoint.h@{Library/include/joints/RevoluteJoint.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00019}00019\ \textcolor{comment}{//\ \ RevoluteJoint.h}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 1/13/13.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2013-\/2023\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_RevoluteJoint\_\_}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_RevoluteJoint\_\_}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}joints/Joint.h"{}}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00031}00031\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{class\ }SolidEntity;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00034}00034\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00036}\mbox{\hyperlink{classsf_1_1_revolute_joint}{00036}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_revolute_joint}{RevoluteJoint}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classsf_1_1_joint}{Joint}}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_revolute_joint}{RevoluteJoint}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solidA,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solidB,}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector3\&\ pivot,\ \textcolor{keyword}{const}\ Vector3\&\ axis,\ \textcolor{keywordtype}{bool}\ collideLinked\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_revolute_joint}{RevoluteJoint}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solid,\ \textcolor{keyword}{const}\ Vector3\&\ pivot,\ \textcolor{keyword}{const}\ Vector3\&\ axis);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a8922a14fa1c46d18bcc9f3a2beca93c4}{ApplyTorque}}(Scalar\ T);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_aad95f2086f0c07884c99ef790b02a91c}{ApplyDamping}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_ab1c9fcf9d504d533c4417bbac5bc1e45}{SolvePositionIC}}(Scalar\ linearTolerance,\ Scalar\ angularTolerance);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a04bde8740ae9a5784ebf47c88ee9e1bf}{Render}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a359bc59bbfa8eda57d87b2f34a800882}{EnableMotor}}(\textcolor{keywordtype}{bool}\ enable,\ Scalar\ maxTorque);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_aa3459faf2c7843c5692b0727f7ae53d1}{setMotorVelocity}}(Scalar\ av);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a33a74a61011d527768aa355411be1500}{setDamping}}(Scalar\ constantFactor,\ Scalar\ viscousFactor);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_afc075fa91bd1eb1fbd90a1b1ea3607d5}{setLimits}}(Scalar\ min,\ Scalar\ max);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a4bb119acc53ef200b69e081eded1dabe}{setIC}}(Scalar\ angle);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a1be35247ca6eea66d849691271e2bdf1}{getAngle}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00115}00115\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a86bfff185781eb1d883938ca68a8a037}{getAngularVelocity}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00118}00118\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00120}00120\ \ \ \ \ \ \ \ \ JointType\ \mbox{\hyperlink{classsf_1_1_revolute_joint_af512d2595809808d29fdd4082775278a}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00122}00122\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ Vector3\ axisInA;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ Vector3\ pivotInA;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ Scalar\ sigDamping;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ Scalar\ velDamping;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ Scalar\ angleIC;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ Scalar\ angleICError;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ Scalar\ angleOffset;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00130}00130\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00131}00131\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8h_source_l00133}00133\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

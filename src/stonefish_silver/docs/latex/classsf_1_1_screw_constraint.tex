@@ -1,0 +1,199 @@
+\doxysection{sf\+::Screw\+Constraint Class Reference}
+\hypertarget{classsf_1_1_screw_constraint}{}\label{classsf_1_1_screw_constraint}\index{sf::ScrewConstraint@{sf::ScrewConstraint}}
+
+
+A class implementing a screw type constraint (not tested).  
+
+
+
+
+{\ttfamily \#include $<$Screw\+Constraint.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Screw\+Constraint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classsf_1_1_screw_constraint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Screw\+Constraint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classsf_1_1_screw_constraint__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_screw_constraint_acc19618e83e58b6196d318d8f71c8414}{Screw\+Constraint}} (bt\+Rigid\+Body \&\+\_\+rbA, bt\+Rigid\+Body \&\+\_\+rbB, const Transform \&\+\_\+frame\+InA, const Transform \&\+\_\+frame\+InB, bool \+\_\+use\+Linear\+Reference\+FrameA)
+\item 
+\mbox{\hyperlink{classsf_1_1_screw_constraint_a4a661af3bb9ecb47bd01611991852af9}{Screw\+Constraint}} (bt\+Rigid\+Body \&\+\_\+rbB, const Transform \&\+\_\+frame\+InB, bool \+\_\+use\+Linear\+Reference\+FrameA)
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_screw_constraint_af883957a2f7cc593522fc3f3fdd9cd5c}{get\+Info1}} (bt\+Constraint\+Info1 \texorpdfstring{$\ast$}{*}\+\_\+info)
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_screw_constraint_ab4be1b90410534c645d60522ad564e6a}{get\+Info2}} (bt\+Constraint\+Info2 \texorpdfstring{$\ast$}{*}\+\_\+info)
+\item 
+void \mbox{\hyperlink{classsf_1_1_screw_constraint_ad18093ad2d41b15c400ba85cd8538b82}{\+\_\+get\+Info1\+Non\+Virtual}} (bt\+Constraint\+Info1 \texorpdfstring{$\ast$}{*}info)
+\item 
+void \mbox{\hyperlink{classsf_1_1_screw_constraint_ab4c7e803756b28c79f36213f6933f9f1}{\+\_\+get\+Info2\+Non\+Virtual}} (bt\+Constraint\+Info2 \texorpdfstring{$\ast$}{*}info, const Transform \&transA, const Transform \&transB, const Vector3 \&lin\+VelA, const Vector3 \&lin\+VelB, Scalar rb\+Ainv\+Mass, Scalar rb\+Binv\+Mass)
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_screw_constraint_a43bbb82acf673248840a54168a170080}{get\+Linear\+Position}} ()
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_screw_constraint_a316bc729ac6096d740e4011b526cc0dc}{get\+Angular\+Position}} ()
+\item 
+bt\+Rigid\+Body \& \mbox{\hyperlink{classsf_1_1_screw_constraint_a87612d8cdeb59ff5043b1becd4a9c120}{get\+Rigid\+BodyA}} ()
+\item 
+bt\+Rigid\+Body \& \mbox{\hyperlink{classsf_1_1_screw_constraint_adca4bb200f6003064cc1973ccd4cd126}{get\+Rigid\+BodyB}} ()
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_screw_constraint_a42ece6a4570ae06dd416f623829bc1f3}{set\+Thread\+Pitch}} (double \+\_\+thread\+Pitch)
+\item 
+virtual double \mbox{\hyperlink{classsf_1_1_screw_constraint_a6e7f89c8c7729f413006a9c0bdadea1d}{get\+Thread\+Pitch}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing a screw type constraint (not tested). 
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8h_source_l00037}{37}} of file \mbox{\hyperlink{_screw_constraint_8h_source}{Screw\+Constraint.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_screw_constraint_acc19618e83e58b6196d318d8f71c8414}\label{classsf_1_1_screw_constraint_acc19618e83e58b6196d318d8f71c8414} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!ScrewConstraint@{ScrewConstraint}}
+\index{ScrewConstraint@{ScrewConstraint}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{ScrewConstraint()}{ScrewConstraint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily sf\+::\+Screw\+Constraint\+::\+Screw\+Constraint (\begin{DoxyParamCaption}\item[{bt\+Rigid\+Body \&}]{\+\_\+rbA,  }\item[{bt\+Rigid\+Body \&}]{\+\_\+rbB,  }\item[{const Transform \&}]{\+\_\+frame\+InA,  }\item[{const Transform \&}]{\+\_\+frame\+InB,  }\item[{bool}]{\+\_\+use\+Linear\+Reference\+FrameA }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8h_source_l00040}{40}} of file \mbox{\hyperlink{_screw_constraint_8h_source}{Screw\+Constraint.\+h}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_a4a661af3bb9ecb47bd01611991852af9}\label{classsf_1_1_screw_constraint_a4a661af3bb9ecb47bd01611991852af9} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!ScrewConstraint@{ScrewConstraint}}
+\index{ScrewConstraint@{ScrewConstraint}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{ScrewConstraint()}{ScrewConstraint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily sf\+::\+Screw\+Constraint\+::\+Screw\+Constraint (\begin{DoxyParamCaption}\item[{bt\+Rigid\+Body \&}]{\+\_\+rbB,  }\item[{const Transform \&}]{\+\_\+frame\+InB,  }\item[{bool}]{\+\_\+use\+Linear\+Reference\+FrameA }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8h_source_l00043}{43}} of file \mbox{\hyperlink{_screw_constraint_8h_source}{Screw\+Constraint.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_screw_constraint_ad18093ad2d41b15c400ba85cd8538b82}\label{classsf_1_1_screw_constraint_ad18093ad2d41b15c400ba85cd8538b82} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!\_getInfo1NonVirtual@{\_getInfo1NonVirtual}}
+\index{\_getInfo1NonVirtual@{\_getInfo1NonVirtual}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{\_getInfo1NonVirtual()}{\_getInfo1NonVirtual()}}
+{\footnotesize\ttfamily void sf\+::\+Screw\+Constraint\+::\+\_\+get\+Info1\+Non\+Virtual (\begin{DoxyParamCaption}\item[{bt\+Constraint\+Info1 \texorpdfstring{$\ast$}{*}}]{info }\end{DoxyParamCaption})}
+
+this is a modified version of void bt\+Slider\+Constraint\+::get\+Info1(bt\+Constraint\+Info1\texorpdfstring{$\ast$}{*} info) with the rotational limits always turned on. The rotational limit constraint is modified to be a screw constraint in bt\+Screw\+Constraint\+::\+\_\+get\+Info2\+Non\+Virtual which is a copy of bt\+Slider\+Constraint\+::get\+Info2\+Non\+Virtual.
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8cpp_source_l00596}{596}} of file \mbox{\hyperlink{_screw_constraint_8cpp_source}{Screw\+Constraint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_ab4c7e803756b28c79f36213f6933f9f1}\label{classsf_1_1_screw_constraint_ab4c7e803756b28c79f36213f6933f9f1} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!\_getInfo2NonVirtual@{\_getInfo2NonVirtual}}
+\index{\_getInfo2NonVirtual@{\_getInfo2NonVirtual}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{\_getInfo2NonVirtual()}{\_getInfo2NonVirtual()}}
+{\footnotesize\ttfamily void sf\+::\+Screw\+Constraint\+::\+\_\+get\+Info2\+Non\+Virtual (\begin{DoxyParamCaption}\item[{bt\+Constraint\+Info2 \texorpdfstring{$\ast$}{*}}]{info,  }\item[{const Transform \&}]{transA,  }\item[{const Transform \&}]{transB,  }\item[{const Vector3 \&}]{lin\+VelA,  }\item[{const Vector3 \&}]{lin\+VelB,  }\item[{Scalar}]{rb\+Ainv\+Mass,  }\item[{Scalar}]{rb\+Binv\+Mass }\end{DoxyParamCaption})}
+
+This is a copy of bt\+Slider\+Constraint\+::get\+Info2\+Non\+Virtual(...) with minor changes to the ax1 direction constraint. Mainly, the axial limit constraint is always on and is changed to a screw constraint.
+
+First, always turn on
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_screw_constraint_8cpp_source}{Screw\+Constraint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_a316bc729ac6096d740e4011b526cc0dc}\label{classsf_1_1_screw_constraint_a316bc729ac6096d740e4011b526cc0dc} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!getAngularPosition@{getAngularPosition}}
+\index{getAngularPosition@{getAngularPosition}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{getAngularPosition()}{getAngularPosition()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Screw\+Constraint\+::get\+Angular\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{_screw_constraint_8cpp_source}{Screw\+Constraint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_af883957a2f7cc593522fc3f3fdd9cd5c}\label{classsf_1_1_screw_constraint_af883957a2f7cc593522fc3f3fdd9cd5c} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!getInfo1@{getInfo1}}
+\index{getInfo1@{getInfo1}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{getInfo1()}{getInfo1()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Screw\+Constraint\+::get\+Info1 (\begin{DoxyParamCaption}\item[{bt\+Constraint\+Info1 \texorpdfstring{$\ast$}{*}}]{\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8h_source_l00046}{46}} of file \mbox{\hyperlink{_screw_constraint_8h_source}{Screw\+Constraint.\+h}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_ab4be1b90410534c645d60522ad564e6a}\label{classsf_1_1_screw_constraint_ab4be1b90410534c645d60522ad564e6a} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!getInfo2@{getInfo2}}
+\index{getInfo2@{getInfo2}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{getInfo2()}{getInfo2()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Screw\+Constraint\+::get\+Info2 (\begin{DoxyParamCaption}\item[{bt\+Constraint\+Info2 \texorpdfstring{$\ast$}{*}}]{\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8h_source_l00051}{51}} of file \mbox{\hyperlink{_screw_constraint_8h_source}{Screw\+Constraint.\+h}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_a43bbb82acf673248840a54168a170080}\label{classsf_1_1_screw_constraint_a43bbb82acf673248840a54168a170080} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!getLinearPosition@{getLinearPosition}}
+\index{getLinearPosition@{getLinearPosition}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{getLinearPosition()}{getLinearPosition()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Screw\+Constraint\+::get\+Linear\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_screw_constraint_8cpp_source}{Screw\+Constraint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_a87612d8cdeb59ff5043b1becd4a9c120}\label{classsf_1_1_screw_constraint_a87612d8cdeb59ff5043b1becd4a9c120} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!getRigidBodyA@{getRigidBodyA}}
+\index{getRigidBodyA@{getRigidBodyA}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{getRigidBodyA()}{getRigidBodyA()}}
+{\footnotesize\ttfamily bt\+Rigid\+Body \& sf\+::\+Screw\+Constraint\+::get\+Rigid\+BodyA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_screw_constraint_8cpp_source}{Screw\+Constraint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_adca4bb200f6003064cc1973ccd4cd126}\label{classsf_1_1_screw_constraint_adca4bb200f6003064cc1973ccd4cd126} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!getRigidBodyB@{getRigidBodyB}}
+\index{getRigidBodyB@{getRigidBodyB}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{getRigidBodyB()}{getRigidBodyB()}}
+{\footnotesize\ttfamily bt\+Rigid\+Body \& sf\+::\+Screw\+Constraint\+::get\+Rigid\+BodyB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_screw_constraint_8cpp_source}{Screw\+Constraint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_a6e7f89c8c7729f413006a9c0bdadea1d}\label{classsf_1_1_screw_constraint_a6e7f89c8c7729f413006a9c0bdadea1d} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!getThreadPitch@{getThreadPitch}}
+\index{getThreadPitch@{getThreadPitch}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{getThreadPitch()}{getThreadPitch()}}
+{\footnotesize\ttfamily virtual double sf\+::\+Screw\+Constraint\+::get\+Thread\+Pitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8h_source_l00077}{77}} of file \mbox{\hyperlink{_screw_constraint_8h_source}{Screw\+Constraint.\+h}}.
+
+\Hypertarget{classsf_1_1_screw_constraint_a42ece6a4570ae06dd416f623829bc1f3}\label{classsf_1_1_screw_constraint_a42ece6a4570ae06dd416f623829bc1f3} 
+\index{sf::ScrewConstraint@{sf::ScrewConstraint}!setThreadPitch@{setThreadPitch}}
+\index{setThreadPitch@{setThreadPitch}!sf::ScrewConstraint@{sf::ScrewConstraint}}
+\doxysubsubsection{\texorpdfstring{setThreadPitch()}{setThreadPitch()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Screw\+Constraint\+::set\+Thread\+Pitch (\begin{DoxyParamCaption}\item[{double}]{\+\_\+thread\+Pitch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_screw_constraint_8h_source_l00072}{72}} of file \mbox{\hyperlink{_screw_constraint_8h_source}{Screw\+Constraint.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/core/Screw\+Constraint.\+h\item 
+Library/src/core/Screw\+Constraint.\+cpp\end{DoxyCompactItemize}

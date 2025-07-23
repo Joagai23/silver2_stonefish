@@ -1,0 +1,195 @@
+\doxysection{sf\+::Plane Class Reference}
+\hypertarget{classsf_1_1_plane}{}\label{classsf_1_1_plane}\index{sf::Plane@{sf::Plane}}
+
+
+A class representing an infinite static plane.  
+
+
+
+
+{\ttfamily \#include $<$Plane.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Plane\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{classsf_1_1_plane__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Plane\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{classsf_1_1_plane__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_plane_a268de8b118ae8225eccd5741146210c6}{Plane}} (std\+::string unique\+Name, Scalar size, std\+::string material, std\+::string look="{}"{}, float uv\+Scale=1.f)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_plane_a86f5719fdfaaa93323ab9372c054a013}{get\+AABB}} (Vector3 \&min, Vector3 \&max)
+\begin{DoxyCompactList}\small\item\em A method returning the extents of the plane axis alligned bounding box. \end{DoxyCompactList}\item 
+Static\+Entity\+Type \mbox{\hyperlink{classsf_1_1_plane_ac802dbc2f0fc83f64a767261ef6f967d}{get\+Static\+Type}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the type of the static entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_static_entity}{sf\+::\+Static\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_static_entity_aa09e9e7dbfb04fde30839ff288aa1f6b}{Static\+Entity}} (std\+::string unique\+Name, std\+::string material, std\+::string look)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_static_entity_a4bdc114a92c7590a16b08e0dd4b17f88}{\texorpdfstring{$\sim$}{\string~}\+Static\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_static_entity_a70d1dabc2e2d97bac3c86fa778d60457}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_static_entity_a1eecdbd972983b8433fd2bc936c7e6bf}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A method used to add the static entity to the simulation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_static_entity_a7f68bf68ad0723ea12831306f21f82dd}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to add the static entity to the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_static_entity_a23e9ad6d0a22e76fb95477a94225ac77}{set\+Transform}} (const Transform \&trans)
+\begin{DoxyCompactList}\small\item\em A method used to set new origin of the entity in the world frame. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_static_entity_a7ede529c457583a94ed082542ed504e9}{get\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the transformation of the entity origin in the world frame. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsf_1_1_material}{Material}} \mbox{\hyperlink{classsf_1_1_static_entity_aba2acc18469051d26587576d7af6853f}{get\+Material}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the material of the entity. \end{DoxyCompactList}\item 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_static_entity_a37b3873f6e28fb50b4d6cd7d458e579c}{get\+Rigid\+Body}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the rigid body associated with the entity. \end{DoxyCompactList}\item 
+Entity\+Type \mbox{\hyperlink{classsf_1_1_static_entity_a5a11ad9fa4f02d0234c30e75a272d7b0}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_static_entity_a2c3b43de1bc3111daf285aad1adcf0ef}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set display mode used for the body. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_entity}{sf\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_entity_a89127a850fa48fe25fbf6f5a355f7f9c}{Entity}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_entity_a4b728d6d4ff242dc0b4f116822cccd33}{\texorpdfstring{$\sim$}{\string~}\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_entity_a5b92af995ae80397f64cb97fe3d6a866}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method used to set if the entity should be renderable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_entity_a1560e090759bc9491609e38b69ff1033}{is\+Renderable}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the entity is renderable. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_static_entity}{sf\+::\+Static\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_static_entity_ad4a6e0fb7cc69f16b45c085a5b3bf9fc}{Group\+Transform}} (std\+::vector$<$ \mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*} $>$ \&objects, const Transform \&centre, const Transform \&transform)
+\begin{DoxyCompactList}\small\item\em A static method used to transform a group of static entities together (useful to change the position of multiple linked objects). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_static_entity}{sf\+::\+Static\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classsf_1_1_static_entity_ab9450b22119342f82486f39d4380b697}{Build\+Rigid\+Body}} (bt\+Collision\+Shape \texorpdfstring{$\ast$}{*}shape)
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_static_entity_a9208a2c15110bcae982adecdb978d655}{Build\+Graphical\+Object}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_static_entity}{sf\+::\+Static\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_static_entity_a288f87bcdd9612ce73f18a46faf44930}{rigid\+Body}}
+\item 
+\mbox{\hyperlink{structsf_1_1_material}{Material}} \mbox{\hyperlink{classsf_1_1_static_entity_a151382f16e6700e839407efc91515511}{mat}}
+\item 
+\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_static_entity_accdcd6d53b46fa1ffddb81ad4f7d2f87}{phy\+Mesh}}
+\item 
+int \mbox{\hyperlink{classsf_1_1_static_entity_a449e02f3d9ce470ade9d92d6ebabd734}{look\+Id}}
+\item 
+int \mbox{\hyperlink{classsf_1_1_static_entity_a539339db2c3465408e6cdfbafe26d1f8}{phy\+Object\+Id}}
+\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_static_entity_a0dec64ed7ce43586918f23037709424a}{dm}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing an infinite static plane. 
+
+Definition at line \mbox{\hyperlink{_plane_8h_source_l00034}{34}} of file \mbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_plane_a268de8b118ae8225eccd5741146210c6}\label{classsf_1_1_plane_a268de8b118ae8225eccd5741146210c6} 
+\index{sf::Plane@{sf::Plane}!Plane@{Plane}}
+\index{Plane@{Plane}!sf::Plane@{sf::Plane}}
+\doxysubsubsection{\texorpdfstring{Plane()}{Plane()}}
+{\footnotesize\ttfamily sf\+::\+Plane\+::\+Plane (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{Scalar}]{size,  }\item[{std\+::string}]{material,  }\item[{std\+::string}]{look = {\ttfamily "{}"{}},  }\item[{float}]{uv\+Scale = {\ttfamily 1.f} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the plane \\
+\hline
+{\em size} & of the rendered plane \mbox{[}m\mbox{]} \\
+\hline
+{\em material} & the name of the material the plane is made of \\
+\hline
+{\em look} & the name of the graphical material used for rendering \\
+\hline
+{\em uv\+Scale} & scaling of the texture coordinates \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_plane_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_plane_8cpp_source}{Plane.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_plane_a86f5719fdfaaa93323ab9372c054a013}\label{classsf_1_1_plane_a86f5719fdfaaa93323ab9372c054a013} 
+\index{sf::Plane@{sf::Plane}!getAABB@{getAABB}}
+\index{getAABB@{getAABB}!sf::Plane@{sf::Plane}}
+\doxysubsubsection{\texorpdfstring{getAABB()}{getAABB()}}
+{\footnotesize\ttfamily void sf\+::\+Plane\+::get\+AABB (\begin{DoxyParamCaption}\item[{Vector3 \&}]{min,  }\item[{Vector3 \&}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the extents of the plane axis alligned bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & a point located at the minimum coordinate corner \\
+\hline
+{\em max} & a point located at the maximum coordinate corner \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_static_entity_aa91923eceb798f551aa86b94d009c8a9}{sf\+::\+Static\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_plane_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_plane_8cpp_source}{Plane.\+cpp}}.
+
+\Hypertarget{classsf_1_1_plane_ac802dbc2f0fc83f64a767261ef6f967d}\label{classsf_1_1_plane_ac802dbc2f0fc83f64a767261ef6f967d} 
+\index{sf::Plane@{sf::Plane}!getStaticType@{getStaticType}}
+\index{getStaticType@{getStaticType}!sf::Plane@{sf::Plane}}
+\doxysubsubsection{\texorpdfstring{getStaticType()}{getStaticType()}}
+{\footnotesize\ttfamily Static\+Entity\+Type sf\+::\+Plane\+::get\+Static\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the static entity. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_static_entity_a07174ca49eb86936ebbc95795adc37b6}{sf\+::\+Static\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_plane_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_plane_8cpp_source}{Plane.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/entities/statics/Plane.\+h\item 
+Library/src/entities/statics/Plane.\+cpp\end{DoxyCompactItemize}

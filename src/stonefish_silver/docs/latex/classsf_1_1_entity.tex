@@ -1,0 +1,209 @@
+\doxysection{sf\+::Entity Class Reference}
+\hypertarget{classsf_1_1_entity}{}\label{classsf_1_1_entity}\index{sf::Entity@{sf::Entity}}
+
+
+An abstract class representing a simulation entity.  
+
+
+
+
+{\ttfamily \#include $<$Entity.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_entity__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_entity_a89127a850fa48fe25fbf6f5a355f7f9c}{Entity}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_entity_a4b728d6d4ff242dc0b4f116822cccd33}{\texorpdfstring{$\sim$}{\string~}\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_entity_a5b92af995ae80397f64cb97fe3d6a866}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method used to set if the entity should be renderable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_entity_a1560e090759bc9491609e38b69ff1033}{is\+Renderable}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the entity is renderable. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the entity. \end{DoxyCompactList}\item 
+virtual Entity\+Type \mbox{\hyperlink{classsf_1_1_entity_aba0c0ef819595be1aab5a6d9ba7c0c91}{get\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning the type of the entity. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_entity_a8c40136ba3685b83f1a86532536f7b19}{Render}} ()=0
+\begin{DoxyCompactList}\small\item\em A method implementing rendering of the entity. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_entity_a2f625f494d182ad8418104accceabd93}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)=0
+\begin{DoxyCompactList}\small\item\em A method used to add the entity to the simulation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_entity_a989d883e8c21f924558d7ab5da044931}{get\+AABB}} (Vector3 \&min, Vector3 \&max)=0
+\begin{DoxyCompactList}\small\item\em A method returning the extents of the entity axis alligned bounding box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class representing a simulation entity. 
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00057}{57}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_entity_a89127a850fa48fe25fbf6f5a355f7f9c}\label{classsf_1_1_entity_a89127a850fa48fe25fbf6f5a355f7f9c} 
+\index{sf::Entity@{sf::Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!sf::Entity@{sf::Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}}
+{\footnotesize\ttfamily sf\+::\+Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the entity \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_entity_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_entity_8cpp_source}{Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_entity_a4b728d6d4ff242dc0b4f116822cccd33}\label{classsf_1_1_entity_a4b728d6d4ff242dc0b4f116822cccd33} 
+\index{sf::Entity@{sf::Entity}!````~Entity@{\texorpdfstring{$\sim$}{\string~}Entity}}
+\index{````~Entity@{\texorpdfstring{$\sim$}{\string~}Entity}!sf::Entity@{sf::Entity}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Entity()}{\string~Entity()}}
+{\footnotesize\ttfamily sf\+::\+Entity\+::\texorpdfstring{$\sim$}{\string~}\+Entity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_entity_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_entity_8cpp_source}{Entity.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_entity_a2f625f494d182ad8418104accceabd93}\label{classsf_1_1_entity_a2f625f494d182ad8418104accceabd93} 
+\index{sf::Entity@{sf::Entity}!AddToSimulation@{AddToSimulation}}
+\index{AddToSimulation@{AddToSimulation}!sf::Entity@{sf::Entity}}
+\doxysubsubsection{\texorpdfstring{AddToSimulation()}{AddToSimulation()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Entity\+::\+Add\+To\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method used to add the entity to the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & a pointer to a simulation manager \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_animated_entity_a5d3b531893a522ecc77cf6c4a9c36314}{sf\+::\+Animated\+Entity}}, \mbox{\hyperlink{classsf_1_1_featherstone_entity_abadfa96c3eee2e33baaf69a069035912}{sf\+::\+Featherstone\+Entity}}, \mbox{\hyperlink{classsf_1_1_forcefield_entity_a01d002a16e0240e204e87ff2b56ff90d}{sf\+::\+Forcefield\+Entity}}, \mbox{\hyperlink{classsf_1_1_solid_entity_a547c4a5cbc391fbf255c82d0d4a9c1ab}{sf\+::\+Solid\+Entity}}, \mbox{\hyperlink{classsf_1_1_static_entity_a1eecdbd972983b8433fd2bc936c7e6bf}{sf\+::\+Static\+Entity}}, and \mbox{\hyperlink{classsf_1_1_moving_entity_a0bd0b8d0d91615b85fe524521b79cea1}{sf\+::\+Moving\+Entity}}.
+
+\Hypertarget{classsf_1_1_entity_a989d883e8c21f924558d7ab5da044931}\label{classsf_1_1_entity_a989d883e8c21f924558d7ab5da044931} 
+\index{sf::Entity@{sf::Entity}!getAABB@{getAABB}}
+\index{getAABB@{getAABB}!sf::Entity@{sf::Entity}}
+\doxysubsubsection{\texorpdfstring{getAABB()}{getAABB()}}
+{\footnotesize\ttfamily virtual void sf\+::\+Entity\+::get\+AABB (\begin{DoxyParamCaption}\item[{Vector3 \&}]{min,  }\item[{Vector3 \&}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method returning the extents of the entity axis alligned bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & a point located at the minimum coordinate corner \\
+\hline
+{\em max} & a point located at the maximum coordinate corner \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_animated_entity_ad67962566b534b06dc46cc463900659d}{sf\+::\+Animated\+Entity}}, \mbox{\hyperlink{classsf_1_1_featherstone_entity_a8b18611f80d63cddad86203878537a8d}{sf\+::\+Featherstone\+Entity}}, \mbox{\hyperlink{classsf_1_1_forcefield_entity_a1befb1bd41ee843679748b20f38915a9}{sf\+::\+Forcefield\+Entity}}, \mbox{\hyperlink{classsf_1_1_solid_entity_ac8b39b6a3289609bf981edeb6ce54dc1}{sf\+::\+Solid\+Entity}}, \mbox{\hyperlink{classsf_1_1_static_entity_aa91923eceb798f551aa86b94d009c8a9}{sf\+::\+Static\+Entity}}, \mbox{\hyperlink{classsf_1_1_plane_a86f5719fdfaaa93323ab9372c054a013}{sf\+::\+Plane}}, \mbox{\hyperlink{classsf_1_1_terrain_aa788c9f5a0ff74520fd12fd0e53357d3}{sf\+::\+Terrain}}, and \mbox{\hyperlink{classsf_1_1_moving_entity_a2697a375a517b99b36a98790858e8ce6}{sf\+::\+Moving\+Entity}}.
+
+\Hypertarget{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}\label{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370} 
+\index{sf::Entity@{sf::Entity}!getName@{getName}}
+\index{getName@{getName}!sf::Entity@{sf::Entity}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Entity\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the name of the entity. 
+
+
+
+Definition at line \mbox{\hyperlink{_entity_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_entity_8cpp_source}{Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_entity_aba0c0ef819595be1aab5a6d9ba7c0c91}\label{classsf_1_1_entity_aba0c0ef819595be1aab5a6d9ba7c0c91} 
+\index{sf::Entity@{sf::Entity}!getType@{getType}}
+\index{getType@{getType}!sf::Entity@{sf::Entity}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual Entity\+Type sf\+::\+Entity\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method returning the type of the entity. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_animated_entity_ac6b8b94bde7a22c1c770ab9a415c7d9b}{sf\+::\+Animated\+Entity}}, \mbox{\hyperlink{classsf_1_1_featherstone_entity_a06396d8d9d0331f23e3b91e64202c978}{sf\+::\+Featherstone\+Entity}}, \mbox{\hyperlink{classsf_1_1_forcefield_entity_ac3ff5ea2a10d941039b258d9e9442c72}{sf\+::\+Forcefield\+Entity}}, \mbox{\hyperlink{classsf_1_1_solid_entity_aa97dda3fa468fe698d6398e5a6cb736b}{sf\+::\+Solid\+Entity}}, \mbox{\hyperlink{classsf_1_1_static_entity_a5a11ad9fa4f02d0234c30e75a272d7b0}{sf\+::\+Static\+Entity}}, and \mbox{\hyperlink{classsf_1_1_moving_entity_ae90a15eb797b07c8e485dd0fff5ab0f3}{sf\+::\+Moving\+Entity}}.
+
+\Hypertarget{classsf_1_1_entity_a1560e090759bc9491609e38b69ff1033}\label{classsf_1_1_entity_a1560e090759bc9491609e38b69ff1033} 
+\index{sf::Entity@{sf::Entity}!isRenderable@{isRenderable}}
+\index{isRenderable@{isRenderable}!sf::Entity@{sf::Entity}}
+\doxysubsubsection{\texorpdfstring{isRenderable()}{isRenderable()}}
+{\footnotesize\ttfamily bool sf\+::\+Entity\+::is\+Renderable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method informing if the entity is renderable. 
+
+
+
+Definition at line \mbox{\hyperlink{_entity_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_entity_8cpp_source}{Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_entity_a8c40136ba3685b83f1a86532536f7b19}\label{classsf_1_1_entity_a8c40136ba3685b83f1a86532536f7b19} 
+\index{sf::Entity@{sf::Entity}!Render@{Render}}
+\index{Render@{Render}!sf::Entity@{sf::Entity}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Entity\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method implementing rendering of the entity. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_animated_entity_a5bb439671d64759663870af0f227b94c}{sf\+::\+Animated\+Entity}}, \mbox{\hyperlink{classsf_1_1_featherstone_entity_a703d9937e38cbba7a8199663988ffd2f}{sf\+::\+Featherstone\+Entity}}, \mbox{\hyperlink{classsf_1_1_forcefield_entity_abcdf18028e2dca5f1453a290ea886595}{sf\+::\+Forcefield\+Entity}}, \mbox{\hyperlink{classsf_1_1_ocean_a8621922710bfaf692c1476506dd9d650}{sf\+::\+Ocean}}, \mbox{\hyperlink{classsf_1_1_trigger_a14af02409df0f3391c6726a42bd399ae}{sf\+::\+Trigger}}, \mbox{\hyperlink{classsf_1_1_solid_entity_a4d9a8f4b585123841bde0046bd48675c}{sf\+::\+Solid\+Entity}}, \mbox{\hyperlink{classsf_1_1_compound_a3ff53bf4332cbd69a1a5e797299c9e43}{sf\+::\+Compound}}, \mbox{\hyperlink{classsf_1_1_static_entity_a70d1dabc2e2d97bac3c86fa778d60457}{sf\+::\+Static\+Entity}}, \mbox{\hyperlink{classsf_1_1_obstacle_a74cc6c13f788437c4f0a3820b426ff15}{sf\+::\+Obstacle}}, and \mbox{\hyperlink{classsf_1_1_moving_entity_a3dab5fc69cc5bfe168e872a23c3d7361}{sf\+::\+Moving\+Entity}}.
+
+\Hypertarget{classsf_1_1_entity_a5b92af995ae80397f64cb97fe3d6a866}\label{classsf_1_1_entity_a5b92af995ae80397f64cb97fe3d6a866} 
+\index{sf::Entity@{sf::Entity}!setRenderable@{setRenderable}}
+\index{setRenderable@{setRenderable}!sf::Entity@{sf::Entity}}
+\doxysubsubsection{\texorpdfstring{setRenderable()}{setRenderable()}}
+{\footnotesize\ttfamily void sf\+::\+Entity\+::set\+Renderable (\begin{DoxyParamCaption}\item[{bool}]{render }\end{DoxyParamCaption})}
+
+
+
+A method used to set if the entity should be renderable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em render} & a flag informing if the entity should be rendered \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_entity_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_entity_8cpp_source}{Entity.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/entities/Entity.\+h\item 
+Library/src/entities/Entity.\+cpp\end{DoxyCompactItemize}

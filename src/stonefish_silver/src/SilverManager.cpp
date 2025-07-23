@@ -8,6 +8,7 @@
 #include <entities/forcefields/Uniform.h>
 #include <core/FeatherstoneRobot.h>
 #include <core/NED.h>
+#include <Stonefish/actuators/Servo.h>
 
 SilverManager::SilverManager(sf::Scalar stepsPerSecond) : SimulationManager(stepsPerSecond)
 {
@@ -15,6 +16,12 @@ SilverManager::SilverManager(sf::Scalar stepsPerSecond) : SimulationManager(step
 
 void SilverManager::BuildScenario()
 {   
+    /*sf::Servo* srv = new sf::Servo("Servo", 1.0, 0.5, 10.0);
+    srv->setControlMode(sf::ServoControlMode::POSITION);
+    srv->setMaxVelocity(0.1);
+    srv->setDesiredPosition(0.5);
+    robot->AddJointActuator(srv, "Joint1");*/
+
     // Should not do this!
     const std::string DataPath = "/home/jorge/Documents/Code/silver2_stonefish/src/stonefish_silver/data/";
     //Physical materials

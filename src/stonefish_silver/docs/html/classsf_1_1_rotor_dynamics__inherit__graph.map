@@ -1,0 +1,13 @@
+<map id="sf::RotorDynamics" name="sf::RotorDynamics">
+<area shape="rect" id="Node000001" title="An abstract class representing a mathematical model of rotor dynamics." alt="" coords="232,5,373,31"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_bessa.html" title="A class representing the Bessa dynamics model." alt="" coords="5,79,85,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,37,86,81,85,76,248,32"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_first_order.html" title="A class representing the first order dynamics model." alt="" coords="110,79,215,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,39,187,81,184,76,267,34"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_mechanical_p_i.html" title="A classs representing a mechnical shaft model with a PI controller." alt="" coords="239,79,366,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="305,44,305,79,300,79,300,44"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_yoerger.html" title="A class representing the Yoerger dynamics model." alt="" coords="390,79,479,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="337,35,414,76,412,81,334,39"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1_zero_order.html" title="A class representing a the zero order dynamics model &#45; passthrough." alt="" coords="504,79,611,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="358,32,517,76,515,81,356,37"/>
+</map>

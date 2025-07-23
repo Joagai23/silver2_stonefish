@@ -1,0 +1,274 @@
+\doxysection{sf\+::Prismatic\+Joint Class Reference}
+\hypertarget{classsf_1_1_prismatic_joint}{}\label{classsf_1_1_prismatic_joint}\index{sf::PrismaticJoint@{sf::PrismaticJoint}}
+
+
+A class representing a prismatic joint.  
+
+
+
+
+{\ttfamily \#include $<$Prismatic\+Joint.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Prismatic\+Joint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classsf_1_1_prismatic_joint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Prismatic\+Joint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_prismatic_joint__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_prismatic_joint_ad7fff66232cc96c502ca525b44ed58b4}{Prismatic\+Joint}} (std\+::string unique\+Name, \mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}solidA, \mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}solidB, const Vector3 \&axis, bool collide\+Linked=true)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_prismatic_joint_a376725111bf2e27ca790871e8318938a}{Apply\+Force}} (Scalar F)
+\begin{DoxyCompactList}\small\item\em A method used to apply force to the joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_prismatic_joint_a1609d158e1c5b279f7ab2481be9cfd7b}{Apply\+Damping}} ()
+\begin{DoxyCompactList}\small\item\em A method applying damping to the joint. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_prismatic_joint_ac2e0458e79f117c851c5a6e5e4705ff5}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_prismatic_joint_afab3c1543f9363d2d5bdedeaff0ffea5}{set\+Damping}} (Scalar constant\+Factor, Scalar viscous\+Factor)
+\begin{DoxyCompactList}\small\item\em A method to set the damping characteristics of the joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_prismatic_joint_ac3e1a5dcd09764f9f99a673f2c7106c0}{set\+Limits}} (Scalar min, Scalar max)
+\begin{DoxyCompactList}\small\item\em A method to set the limits of the joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_prismatic_joint_a3a0a19771d88aa0de80728c7e9ceda9d}{set\+IC}} (Scalar displacement)
+\begin{DoxyCompactList}\small\item\em A method to set the desired initial condition of the joint. \end{DoxyCompactList}\item 
+Joint\+Type \mbox{\hyperlink{classsf_1_1_prismatic_joint_a62eac6e9b9c10cdef75324ea8c858086}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the joint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_joint}{sf\+::\+Joint}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_joint_a7545233f3e8af0ea73722d782ef530ac}{Joint}} (std\+::string unique\+Name, bool collide\+Linked=true)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_joint_ac659ac46201d5a96537909da13de3786}{\texorpdfstring{$\sim$}{\string~}\+Joint}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_joint_a811e525518a6246abb14b6ae7f6bf103}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A method used to add joint to the simulation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_joint_ab5146476bcae220f85c5c95751180ac0}{Remove\+From\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A method used to remove joint from the simulation. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classsf_1_1_joint_a3f1218dbb6485f7e777b5d1cfd5bce42}{Solve\+Position\+IC}} (Scalar linear\+Tolerance, Scalar angular\+Tolerance)
+\begin{DoxyCompactList}\small\item\em A method that solves initial conditions problem for the joint. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_joint_adb49dc2d49c2b15cfcb6a4111e8d17b9}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the joint. \end{DoxyCompactList}\item 
+bt\+Typed\+Constraint \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{get\+Constraint}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the internal constraint. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_joint_a2e20e7189e6ce99978a62386f400463c}{get\+Feedback}} (unsigned int dof)
+\begin{DoxyCompactList}\small\item\em A method returning joint feedback in the world frame. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_joint_a48665d430fe612b05626b9d605881115}{is\+Multibody\+Joint}} ()
+\begin{DoxyCompactList}\small\item\em A method that informs if the joint is of multibody type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_aac7dbb4dccc416a06786b599bb4eccdf}{get\+SolidA}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the first body affected by the joint. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_ac64f27134bc115c05ad35f6ad44355d7}{get\+SolidB}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the second body affected by the joint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_joint}{sf\+::\+Joint}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classsf_1_1_joint_abe9462dffa1b94de6cbf23e93cc15673}{set\+Constraint}} (bt\+Typed\+Constraint \texorpdfstring{$\ast$}{*}c)
+\item 
+void \mbox{\hyperlink{classsf_1_1_joint_aded297e262be208b6cbec7092db19123}{set\+Constraint}} (bt\+Multi\+Body\+Constraint \texorpdfstring{$\ast$}{*}c)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_joint}{sf\+::\+Joint}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_af38240a56b98a689c58b4b19702e0893}{j\+SolidA}}
+\item 
+\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_af65f61c6ea9883c793b7c32c116203ac}{j\+SolidB}}
+\item 
+bt\+Typed\+Constraint \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_af5267c289a7293a5c3ac4da1ae94f715}{constraint}}
+\item 
+bt\+Multi\+Body\+Constraint \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_a28e11dfdc5bbbb8de3c28f6440cf1742}{mb\+Constraint}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a prismatic joint. 
+
+Definition at line \mbox{\hyperlink{_prismatic_joint_8h_source_l00036}{36}} of file \mbox{\hyperlink{_prismatic_joint_8h_source}{Prismatic\+Joint.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_prismatic_joint_ad7fff66232cc96c502ca525b44ed58b4}\label{classsf_1_1_prismatic_joint_ad7fff66232cc96c502ca525b44ed58b4} 
+\index{sf::PrismaticJoint@{sf::PrismaticJoint}!PrismaticJoint@{PrismaticJoint}}
+\index{PrismaticJoint@{PrismaticJoint}!sf::PrismaticJoint@{sf::PrismaticJoint}}
+\doxysubsubsection{\texorpdfstring{PrismaticJoint()}{PrismaticJoint()}}
+{\footnotesize\ttfamily sf\+::\+Prismatic\+Joint\+::\+Prismatic\+Joint (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}}]{solidA,  }\item[{\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}}]{solidB,  }\item[{const Vector3 \&}]{axis,  }\item[{bool}]{collide\+Linked = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the joint \\
+\hline
+{\em solidA} & a pointer to the first solid body \\
+\hline
+{\em solidB} & a pointer to the second solid body \\
+\hline
+{\em axis} & a vector parallel to the joint axis \\
+\hline
+{\em collide\+Linked} & a flag that sets if the bodies connected by the joint should collide \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_prismatic_joint_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_prismatic_joint_8cpp_source}{Prismatic\+Joint.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_prismatic_joint_a1609d158e1c5b279f7ab2481be9cfd7b}\label{classsf_1_1_prismatic_joint_a1609d158e1c5b279f7ab2481be9cfd7b} 
+\index{sf::PrismaticJoint@{sf::PrismaticJoint}!ApplyDamping@{ApplyDamping}}
+\index{ApplyDamping@{ApplyDamping}!sf::PrismaticJoint@{sf::PrismaticJoint}}
+\doxysubsubsection{\texorpdfstring{ApplyDamping()}{ApplyDamping()}}
+{\footnotesize\ttfamily void sf\+::\+Prismatic\+Joint\+::\+Apply\+Damping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method applying damping to the joint. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_joint_a10976cd63ca0c72b96edca05ac16561e}{sf\+::\+Joint}}.
+
+
+
+Definition at line \mbox{\hyperlink{_prismatic_joint_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{_prismatic_joint_8cpp_source}{Prismatic\+Joint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_prismatic_joint_a376725111bf2e27ca790871e8318938a}\label{classsf_1_1_prismatic_joint_a376725111bf2e27ca790871e8318938a} 
+\index{sf::PrismaticJoint@{sf::PrismaticJoint}!ApplyForce@{ApplyForce}}
+\index{ApplyForce@{ApplyForce}!sf::PrismaticJoint@{sf::PrismaticJoint}}
+\doxysubsubsection{\texorpdfstring{ApplyForce()}{ApplyForce()}}
+{\footnotesize\ttfamily void sf\+::\+Prismatic\+Joint\+::\+Apply\+Force (\begin{DoxyParamCaption}\item[{Scalar}]{F }\end{DoxyParamCaption})}
+
+
+
+A method used to apply force to the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em F} & a force to be applied to the joint \mbox{[}N\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_prismatic_joint_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{_prismatic_joint_8cpp_source}{Prismatic\+Joint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_prismatic_joint_a62eac6e9b9c10cdef75324ea8c858086}\label{classsf_1_1_prismatic_joint_a62eac6e9b9c10cdef75324ea8c858086} 
+\index{sf::PrismaticJoint@{sf::PrismaticJoint}!getType@{getType}}
+\index{getType@{getType}!sf::PrismaticJoint@{sf::PrismaticJoint}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Joint\+Type sf\+::\+Prismatic\+Joint\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the joint. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_joint_a37a8ac0e411eecbdcf38b9a743108f4b}{sf\+::\+Joint}}.
+
+
+
+Definition at line \mbox{\hyperlink{_prismatic_joint_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{_prismatic_joint_8cpp_source}{Prismatic\+Joint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_prismatic_joint_ac2e0458e79f117c851c5a6e5e4705ff5}\label{classsf_1_1_prismatic_joint_ac2e0458e79f117c851c5a6e5e4705ff5} 
+\index{sf::PrismaticJoint@{sf::PrismaticJoint}!Render@{Render}}
+\index{Render@{Render}!sf::PrismaticJoint@{sf::PrismaticJoint}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Prismatic\+Joint\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the joint. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_joint_a281ce0e24535c28be714364138edd577}{sf\+::\+Joint}}.
+
+
+
+Definition at line \mbox{\hyperlink{_prismatic_joint_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{_prismatic_joint_8cpp_source}{Prismatic\+Joint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_prismatic_joint_afab3c1543f9363d2d5bdedeaff0ffea5}\label{classsf_1_1_prismatic_joint_afab3c1543f9363d2d5bdedeaff0ffea5} 
+\index{sf::PrismaticJoint@{sf::PrismaticJoint}!setDamping@{setDamping}}
+\index{setDamping@{setDamping}!sf::PrismaticJoint@{sf::PrismaticJoint}}
+\doxysubsubsection{\texorpdfstring{setDamping()}{setDamping()}}
+{\footnotesize\ttfamily void sf\+::\+Prismatic\+Joint\+::set\+Damping (\begin{DoxyParamCaption}\item[{Scalar}]{constant\+Factor,  }\item[{Scalar}]{viscous\+Factor }\end{DoxyParamCaption})}
+
+
+
+A method to set the damping characteristics of the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em constant\+Factor} & a constant damping force \mbox{[}N\mbox{]} \\
+\hline
+{\em viscous\+Factor} & a coefficient of viscous damping \mbox{[}N\texorpdfstring{$\ast$}{*}s\texorpdfstring{$\ast$}{*}rad\texorpdfstring{$^\wedge$}{\string^}-\/1\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_prismatic_joint_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_prismatic_joint_8cpp_source}{Prismatic\+Joint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_prismatic_joint_a3a0a19771d88aa0de80728c7e9ceda9d}\label{classsf_1_1_prismatic_joint_a3a0a19771d88aa0de80728c7e9ceda9d} 
+\index{sf::PrismaticJoint@{sf::PrismaticJoint}!setIC@{setIC}}
+\index{setIC@{setIC}!sf::PrismaticJoint@{sf::PrismaticJoint}}
+\doxysubsubsection{\texorpdfstring{setIC()}{setIC()}}
+{\footnotesize\ttfamily void sf\+::\+Prismatic\+Joint\+::set\+IC (\begin{DoxyParamCaption}\item[{Scalar}]{displacement }\end{DoxyParamCaption})}
+
+
+
+A method to set the desired initial condition of the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em displacement} & the initial displacement of the joint \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_prismatic_joint_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{_prismatic_joint_8cpp_source}{Prismatic\+Joint.\+cpp}}.
+
+\Hypertarget{classsf_1_1_prismatic_joint_ac3e1a5dcd09764f9f99a673f2c7106c0}\label{classsf_1_1_prismatic_joint_ac3e1a5dcd09764f9f99a673f2c7106c0} 
+\index{sf::PrismaticJoint@{sf::PrismaticJoint}!setLimits@{setLimits}}
+\index{setLimits@{setLimits}!sf::PrismaticJoint@{sf::PrismaticJoint}}
+\doxysubsubsection{\texorpdfstring{setLimits()}{setLimits()}}
+{\footnotesize\ttfamily void sf\+::\+Prismatic\+Joint\+::set\+Limits (\begin{DoxyParamCaption}\item[{Scalar}]{min,  }\item[{Scalar}]{max }\end{DoxyParamCaption})}
+
+
+
+A method to set the limits of the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & the minimum displacement of the joint \mbox{[}m\mbox{]} \\
+\hline
+{\em max} & the maximum displacement of the joint \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_prismatic_joint_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_prismatic_joint_8cpp_source}{Prismatic\+Joint.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/joints/Prismatic\+Joint.\+h\item 
+Library/src/joints/Prismatic\+Joint.\+cpp\end{DoxyCompactItemize}

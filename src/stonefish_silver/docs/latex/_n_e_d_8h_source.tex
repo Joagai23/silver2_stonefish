@@ -1,0 +1,93 @@
+\doxysection{NED.\+h}
+\hypertarget{_n_e_d_8h_source}{}\label{_n_e_d_8h_source}\index{Library/include/core/NED.h@{Library/include/core/NED.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00019}00019\ \textcolor{comment}{//\ \ NED.h}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 5/11/2018.\ Based\ on\ cola2\_lib\ by\ udg\_cirs.}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright(c)\ 2018\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_NED\_\_}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_NED\_\_}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}StonefishCommon.h"{}}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00031}00031\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00034}\mbox{\hyperlink{classsf_1_1_n_e_d}{00034}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_n_e_d}{NED}}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_n_e_d_a2a76db361e2ce1c466616cf96ff8f4ea}{NED}}();}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_n_e_d_a197e6db50269dd2f3c50b4d5b799525d}{Init}}(\textcolor{keyword}{const}\ Scalar\ lat,\ \textcolor{keyword}{const}\ Scalar\ lon,\ \textcolor{keyword}{const}\ Scalar\ height);}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_n_e_d_a582e6f5d81c8e247c88b7b2fa936c876}{Geodetic2Ecef}}(\textcolor{keyword}{const}\ Scalar\ lat,\ \textcolor{keyword}{const}\ Scalar\ lon,\ \textcolor{keyword}{const}\ Scalar\ height,}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\&\ x,\ Scalar\&\ y,\ Scalar\&\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_n_e_d_adf25375eb0184a5794ddb9bf28e984ed}{Ecef2Geodetic}}(\textcolor{keyword}{const}\ Scalar\ x,\ \textcolor{keyword}{const}\ Scalar\ y,\ \textcolor{keyword}{const}\ Scalar\ z,}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\&\ lat,\ Scalar\&\ lon,\ Scalar\&\ height)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_n_e_d_a0c9b98224ab3e0e6f12882517e0221ba}{Ecef2Ned}}(\textcolor{keyword}{const}\ Scalar\ x,\ \textcolor{keyword}{const}\ Scalar\ y,\ \textcolor{keyword}{const}\ Scalar\ z,}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\&\ north,\ Scalar\&\ east,\ Scalar\&\ depth)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_n_e_d_a7327b9df8a8da7a2dc4870c5d50642e3}{Ned2Ecef}}(\textcolor{keyword}{const}\ Scalar\ north,\ \textcolor{keyword}{const}\ Scalar\ east,\ \textcolor{keyword}{const}\ Scalar\ depth,}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\&\ x,\ Scalar\&\ y,\ Scalar\&\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_n_e_d_a5e213ae1d416067138dc1f2341153a3d}{Geodetic2Ned}}(\textcolor{keyword}{const}\ Scalar\ lat,\ \textcolor{keyword}{const}\ Scalar\ lon,\ \textcolor{keyword}{const}\ Scalar\ height,}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\&\ north,\ Scalar\&\ east,\ Scalar\&\ depth)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00107}00107\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_n_e_d_ac230e5672d3ac1c8319a967143a5e8ef}{Ned2Geodetic}}(\textcolor{keyword}{const}\ Scalar\ north,\ \textcolor{keyword}{const}\ Scalar\ east,\ \textcolor{keyword}{const}\ Scalar\ depth,}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\&\ lat,\ Scalar\&\ lon,\ Scalar\&\ height)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00119}00119\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00120}00120\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ Scalar\ \_init\_lat;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ Scalar\ \_init\_lon;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ Scalar\ \_init\_h;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ Scalar\ \_init\_ecef\_x;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ Scalar\ \_init\_ecef\_y;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ Scalar\ \_init\_ecef\_z;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ Matrix3\ \_ecef\_to\_ned\_matrix;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ Matrix3\ \_ned\_to\_ecef\_matrix;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ Scalar\ \_\_cbrt\_\_(\textcolor{keyword}{const}\ Scalar\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ Matrix3\ \_\_nRe\_\_(\textcolor{keyword}{const}\ Scalar\ lat\_rad,\ \textcolor{keyword}{const}\ Scalar\ lon\_rad)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00132}00132\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{comment}{//World\ Geodetic\ System\ 1984\ (WGS84)}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Scalar\ a;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Scalar\ b;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Scalar\ esq;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Scalar\ e1sq;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Scalar\ f;}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00139}00139\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00140}00140\ \}}
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_n_e_d_8h_source_l00142}00142\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

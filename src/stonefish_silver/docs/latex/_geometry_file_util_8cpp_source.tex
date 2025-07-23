@@ -1,0 +1,591 @@
+\doxysection{Geometry\+File\+Util.\+cpp}
+\hypertarget{_geometry_file_util_8cpp_source}{}\label{_geometry_file_util_8cpp_source}\index{Library/src/utils/GeometryFileUtil.cpp@{Library/src/utils/GeometryFileUtil.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ GeometryFileUtil.cpp}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieślak\ on\ 22/11/2018.}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2018-\/2023\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}utils/GeometryFileUtil.h"{}}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}utils/SystemUtil.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00032}00032\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00035}00035\ Mesh*\ LoadGeometryFromFile(\textcolor{keyword}{const}\ std::string\&\ path,\ GLfloat\ scale)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00037}00037\ \ \ \ \ std::string\ extension\ =\ path.substr(path.length()-\/3,3);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00038}00038\ \ \ \ \ Mesh*\ mesh\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00039}00039\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{if}(extension\ ==\ \textcolor{stringliteral}{"{}stl"{}}\ ||\ extension\ ==\ \textcolor{stringliteral}{"{}STL"{}})}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ mesh\ =\ LoadSTL(path,\ scale);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(extension\ ==\ \textcolor{stringliteral}{"{}obj"{}}\ ||\ extension\ ==\ \textcolor{stringliteral}{"{}OBJ"{}})}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ mesh\ =\ LoadOBJ(path,\ scale);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ cError(\textcolor{stringliteral}{"{}Unsupported\ geometry\ file\ type:\ \%s!"{}},\ extension.c\_str());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00046}00046\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{return}\ mesh;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00050}00050\ Mesh*\ LoadOBJ(\textcolor{keyword}{const}\ std::string\&\ path,\ GLfloat\ scale)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00051}00051\ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//Read\ OBJ\ data}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00053}00053\ \ \ \ \ FILE*\ file\ =\ fopen(path.c\_str(),\ \textcolor{stringliteral}{"{}rb"{}});}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00054}00054\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{if}(file\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ cCritical(\textcolor{stringliteral}{"{}Failed\ to\ open\ geometry\ file:\ \%s"{}},\ path.c\_str());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00060}00060\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00061}00061\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Loading\ geometry\ from:\ \%s"{}},\ path.c\_str());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00062}00062\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{char}\ line[1024];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00064}00064\ \ \ \ \ std::vector<glm::vec3>\ positions;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00065}00065\ \ \ \ \ std::vector<glm::vec3>\ normals;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00066}00066\ \ \ \ \ std::vector<glm::vec2>\ uvs;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00067}00067\ \ \ \ \ Mesh*\ mesh\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00068}00068\ \ \ \ \ int64\_t\ start\ =\ GetTimeInMicroseconds();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00069}00069\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//Read\ vertices}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{while}(fgets(line,\ 1024,\ file))}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(line[0]\ ==\ \textcolor{charliteral}{'v'})}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(line[1]\ ==\ \textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sscanf(line,\ \textcolor{stringliteral}{"{}v\ \%f\ \%f\ \%f\(\backslash\)n"{}},\ \&v.x,\ \&v.y,\ \&v.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ *=\ scale;\ \textcolor{comment}{//Scaling}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positions.push\_back(v);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(line[1]\ ==\ \textcolor{charliteral}{'n'})}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ n;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sscanf(line,\ \textcolor{stringliteral}{"{}vn\ \%f\ \%f\ \%f\(\backslash\)n"{}},\ \&n.x,\ \&n.y,\ \&n.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ normals.push\_back(n);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(line[1]\ ==\ \textcolor{charliteral}{'t'})}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ uv;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sscanf(line,\ \textcolor{stringliteral}{"{}vt\ \%f\ \%f\(\backslash\)n"{}},\ \&uv.x,\ \&uv.y);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uvs.push\_back(uv);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00096}00096\ \ \ \ \ fseek(file,\ 0,\ SEEK\_SET);\ \textcolor{comment}{//Go\ back\ to\ beginning\ of\ file}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00097}00097\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ genVStart\ =\ positions.size();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasNormals\ =\ normals.size()\ >\ 0;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasUVs\ =\ uvs.size()\ >\ 0;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00102}00102\ \textcolor{preprocessor}{\#ifdef\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00103}00103\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Vertices:\ \%ld\ Normals:\ \%ld\(\backslash\)n"{}},\ genVStart,\ normals.size());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00104}00104\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00105}00105\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{if}(hasUVs)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00107}00107\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ TexturableMesh*\ mesh\ =\ \textcolor{keyword}{new}\ TexturableMesh;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Initialize\ positions}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<positions.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ TexturableVertex\ v;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ v.pos\ =\ positions[i];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>vertices.push\_back(v);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Read\ faces}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(fgets(line,\ 1024,\ file))}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(line[0]\ !=\ \textcolor{charliteral}{'f'})}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ Face\ face;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ vID[3];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ uvID[3];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nID[3];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ sscanf(line,\ \textcolor{stringliteral}{"{}f\ \%u/\%u/\%u\ \%u/\%u/\%u\ \%u/\%u/\%u\(\backslash\)n"{}},\ \&vID[0],\ \&uvID[0],\ \&nID[0],\ \&vID[1],\ \&uvID[1],\ \&nID[1],\ \&vID[2],\ \&uvID[2],\ \&nID[2]);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{short}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<3;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TexturableVertex\ v\ =\ mesh-\/>vertices[vID[i]-\/1];\ \textcolor{comment}{//Vertex\ from\ previously\ read\ pool}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(glm::length2(v.normal)\ ==\ 0.f)\ \textcolor{comment}{//Is\ it\ a\ fresh\ vertex?}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>vertices[vID[i]-\/1].normal\ =\ normals[nID[i]-\/1];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>vertices[vID[i]-\/1].uv\ =\ uvs[uvID[i]-\/1];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[i]\ =\ vID[i]-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}((v.normal\ ==\ normals[nID[i]-\/1])\ \&\&\ (v.uv\ ==\ uvs[uvID[i]-\/1]))\ \textcolor{comment}{//Does\ it\ have\ the\ same\ normal\ and\ UV?}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[i]\ =\ vID[i]-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//Otherwise\ search\ the\ generated\ pool}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v.normal\ =\ normals[nID[i]-\/1];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v.uv\ =\ uvs[uvID[i]-\/1];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<TexturableVertex>::iterator\ it;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((it\ =\ std::find(mesh-\/>vertices.begin()+genVStart,\ mesh-\/>vertices.end(),\ v))\ !=\ mesh-\/>vertices.end())\ \textcolor{comment}{//If\ vertex\ exists}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[i]\ =\ (GLuint)(it\ -\/\ mesh-\/>vertices.begin());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>vertices.push\_back(v);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[i]\ =\ (GLuint)mesh-\/>vertices.size()-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>faces.push\_back(face);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ mesh\_\ =\ mesh;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00165}00165\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00167}00167\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ PlainMesh*\ mesh\ =\ \textcolor{keyword}{new}\ PlainMesh;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Initialize\ positions}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<positions.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ Vertex\ v;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ v.pos\ =\ positions[i];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>vertices.push\_back(v);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Read\ faces}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(fgets(line,\ 1024,\ file))}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(line[0]\ !=\ \textcolor{charliteral}{'f'})}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ Face\ face;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(hasNormals)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ vID[3];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nID[3];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sscanf(line,\ \textcolor{stringliteral}{"{}f\ \%u//\%u\ \%u//\%u\ \%u//\%u\(\backslash\)n"{}},\ \&vID[0],\ \&nID[0],\ \&vID[1],\ \&nID[1],\ \&vID[2],\ \&nID[2]);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{short}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<3;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vertex\ v\ =\ mesh-\/>vertices[vID[i]-\/1];\ \textcolor{comment}{//Vertex\ from\ previously\ read\ pool}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(glm::length2(v.normal)\ ==\ 0.f)\ \textcolor{comment}{//Is\ it\ a\ fresh\ vertex?}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>vertices[vID[i]-\/1].normal\ =\ normals[nID[i]-\/1];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[i]\ =\ vID[i]-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(v.normal\ ==\ normals[nID[i]-\/1])\ \textcolor{comment}{//Does\ it\ have\ the\ same\ normal?}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[i]\ =\ vID[i]-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//Otherwise\ search\ the\ generated\ pool}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v.normal\ =\ normals[nID[i]-\/1];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Vertex>::iterator\ it;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((it\ =\ std::find(mesh-\/>vertices.begin()+genVStart,\ mesh-\/>vertices.end(),\ v))\ !=\ mesh-\/>vertices.end())\ \textcolor{comment}{//If\ vertex\ exists}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[i]\ =\ (GLuint)(it\ -\/\ mesh-\/>vertices.begin());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>vertices.push\_back(v);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[i]\ =\ (GLuint)mesh-\/>vertices.size()-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ vID[3];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sscanf(line,\ \textcolor{stringliteral}{"{}f\ \%u\ \%u\ \%u\(\backslash\)n"{}},\ \&vID[0],\ \&vID[1],\ \&vID[2]);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[0]\ =\ vID[0]-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[1]\ =\ vID[1]-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.vertexID[2]\ =\ vID[2]-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>faces.push\_back(face);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ mesh\_\ =\ mesh;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00235}00235\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00236}00236\ \ \ \ \ fclose(file);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00237}00237\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00238}00238\ \ \ \ \ int64\_t\ end\ =\ GetTimeInMicroseconds();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00239}00239\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00240}00240\ \textcolor{preprocessor}{\#ifdef\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00241}00241\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Loaded:\ \%ld\ Generated:\ \%ld\(\backslash\)n"{}},\ genVStart,\ mesh\_-\/>getNumOfVertices()-\/genVStart);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00242}00242\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Total\ time:\ \%ld\(\backslash\)n"{}},\ (\textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int})(end-\/start));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00243}00243\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00244}00244\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Loaded\ mesh\ with\ \%ld\ faces\ in\ \%ld\ ms."{}},\ mesh\_-\/>faces.size(),\ (end-\/start)/1000);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00245}00245\ \ \ \ \ \textcolor{keywordflow}{return}\ mesh\_;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00246}00246\ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00248}00248\ Mesh*\ LoadSTL(\textcolor{keyword}{const}\ std::string\&\ path,\ GLfloat\ scale)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00249}00249\ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00250}00250\ \ \ \ \ \textcolor{comment}{//Read\ STL\ data}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00251}00251\ \ \ \ \ FILE*\ file\ =\ fopen(path.c\_str(),\ \textcolor{stringliteral}{"{}rb"{}});\ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00252}00252\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00253}00253\ \ \ \ \ \textcolor{keywordflow}{if}(file\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00254}00254\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ cCritical(\textcolor{stringliteral}{"{}Failed\ to\ open\ geometry\ file:\ \%s"{}},\ path.c\_str());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00257}00257\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00258}00258\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00259}00259\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Loading\ geometry\ from:\ \%s"{}},\ path.c\_str());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00260}00260\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00261}00261\ \ \ \ \ \textcolor{keywordtype}{char}\ line[128];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00262}00262\ \ \ \ \ \textcolor{keywordtype}{char}\ keyword[10];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00263}00263\ \ \ \ \ PlainMesh*\ mesh\ =\ \textcolor{keyword}{new}\ PlainMesh;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00264}00264\ \ \ \ \ Vertex\ v;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00265}00265\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00266}00266\ \ \ \ \ \textcolor{keywordflow}{while}(fgets(line,\ 128,\ file))}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00267}00267\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ sscanf(line,\ \textcolor{stringliteral}{"{}\%s"{}},\ keyword);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(strcmp(keyword,\ \textcolor{stringliteral}{"{}facet"{}})==0)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ sscanf(line,\ \textcolor{stringliteral}{"{}\ facet\ normal\ \%f\ \%f\ \%f\(\backslash\)n"{}},\ \&v.normal.x,\ \&v.normal.y,\ \&v.normal.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(strcmp(keyword,\ \textcolor{stringliteral}{"{}vertex"{}})==0)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ sscanf(line,\ \textcolor{stringliteral}{"{}\ vertex\ \%f\ \%f\ \%f\(\backslash\)n"{}},\ \&v.pos.x,\ \&v.pos.y,\ \&v.pos.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ v.pos\ *=\ scale;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>vertices.push\_back(v);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(strcmp(keyword,\ \textcolor{stringliteral}{"{}endfacet"{}})==0)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ lastVertexID\ =\ (GLuint)mesh-\/>vertices.size()-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ Face\ f;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ f.vertexID[0]\ =\ lastVertexID-\/2;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ f.vertexID[1]\ =\ lastVertexID-\/1;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ f.vertexID[2]\ =\ lastVertexID;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>faces.push\_back(f);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00290}00290\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00291}00291\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00292}00292\ \ \ \ \ fclose(file);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00293}00293\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00294}00294\ \ \ \ \ \textcolor{comment}{//Remove\ duplicates\ (so\ that\ it\ becomes\ equivalent\ to\ OBJ\ file\ representation)}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00295}00295\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00296}00296\ \ \ \ \ \textcolor{keywordflow}{return}\ mesh;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00297}00297\ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00299}00299\ \textcolor{keywordtype}{void}\ ComputePhysicalProperties(\textcolor{keyword}{const}\ Mesh*\ mesh,\ Scalar\ thickness,\ Scalar\ density,\ Scalar\&\ mass,\ Vector3\&\ CG,\ Scalar\&\ volume,\ Scalar\&\ surface,\ Vector3\&\ Ipri,\ Matrix3\&\ Irot)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00300}00300\ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00301}00301\ \ \ \ \ \textcolor{comment}{//1.Calculate\ mesh\ volume,\ CG\ and\ mass}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00302}00302\ \ \ \ \ CG\ =\ Vector3(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00303}00303\ \ \ \ \ volume\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00304}00304\ \ \ \ \ surface\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00305}00305\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00306}00306\ \ \ \ \ \textcolor{keywordflow}{if}(thickness\ >\ Scalar(0))\ \textcolor{comment}{//Shell}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00307}00307\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<mesh-\/>faces.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Get\ triangle,\ convert\ from\ OpenGL\ to\ physics}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v1gl\ =\ mesh-\/>getVertexPos(i,\ 0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v2gl\ =\ mesh-\/>getVertexPos(i,\ 1);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v3gl\ =\ mesh-\/>getVertexPos(i,\ 2);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v1(v1gl.x,v1gl.y,v1gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v2(v2gl.x,v2gl.y,v2gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v3(v3gl.x,v3gl.y,v3gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Calculate\ volume\ of\ shell\ triangle}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ A\ =\ (v2-\/v1).cross(v3-\/v1).length()/Scalar(2);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ surface\ +=\ A;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ triCG\ =\ (v1+v2+v3)/Scalar(3);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ triVolume\ =\ A\ *\ thickness;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ CG\ +=\ triCG\ *\ triVolume;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ volume\ +=\ triVolume;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Compute\ mesh\ CG}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(volume\ >\ Scalar(0))}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ CG\ /=\ volume;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ CG\ =\ Vector3(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00332}00332\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00333}00333\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//Solid\ body}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00334}00334\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<mesh-\/>faces.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Get\ triangle,\ convert\ from\ OpenGL\ to\ physics}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v1gl\ =\ mesh-\/>getVertexPos(i,\ 0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v2gl\ =\ mesh-\/>getVertexPos(i,\ 1);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v3gl\ =\ mesh-\/>getVertexPos(i,\ 2);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v1(v1gl.x,v1gl.y,v1gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v2(v2gl.x,v2gl.y,v2gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v3(v3gl.x,v3gl.y,v3gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Calculate\ surface}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ surface\ +=\ (v2-\/v1).cross(v3-\/v1).length()/Scalar(2);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Calculate\ signed\ volume\ of\ a\ tetrahedra}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ tetraCG\ =\ (v1+v2+v3)/Scalar(4);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ tetraVolume6\ =\ v1.dot(v2.cross(v3));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ CG\ +=\ tetraCG\ *\ tetraVolume6;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ volume\ +=\ tetraVolume6;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Compute\ mesh\ CG}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(volume\ >\ Scalar(0))}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ CG\ /=\ volume;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ CG\ =\ Vector3(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Compute\ mesh\ volume}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ volume\ /=\ Scalar(6);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00363}00363\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00364}00364\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00365}00365\ \ \ \ \ mass\ =\ volume\ *\ density;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00366}00366\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00367}00367\ \ \ \ \ \textcolor{comment}{//2.Calculate\ moments\ of\ inertia\ for\ local\ coordinate\ system\ located\ in\ CG\ (not\ necessarily\ principal)}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00368}00368\ \ \ \ \ Matrix3\ I;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00369}00369\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00370}00370\ \ \ \ \ \textcolor{keywordflow}{if}(thickness\ >\ Scalar(0))\ \textcolor{comment}{//Shell\ -\/\ I\ have\ doubts\ if\ it\ is\ correct!}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00371}00371\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Compute\ properties\ a\ shell\ by\ subtracting\ the\ inner\ solid\ from\ the\ outer\ solid}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Outer\ solid\ -\/>\ eternal\ surface}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ Scalar\ Pxx\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ Scalar\ Pyy\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ Scalar\ Pzz\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ Scalar\ Pxy\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ Scalar\ Pxz\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ Scalar\ Pyz\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<mesh-\/>faces.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Triangle\ verticies\ with\ respect\ to\ CG}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v1gl\ =\ mesh-\/>getVertexPos(i,\ 0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v2gl\ =\ mesh-\/>getVertexPos(i,\ 1);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v3gl\ =\ mesh-\/>getVertexPos(i,\ 2);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v1(v1gl.x,v1gl.y,v1gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v2(v2gl.x,v2gl.y,v2gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v3(v3gl.x,v3gl.y,v3gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ n\ =\ (v2-\/v1).cross(v3-\/v1).normalize();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ v1\ =\ v1\ +\ n*thickness/Scalar(2)\ -\/\ CG;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ v2\ =\ v2\ +\ n*thickness/Scalar(2)\ -\/\ CG;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ v3\ =\ v3\ +\ n*thickness/Scalar(2)\ -\/\ CG;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Pjk\ =\ const\ *\ dV\ *\ (2*Aj*Ak\ +\ 2*Bj*Bk\ +\ 2*Cj*Ck\ +\ Aj*Bk\ +\ Ak*Bj\ +\ Aj*Ck\ +\ Ak*Cj\ +\ Bj*Ck\ +\ Bk*Cj)}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ V6\ =\ v1.dot(v2.cross(v3));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ Pxx\ +=\ V6\ *\ 2\ *(v1.x()*v1.x()\ +\ v2.x()*v2.x()\ +\ v3.x()*v3.x()\ +\ v1.x()*v2.x()\ +\ v1.x()*v3.x()\ +\ v2.x()*v3.x());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ Pyy\ +=\ V6\ *\ 2\ *(v1.y()*v1.y()\ +\ v2.y()*v2.y()\ +\ v3.y()*v3.y()\ +\ v1.y()*v2.y()\ +\ v1.y()*v3.y()\ +\ v2.y()*v3.y());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ Pzz\ +=\ V6\ *\ 2\ *(v1.z()*v1.z()\ +\ v2.z()*v2.z()\ +\ v3.z()*v3.z()\ +\ v1.z()*v2.z()\ +\ v1.z()*v3.z()\ +\ v2.z()*v3.z());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ Pxy\ +=\ V6\ *\ (2*(v1.x()*v1.y()\ +\ v2.x()*v2.y()\ +\ v3.x()*v3.y())\ +\ v1.x()*v2.y()\ +\ v1.y()*v2.x()\ +\ v1.x()*v3.y()\ +\ v1.y()*v3.x()\ +\ v2.x()*v3.y()\ +\ v2.y()*v3.x());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ Pxz\ +=\ V6\ *\ (2*(v1.x()*v1.z()\ +\ v2.x()*v2.z()\ +\ v3.x()*v3.z())\ +\ v1.x()*v2.z()\ +\ v1.z()*v2.x()\ +\ v1.x()*v3.z()\ +\ v1.z()*v3.x()\ +\ v2.x()*v3.z()\ +\ v2.z()*v3.x());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ Pyz\ +=\ V6\ *\ (2*(v1.y()*v1.z()\ +\ v2.y()*v2.z()\ +\ v3.y()*v3.z())\ +\ v1.y()*v2.z()\ +\ v1.z()*v2.y()\ +\ v1.y()*v3.z()\ +\ v1.z()*v3.y()\ +\ v2.y()*v3.z()\ +\ v2.z()*v3.y());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ Pxx\ *=\ density\ /\ Scalar(120);\ \textcolor{comment}{//20\ from\ formula\ and\ 6\ from\ polyhedron\ volume}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ Pyy\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00408}00408\ \ \ \ \ \ \ \ \ Pzz\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ Pxy\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ Pxz\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ Pyz\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ I\ =\ Matrix3(Pyy+Pzz,\ -\/Pxy,\ -\/Pxz,\ -\/Pxy,\ Pxx+Pzz,\ -\/Pyz,\ -\/Pxz,\ -\/Pyz,\ Pxx+Pyy);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Inner\ solid\ -\/>\ internal\ surface}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ Pxx\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ Pyy\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ Pzz\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ Pxy\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ Pxz\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ Pyz\ =\ Scalar(0);\ \textcolor{comment}{//products\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<mesh-\/>faces.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Triangle\ verticies\ with\ respect\ to\ CG}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v1gl\ =\ mesh-\/>getVertexPos(i,\ 0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v2gl\ =\ mesh-\/>getVertexPos(i,\ 1);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v3gl\ =\ mesh-\/>getVertexPos(i,\ 2);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v1(v1gl.x,v1gl.y,v1gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v2(v2gl.x,v2gl.y,v2gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v3(v3gl.x,v3gl.y,v3gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ n\ =\ (v2-\/v1).cross(v3-\/v1).normalize();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ v1\ =\ v1\ -\/\ n*thickness/Scalar(2)\ -\/\ CG;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ v2\ =\ v2\ -\/\ n*thickness/Scalar(2)\ -\/\ CG;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00436}00436\ \ \ \ \ \ \ \ \ \ \ \ \ v3\ =\ v3\ -\/\ n*thickness/Scalar(2)\ -\/\ CG;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00437}00437\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00438}00438\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Pjk\ =\ const\ *\ dV\ *\ (2*Aj*Ak\ +\ 2*Bj*Bk\ +\ 2*Cj*Ck\ +\ Aj*Bk\ +\ Ak*Bj\ +\ Aj*Ck\ +\ Ak*Cj\ +\ Bj*Ck\ +\ Bk*Cj)}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00439}00439\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ V6\ =\ v1.dot(v2.cross(v3));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ Pxx\ +=\ V6\ *\ 2\ *(v1.x()*v1.x()\ +\ v2.x()*v2.x()\ +\ v3.x()*v3.x()\ +\ v1.x()*v2.x()\ +\ v1.x()*v3.x()\ +\ v2.x()*v3.x());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ Pyy\ +=\ V6\ *\ 2\ *(v1.y()*v1.y()\ +\ v2.y()*v2.y()\ +\ v3.y()*v3.y()\ +\ v1.y()*v2.y()\ +\ v1.y()*v3.y()\ +\ v2.y()*v3.y());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00442}00442\ \ \ \ \ \ \ \ \ \ \ \ \ Pzz\ +=\ V6\ *\ 2\ *(v1.z()*v1.z()\ +\ v2.z()*v2.z()\ +\ v3.z()*v3.z()\ +\ v1.z()*v2.z()\ +\ v1.z()*v3.z()\ +\ v2.z()*v3.z());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ Pxy\ +=\ V6\ *\ (2*(v1.x()*v1.y()\ +\ v2.x()*v2.y()\ +\ v3.x()*v3.y())\ +\ v1.x()*v2.y()\ +\ v1.y()*v2.x()\ +\ v1.x()*v3.y()\ +\ v1.y()*v3.x()\ +\ v2.x()*v3.y()\ +\ v2.y()*v3.x());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ Pxz\ +=\ V6\ *\ (2*(v1.x()*v1.z()\ +\ v2.x()*v2.z()\ +\ v3.x()*v3.z())\ +\ v1.x()*v2.z()\ +\ v1.z()*v2.x()\ +\ v1.x()*v3.z()\ +\ v1.z()*v3.x()\ +\ v2.x()*v3.z()\ +\ v2.z()*v3.x());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ Pyz\ +=\ V6\ *\ (2*(v1.y()*v1.z()\ +\ v2.y()*v2.z()\ +\ v3.y()*v3.z())\ +\ v1.y()*v2.z()\ +\ v1.z()*v2.y()\ +\ v1.y()*v3.z()\ +\ v1.z()*v3.y()\ +\ v2.y()*v3.z()\ +\ v2.z()*v3.y());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ Pxx\ *=\ density\ /\ Scalar(120);\ \textcolor{comment}{//20\ from\ formula\ and\ 6\ from\ polyhedron\ volume}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ Pyy\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ Pzz\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ Pxy\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ Pxz\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ Pyz\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ I\ -\/=\ Matrix3(Pyy+Pzz,\ -\/Pxy,\ -\/Pxz,\ -\/Pxy,\ Pxx+Pzz,\ -\/Pyz,\ -\/Pxz,\ -\/Pyz,\ Pxx+Pyy);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00456}00456\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00457}00457\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00458}00458\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ Scalar\ Pxx\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ Scalar\ Pyy\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ Scalar\ Pzz\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00462}00462\ \ \ \ \ \ \ \ \ Scalar\ Pxy\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ Scalar\ Pxz\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ Scalar\ Pyz\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00465}00465\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00466}00466\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<mesh-\/>faces.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Triangle\ verticies\ with\ respect\ to\ CG}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v1gl\ =\ mesh-\/>getVertexPos(i,\ 0);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v2gl\ =\ mesh-\/>getVertexPos(i,\ 1);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v3gl\ =\ mesh-\/>getVertexPos(i,\ 2);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v1(v1gl.x,v1gl.y,v1gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v2(v2gl.x,v2gl.y,v2gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v3(v3gl.x,v3gl.y,v3gl.z);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ v1\ -\/=\ CG;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ v2\ -\/=\ CG;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ v3\ -\/=\ CG;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Pjk\ =\ const\ *\ dV\ *\ (2*Aj*Ak\ +\ 2*Bj*Bk\ +\ 2*Cj*Ck\ +\ Aj*Bk\ +\ Ak*Bj\ +\ Aj*Ck\ +\ Ak*Cj\ +\ Bj*Ck\ +\ Bk*Cj)}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ V6\ =\ v1.dot(v2.cross(v3));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ Pxx\ +=\ V6\ *\ 2\ *(v1.x()*v1.x()\ +\ v2.x()*v2.x()\ +\ v3.x()*v3.x()\ +\ v1.x()*v2.x()\ +\ v1.x()*v3.x()\ +\ v2.x()*v3.x());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ Pyy\ +=\ V6\ *\ 2\ *(v1.y()*v1.y()\ +\ v2.y()*v2.y()\ +\ v3.y()*v3.y()\ +\ v1.y()*v2.y()\ +\ v1.y()*v3.y()\ +\ v2.y()*v3.y());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ Pzz\ +=\ V6\ *\ 2\ *(v1.z()*v1.z()\ +\ v2.z()*v2.z()\ +\ v3.z()*v3.z()\ +\ v1.z()*v2.z()\ +\ v1.z()*v3.z()\ +\ v2.z()*v3.z());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ Pxy\ +=\ V6\ *\ (2*(v1.x()*v1.y()\ +\ v2.x()*v2.y()\ +\ v3.x()*v3.y())\ +\ v1.x()*v2.y()\ +\ v1.y()*v2.x()\ +\ v1.x()*v3.y()\ +\ v1.y()*v3.x()\ +\ v2.x()*v3.y()\ +\ v2.y()*v3.x());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ Pxz\ +=\ V6\ *\ (2*(v1.x()*v1.z()\ +\ v2.x()*v2.z()\ +\ v3.x()*v3.z())\ +\ v1.x()*v2.z()\ +\ v1.z()*v2.x()\ +\ v1.x()*v3.z()\ +\ v1.z()*v3.x()\ +\ v2.x()*v3.z()\ +\ v2.z()*v3.x());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ Pyz\ +=\ V6\ *\ (2*(v1.y()*v1.z()\ +\ v2.y()*v2.z()\ +\ v3.y()*v3.z())\ +\ v1.y()*v2.z()\ +\ v1.z()*v2.y()\ +\ v1.y()*v3.z()\ +\ v1.z()*v3.y()\ +\ v2.y()*v3.z()\ +\ v2.z()*v3.y());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ Pxx\ *=\ density\ /\ Scalar(120);\ \textcolor{comment}{//20\ from\ formula\ and\ 6\ from\ polyhedron\ volume}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ Pyy\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ Pzz\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ Pxy\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ Pxz\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ Pyz\ *=\ density\ /\ Scalar(120);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ I\ =\ Matrix3(Pyy+Pzz,\ -\/Pxy,\ -\/Pxz,\ -\/Pxy,\ Pxx+Pzz,\ -\/Pyz,\ -\/Pxz,\ -\/Pyz,\ Pxx+Pyy);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00498}00498\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00499}00499\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00500}00500\ \ \ \ \ \textcolor{comment}{//3.\ Find\ primary\ moments\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00501}00501\ \ \ \ \ Ipri\ =\ Vector3(I.getRow(0).getX(),\ I.getRow(1).getY(),\ I.getRow(2).getZ());}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00502}00502\ \ \ \ \ Irot\ =\ I3();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00503}00503\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00504}00504\ \ \ \ \ \textcolor{keywordflow}{if}(!IsDiagonal(I))\ \textcolor{comment}{//\ If\ inertia\ matrix\ is\ not\ diagonal}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00505}00505\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \textcolor{comment}{//3.1.\ Calculate\ principal\ moments\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ Scalar\ T\ =\ I[0][0]\ +\ I[1][1]\ +\ I[2][2];\ \textcolor{comment}{//Ixx\ +\ Iyy\ +\ Izz}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ Scalar\ II\ =\ I[0][0]*I[1][1]\ +\ I[0][0]*I[2][2]\ +\ I[1][1]*I[2][2]\ -\/\ I[0][1]*I[0][1]\ -\/\ I[0][2]*I[0][2]\ -\/\ I[1][2]*I[1][2];\ \textcolor{comment}{//Ixx\ Iyy\ +\ Ixx\ Izz\ +\ Iyy\ Izz\ -\/\ Ixy\string^2\ -\/\ Ixz\string^2\ -\/\ Iyz\string^2}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ Scalar\ U\ =\ btSqrt(T*T-\/Scalar(3)*II)/Scalar(3);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ Scalar\ theta\ =\ btAcos((-\/Scalar(2)*T*T*T\ +\ Scalar(9)*T*II\ -\/\ Scalar(27)*I.determinant())/(Scalar(54)*U*U*U));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ Scalar\ A\ =\ T/Scalar(3)\ -\/\ Scalar(2)*U*btCos(theta/Scalar(3));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ Scalar\ B\ =\ T/Scalar(3)\ -\/\ Scalar(2)*U*btCos(theta/Scalar(3)\ -\/\ Scalar(2)*M\_PI/Scalar(3));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ Scalar\ C\ =\ T/Scalar(3)\ -\/\ Scalar(2)*U*btCos(theta/Scalar(3)\ +\ Scalar(2)*M\_PI/Scalar(3));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ Ipri\ =\ Vector3(A,\ B,\ C);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \textcolor{comment}{//3.2.\ Calculate\ principal\ axes\ of\ inertia}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ Matrix3\ L;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ Vector3\ axis1,axis2,axis3;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ axis1\ =\ FindInertialAxis(I,\ A);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ axis2\ =\ FindInertialAxis(I,\ B);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ axis3\ =\ axis1.cross(axis2);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ axis2\ =\ axis3.cross(axis1);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00523}00523\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00524}00524\ \ \ \ \ \ \ \ \ \textcolor{comment}{//3.3.\ Rotate\ body\ so\ that\ principal\ axes\ are\ parallel\ to\ (x,y,z)\ system}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ Irot\ =\ Matrix3(axis1[0],axis2[0],axis3[0],\ axis1[1],axis2[1],axis3[1],\ axis1[2],axis2[2],axis3[2]);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00526}00526\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00527}00527\ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00528}00528\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00529}00529\ MeshProperties\ ComputePhysicalProperties(\textcolor{keyword}{const}\ Mesh*\ mesh,\ Scalar\ thickness,\ Scalar\ density)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00530}00530\ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00531}00531\ \ \ \ \ MeshProperties\ mp;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00532}00532\ \ \ \ \ ComputePhysicalProperties(mesh,\ thickness,\ density,\ mp.mass,\ mp.CG,\ mp.volume,\ mp.surface,\ mp.Ipri,\ mp.Irot);}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00533}00533\ \ \ \ \ \textcolor{keywordflow}{return}\ mp;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00534}00534\ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00535}00535\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00536}00536\ Vector3\ FindInertialAxis(\textcolor{keyword}{const}\ Matrix3\&\ I,\ Scalar\ value)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00537}00537\ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00538}00538\ \ \ \ \ \textcolor{comment}{//Diagonalize}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00539}00539\ \ \ \ \ Matrix3\ L;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00540}00540\ \ \ \ \ Vector3\ candidates[3];}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00541}00541\ \ \ \ \ Vector3\ axis;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00542}00542\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00543}00543\ \ \ \ \ \textcolor{comment}{//Characteristic\ matrix}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00544}00544\ \ \ \ \ L\ =\ I\ -\/\ Matrix3::getIdentity().scaled(Vector3(value,value,value));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00545}00545\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00546}00546\ \ \ \ \ \textcolor{comment}{//Candidates\ (orthogonal\ vectors)}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00547}00547\ \ \ \ \ candidates[0]\ =\ (L.getRow(0).cross(L.getRow(1)));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00548}00548\ \ \ \ \ candidates[1]\ =\ (L.getRow(0).cross(L.getRow(2)));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00549}00549\ \ \ \ \ candidates[2]\ =\ (L.getRow(1).cross(L.getRow(2)));}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00550}00550\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00551}00551\ \ \ \ \ \textcolor{comment}{//Find\ best\ candidate}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00552}00552\ \ \ \ \ \textcolor{keywordflow}{if}(candidates[0].length2()\ >=\ candidates[1].length2())}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00553}00553\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(candidates[0].length2()\ >=\ candidates[2].length2())}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \ \ axis\ =\ candidates[0].normalized();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \ \ \ \ axis\ =\ candidates[2].normalized();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00558}00558\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00559}00559\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00560}00560\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(candidates[1].length2()\ >=\ candidates[2].length2())}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ axis\ =\ candidates[1].normalized();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ axis\ =\ candidates[2].normalized();}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00565}00565\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00566}00566\ \ \ \ \ \textcolor{keywordflow}{return}\ axis;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00567}00567\ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00568}00568\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00569}00569\ \textcolor{keywordtype}{bool}\ IsDiagonal(\textcolor{keyword}{const}\ Matrix3\&\ A)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00570}00570\ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00571}00571\ \ \ \ \ Scalar\ minDiagElem\ =\ btMin(\ btMin(\ btFabs(A.getRow(0).getX()),\ btFabs(A.getRow(1).getY())),\ btFabs(A.getRow(2).getZ())\ );}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00572}00572\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ delta\ =\ 1e6;}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00573}00573\ \ \ \ \ \textcolor{keywordflow}{if}(btFabs(A.getRow(0).getY())\ <\ minDiagElem/delta}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \&\&\ btFabs(A.getRow(0).getZ())\ <\ minDiagElem/delta}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00575}00575\ \ \ \ \ \ \ \ \ \&\&\ btFabs(A.getRow(1).getX())\ <\ minDiagElem/delta}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00576}00576\ \ \ \ \ \ \ \ \ \&\&\ btFabs(A.getRow(1).getZ())\ <\ minDiagElem/delta}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \&\&\ btFabs(A.getRow(2).getX())\ <\ minDiagElem/delta}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ \&\&\ btFabs(A.getRow(2).getY())\ <\ minDiagElem/delta)}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00579}00579\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00580}00580\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00581}00581\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00582}00582\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00583}00583\ \}}
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00584}00584\ }
+\DoxyCodeLine{\Hypertarget{_geometry_file_util_8cpp_source_l00585}00585\ \}}
+
+\end{DoxyCode}

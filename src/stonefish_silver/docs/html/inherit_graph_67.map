@@ -1,0 +1,27 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classsf_1_1_open_g_l_view.html" title="An abstract class representing an OpenGL view." alt="" coords="5,179,128,204"/>
+<area shape="rect" id="Node000001" href="$classsf_1_1_open_g_l_camera.html" title="An abstract class implementing a camera view." alt="" coords="222,55,365,80"/>
+<area shape="poly" id="edge59_Node000000_Node000001" title=" " alt="" coords="84,166,123,126,148,106,175,89,221,73,223,78,177,94,151,110,127,130,88,170"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_open_g_l_depth_camera.html" title="A class representing a depth camera." alt="" coords="202,104,385,129"/>
+<area shape="poly" id="edge63_Node000000_Node000005" title=" " alt="" coords="102,170,175,138,217,127,218,132,177,143,104,175"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1_open_g_l_optical_flow_camera.html" title="A class representing a depth camera." alt="" coords="183,153,403,179"/>
+<area shape="poly" id="edge64_Node000000_Node000006" title=" " alt="" coords="141,180,183,176,183,181,142,186"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1_open_g_l_segmentation_camera.html" title="A class representing a depth camera." alt="" coords="176,203,411,228"/>
+<area shape="poly" id="edge65_Node000000_Node000007" title=" " alt="" coords="142,197,176,200,175,206,141,202"/>
+<area shape="rect" id="Node000008" href="$classsf_1_1_open_g_l_sonar.html" title="An abstract class representing a sonar view." alt="" coords="229,252,358,277"/>
+<area shape="poly" id="edge66_Node000000_Node000008" title=" " alt="" coords="106,208,177,237,229,251,227,256,175,242,104,213"/>
+<area shape="rect" id="Node000012" href="$classsf_1_1_open_g_l_thermal_camera.html" title="A class representing a thermal camera." alt="" coords="195,301,391,327"/>
+<area shape="poly" id="edge70_Node000000_Node000012" title=" " alt="" coords="89,213,127,251,151,270,177,286,209,299,207,304,175,291,148,275,124,255,85,217"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_open_g_l_event_based_camera.html" title="A class implementing a real camera in OpenGL." alt="" coords="459,5,679,31"/>
+<area shape="poly" id="edge60_Node000001_Node000002" title=" " alt="" coords="378,50,496,28,497,33,379,55"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_open_g_l_real_camera.html" title="A class implementing a real camera in OpenGL." alt="" coords="483,55,655,80"/>
+<area shape="poly" id="edge61_Node000001_Node000003" title=" " alt="" coords="378,65,482,65,482,70,378,70"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_open_g_l_trackball.html" title="A class implementing a camera that can be rotated as a trackball, with mouse." alt="" coords="494,104,643,129"/>
+<area shape="poly" id="edge62_Node000001_Node000004" title=" " alt="" coords="379,80,497,101,496,107,378,85"/>
+<area shape="rect" id="Node000009" href="$classsf_1_1_open_g_l_f_l_s.html" title="A class representing a forward looking sonar (FLS)." alt="" coords="511,203,626,228"/>
+<area shape="poly" id="edge67_Node000008_Node000009" title=" " alt="" coords="371,248,511,223,512,228,372,253"/>
+<area shape="rect" id="Node000010" href="$classsf_1_1_open_g_l_m_s_i_s.html" title="A class representing a mechanical scanning imaging sonar (MSIS)." alt="" coords="507,252,631,277"/>
+<area shape="poly" id="edge68_Node000008_Node000010" title=" " alt="" coords="372,262,506,262,506,267,372,267"/>
+<area shape="rect" id="Node000011" href="$classsf_1_1_open_g_l_s_s_s.html" title="A class representing a side&#45;scan sonar (SSS)." alt="" coords="511,301,627,327"/>
+<area shape="poly" id="edge69_Node000008_Node000011" title=" " alt="" coords="372,276,511,301,510,306,371,281"/>
+</map>

@@ -39,12 +39,16 @@
             <material name="LightAluminium"/>
             <look name="Silver"/>
         </link>
-        <joint name="Joint_L0_Coxa" type="fixed">
+        <joint name="Joint_L0_Coxa" type="revolute">
             <parent name="MainBody"/>
             <child name="Coxa_L0"/>
             <origin xyz="1.62 0.98 0.28" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
+        <actuator name="Servo_L0_Coxa" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="20.0"/>
+            <joint name="Joint_L0_Coxa"/>
+        </actuator>
         <!-- Femur L0 -->
         <link name="Femur_L0" type="model" physics="submerged">
             <physical>
@@ -54,12 +58,16 @@
             <material name="LightAluminium"/>
             <look name="Silver"/>
         </link>
-        <joint name="Joint_L0_Femur" type="fixed">
+        <joint name="Joint_L0_Femur" type="revolute">
             <parent name="Coxa_L0"/>
             <child name="Femur_L0"/>
             <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L0_Femur" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="20.0"/>
+            <joint name="Joint_L0_Femur"/>
+        </actuator>
         <!-- Tibia L0 -->
         <link name="Tibia_L0" type="model" physics="submerged">
             <physical>
@@ -69,12 +77,16 @@
             <material name="LightAluminium"/>
             <look name="Silver"/>
         </link>
-        <joint name="Joint_L0_Tibia" type="fixed">
+        <joint name="Joint_L0_Tibia" type="revolute">
             <parent name="Femur_L0"/>
             <child name="Tibia_L0"/>
             <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L0_Tibia" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="20.0"/>
+            <joint name="Joint_L0_Tibia"/>
+        </actuator>
 
         <!-- Leg 1 -->
         <!-- Coxa L1 -->
@@ -310,5 +322,8 @@
             <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+
+        <ros_publisher servos="/my_joint_state"/>
+        <ros_subscriber servos="/my_joint_setpoints"/>
     </robot>
 </scenario>

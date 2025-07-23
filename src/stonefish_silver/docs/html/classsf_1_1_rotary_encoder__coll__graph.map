@@ -1,0 +1,46 @@
+<map id="sf::RotaryEncoder" name="sf::RotaryEncoder">
+<area shape="rect" id="Node000001" title="A class representing a rotary encoder with &quot;infinite&quot; resolution." alt="" coords="312,609,448,635"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_joint_sensor.html" title="An abstract class representing a sensor attached to a joint." alt="" coords="179,447,293,472"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="257,480,372,607,368,611,253,484"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_scalar_sensor.html" title="An abstract class representing a scalar sensor." alt="" coords="5,359,131,384"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,388,214,444,212,449,102,393"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_sensor.html" title="An abstract class representing a sensor." alt="" coords="25,256,111,281"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="71,295,71,359,65,359,65,295"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_featherstone_entity.html" title="A class that implements simplified creation of multi&#45;body trees, using Roy Featherstone&#39;s algorithm." alt="" coords="155,359,319,384"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="240,398,239,446,234,446,234,398"/>
+<area shape="rect" id="Node000017" href="$classsf_1_1_joint_actuator.html" title="An abstract class representing a joint actuator." alt="" coords="317,447,443,472"/>
+<area shape="poly" id="edge19_Node000017_Node000005" title=" " alt="" coords="256,393,287,420,312,434,338,444,337,449,310,439,284,425,253,397"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1_entity.html" title="An abstract class representing a simulation entity." alt="" coords="198,80,277,105"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="240,119,240,358,235,358,235,119"/>
+<area shape="rect" id="Node000009" href="$classsf_1_1_moving_entity.html" title="An abstract class representing a moving rigid body." alt="" coords="285,168,411,193"/>
+<area shape="poly" id="edge9_Node000009_Node000006" title=" " alt="" coords="265,112,335,166,331,170,262,116"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1_joint.html" title="An abstract class implementing a general joint." alt="" coords="343,359,414,384"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="354,395,309,425,263,449,261,444,307,420,351,390"/>
+<area shape="poly" id="edge20_Node000017_Node000007" title=" " alt="" coords="382,398,382,446,377,446,376,398"/>
+<area shape="rect" id="Node000008" href="$classsf_1_1_solid_entity.html" title="An abstract class representing a rigid body." alt="" coords="473,256,583,281"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="501,291,397,361,394,356,498,287"/>
+<area shape="rect" id="Node000020" href="$classsf_1_1_link_actuator.html" title="An abstract class representing an actuator that can be attached to a rigid body." alt="" coords="467,447,589,472"/>
+<area shape="poly" id="edge24_Node000020_Node000008" title=" " alt="" coords="539,295,548,336,549,384,534,447,529,446,544,384,543,337,534,296"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="386,197,505,253,502,258,383,202"/>
+<area shape="rect" id="Node000010" href="$structsf_1_1_material.html" title="A structure holding material properties." alt="" coords="301,80,395,105"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="351,119,351,167,345,167,345,119"/>
+<area shape="rect" id="Node000011" href="$classsf_1_1_open_g_l_ocean_particles.html" title="A class implementing a particle system simulating underwater snow effect." alt="" coords="419,80,607,105"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="480,114,372,170,369,165,478,109"/>
+<area shape="rect" id="Node000012" href="$classsf_1_1_open_g_l_particles.html" title="An abstract class implementing a general particle system." alt="" coords="440,5,587,31"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="516,45,516,80,511,80,511,45"/>
+<area shape="rect" id="Node000013" href="$structsf_1_1_mesh.html" title="A structure containing mesh data." alt="" coords="435,168,511,193"/>
+<area shape="poly" id="edge13_Node000008_Node000013" title=" " alt="" coords="490,203,523,254,518,257,486,206"/>
+<area shape="rect" id="Node000014" href="$structsf_1_1_body_physics_settings.html" title="A structure defining the physics computation settings for the body." alt="" coords="536,168,712,193"/>
+<area shape="poly" id="edge14_Node000008_Node000014" title=" " alt="" coords="605,205,575,234,545,258,542,254,572,230,602,201"/>
+<area shape="rect" id="Node000015" href="$structsf_1_1_renderable.html" title="A structure that represents a renderable object." alt="" coords="736,168,851,193"/>
+<area shape="poly" id="edge15_Node000008_Node000015" title=" " alt="" coords="745,200,564,258,563,253,744,195"/>
+<area shape="rect" id="Node000016" href="$classsf_1_1_motor.html" title="A class representing a motor." alt="" coords="341,521,419,547"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="383,561,383,609,377,609,377,561"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="383,486,383,521,377,521,377,486"/>
+<area shape="rect" id="Node000018" href="$classsf_1_1_actuator.html" title="An abstract class representing any actuator." alt="" coords="439,359,535,384"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="463,395,396,448,393,444,460,391"/>
+<area shape="poly" id="edge23_Node000020_Node000018" title=" " alt="" coords="501,395,525,445,520,447,496,398"/>
+<area shape="rect" id="Node000019" href="$classsf_1_1_thruster.html" title="A class representing a thruster." alt="" coords="462,521,557,547"/>
+<area shape="poly" id="edge21_Node000001_Node000019" title=" " alt="" coords="482,556,399,611,396,607,479,552"/>
+<area shape="poly" id="edge22_Node000019_Node000020" title=" " alt="" coords="524,486,515,522,510,520,519,485"/>
+</map>

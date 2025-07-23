@@ -1,0 +1,163 @@
+\doxysection{Fixed\+Joint.\+cpp}
+\hypertarget{_fixed_joint_8cpp_source}{}\label{_fixed_joint_8cpp_source}\index{Library/src/joints/FixedJoint.cpp@{Library/src/joints/FixedJoint.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ FixedJoint.cpp}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 2/4/13.}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2013-\/2025\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}joints/FixedJoint.h"{}}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}BulletDynamics/Featherstone/btMultiBodyFixedConstraint.h"{}}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}entities/SolidEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}entities/FeatherstoneEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00034}00034\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00037}\mbox{\hyperlink{classsf_1_1_fixed_joint_a677addb30921a57290050cf0409d0e30}{00037}}\ \mbox{\hyperlink{classsf_1_1_fixed_joint_a677addb30921a57290050cf0409d0e30}{FixedJoint::FixedJoint}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solid)\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00038}00038\ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_joint}{Joint}}(uniqueName,\ false)}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00040}00040\ \ \ \ \ btRigidBody*\ body\ =\ solid-\/>rigidBody;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00041}00041\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00042}00042\ \ \ \ \ btFixedConstraint*\ fixed\ =\ \textcolor{keyword}{new}\ btFixedConstraint(*body,\ Transform::getIdentity());}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00043}00043\ \ \ \ \ setConstraint(fixed);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00045}00045\ \ \ \ \ jSolidA\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00046}00046\ \ \ \ \ jSolidB\ =\ solid;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00048}00048\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Fixed\ joint\ created\ between\ the\ world\ and\ '\%s'."{}},\ jSolidB-\/>\mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{getName}}().c\_str());}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00051}\mbox{\hyperlink{classsf_1_1_fixed_joint_a57813388dcd94c44cb07c949c52d5327}{00051}}\ \mbox{\hyperlink{classsf_1_1_fixed_joint_a677addb30921a57290050cf0409d0e30}{FixedJoint::FixedJoint}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solidA,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solidB)\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00052}00052\ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_joint}{Joint}}(uniqueName,\ false)}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00053}00053\ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00054}00054\ \ \ \ \ btRigidBody*\ bodyA\ =\ solidA-\/>rigidBody;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00055}00055\ \ \ \ \ btRigidBody*\ bodyB\ =\ solidB-\/>rigidBody;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00056}00056\ \ \ \ \ Transform\ frameInA\ =\ Transform::getIdentity();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00057}00057\ \ \ \ \ Transform\ frameInB\ =\ solidB-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}().inverse()\ *\ solidA-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00058}00058\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00059}00059\ \ \ \ \ btFixedConstraint*\ fixed\ =\ \textcolor{keyword}{new}\ btFixedConstraint(*bodyA,\ *bodyB,\ frameInA,\ frameInB);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00060}00060\ \ \ \ \ setConstraint(fixed);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00062}00062\ \ \ \ \ jSolidA\ =\ solidA;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00063}00063\ \ \ \ \ jSolidB\ =\ solidB;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00065}00065\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Fixed\ joint\ created\ between\ '\%s'\ and\ '\%s'."{}},\ jSolidA-\/>\mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{getName}}().c\_str(),\ jSolidB-\/>\mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{getName}}().c\_str());}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00068}\mbox{\hyperlink{classsf_1_1_fixed_joint_a4f372b5b5ec61cf6b5a8037deaa6d9d2}{00068}}\ \mbox{\hyperlink{classsf_1_1_fixed_joint_a677addb30921a57290050cf0409d0e30}{FixedJoint::FixedJoint}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solid,\ \mbox{\hyperlink{classsf_1_1_featherstone_entity}{FeatherstoneEntity}}*\ fe,\ \textcolor{keywordtype}{int}\ linkId)\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00069}00069\ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_joint}{Joint}}(uniqueName,\ false)}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00070}00070\ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00071}00071\ \ \ \ \ Transform\ linkTransform\ =\ fe-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_a76863ff330dd16bc6ff103c49a6f4611}{getLinkTransform}}(linkId+1);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00072}00072\ \ \ \ \ Transform\ solidTransform\ =\ solid-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00073}00073\ \ \ \ \ Vector3\ pivotInA\ =\ V0();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00074}00074\ \ \ \ \ Vector3\ pivotInB\ =\ solidTransform.inverse()\ *\ linkTransform.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00075}00075\ \ \ \ \ Matrix3\ frameInA\ =\ Matrix3::getIdentity();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00076}00076\ \ \ \ \ Matrix3\ frameInB\ =\ solidTransform.getBasis().inverse()\ *\ linkTransform.getBasis();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00077}00077\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00078}00078\ \ \ \ \ btMultiBodyFixedConstraint*\ fixed\ =\ \textcolor{keyword}{new}\ btMultiBodyFixedConstraint(fe-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_a0501aca2e21733f148e1f5f0c4e0e567}{getMultiBody}}(),\ linkId,\ solid-\/>rigidBody,\ pivotInA,\ pivotInB,\ frameInA,\ frameInB);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00079}00079\ \ \ \ \ fixed-\/>setMaxAppliedImpulse(BT\_LARGE\_FLOAT);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00080}00080\ \ \ \ \ setConstraint(fixed);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00081}00081\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00082}00082\ \ \ \ \ jSolidA\ =\ fe-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_ae3e538fcb895972074d80cbedb784010}{getLink}}(linkId+1).solid;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00083}00083\ \ \ \ \ jSolidB\ =\ solid;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00085}00085\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Fixed\ joint\ created\ between\ '\%s'\ and\ '\%s'."{}},\ jSolidA-\/>\mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{getName}}().c\_str(),\ jSolidB-\/>\mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{getName}}().c\_str());}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00088}\mbox{\hyperlink{classsf_1_1_fixed_joint_a9607adeee4e86a26c02856087df713a2}{00088}}\ \mbox{\hyperlink{classsf_1_1_fixed_joint_a677addb30921a57290050cf0409d0e30}{FixedJoint::FixedJoint}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_featherstone_entity}{FeatherstoneEntity}}*\ feA,\ \mbox{\hyperlink{classsf_1_1_featherstone_entity}{FeatherstoneEntity}}*\ feB,\ \textcolor{keywordtype}{int}\ linkIdA,\ \textcolor{keywordtype}{int}\ linkIdB)\ :\ \mbox{\hyperlink{classsf_1_1_joint}{Joint}}(uniqueName,\ false)}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00089}00089\ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00090}00090\ \ \ \ \ Transform\ linkATransform\ =\ feA-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_a76863ff330dd16bc6ff103c49a6f4611}{getLinkTransform}}(linkIdA+1);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00091}00091\ \ \ \ \ Transform\ linkBTransform\ =\ feB-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_a76863ff330dd16bc6ff103c49a6f4611}{getLinkTransform}}(linkIdB+1);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00092}00092\ \ \ \ \ Vector3\ pivotInA\ =\ V0();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00093}00093\ \ \ \ \ Vector3\ pivotInB\ =\ linkBTransform.inverse()\ *\ linkATransform.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00094}00094\ \ \ \ \ Matrix3\ frameInA\ =\ Matrix3::getIdentity();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00095}00095\ \ \ \ \ Matrix3\ frameInB\ =\ linkBTransform.getBasis().inverse()\ *\ linkATransform.getBasis();\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00096}00096\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00097}00097\ \ \ \ \ btMultiBodyFixedConstraint*\ fixed\ =\ \textcolor{keyword}{new}\ btMultiBodyFixedConstraint(feA-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_a0501aca2e21733f148e1f5f0c4e0e567}{getMultiBody}}(),\ linkIdA,\ feB-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_a0501aca2e21733f148e1f5f0c4e0e567}{getMultiBody}}(),\ linkIdB,\ pivotInA,\ pivotInB,\ frameInA,\ frameInB);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00098}00098\ \ \ \ \ fixed-\/>setMaxAppliedImpulse(BT\_LARGE\_FLOAT);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00099}00099\ \ \ \ \ setConstraint(fixed);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00100}00100\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00101}00101\ \ \ \ \ jSolidA\ =\ feA-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_ae3e538fcb895972074d80cbedb784010}{getLink}}(linkIdA+1).solid;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00102}00102\ \ \ \ \ jSolidB\ =\ feB-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_ae3e538fcb895972074d80cbedb784010}{getLink}}(linkIdB+1).solid;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00104}00104\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Fixed\ joint\ created\ between\ '\%s'\ and\ '\%s'."{}},\ jSolidA-\/>\mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{getName}}().c\_str(),\ jSolidB-\/>\mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{getName}}().c\_str());}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00107}\mbox{\hyperlink{classsf_1_1_fixed_joint_a241a773d2c4dc22fbb5158f8de20ce46}{00107}}\ JointType\ \mbox{\hyperlink{classsf_1_1_fixed_joint_a241a773d2c4dc22fbb5158f8de20ce46}{FixedJoint::getType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00108}00108\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{return}\ JointType::FIXED;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00112}\mbox{\hyperlink{classsf_1_1_fixed_joint_ac542493f3b2ac6ec64e35e7d29b048e9}{00112}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_fixed_joint_ac542493f3b2ac6ec64e35e7d29b048e9}{FixedJoint::UpdateDefinition}}()}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00113}00113\ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{if}(constraint\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00115}00115\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ constraint;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jSolidA\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ setConstraint(\textcolor{keyword}{new}\ btFixedConstraint(*jSolidB-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_a3f46a9f4012e6ccc4d2086fec6a75146}{getRigidBody}}(),\ Transform::getIdentity()));}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ frameInA\ =\ Transform::getIdentity();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ frameInB\ =\ jSolidB-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}().inverse()\ *\ jSolidA-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ setConstraint(\textcolor{keyword}{new}\ btFixedConstraint(*jSolidA-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_a3f46a9f4012e6ccc4d2086fec6a75146}{getRigidBody}}(),\ *jSolidB-\/>\mbox{\hyperlink{classsf_1_1_moving_entity_a3f46a9f4012e6ccc4d2086fec6a75146}{getRigidBody}}(),\ frameInA,\ frameInB));\ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(mbConstraint\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00129}00129\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ Transform\ linkATransform\ =\ jSolidA-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ Transform\ linkBTransform\ =\ jSolidB-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ Vector3\ pivotInB\ =\ linkBTransform.inverse()\ *\ linkATransform.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ Matrix3\ frameInB\ =\ linkBTransform.getBasis().inverse()\ *\ linkATransform.getBasis();\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ btMultiBodyFixedConstraint*\ fix\ =\ \textcolor{keyword}{static\_cast<}btMultiBodyFixedConstraint*\textcolor{keyword}{>}(mbConstraint);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ fix-\/>setPivotInB(pivotInB);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ fix-\/>setFrameInB(frameInB);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00138}00138\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00139}00139\ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00141}\mbox{\hyperlink{classsf_1_1_fixed_joint_a66d3bf51eb5d291853e2d44538932d60}{00141}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_fixed_joint_a66d3bf51eb5d291853e2d44538932d60}{FixedJoint::Render}}()}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00142}00142\ \{}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00143}00143\ \ \ \ \ std::vector<Renderable>\ items(0);}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00144}00144\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00145}00145\ \ \ \ \ \textcolor{comment}{//\ Renderable\ item;}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//\ item.model\ =\ glm::mat4(1.f);}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00147}00147\ \ \ \ \ \textcolor{comment}{//\ item.type\ =\ RenderableType::JOINT\_LINES;}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00148}00148\ \ \ \ \ \textcolor{comment}{//\ Vector3\ A\ =\ jSolidA-\/>getCGTransform().getOrigin();}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00149}00149\ \ \ \ \ \textcolor{comment}{//\ Vector3\ B\ =\ jSolidB-\/>getCGTransform().getOrigin();}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00150}00150\ \ \ \ \ \textcolor{comment}{//\ item.points.push\_back(glm::vec3(A.getX(),\ A.getY(),\ A.getZ()));}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//\ item.points.push\_back(glm::vec3(B.getX(),\ B.getY(),\ B.getZ()));}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00152}00152\ \ \ \ \ \textcolor{comment}{//\ items.push\_back(item);\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00153}00153\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00154}00154\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00155}00155\ \}}
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_fixed_joint_8cpp_source_l00157}00157\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,244 @@
+\doxysection{sf\+::Actuator Class Reference}
+\hypertarget{classsf_1_1_actuator}{}\label{classsf_1_1_actuator}\index{sf::Actuator@{sf::Actuator}}
+
+
+An abstract class representing any actuator.  
+
+
+
+
+{\ttfamily \#include $<$Actuator.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Actuator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_actuator__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_actuator_a0bdcfb3e2bad01b7e3524efcea3dd646}{Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_actuator_ab1702a858f2c750da3259d8b3d574268}{\texorpdfstring{$\sim$}{\string~}\+Actuator}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_actuator_afe9be563b1e1819330bb61386d443b62}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method used to update the internal state of the actuator. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_actuator_a10c5e76c82bb29f60d2f8d199c9c47b0}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_afe4e4fcdb0e13f9efbc665994e77d145}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set display mode used for the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a7e3ae31d3cfed62d68a0445b7a03f026}{set\+Watchdog}} (Scalar timeout)
+\begin{DoxyCompactList}\small\item\em A method used to set the watchdog timeout. \end{DoxyCompactList}\item 
+virtual Actuator\+Type \mbox{\hyperlink{classsf_1_1_actuator_a3b1831e870e2b800590271823d034c88}{get\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning the type of the actuator. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_actuator_a3a074b11358493cb251139c475507d2d}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_actuator_a468c6522181db81891bf535df9497b5a}{Watchdog\+Timeout}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a86dec171a3761123d92363a71b716385}{Reset\+Watchdog}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_actuator_a1ca99e4bb5c8efa1670fdd09f1d52ead}{dm}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class representing any actuator. 
+
+Definition at line \mbox{\hyperlink{_actuator_8h_source_l00040}{40}} of file \mbox{\hyperlink{_actuator_8h_source}{Actuator.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_actuator_a0bdcfb3e2bad01b7e3524efcea3dd646}\label{classsf_1_1_actuator_a0bdcfb3e2bad01b7e3524efcea3dd646} 
+\index{sf::Actuator@{sf::Actuator}!Actuator@{Actuator}}
+\index{Actuator@{Actuator}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{Actuator()}{Actuator()}}
+{\footnotesize\ttfamily sf\+::\+Actuator\+::\+Actuator (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name of the actuator \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_actuator_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_actuator_8cpp_source}{Actuator.\+cpp}}.
+
+\Hypertarget{classsf_1_1_actuator_ab1702a858f2c750da3259d8b3d574268}\label{classsf_1_1_actuator_ab1702a858f2c750da3259d8b3d574268} 
+\index{sf::Actuator@{sf::Actuator}!````~Actuator@{\texorpdfstring{$\sim$}{\string~}Actuator}}
+\index{````~Actuator@{\texorpdfstring{$\sim$}{\string~}Actuator}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Actuator()}{\string~Actuator()}}
+{\footnotesize\ttfamily sf\+::\+Actuator\+::\texorpdfstring{$\sim$}{\string~}\+Actuator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_actuator_8cpp_source}{Actuator.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_actuator_a3a074b11358493cb251139c475507d2d}\label{classsf_1_1_actuator_a3a074b11358493cb251139c475507d2d} 
+\index{sf::Actuator@{sf::Actuator}!getName@{getName}}
+\index{getName@{getName}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Actuator\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the name of the actuator. 
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{_actuator_8cpp_source}{Actuator.\+cpp}}.
+
+\Hypertarget{classsf_1_1_actuator_a3b1831e870e2b800590271823d034c88}\label{classsf_1_1_actuator_a3b1831e870e2b800590271823d034c88} 
+\index{sf::Actuator@{sf::Actuator}!getType@{getType}}
+\index{getType@{getType}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual Actuator\+Type sf\+::\+Actuator\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method returning the type of the actuator. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_light_a90abc24cc6f5fa4e1f7b776c0d8073a2}{sf\+::\+Light}}, \mbox{\hyperlink{classsf_1_1_motor_a88568db740e722c5bfc35beced78cb6f}{sf\+::\+Motor}}, \mbox{\hyperlink{classsf_1_1_propeller_a2532e6f675e1c549f356cbe3139cdddc}{sf\+::\+Propeller}}, \mbox{\hyperlink{classsf_1_1_push_aa97c2a91b0ef451a2ed0b3eb5c722257}{sf\+::\+Push}}, \mbox{\hyperlink{classsf_1_1_rudder_a827ecda64bd5d1b9811613882d0ddef0}{sf\+::\+Rudder}}, \mbox{\hyperlink{classsf_1_1_servo_add527969e459be202c23b75fe812432b}{sf\+::\+Servo}}, \mbox{\hyperlink{classsf_1_1_simple_thruster_aaa10a3843b308930a329c0afa3b12a2a}{sf\+::\+Simple\+Thruster}}, \mbox{\hyperlink{classsf_1_1_suction_cup_a9d1267059e9ce1e0d69f3ec0a3692b9d}{sf\+::\+Suction\+Cup}}, \mbox{\hyperlink{classsf_1_1_thruster_a4fd5f75109e83b61333eb5c85da5b704}{sf\+::\+Thruster}}, and \mbox{\hyperlink{classsf_1_1_variable_buoyancy_a671b8def70c3ccaa1b40d3b735e1f624}{sf\+::\+Variable\+Buoyancy}}.
+
+\Hypertarget{classsf_1_1_actuator_a10c5e76c82bb29f60d2f8d199c9c47b0}\label{classsf_1_1_actuator_a10c5e76c82bb29f60d2f8d199c9c47b0} 
+\index{sf::Actuator@{sf::Actuator}!Render@{Render}}
+\index{Render@{Render}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Actuator\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the actuator. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_light_a80807bf1eb0fb275dd3827e5a82772c0}{sf\+::\+Light}}, \mbox{\hyperlink{classsf_1_1_link_actuator_aa2529f1fa02cf53b2871e79337deeec0}{sf\+::\+Link\+Actuator}}, \mbox{\hyperlink{classsf_1_1_propeller_a0588b5ea90d6c198fc8ffbfa1a71c931}{sf\+::\+Propeller}}, \mbox{\hyperlink{classsf_1_1_push_aca2b55d78dfc97623c48ce56db3e3da2}{sf\+::\+Push}}, \mbox{\hyperlink{classsf_1_1_rudder_afb2ae1ed53521b4f0fa2ed947f928172}{sf\+::\+Rudder}}, \mbox{\hyperlink{classsf_1_1_simple_thruster_a9f87da5d24d03fd3f64343890eb69221}{sf\+::\+Simple\+Thruster}}, \mbox{\hyperlink{classsf_1_1_thruster_a371974f894e6f10fcc6a97c047a16eb7}{sf\+::\+Thruster}}, and \mbox{\hyperlink{classsf_1_1_variable_buoyancy_a80ea646060d2ea81c44add65b19d8c32}{sf\+::\+Variable\+Buoyancy}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{_actuator_8cpp_source}{Actuator.\+cpp}}.
+
+\Hypertarget{classsf_1_1_actuator_a86dec171a3761123d92363a71b716385}\label{classsf_1_1_actuator_a86dec171a3761123d92363a71b716385} 
+\index{sf::Actuator@{sf::Actuator}!ResetWatchdog@{ResetWatchdog}}
+\index{ResetWatchdog@{ResetWatchdog}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{ResetWatchdog()}{ResetWatchdog()}}
+{\footnotesize\ttfamily void sf\+::\+Actuator\+::\+Reset\+Watchdog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{_actuator_8cpp_source}{Actuator.\+cpp}}.
+
+\Hypertarget{classsf_1_1_actuator_afe4e4fcdb0e13f9efbc665994e77d145}\label{classsf_1_1_actuator_afe4e4fcdb0e13f9efbc665994e77d145} 
+\index{sf::Actuator@{sf::Actuator}!setDisplayMode@{setDisplayMode}}
+\index{setDisplayMode@{setDisplayMode}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{setDisplayMode()}{setDisplayMode()}}
+{\footnotesize\ttfamily void sf\+::\+Actuator\+::set\+Display\+Mode (\begin{DoxyParamCaption}\item[{Display\+Mode}]{m }\end{DoxyParamCaption})}
+
+
+
+A method used to set display mode used for the actuator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & flag defining the display mode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_actuator_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_actuator_8cpp_source}{Actuator.\+cpp}}.
+
+\Hypertarget{classsf_1_1_actuator_a7e3ae31d3cfed62d68a0445b7a03f026}\label{classsf_1_1_actuator_a7e3ae31d3cfed62d68a0445b7a03f026} 
+\index{sf::Actuator@{sf::Actuator}!setWatchdog@{setWatchdog}}
+\index{setWatchdog@{setWatchdog}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{setWatchdog()}{setWatchdog()}}
+{\footnotesize\ttfamily void sf\+::\+Actuator\+::set\+Watchdog (\begin{DoxyParamCaption}\item[{Scalar}]{timeout }\end{DoxyParamCaption})}
+
+
+
+A method used to set the watchdog timeout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & timeout of the watchdog \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_actuator_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_actuator_8cpp_source}{Actuator.\+cpp}}.
+
+\Hypertarget{classsf_1_1_actuator_afe9be563b1e1819330bb61386d443b62}\label{classsf_1_1_actuator_afe9be563b1e1819330bb61386d443b62} 
+\index{sf::Actuator@{sf::Actuator}!Update@{Update}}
+\index{Update@{Update}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void sf\+::\+Actuator\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to update the internal state of the actuator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & a time step of the simulation \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_d_c_motor_a7c67f72c93d9e24e089a6ae62e1c9664}{sf\+::\+DCMotor}}, \mbox{\hyperlink{classsf_1_1_light_af7ddba704662cbaa9c6ae80893e505ac}{sf\+::\+Light}}, \mbox{\hyperlink{classsf_1_1_motor_a7cf83aaa6de72d16c66138807f95e24c}{sf\+::\+Motor}}, \mbox{\hyperlink{classsf_1_1_propeller_ac2c8700d915337f3d836d1f97be398ab}{sf\+::\+Propeller}}, \mbox{\hyperlink{classsf_1_1_push_a9b61d8108e5cf955b26e7835b2cfc70a}{sf\+::\+Push}}, \mbox{\hyperlink{classsf_1_1_rudder_a9194a6e688e4c8e3b5ac5d0513d208ea}{sf\+::\+Rudder}}, \mbox{\hyperlink{classsf_1_1_servo_aed2297ca611fcbd33d7e7af4823f0cb1}{sf\+::\+Servo}}, \mbox{\hyperlink{classsf_1_1_simple_thruster_a2fedaa227b7efcdb400071747e44c0b2}{sf\+::\+Simple\+Thruster}}, \mbox{\hyperlink{classsf_1_1_suction_cup_a242b27d67d9b06c2ea2549b9debcadc3}{sf\+::\+Suction\+Cup}}, \mbox{\hyperlink{classsf_1_1_thruster_a215f38c15cf6c3c599afde3728f6cfce}{sf\+::\+Thruster}}, and \mbox{\hyperlink{classsf_1_1_variable_buoyancy_a6170564595665201f3004c4d1a156833}{sf\+::\+Variable\+Buoyancy}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_actuator_8cpp_source}{Actuator.\+cpp}}.
+
+\Hypertarget{classsf_1_1_actuator_a468c6522181db81891bf535df9497b5a}\label{classsf_1_1_actuator_a468c6522181db81891bf535df9497b5a} 
+\index{sf::Actuator@{sf::Actuator}!WatchdogTimeout@{WatchdogTimeout}}
+\index{WatchdogTimeout@{WatchdogTimeout}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{WatchdogTimeout()}{WatchdogTimeout()}}
+{\footnotesize\ttfamily void sf\+::\+Actuator\+::\+Watchdog\+Timeout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{_actuator_8cpp_source}{Actuator.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_actuator_a1ca99e4bb5c8efa1670fdd09f1d52ead}\label{classsf_1_1_actuator_a1ca99e4bb5c8efa1670fdd09f1d52ead} 
+\index{sf::Actuator@{sf::Actuator}!dm@{dm}}
+\index{dm@{dm}!sf::Actuator@{sf::Actuator}}
+\doxysubsubsection{\texorpdfstring{dm}{dm}}
+{\footnotesize\ttfamily Display\+Mode sf\+::\+Actuator\+::dm\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_8h_source_l00083}{83}} of file \mbox{\hyperlink{_actuator_8h_source}{Actuator.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Actuator.\+h\item 
+Library/src/actuators/Actuator.\+cpp\end{DoxyCompactItemize}

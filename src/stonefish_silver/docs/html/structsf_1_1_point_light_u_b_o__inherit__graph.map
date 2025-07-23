@@ -1,0 +1,5 @@
+<map id="sf::PointLightUBO" name="sf::PointLightUBO">
+<area shape="rect" id="Node000001" title="A structure representing point light in the Lights UBO." alt="" coords="5,79,140,104"/>
+<area shape="rect" id="Node000002" href="$structsf_1_1_light_u_b_o.html" title="A structure representing a generic light in the Lights UBO." alt="" coords="21,5,124,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,44,75,79,70,79,70,44"/>
+</map>

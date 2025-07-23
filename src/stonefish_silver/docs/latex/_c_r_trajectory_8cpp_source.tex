@@ -1,0 +1,196 @@
+\doxysection{CRTrajectory.\+cpp}
+\hypertarget{_c_r_trajectory_8cpp_source}{}\label{_c_r_trajectory_8cpp_source}\index{Library/src/entities/animation/CRTrajectory.cpp@{Library/src/entities/animation/CRTrajectory.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ CRTrajectory.cpp}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 22/10/2020.}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2020-\/2023\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}entities/animation/CRTrajectory.h"{}}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00029}00029\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00032}\mbox{\hyperlink{classsf_1_1_c_r_trajectory_aae4a6461b237d3660423f930c44b3f04}{00032}}\ \mbox{\hyperlink{classsf_1_1_c_r_trajectory_aae4a6461b237d3660423f930c44b3f04}{CRTrajectory::CRTrajectory}}(PlaybackMode\ playback)\ :\ \mbox{\hyperlink{classsf_1_1_p_w_l_trajectory}{PWLTrajectory}}(playback)}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00036}\mbox{\hyperlink{classsf_1_1_c_r_trajectory_aeae7e2a096736c849e0651a2c759443f}{00036}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_c_r_trajectory_aeae7e2a096736c849e0651a2c759443f}{CRTrajectory::Interpolate}}()}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}(points.size()\ <\ 3)}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_p_w_l_trajectory_a8f23fe6ab858850aca9563b012094153}{PWLTrajectory::Interpolate}}();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Find\ current\ path\ segment}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::find\_if(points.begin(),\ points.end(),}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&](\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ key)\{\ return\ key.t\ >=\ playTime;\ \});}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ Transform\ T0,\ T1,\ T2,\ T3;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ Scalar\ t0,\ t1,\ t2,\ t3;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(it\ <=\ points.begin()+1)\ \textcolor{comment}{//Beginning}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ T1\ =\ points[0].T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ T2\ =\ points[1].T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ T3\ =\ points[2].T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ T0.setOrigin(T1.getOrigin()-\/(T2.getOrigin()-\/T1.getOrigin()));}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ T0.setRotation(T1.getRotation());}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ t1\ =\ points[0].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ t2\ =\ points[1].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ t3\ =\ points[2].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ t0\ =\ t1-\/(t2-\/t1);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(it\ >=\ points.end()-\/1)\ \textcolor{comment}{//End}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ T0\ =\ points[points.size()-\/3].T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ T1\ =\ points[points.size()-\/2].T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ T2\ =\ points.back().T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ T3.setOrigin(T2.getOrigin()+(T2.getOrigin()-\/T1.getOrigin()));}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ T3.setRotation(T2.getRotation());}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ t0\ =\ points[points.size()-\/3].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ t1\ =\ points[points.size()-\/2].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ t2\ =\ points.back().t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ t3\ =\ t2\ +\ (t2-\/t1);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ T0\ =\ (it-\/2)-\/>T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ T1\ =\ (it-\/1)-\/>T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ T2\ =\ it-\/>T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ T3\ =\ (it+1)-\/>T;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ t0\ =\ (it-\/2)-\/>t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ t1\ =\ (it-\/1)-\/>t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ t2\ =\ it-\/>t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ t3\ =\ (it+1)-\/>t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Linear\ quantities}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(btFuzzyZero((T2.getOrigin()-\/T1.getOrigin()).safeNorm()))\ \textcolor{comment}{//Coinciding\ points}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ interpTrans.setOrigin(T2.getOrigin());}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ interpVel\ =\ V0();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ interpTrans.setOrigin(catmullRom(T0.getOrigin(),\ T1.getOrigin(),\ T2.getOrigin(),\ T3.getOrigin(),}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t0,\ t1,\ t2,\ t3,\ playTime));}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ interpVel\ =\ catmullRomDerivative(T0.getOrigin(),\ T1.getOrigin(),\ T2.getOrigin(),\ T3.getOrigin(),}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t0,\ t1,\ t2,\ t3,\ playTime);\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Angular\ quantities}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ Vector3\ dummy;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ interpTrans.setRotation(slerp(T1.getRotation(),\ T2.getRotation(),\ (playTime-\/t1)/(t2-\/t1)));}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ calculateVelocityShortestPath(T1,\ T2,\ t2-\/t1,\ dummy,\ interpAngVel);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!forward)}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ interpVel\ =\ -\/interpVel;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ interpAngVel\ =\ -\/interpAngVel;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00109}00109\ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00111}\mbox{\hyperlink{classsf_1_1_c_r_trajectory_a17c7516e6f1c48470da24f88850e01c9}{00111}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_c_r_trajectory_a17c7516e6f1c48470da24f88850e01c9}{CRTrajectory::BuildGraphicalPath}}()}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00112}00112\ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00113}00113\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_p_w_l_trajectory_a92cbf9bd0ef56693625a3a65460daafb}{PWLTrajectory::BuildGraphicalPath}}();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordflow}{if}(points.size()\ >=\ 3)}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00116}00116\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ vis[1].points.clear();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<points.size()-\/1;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ P1\ =\ points[i].T.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ P2\ =\ points[i+1].T.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ t1\ =\ points[i].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ t2\ =\ points[i+1].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ dist\ =\ (P2-\/P1).safeNorm();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(btFuzzyZero(dist))}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ P0,\ P3;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ t0,\ t3;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i==0)\ \textcolor{comment}{//Beginning}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ P3\ =\ points[2].T.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ P0\ =\ P1-\/(P2-\/P1);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t3\ =\ points[2].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t0\ =\ t1-\/(t2-\/t1);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(i==points.size()-\/2)\ \textcolor{comment}{//End}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ P0\ =\ points[i-\/1].T.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ P3\ =\ P2+(P2-\/P1);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t0\ =\ points[i-\/1].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t3\ =\ t2+(t2-\/t1);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//Middle}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ P0\ =\ points[i-\/1].T.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ P3\ =\ points[i+2].T.getOrigin();}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t0\ =\ points[i-\/1].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t3\ =\ points[i+2].t;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ dt\ =\ (t2-\/t1)/Scalar(100.0);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(Scalar\ t=t1;\ t<t2;\ t+=dt)}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vis[1].points.push\_back(glVectorFromVector(catmullRom(P0,\ P1,\ P2,\ P3,\ t0,\ t1,\ t2,\ t3,\ t)));\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ vis[1].points.push\_back(glVectorFromVector(points.back().T.getOrigin()));}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00158}00158\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00159}00159\ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00161}00161\ Vector3\ CRTrajectory::catmullRom(Vector3\ P0,\ Vector3\ P1,\ Vector3\ P2,\ Vector3\ P3,\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ t0,\ Scalar\ t1,\ Scalar\ t2,\ Scalar\ t3,\ Scalar\ t)}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00163}00163\ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00164}00164\ \ \ \ \ Vector3\ A1\ =\ (t1-\/t)/(t1-\/t0)*P0\ +\ (t-\/t0)/(t1-\/t0)*P1;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00165}00165\ \ \ \ \ Vector3\ A2\ =\ (t2-\/t)/(t2-\/t1)*P1\ +\ (t-\/t1)/(t2-\/t1)*P2;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00166}00166\ \ \ \ \ Vector3\ A3\ =\ (t3-\/t)/(t3-\/t2)*P2\ +\ (t-\/t2)/(t3-\/t2)*P3;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00167}00167\ \ \ \ \ Vector3\ B1\ =\ (t2-\/t)/(t2-\/t0)*A1\ +\ (t-\/t0)/(t2-\/t0)*A2;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00168}00168\ \ \ \ \ Vector3\ B2\ =\ (t3-\/t)/(t3-\/t1)*A2\ +\ (t-\/t1)/(t3-\/t1)*A3;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00169}00169\ \ \ \ \ Vector3\ C\ =\ (t2-\/t)/(t2-\/t1)*B1\ +\ (t-\/t1)/(t2-\/t1)*B2;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00170}00170\ \ \ \ \ \textcolor{keywordflow}{return}\ C;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00171}00171\ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00173}00173\ Vector3\ CRTrajectory::catmullRomDerivative(Vector3\ P0,\ Vector3\ P1,\ Vector3\ P2,\ Vector3\ P3,\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ t0,\ Scalar\ t1,\ Scalar\ t2,\ Scalar\ t3,\ Scalar\ t)}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00175}00175\ \{}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00176}00176\ \ \ \ \ Vector3\ A1\ =\ (t1-\/t)/(t1-\/t0)*P0\ +\ (t-\/t0)/(t1-\/t0)*P1;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00177}00177\ \ \ \ \ Vector3\ A2\ =\ (t2-\/t)/(t2-\/t1)*P1\ +\ (t-\/t1)/(t2-\/t1)*P2;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00178}00178\ \ \ \ \ Vector3\ A3\ =\ (t3-\/t)/(t3-\/t2)*P2\ +\ (t-\/t2)/(t3-\/t2)*P3;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00179}00179\ \ \ \ \ Vector3\ B1\ =\ (t2-\/t)/(t2-\/t0)*A1\ +\ (t-\/t0)/(t2-\/t0)*A2;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00180}00180\ \ \ \ \ Vector3\ B2\ =\ (t3-\/t)/(t3-\/t1)*A2\ +\ (t-\/t1)/(t3-\/t1)*A3;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00181}00181\ \ \ \ \ Vector3\ dA1\ =\ Scalar(1)/(t1-\/t0)*(P1-\/P0);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00182}00182\ \ \ \ \ Vector3\ dA2\ =\ Scalar(1)/(t2-\/t1)*(P2-\/P1);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00183}00183\ \ \ \ \ Vector3\ dA3\ =\ Scalar(1)/(t3-\/t2)*(P3-\/P2);}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00184}00184\ \ \ \ \ Vector3\ dB1\ =\ Scalar(1)/(t2-\/t0)*(A2-\/A1)\ +\ (t2-\/t)/(t2-\/t0)*dA1\ +\ (t-\/t0)/(t2-\/t0)*dA2;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00185}00185\ \ \ \ \ Vector3\ dB2\ =\ Scalar(1)/(t3-\/t1)*(A3-\/A2)\ +\ (t3-\/t)/(t3-\/t1)*dA2\ +\ (t-\/t1)/(t3-\/t1)*dA3;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00186}00186\ \ \ \ \ Vector3\ dC\ =\ Scalar(1)/(t2-\/t1)*(B2-\/B1)\ +\ (t2-\/t)/(t2-\/t1)*dB1\ +\ (t-\/t1)/(t2-\/t1)*dB2;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00187}00187\ \ \ \ \ \textcolor{keywordflow}{return}\ dC;}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00188}00188\ \}}
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_c_r_trajectory_8cpp_source_l00190}00190\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,143 @@
+\doxysection{sf\+::Open\+GLParticles Class Reference}
+\hypertarget{classsf_1_1_open_g_l_particles}{}\label{classsf_1_1_open_g_l_particles}\index{sf::OpenGLParticles@{sf::OpenGLParticles}}
+
+
+An abstract class implementing a general particle system.  
+
+
+
+
+{\ttfamily \#include $<$Open\+GLParticles.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Open\+GLParticles\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classsf_1_1_open_g_l_particles__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_particles_aa62ea1d81b1b8cb24975900c61b031a3}{Open\+GLParticles}} (GLuint num\+Of\+Particles)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_open_g_l_particles_ac36b3a9b642759113ba13faeb9d42980}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLParticles}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_particles_a1214598e378639c04feffba9f43f0f31}{n\+Particles}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_particles_a4c3e4e35054bf6bad576a023ba3f1392}{particle\+Pos\+SSBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_particles_a64f12aa5326123b26545e127ea4b98b8}{particle\+Vel\+SSBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_particles_af6e7c879439aa218f5e4531f016f6453}{particle\+VAO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_particles_adfd2f5ad1e4a106c9bde2223591148e6}{particle\+EAB}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class implementing a general particle system. 
+
+Definition at line \mbox{\hyperlink{_open_g_l_particles_8h_source_l00034}{34}} of file \mbox{\hyperlink{_open_g_l_particles_8h_source}{Open\+GLParticles.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_open_g_l_particles_aa62ea1d81b1b8cb24975900c61b031a3}\label{classsf_1_1_open_g_l_particles_aa62ea1d81b1b8cb24975900c61b031a3} 
+\index{sf::OpenGLParticles@{sf::OpenGLParticles}!OpenGLParticles@{OpenGLParticles}}
+\index{OpenGLParticles@{OpenGLParticles}!sf::OpenGLParticles@{sf::OpenGLParticles}}
+\doxysubsubsection{\texorpdfstring{OpenGLParticles()}{OpenGLParticles()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLParticles\+::\+Open\+GLParticles (\begin{DoxyParamCaption}\item[{GLuint}]{num\+Of\+Particles }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Of\+Particles} & the number of simulated particles \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_particles_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_open_g_l_particles_8cpp_source}{Open\+GLParticles.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_particles_ac36b3a9b642759113ba13faeb9d42980}\label{classsf_1_1_open_g_l_particles_ac36b3a9b642759113ba13faeb9d42980} 
+\index{sf::OpenGLParticles@{sf::OpenGLParticles}!````~OpenGLParticles@{\texorpdfstring{$\sim$}{\string~}OpenGLParticles}}
+\index{````~OpenGLParticles@{\texorpdfstring{$\sim$}{\string~}OpenGLParticles}!sf::OpenGLParticles@{sf::OpenGLParticles}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLParticles()}{\string~OpenGLParticles()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLParticles\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLParticles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_particles_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_open_g_l_particles_8cpp_source}{Open\+GLParticles.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_open_g_l_particles_a1214598e378639c04feffba9f43f0f31}\label{classsf_1_1_open_g_l_particles_a1214598e378639c04feffba9f43f0f31} 
+\index{sf::OpenGLParticles@{sf::OpenGLParticles}!nParticles@{nParticles}}
+\index{nParticles@{nParticles}!sf::OpenGLParticles@{sf::OpenGLParticles}}
+\doxysubsubsection{\texorpdfstring{nParticles}{nParticles}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLParticles\+::n\+Particles\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_particles_8h_source_l00047}{47}} of file \mbox{\hyperlink{_open_g_l_particles_8h_source}{Open\+GLParticles.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_particles_adfd2f5ad1e4a106c9bde2223591148e6}\label{classsf_1_1_open_g_l_particles_adfd2f5ad1e4a106c9bde2223591148e6} 
+\index{sf::OpenGLParticles@{sf::OpenGLParticles}!particleEAB@{particleEAB}}
+\index{particleEAB@{particleEAB}!sf::OpenGLParticles@{sf::OpenGLParticles}}
+\doxysubsubsection{\texorpdfstring{particleEAB}{particleEAB}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLParticles\+::particle\+EAB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_particles_8h_source_l00051}{51}} of file \mbox{\hyperlink{_open_g_l_particles_8h_source}{Open\+GLParticles.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_particles_a4c3e4e35054bf6bad576a023ba3f1392}\label{classsf_1_1_open_g_l_particles_a4c3e4e35054bf6bad576a023ba3f1392} 
+\index{sf::OpenGLParticles@{sf::OpenGLParticles}!particlePosSSBO@{particlePosSSBO}}
+\index{particlePosSSBO@{particlePosSSBO}!sf::OpenGLParticles@{sf::OpenGLParticles}}
+\doxysubsubsection{\texorpdfstring{particlePosSSBO}{particlePosSSBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLParticles\+::particle\+Pos\+SSBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_particles_8h_source_l00048}{48}} of file \mbox{\hyperlink{_open_g_l_particles_8h_source}{Open\+GLParticles.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_particles_af6e7c879439aa218f5e4531f016f6453}\label{classsf_1_1_open_g_l_particles_af6e7c879439aa218f5e4531f016f6453} 
+\index{sf::OpenGLParticles@{sf::OpenGLParticles}!particleVAO@{particleVAO}}
+\index{particleVAO@{particleVAO}!sf::OpenGLParticles@{sf::OpenGLParticles}}
+\doxysubsubsection{\texorpdfstring{particleVAO}{particleVAO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLParticles\+::particle\+VAO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_particles_8h_source_l00050}{50}} of file \mbox{\hyperlink{_open_g_l_particles_8h_source}{Open\+GLParticles.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_particles_a64f12aa5326123b26545e127ea4b98b8}\label{classsf_1_1_open_g_l_particles_a64f12aa5326123b26545e127ea4b98b8} 
+\index{sf::OpenGLParticles@{sf::OpenGLParticles}!particleVelSSBO@{particleVelSSBO}}
+\index{particleVelSSBO@{particleVelSSBO}!sf::OpenGLParticles@{sf::OpenGLParticles}}
+\doxysubsubsection{\texorpdfstring{particleVelSSBO}{particleVelSSBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLParticles\+::particle\+Vel\+SSBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_particles_8h_source_l00049}{49}} of file \mbox{\hyperlink{_open_g_l_particles_8h_source}{Open\+GLParticles.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/graphics/Open\+GLParticles.\+h\item 
+Library/src/graphics/Open\+GLParticles.\+cpp\end{DoxyCompactItemize}

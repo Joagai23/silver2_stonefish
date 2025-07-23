@@ -1,0 +1,256 @@
+\doxysection{sf\+::Variable\+Buoyancy Class Reference}
+\hypertarget{classsf_1_1_variable_buoyancy}{}\label{classsf_1_1_variable_buoyancy}\index{sf::VariableBuoyancy@{sf::VariableBuoyancy}}
+
+
+A class implementing a variable buoyancy system (VBS).  
+
+
+
+
+{\ttfamily \#include $<$Variable\+Buoyancy.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Variable\+Buoyancy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classsf_1_1_variable_buoyancy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Variable\+Buoyancy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_variable_buoyancy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_variable_buoyancy_ab50e49ed309a6cbde7639d1069222f3a}{Variable\+Buoyancy}} (std\+::string unique\+Name, const std\+::vector$<$ std\+::string $>$ \&volume\+Mesh\+Paths, Scalar initial\+Volume)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_variable_buoyancy_a6170564595665201f3004c4d1a156833}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method used to update the internal state of the actuator. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_variable_buoyancy_a80ea646060d2ea81c44add65b19d8c32}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the VBS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_variable_buoyancy_ac1743307a09a18ad56833499b5e403cb}{set\+Flow\+Rate}} (Scalar rate)
+\begin{DoxyCompactList}\small\item\em A method used to set the desired flow rate setpoint. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_variable_buoyancy_a17bc3bf54cba9b4b437ce1d45b8c257f}{get\+Flow\+Rate}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the current flow rate setpoint. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_variable_buoyancy_a2c9ef67565c24298f585ba466128da95}{get\+Liquid\+Volume}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the current volume of the liquid in the system. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_variable_buoyancy_a7072efb3f214e051c05b5822b0c704b2}{get\+Force}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the generated force. \end{DoxyCompactList}\item 
+Actuator\+Type \mbox{\hyperlink{classsf_1_1_variable_buoyancy_a671b8def70c3ccaa1b40d3b735e1f624}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_link_actuator}{sf\+::\+Link\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_link_actuator_af1419a4d8c81fd49639296a66ca58b1c}{Link\+Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_link_actuator_abb33decb20bb669f931fe9eda36943e0}{Attach\+To\+Solid}} (\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the actuator to a specified rigid body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_link_actuator_a994726375d1bac63eeaee3ffe319ecfb}{set\+Relative\+Actuator\+Frame}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to set the actuator origin frame. \end{DoxyCompactList}\item 
+virtual Transform \mbox{\hyperlink{classsf_1_1_link_actuator_a2a206c10015fd2ab7d4a517af5906311}{get\+Actuator\+Frame}} () const
+\begin{DoxyCompactList}\small\item\em A method returning actuator frame in the world frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_actuator_a0bdcfb3e2bad01b7e3524efcea3dd646}{Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_actuator_ab1702a858f2c750da3259d8b3d574268}{\texorpdfstring{$\sim$}{\string~}\+Actuator}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_afe4e4fcdb0e13f9efbc665994e77d145}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set display mode used for the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a7e3ae31d3cfed62d68a0445b7a03f026}{set\+Watchdog}} (Scalar timeout)
+\begin{DoxyCompactList}\small\item\em A method used to set the watchdog timeout. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_actuator_a3a074b11358493cb251139c475507d2d}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_actuator_a468c6522181db81891bf535df9497b5a}{Watchdog\+Timeout}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a86dec171a3761123d92363a71b716385}{Reset\+Watchdog}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_link_actuator}{sf\+::\+Link\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_link_actuator_a36af6645c2eb2bb3621d07641d1e4dd8}{attach}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_link_actuator_a23f23ca6eae0382d3b77ab5e76417a29}{o2a}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_actuator_a1ca99e4bb5c8efa1670fdd09f1d52ead}{dm}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing a variable buoyancy system (VBS). 
+
+Definition at line \mbox{\hyperlink{_variable_buoyancy_8h_source_l00035}{35}} of file \mbox{\hyperlink{_variable_buoyancy_8h_source}{Variable\+Buoyancy.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_variable_buoyancy_ab50e49ed309a6cbde7639d1069222f3a}\label{classsf_1_1_variable_buoyancy_ab50e49ed309a6cbde7639d1069222f3a} 
+\index{sf::VariableBuoyancy@{sf::VariableBuoyancy}!VariableBuoyancy@{VariableBuoyancy}}
+\index{VariableBuoyancy@{VariableBuoyancy}!sf::VariableBuoyancy@{sf::VariableBuoyancy}}
+\doxysubsubsection{\texorpdfstring{VariableBuoyancy()}{VariableBuoyancy()}}
+{\footnotesize\ttfamily sf\+::\+Variable\+Buoyancy\+::\+Variable\+Buoyancy (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{volume\+Mesh\+Paths,  }\item[{Scalar}]{initial\+Volume }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the VBS \\
+\hline
+{\em volume\+Mesh\+Path} & a list of paths to the meshes representing different states of the buoyancy volume \\
+\hline
+{\em initial\+Volume} & an initial state of the VBS \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_variable_buoyancy_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_variable_buoyancy_8cpp_source}{Variable\+Buoyancy.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_variable_buoyancy_a17bc3bf54cba9b4b437ce1d45b8c257f}\label{classsf_1_1_variable_buoyancy_a17bc3bf54cba9b4b437ce1d45b8c257f} 
+\index{sf::VariableBuoyancy@{sf::VariableBuoyancy}!getFlowRate@{getFlowRate}}
+\index{getFlowRate@{getFlowRate}!sf::VariableBuoyancy@{sf::VariableBuoyancy}}
+\doxysubsubsection{\texorpdfstring{getFlowRate()}{getFlowRate()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Variable\+Buoyancy\+::get\+Flow\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the current flow rate setpoint. 
+
+
+
+Definition at line \mbox{\hyperlink{_variable_buoyancy_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{_variable_buoyancy_8cpp_source}{Variable\+Buoyancy.\+cpp}}.
+
+\Hypertarget{classsf_1_1_variable_buoyancy_a7072efb3f214e051c05b5822b0c704b2}\label{classsf_1_1_variable_buoyancy_a7072efb3f214e051c05b5822b0c704b2} 
+\index{sf::VariableBuoyancy@{sf::VariableBuoyancy}!getForce@{getForce}}
+\index{getForce@{getForce}!sf::VariableBuoyancy@{sf::VariableBuoyancy}}
+\doxysubsubsection{\texorpdfstring{getForce()}{getForce()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Variable\+Buoyancy\+::get\+Force (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the generated force. 
+
+
+
+Definition at line \mbox{\hyperlink{_variable_buoyancy_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{_variable_buoyancy_8cpp_source}{Variable\+Buoyancy.\+cpp}}.
+
+\Hypertarget{classsf_1_1_variable_buoyancy_a2c9ef67565c24298f585ba466128da95}\label{classsf_1_1_variable_buoyancy_a2c9ef67565c24298f585ba466128da95} 
+\index{sf::VariableBuoyancy@{sf::VariableBuoyancy}!getLiquidVolume@{getLiquidVolume}}
+\index{getLiquidVolume@{getLiquidVolume}!sf::VariableBuoyancy@{sf::VariableBuoyancy}}
+\doxysubsubsection{\texorpdfstring{getLiquidVolume()}{getLiquidVolume()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Variable\+Buoyancy\+::get\+Liquid\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the current volume of the liquid in the system. 
+
+
+
+Definition at line \mbox{\hyperlink{_variable_buoyancy_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{_variable_buoyancy_8cpp_source}{Variable\+Buoyancy.\+cpp}}.
+
+\Hypertarget{classsf_1_1_variable_buoyancy_a671b8def70c3ccaa1b40d3b735e1f624}\label{classsf_1_1_variable_buoyancy_a671b8def70c3ccaa1b40d3b735e1f624} 
+\index{sf::VariableBuoyancy@{sf::VariableBuoyancy}!getType@{getType}}
+\index{getType@{getType}!sf::VariableBuoyancy@{sf::VariableBuoyancy}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Actuator\+Type sf\+::\+Variable\+Buoyancy\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the actuator. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_actuator_a3b1831e870e2b800590271823d034c88}{sf\+::\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_variable_buoyancy_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_variable_buoyancy_8cpp_source}{Variable\+Buoyancy.\+cpp}}.
+
+\Hypertarget{classsf_1_1_variable_buoyancy_a80ea646060d2ea81c44add65b19d8c32}\label{classsf_1_1_variable_buoyancy_a80ea646060d2ea81c44add65b19d8c32} 
+\index{sf::VariableBuoyancy@{sf::VariableBuoyancy}!Render@{Render}}
+\index{Render@{Render}!sf::VariableBuoyancy@{sf::VariableBuoyancy}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Variable\+Buoyancy\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the VBS. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_link_actuator_aa2529f1fa02cf53b2871e79337deeec0}{sf\+::\+Link\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_variable_buoyancy_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{_variable_buoyancy_8cpp_source}{Variable\+Buoyancy.\+cpp}}.
+
+\Hypertarget{classsf_1_1_variable_buoyancy_ac1743307a09a18ad56833499b5e403cb}\label{classsf_1_1_variable_buoyancy_ac1743307a09a18ad56833499b5e403cb} 
+\index{sf::VariableBuoyancy@{sf::VariableBuoyancy}!setFlowRate@{setFlowRate}}
+\index{setFlowRate@{setFlowRate}!sf::VariableBuoyancy@{sf::VariableBuoyancy}}
+\doxysubsubsection{\texorpdfstring{setFlowRate()}{setFlowRate()}}
+{\footnotesize\ttfamily void sf\+::\+Variable\+Buoyancy\+::set\+Flow\+Rate (\begin{DoxyParamCaption}\item[{Scalar}]{rate }\end{DoxyParamCaption})}
+
+
+
+A method used to set the desired flow rate setpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rate} & the desired flow rate of the VBS \mbox{[}m3/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_variable_buoyancy_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_variable_buoyancy_8cpp_source}{Variable\+Buoyancy.\+cpp}}.
+
+\Hypertarget{classsf_1_1_variable_buoyancy_a6170564595665201f3004c4d1a156833}\label{classsf_1_1_variable_buoyancy_a6170564595665201f3004c4d1a156833} 
+\index{sf::VariableBuoyancy@{sf::VariableBuoyancy}!Update@{Update}}
+\index{Update@{Update}!sf::VariableBuoyancy@{sf::VariableBuoyancy}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void sf\+::\+Variable\+Buoyancy\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to update the internal state of the actuator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & the time step of the simulation \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_actuator_afe9be563b1e1819330bb61386d443b62}{sf\+::\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_variable_buoyancy_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{_variable_buoyancy_8cpp_source}{Variable\+Buoyancy.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Variable\+Buoyancy.\+h\item 
+Library/src/actuators/Variable\+Buoyancy.\+cpp\end{DoxyCompactItemize}

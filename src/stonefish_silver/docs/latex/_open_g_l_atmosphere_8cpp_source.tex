@@ -1,0 +1,659 @@
+\doxysection{Open\+GLAtmosphere.\+cpp}
+\hypertarget{_open_g_l_atmosphere_8cpp_source}{}\label{_open_g_l_atmosphere_8cpp_source}\index{Library/src/graphics/OpenGLAtmosphere.cpp@{Library/src/graphics/OpenGLAtmosphere.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ OpenGLAtmosphere.cpp}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 22/07/2017.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2017-\/2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLAtmosphere.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLState.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/GLSLShader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLView.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}utils/SystemUtil.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#ifdef\ EMBEDDED\_RESOURCES}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}ResourceHandle.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00042}00042\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00043}00043\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00045}00045\ GLuint\ OpenGLAtmosphere::atmosphereAPI\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00047}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a245c8bb219932d37da84261e265278a9}{00047}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a245c8bb219932d37da84261e265278a9}{OpenGLAtmosphere::OpenGLAtmosphere}}(\textcolor{keyword}{const}\ std::string\&\ modelFilename,\ RenderQuality\ shadow)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00048}00048\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//Prepare\ for\ rendering}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ i=0;\ i<AtmosphereTextures::TEXTURE\_COUNT;\ ++i)\ textures[i]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00051}00051\ \ \ \ \ skySunShaders[0]\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00052}00052\ \ \ \ \ skySunShaders[1]\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00053}00053\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//Init\ shadow\ baking}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00055}00055\ \ \ \ \ sunShadowmapShader\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00056}00056\ \ \ \ \ sunShadowmapArray\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00057}00057\ \ \ \ \ sunDepthSampler\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00058}00058\ \ \ \ \ sunShadowSampler\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00059}00059\ \ \ \ \ sunShadowmapSplits\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00060}00060\ \ \ \ \ sunShadowmapSize\ =\ 4096;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00061}00061\ \ \ \ \ sunShadowFBO\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00062}00062\ \ \ \ \ sunSkyUBO\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00063}00063\ \ \ \ \ sunDirection\ =\ glm::vec3(0,0,1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00064}00064\ \ \ \ \ sunModelView\ =\ glm::mat4x4(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00065}00065\ \ \ \ \ sunShadowFrustum\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00066}00066\ \ \ \ \ sunShadowCPM\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00067}00067\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//Set\ shadow\ quality}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{switch}(shadow)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00070}00070\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ RenderQuality::DISABLED:}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ sunShadowmapSize\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ sunShadowmapSplits\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ RenderQuality::LOW:}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ sunShadowmapSize\ =\ 1024;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ sunShadowmapSplits\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ RenderQuality::MEDIUM:}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ sunShadowmapSize\ =\ 2048;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ sunShadowmapSplits\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ RenderQuality::HIGH:}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ sunShadowmapSize\ =\ 4096;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ sunShadowmapSplits\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//Load\ API\ and\ Data}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00093}00093\ \ \ \ \ memset(\&sunSkyUBOData,\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsf_1_1_sun_sky_u_b_o}{SunSkyUBO}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a594eb4f3f2c463b7081d7cb157ff4a0a}{LoadAtmosphereData}}(modelFilename);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00095}00095\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//Set\ initial\ coditions}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ab67cd0541e0e8ad5687b6a233f055f8f}{SetSunPosition}}(0.0,\ 45.0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a61cab6b5522e4f2b0d2dd9ff8b428cfb}{setAirTemperature}}(20.0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00099}00099\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a5ec9f6fd23b8ecf986988b6da0a21356}{setAirHumidity}}(0.5);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//Permanently\ bind\ atmosphere\ textures}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00102}00102\ \ \ \ \ OpenGLState::BindTexture(TEX\_ATM\_TRANSMITTANCE,\ GL\_TEXTURE\_2D,\ textures[AtmosphereTextures::TRANSMITTANCE]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00103}00103\ \ \ \ \ OpenGLState::BindTexture(TEX\_ATM\_SCATTERING,\ GL\_TEXTURE\_3D,\ textures[AtmosphereTextures::SCATTERING]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00104}00104\ \ \ \ \ OpenGLState::BindTexture(TEX\_ATM\_IRRADIANCE,\ GL\_TEXTURE\_2D,\ textures[AtmosphereTextures::IRRADIANCE]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00105}00105\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//Build\ rendering\ shaders}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00107}00107\ \ \ \ \ std::vector<GLuint>\ compiledShaders;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00108}00108\ \ \ \ \ compiledShaders.push\_back(atmosphereAPI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00109}00109\ \ \ \ \ std::vector<GLSLSource>\ sources;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00110}00110\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_VERTEX\_SHADER,\ \textcolor{stringliteral}{"{}atmSkySun.vert"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00111}00111\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}atmSkySun.frag"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00112}00112\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//Sky\ rendering}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00114}00114\ \ \ \ \ skySunShaders[0]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources,\ compiledShaders);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00115}00115\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00116}00116\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00117}00117\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}single\_mie\_scattering\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00118}00118\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}eyePos"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00119}00119\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}sunDir"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00120}00120\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}invView"{}},\ ParameterType::MAT4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00121}00121\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}invProj"{}},\ ParameterType::MAT4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00122}00122\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}whitePoint"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00123}00123\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}cosSunSize"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00124}00124\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}bottomRadius"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00125}00125\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}groundAlbedo"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00127}00127\ \ \ \ \ sources.pop\_back();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00128}00128\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}atmSkySunTemp.frag"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00129}00129\ \ \ \ \ skySunShaders[1]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources,\ compiledShaders);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00130}00130\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00131}00131\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00132}00132\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}single\_mie\_scattering\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00133}00133\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}eyePos"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00134}00134\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}sunDir"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00135}00135\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}invView"{}},\ ParameterType::MAT4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00136}00136\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}invProj"{}},\ ParameterType::MAT4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00137}00137\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}whitePoint"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00138}00138\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}cosSunSize"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00139}00139\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}bottomRadius"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00140}00140\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}groundAlbedo"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00141}00141\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}skyEmissivity"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00142}00142\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}airTemperature"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//Initialize\ shadows}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00145}00145\ \ \ \ \ sunShadowFrustum\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{structsf_1_1_view_frustum}{ViewFrustum}}[sunShadowmapSplits];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00146}00146\ \ \ \ \ sunShadowCPM\ =\ \textcolor{keyword}{new}\ glm::mat4x4[sunShadowmapSplits];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00148}00148\ \ \ \ \ \textcolor{comment}{//Create\ sun\ \&\ sky\ UBO}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00149}00149\ \ \ \ \ glGenBuffers(1,\ \&sunSkyUBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00150}00150\ \ \ \ \ glBindBuffer(GL\_UNIFORM\_BUFFER,\ sunSkyUBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00151}00151\ \ \ \ \ glBufferData(GL\_UNIFORM\_BUFFER,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsf_1_1_sun_sky_u_b_o}{SunSkyUBO}}),\ NULL,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00152}00152\ \ \ \ \ glBindBuffer(GL\_UNIFORM\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00153}00153\ \ \ \ \ glBindBufferRange(GL\_UNIFORM\_BUFFER,\ UBO\_SUNSKY,\ sunSkyUBO,\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsf_1_1_sun_sky_u_b_o}{SunSkyUBO}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{keywordflow}{if}(shadow\ >\ RenderQuality::DISABLED)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00156}00156\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ sunShadowmapShader\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(\textcolor{stringliteral}{"{}sunCSM.frag"{}});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ sunShadowmapShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}shadowmapArray"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ sunShadowmapShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}shadowmapLayer"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Generate\ shadowmap\ array}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ glGenTextures(1,\ \&sunShadowmapArray);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_BASE,\ GL\_TEXTURE\_2D\_ARRAY,\ sunShadowmapArray);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ glTexImage3D(GL\_TEXTURE\_2D\_ARRAY,\ 0,\ GL\_DEPTH\_COMPONENT32F,\ sunShadowmapSize,\ sunShadowmapSize,\ sunShadowmapSplits,\ 0,\ GL\_DEPTH\_COMPONENT,\ GL\_FLOAT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ OpenGLState::UnbindTexture(TEX\_BASE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Generate\ samplers}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ glGenSamplers(1,\ \&sunDepthSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunDepthSampler,\ GL\_TEXTURE\_MAG\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunDepthSampler,\ GL\_TEXTURE\_MIN\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunDepthSampler,\ GL\_TEXTURE\_WRAP\_S,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunDepthSampler,\ GL\_TEXTURE\_WRAP\_T,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ glGenSamplers(1,\ \&sunShadowSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunShadowSampler,\ GL\_TEXTURE\_MAG\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunShadowSampler,\ GL\_TEXTURE\_MIN\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunShadowSampler,\ GL\_TEXTURE\_WRAP\_S,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunShadowSampler,\ GL\_TEXTURE\_WRAP\_T,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunShadowSampler,\ GL\_TEXTURE\_COMPARE\_MODE,\ GL\_COMPARE\_REF\_TO\_TEXTURE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ glSamplerParameteri(sunShadowSampler,\ GL\_TEXTURE\_COMPARE\_FUNC,\ GL\_LEQUAL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Create\ shadowmap\ framebuffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ glGenFramebuffers(1,\ \&sunShadowFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(sunShadowFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ glFramebufferTextureLayer(GL\_FRAMEBUFFER,\ GL\_DEPTH\_ATTACHMENT,\ sunShadowmapArray,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ glDrawBuffer(GL\_NONE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ glReadBuffer(GL\_NONE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ GLenum\ status\ =\ glCheckFramebufferStatus(GL\_FRAMEBUFFER);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ GL\_FRAMEBUFFER\_COMPLETE)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ cError(\textcolor{stringliteral}{"{}Sun\ shadow\ FBO\ initialization\ failed!"{}});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Permanently\ bind\ shadow\ textures\ and\ samplers}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_SUN\_SHADOW,\ GL\_TEXTURE\_2D\_ARRAY,\ sunShadowmapArray);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ glBindSampler(TEX\_SUN\_SHADOW,\ sunShadowSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_SUN\_DEPTH,\ GL\_TEXTURE\_2D\_ARRAY,\ sunShadowmapArray);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ glBindSampler(TEX\_SUN\_DEPTH,\ sunDepthSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00201}00201\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00202}00202\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00204}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a0c0fbda32621ad40351322b5b8584717}{00204}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a0c0fbda32621ad40351322b5b8584717}{OpenGLAtmosphere::\string~OpenGLAtmosphere}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00205}00205\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00206}00206\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ i=0;\ i<\ AtmosphereTextures::TEXTURE\_COUNT;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(textures[i]\ !=\ 0)\ glDeleteTextures(1,\ \&textures[i]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00209}00209\ \ \ \ \ \textcolor{keywordflow}{if}(skySunShaders[0]\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{delete}\ skySunShaders[0];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00210}00210\ \ \ \ \ \textcolor{keywordflow}{if}(skySunShaders[1]\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{delete}\ skySunShaders[1];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00211}00211\ \ \ \ \ \textcolor{comment}{//if(atmosphereAPI\ >\ 0)\ glDeleteShader(atmosphereAPI);}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00213}00213\ \ \ \ \ \textcolor{keywordflow}{if}(sunShadowmapArray\ !=\ 0)\ glDeleteTextures(1,\ \&sunShadowmapArray);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00215}00215\ \ \ \ \ \textcolor{keyword}{delete}\ []\ sunShadowFrustum;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00216}00216\ \ \ \ \ \textcolor{keyword}{delete}\ []\ sunShadowCPM;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00217}00217\ \ \ \ \ glDeleteBuffers(1,\ \&sunSkyUBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00219}00219\ \ \ \ \ \textcolor{keywordflow}{if}(sunShadowmapSize\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00220}00220\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ glDeleteSamplers(1,\ \&sunDepthSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ glDeleteSamplers(1,\ \&sunShadowSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ glDeleteFramebuffers(1,\ \&sunShadowFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ sunShadowmapShader;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00225}00225\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00226}00226\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00228}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ab67cd0541e0e8ad5687b6a233f055f8f}{00228}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ab67cd0541e0e8ad5687b6a233f055f8f}{OpenGLAtmosphere::SetSunPosition}}(\textcolor{keywordtype}{float}\ azimuthDeg,\ \textcolor{keywordtype}{float}\ elevationDeg)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00229}00229\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00230}00230\ \ \ \ \ azimuthDeg\ =\ azimuthDeg\ <\ -\/180.f\ ?\ -\/180.f\ :\ (azimuthDeg\ >\ 180.f\ ?\ 180.f\ :\ azimuthDeg);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00231}00231\ \ \ \ \ elevationDeg\ =\ elevationDeg\ <\ -\/90.f\ ?\ -\/90.f\ :\ (elevationDeg\ >\ 90.f\ ?\ 90.f\ :\ elevationDeg);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00233}00233\ \ \ \ \ sunAzimuth\ =\ azimuthDeg;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00234}00234\ \ \ \ \ sunElevation\ =\ elevationDeg;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00236}00236\ \ \ \ \ \textcolor{comment}{//Calculate\ sun\ dir\ vector}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00237}00237\ \ \ \ \ \textcolor{keywordtype}{float}\ sunAzimuthAngle\ =\ -\/sunAzimuth/180.f*M\_PI\ +\ M\_PI;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00238}00238\ \ \ \ \ \textcolor{keywordtype}{float}\ sunZenithAngle\ =\ \ (90.f\ -\/\ sunElevation)/180.f*M\_PI;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00239}00239\ \ \ \ \ sunDirection\ =\ glm::normalize(glm::rotate(glm::vec3(cos(sunAzimuthAngle)\ *\ sin(sunZenithAngle),\ sin(sunAzimuthAngle)\ *\ sin(sunZenithAngle),\ cos(sunZenithAngle)),\ (\textcolor{keywordtype}{float})M\_PI,\ glm::vec3(0,1.f,0)));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00240}00240\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00241}00241\ \ \ \ \ \textcolor{comment}{//Build\ sun\ modelview\ matrix}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00242}00242\ \ \ \ \ glm::vec3\ up(0,0,-\/1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00243}00243\ \ \ \ \ glm::vec3\ right\ =\ glm::cross(sunDirection,\ up);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00244}00244\ \ \ \ \ right\ =\ glm::normalize(right);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00245}00245\ \ \ \ \ up\ =\ glm::normalize(glm::cross(right,\ sunDirection));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00246}00246\ \ \ \ \ sunModelView\ =\ glm::lookAt(glm::vec3(0,0,0),\ -\/sunDirection,\ up)\ *\ glm::mat4(1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00247}00247\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00249}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a03da10e5b50e37f2da16de2132ecd9de}{00249}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a03da10e5b50e37f2da16de2132ecd9de}{OpenGLAtmosphere::GetSunPosition}}(GLfloat\&\ azimuthDeg,\ GLfloat\&\ elevationDeg)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00250}00250\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00251}00251\ \ \ \ \ azimuthDeg\ =\ sunAzimuth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00252}00252\ \ \ \ \ elevationDeg\ =\ sunElevation;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00253}00253\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00255}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ad3bfba8ed03531c1559ad5e8393b063a}{00255}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ad3bfba8ed03531c1559ad5e8393b063a}{OpenGLAtmosphere::GetSunDirection}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00256}00256\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00257}00257\ \ \ \ \ \textcolor{keywordflow}{return}\ sunDirection;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00258}00258\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00260}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a61cab6b5522e4f2b0d2dd9ff8b428cfb}{00260}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a61cab6b5522e4f2b0d2dd9ff8b428cfb}{OpenGLAtmosphere::setAirTemperature}}(GLfloat\ temperature)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00261}00261\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00262}00262\ \ \ \ \ airTemperature\ =\ glm::clamp(temperature,\ -\/273.15f,\ 100.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00263}00263\ \ \ \ \ UpdateSkyEmissivity();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00264}00264\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00266}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a0f0f8c129a4f11862694a8137c9227e6}{00266}}\ GLfloat\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a0f0f8c129a4f11862694a8137c9227e6}{OpenGLAtmosphere::getAirTemperature}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00267}00267\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00268}00268\ \ \ \ \ \textcolor{keywordflow}{return}\ airTemperature;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00269}00269\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00271}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a5ec9f6fd23b8ecf986988b6da0a21356}{00271}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a5ec9f6fd23b8ecf986988b6da0a21356}{OpenGLAtmosphere::setAirHumidity}}(GLfloat\ humidity)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00272}00272\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00273}00273\ \ \ \ \ airHumidity\ =\ glm::clamp(humidity,\ 0.f,\ 1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00274}00274\ \ \ \ \ UpdateSkyEmissivity();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00275}00275\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00277}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_afee1f8be9ad9dd0605bef6238c8d8661}{00277}}\ GLfloat\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_afee1f8be9ad9dd0605bef6238c8d8661}{OpenGLAtmosphere::getAirHumidity}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00278}00278\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00279}00279\ \ \ \ \ \textcolor{keywordflow}{return}\ airHumidity;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00280}00280\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00282}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a391d93f6a392feb01acd5689edbc66ab}{00282}}\ GLuint\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a391d93f6a392feb01acd5689edbc66ab}{OpenGLAtmosphere::getAtmosphereTexture}}(AtmosphereTextures\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00283}00283\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00284}00284\ \ \ \ \ \textcolor{keywordflow}{return}\ textures[id];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00285}00285\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00287}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a594eb4f3f2c463b7081d7cb157ff4a0a}{00287}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a594eb4f3f2c463b7081d7cb157ff4a0a}{OpenGLAtmosphere::LoadAtmosphereData}}(\textcolor{keyword}{const}\ std::string\&\ filename)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00288}00288\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00289}00289\ \ \ \ \ \textcolor{comment}{//Load\ parameters\ used\ to\ generate\ atmosphere\ data}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00290}00290\ \ \ \ \ glm::uvec3\ transmittanceSize;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00291}00291\ \ \ \ \ glm::uvec3\ irradianceSize;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00292}00292\ \ \ \ \ glm::uvec3\ scatteringSize;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00293}00293\ \ \ \ \ GLfloat\ lengthUnitInMeters;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00294}00294\ \ \ \ \ GLfloat\ bottomRadius;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00295}00295\ \textcolor{preprocessor}{\#ifdef\ EMBEDDED\_RESOURCES}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00296}00296\ \ \ \ \ ResourceHandle\ rh(filename);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00297}00297\ \ \ \ \ std::istringstream\ dataString(rh.string());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00298}00298\ \ \ \ \ std::istream\&\ data(dataString);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00299}00299\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00300}00300\ \ \ \ \ std::ifstream\ dataFile(filename,\ std::ios::binary\ |\ std::ios::in);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00301}00301\ \ \ \ \ std::istream\&\ data(dataFile);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00302}00302\ \textcolor{preprocessor}{\#endif\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00303}00303\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)\&transmittanceSize,\ \textcolor{keyword}{sizeof}(transmittanceSize));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00304}00304\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)\&irradianceSize,\ \textcolor{keyword}{sizeof}(irradianceSize));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00305}00305\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)\&scatteringSize,\ \textcolor{keyword}{sizeof}(scatteringSize));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00306}00306\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)\&lengthUnitInMeters,\ \textcolor{keyword}{sizeof}(lengthUnitInMeters));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00307}00307\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)\&bottomRadius,\ \textcolor{keyword}{sizeof}(bottomRadius));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00308}00308\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)\&sunSkyUBOData.whitePoint,\ \textcolor{keyword}{sizeof}(sunSkyUBOData.whitePoint));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00309}00309\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)\&nPrecomputedWavelengths,\ \textcolor{keyword}{sizeof}(nPrecomputedWavelengths));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00310}00310\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)\&nScatteringOrders,\ \textcolor{keyword}{sizeof}(nScatteringOrders));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00312}00312\ \ \ \ \ sunSkyUBOData.atmLengthUnitInMeters\ =\ lengthUnitInMeters;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00313}00313\ \ \ \ \ sunSkyUBOData.planetRadiusInUnits\ =\ bottomRadius/lengthUnitInMeters;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00315}00315\ \ \ \ \ \textcolor{comment}{//Load\ atmosphere\ textures}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00316}00316\ \ \ \ \ glm::vec4*\ pixels;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00317}00317\ \ \ \ \ pixels\ =\ \textcolor{keyword}{new}\ glm::vec4[transmittanceSize.x\ *\ transmittanceSize.y];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00318}00318\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)pixels,\ \textcolor{keyword}{sizeof}(glm::vec4)\ *\ transmittanceSize.x\ *\ transmittanceSize.y);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00319}00319\ \ \ \ \ textures[AtmosphereTextures::TRANSMITTANCE]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ transmittanceSize,\ GL\_RGBA32F,\ GL\_RGBA,\ GL\_FLOAT,\ pixels,\ FilteringMode::BILINEAR,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00320}00320\ \ \ \ \ \textcolor{keyword}{delete}\ []\ pixels;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00321}00321\ \ \ \ \ pixels\ =\ \textcolor{keyword}{new}\ glm::vec4[irradianceSize.x\ *\ irradianceSize.y];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00322}00322\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)pixels,\ \textcolor{keyword}{sizeof}(glm::vec4)\ *\ irradianceSize.x\ *\ irradianceSize.y);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00323}00323\ \ \ \ \ textures[AtmosphereTextures::IRRADIANCE]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ irradianceSize,\ GL\_RGBA32F,\ GL\_RGBA,\ GL\_FLOAT,\ pixels,\ FilteringMode::BILINEAR,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00324}00324\ \ \ \ \ \textcolor{keyword}{delete}\ []\ pixels;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00325}00325\ \ \ \ \ pixels\ =\ \textcolor{keyword}{new}\ glm::vec4[scatteringSize.x\ *\ scatteringSize.y\ *\ scatteringSize.z];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00326}00326\ \ \ \ \ data.read((\textcolor{keywordtype}{char}*)pixels,\ \textcolor{keyword}{sizeof}(glm::vec4)\ *\ scatteringSize.x\ *\ scatteringSize.y\ *\ scatteringSize.z);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00327}00327\ \ \ \ \ textures[AtmosphereTextures::SCATTERING]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_3D,\ scatteringSize,\ GL\_RGBA16F,\ GL\_RGBA,\ GL\_FLOAT,\ pixels,\ FilteringMode::BILINEAR,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00328}00328\ \ \ \ \ \textcolor{keyword}{delete}\ []\ pixels;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00329}00329\ \textcolor{preprocessor}{\#ifndef\ EMBEDDED\_RESOURCES}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00330}00330\ \ \ \ \ dataFile.close();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00331}00331\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00332}00332\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Loaded\ precomputed\ atmosphere\ model\ (\%u\ wavelengths,\ \%u\ scattering\ orders)"{}},\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ nPrecomputedWavelengths,\ nScatteringOrders);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00334}00334\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00336}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a1ba862383bd1cde620139f7d501144be}{00336}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a1ba862383bd1cde620139f7d501144be}{OpenGLAtmosphere::DrawSkyAndSun}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00337}00337\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00338}00338\ \ \ \ \ glm::vec3\ eyePos\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a3004c25e0ea08a246baaa7e4de0b8e08}{GetEyePosition}}()/sunSkyUBOData.atmLengthUnitInMeters;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00339}00339\ \ \ \ \ eyePos.z\ =\ eyePos.z\ >\ -\/0.5/sunSkyUBOData.atmLengthUnitInMeters\ ?\ -\/0.5/sunSkyUBOData.atmLengthUnitInMeters\ :\ eyePos.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00340}00340\ \ \ \ \ glm::mat4\ invViewMatrix\ =\ glm::inverse(view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{GetViewMatrix}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00341}00341\ \ \ \ \ invViewMatrix[3].x\ =\ eyePos.x;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00342}00342\ \ \ \ \ invViewMatrix[3].y\ =\ eyePos.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00343}00343\ \ \ \ \ invViewMatrix[3].z\ =\ eyePos.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00344}00344\ \ \ \ \ glm::mat4\ invProjectionMatrix\ =\ glm::inverse(view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_aae95d77fc472462ec4a38ccd4921b82b}{GetProjectionMatrix}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00346}00346\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00347}00347\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}bottomRadius"{}},\ sunSkyUBOData.planetRadiusInUnits);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00348}00348\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}groundAlbedo"{}},\ 0.7f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00349}00349\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ TEX\_ATM\_TRANSMITTANCE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00350}00350\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ TEX\_ATM\_SCATTERING);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00351}00351\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}single\_mie\_scattering\_texture"{}},\ TEX\_ATM\_SCATTERING);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00352}00352\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}eyePos"{}},\ eyePos);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00353}00353\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}sunDir"{}},\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ad3bfba8ed03531c1559ad5e8393b063a}{GetSunDirection}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00354}00354\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}invProj"{}},\ invProjectionMatrix);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00355}00355\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}invView"{}},\ invViewMatrix);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00356}00356\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}whitePoint"{}},\ sunSkyUBOData.whitePoint);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00357}00357\ \ \ \ \ skySunShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}cosSunSize"{}},\ (GLfloat)cosf(0.00935f/2.f));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00358}00358\ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>DrawSAQ();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00359}00359\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00360}00360\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00362}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a9357f07a5f1504083d59e4cc4d935d12}{00362}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a9357f07a5f1504083d59e4cc4d935d12}{OpenGLAtmosphere::DrawSkyAndSunTemperature}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00363}00363\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00364}00364\ \ \ \ \ glm::vec3\ eyePos\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a3004c25e0ea08a246baaa7e4de0b8e08}{GetEyePosition}}()/sunSkyUBOData.atmLengthUnitInMeters;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00365}00365\ \ \ \ \ eyePos.z\ =\ eyePos.z\ >\ -\/0.5/sunSkyUBOData.atmLengthUnitInMeters\ ?\ -\/0.5/sunSkyUBOData.atmLengthUnitInMeters\ :\ eyePos.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00366}00366\ \ \ \ \ glm::mat4\ invViewMatrix\ =\ glm::inverse(view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{GetViewMatrix}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00367}00367\ \ \ \ \ invViewMatrix[3].x\ =\ eyePos.x;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00368}00368\ \ \ \ \ invViewMatrix[3].y\ =\ eyePos.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00369}00369\ \ \ \ \ invViewMatrix[3].z\ =\ eyePos.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00370}00370\ \ \ \ \ glm::mat4\ invProjectionMatrix\ =\ glm::inverse(view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_aae95d77fc472462ec4a38ccd4921b82b}{GetProjectionMatrix}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00372}00372\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00373}00373\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}bottomRadius"{}},\ sunSkyUBOData.planetRadiusInUnits);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00374}00374\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}groundAlbedo"{}},\ 0.7f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00375}00375\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ TEX\_ATM\_TRANSMITTANCE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00376}00376\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ TEX\_ATM\_SCATTERING);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00377}00377\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}single\_mie\_scattering\_texture"{}},\ TEX\_ATM\_SCATTERING);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00378}00378\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}eyePos"{}},\ eyePos);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00379}00379\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}sunDir"{}},\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ad3bfba8ed03531c1559ad5e8393b063a}{GetSunDirection}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00380}00380\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}invProj"{}},\ invProjectionMatrix);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00381}00381\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}invView"{}},\ invViewMatrix);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00382}00382\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}whitePoint"{}},\ sunSkyUBOData.whitePoint);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00383}00383\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}cosSunSize"{}},\ (GLfloat)cosf(0.00935f/2.f));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00384}00384\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}skyEmissivity"{}},\ sunSkyUBOData.skyEmissivity);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00385}00385\ \ \ \ \ skySunShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}airTemperature"{}},\ airTemperature);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00386}00386\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00387}00387\ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>DrawSAQ();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00388}00388\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00389}00389\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00391}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ae95201a228bd6a9de8b5faa94ccd187b}{00391}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ae95201a228bd6a9de8b5faa94ccd187b}{OpenGLAtmosphere::BakeShadowmaps}}(\mbox{\hyperlink{classsf_1_1_open_g_l_pipeline}{OpenGLPipeline}}*\ pipe,\ \mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00392}00392\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00393}00393\ \ \ \ \ \textcolor{keywordflow}{if}(sunShadowmapSize\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00395}00395\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00396}00396\ \ \ \ \ \textcolor{comment}{//Pre-\/set\ splits}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00397}00397\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ sunShadowmapSplits;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00398}00398\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ sunShadowFrustum[i].fov\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae631bc18744031bfd238b99014b21f34}{GetFOVY}}()\ +\ 0.2f;\ \textcolor{comment}{//avoid\ artifacts\ in\ the\ borders}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ GLint*\ viewport\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ac53cf3b78d408ed133ab753e7e09a39b}{GetViewport}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ sunShadowFrustum[i].ratio\ =\ (GLfloat)viewport[2]/(GLfloat)viewport[3];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ []\ viewport;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00403}00403\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00405}00405\ \ \ \ \ \textcolor{comment}{//Compute\ the\ z-\/distances\ for\ each\ split\ as\ seen\ in\ camera\ space}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00406}00406\ \ \ \ \ UpdateSplitDist(view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a9e4c128860f2b1d08d431ebdb52697c5}{GetNearClip}}(),\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a89362c254b59e32c9ac4bdb13e32a771}{GetFarClip}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00408}00408\ \ \ \ \ \textcolor{comment}{//Render\ maps}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00409}00409\ \ \ \ \ glCullFace(GL\_FRONT);\ \textcolor{comment}{//GL\_FRONT\ -\/>\ no\ shadow\ acne\ but\ problems\ with\ filtering}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00410}00410\ \ \ \ \ glDisable(GL\_DEPTH\_CLAMP);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00412}00412\ \ \ \ \ OpenGLState::BindFramebuffer(sunShadowFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00413}00413\ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ sunShadowmapSize,\ sunShadowmapSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00415}00415\ \ \ \ \ glm::vec3\ camPos\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a3004c25e0ea08a246baaa7e4de0b8e08}{GetEyePosition}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00416}00416\ \ \ \ \ glm::vec3\ camDir\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_af014795803f1871aefee3be8f850ef91}{GetLookingDirection}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00417}00417\ \ \ \ \ glm::vec3\ camUp\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a5ff43bff477d57cc34f56fd3cb1f34f2}{GetUpDirection}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00419}00419\ \ \ \ \ \textcolor{comment}{//\ for\ all\ shadow\ splits}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00420}00420\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ sunShadowmapSplits;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00421}00421\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Compute\ the\ camera\ frustum\ slice\ boundary\ points\ in\ world\ space}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ UpdateFrustumCorners(sunShadowFrustum[i],\ camPos,\ camDir,\ camUp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Adjust\ the\ view\ frustum\ of\ the\ light,\ so\ that\ it\ encloses\ the\ camera\ frustum\ slice\ fully.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \textcolor{comment}{//note\ that\ this\ function\ sets\ the\ projection\ matrix\ as\ it\ sees\ best\ fit}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ glm::mat4\ cp\ =\ BuildCropProjMatrix(sunShadowFrustum[i]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ sunShadowCPM[i]\ =\ \ cp\ *\ sunModelView;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>SetProjectionMatrix(cp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>SetViewMatrix(sunModelView);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Draw\ current\ depth\ map}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ glFramebufferTextureLayer(GL\_FRAMEBUFFER,\ GL\_DEPTH\_ATTACHMENT,\ sunShadowmapArray,\ 0,\ i);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ glClear(GL\_DEPTH\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00435}00435\ \ \ \ \ \ \ \ \ pipe-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a22d0137ac31472185daff672d31c6846}{DrawObjects}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00436}00436\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00438}00438\ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00440}00440\ \ \ \ \ glEnable(GL\_DEPTH\_CLAMP);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00441}00441\ \ \ \ \ glCullFace(GL\_BACK);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00442}00442\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00444}00444\ \textcolor{keywordtype}{void}\ OpenGLAtmosphere::UpdateSkyEmissivity()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00445}00445\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00446}00446\ \ \ \ \ \textcolor{comment}{//Input\ data}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00447}00447\ \ \ \ \ GLfloat\ T\ =\ airTemperature\ +\ 273.15f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00448}00448\ \ \ \ \ GLfloat\ RH\ =\ 100.f\ *\ airHumidity;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00449}00449\ \ \ \ \ GLfloat\ N\ =\ 0.f;\ \textcolor{comment}{//\ Cloud\ cover\ in\ tenths\ (clear\ sky)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00450}00450\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00451}00451\ \ \ \ \ \textcolor{comment}{//Calculate\ dewpoint\ temperature}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00452}00452\ \ \ \ \ GLfloat\ Td\ =\ T\ -\/\ ((100.f\ -\/\ RH)/5.f);\ \textcolor{comment}{//\ Simplified\ formula}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00454}00454\ \ \ \ \ \textcolor{comment}{//Calculate\ sky\ emmissivity}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00455}00455\ \ \ \ \ GLfloat\ eps\ =\ 0.787\ +\ 0.767\ *\ logf(Td/273.15f)\ +\ 0.0224*N\ +\ 0.0035*N*N\ +\ 0.00028*N*N*N;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00456}00456\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00457}00457\ \ \ \ \ \textcolor{comment}{//Update\ the\ UBO}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00458}00458\ \ \ \ \ sunSkyUBOData.skyEmissivity\ =\ eps;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00459}00459\ \ \ \ \ sunSkyUBOData.airTemperature\ =\ airTemperature;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00460}00460\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00462}00462\ \textcolor{comment}{//Computes\ the\ near\ and\ far\ distances\ for\ every\ frustum\ slice\ in\ camera\ eye\ space}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00463}00463\ \textcolor{keywordtype}{void}\ OpenGLAtmosphere::UpdateSplitDist(GLfloat\ nd,\ GLfloat\ fd)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00464}00464\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00465}00465\ \ \ \ \ fd\ =\ fd\ >\ 250.f\ ?\ 250.f\ :\ fd;\ \textcolor{comment}{//Limit\ camera\ frustum\ to\ max\ 250.0\ m\ (to\ avoid\ shadow\ blocks)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00466}00466\ \ \ \ \ nd\ =\ 0.1f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00467}00467\ \ \ \ \ GLfloat\ lambda\ =\ 0.95f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00468}00468\ \ \ \ \ GLfloat\ ratio\ =\ fd/nd;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00469}00469\ \ \ \ \ sunShadowFrustum[0].near\ =\ nd;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00470}00470\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00471}00471\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ sunShadowmapSplits;\ ++i)\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00472}00472\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ GLfloat\ si\ =\ i\ /\ (GLfloat)sunShadowmapSplits;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00474}00474\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ sunShadowFrustum[i].near\ =\ lambda*(nd*powf(ratio,\ si))\ +\ (1.f-\/lambda)*(nd\ +\ (fd\ -\/\ nd)*si);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ sunShadowFrustum[i-\/1].far\ =\ sunShadowFrustum[i].near\ *\ 1.05f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00477}00477\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00479}00479\ \ \ \ \ sunShadowFrustum[sunShadowmapSplits-\/1].far\ =\ fd;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00480}00480\ \ \ \ \ \textcolor{comment}{//for(int\ i=0;\ i<sunShadowmapSplits;\ i++)\ printf("{}Frustum\%d\ Near:\ \%f\ Far:\ \%f\(\backslash\)n"{},\ i,\ sunShadowFrustum[i].near,\ sunShadowFrustum[i].far);}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00481}00481\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00482}00482\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00483}00483\ \textcolor{comment}{//Computes\ the\ 8\ corner\ points\ of\ the\ current\ view\ frustum}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00484}00484\ \textcolor{keywordtype}{void}\ OpenGLAtmosphere::UpdateFrustumCorners(ViewFrustum\ \&f,\ glm::vec3\ center,\ glm::vec3\ dir,\ glm::vec3\ up)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00485}00485\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00486}00486\ \ \ \ \ glm::vec3\ right\ =\ glm::cross(dir,\ up);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00487}00487\ \ \ \ \ right\ =\ glm::normalize(right);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00488}00488\ \ \ \ \ \textcolor{comment}{//up\ =\ glm::normalize(glm::cross(right,\ dir));}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00489}00489\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00490}00490\ \ \ \ \ glm::vec3\ fc\ =\ center\ +\ dir\ *\ f.far;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00491}00491\ \ \ \ \ glm::vec3\ nc\ =\ center\ +\ dir\ *\ f.near;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00493}00493\ \ \ \ \ \textcolor{comment}{//\ these\ heights\ and\ widths\ are\ half\ the\ heights\ and\ widths\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00494}00494\ \ \ \ \ \textcolor{comment}{//\ the\ near\ and\ far\ plane\ rectangles}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00495}00495\ \ \ \ \ GLfloat\ nearHeight\ =\ tan(f.fov/2.0f)\ *\ f.near;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00496}00496\ \ \ \ \ GLfloat\ nearWidth\ =\ nearHeight\ *\ f.ratio;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00497}00497\ \ \ \ \ GLfloat\ farHeight\ =\ tan(f.fov/2.0f)\ *\ f.far;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00498}00498\ \ \ \ \ GLfloat\ farWidth\ =\ farHeight\ *\ f.ratio;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00500}00500\ \ \ \ \ f.corners[0]\ =\ nc\ -\/\ up\ *\ nearHeight\ -\/\ right\ *\ nearWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00501}00501\ \ \ \ \ f.corners[1]\ =\ nc\ +\ up\ *\ nearHeight\ -\/\ right\ *\ nearWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00502}00502\ \ \ \ \ f.corners[2]\ =\ nc\ +\ up\ *\ nearHeight\ +\ right\ *\ nearWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00503}00503\ \ \ \ \ f.corners[3]\ =\ nc\ -\/\ up\ *\ nearHeight\ +\ right\ *\ nearWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00504}00504\ \ \ \ \ f.corners[4]\ =\ fc\ -\/\ up\ *\ farHeight\ -\/\ right\ *\ farWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00505}00505\ \ \ \ \ f.corners[5]\ =\ fc\ +\ up\ *\ farHeight\ -\/\ right\ *\ farWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00506}00506\ \ \ \ \ f.corners[6]\ =\ fc\ +\ up\ *\ farHeight\ +\ right\ *\ farWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00507}00507\ \ \ \ \ f.corners[7]\ =\ fc\ -\/\ up\ *\ farHeight\ +\ right\ *\ farWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00508}00508\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00509}00509\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00510}00510\ \textcolor{comment}{//\ this\ function\ builds\ a\ projection\ matrix\ for\ rendering\ from\ the\ shadow's\ POV.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00511}00511\ \textcolor{comment}{//\ First,\ it\ computes\ the\ appropriate\ z-\/range\ and\ sets\ an\ orthogonal\ projection.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00512}00512\ \textcolor{comment}{//\ Then,\ it\ translates\ and\ scales\ it,\ so\ that\ it\ exactly\ captures\ the\ bounding\ box}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00513}00513\ \textcolor{comment}{//\ of\ the\ current\ frustum\ slice}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00514}00514\ glm::mat4\ OpenGLAtmosphere::BuildCropProjMatrix(ViewFrustum\ \&f)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00515}00515\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00516}00516\ \ \ \ \ GLfloat\ maxX\ =\ -\/1000.0f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00517}00517\ \ \ \ \ GLfloat\ maxY\ =\ -\/1000.0f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00518}00518\ \ \ \ \ GLfloat\ maxZ;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00519}00519\ \ \ \ \ GLfloat\ minX\ =\ \ 1000.0f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00520}00520\ \ \ \ \ GLfloat\ minY\ =\ \ 1000.0f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00521}00521\ \ \ \ \ GLfloat\ minZ;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00522}00522\ \ \ \ \ glm::vec4\ transf;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00524}00524\ \ \ \ \ \textcolor{comment}{//Find\ the\ z-\/range\ of\ the\ current\ frustum\ as\ seen\ from\ the\ light\ in\ order\ to\ increase\ precision}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00525}00525\ \ \ \ \ glm::mat4\ shad\_mv\ =\ sunModelView;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00526}00526\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00527}00527\ \ \ \ \ \textcolor{comment}{//Note:\ only\ the\ z-\/component\ is\ needed\ and\ thus\ the\ multiplication\ can\ be\ simplified}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00528}00528\ \ \ \ \ \textcolor{comment}{//transf.z\ =\ shad\_modelview[2]\ *\ f.point[0].x\ +\ shad\_modelview[6]\ *\ f.point[0].y\ +\ shad\_modelview[10]\ *\ f.point[0].z\ +\ shad\_modelview[14]}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00529}00529\ \ \ \ \ transf\ =\ shad\_mv\ *\ glm::vec4(f.corners[0],\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00530}00530\ \ \ \ \ minZ\ =\ transf.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00531}00531\ \ \ \ \ maxZ\ =\ transf.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00532}00532\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00533}00533\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <8\ ;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ transf\ =\ shad\_mv\ *\ glm::vec4(f.corners[i],\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(transf.z\ >\ maxZ)\ maxZ\ =\ transf.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(transf.z\ <\ minZ)\ minZ\ =\ transf.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00537}00537\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00538}00538\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00539}00539\ \ \ \ \ \textcolor{comment}{//Make\ sure\ all\ relevant\ shadow\ casters\ are\ included\ -\/\ use\ object\ bounding\ boxes!}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00540}00540\ \ \ \ \ Vector3\ aabbMin;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00541}00541\ \ \ \ \ Vector3\ aabbMax;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00542}00542\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_a15cc9694aac5b37013c164110e59ca7a}{getWorldAABB}}(aabbMin,\ aabbMax);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00543}00543\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00544}00544\ \ \ \ \ transf\ =\ shad\_mv\ *\ glm::vec4(aabbMin.x(),\ aabbMin.y(),\ aabbMin.z(),\ 1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00545}00545\ \ \ \ \ \textcolor{keywordflow}{if}(transf.z\ >\ maxZ)\ maxZ\ =\ transf.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00546}00546\ \ \ \ \ \textcolor{keywordflow}{if}(transf.z\ <\ minZ)\ minZ\ =\ transf.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00547}00547\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00548}00548\ \ \ \ \ transf\ =\ shad\_mv\ *\ glm::vec4(aabbMax.x(),\ aabbMax.y(),\ aabbMax.z(),\ 1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00549}00549\ \ \ \ \ \textcolor{keywordflow}{if}(transf.z\ >\ maxZ)\ maxZ\ =\ transf.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00550}00550\ \ \ \ \ \textcolor{keywordflow}{if}(transf.z\ <\ minZ)\ minZ\ =\ transf.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00552}00552\ \ \ \ \ \textcolor{comment}{//Set\ the\ projection\ matrix\ with\ the\ new\ z-\/bounds}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00553}00553\ \ \ \ \ \textcolor{comment}{//Note:\ there\ is\ inversion\ because\ the\ light\ looks\ at\ the\ neg\ z\ axis}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00554}00554\ \ \ \ \ glm::mat4\ shad\_proj\ =\ glm::ortho(-\/1.f,\ 1.f,\ -\/1.f,\ 1.f,\ -\/maxZ,\ -\/minZ);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00555}00555\ \ \ \ \ glm::mat4\ shad\_mvp\ =\ \ shad\_proj\ *\ shad\_mv;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00556}00556\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00557}00557\ \ \ \ \ \textcolor{comment}{//Find\ the\ extends\ of\ the\ frustum\ slice\ as\ projected\ in\ light's\ homogeneous\ coordinates}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00558}00558\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 8;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ transf\ =\ shad\_mvp\ *\ glm::vec4(f.corners[i],\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00560}00560\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ transf.x\ /=\ transf.w;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ transf.y\ /=\ transf.w;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00563}00563\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(transf.x\ >\ maxX)\ maxX\ =\ transf.x;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(transf.x\ <\ minX)\ minX\ =\ transf.x;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(transf.y\ >\ maxY)\ maxY\ =\ transf.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(transf.y\ <\ minY)\ minY\ =\ transf.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00568}00568\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00569}00569\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00570}00570\ \ \ \ \ \textcolor{comment}{//Build\ crop\ matrix}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00571}00571\ \ \ \ \ glm::mat4\ shad\_crop\ =\ glm::mat4(1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00572}00572\ \ \ \ \ GLfloat\ scaleX\ =\ 2.0f/(maxX\ -\/\ minX);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00573}00573\ \ \ \ \ GLfloat\ scaleY\ =\ 2.0f/(maxY\ -\/\ minY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00574}00574\ \ \ \ \ GLfloat\ offsetX\ =\ -\/0.5f*(maxX\ +\ minX)*scaleX;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00575}00575\ \ \ \ \ GLfloat\ offsetY\ =\ -\/0.5f*(maxY\ +\ minY)*scaleY;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00576}00576\ \ \ \ \ shad\_crop[0][0]\ =\ scaleX;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00577}00577\ \ \ \ \ shad\_crop[1][1]\ =\ scaleY;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00578}00578\ \ \ \ \ shad\_crop[3][0]\ =\ offsetX;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00579}00579\ \ \ \ \ shad\_crop[3][1]\ =\ offsetY;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00580}00580\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00581}00581\ \ \ \ \ \textcolor{comment}{//Build\ crop\ projection\ matrix}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00582}00582\ \ \ \ \ glm::mat4\ shad\_crop\_proj\ =\ shad\_crop\ *\ shad\_proj;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00584}00584\ \ \ \ \ \textcolor{keywordflow}{return}\ shad\_crop\_proj;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00585}00585\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00586}00586\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00587}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a0a40a53efdf711f0bce39b2624649dbc}{00587}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a0a40a53efdf711f0bce39b2624649dbc}{OpenGLAtmosphere::SetupMaterialShaders}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00588}00588\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00589}00589\ \ \ \ \ \textcolor{comment}{//Calculate\ shadow\ splits}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00590}00590\ \ \ \ \ glm::mat4\ bias(0.5f,\ 0.f,\ 0.f,\ 0.f,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00591}00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.f,\ 0.5f,\ 0.f,\ 0.f,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.f,\ 0.f,\ 0.5f,\ 0.f,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.5f,\ 0.5f,\ 0.5f,\ 1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00594}00594\ \ \ \ \ GLfloat\ frustumFar[4];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00595}00595\ \ \ \ \ GLfloat\ frustumNear[4];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00596}00596\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00597}00597\ \ \ \ \ \textcolor{comment}{//For\ every\ inactive\ split}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00598}00598\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ sunShadowmapSplits;\ i<4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00599}00599\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \ frustumNear[i]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00601}00601\ \ \ \ \ \ \ \ \ frustumFar[i]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00602}00602\ \ \ \ \ \ \ \ \ sunSkyUBOData.sunClipSpace[i]\ =\ glm::mat4();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00603}00603\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00604}00604\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00605}00605\ \ \ \ \ \textcolor{comment}{//For\ every\ active\ split}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00606}00606\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ sunShadowmapSplits;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00607}00607\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00608}00608\ \ \ \ \ \ \ \ \ frustumNear[i]\ =\ sunShadowFrustum[i].near;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00609}00609\ \ \ \ \ \ \ \ \ frustumFar[i]\ =\ sunShadowFrustum[i].far;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00610}00610\ \ \ \ \ \ \ \ \ sunSkyUBOData.sunClipSpace[i]\ =\ (bias\ *\ sunShadowCPM[i]);\ \textcolor{comment}{//\ compute\ a\ matrix\ that\ transforms\ from\ world\ space\ to\ light\ clip\ space}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00611}00611\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00612}00612\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00613}00613\ \ \ \ \ sunSkyUBOData.sunFrustumNear\ =\ glm::vec4(frustumNear[0],\ frustumNear[1],\ frustumNear[2],\ frustumNear[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00614}00614\ \ \ \ \ sunSkyUBOData.sunFrustumFar\ =\ glm::vec4(frustumFar[0],\ frustumFar[1],\ frustumFar[2],\ frustumFar[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00615}00615\ \ \ \ \ sunSkyUBOData.sunDirection\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ad3bfba8ed03531c1559ad5e8393b063a}{GetSunDirection}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00616}00616\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00617}00617\ \ \ \ \ glBindBuffer(GL\_UNIFORM\_BUFFER,\ sunSkyUBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00618}00618\ \ \ \ \ glBufferSubData(GL\_UNIFORM\_BUFFER,\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsf_1_1_sun_sky_u_b_o}{SunSkyUBO}}),\ \&sunSkyUBOData);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00619}00619\ \ \ \ \ glBindBuffer(GL\_UNIFORM\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00620}00620\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00621}00621\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00622}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_af564a49c3aa5bb45331f069f59a612c5}{00622}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_af564a49c3aa5bb45331f069f59a612c5}{OpenGLAtmosphere::ShowSunShadowmaps}}(GLfloat\ x,\ GLfloat\ y,\ GLfloat\ scale)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00623}00623\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00624}00624\ \ \ \ \ \textcolor{comment}{//Texture\ setup}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00625}00625\ \ \ \ \ OpenGLState::BindTexture(TEX\_SUN\_SHADOW,\ GL\_TEXTURE\_2D\_ARRAY,\ sunShadowmapArray);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00626}00626\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D\_ARRAY,\ GL\_TEXTURE\_COMPARE\_MODE,\ GL\_NONE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00627}00627\ \ \ \ \ OpenGLState::DisableBlend();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00628}00628\ \ \ \ \ OpenGLState::DisableDepthTest();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00629}00629\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00630}00630\ \ \ \ \ \textcolor{comment}{//Render\ the\ shadowmaps}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00631}00631\ \ \ \ \ sunShadowmapShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00632}00632\ \ \ \ \ sunShadowmapShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}shadowmapArray"{}},\ TEX\_SUN\_SHADOW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00633}00633\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ sunShadowmapSplits;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00634}00634\ \ \ \ \ \ \ \ \ OpenGLState::Viewport(x\ +\ sunShadowmapSize\ *\ scale\ *\ i,\ y,\ sunShadowmapSize\ *\ scale,\ sunShadowmapSize\ *\ scale);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00635}00635\ \ \ \ \ \ \ \ \ sunShadowmapShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}shadowmapLayer"{}},\ (GLfloat)i);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00636}00636\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>DrawSAQ();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00637}00637\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00638}00638\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00639}00639\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_SUN\_SHADOW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00640}00640\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00641}00641\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00642}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a546774b576957d58de15e181a163c34d}{00642}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a546774b576957d58de15e181a163c34d}{OpenGLAtmosphere::Init}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00643}00643\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00644}00644\ \ \ \ \ GLint\ compiled;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00645}00645\ \ \ \ \ atmosphereAPI\ =\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ae4bce4bd482bec6e5d87c87301a21ffd}{GLSLShader::LoadShader}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}atmosphereApi.glsl"{}},\ \textcolor{stringliteral}{"{}"{}},\ \&compiled);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00646}00646\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00647}00647\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00648}\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a74c1dcdde09cafaa591029a72270e3b5}{00648}}\ GLuint\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a74c1dcdde09cafaa591029a72270e3b5}{OpenGLAtmosphere::getAtmosphereAPI}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00649}00649\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00650}00650\ \ \ \ \ \textcolor{keywordflow}{return}\ atmosphereAPI;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00651}00651\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00652}00652\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_atmosphere_8cpp_source_l00653}00653\ \}}
+
+\end{DoxyCode}

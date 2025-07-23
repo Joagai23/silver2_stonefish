@@ -1,0 +1,220 @@
+\doxysection{Atmosphere.\+cpp}
+\hypertarget{_atmosphere_8cpp_source}{}\label{_atmosphere_8cpp_source}\index{Library/src/entities/forcefields/Atmosphere.cpp@{Library/src/entities/forcefields/Atmosphere.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Atmosphere.cpp}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieślak\ on\ 02/12/2018.}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2018-\/2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}entities/forcefields/Atmosphere.h"{}}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLAtmosphere.h"{}}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}entities/forcefields/VelocityField.h"{}}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}entities/SolidEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}utils/SystemUtil.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00032}00032\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00034}00034\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00035}\mbox{\hyperlink{classsf_1_1_atmosphere_a5d6c57dc97c39adfa079756e8ea2e9bd}{00035}}\ \mbox{\hyperlink{classsf_1_1_atmosphere_a5d6c57dc97c39adfa079756e8ea2e9bd}{Atmosphere::Atmosphere}}(std::string\ uniqueName,\ \mbox{\hyperlink{structsf_1_1_fluid}{Fluid}}\ g)\ :\ \mbox{\hyperlink{classsf_1_1_forcefield_entity}{ForcefieldEntity}}(uniqueName)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00037}00037\ \ \ \ \ ghost-\/>setCollisionFlags(ghost-\/>getCollisionFlags()\ |\ btCollisionObject::CF\_STATIC\_OBJECT);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00038}00038\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00039}00039\ \ \ \ \ Scalar\ size(100000);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00040}00040\ \ \ \ \ Vector3\ halfExtents\ =\ Vector3(size/Scalar(2),\ size/Scalar(2),\ size/Scalar(2));}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00041}00041\ \ \ \ \ ghost-\/>setWorldTransform(Transform(Quaternion::getIdentity(),\ Vector3(0,0,-\/size/Scalar(2))));\ \textcolor{comment}{//Above\ ocean\ surface\ and\ ground\ (z=0)}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00042}00042\ \ \ \ \ ghost-\/>setCollisionShape(\textcolor{keyword}{new}\ btBoxShape(halfExtents));}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00043}00043\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00044}00044\ \ \ \ \ gas\ =\ g;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00045}00045\ \ \ \ \ wind\ =\ std::vector<VelocityField*>(0);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00046}00046\ \ \ \ \ glAtmosphere\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00048}00048\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00049}\mbox{\hyperlink{classsf_1_1_atmosphere_abd8489f53b8bd34e60e7280210597d96}{00049}}\ \mbox{\hyperlink{classsf_1_1_atmosphere_abd8489f53b8bd34e60e7280210597d96}{Atmosphere::\string~Atmosphere}}()}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00050}00050\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}(wind.size()\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<wind.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ wind[i];}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ wind.clear();}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00057}00057\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}(glAtmosphere\ !=\ \textcolor{keyword}{nullptr})\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ glAtmosphere;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00062}\mbox{\hyperlink{classsf_1_1_atmosphere_ad11561b288d0af9338fea0fba0c08df0}{00062}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere}{OpenGLAtmosphere}}*\ \mbox{\hyperlink{classsf_1_1_atmosphere_ad11561b288d0af9338fea0fba0c08df0}{Atmosphere::getOpenGLAtmosphere}}()}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00063}00063\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{return}\ glAtmosphere;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00066}00066\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00067}\mbox{\hyperlink{classsf_1_1_atmosphere_ab9ba65b2b0ca82759262eff76937c26a}{00067}}\ ForcefieldType\ \mbox{\hyperlink{classsf_1_1_atmosphere_ab9ba65b2b0ca82759262eff76937c26a}{Atmosphere::getForcefieldType}}()}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00068}00068\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{return}\ ForcefieldType::ATMOSPHERE;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00072}\mbox{\hyperlink{classsf_1_1_atmosphere_af33a0a9b0c94734ad2e8dfd8ed8f4aa7}{00072}}\ \mbox{\hyperlink{structsf_1_1_fluid}{Fluid}}\ \mbox{\hyperlink{classsf_1_1_atmosphere_af33a0a9b0c94734ad2e8dfd8ed8f4aa7}{Atmosphere::getGas}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00073}00073\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{return}\ gas;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00077}\mbox{\hyperlink{classsf_1_1_atmosphere_af24292dfa94afe2dba56ce82a2aedb90}{00077}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_atmosphere_af24292dfa94afe2dba56ce82a2aedb90}{Atmosphere::InitGraphics}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_render_settings}{RenderSettings}}\&\ s)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00078}00078\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00079}00079\ \ \ \ \ glAtmosphere\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere}{OpenGLAtmosphere}}(GetShaderPath()\ +\ \textcolor{stringliteral}{"{}earth\_atm.dat"{}},\ s.shadows);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00082}\mbox{\hyperlink{classsf_1_1_atmosphere_a4f8e22d57a9656968e003b2067b6f291}{00082}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_atmosphere_a4f8e22d57a9656968e003b2067b6f291}{Atmosphere::SetSunPosition}}(Scalar\ longitudeDeg,\ Scalar\ latitudeDeg,\ std::tm\&\ utc)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00083}00083\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{if}(glAtmosphere\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00085}00085\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00086}00086\ \ \ \ \ Scalar\ latitude\ =\ latitudeDeg/Scalar(180)\ *\ M\_PI;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00087}00087\ \ \ \ \ Scalar\ longitude\ =\ longitudeDeg/Scalar(180)\ *\ M\_PI;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00088}00088\ \ \ \ \ Scalar\ meridian(0);\ \textcolor{comment}{//GMT}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00089}00089\ \ \ \ \ Scalar\ decimalHours\ =\ (Scalar)utc.tm\_hour\ +\ (Scalar)utc.tm\_min/Scalar(60)\ +\ (Scalar)utc.tm\_sec/Scalar(60);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00090}00090\ \ \ \ \ std::tm\ utc0\ =\ utc;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00091}00091\ \ \ \ \ utc0.tm\_mday\ =\ 1;\ \textcolor{comment}{//1}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00092}00092\ \ \ \ \ utc0.tm\_mon\ =\ 0;\ \textcolor{comment}{//January}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordtype}{int}\ J\ =\ \mbox{\hyperlink{classsf_1_1_atmosphere_a257e4eb74aa8567a38f2f3631d20ee51}{JulianDay}}(utc)\ -\/\ \mbox{\hyperlink{classsf_1_1_atmosphere_a257e4eb74aa8567a38f2f3631d20ee51}{JulianDay}}(utc0);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00094}00094\ \ \ \ \ Scalar\ solarTime\ =\ decimalHours\ +\ Scalar(0.17)*btSin(Scalar(4)*M\_PI*(J\ -\/\ 80)/Scalar(373))\ -\/\ Scalar(0.129)*btSin(Scalar(2)*M\_PI*(J\ -\/\ 8)/Scalar(355))\ +\ Scalar(12)*(meridian\ -\/\ longitude)/M\_PI;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00095}00095\ \ \ \ \ Scalar\ declination\ =\ Scalar(0.4093)*btSin(Scalar(2)*M\_PI*(J\ -\/\ 81)/Scalar(368));}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00096}00096\ \ \ \ \ Scalar\ elevation\ =\ btAsin(btSin(latitude)*btSin(declination)\ -\/\ btCos(latitude)*btCos(declination)*btCos(M\_PI*solarTime/Scalar(12)));}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00097}00097\ \ \ \ \ Scalar\ azimuth\ =\ btAtan2(btSin(M\_PI*solarTime/Scalar(12)),\ btCos(M\_PI*solarTime/Scalar(12))*btSin(latitude)\ -\/\ btTan(declination)*btCos(latitude));}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00098}00098\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00099}00099\ \ \ \ \ glAtmosphere-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ab67cd0541e0e8ad5687b6a233f055f8f}{SetSunPosition}}((\textcolor{keywordtype}{float})(azimuth/M\_PI*Scalar(180)),\ (\textcolor{keywordtype}{float})(elevation/M\_PI*Scalar(180)));}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00101}00101\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00102}\mbox{\hyperlink{classsf_1_1_atmosphere_a4e9858cebbdcc873959934ca059162e2}{00102}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_atmosphere_a4f8e22d57a9656968e003b2067b6f291}{Atmosphere::SetSunPosition}}(Scalar\ azimuthDeg,\ Scalar\ elevationDeg)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00103}00103\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{if}(glAtmosphere\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00105}00105\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00106}00106\ \ \ \ \ glAtmosphere-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ab67cd0541e0e8ad5687b6a233f055f8f}{SetSunPosition}}((\textcolor{keywordtype}{float})azimuthDeg,\ (\textcolor{keywordtype}{float})elevationDeg);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00109}\mbox{\hyperlink{classsf_1_1_atmosphere_aa782de494e28ef738088136d18a7190d}{00109}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_atmosphere_aa782de494e28ef738088136d18a7190d}{Atmosphere::SetConditions}}(Scalar\ temperature,\ Scalar\ pressure,\ Scalar\ humidity)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00110}00110\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{if}(glAtmosphere\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00112}00112\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00113}00113\ \ \ \ \ glAtmosphere-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a61cab6b5522e4f2b0d2dd9ff8b428cfb}{setAirTemperature}}((\textcolor{keywordtype}{float})temperature);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00114}00114\ \ \ \ \ glAtmosphere-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a5ec9f6fd23b8ecf986988b6da0a21356}{setAirHumidity}}((\textcolor{keywordtype}{float})humidity);\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00117}\mbox{\hyperlink{classsf_1_1_atmosphere_a599d94320e1064e7322cec986c31b203}{00117}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_atmosphere_a599d94320e1064e7322cec986c31b203}{Atmosphere::AddVelocityField}}(\mbox{\hyperlink{classsf_1_1_velocity_field}{VelocityField}}*\ field)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00119}00119\ \ \ \ \ wind.push\_back(field);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00121}00121\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00122}\mbox{\hyperlink{classsf_1_1_atmosphere_a658833e10055ea3fc69490fb2ce80077}{00122}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_atmosphere_a658833e10055ea3fc69490fb2ce80077}{Atmosphere::GetSunPosition}}(Scalar\ \&azimuthDeg,\ Scalar\ \&elevationDeg)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{if}(glAtmosphere\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ azimuthDeg\ =\ elevationDeg\ =\ btScalar(0);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00127}00127\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ az,\ elev;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ glAtmosphere-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a03da10e5b50e37f2da16de2132ecd9de}{GetSunPosition}}(az,\ elev);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ azimuthDeg\ =\ Scalar(az);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ elevationDeg\ =\ Scalar(elev);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00132}00132\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00135}\mbox{\hyperlink{classsf_1_1_atmosphere_a4d9adb9a7238554f3a20ecf88b2e4adc}{00135}}\ Vector3\ \mbox{\hyperlink{classsf_1_1_atmosphere_a4d9adb9a7238554f3a20ecf88b2e4adc}{Atmosphere::GetSunDirection}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00136}00136\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00137}00137\ \ \ \ \ \textcolor{keywordflow}{if}(glAtmosphere\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00140}00140\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ glm::vec3\ dir\ =\ glAtmosphere-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_ad3bfba8ed03531c1559ad5e8393b063a}{GetSunDirection}}();}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3(dir.x,\ dir.y,\ dir.z);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00146}\mbox{\hyperlink{classsf_1_1_atmosphere_afc0c2749a79166fee85b90dc9c6232d3}{00146}}\ Vector3\ \mbox{\hyperlink{classsf_1_1_atmosphere_afc0c2749a79166fee85b90dc9c6232d3}{Atmosphere::GetFluidVelocity}}(\textcolor{keyword}{const}\ Vector3\&\ point)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00147}00147\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00148}00148\ \ \ \ \ Vector3\ fv(0,0,0);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00149}00149\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<wind.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ fv\ +=\ wind[i]-\/>GetVelocityAtPoint(point);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordflow}{return}\ fv;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00152}00152\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00154}00154\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_atmosphere_afc0c2749a79166fee85b90dc9c6232d3}{Atmosphere::GetFluidVelocity}}(\textcolor{keyword}{const}\ glm::vec3\&\ point)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00155}00155\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{keywordflow}{return}\ glVectorFromVector(\mbox{\hyperlink{classsf_1_1_atmosphere_afc0c2749a79166fee85b90dc9c6232d3}{GetFluidVelocity}}(Vector3(point.x,\ point.y,\ point.z)));}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00157}00157\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00159}\mbox{\hyperlink{classsf_1_1_atmosphere_af9c30583dc8ed6c97ff407ddde17bb46}{00159}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_atmosphere_af9c30583dc8ed6c97ff407ddde17bb46}{Atmosphere::IsInsideFluid}}(\textcolor{keyword}{const}\ Vector3\&\ point)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00160}00160\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00161}00161\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00162}00162\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00164}\mbox{\hyperlink{classsf_1_1_atmosphere_af4264569b88f6fdd42f3260b7a43b04d}{00164}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_atmosphere_af4264569b88f6fdd42f3260b7a43b04d}{Atmosphere::ApplyFluidForces}}(btDynamicsWorld*\ world,\ btCollisionObject*\ co,\ \textcolor{keywordtype}{bool}\ recompute)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00165}00165\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00166}00166\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_entity}{Entity}}*\ ent;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00167}00167\ \ \ \ \ btRigidBody*\ rb\ =\ btRigidBody::upcast(co);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00168}00168\ \ \ \ \ btMultiBodyLinkCollider*\ mbl\ =\ btMultiBodyLinkCollider::upcast(co);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00169}00169\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00170}00170\ \ \ \ \ \textcolor{keywordflow}{if}(rb\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00171}00171\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rb-\/>isStaticOrKinematicObject())}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ ent\ =\ (\mbox{\hyperlink{classsf_1_1_entity}{Entity}}*)rb-\/>getUserPointer();}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00176}00176\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(mbl\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00178}00178\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(mbl-\/>isStaticOrKinematicObject())}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ ent\ =\ (\mbox{\hyperlink{classsf_1_1_entity}{Entity}}*)mbl-\/>getUserPointer();}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00183}00183\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00186}00186\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00187}00187\ \ \ \ \ \textcolor{keywordflow}{if}(ent-\/>\mbox{\hyperlink{classsf_1_1_entity_aba0c0ef819595be1aab5a6d9ba7c0c91}{getType}}()\ ==\ EntityType::SOLID)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00188}00188\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(recompute)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*)ent)-\/>ComputeAerodynamicForces(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*)ent)-\/>ApplyAerodynamicForces();}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00196}00196\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00198}\mbox{\hyperlink{classsf_1_1_atmosphere_a257e4eb74aa8567a38f2f3631d20ee51}{00198}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_atmosphere_a257e4eb74aa8567a38f2f3631d20ee51}{Atmosphere::JulianDay}}(std::tm\&\ tm)}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00199}00199\ \{}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{keywordtype}{int}\ m\ =\ tm.tm\_mon\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00201}00201\ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ tm.tm\_year\ +\ 1900;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00202}00202\ \ \ \ \ \textcolor{keywordtype}{int}\ d\ =\ tm.tm\_mday;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00203}00203\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00204}00204\ \ \ \ \ Scalar\ X\ =\ (m\ +\ 9)\ /\ 12.0;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00205}00205\ \ \ \ \ \textcolor{keywordtype}{int}\ A\ =\ 4716\ +\ y\ +\ (int)trunc(X);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00206}00206\ \ \ \ \ Scalar\ Y\ =\ 275\ *\ m\ /\ 9.0;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00207}00207\ \ \ \ \ Scalar\ V\ =\ 7\ *\ A\ /\ 4.0;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00208}00208\ \ \ \ \ Scalar\ B\ =\ 1729279.5\ +\ 367\ *\ y\ +\ trunc(Y)\ -\/\ trunc(V)\ +\ d;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00209}00209\ \ \ \ \ Scalar\ Q\ =\ (A\ +\ 83)\ /\ 100.0;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00210}00210\ \ \ \ \ Scalar\ W\ =\ 3\ *\ (trunc(Q)\ +\ 1)\ /\ 4.0;}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00211}00211\ \ \ \ \ \textcolor{keywordflow}{return}\ B\ +\ 38\ -\/\ (int)trunc(W);}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00212}00212\ \}}
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_atmosphere_8cpp_source_l00214}00214\ \}}
+
+\end{DoxyCode}

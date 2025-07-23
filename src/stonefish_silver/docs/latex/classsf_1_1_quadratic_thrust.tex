@@ -1,0 +1,139 @@
+\doxysection{sf\+::Quadratic\+Thrust Class Reference}
+\hypertarget{classsf_1_1_quadratic_thrust}{}\label{classsf_1_1_quadratic_thrust}\index{sf::QuadraticThrust@{sf::QuadraticThrust}}
+
+
+A class representing a basic quadratic model.  
+
+
+
+
+{\ttfamily \#include $<$Actuator\+Dynamics.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Quadratic\+Thrust\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classsf_1_1_quadratic_thrust__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Quadratic\+Thrust\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classsf_1_1_quadratic_thrust__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_quadratic_thrust_ac9fd3b2382c3abbb77805a06919ae1e9}{Quadratic\+Thrust}} (Scalar kt)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+std\+::pair$<$ Scalar, Scalar $>$ \mbox{\hyperlink{classsf_1_1_quadratic_thrust_a5ed4d03fa6144bf64bdf24ee3d3f19b9}{Update}} (Scalar input) override
+\begin{DoxyCompactList}\small\item\em A method computing the model output. \end{DoxyCompactList}\item 
+Thrust\+Model\+Type \mbox{\hyperlink{classsf_1_1_quadratic_thrust_ac73ea81597a4ae63913c81112b3ce7b2}{get\+Type}} () override
+\begin{DoxyCompactList}\small\item\em A method returning the type of the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_quadratic_thrust_addc28e09579c55d2b38967b80dfad66f}{kt}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a basic quadratic model. 
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00287}{287}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_quadratic_thrust_ac9fd3b2382c3abbb77805a06919ae1e9}\label{classsf_1_1_quadratic_thrust_ac9fd3b2382c3abbb77805a06919ae1e9} 
+\index{sf::QuadraticThrust@{sf::QuadraticThrust}!QuadraticThrust@{QuadraticThrust}}
+\index{QuadraticThrust@{QuadraticThrust}!sf::QuadraticThrust@{sf::QuadraticThrust}}
+\doxysubsubsection{\texorpdfstring{QuadraticThrust()}{QuadraticThrust()}}
+{\footnotesize\ttfamily sf\+::\+Quadratic\+Thrust\+::\+Quadratic\+Thrust (\begin{DoxyParamCaption}\item[{Scalar}]{kt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kt} & thrust coefficient \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00294}{294}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_quadratic_thrust_ac73ea81597a4ae63913c81112b3ce7b2}\label{classsf_1_1_quadratic_thrust_ac73ea81597a4ae63913c81112b3ce7b2} 
+\index{sf::QuadraticThrust@{sf::QuadraticThrust}!getType@{getType}}
+\index{getType@{getType}!sf::QuadraticThrust@{sf::QuadraticThrust}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Thrust\+Model\+Type sf\+::\+Quadratic\+Thrust\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method returning the type of the model. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_thrust_model_a62baf590095efe43eb08e0b33738ce95}{sf\+::\+Thrust\+Model}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00310}{310}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+\Hypertarget{classsf_1_1_quadratic_thrust_a5ed4d03fa6144bf64bdf24ee3d3f19b9}\label{classsf_1_1_quadratic_thrust_a5ed4d03fa6144bf64bdf24ee3d3f19b9} 
+\index{sf::QuadraticThrust@{sf::QuadraticThrust}!Update@{Update}}
+\index{Update@{Update}!sf::QuadraticThrust@{sf::QuadraticThrust}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily std\+::pair$<$ Scalar, Scalar $>$ sf\+::\+Quadratic\+Thrust\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method computing the model output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the input to the model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pair of thrust and torque computed by the model 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_thrust_model_a399a720780ff0087aceef43a9ad288be}{sf\+::\+Thrust\+Model}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00303}{303}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_quadratic_thrust_addc28e09579c55d2b38967b80dfad66f}\label{classsf_1_1_quadratic_thrust_addc28e09579c55d2b38967b80dfad66f} 
+\index{sf::QuadraticThrust@{sf::QuadraticThrust}!kt@{kt}}
+\index{kt@{kt}!sf::QuadraticThrust@{sf::QuadraticThrust}}
+\doxysubsubsection{\texorpdfstring{kt}{kt}}
+{\footnotesize\ttfamily Scalar sf\+::\+Quadratic\+Thrust\+::kt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00316}{316}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Actuator\+Dynamics.\+h\end{DoxyCompactItemize}

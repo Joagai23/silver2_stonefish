@@ -1,0 +1,120 @@
+\doxysection{Contact.\+h}
+\hypertarget{_contact_8h_source}{}\label{_contact_8h_source}\index{Library/include/sensors/Contact.h@{Library/include/sensors/Contact.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00019}00019\ \textcolor{comment}{//\ \ Contact.h}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 11/05/2014.}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2014-\/2019\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_Contact\_\_}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_Contact\_\_}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}StonefishCommon.h"{}}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00032}00032\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_NONE\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_LAST\_A\ =\ 1\ <<\ 0,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_PATH\_A\ =\ 1\ <<\ 1,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_LAST\_SLIP\_VELOCITY\_A\ =\ 1\ <<\ 2,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_SLIP\_VELOCITY\_SEQUENCE\_A\ =\ 1\ <<\ 3,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_NORMAL\_FORCE\_A\ =\ 1\ <<\ 4,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_LAST\_B\ =\ 1\ <<\ 5,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_PATH\_B\ =\ 1\ <<\ 6,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_LAST\_SLIP\_VELOCITY\_B\ =\ 1\ <<\ 7,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_SLIP\_VELOCITY\_SEQUENCE\_B\ =\ 1\ <<\ 8,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ CONTACT\_DISPLAY\_NORMAL\_FORCE\_B\ =\ 1\ <<\ 9,}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00047}00047\ \ \ \ \ \}\ ContactDisplayType;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00048}00048\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00050}\mbox{\hyperlink{structsf_1_1_contact_point}{00050}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_contact_point}{ContactPoint}}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ Scalar\ timeStamp;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ Vector3\ locationA;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ Vector3\ locationB;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ Vector3\ slippingVelocityA;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ Vector3\ normalForceA;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00057}00057\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00060}\mbox{\hyperlink{structsf_1_1_contact_info}{00060}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_contact_info}{ContactInfo}}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ Scalar\ totalAppliedImpulse;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ Vector3\ slip;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00064}00064\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_renderable}{Renderable}};}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_entity}{Entity}};}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00068}00068\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00070}\mbox{\hyperlink{classsf_1_1_contact}{00070}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_contact}{Contact}}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_contact}{Contact}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_entity}{Entity}}*\ entityA,\ \mbox{\hyperlink{classsf_1_1_entity}{Entity}}*\ entityB,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ historyLength\ =\ 1);}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_contact_ae3d017fdec50cfa3a40f70626e4f892d}{\string~Contact}}();}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_contact_a54b4db34425dcef8dfa387e797e0ca98}{AddContactPoint}}(\textcolor{keyword}{const}\ btPersistentManifold*\ manifold,\ \textcolor{keywordtype}{bool}\ swapped,\ Scalar\ dt);}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_contact_a54b4db34425dcef8dfa387e797e0ca98}{AddContactPoint}}(\mbox{\hyperlink{structsf_1_1_contact_point}{ContactPoint}}\ p);}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_contact_ab4b6ac28770590c55b2f7a8b6335f9cf}{ClearHistory}}();}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_contact_abd71781cc3fc5981ca303a3e7eba4791}{MarkDataOld}}();}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_contact_ad5df76147cc393fe1ed1f10b46ce04b5}{isNewDataAvailable}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00107}00107\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_contact_a9664667f4fc47a34a9ebd7eb59b8a03c}{SaveContactDataToOctaveFile}}(\textcolor{keyword}{const}\ std::string\&\ path,\ \textcolor{keywordtype}{bool}\ includeTime\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_contact_aa7ee87720cf3891d2a0ee921601cd12a}{Render}}();}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_contact_a4325484266509752cba522f1099c7192}{setDisplayMask}}(int16\_t\ mask);}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classsf_1_1_contact_ac18a4af16d2ebec70bc378b84a0a72d9}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classsf_1_1_entity}{Entity}}*\ \mbox{\hyperlink{classsf_1_1_contact_a88e554abd0734c353959decbb3734661}{getEntityA}}();}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classsf_1_1_entity}{Entity}}*\ \mbox{\hyperlink{classsf_1_1_contact_a6f9e99a2af046755f2faed1c1768bd12}{getEntityB}}();}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00132}00132\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::deque<ContactPoint>\&\ \mbox{\hyperlink{classsf_1_1_contact_a6e419c5da05308a7a0abb1abdd8dd95c}{getHistory}}();}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00136}00136\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_entity}{Entity}}*\ A;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_entity}{Entity}}*\ B;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00140}00140\ \ \ \ \ \ \ \ \ std::deque<ContactPoint>\ points;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ std::deque<ContactPoint>::iterator\ pointsLastBeg;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ historyLen;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ int16\_t\ displayMask;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ newDataAvailable;}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00145}00145\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00146}00146\ \}}
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_contact_8h_source_l00148}00148\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

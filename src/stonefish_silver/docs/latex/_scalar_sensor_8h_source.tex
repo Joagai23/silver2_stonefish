@@ -1,0 +1,128 @@
+\doxysection{Scalar\+Sensor.\+h}
+\hypertarget{_scalar_sensor_8h_source}{}\label{_scalar_sensor_8h_source}\index{Library/include/sensors/ScalarSensor.h@{Library/include/sensors/ScalarSensor.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00019}00019\ \textcolor{comment}{//\ \ ScalarSensor.h}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieślak\ on\ 20/11/2018.}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2018-\/2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_ScalarSensor\_\_}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_ScalarSensor\_\_}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}sensors/Sensor.h"{}}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00032}00032\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{enum\ class}\ ScalarSensorType\ \{ACC,\ CURRENT,\ DVL,\ COMPASS,\ FT,\ GPS,\ GYRO,\ IMU,\ INS,\ MULTIBEAM,\ ODOM,\ PRESSURE,\ PROFILER,\ ENCODER,\ TORQUE,\ POSE\};}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00036}00036\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{enum\ class}\ QuantityType}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ UNITLESS,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ LENGTH,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ ANGLE,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ VELOCITY,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ ANGULAR\_VELOCITY,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ ACCELERATION,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ FORCE,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ TORQUE,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ CURRENT,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ PRESSURE,}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ INVALID}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00051}00051\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00052}00052\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00054}\mbox{\hyperlink{structsf_1_1_sensor_channel}{00054}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ QuantityType\ type;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ Scalar\ stdDev;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ std::normal\_distribution<Scalar>\ noise;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ Scalar\ rangeMin;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ Scalar\ rangeMax;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00068}\mbox{\hyperlink{structsf_1_1_sensor_channel_a0848d4caef3a93b7a1c065e018cd4f96}{00068}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_sensor_channel_a0848d4caef3a93b7a1c065e018cd4f96}{SensorChannel}}(std::string\ name\_,\ QuantityType\ type\_)\ :\ name(name\_),\ type(type\_),\ stdDev(0),\ rangeMin(-\/BT\_LARGE\_FLOAT),\ rangeMax(BT\_LARGE\_FLOAT)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00074}\mbox{\hyperlink{structsf_1_1_sensor_channel_a2521258cb855aa65c235fd39490b2aa5}{00074}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structsf_1_1_sensor_channel_a2521258cb855aa65c235fd39490b2aa5}{setStdDev}}(Scalar\ sd)}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(sd\ >\ Scalar(0))}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdDev\ =\ sd;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ noise\ =\ std::normal\_distribution<Scalar>(Scalar(0),\ stdDev);}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00082}00082\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00083}00083\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00084}00084\ \ \ \ \ \textcolor{keyword}{class\ }Sample;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00085}00085\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00087}\mbox{\hyperlink{classsf_1_1_scalar_sensor}{00087}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_scalar_sensor}{ScalarSensor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classsf_1_1_sensor}{Sensor}}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00088}00088\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor}{ScalarSensor}}(std::string\ uniqueName,\ Scalar\ frequency,\ \textcolor{keywordtype}{int}\ historyLength);}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_aa84cb84f79422bfbfb47bfb1755f9918}{\string~ScalarSensor}}();}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_ab842b496d665bec0731a119fe198d093}{Reset}}();}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a26c5b89bbec3c4ef81eb0f40996b6037}{ClearHistory}}();}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_aa1bfe5a9f4331022b74f2e23459baa99}{SaveMeasurementsToTextFile}}(\textcolor{keyword}{const}\ std::string\&\ path,\ \textcolor{keywordtype}{bool}\ includeTime\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ fixedPrecision\ =\ 6);}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a5ea8d8ffdbfde0249bd8b787ee6e4a5b}{SaveMeasurementsToOctaveFile}}(\textcolor{keyword}{const}\ std::string\&\ path,\ \textcolor{keywordtype}{bool}\ includeTime\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ separateChannels\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a466750db0c7cd6f94154dd0004682543}{getNumOfChannels}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_abe9366db4bd71ac46e8c72038fd6cba0}{getLastSample}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Sample>*\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{getHistory}}();}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a87b2e8c7be907db3af91606ce5c48f7d}{getValue}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ index,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ channel)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00145}00145\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a765d5149d6395cd04ad4b3a9d873ed9a}{getLastValue}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ channel)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00152}00152\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_abbf62f5548f3671b623fe05ad2c41053}{getSensorChannelDescription}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ channel)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00153}00153\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00155}\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0196a30a613dd7433d0effffbbf42af7}{00155}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ ScalarSensorType\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0196a30a613dd7433d0effffbbf42af7}{getScalarSensorType}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00157}00157\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ AddSampleToHistory(\textcolor{keyword}{const}\ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\&\ s);}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ std::deque<Sample*>\ history;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00160}00160\ \ \ \ \ \ \ \ \ std::vector<SensorChannel>\ channels;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00161}00161\ \ \ \ \ \ \ \ \ uint64\_t\ sampleCount;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00162}00162\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00163}00163\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ historyLen;}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00165}00165\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00166}00166\ \}}
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00167}00167\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_scalar_sensor_8h_source_l00168}00168\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

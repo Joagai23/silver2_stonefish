@@ -1,0 +1,15 @@
+<map id="sf::Joint" name="sf::Joint">
+<area shape="rect" id="Node000001" title="An abstract class implementing a general joint." alt="" coords="5,129,76,155"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_cylindrical_joint.html" title="A class representing a cylindrical joint." alt="" coords="124,5,263,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,116,83,77,122,40,144,28,146,33,126,44,87,80,59,119"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_fixed_joint.html" title="A class representing a fixed joint." alt="" coords="141,55,245,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="70,119,123,89,150,78,153,82,125,94,73,124"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_prismatic_joint.html" title="A class representing a prismatic joint." alt="" coords="128,104,259,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="89,131,128,125,128,130,90,137"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_revolute_joint.html" title="A class representing a revolute joint." alt="" coords="129,153,257,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="90,147,130,153,129,159,89,152"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1_spherical_joint.html" title="A class representing a spherical joint." alt="" coords="128,203,259,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="75,160,125,188,155,200,153,205,123,192,72,164"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1_spring_joint.html" title="A class representing a spring." alt="" coords="138,252,249,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="60,165,88,202,126,237,149,250,146,254,122,242,84,206,55,168"/>
+</map>

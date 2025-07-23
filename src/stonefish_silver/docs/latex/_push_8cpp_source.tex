@@ -1,0 +1,115 @@
+\doxysection{Push.\+cpp}
+\hypertarget{_push_8cpp_source}{}\label{_push_8cpp_source}\index{Library/src/actuators/Push.cpp@{Library/src/actuators/Push.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Push.cpp}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 04/07/2023.}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2023-\/2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}actuators/Push.h"{}}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00031}00031\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00034}\mbox{\hyperlink{classsf_1_1_push_a88ef56a8124d71c34b429c245de84411}{00034}}\ \mbox{\hyperlink{classsf_1_1_push_a88ef56a8124d71c34b429c245de84411}{Push::Push}}(std::string\ uniqueName,\ \textcolor{keywordtype}{bool}\ inverted)\ :\ \mbox{\hyperlink{classsf_1_1_link_actuator}{LinkActuator}}(uniqueName)}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00036}00036\ \ \ \ \ setpoint\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00037}00037\ \ \ \ \ inv\ =\ inverted;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_push_a2b2fd275e7777a2216347cb7cd9c5aaf}{setForceLimits}}(1,\ -\/1);\ \textcolor{comment}{//\ No\ limits}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00041}\mbox{\hyperlink{classsf_1_1_push_aa97c2a91b0ef451a2ed0b3eb5c722257}{00041}}\ ActuatorType\ \mbox{\hyperlink{classsf_1_1_push_aa97c2a91b0ef451a2ed0b3eb5c722257}{Push::getType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00042}00042\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{return}\ ActuatorType::PUSH;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00046}\mbox{\hyperlink{classsf_1_1_push_a2b2fd275e7777a2216347cb7cd9c5aaf}{00046}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_push_a2b2fd275e7777a2216347cb7cd9c5aaf}{Push::setForceLimits}}(Scalar\ lower,\ Scalar\ upper)}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00048}00048\ \ \ \ \ limits.first\ =\ lower;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00049}00049\ \ \ \ \ limits.second\ =\ upper;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00052}\mbox{\hyperlink{classsf_1_1_push_acd1bb67c889b59b0735459962de703b4}{00052}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_push_acd1bb67c889b59b0735459962de703b4}{Push::setForce}}(Scalar\ f)}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00053}00053\ \{}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{if}(limits.second\ >\ limits.first)\ \textcolor{comment}{//\ Limitted}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ setpoint\ =\ f\ <\ limits.first\ ?\ limits.first\ :\ (f\ >\ limits.second\ ?\ limits.second\ :\ f);}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ setpoint\ =\ f;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00058}00058\ \ \ \ \ ResetWatchdog();}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00061}\mbox{\hyperlink{classsf_1_1_push_a7e3e914b7a1172259606dac72bb5b19c}{00061}}\ Scalar\ \mbox{\hyperlink{classsf_1_1_push_a7e3e914b7a1172259606dac72bb5b19c}{Push::getForce}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00062}00062\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{return}\ setpoint;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00066}\mbox{\hyperlink{classsf_1_1_push_a9b61d8108e5cf955b26e7835b2cfc70a}{00066}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_push_a9b61d8108e5cf955b26e7835b2cfc70a}{Push::Update}}(Scalar\ dt)}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00067}00067\ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_actuator_afe9be563b1e1819330bb61386d443b62}{Actuator::Update}}(dt);}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{if}(attach\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Get\ transforms}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ Transform\ solidTrans\ =\ attach-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}();}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ Transform\ pushTrans\ =\ attach-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{getOTransform}}()\ *\ o2a;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ Scalar\ force\ =\ inv\ ?\ -\/setpoint\ :\ setpoint;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ Vector3\ forceV(force,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ attach-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a53e7f01530aa5f223a3a593affcab0c4}{ApplyCentralForce}}(pushTrans.getBasis()\ *\ forceV);}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ attach-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a1dbd1013fa148de2c448ff39a1f26864}{ApplyTorque}}((pushTrans.getOrigin()\ -\/\ solidTrans.getOrigin()).cross(pushTrans.getBasis()\ *\ forceV));\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00084}\mbox{\hyperlink{classsf_1_1_push_aca2b55d78dfc97623c48ce56db3e3da2}{00084}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_push_aca2b55d78dfc97623c48ce56db3e3da2}{Push::Render}}()}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00085}00085\ \{}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00086}00086\ \ \ \ \ Transform\ pushTrans\ =\ Transform::getIdentity();}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{if}(attach\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ pushTrans\ =\ attach-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{getOTransform}}()\ *\ o2a;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_link_actuator_aa2529f1fa02cf53b2871e79337deeec0}{LinkActuator::Render}}();}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00091}00091\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//Add\ renderable}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00093}00093\ \ \ \ \ std::vector<Renderable>\ items(0);}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00095}00095\ \ \ \ \ item.model\ =\ glMatrixFromTransform(pushTrans);\ \ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00096}00096\ \ \ \ \ item.type\ =\ RenderableType::ACTUATOR\_LINES;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00097}00097\ \ \ \ \ item.points.push\_back(glm::vec3(0,0,0));}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00098}00098\ \ \ \ \ item.points.push\_back(glm::vec3(0.1f*(inv\ ?\ -\/setpoint\ :\ setpoint),0,0));}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00099}00099\ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00100}00100\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00104}00104\ \textcolor{keywordtype}{void}\ Push::WatchdogTimeout()}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00105}00105\ \{}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_push_acd1bb67c889b59b0735459962de703b4}{setForce}}(Scalar(0));}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00108}00108\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_push_8cpp_source_l00109}00109\ \}}
+
+\end{DoxyCode}

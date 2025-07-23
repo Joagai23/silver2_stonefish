@@ -1,0 +1,332 @@
+\doxysection{sf\+::Open\+GLPipeline Class Reference}
+\hypertarget{classsf_1_1_open_g_l_pipeline}{}\label{classsf_1_1_open_g_l_pipeline}\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+
+
+A class implementing the Open\+GL rendering pipeline.  
+
+
+
+
+{\ttfamily \#include $<$Open\+GLPipeline.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_ab720073e0d465d30d296e22aac9fd9d3}{Open\+GLPipeline}} (\mbox{\hyperlink{structsf_1_1_render_settings}{Render\+Settings}} s, \mbox{\hyperlink{structsf_1_1_helper_settings}{Helper\+Settings}} h)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a417ccfb903da5d1d6b04d88084675941}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLPipeline}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a20374b19197e3455001ffaf6e8d1e78b}{Render}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sim)
+\begin{DoxyCompactList}\small\item\em A method that constitutes the main rendering pipeline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a723f0a79bd138fa8ce18832369e5b26c}{Add\+To\+Drawing\+Queue}} (const \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} \&r)
+\begin{DoxyCompactList}\small\item\em A method to add renderable objects to the rendering queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a5b15a9dad7237ef9ab2aa2282b4c2a87}{Add\+To\+Drawing\+Queue}} (const std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \&r)
+\begin{DoxyCompactList}\small\item\em A method to add multiple renderable objects to the rendering queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a5088893002c477b294326ea54e182862}{Add\+To\+Selected\+Drawing\+Queue}} (const std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \&r)
+\begin{DoxyCompactList}\small\item\em A method to add multiple renderable objects to the selected objects rendering queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a22d0137ac31472185daff672d31c6846}{Draw\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em A method that draws all normal objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a7c6e89ad39809e929a40b13aef3662cf}{Draw\+Lights}} ()
+\begin{DoxyCompactList}\small\item\em A method that draws all lights. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a034e0bcbc5f1b63393ac49828a4ca781}{Draw\+Display}} ()
+\begin{DoxyCompactList}\small\item\em A method that blits the screen FBO to the main framebuffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a6ee732b0ec1671e9c2016fb1112d40ce}{Purge\+Drawing\+Queue}} ()
+\begin{DoxyCompactList}\small\item\em A method that clears the drawing queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a4ee92326eae1a6b40aec26567692d07e}{Purge\+Selected\+Drawing\+Queue}} ()
+\begin{DoxyCompactList}\small\item\em A method that clears the drawing queue for selected objects. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a7f54427e9bffb916a2ca1593bb013936}{is\+Drawing\+Queue\+Empty}} ()
+\begin{DoxyCompactList}\small\item\em A method that informs if the drawing queue is empty. \end{DoxyCompactList}\item 
+SDL\+\_\+mutex \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a7b3f32a3a5d3ea1fc9708ea387080724}{get\+Drawing\+Queue\+Mutex}} ()
+\begin{DoxyCompactList}\small\item\em A method to get mutex of the drawing queue for thread safeness. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsf_1_1_render_settings}{Render\+Settings}} \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a74550be17450b199bfb3cf857ac3ce9b}{get\+Render\+Settings}} () const
+\begin{DoxyCompactList}\small\item\em A method returning a copy of the render settings. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsf_1_1_helper_settings}{Helper\+Settings}} \& \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a81ffa8ea7741b05fa761d6719c2078dd}{get\+Helper\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a reference to the helper object settings. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a3b6eace573a615e384c6eea6fc12c51f}{get\+Screen\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the screen texture, used for generating GUI background. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_content}{Open\+GLContent}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_pipeline_a546da4ff40f73c9b8b2631bf79c258d1}{get\+Content}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the Open\+GL content manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing the Open\+GL rendering pipeline. 
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8h_source_l00041}{41}} of file \mbox{\hyperlink{_open_g_l_pipeline_8h_source}{Open\+GLPipeline.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_open_g_l_pipeline_ab720073e0d465d30d296e22aac9fd9d3}\label{classsf_1_1_open_g_l_pipeline_ab720073e0d465d30d296e22aac9fd9d3} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!OpenGLPipeline@{OpenGLPipeline}}
+\index{OpenGLPipeline@{OpenGLPipeline}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{OpenGLPipeline()}{OpenGLPipeline()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLPipeline\+::\+Open\+GLPipeline (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_render_settings}{Render\+Settings}}}]{s,  }\item[{\mbox{\hyperlink{structsf_1_1_helper_settings}{Helper\+Settings}}}]{h }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & a structure containing the render settings \\
+\hline
+{\em h} & a structure containing the helper rendering options \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a417ccfb903da5d1d6b04d88084675941}\label{classsf_1_1_open_g_l_pipeline_a417ccfb903da5d1d6b04d88084675941} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!````~OpenGLPipeline@{\texorpdfstring{$\sim$}{\string~}OpenGLPipeline}}
+\index{````~OpenGLPipeline@{\texorpdfstring{$\sim$}{\string~}OpenGLPipeline}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLPipeline()}{\string~OpenGLPipeline()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLPipeline\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLPipeline (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a723f0a79bd138fa8ce18832369e5b26c}\label{classsf_1_1_open_g_l_pipeline_a723f0a79bd138fa8ce18832369e5b26c} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!AddToDrawingQueue@{AddToDrawingQueue}}
+\index{AddToDrawingQueue@{AddToDrawingQueue}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{AddToDrawingQueue()}{AddToDrawingQueue()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLPipeline\+::\+Add\+To\+Drawing\+Queue (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} \&}]{r }\end{DoxyParamCaption})}
+
+
+
+A method to add renderable objects to the rendering queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & a renderable object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00136}{136}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a5b15a9dad7237ef9ab2aa2282b4c2a87}\label{classsf_1_1_open_g_l_pipeline_a5b15a9dad7237ef9ab2aa2282b4c2a87} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!AddToDrawingQueue@{AddToDrawingQueue}}
+\index{AddToDrawingQueue@{AddToDrawingQueue}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{AddToDrawingQueue()}{AddToDrawingQueue()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLPipeline\+::\+Add\+To\+Drawing\+Queue (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \&}]{r }\end{DoxyParamCaption})}
+
+
+
+A method to add multiple renderable objects to the rendering queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & a vector of renderable objects \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a5088893002c477b294326ea54e182862}\label{classsf_1_1_open_g_l_pipeline_a5088893002c477b294326ea54e182862} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!AddToSelectedDrawingQueue@{AddToSelectedDrawingQueue}}
+\index{AddToSelectedDrawingQueue@{AddToSelectedDrawingQueue}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{AddToSelectedDrawingQueue()}{AddToSelectedDrawingQueue()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLPipeline\+::\+Add\+To\+Selected\+Drawing\+Queue (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \&}]{r }\end{DoxyParamCaption})}
+
+
+
+A method to add multiple renderable objects to the selected objects rendering queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & a vector of renderable objects \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a034e0bcbc5f1b63393ac49828a4ca781}\label{classsf_1_1_open_g_l_pipeline_a034e0bcbc5f1b63393ac49828a4ca781} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!DrawDisplay@{DrawDisplay}}
+\index{DrawDisplay@{DrawDisplay}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{DrawDisplay()}{DrawDisplay()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLPipeline\+::\+Draw\+Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that blits the screen FBO to the main framebuffer. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00199}{199}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a7c6e89ad39809e929a40b13aef3662cf}\label{classsf_1_1_open_g_l_pipeline_a7c6e89ad39809e929a40b13aef3662cf} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!DrawLights@{DrawLights}}
+\index{DrawLights@{DrawLights}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{DrawLights()}{DrawLights()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLPipeline\+::\+Draw\+Lights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that draws all lights. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00215}{215}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a22d0137ac31472185daff672d31c6846}\label{classsf_1_1_open_g_l_pipeline_a22d0137ac31472185daff672d31c6846} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!DrawObjects@{DrawObjects}}
+\index{DrawObjects@{DrawObjects}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{DrawObjects()}{DrawObjects()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLPipeline\+::\+Draw\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that draws all normal objects. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00206}{206}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a546da4ff40f73c9b8b2631bf79c258d1}\label{classsf_1_1_open_g_l_pipeline_a546da4ff40f73c9b8b2631bf79c258d1} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!getContent@{getContent}}
+\index{getContent@{getContent}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{getContent()}{getContent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_open_g_l_content}{Open\+GLContent}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLPipeline\+::get\+Content (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the Open\+GL content manager. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a7b3f32a3a5d3ea1fc9708ea387080724}\label{classsf_1_1_open_g_l_pipeline_a7b3f32a3a5d3ea1fc9708ea387080724} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!getDrawingQueueMutex@{getDrawingQueueMutex}}
+\index{getDrawingQueueMutex@{getDrawingQueueMutex}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{getDrawingQueueMutex()}{getDrawingQueueMutex()}}
+{\footnotesize\ttfamily SDL\+\_\+mutex \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLPipeline\+::get\+Drawing\+Queue\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method to get mutex of the drawing queue for thread safeness. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a81ffa8ea7741b05fa761d6719c2078dd}\label{classsf_1_1_open_g_l_pipeline_a81ffa8ea7741b05fa761d6719c2078dd} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!getHelperSettings@{getHelperSettings}}
+\index{getHelperSettings@{getHelperSettings}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{getHelperSettings()}{getHelperSettings()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_helper_settings}{Helper\+Settings}} \& sf\+::\+Open\+GLPipeline\+::get\+Helper\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a reference to the helper object settings. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a74550be17450b199bfb3cf857ac3ce9b}\label{classsf_1_1_open_g_l_pipeline_a74550be17450b199bfb3cf857ac3ce9b} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!getRenderSettings@{getRenderSettings}}
+\index{getRenderSettings@{getRenderSettings}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{getRenderSettings()}{getRenderSettings()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_render_settings}{Render\+Settings}} sf\+::\+Open\+GLPipeline\+::get\+Render\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning a copy of the render settings. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a3b6eace573a615e384c6eea6fc12c51f}\label{classsf_1_1_open_g_l_pipeline_a3b6eace573a615e384c6eea6fc12c51f} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!getScreenTexture@{getScreenTexture}}
+\index{getScreenTexture@{getScreenTexture}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{getScreenTexture()}{getScreenTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLPipeline\+::get\+Screen\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the screen texture, used for generating GUI background. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a7f54427e9bffb916a2ca1593bb013936}\label{classsf_1_1_open_g_l_pipeline_a7f54427e9bffb916a2ca1593bb013936} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!isDrawingQueueEmpty@{isDrawingQueueEmpty}}
+\index{isDrawingQueueEmpty@{isDrawingQueueEmpty}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{isDrawingQueueEmpty()}{isDrawingQueueEmpty()}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLPipeline\+::is\+Drawing\+Queue\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that informs if the drawing queue is empty. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a6ee732b0ec1671e9c2016fb1112d40ce}\label{classsf_1_1_open_g_l_pipeline_a6ee732b0ec1671e9c2016fb1112d40ce} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!PurgeDrawingQueue@{PurgeDrawingQueue}}
+\index{PurgeDrawingQueue@{PurgeDrawingQueue}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{PurgeDrawingQueue()}{PurgeDrawingQueue()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLPipeline\+::\+Purge\+Drawing\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that clears the drawing queue. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a4ee92326eae1a6b40aec26567692d07e}\label{classsf_1_1_open_g_l_pipeline_a4ee92326eae1a6b40aec26567692d07e} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!PurgeSelectedDrawingQueue@{PurgeSelectedDrawingQueue}}
+\index{PurgeSelectedDrawingQueue@{PurgeSelectedDrawingQueue}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{PurgeSelectedDrawingQueue()}{PurgeSelectedDrawingQueue()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLPipeline\+::\+Purge\+Selected\+Drawing\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that clears the drawing queue for selected objects. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00156}{156}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_pipeline_a20374b19197e3455001ffaf6e8d1e78b}\label{classsf_1_1_open_g_l_pipeline_a20374b19197e3455001ffaf6e8d1e78b} 
+\index{sf::OpenGLPipeline@{sf::OpenGLPipeline}!Render@{Render}}
+\index{Render@{Render}!sf::OpenGLPipeline@{sf::OpenGLPipeline}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLPipeline\+::\+Render (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sim }\end{DoxyParamCaption})}
+
+
+
+A method that constitutes the main rendering pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & a pointer to the simulation manager \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source_l00344}{344}} of file \mbox{\hyperlink{_open_g_l_pipeline_8cpp_source}{Open\+GLPipeline.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/graphics/Open\+GLPipeline.\+h\item 
+Library/src/graphics/Open\+GLPipeline.\+cpp\end{DoxyCompactItemize}

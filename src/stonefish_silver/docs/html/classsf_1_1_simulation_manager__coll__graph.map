@@ -1,0 +1,5 @@
+<map id="sf::SimulationManager" name="sf::SimulationManager">
+<area shape="rect" id="Node000001" title="An abstract class managing the simulation world, the solver settings and implementing custom physics ..." alt="" coords="5,93,173,119"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_material_manager.html" title="A class implementing a physical material manager." alt="" coords="13,5,165,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,45,92,93,87,93,87,45"/>
+</map>

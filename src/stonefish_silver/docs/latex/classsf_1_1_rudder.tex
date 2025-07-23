@@ -1,0 +1,266 @@
+\doxysection{sf\+::Rudder Class Reference}
+\hypertarget{classsf_1_1_rudder}{}\label{classsf_1_1_rudder}\index{sf::Rudder@{sf::Rudder}}
+
+
+A class representing a rudder working in water.  
+
+
+
+
+{\ttfamily \#include $<$Rudder.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Rudder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classsf_1_1_rudder__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Rudder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_rudder__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_rudder_a433b5080edfbd6d65ec8e0e50b2801ea}{Rudder}} (std\+::string unique\+Name, \mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}rudder, Scalar area, Scalar lift\+Coeff, Scalar drag\+Coeff, Scalar stall\+Angle, Scalar max\+Angle, bool inverted=false, Scalar max\+Angular\+Rate=Scalar(0))
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_rudder_a920548967e9a76cfdfb482e4d5835198}{\texorpdfstring{$\sim$}{\string~}\+Rudder}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_rudder_a9194a6e688e4c8e3b5ac5d0513d208ea}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method used to update the internal state of the rudder. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_rudder_afb2ae1ed53521b4f0fa2ed947f928172}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the rudder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_rudder_a52bf5598e3a41ec154354af817946a2c}{set\+Setpoint}} (Scalar s)
+\begin{DoxyCompactList}\small\item\em A method setting the new value of the rudder angle setpoint. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_rudder_a992d715d59cdc6b752c4e9d28779e5c3}{get\+Setpoint}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the current setpoint. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_rudder_ac33449e54c125a5b0647d3693cb68c4b}{get\+Angle}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the angular position of the rudder \mbox{[}rad\mbox{]}. \end{DoxyCompactList}\item 
+Actuator\+Type \mbox{\hyperlink{classsf_1_1_rudder_a827ecda64bd5d1b9811613882d0ddef0}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_link_actuator}{sf\+::\+Link\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_link_actuator_af1419a4d8c81fd49639296a66ca58b1c}{Link\+Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_link_actuator_abb33decb20bb669f931fe9eda36943e0}{Attach\+To\+Solid}} (\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the actuator to a specified rigid body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_link_actuator_a994726375d1bac63eeaee3ffe319ecfb}{set\+Relative\+Actuator\+Frame}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to set the actuator origin frame. \end{DoxyCompactList}\item 
+virtual Transform \mbox{\hyperlink{classsf_1_1_link_actuator_a2a206c10015fd2ab7d4a517af5906311}{get\+Actuator\+Frame}} () const
+\begin{DoxyCompactList}\small\item\em A method returning actuator frame in the world frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_actuator_a0bdcfb3e2bad01b7e3524efcea3dd646}{Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_actuator_ab1702a858f2c750da3259d8b3d574268}{\texorpdfstring{$\sim$}{\string~}\+Actuator}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_afe4e4fcdb0e13f9efbc665994e77d145}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set display mode used for the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a7e3ae31d3cfed62d68a0445b7a03f026}{set\+Watchdog}} (Scalar timeout)
+\begin{DoxyCompactList}\small\item\em A method used to set the watchdog timeout. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_actuator_a3a074b11358493cb251139c475507d2d}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_actuator_a468c6522181db81891bf535df9497b5a}{Watchdog\+Timeout}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a86dec171a3761123d92363a71b716385}{Reset\+Watchdog}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_link_actuator}{sf\+::\+Link\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_link_actuator_a36af6645c2eb2bb3621d07641d1e4dd8}{attach}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_link_actuator_a23f23ca6eae0382d3b77ab5e76417a29}{o2a}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_actuator_a1ca99e4bb5c8efa1670fdd09f1d52ead}{dm}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a rudder working in water. 
+
+Definition at line \mbox{\hyperlink{_rudder_8h_source_l00034}{34}} of file \mbox{\hyperlink{_rudder_8h_source}{Rudder.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_rudder_a433b5080edfbd6d65ec8e0e50b2801ea}\label{classsf_1_1_rudder_a433b5080edfbd6d65ec8e0e50b2801ea} 
+\index{sf::Rudder@{sf::Rudder}!Rudder@{Rudder}}
+\index{Rudder@{Rudder}!sf::Rudder@{sf::Rudder}}
+\doxysubsubsection{\texorpdfstring{Rudder()}{Rudder()}}
+{\footnotesize\ttfamily sf\+::\+Rudder\+::\+Rudder (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}}]{rudder,  }\item[{Scalar}]{area,  }\item[{Scalar}]{lift\+Coeff,  }\item[{Scalar}]{drag\+Coeff,  }\item[{Scalar}]{stall\+Angle,  }\item[{Scalar}]{max\+Angle,  }\item[{bool}]{inverted = {\ttfamily false},  }\item[{Scalar}]{max\+Angular\+Rate = {\ttfamily Scalar(0)} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the rudder \\
+\hline
+{\em rudder} & a pointer to a rigid body representing the rudder \\
+\hline
+{\em area} & the area of the rudder \mbox{[}m\texorpdfstring{$^\wedge$}{\string^}2\mbox{]} \\
+\hline
+{\em lift\+Coeff} & the lift coefficient \\
+\hline
+{\em drag\+Coeff} & the drag coefficient \\
+\hline
+{\em stall\+Angle} & the angle of attack above which lift ceases to be generated \mbox{[}rad\mbox{]} \\
+\hline
+{\em max\+Angle} & the maximum angle of the rudder \mbox{[}rad\mbox{]} \\
+\hline
+{\em inverted} & a flag to indicate if the setpoint is inverted (positive value results in left-\/handed rotation) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_rudder_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_rudder_8cpp_source}{Rudder.\+cpp}}.
+
+\Hypertarget{classsf_1_1_rudder_a920548967e9a76cfdfb482e4d5835198}\label{classsf_1_1_rudder_a920548967e9a76cfdfb482e4d5835198} 
+\index{sf::Rudder@{sf::Rudder}!````~Rudder@{\texorpdfstring{$\sim$}{\string~}Rudder}}
+\index{````~Rudder@{\texorpdfstring{$\sim$}{\string~}Rudder}!sf::Rudder@{sf::Rudder}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Rudder()}{\string~Rudder()}}
+{\footnotesize\ttfamily sf\+::\+Rudder\+::\texorpdfstring{$\sim$}{\string~}\+Rudder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_rudder_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_rudder_8cpp_source}{Rudder.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_rudder_ac33449e54c125a5b0647d3693cb68c4b}\label{classsf_1_1_rudder_ac33449e54c125a5b0647d3693cb68c4b} 
+\index{sf::Rudder@{sf::Rudder}!getAngle@{getAngle}}
+\index{getAngle@{getAngle}!sf::Rudder@{sf::Rudder}}
+\doxysubsubsection{\texorpdfstring{getAngle()}{getAngle()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Rudder\+::get\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the angular position of the rudder \mbox{[}rad\mbox{]}. 
+
+
+
+Definition at line \mbox{\hyperlink{_rudder_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{_rudder_8cpp_source}{Rudder.\+cpp}}.
+
+\Hypertarget{classsf_1_1_rudder_a992d715d59cdc6b752c4e9d28779e5c3}\label{classsf_1_1_rudder_a992d715d59cdc6b752c4e9d28779e5c3} 
+\index{sf::Rudder@{sf::Rudder}!getSetpoint@{getSetpoint}}
+\index{getSetpoint@{getSetpoint}!sf::Rudder@{sf::Rudder}}
+\doxysubsubsection{\texorpdfstring{getSetpoint()}{getSetpoint()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Rudder\+::get\+Setpoint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the current setpoint. 
+
+
+
+Definition at line \mbox{\hyperlink{_rudder_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_rudder_8cpp_source}{Rudder.\+cpp}}.
+
+\Hypertarget{classsf_1_1_rudder_a827ecda64bd5d1b9811613882d0ddef0}\label{classsf_1_1_rudder_a827ecda64bd5d1b9811613882d0ddef0} 
+\index{sf::Rudder@{sf::Rudder}!getType@{getType}}
+\index{getType@{getType}!sf::Rudder@{sf::Rudder}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Actuator\+Type sf\+::\+Rudder\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the actuator. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_actuator_a3b1831e870e2b800590271823d034c88}{sf\+::\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_rudder_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_rudder_8cpp_source}{Rudder.\+cpp}}.
+
+\Hypertarget{classsf_1_1_rudder_afb2ae1ed53521b4f0fa2ed947f928172}\label{classsf_1_1_rudder_afb2ae1ed53521b4f0fa2ed947f928172} 
+\index{sf::Rudder@{sf::Rudder}!Render@{Render}}
+\index{Render@{Render}!sf::Rudder@{sf::Rudder}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Rudder\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the rudder. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_link_actuator_aa2529f1fa02cf53b2871e79337deeec0}{sf\+::\+Link\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_rudder_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{_rudder_8cpp_source}{Rudder.\+cpp}}.
+
+\Hypertarget{classsf_1_1_rudder_a52bf5598e3a41ec154354af817946a2c}\label{classsf_1_1_rudder_a52bf5598e3a41ec154354af817946a2c} 
+\index{sf::Rudder@{sf::Rudder}!setSetpoint@{setSetpoint}}
+\index{setSetpoint@{setSetpoint}!sf::Rudder@{sf::Rudder}}
+\doxysubsubsection{\texorpdfstring{setSetpoint()}{setSetpoint()}}
+{\footnotesize\ttfamily void sf\+::\+Rudder\+::set\+Setpoint (\begin{DoxyParamCaption}\item[{Scalar}]{s }\end{DoxyParamCaption})}
+
+
+
+A method setting the new value of the rudder angle setpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & the desired angle of the rudder as an angle \mbox{[}rad\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_rudder_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_rudder_8cpp_source}{Rudder.\+cpp}}.
+
+\Hypertarget{classsf_1_1_rudder_a9194a6e688e4c8e3b5ac5d0513d208ea}\label{classsf_1_1_rudder_a9194a6e688e4c8e3b5ac5d0513d208ea} 
+\index{sf::Rudder@{sf::Rudder}!Update@{Update}}
+\index{Update@{Update}!sf::Rudder@{sf::Rudder}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void sf\+::\+Rudder\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to update the internal state of the rudder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & a time step of the simulation \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_actuator_afe9be563b1e1819330bb61386d443b62}{sf\+::\+Actuator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_rudder_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_rudder_8cpp_source}{Rudder.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Rudder.\+h\item 
+Library/src/actuators/Rudder.\+cpp\end{DoxyCompactItemize}

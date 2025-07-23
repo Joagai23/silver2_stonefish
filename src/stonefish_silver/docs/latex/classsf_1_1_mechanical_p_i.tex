@@ -1,0 +1,162 @@
+\doxysection{sf\+::Mechanical\+PI Class Reference}
+\hypertarget{classsf_1_1_mechanical_p_i}{}\label{classsf_1_1_mechanical_p_i}\index{sf::MechanicalPI@{sf::MechanicalPI}}
+
+
+A classs representing a mechnical shaft model with a PI controller.  
+
+
+
+
+{\ttfamily \#include $<$Actuator\+Dynamics.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Mechanical\+PI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classsf_1_1_mechanical_p_i__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Mechanical\+PI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classsf_1_1_mechanical_p_i__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_mechanical_p_i_a766fa45dcb7602a86d0f593a80e105c9}{Mechanical\+PI}} (Scalar J, Scalar Kp, Scalar Ki, Scalar i\+Lim)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_mechanical_p_i_ae745acb1de1f8cb6bc3e16c645bc5624}{Update}} (Scalar dt, Scalar sp) override
+\begin{DoxyCompactList}\small\item\em A method that updates the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_mechanical_p_i_a00929209d120d8eb931315c6087324e4}{set\+Damping\+Torque}} (Scalar tau)
+\begin{DoxyCompactList}\small\item\em A method used to update the damping torque. \end{DoxyCompactList}\item 
+Rotor\+Dynamics\+Type \mbox{\hyperlink{classsf_1_1_mechanical_p_i_a1561d973544edd3656782315d5c5db89}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the model type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_rotor_dynamics}{sf\+::\+Rotor\+Dynamics}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_rotor_dynamics_a23d107d402a037a9e8a0ed951f203769}{Rotor\+Dynamics}} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a0c11fecf4953816b757e33bf757fb9a4}{set\+Output\+Limit}} (Scalar limit)
+\begin{DoxyCompactList}\small\item\em A method used to set the limit of output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_rotor_dynamics}{sf\+::\+Rotor\+Dynamics}}}
+\begin{DoxyCompactItemize}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_rotor_dynamics_ad15d7f9dea79b0ef1ffcfb4ddb85560a}{last\+Output}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a3e8c33b07f84188e50ed331db544bb6a}{output\+Limit}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A classs representing a mechnical shaft model with a PI controller. 
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00209}{209}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_mechanical_p_i_a766fa45dcb7602a86d0f593a80e105c9}\label{classsf_1_1_mechanical_p_i_a766fa45dcb7602a86d0f593a80e105c9} 
+\index{sf::MechanicalPI@{sf::MechanicalPI}!MechanicalPI@{MechanicalPI}}
+\index{MechanicalPI@{MechanicalPI}!sf::MechanicalPI@{sf::MechanicalPI}}
+\doxysubsubsection{\texorpdfstring{MechanicalPI()}{MechanicalPI()}}
+{\footnotesize\ttfamily sf\+::\+Mechanical\+PI\+::\+Mechanical\+PI (\begin{DoxyParamCaption}\item[{Scalar}]{J,  }\item[{Scalar}]{Kp,  }\item[{Scalar}]{Ki,  }\item[{Scalar}]{i\+Lim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em J} & moment of inertia of the rotor \mbox{[}kgm2\mbox{]} \\
+\hline
+{\em Kp} & proportional gain of the PI controller \mbox{[}1\mbox{]} \\
+\hline
+{\em Ki} & integral gain of the PI controller \mbox{[}1\mbox{]} \\
+\hline
+{\em i\+Lim} & integral limit \mbox{[}rad/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00219}{219}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_mechanical_p_i_a1561d973544edd3656782315d5c5db89}\label{classsf_1_1_mechanical_p_i_a1561d973544edd3656782315d5c5db89} 
+\index{sf::MechanicalPI@{sf::MechanicalPI}!getType@{getType}}
+\index{getType@{getType}!sf::MechanicalPI@{sf::MechanicalPI}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Rotor\+Dynamics\+Type sf\+::\+Mechanical\+PI\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+A method returning the model type. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a9e649c97f25b9f1458b59f41faf9b657}{sf\+::\+Rotor\+Dynamics}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00251}{251}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+\Hypertarget{classsf_1_1_mechanical_p_i_a00929209d120d8eb931315c6087324e4}\label{classsf_1_1_mechanical_p_i_a00929209d120d8eb931315c6087324e4} 
+\index{sf::MechanicalPI@{sf::MechanicalPI}!setDampingTorque@{setDampingTorque}}
+\index{setDampingTorque@{setDampingTorque}!sf::MechanicalPI@{sf::MechanicalPI}}
+\doxysubsubsection{\texorpdfstring{setDampingTorque()}{setDampingTorque()}}
+{\footnotesize\ttfamily void sf\+::\+Mechanical\+PI\+::set\+Damping\+Torque (\begin{DoxyParamCaption}\item[{Scalar}]{tau }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A method used to update the damping torque. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em damping} & absolute value of the damping torque \mbox{[}Nm\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00245}{245}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+\Hypertarget{classsf_1_1_mechanical_p_i_ae745acb1de1f8cb6bc3e16c645bc5624}\label{classsf_1_1_mechanical_p_i_ae745acb1de1f8cb6bc3e16c645bc5624} 
+\index{sf::MechanicalPI@{sf::MechanicalPI}!Update@{Update}}
+\index{Update@{Update}!sf::MechanicalPI@{sf::MechanicalPI}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Mechanical\+PI\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt,  }\item[{Scalar}]{sp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that updates the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & simulation time step \mbox{[}s\mbox{]} \\
+\hline
+{\em sp} & desired rotor angular velocity \mbox{[}rad/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a9452710a5b3ae0a4a4451f3c9b4fee46}{sf\+::\+Rotor\+Dynamics}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00229}{229}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Actuator\+Dynamics.\+h\end{DoxyCompactItemize}

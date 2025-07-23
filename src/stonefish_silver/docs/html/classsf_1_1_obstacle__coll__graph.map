@@ -1,0 +1,11 @@
+<map id="sf::Obstacle" name="sf::Obstacle">
+<area shape="rect" id="Node000001" title="A static obstacle loaded from a file or taking one of the simple geometrical shapes." alt="" coords="106,168,205,193"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_static_entity.html" title="An abstract class defining a static simulation entity." alt="" coords="97,93,213,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,133,158,168,153,168,153,133"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_entity.html" title="An abstract class representing a simulation entity." alt="" coords="5,5,84,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="72,37,142,91,139,95,69,41"/>
+<area shape="rect" id="Node000004" href="$structsf_1_1_material.html" title="A structure holding material properties." alt="" coords="108,5,203,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="158,45,158,93,153,93,153,45"/>
+<area shape="rect" id="Node000005" href="$structsf_1_1_mesh.html" title="A structure containing mesh data." alt="" coords="227,5,303,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="241,41,172,95,169,91,237,37"/>
+</map>

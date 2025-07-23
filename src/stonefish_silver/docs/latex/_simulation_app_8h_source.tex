@@ -1,0 +1,118 @@
+\doxysection{Simulation\+App.\+h}
+\hypertarget{_simulation_app_8h_source}{}\label{_simulation_app_8h_source}\index{Library/include/core/SimulationApp.h@{Library/include/core/SimulationApp.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00019}00019\ \textcolor{comment}{//\ \ SimulationApp.h}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 11/28/12.}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2012-\/2025\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_SimulationApp\_\_}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_SimulationApp\_\_}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}StonefishCommon.h"{}}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/Console.h"{}}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00032}00032\ \textcolor{comment}{//Console\ output\ aliases}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ cInfo(format,\ ...)\ \ \ \ \ sf::SimulationApp::getApp()-\/>getConsole()-\/>Print(sf::MessageType::INFO,\ format,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ cWarning(format,\ ...)\ \ sf::SimulationApp::getApp()-\/>getConsole()-\/>Print(sf::MessageType::WARNING,\ format,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00035}00035\ \textcolor{preprocessor}{\#define\ cError(format,\ ...)\ \ \ \ sf::SimulationApp::getApp()-\/>getConsole()-\/>Print(sf::MessageType::ERROR,\ format,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00036}00036\ \textcolor{preprocessor}{\#define\ cCritical(format,\ ...)\ \{sf::SimulationApp::getApp()-\/>getConsole()-\/>Print(sf::MessageType::CRITICAL,\ format,\ \#\#\_\_VA\_ARGS\_\_);abort();\}}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00038}00038\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{enum\ class}\ SimulationState\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ NOT\_READY,}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ STOPPED,}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ RUNNING,}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ FINISHED,}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00046}00046\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{class\ }SimulationManager;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00049}00049\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00051}\mbox{\hyperlink{classsf_1_1_simulation_app}{00051}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_simulation_app}{SimulationApp}}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_simulation_app}{SimulationApp}}(std::string\ title,\ std::string\ dataDirPath,\ \mbox{\hyperlink{classsf_1_1_simulation_manager}{SimulationManager}}*\ sim);}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classsf_1_1_simulation_app_aaab6ef3ff743850b55d0c2a25726384e}{\string~SimulationApp}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_simulation_app_a55ee7de322ceba7ec665d3739193605c}{Run}}(\textcolor{keywordtype}{bool}\ autostart\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ autostep\ =\ \textcolor{keyword}{true},\ Scalar\ timeStep\ =\ Scalar(0));}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ !\ A\ method\ that\ starts\ the\ simulation\ on\ demand.}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ StartSimulation();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_simulation_app_a68348a3878fb99aa10e2028ceca75f4f}{StopSimulation}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_simulation_app_a68ec2bb369e86d39a4a58a2770f0a683}{ResumeSimulation}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_simulation_app_ab131ce402d9b4b8ac6932fa2f3a7f226}{StepSimulation}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ SimulationState\ \mbox{\hyperlink{classsf_1_1_simulation_app_aea70740a24a10e2c50757b878eae87d9}{getState}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_simulation_manager}{SimulationManager}}*\ \mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsf_1_1_simulation_app_ad0cd7e2ba2b6d87270fe49dc84fe8ccb}{getPhysicsTime}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classsf_1_1_simulation_app_a8a0314f431c9a55904f8bb16a61b45d5}{getDataPath}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classsf_1_1_simulation_app_ae68495075b5ca6d17c6f8f44deeee693}{getName}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_console}{Console}}*\ \mbox{\hyperlink{classsf_1_1_simulation_app_a0f868c4bf91840c7dfb373d3d795c3f9}{getConsole}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00104}\mbox{\hyperlink{classsf_1_1_simulation_app_adba1d5e17754a0a50191cf9c88147f4a}{00104}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_simulation_app_adba1d5e17754a0a50191cf9c88147f4a}{hasGraphics}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classsf_1_1_simulation_app}{SimulationApp}}*\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{getApp}}();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Loop();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Init();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ LoopInternal()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CleanUp();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Quit();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ InitializeSimulation();}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00118}00118\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00119}00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_console}{Console}}*\ console\_;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00120}00120\ \ \ \ \ \ \ \ \ uint64\_t\ startTime\_;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ autostep\_;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ Scalar\ timeStep\_;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ SimulationState\ state\_;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_simulation_manager}{SimulationManager}}*\ simManager\_;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ std::string\ title\_;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ std::string\ dataPath\_;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ physicsTime\_;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classsf_1_1_simulation_app}{SimulationApp}}*\ handle;}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00132}00132\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_simulation_app_8h_source_l00135}00135\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

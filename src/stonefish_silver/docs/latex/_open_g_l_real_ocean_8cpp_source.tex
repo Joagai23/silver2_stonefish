@@ -1,0 +1,638 @@
+\doxysection{Open\+GLReal\+Ocean.\+cpp}
+\hypertarget{_open_g_l_real_ocean_8cpp_source}{}\label{_open_g_l_real_ocean_8cpp_source}\index{Library/src/graphics/OpenGLRealOcean.cpp@{Library/src/graphics/OpenGLRealOcean.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ OpenGLRealOcean.cpp}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 10/05/2020.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2020-\/2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLRealOcean.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLState.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}graphics/GLSLShader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLView.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLAtmosphere.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLConsole.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}utils/SystemUtil.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00037}00037\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00040}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a6be7d1c1011d54edfc9d3e1df71ab99e}{00040}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a6be7d1c1011d54edfc9d3e1df71ab99e}{OpenGLRealOcean::OpenGLRealOcean}}(GLfloat\ size,\ GLfloat\ state,\ SDL\_mutex*\ hydrodynamics)\ :\ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean}{OpenGLOcean}}(size)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00042}00042\ \ \ \ \ hydroMutex\ =\ hydrodynamics;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00043}00043\ \ \ \ \ params.wind\ =\ state*5.f\ +\ 2.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00044}00044\ \ \ \ \ params.A\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00045}00045\ \ \ \ \ params.omega\ =\ 5.f*expf(-\/state)\ +\ 0.2f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00046}00046\ \ \ \ \ GLint\ layers\ =\ 4;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00047}00047\ \ \ \ \ qtGridTessFactor\ =\ 8;\ \textcolor{comment}{//\ Patch\ tessellation\ [2,\ 256]}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00048}00048\ \ \ \ \ qtGPUTessFactor\ =\ 0;\ \ \textcolor{comment}{//\ GPU\ tessellation\ factor\ [0,5]}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00049}00049\ \ \ \ \ qtPatchIndexCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00050}00050\ \ \ \ \ wireframe\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//Loading\ shaders}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00053}00053\ \ \ \ \ std::vector<GLSLSource>\ sources;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00054}00054\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_COMPUTE\_SHADER,\ \textcolor{stringliteral}{"{}qt.comp"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00055}00055\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_COMPUTE\_SHADER,\ \textcolor{stringliteral}{"{}oceanSurface.glsl"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00056}00056\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00057}00057\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}sceneSize"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00058}00058\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>BindUniformBlock(\textcolor{stringliteral}{"{}View"{}},\ UBO\_VIEW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00059}00059\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}QTreeIn"{}},\ SSBO\_QTREE\_IN);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00060}00060\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}QTreeOut"{}},\ SSBO\_QTREE\_OUT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00061}00061\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}QTreeCull"{}},\ SSBO\_QTREE\_CULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00062}00062\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}TreeSize"{}},\ SSBO\_QTREE\_SIZE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00063}00063\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ ParameterType::VEC4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00064}00064\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00066}00066\ \ \ \ \ sources.clear();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00067}00067\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_COMPUTE\_SHADER,\ \textcolor{stringliteral}{"{}qtIndirect.comp"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00068}00068\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}indirect"{}}]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00069}00069\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}indirect"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}DispatchIndirect"{}},\ SSBO\_QTREE\_INDIRECT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00070}00070\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}indirect"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}TreeSize"{}},\ SSBO\_QTREE\_SIZE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00072}00072\ \ \ \ \ sources.clear();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00073}00073\ \ \ \ \ GLint\ compiled;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00074}00074\ \ \ \ \ GLuint\ pcssFragment\ =\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ae4bce4bd482bec6e5d87c87301a21ffd}{GLSLShader::LoadShader}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}lighting.frag"{}},\ \textcolor{stringliteral}{"{}"{}},\ \&compiled);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00075}00075\ \ \ \ \ std::vector<GLuint>\ precompiled;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00076}00076\ \ \ \ \ precompiled.push\_back(\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere_a74c1dcdde09cafaa591029a72270e3b5}{OpenGLAtmosphere::getAtmosphereAPI}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00077}00077\ \ \ \ \ precompiled.push\_back(pcssFragment);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//Surface\ rendering}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00080}00080\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_VERTEX\_SHADER,\ \textcolor{stringliteral}{"{}qt.vert"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00081}00081\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_TESS\_CONTROL\_SHADER,\ \textcolor{stringliteral}{"{}qt.tesc"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00082}00082\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_TESS\_CONTROL\_SHADER,\ \textcolor{stringliteral}{"{}oceanSurface.glsl"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00083}00083\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_TESS\_EVALUATION\_SHADER,\ \textcolor{stringliteral}{"{}qt.tese"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00084}00084\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_TESS\_EVALUATION\_SHADER,\ \textcolor{stringliteral}{"{}oceanSurface.glsl"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00085}00085\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}oceanSurface.frag"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00086}00086\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources,\ precompiled);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00087}00087\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}u\_scene\_size"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00088}00088\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}eyePos"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00089}00089\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}viewDir"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00090}00090\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}MVP"{}},\ ParameterType::MAT4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00091}00091\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}MV"{}},\ ParameterType::MAT3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00092}00092\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}FC"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00093}00093\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ ParameterType::VEC4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00094}00094\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}u\_gpu\_tess\_factor"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00095}00095\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00096}00096\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}texSlopeVariance"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00097}00097\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}viewport"{}},\ ParameterType::VEC2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00098}00098\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00099}00099\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00100}00100\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}irradiance\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00101}00101\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}sunShadowMap"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00102}00102\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}sunDepthMap"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00103}00103\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>BindUniformBlock(\textcolor{stringliteral}{"{}SunSky"{}},\ UBO\_SUNSKY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00104}00104\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}QTreeCull"{}},\ SSBO\_QTREE\_CULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00105}00105\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00106}00106\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>Use();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00107}00107\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ TEX\_ATM\_TRANSMITTANCE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00108}00108\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ TEX\_ATM\_SCATTERING);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00109}00109\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}irradiance\_texture"{}},\ TEX\_ATM\_IRRADIANCE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00110}00110\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}sunDepthMap"{}},\ TEX\_SUN\_DEPTH);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00111}00111\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}sunShadowMap"{}},\ TEX\_SUN\_SHADOW);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00112}00112\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//Surface\ temperature\ rendering}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00115}00115\ \ \ \ \ sources.pop\_back();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00116}00116\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}oceanSurfaceTemp.frag"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00117}00117\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources,\ precompiled);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00118}00118\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}u\_scene\_size"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00119}00119\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}eyePos"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00120}00120\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}viewDir"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00121}00121\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}MVP"{}},\ ParameterType::MAT4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00122}00122\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}MV"{}},\ ParameterType::MAT3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00123}00123\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}FC"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00124}00124\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ ParameterType::VEC4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00125}00125\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}u\_gpu\_tess\_factor"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00126}00126\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00127}00127\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}texSlopeVariance"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00128}00128\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}viewport"{}},\ ParameterType::VEC2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00129}00129\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00130}00130\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00131}00131\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}irradiance\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00132}00132\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}sunShadowMap"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00133}00133\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}sunDepthMap"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00134}00134\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}waterTemperature"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00135}00135\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>BindUniformBlock(\textcolor{stringliteral}{"{}SunSky"{}},\ UBO\_SUNSKY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00136}00136\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}QTreeCull"{}},\ SSBO\_QTREE\_CULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00137}00137\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00138}00138\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>Use();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00139}00139\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ TEX\_ATM\_TRANSMITTANCE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00140}00140\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ TEX\_ATM\_SCATTERING);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00141}00141\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}irradiance\_texture"{}},\ TEX\_ATM\_IRRADIANCE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00142}00142\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}sunDepthMap"{}},\ TEX\_SUN\_DEPTH);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00143}00143\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}sunShadowMap"{}},\ TEX\_SUN\_SHADOW);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00144}00144\ \ \ \ \ OpenGLState::UseProgram(0);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//Back\ surface\ rendering}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00147}00147\ \ \ \ \ precompiled.pop\_back();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00148}00148\ \ \ \ \ sources.pop\_back();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00149}00149\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}oceanBacksurface.frag"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00150}00150\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}oceanOptics.frag"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00151}00151\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources,\ precompiled);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00152}00152\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}u\_scene\_size"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00153}00153\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}eyePos"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00154}00154\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}MVP"{}},\ ParameterType::MAT4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00155}00155\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}MV"{}},\ ParameterType::MAT3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00156}00156\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}FC"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00157}00157\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ ParameterType::VEC4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00158}00158\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}u\_gpu\_tess\_factor"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00159}00159\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00160}00160\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}texSlopeVariance"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00161}00161\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}viewport"{}},\ ParameterType::VEC2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00162}00162\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}cWater"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00163}00163\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}bWater"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00164}00164\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00165}00165\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00166}00166\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}irradiance\_texture"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00167}00167\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>BindUniformBlock(\textcolor{stringliteral}{"{}SunSky"{}},\ UBO\_SUNSKY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00168}00168\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}QTreeCull"{}},\ SSBO\_QTREE\_CULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00169}00169\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00170}00170\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>Use();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00171}00171\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}transmittance\_texture"{}},\ TEX\_ATM\_TRANSMITTANCE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00172}00172\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}scattering\_texture"{}},\ TEX\_ATM\_SCATTERING);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00173}00173\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}irradiance\_texture"{}},\ TEX\_ATM\_IRRADIANCE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00174}00174\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00176}00176\ \ \ \ \ \textcolor{comment}{//Mask\ rendering}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00177}00177\ \ \ \ \ sources.pop\_back();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00178}00178\ \ \ \ \ sources.pop\_back();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00179}00179\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}flat.frag"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00180}00180\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00181}00181\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}u\_scene\_size"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00182}00182\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}eyePos"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00183}00183\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00184}00184\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ ParameterType::VEC4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00185}00185\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}MVP"{}},\ ParameterType::MAT4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00186}00186\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}FC"{}},\ ParameterType::FLOAT);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00187}00187\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>AddUniform(\textcolor{stringliteral}{"{}u\_gpu\_tess\_factor"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00188}00188\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>BindShaderStorageBlock(\textcolor{stringliteral}{"{}QTreeCull"{}},\ SSBO\_QTREE\_CULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00190}00190\ \ \ \ \ \textcolor{comment}{//FFT\ data\ transfer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00191}00191\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ fftDataSize\ =\ params.fftSize\ *\ params.fftSize\ *\ 4\ *\ layers;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00192}00192\ \ \ \ \ fftData\ =\ \textcolor{keyword}{new}\ GLfloat[fftDataSize];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00193}00193\ \ \ \ \ memset(fftData,\ 0,\ \textcolor{keyword}{sizeof}(GLfloat)\ *\ fftDataSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00194}00194\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00195}00195\ \ \ \ \ glGenBuffers(1,\ \&fftPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00196}00196\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ fftPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00197}00197\ \ \ \ \ glBufferData(GL\_PIXEL\_PACK\_BUFFER,\ params.fftSize\ *\ params.fftSize\ *\ 4\ *\ layers\ *\ \textcolor{keyword}{sizeof}(GLfloat),\ fftData,\ GL\_STREAM\_READ);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00198}00198\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{comment}{//Quad\ tree\ buffers}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00201}00201\ \ \ \ \ glGenBuffers(2,\ oceanBuffers);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00202}00202\ \ \ \ \ \textcolor{comment}{//Grid\ vertex\ data\ (ARRAY)\ x2}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00203}00203\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ vertices\_byte\_size\ =\ \textcolor{keyword}{sizeof}(glm::vec2)\ *\ sqr(qtGridTessFactor);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00204}00204\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ indexes\_byte\_size\ =\ \textcolor{keyword}{sizeof}(uint16\_t)\ *\ sqr(qtGridTessFactor\ -\/\ 1)\ *\ 4;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00205}00205\ \ \ \ \ glm::vec2\ *vertices\ =\ (glm::vec2*)malloc(vertices\_byte\_size);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00206}00206\ \ \ \ \ uint16\_t\ *indexes\ =\ (uint16\_t*)malloc(indexes\_byte\_size);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00207}00207\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00209}00209\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ i\ <\ qtGridTessFactor;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j\ =\ 0;\ j\ <\ qtGridTessFactor;\ ++j)\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ *vertex\ =\ vertices\ +\ i\ *\ qtGridTessFactor\ +\ j;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ (*vertex)[0]\ =\ (float)i\ /\ (qtGridTessFactor\ -\/\ 1)\ -\/\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ (*vertex)[1]\ =\ (float)j\ /\ (qtGridTessFactor\ -\/\ 1)\ -\/\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00218}00218\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ i\ <\ qtGridTessFactor\ -\/\ 1;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j\ =\ 0;\ j\ <\ qtGridTessFactor\ -\/\ 1;\ ++j)\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ *index\ =\ indexes\ +\ 4\ *\ i\ *\ (qtGridTessFactor\ -\/\ 1)\ +\ 4\ *\ j;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ index[0]\ =\ i\ \ \ \ \ +\ qtGridTessFactor\ *\ \ j;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ index[1]\ =\ i\ +\ 1\ +\ qtGridTessFactor\ *\ \ j;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ index[2]\ =\ i\ +\ 1\ +\ qtGridTessFactor\ *\ (j\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ index[3]\ =\ i\ \ \ \ \ +\ qtGridTessFactor\ *\ (j\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00229}00229\ \ \ \ \ glBindBuffer(GL\_ARRAY\_BUFFER,\ oceanBuffers[0]);\ \textcolor{comment}{//GRID\_VERTICES}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00230}00230\ \ \ \ \ glBufferData(GL\_ARRAY\_BUFFER,\ vertices\_byte\_size,\ vertices,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00231}00231\ \ \ \ \ glBindBuffer(GL\_ARRAY\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00232}00232\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00233}00233\ \ \ \ \ glBindBuffer(GL\_ELEMENT\_ARRAY\_BUFFER,\ oceanBuffers[1]);\ \textcolor{comment}{//GRID\_INDEXES}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00234}00234\ \ \ \ \ glBufferData(GL\_ELEMENT\_ARRAY\_BUFFER,\ indexes\_byte\_size,\ indexes,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00235}00235\ \ \ \ \ glBindBuffer(GL\_ELEMENT\_ARRAY\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00237}00237\ \ \ \ \ qtPatchIndexCount\ =\ indexes\_byte\_size\ /\ \textcolor{keyword}{sizeof}(uint16\_t);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00238}00238\ \ \ \ \ free(vertices);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00239}00239\ \ \ \ \ free(indexes);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00241}00241\ \ \ \ \ \textcolor{comment}{//Vertex\ arrays:}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00242}00242\ \ \ \ \ \textcolor{comment}{//\ -\/\ Terrain}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00243}00243\ \ \ \ \ glGenVertexArrays(1,\ \&vao);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00244}00244\ \ \ \ \ OpenGLState::BindVertexArray(vao);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00245}00245\ \ \ \ \ glEnableVertexAttribArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00246}00246\ \ \ \ \ glBindBuffer(GL\_ARRAY\_BUFFER,\ oceanBuffers[0]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00247}00247\ \ \ \ \ glVertexAttribPointer(0,\ 2,\ GL\_FLOAT,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00248}00248\ \ \ \ \ glBindBuffer(GL\_ELEMENT\_ARRAY\_BUFFER,\ oceanBuffers[1]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00249}00249\ \ \ \ \ OpenGLState::BindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00251}00251\ \ \ \ \ InitializeSimulation();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00252}00252\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00254}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a1e4bd39b6837f6725e4a2044d02d6614}{00254}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a1e4bd39b6837f6725e4a2044d02d6614}{OpenGLRealOcean::\string~OpenGLRealOcean}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00255}00255\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00256}00256\ \ \ \ \ glDeleteBuffers(2,\ oceanBuffers);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00257}00257\ \ \ \ \ glDeleteBuffers(1,\ \&fftPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00258}00258\ \ \ \ \ glDeleteVertexArrays(1,\ \&vao);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00259}00259\ \ \ \ \ \textcolor{keywordflow}{for}(std::map<OpenGLView*,\ OceanQT>::iterator\ it=oceanTrees.begin();\ it!=oceanTrees.end();\ ++it)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00260}00260\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ glDeleteBuffers(4,\ it-\/>second.patchSSBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&it-\/>second.patchDEI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&it-\/>second.patchDI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&it-\/>second.patchAC);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00265}00265\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00266}00266\ \ \ \ \ oceanTrees.clear();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00267}00267\ \ \ \ \ \textcolor{keyword}{delete}\ fftData;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00270}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a8e5af4dd35660f605b3c156e66cda2ab}{00270}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a8e5af4dd35660f605b3c156e66cda2ab}{OpenGLRealOcean::setWireframe}}(\textcolor{keywordtype}{bool}\ enabled)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00271}00271\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00272}00272\ \ \ \ \ wireframe\ =\ enabled;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00273}00273\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00275}00275\ \textcolor{keywordtype}{void}\ OpenGLRealOcean::InitializeSimulation()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00276}00276\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00277}00277\ \ \ \ \ OpenGLOcean::InitializeSimulation();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00278}00278\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00280}00280\ GLfloat\ OpenGLRealOcean::ComputeInterpolatedWaveData(GLfloat\ x,\ GLfloat\ y,\ GLuint\ channel)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00281}00281\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00282}00282\ \ \ \ \ \textcolor{comment}{//BILINEAR\ INTERPOLATION\ ACCORDING\ TO\ OPENGL\ SPECIFICATION\ (4.5)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00283}00283\ \ \ \ \ \textcolor{comment}{//Calculate\ pixel\ cooridnates}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00284}00284\ \ \ \ \ \textcolor{comment}{//x\ and\ y\ are\ already\ divided\ by\ the\ phyiscal\ dimensions\ of\ the\ texture\ (represented\ area\ in\ [m])}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{comment}{//so\ they\ are\ directly\ texture\ coordinates}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00286}00286\ \ \ \ \ \textcolor{keywordtype}{float}\ tmp;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00287}00287\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00288}00288\ \ \ \ \ \textcolor{comment}{//First\ coordinate\ pair}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00289}00289\ \ \ \ \ \textcolor{keywordtype}{float}\ i0f\ =\ modff(x\ -\/\ 0.5f/(\textcolor{keywordtype}{float})params.fftSize,\ \&tmp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00290}00290\ \ \ \ \ \textcolor{keywordtype}{float}\ j0f\ =\ modff(y\ -\/\ 0.5f/(\textcolor{keywordtype}{float})params.fftSize,\ \&tmp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00291}00291\ \ \ \ \ \textcolor{keywordflow}{if}(i0f\ <\ 0.f)\ i0f\ =\ 1.f\ -\/\ fabsf(i0f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00292}00292\ \ \ \ \ \textcolor{keywordflow}{if}(j0f\ <\ 0.f)\ j0f\ =\ 1.f\ -\/\ fabsf(j0f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00293}00293\ \ \ \ \ \textcolor{keywordtype}{int}\ i0\ =\ (int)truncf(i0f\ *\ (\textcolor{keywordtype}{float})params.fftSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00294}00294\ \ \ \ \ \textcolor{keywordtype}{int}\ j0\ =\ (int)truncf(j0f\ *\ (\textcolor{keywordtype}{float})params.fftSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00295}00295\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00296}00296\ \ \ \ \ \textcolor{comment}{//Second\ coordinate\ pair}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00297}00297\ \ \ \ \ \textcolor{keywordtype}{float}\ i1f\ =\ modff(x\ +\ 0.5f/(\textcolor{keywordtype}{float})params.fftSize,\ \&tmp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00298}00298\ \ \ \ \ \textcolor{keywordtype}{float}\ j1f\ =\ modff(y\ +\ 0.5f/(\textcolor{keywordtype}{float})params.fftSize,\ \&tmp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00299}00299\ \ \ \ \ \textcolor{keywordflow}{if}(i1f\ <\ 0.f)\ i1f\ =\ 1.f\ -\/\ fabsf(i1f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00300}00300\ \ \ \ \ \textcolor{keywordflow}{if}(j1f\ <\ 0.f)\ j1f\ =\ 1.f\ -\/\ fabsf(j1f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00301}00301\ \ \ \ \ \textcolor{keywordtype}{int}\ i1\ =\ (int)truncf(i1f\ *\ (\textcolor{keywordtype}{float})params.fftSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00302}00302\ \ \ \ \ \textcolor{keywordtype}{int}\ j1\ =\ (int)truncf(j1f\ *\ (\textcolor{keywordtype}{float})params.fftSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00303}00303\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00304}00304\ \ \ \ \ \textcolor{comment}{//Calculate\ weigths}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00305}00305\ \ \ \ \ \textcolor{keywordtype}{float}\ alpha\ =\ modff(i0f\ *\ (\textcolor{keywordtype}{float})params.fftSize,\ \&tmp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00306}00306\ \ \ \ \ \textcolor{keywordtype}{float}\ beta\ =\ modff(j0f\ *\ (\textcolor{keywordtype}{float})params.fftSize,\ \&tmp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00307}00307\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00308}00308\ \ \ \ \ \textcolor{comment}{//Get\ texel\ values}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00309}00309\ \ \ \ \ \textcolor{keywordtype}{float}\ t[4];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00310}00310\ \ \ \ \ t[0]\ =\ fftData[(j0\ *\ params.fftSize\ +\ i0)\ *\ 4\ +\ channel];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00311}00311\ \ \ \ \ t[1]\ =\ fftData[(j0\ *\ params.fftSize\ +\ i1)\ *\ 4\ +\ channel];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00312}00312\ \ \ \ \ t[2]\ =\ fftData[(j1\ *\ params.fftSize\ +\ i0)\ *\ 4\ +\ channel];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00313}00313\ \ \ \ \ t[3]\ =\ fftData[(j1\ *\ params.fftSize\ +\ i1)\ *\ 4\ +\ channel];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00314}00314\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00315}00315\ \ \ \ \ \textcolor{comment}{//Interpolate}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{keywordtype}{float}\ h\ =\ (1.f\ -\/\ alpha)*(1.f\ -\/\ beta)*t[0]\ +\ alpha*(1.f\ -\/\ beta)*t[1]\ +\ (1.f\ -\/\ alpha)*beta*t[2]\ +\ alpha*beta*t[3];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00317}00317\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00318}00318\ \ \ \ \ \textcolor{keywordflow}{return}\ h;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00319}00319\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00320}00320\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00321}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a1a9a82924fabad7e58c3a00c57565654}{00321}}\ GLfloat\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a1a9a82924fabad7e58c3a00c57565654}{OpenGLRealOcean::ComputeWaveHeight}}(GLfloat\ x,\ GLfloat\ y)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00322}00322\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00323}00323\ \ \ \ \ \textcolor{comment}{//Z,X\ are\ reversed\ because\ the\ coordinate\ system\ used\ to\ draw\ ocean\ has\ Z\ axis\ pointing\ up!}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00324}00324\ \ \ \ \ GLfloat\ z\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00325}00325\ \ \ \ \ z\ -\/=\ ComputeInterpolatedWaveData(x/params.gridSizes.x,\ y/params.gridSizes.x,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00326}00326\ \ \ \ \ z\ -\/=\ ComputeInterpolatedWaveData(x/params.gridSizes.y,\ y/params.gridSizes.y,\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00327}00327\ \ \ \ \ \textcolor{comment}{//The\ components\ below\ have\ low\ importance\ and\ were\ excluded\ to\ lower\ the\ computational\ cost}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00328}00328\ \ \ \ \ \textcolor{comment}{//z\ -\/=\ ComputeInterpolatedWaveData(x/params.gridSizes.z,\ y/params.gridSizes.z,\ 2);}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00329}00329\ \ \ \ \ \textcolor{comment}{//z\ -\/=\ ComputeInterpolatedWaveData(x/params.gridSizes.w,\ y/params.gridSizes.w,\ 3);}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00330}00330\ \ \ \ \ \textcolor{keywordflow}{return}\ z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00331}00331\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00333}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a6f3830dc7e807d7267bd3ed9e3877c34}{00333}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a6f3830dc7e807d7267bd3ed9e3877c34}{OpenGLRealOcean::Simulate}}(GLfloat\ dt)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00334}00334\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00335}00335\ \ \ \ \ \textcolor{keywordflow}{if}(SDL\_TryLockMutex(hydroMutex)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00336}00336\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ fftPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ GLfloat*\ src\ =\ (GLfloat*)glMapBuffer(GL\_PIXEL\_PACK\_BUFFER,\ GL\_READ\_ONLY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(src)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(fftData,\ src,\ params.fftSize\ *\ params.fftSize\ *\ 4\ *\ 4\ *\ \textcolor{keyword}{sizeof}(GLfloat));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ glUnmapBuffer(GL\_PIXEL\_PACK\_BUFFER);\ \textcolor{comment}{//Release\ pointer\ to\ the\ mapped\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ SDL\_UnlockMutex(hydroMutex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00346}00346\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00348}00348\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_ae5393b532370d71301a653ef5a00d691}{OpenGLOcean::Simulate}}(dt);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00350}00350\ \ \ \ \ \textcolor{comment}{//Copy\ wave\ data\ to\ RAM\ for\ hydrodynamic\ computations}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00351}00351\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D\_ARRAY,\ oceanTextures[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00352}00352\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ fftPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00353}00353\ \ \ \ \ glGetTexImage(GL\_TEXTURE\_2D\_ARRAY,\ 0,\ GL\_RGBA,\ GL\_FLOAT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00354}00354\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00355}00355\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00356}00356\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00358}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_aaef13a710007269aa93dbe09c3b781fd}{00358}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_aaef13a710007269aa93dbe09c3b781fd}{OpenGLRealOcean::ResetSurface}}(\mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00359}00359\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00360}00360\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ oceanTrees.find(view);\ \textcolor{comment}{//Check\ if\ a\ quad\ tree\ exists\ for\ this\ camera}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00361}00361\ \ \ \ \ \textcolor{keywordflow}{if}(it\ !=\ oceanTrees.end())}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00362}00362\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Delete\ buffers\ in\ GPU\ memory}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ glDeleteBuffers(4,\ it-\/>second.patchSSBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&it-\/>second.patchDEI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&it-\/>second.patchDI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&it-\/>second.patchAC);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Delete\ map\ entry}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ oceanTrees.erase(it);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00370}00370\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00371}00371\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00372}00372\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00373}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_ae7fc646f65a8121b69fa6a094a0b6701}{00373}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_ae7fc646f65a8121b69fa6a094a0b6701}{OpenGLRealOcean::UpdateSurface}}(\mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00374}00374\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00375}00375\ \ \ \ \ \textcolor{comment}{//Check\ if\ a\ quad\ tree\ exists\ for\ this\ camera}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00376}00376\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_ocean_q_t}{OceanQT}}*\ tree;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00377}00377\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00378}00378\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ tree\ =\ \&oceanTrees.at(view);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00380}00380\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00381}00381\ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ std::out\_of\_range\&\ e)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00382}00382\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_ocean_q_t}{OceanQT}}\ newTree;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Generate\ buffers}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ glGenBuffers(4,\ newTree.patchSSBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_SHADER\_STORAGE\_BUFFER,\ newTree.patchSSBO[0]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ glBufferData(GL\_SHADER\_STORAGE\_BUFFER,\ \textcolor{keyword}{sizeof}(GLuint)\ <<\ 16,\ NULL,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Init\ tree\ structure}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ GLuint\ dummy[]\ =\ \{0,0,0,0\};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ GLuint*\ first\ =\ (GLuint*)glMapBufferRange(GL\_SHADER\_STORAGE\_BUFFER,\ 0,\ \textcolor{keyword}{sizeof}(GLuint)\ *\ 4,\ GL\_MAP\_WRITE\_BIT\ |\ GL\_MAP\_INVALIDATE\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ memcpy(first,\ dummy,\ \textcolor{keyword}{sizeof}(GLuint)\ *\ 4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ glUnmapBuffer(GL\_SHADER\_STORAGE\_BUFFER);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_SHADER\_STORAGE\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_SHADER\_STORAGE\_BUFFER,\ newTree.patchSSBO[1]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ glBufferData(GL\_SHADER\_STORAGE\_BUFFER,\ \textcolor{keyword}{sizeof}(GLuint)\ <<\ 16,\ NULL,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_SHADER\_STORAGE\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_SHADER\_STORAGE\_BUFFER,\ newTree.patchSSBO[2]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ glBufferData(GL\_SHADER\_STORAGE\_BUFFER,\ \textcolor{keyword}{sizeof}(GLfloat)\ <<\ 16,\ NULL,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_SHADER\_STORAGE\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ GLuint\ one\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_SHADER\_STORAGE\_BUFFER,\ newTree.patchSSBO[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ glBufferData(GL\_SHADER\_STORAGE\_BUFFER,\ \textcolor{keyword}{sizeof}(GLuint),\ \&one,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_SHADER\_STORAGE\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00408}00408\ \ \ \ \ \ \ \ \ GLuint\ zero\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ glGenBuffers(1,\ \&newTree.patchAC);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ newTree.patchAC);\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ glBufferData(GL\_ATOMIC\_COUNTER\_BUFFER,\ \textcolor{keyword}{sizeof}(GLuint),\ \&zero,\ GL\_DYNAMIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_draw_elements_indirect_command}{DrawElementsIndirectCommand}}\ cmd;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ cmd.count\ =\ qtPatchIndexCount;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ cmd.instanceCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ cmd.firstIndex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ cmd.baseVertex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ cmd.baseInstance\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ glGenBuffers(1,\ \&newTree.patchDEI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ newTree.patchDEI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ glBufferData(GL\_DRAW\_INDIRECT\_BUFFER,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsf_1_1_draw_elements_indirect_command}{DrawElementsIndirectCommand}}),\ \&cmd,\ GL\_DYNAMIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_dispatch_indirect_command}{DispatchIndirectCommand}}\ cmd2;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ cmd2.numGroupsX\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ cmd2.numGroupsY\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ cmd2.numGroupsZ\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ glGenBuffers(1,\ \&newTree.patchDI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_DISPATCH\_INDIRECT\_BUFFER,\ newTree.patchDI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ glBufferData(GL\_DISPATCH\_INDIRECT\_BUFFER,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsf_1_1_dispatch_indirect_command}{DispatchIndirectCommand}}),\ \&cmd2,\ GL\_DYNAMIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_DISPATCH\_INDIRECT\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Initialize}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00435}00435\ \ \ \ \ \ \ \ \ newTree.pingpong\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00436}00436\ \ \ \ \ \ \ \ \ oceanTrees[view]\ =\ newTree;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00437}00437\ \ \ \ \ \ \ \ \ tree\ =\ \&oceanTrees[view];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00438}00438\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00439}00439\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00440}00440\ \ \ \ \ GLuint\ zero\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00441}00441\ \ \ \ \ glBindBufferBase(GL\_SHADER\_STORAGE\_BUFFER,\ SSBO\_QTREE\_IN,\ tree-\/>patchSSBO[1\ -\/\ tree-\/>pingpong]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00442}00442\ \ \ \ \ glBindBufferBase(GL\_SHADER\_STORAGE\_BUFFER,\ SSBO\_QTREE\_OUT,\ tree-\/>patchSSBO[tree-\/>pingpong]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00443}00443\ \ \ \ \ glBindBufferBase(GL\_SHADER\_STORAGE\_BUFFER,\ SSBO\_QTREE\_CULL,\ tree-\/>patchSSBO[2]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00444}00444\ \ \ \ \ glBindBufferBase(GL\_SHADER\_STORAGE\_BUFFER,\ SSBO\_QTREE\_SIZE,\ tree-\/>patchSSBO[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00445}00445\ \ \ \ \ glBindBufferBase(GL\_ATOMIC\_COUNTER\_BUFFER,\ AC\_QTREE\_LOD,\ tree-\/>patchAC);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00446}00446\ \ \ \ \ glBindBufferRange(GL\_ATOMIC\_COUNTER\_BUFFER,\ AC\_QTREE\_CULL,\ tree-\/>patchDEI,\ \textcolor{keyword}{sizeof}(GLuint),\ \textcolor{keyword}{sizeof}(GLuint));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00447}00447\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ tree-\/>patchDEI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00448}00448\ \ \ \ \ glBufferSubData(GL\_DRAW\_INDIRECT\_BUFFER,\ \textcolor{keyword}{sizeof}(GLuint),\ \textcolor{keyword}{sizeof}(GLuint),\ \&zero);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00449}00449\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00450}00450\ \ \ \ \ tree-\/>pingpong\ =\ 1\ -\/\ tree-\/>pingpong;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00451}00451\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00452}00452\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D\_ARRAY,\ oceanTextures[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00453}00453\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>Use();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00454}00454\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}sceneSize"{}},\ oceanSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00455}00455\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ params.gridSizes);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00456}00456\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}lod"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00457}00457\ \ \ \ \ glBindBuffer(GL\_DISPATCH\_INDIRECT\_BUFFER,\ tree-\/>patchDI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00458}00458\ \ \ \ \ glDispatchComputeIndirect(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00459}00459\ \ \ \ \ glBindBuffer(GL\_DISPATCH\_INDIRECT\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00460}00460\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00461}00461\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00462}00462\ \ \ \ \ glMemoryBarrier(GL\_SHADER\_STORAGE\_BARRIER\_BIT\ |\ GL\_ATOMIC\_COUNTER\_BARRIER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00463}00463\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00464}00464\ \ \ \ \ glBindBufferRange(GL\_SHADER\_STORAGE\_BUFFER,\ SSBO\_QTREE\_INDIRECT,\ tree-\/>patchDI,\ 0,\ \textcolor{keyword}{sizeof}(GLuint));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00465}00465\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}indirect"{}}]-\/>Use();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00466}00466\ \ \ \ \ glDispatchCompute(1,\ 1,\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00467}00467\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00468}00468\ \ \ \ \ glMemoryBarrier(GL\_SHADER\_STORAGE\_BARRIER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00469}00469\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00470}00470\ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ tree-\/>patchAC);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00471}00471\ \ \ \ \ glBufferSubData(GL\_ATOMIC\_COUNTER\_BUFFER,\ 0,\ \textcolor{keyword}{sizeof}(GLuint),\ \&zero);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00472}00472\ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00473}00473\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00475}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_af70790e849de31b365cf6d2ba8c969c5}{00475}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_af70790e849de31b365cf6d2ba8c969c5}{OpenGLRealOcean::DrawSurface}}(\mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00476}00476\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00477}00477\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_ocean_q_t}{OceanQT}}\&\ tree\ =\ oceanTrees[view];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00478}00478\ \ \ \ \ GLint*\ viewport\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ac53cf3b78d408ed133ab753e7e09a39b}{GetViewport}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00479}00479\ \ \ \ \ glBindBufferBase(GL\_SHADER\_STORAGE\_BUFFER,\ SSBO\_QTREE\_CULL,\ tree.patchSSBO[2]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00480}00480\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D\_ARRAY,\ oceanTextures[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00481}00481\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS2,\ GL\_TEXTURE\_3D,\ oceanTextures[2]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00482}00482\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>Use();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00483}00483\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}MVP"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_aae95d77fc472462ec4a38ccd4921b82b}{GetProjectionMatrix}}()\ *\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{GetViewMatrix}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00484}00484\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}MV"{}},\ glm::mat3(glm::transpose(glm::inverse(view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{GetViewMatrix}}()))));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00485}00485\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}FC"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a21fc921521be07cb3bf94ead40eebcee}{GetLogDepthConstant}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00486}00486\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}viewport"{}},\ glm::vec2((GLfloat)viewport[2],\ (GLfloat)viewport[3]));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00487}00487\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}eyePos"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a3004c25e0ea08a246baaa7e4de0b8e08}{GetEyePosition}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00488}00488\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}viewDir"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_af014795803f1871aefee3be8f850ef91}{GetLookingDirection}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00489}00489\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ params.gridSizes);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00490}00490\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00491}00491\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}texSlopeVariance"{}},\ TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00492}00492\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}u\_scene\_size"{}},\ oceanSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00493}00493\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}u\_gpu\_tess\_factor"{}},\ (GLfloat)qtGPUTessFactor);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00494}00494\ \ \ \ \ OpenGLState::BindVertexArray(vao);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00495}00495\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ tree.patchDEI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00496}00496\ \ \ \ \ \textcolor{keywordflow}{if}(wireframe)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00497}00497\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ glPolygonMode(GL\_FRONT\_AND\_BACK,\ GL\_LINE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ glDrawElementsIndirect(GL\_PATCHES,\ GL\_UNSIGNED\_SHORT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ glPolygonMode(GL\_FRONT\_AND\_BACK,\ GL\_FILL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00501}00501\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00502}00502\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00503}00503\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ glDrawElementsIndirect(GL\_PATCHES,\ GL\_UNSIGNED\_SHORT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00505}00505\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00506}00506\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00507}00507\ \ \ \ \ OpenGLState::BindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00508}00508\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00509}00509\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00510}00510\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00511}00511\ \ \ \ \ \textcolor{keyword}{delete}\ []\ viewport;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00512}00512\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00513}00513\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00514}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a11e10c12130bd45dec093fed47a30550}{00514}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a11e10c12130bd45dec093fed47a30550}{OpenGLRealOcean::DrawSurfaceTemperature}}(\mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00515}00515\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00516}00516\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_ocean_q_t}{OceanQT}}\&\ tree\ =\ oceanTrees[view];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00517}00517\ \ \ \ \ GLint*\ viewport\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ac53cf3b78d408ed133ab753e7e09a39b}{GetViewport}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00518}00518\ \ \ \ \ glBindBufferBase(GL\_SHADER\_STORAGE\_BUFFER,\ SSBO\_QTREE\_CULL,\ tree.patchSSBO[2]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00519}00519\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D\_ARRAY,\ oceanTextures[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00520}00520\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS2,\ GL\_TEXTURE\_3D,\ oceanTextures[2]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00521}00521\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>Use();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00522}00522\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}MVP"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_aae95d77fc472462ec4a38ccd4921b82b}{GetProjectionMatrix}}()\ *\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{GetViewMatrix}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00523}00523\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}MV"{}},\ glm::mat3(glm::transpose(glm::inverse(view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{GetViewMatrix}}()))));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00524}00524\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}FC"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a21fc921521be07cb3bf94ead40eebcee}{GetLogDepthConstant}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00525}00525\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}viewport"{}},\ glm::vec2((GLfloat)viewport[2],\ (GLfloat)viewport[3]));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00526}00526\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}eyePos"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a3004c25e0ea08a246baaa7e4de0b8e08}{GetEyePosition}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00527}00527\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}viewDir"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_af014795803f1871aefee3be8f850ef91}{GetLookingDirection}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00528}00528\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ params.gridSizes);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00529}00529\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00530}00530\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}texSlopeVariance"{}},\ TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00531}00531\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}u\_scene\_size"{}},\ oceanSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00532}00532\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}u\_gpu\_tess\_factor"{}},\ (GLfloat)qtGPUTessFactor);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00533}00533\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}surfaceTemp"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}waterTemperature"{}},\ waterTemperature);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00534}00534\ \ \ \ \ OpenGLState::BindVertexArray(vao);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00535}00535\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ tree.patchDEI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00536}00536\ \ \ \ \ glDrawElementsIndirect(GL\_PATCHES,\ GL\_UNSIGNED\_SHORT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00537}00537\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00538}00538\ \ \ \ \ OpenGLState::BindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00539}00539\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00540}00540\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00541}00541\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00542}00542\ \ \ \ \ \textcolor{keyword}{delete}\ []\ viewport;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00543}00543\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00544}00544\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00545}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a3d7faebed8e5ddefe687c5702d516e80}{00545}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a3d7faebed8e5ddefe687c5702d516e80}{OpenGLRealOcean::DrawBacksurface}}(\mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00546}00546\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00547}00547\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_ocean_q_t}{OceanQT}}\&\ tree\ =\ oceanTrees[view];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00548}00548\ \ \ \ \ GLint*\ viewport\ =\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ac53cf3b78d408ed133ab753e7e09a39b}{GetViewport}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00549}00549\ \ \ \ \ glBindBufferBase(GL\_SHADER\_STORAGE\_BUFFER,\ SSBO\_QTREE\_CULL,\ tree.patchSSBO[2]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00550}00550\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D\_ARRAY,\ oceanTextures[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00551}00551\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS2,\ GL\_TEXTURE\_3D,\ oceanTextures[2]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00552}00552\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>Use();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00553}00553\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}MVP"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_aae95d77fc472462ec4a38ccd4921b82b}{GetProjectionMatrix}}()\ *\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{GetViewMatrix}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00554}00554\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}MV"{}},\ glm::mat3(glm::transpose(glm::inverse(view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{GetViewMatrix}}()))));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00555}00555\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}FC"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a21fc921521be07cb3bf94ead40eebcee}{GetLogDepthConstant}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00556}00556\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}viewport"{}},\ glm::vec2((GLfloat)viewport[2],\ (GLfloat)viewport[3]));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00557}00557\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}eyePos"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a3004c25e0ea08a246baaa7e4de0b8e08}{GetEyePosition}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00558}00558\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ params.gridSizes);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00559}00559\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00560}00560\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}texSlopeVariance"{}},\ TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00561}00561\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}u\_scene\_size"{}},\ oceanSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00562}00562\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}u\_gpu\_tess\_factor"{}},\ (GLfloat)qtGPUTessFactor);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00563}00563\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}cWater"{}},\ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_acf956412f9aaac8656f19a780532e222}{getLightAttenuation}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00564}00564\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}backsurface"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}bWater"{}},\ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a23e8858c9ed46583f67d223736b1e681}{getLightScattering}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00565}00565\ \ \ \ \ OpenGLState::BindVertexArray(vao);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00566}00566\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ tree.patchDEI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00567}00567\ \ \ \ \ glCullFace(GL\_FRONT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00568}00568\ \ \ \ \ \textcolor{keywordflow}{if}(wireframe)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00569}00569\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ glPolygonMode(GL\_FRONT\_AND\_BACK,\ GL\_LINE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00571}00571\ \ \ \ \ \ \ \ \ glDrawElementsIndirect(GL\_PATCHES,\ GL\_UNSIGNED\_SHORT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00572}00572\ \ \ \ \ \ \ \ \ glPolygonMode(GL\_FRONT\_AND\_BACK,\ GL\_FILL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00573}00573\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00574}00574\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00575}00575\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00576}00576\ \ \ \ \ \ \ \ \ glDrawElementsIndirect(GL\_PATCHES,\ GL\_UNSIGNED\_SHORT,\ NULL);\ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00577}00577\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00578}00578\ \ \ \ \ glCullFace(GL\_BACK);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00579}00579\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00580}00580\ \ \ \ \ OpenGLState::BindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00581}00581\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00582}00582\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00583}00583\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00584}00584\ \ \ \ \ \textcolor{keyword}{delete}\ []\ viewport;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00585}00585\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00587}\mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a4f5b461a5ea36ebfbb576912dcddcbf4}{00587}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_ocean_a4f5b461a5ea36ebfbb576912dcddcbf4}{OpenGLRealOcean::DrawUnderwaterMask}}(\mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00588}00588\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00589}00589\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_ocean_q_t}{OceanQT}}\&\ tree\ =\ oceanTrees[view];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00590}00590\ \ \ \ \ glColorMask(GL\_FALSE,\ GL\_FALSE,\ GL\_FALSE,\ GL\_FALSE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00591}00591\ \ \ \ \ glBindBufferBase(GL\_SHADER\_STORAGE\_BUFFER,\ SSBO\_QTREE\_CULL,\ tree.patchSSBO[2]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00592}00592\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D\_ARRAY,\ oceanTextures[3]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00593}00593\ \ \ \ \ OpenGLState::BindVertexArray(vao);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00594}00594\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00595}00595\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>Use();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00596}00596\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}MVP"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_aae95d77fc472462ec4a38ccd4921b82b}{GetProjectionMatrix}}()\ *\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{GetViewMatrix}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00597}00597\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}FC"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a21fc921521be07cb3bf94ead40eebcee}{GetLogDepthConstant}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00598}00598\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}gridSizes"{}},\ params.gridSizes);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00599}00599\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}texWaveFFT"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00600}00600\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}eyePos"{}},\ view-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_view_a3004c25e0ea08a246baaa7e4de0b8e08}{GetEyePosition}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00601}00601\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}u\_scene\_size"{}},\ oceanSize);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00602}00602\ \ \ \ \ oceanShaders[\textcolor{stringliteral}{"{}mask"{}}]-\/>SetUniform(\textcolor{stringliteral}{"{}u\_gpu\_tess\_factor"{}},\ (GLfloat)qtGPUTessFactor);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00603}00603\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00604}00604\ \ \ \ \ \textcolor{comment}{//1.\ Draw\ surface\ to\ depth\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00605}00605\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ tree.patchDEI);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00606}00606\ \ \ \ \ glDrawElementsIndirect(GL\_PATCHES,\ GL\_UNSIGNED\_SHORT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00607}00607\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00608}00608\ \ \ \ \ \textcolor{comment}{//2.\ Draw\ backsurface\ to\ depth\ and\ stencil\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00609}00609\ \ \ \ \ OpenGLState::EnableStencilTest();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00610}00610\ \ \ \ \ glStencilFunc(GL\_ALWAYS,\ 1,\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00611}00611\ \ \ \ \ glStencilOp(GL\_KEEP,\ GL\_KEEP,\ GL\_REPLACE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00612}00612\ \ \ \ \ glStencilMask(0xFF);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00613}00613\ \ \ \ \ glClear(GL\_STENCIL\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00614}00614\ \ \ \ \ glCullFace(GL\_FRONT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00615}00615\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00616}00616\ \ \ \ \ glDrawElementsIndirect(GL\_PATCHES,\ GL\_UNSIGNED\_SHORT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00617}00617\ \ \ \ \ glBindBuffer(GL\_DRAW\_INDIRECT\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00618}00618\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00619}00619\ \ \ \ \ OpenGLState::BindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00620}00620\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00621}00621\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00622}00622\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00623}00623\ \ \ \ \ \textcolor{comment}{//3.\ Draw\ box\ around\ whole\ ocean}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00624}00624\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a58bf64007ba2276d343a54b1f6d032d6}{OpenGLOcean::DrawUnderwaterMask}}(view);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00625}00625\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00626}00626\ \ \ \ \ glCullFace(GL\_BACK);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00627}00627\ \ \ \ \ OpenGLState::DisableStencilTest();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00628}00628\ \ \ \ \ glColorMask(GL\_TRUE,\ GL\_TRUE,\ GL\_TRUE,\ GL\_TRUE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00629}00629\ \ \ \ \ glClear(GL\_DEPTH\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00630}00630\ \}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00631}00631\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_ocean_8cpp_source_l00632}00632\ \}}
+
+\end{DoxyCode}

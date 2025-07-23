@@ -1,0 +1,212 @@
+\doxysection{Revolute\+Joint.\+cpp}
+\hypertarget{_revolute_joint_8cpp_source}{}\label{_revolute_joint_8cpp_source}\index{Library/src/joints/RevoluteJoint.cpp@{Library/src/joints/RevoluteJoint.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ RevoluteJoint.cpp}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 1/13/13.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2013-\/2023\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}joints/RevoluteJoint.h"{}}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}entities/SolidEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}utils/GeometryFileUtil.h"{}}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00033}00033\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00036}\mbox{\hyperlink{classsf_1_1_revolute_joint_a3ff31c4056f9e28b14e35b8af7621632}{00036}}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a3ff31c4056f9e28b14e35b8af7621632}{RevoluteJoint::RevoluteJoint}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solidA,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solidB,\ \textcolor{keyword}{const}\ Vector3\&\ pivot,\ \textcolor{keyword}{const}\ Vector3\&\ axis,\ \textcolor{keywordtype}{bool}\ collideLinked)\ :\ \mbox{\hyperlink{classsf_1_1_joint}{Joint}}(uniqueName,\ collideLinked)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00038}00038\ \ \ \ \ Vector3\ hingeAxis\ =\ axis.normalized();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00039}00039\ \ \ \ \ btRigidBody*\ bodyA\ =\ solidA-\/>rigidBody;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00040}00040\ \ \ \ \ btRigidBody*\ bodyB\ =\ solidB-\/>rigidBody;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00041}00041\ \ \ \ \ axisInA\ =\ bodyA-\/>getCenterOfMassTransform().getBasis().inverse()\ *\ hingeAxis;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00042}00042\ \ \ \ \ Vector3\ axisInB\ =\ bodyB-\/>getCenterOfMassTransform().getBasis().inverse()\ *\ hingeAxis;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00043}00043\ \ \ \ \ pivotInA\ =\ bodyA-\/>getCenterOfMassTransform().inverse()(pivot);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00044}00044\ \ \ \ \ Vector3\ pivotInB\ =\ bodyB-\/>getCenterOfMassTransform().inverse()(pivot);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00046}00046\ \ \ \ \ btHingeConstraint*\ hinge\ =\ \textcolor{keyword}{new}\ btHingeConstraint(*bodyA,\ *bodyB,\ pivotInA,\ pivotInB,\ axisInA,\ axisInB,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00047}00047\ \ \ \ \ hinge-\/>setLimit(Scalar(1),\ Scalar(-\/1));\ \textcolor{comment}{//no\ limit\ (min\ >\ max)}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00048}00048\ \ \ \ \ setConstraint(hinge);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00050}00050\ \ \ \ \ sigDamping\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00051}00051\ \ \ \ \ velDamping\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00052}00052\ \ \ \ \ angleOffset\ =\ hinge-\/>getHingeAngle();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00053}00053\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Created\ revolute\ joint\ '\%s'.\ Offset:\ \%lf\ rad."{}},\ uniqueName.c\_str(),\ angleOffset);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_revolute_joint_a4bb119acc53ef200b69e081eded1dabe}{setIC}}(Scalar(0));}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00057}\mbox{\hyperlink{classsf_1_1_revolute_joint_ab6fdfb7fc85a2c1bc07f4fcd2cfe1bbc}{00057}}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a3ff31c4056f9e28b14e35b8af7621632}{RevoluteJoint::RevoluteJoint}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ solid,\ \textcolor{keyword}{const}\ Vector3\&\ pivot,\ \textcolor{keyword}{const}\ Vector3\&\ axis)\ :\ \mbox{\hyperlink{classsf_1_1_joint}{Joint}}(uniqueName,\ false)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00058}00058\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00059}00059\ \ \ \ \ btRigidBody*\ body\ =\ solid-\/>rigidBody;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00060}00060\ \ \ \ \ Vector3\ hingeAxis\ =\ axis.normalized();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00061}00061\ \ \ \ \ axisInA\ =\ body-\/>getCenterOfMassTransform().getBasis().inverse()\ *\ hingeAxis;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00062}00062\ \ \ \ \ pivotInA\ =\ body-\/>getCenterOfMassTransform().inverse()(pivot);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00063}00063\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00064}00064\ \ \ \ \ btHingeConstraint*\ hinge\ =\ \textcolor{keyword}{new}\ btHingeConstraint(*body,\ pivotInA,\ axisInA,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00065}00065\ \ \ \ \ hinge-\/>setLimit(Scalar(1),\ Scalar(-\/1));\ \textcolor{comment}{//no\ limit\ (min\ >\ max)}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00066}00066\ \ \ \ \ setConstraint(hinge);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00067}00067\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00068}00068\ \ \ \ \ sigDamping\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00069}00069\ \ \ \ \ velDamping\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00070}00070\ \ \ \ \ angleOffset\ =\ hinge-\/>getHingeAngle();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00071}00071\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Created\ revolute\ joint\ '\%s'.\ Offset:\ \%lf\ rad."{}},\ uniqueName.c\_str(),\ angleOffset);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_revolute_joint_a4bb119acc53ef200b69e081eded1dabe}{setIC}}(Scalar(0));}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00075}\mbox{\hyperlink{classsf_1_1_revolute_joint_a33a74a61011d527768aa355411be1500}{00075}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a33a74a61011d527768aa355411be1500}{RevoluteJoint::setDamping}}(Scalar\ constantFactor,\ Scalar\ viscousFactor)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00076}00076\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00077}00077\ \ \ \ \ sigDamping\ =\ constantFactor\ >\ Scalar(0)\ ?\ constantFactor\ :\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00078}00078\ \ \ \ \ velDamping\ =\ viscousFactor\ >\ Scalar(0)\ ?\ viscousFactor\ :\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00081}\mbox{\hyperlink{classsf_1_1_revolute_joint_afc075fa91bd1eb1fbd90a1b1ea3607d5}{00081}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_afc075fa91bd1eb1fbd90a1b1ea3607d5}{RevoluteJoint::setLimits}}(Scalar\ min,\ Scalar\ max)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00082}00082\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}(min\ >\ max)\ \textcolor{comment}{//\ No\ limit}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00084}00084\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ btHingeConstraint*\ hinge\ =\ (btHingeConstraint*)\mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ hinge-\/>setLimit(Scalar(1),\ Scalar(-\/1));\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00090}00090\ \ \ \ \ btHingeConstraint*\ hinge\ =\ (btHingeConstraint*)\mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00091}00091\ \ \ \ \ min\ =\ btFmod(min\ +\ angleOffset,\ SIMD\_2\_PI);\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00092}00092\ \ \ \ \ max\ =\ btFmod(max\ +\ angleOffset,\ SIMD\_2\_PI);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00093}00093\ \ \ \ \ hinge-\/>setLimit(min,\ max);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00094}00094\ \ \ \ \ cInfo(\textcolor{stringliteral}{"{}Setting\ limits\ of\ revolute\ joint\ '\%s':\ \%lf,\ \%lf."{}},\ \mbox{\hyperlink{classsf_1_1_joint_adb49dc2d49c2b15cfcb6a4111e8d17b9}{getName}}().c\_str(),\ min,\ max);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00097}\mbox{\hyperlink{classsf_1_1_revolute_joint_a4bb119acc53ef200b69e081eded1dabe}{00097}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a4bb119acc53ef200b69e081eded1dabe}{RevoluteJoint::setIC}}(Scalar\ angle)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00098}00098\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00099}00099\ \ \ \ \ angleIC\ =\ angle;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00100}00100\ \ \ \ \ angleICError\ =\ angleIC\ -\/\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a1be35247ca6eea66d849691271e2bdf1}{getAngle}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00103}\mbox{\hyperlink{classsf_1_1_revolute_joint_af512d2595809808d29fdd4082775278a}{00103}}\ JointType\ \mbox{\hyperlink{classsf_1_1_revolute_joint_af512d2595809808d29fdd4082775278a}{RevoluteJoint::getType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00104}00104\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{return}\ JointType::REVOLUTE;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00108}\mbox{\hyperlink{classsf_1_1_revolute_joint_a1be35247ca6eea66d849691271e2bdf1}{00108}}\ Scalar\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a1be35247ca6eea66d849691271e2bdf1}{RevoluteJoint::getAngle}}()}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00109}00109\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{return}\ btNormalizeAngle(((btHingeConstraint*)\mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}())-\/>getHingeAngle()\ -\/\ angleOffset);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00111}00111\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00113}\mbox{\hyperlink{classsf_1_1_revolute_joint_a86bfff185781eb1d883938ca68a8a037}{00113}}\ Scalar\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a86bfff185781eb1d883938ca68a8a037}{RevoluteJoint::getAngularVelocity}}()}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00114}00114\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00115}00115\ \ \ \ \ btRigidBody\&\ bodyA\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyA();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00116}00116\ \ \ \ \ btRigidBody\&\ bodyB\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyB();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00117}00117\ \ \ \ \ Vector3\ relativeAV\ =\ bodyA.getAngularVelocity()\ -\/\ bodyB.getAngularVelocity();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00118}00118\ \ \ \ \ Vector3\ axis\ =\ (bodyA.getCenterOfMassTransform().getBasis()\ *\ axisInA).normalized();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{return}\ relativeAV.dot(axis);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00122}\mbox{\hyperlink{classsf_1_1_revolute_joint_a359bc59bbfa8eda57d87b2f34a800882}{00122}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a359bc59bbfa8eda57d87b2f34a800882}{RevoluteJoint::EnableMotor}}(\textcolor{keywordtype}{bool}\ enable,\ Scalar\ maxTorque)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00124}00124\ \ \ \ \ btHingeConstraint*\ hinge\ =\ (btHingeConstraint*)\mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00125}00125\ \ \ \ \ hinge-\/>enableAngularMotor(enable,\ Scalar(0),\ maxTorque\ /\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_a4744294bcb19a0a16f7825fd1ecacab5}{getStepsPerSecond}}());}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00126}00126\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00128}\mbox{\hyperlink{classsf_1_1_revolute_joint_aa3459faf2c7843c5692b0727f7ae53d1}{00128}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_aa3459faf2c7843c5692b0727f7ae53d1}{RevoluteJoint::setMotorVelocity}}(Scalar\ av)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00129}00129\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00130}00130\ \ \ \ \ btHingeConstraint*\ hinge\ =\ (btHingeConstraint*)\mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00131}00131\ \ \ \ \ hinge-\/>setMotorTargetVelocity(av/Scalar(4));}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00132}00132\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00134}\mbox{\hyperlink{classsf_1_1_revolute_joint_a8922a14fa1c46d18bcc9f3a2beca93c4}{00134}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a8922a14fa1c46d18bcc9f3a2beca93c4}{RevoluteJoint::ApplyTorque}}(Scalar\ T)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00135}00135\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00136}00136\ \ \ \ \ btRigidBody\&\ bodyA\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyA();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00137}00137\ \ \ \ \ btRigidBody\&\ bodyB\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyB();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00138}00138\ \ \ \ \ Vector3\ axis\ =\ (bodyA.getCenterOfMassTransform().getBasis()\ *\ axisInA).normalized();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00139}00139\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00140}00140\ \ \ \ \ Vector3\ torque\ =\ axis\ *\ T;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00141}00141\ \ \ \ \ bodyA.applyTorque(torque);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00142}00142\ \ \ \ \ bodyB.applyTorque(-\/torque);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00143}00143\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00145}\mbox{\hyperlink{classsf_1_1_revolute_joint_aad95f2086f0c07884c99ef790b02a91c}{00145}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_aad95f2086f0c07884c99ef790b02a91c}{RevoluteJoint::ApplyDamping}}()}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00146}00146\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00147}00147\ \ \ \ \ \textcolor{keywordflow}{if}(sigDamping\ >\ Scalar(0.)\ ||\ velDamping\ >\ Scalar(0.))}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00148}00148\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ btRigidBody\&\ bodyA\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyA();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ btRigidBody\&\ bodyB\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}()-\/>getRigidBodyB();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ Vector3\ axis\ =\ (bodyA.getCenterOfMassTransform().getBasis()\ *\ axisInA).normalized();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ Vector3\ relativeAV\ =\ bodyA.getAngularVelocity()\ -\/\ bodyB.getAngularVelocity();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ Scalar\ av\ =\ relativeAV.dot(axis);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(av\ !=\ Scalar(0.))}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ T\ =\ sigDamping\ *\ av/fabs(av)\ +\ velDamping\ *\ av;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ torque\ =\ axis\ *\ -\/T;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ bodyA.applyTorque(torque);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ bodyB.applyTorque(-\/torque);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00164}00164\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00166}\mbox{\hyperlink{classsf_1_1_revolute_joint_ab1c9fcf9d504d533c4417bbac5bc1e45}{00166}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_revolute_joint_ab1c9fcf9d504d533c4417bbac5bc1e45}{RevoluteJoint::SolvePositionIC}}(Scalar\ linearTolerance,\ Scalar\ angularTolerance)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00167}00167\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00168}00168\ \ \ \ \ Scalar\ lastAngleICError\ =\ angleICError;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00169}00169\ \ \ \ \ angleICError\ =\ angleIC\ -\/\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a1be35247ca6eea66d849691271e2bdf1}{getAngle}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00170}00170\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//Check\ if\ IC\ reached}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{if}(btFabs(angleICError)\ <\ angularTolerance)}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00174}00174\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00175}00175\ \ \ \ \ \textcolor{comment}{//Move\ joint}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00176}00176\ \ \ \ \ Scalar\ torque\ =\ angleICError\ *\ Scalar(50)\ +\ (angleICError\ -\/\ lastAngleICError)\ *\ Scalar(300);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00177}00177\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_revolute_joint_a8922a14fa1c46d18bcc9f3a2beca93c4}{ApplyTorque}}(torque);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00178}00178\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00180}00180\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00182}\mbox{\hyperlink{classsf_1_1_revolute_joint_a04bde8740ae9a5784ebf47c88ee9e1bf}{00182}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_revolute_joint_a04bde8740ae9a5784ebf47c88ee9e1bf}{RevoluteJoint::Render}}()}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00183}00183\ \{}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00184}00184\ \ \ \ \ std::vector<Renderable>\ items(0);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00185}00185\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00186}00186\ \ \ \ \ item.model\ =\ glm::mat4(1.f);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00187}00187\ \ \ \ \ item.type\ =\ RenderableType::JOINT\_LINES;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00188}00188\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00189}00189\ \ \ \ \ btTypedConstraint*\ revo\ =\ \mbox{\hyperlink{classsf_1_1_joint_a7bbf2d8fc08efc635b1f7f54727061a7}{getConstraint}}();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00190}00190\ \ \ \ \ Vector3\ A\ =\ revo-\/>getRigidBodyA().getCenterOfMassPosition();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00191}00191\ \ \ \ \ Vector3\ B\ =\ revo-\/>getRigidBodyB().getCenterOfMassPosition();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00192}00192\ \ \ \ \ Vector3\ pivot\ =\ \ revo-\/>getRigidBodyA().getCenterOfMassTransform()(pivotInA);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00193}00193\ \ \ \ \ Vector3\ axis\ =\ (revo-\/>getRigidBodyA().getCenterOfMassTransform().getBasis()\ *\ axisInA).normalized();}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00194}00194\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00195}00195\ \ \ \ \ \textcolor{comment}{//Calculate\ axis\ ends}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00196}00196\ \ \ \ \ Vector3\ C1\ =\ pivot;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00197}00197\ \ \ \ \ Vector3\ C2\ =\ pivot\ +\ axis\ *\ btMax(0.05,\ btFabs((A-\/B).safeNorm())/Scalar(2));}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00198}00198\ \ \ \ \ item.points.push\_back(glm::vec3(C1.getX(),\ C1.getY(),\ C1.getZ()));}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00199}00199\ \ \ \ \ item.points.push\_back(glm::vec3(C2.getX(),\ C2.getY(),\ C2.getZ()));}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00200}00200\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00201}00201\ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00202}00202\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00203}00203\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00204}00204\ \}}
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00205}00205\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_revolute_joint_8cpp_source_l00206}00206\ \}}
+
+\end{DoxyCode}

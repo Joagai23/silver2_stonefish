@@ -1,0 +1,64 @@
+\doxysection{USBLReal.\+h}
+\hypertarget{_u_s_b_l_real_8h_source}{}\label{_u_s_b_l_real_8h_source}\index{Library/include/comms/USBLReal.h@{Library/include/comms/USBLReal.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00019}00019\ \textcolor{comment}{//\ \ USBLReal.h}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieślak\ on\ 21/12/2020.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2020-\/2021\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_USBLReal\_\_}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_USBLReal\_\_}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}comms/USBL.h"{}}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00031}00031\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00034}\mbox{\hyperlink{classsf_1_1_u_s_b_l_real}{00034}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_u_s_b_l_real}{USBLReal}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classsf_1_1_u_s_b_l}{USBL}}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_u_s_b_l_real}{USBLReal}}(std::string\ uniqueName,\ uint64\_t\ deviceId,\ Scalar\ minVerticalFOVDeg,\ Scalar\ maxVerticalFOVDeg,\ Scalar\ operatingRange,}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ carrierFrequency,\ Scalar\ baseline);}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_u_s_b_l_real_a786a483174f4b10df1cccc402f1296f4}{setNoise}}(Scalar\ timeDev,\ Scalar\ soundVelocityDev,\ Scalar\ phaseDev,\ Scalar\ baselineError,\ Scalar\ depthDev);}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_u_s_b_l_real_a34a56b774f2b2086f519d9d4a983d1a8}{ProcessMessages}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ Scalar\ CalcModel(Scalar\ R,\ Scalar\ theta);}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ Scalar\ freq;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ Scalar\ bl;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ Scalar\ blError;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ std::normal\_distribution<Scalar>\ noiseTime;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ std::normal\_distribution<Scalar>\ noiseSV;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ std::normal\_distribution<Scalar>\ noisePhase;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ std::normal\_distribution<Scalar>\ noiseDepth;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00073}00073\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00075}00075\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_real_8h_source_l00076}00076\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

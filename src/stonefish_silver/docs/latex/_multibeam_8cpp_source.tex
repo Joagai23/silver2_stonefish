@@ -1,0 +1,141 @@
+\doxysection{Multibeam.\+cpp}
+\hypertarget{_multibeam_8cpp_source}{}\label{_multibeam_8cpp_source}\index{Library/src/sensors/scalar/Multibeam.cpp@{Library/src/sensors/scalar/Multibeam.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Multibeam.cpp}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 1/08/2018.}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2018-\/2021\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}sensors/scalar/Multibeam.h"{}}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}BulletCollision/NarrowPhaseCollision/btRaycastCallback.h"{}}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}utils/UnitSystem.h"{}}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}sensors/Sample.h"{}}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00035}00035\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00038}\mbox{\hyperlink{classsf_1_1_multibeam_a550cfa8229931b6874a123011c074d49}{00038}}\ \mbox{\hyperlink{classsf_1_1_multibeam_a550cfa8229931b6874a123011c074d49}{Multibeam::Multibeam}}(std::string\ uniqueName,\ Scalar\ angleRangeDeg,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ angleSteps,\ Scalar\ frequency,\ \textcolor{keywordtype}{int}\ historyLength)\ :\ \mbox{\hyperlink{classsf_1_1_link_sensor}{LinkSensor}}(uniqueName,\ frequency,\ historyLength)}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00040}00040\ \ \ \ \ angRange\ =\ UnitSystem::Angle(\textcolor{keyword}{true},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angleRangeDeg}});}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00041}00041\ \ \ \ \ angSteps\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angleSteps}};}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00042}00042\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}=0;\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}\ <=\ angSteps;\ ++\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}})}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ angles.push\_back(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}/(Scalar)angSteps\ *\ angRange\ -\/\ Scalar(0.5)\ *\ angRange);}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00046}00046\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Distance"{}},\ QuantityType::LENGTH));}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ channels.back().rangeMin\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ channels.back().rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}};}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00052}00052\ \ \ \ \ distances\ =\ std::vector<Scalar>(angSteps+1,\ Scalar(0));}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00054}00054\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00055}\mbox{\hyperlink{classsf_1_1_multibeam_aacb3200b403c00aff3a59d638a41c1c6}{00055}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_multibeam_aacb3200b403c00aff3a59d638a41c1c6}{Multibeam::InternalUpdate}}(Scalar\ dt)}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00056}00056\ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//get\ sensor\ frame\ in\ world}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00058}00058\ \ \ \ \ Transform\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{mbTrans}}\ =\ \mbox{\hyperlink{classsf_1_1_link_sensor_a5e16f6535744918e0aa39262d80112b7}{getSensorFrame}}();}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00059}00059\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//shoot\ rays}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}=0;\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}<=angSteps;\ ++\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}})}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{mbTrans}}.getBasis().getColumn(0)\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btCos}}(angles[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}])\ +\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{mbTrans}}.getBasis().getColumn(1)\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btSin}}(angles[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}]);}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{from}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{mbTrans}}.getOrigin()\ +\ dir\ *\ channels[1].rangeMin;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{to}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{mbTrans}}.getOrigin()\ +\ dir\ *\ channels[1].rangeMax;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00066}00066\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ btCollisionWorld::ClosestRayResultCallback\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{from}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{to}});}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}.m\_collisionFilterGroup\ =\ MASK\_DYNAMIC;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}.m\_collisionFilterMask\ =\ MASK\_STATIC\ |\ MASK\_DYNAMIC\ |\ MASK\_ANIMATED\_COLLIDING;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_a85874bbc029b20de51ad22a06f00d42c}{getDynamicsWorld}}()-\/>rayTest(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{from}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{to}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}});}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}.hasHit())}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{p}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{from}}.lerp(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{to}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}.m\_closestHitFraction);}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ distances[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}]\ =\ (\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{p}}\ -\/\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{mbTrans}}.getOrigin()).\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{length}}();}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ distances[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}]\ =\ channels[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}].rangeMax;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00080}00080\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//record\ sample}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}(distances);}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00083}00083\ \ \ \ \ AddSampleToHistory(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}});}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00086}\mbox{\hyperlink{classsf_1_1_multibeam_a7dda3ddf910be12160b3ce5f08fc017b}{00086}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_multibeam_a7dda3ddf910be12160b3ce5f08fc017b}{Multibeam::Render}}()}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00087}00087\ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00088}00088\ \ \ \ \ std::vector<Renderable>\ items\ =\ \mbox{\hyperlink{classsf_1_1_sensor_a6e4955d7a77bbba84c2bdfb9a57c8388}{Sensor::Render}}();}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_sensor_a7ed0e8bb0e676260491b2460d7b66b6c}{isRenderable}}())}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::SENSOR\_LINES;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(\mbox{\hyperlink{classsf_1_1_link_sensor_a5e16f6535744918e0aa39262d80112b7}{getSensorFrame}}());\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}=0;\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}\ <=\ angSteps;\ ++\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}})}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ Vector3(1,\ 0,\ 0)\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btCos}}(angles[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}])\ +\ Vector3(0,\ 1,\ 0)\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btSin}}(angles[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}]);}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0,0,0));}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(dir.x()\ *\ distances[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}],\ dir.y()\ *\ distances[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}],\ dir.z()\ *\ distances[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}]));}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00105}\mbox{\hyperlink{classsf_1_1_multibeam_a0b8b8b334af2ec6b03332e08656a9511}{00105}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_multibeam_a0b8b8b334af2ec6b03332e08656a9511}{Multibeam::setRange}}(Scalar\ rangeMin,\ Scalar\ rangeMax)}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00106}00106\ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00107}00107\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamp}}(rangeMin,\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00108}00108\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamp}}(rangeMax,\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}=0;\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}<=angSteps;\ ++\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}})}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00111}00111\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ channels[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}].rangeMin\ =\ rangeMin;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ channels[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}].rangeMax\ =\ rangeMax;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00117}\mbox{\hyperlink{classsf_1_1_multibeam_a88811d5c35e8bcdb1d6466911688ddaa}{00117}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_multibeam_a88811d5c35e8bcdb1d6466911688ddaa}{Multibeam::setNoise}}(Scalar\ rangeStdDev)}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00119}00119\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamp}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{rangeStdDev}},\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}=0;\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}<=angSteps;\ ++\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}})}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ channels[\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{i}}].setStdDev(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{rangeStdDev}});}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00125}\mbox{\hyperlink{classsf_1_1_multibeam_aceda4c55e9311f7444fc99b51c332ea6}{00125}}\ ScalarSensorType\ \mbox{\hyperlink{classsf_1_1_multibeam_aceda4c55e9311f7444fc99b51c332ea6}{Multibeam::getScalarSensorType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00126}00126\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{return}\ ScalarSensorType::MULTIBEAM;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00130}\mbox{\hyperlink{classsf_1_1_multibeam_afaed4ed7c60efdb07432e23cc73b0e5a}{00130}}\ Scalar\ \mbox{\hyperlink{classsf_1_1_multibeam_afaed4ed7c60efdb07432e23cc73b0e5a}{Multibeam::getAngleRange}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00131}00131\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{return}\ angRange;}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_multibeam_8cpp_source_l00135}00135\ \}}
+
+\end{DoxyCode}

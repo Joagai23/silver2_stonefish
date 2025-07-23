@@ -1,0 +1,255 @@
+\doxysection{sf\+::USBLReal Class Reference}
+\hypertarget{classsf_1_1_u_s_b_l_real}{}\label{classsf_1_1_u_s_b_l_real}\index{sf::USBLReal@{sf::USBLReal}}
+
+
+A class representing a realistic \doxylink{classsf_1_1_u_s_b_l}{USBL} model.  
+
+
+
+
+{\ttfamily \#include $<$USBLReal.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::USBLReal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classsf_1_1_u_s_b_l_real__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::USBLReal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classsf_1_1_u_s_b_l_real__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_u_s_b_l_real_a9fb201c38f4ba240e55dc82999fda24c}{USBLReal}} (std\+::string unique\+Name, uint64\+\_\+t device\+Id, Scalar min\+Vertical\+FOVDeg, Scalar max\+Vertical\+FOVDeg, Scalar operating\+Range, Scalar carrier\+Frequency, Scalar baseline)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_u_s_b_l_real_a786a483174f4b10df1cccc402f1296f4}{set\+Noise}} (Scalar time\+Dev, Scalar sound\+Velocity\+Dev, Scalar phase\+Dev, Scalar baseline\+Error, Scalar depth\+Dev)
+\begin{DoxyCompactList}\small\item\em A method used to set the noise characteristics of the device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_u_s_b_l_real_a34a56b774f2b2086f519d9d4a983d1a8}{Process\+Messages}} () override
+\begin{DoxyCompactList}\small\item\em A method that processes all messages in the rx buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_u_s_b_l}{sf\+::\+USBL}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_u_s_b_l_ab7dd68c18f5f8aab88e5cc9b16fae17f}{USBL}} (std\+::string unique\+Name, uint64\+\_\+t device\+Id, Scalar min\+Vertical\+FOVDeg, Scalar max\+Vertical\+FOVDeg, Scalar operating\+Range)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_u_s_b_l_a2348b175c7f9dc74c545e8aa0bc22589}{Enable\+Auto\+Ping}} (Scalar rate=Scalar(0))
+\begin{DoxyCompactList}\small\item\em A method used to enable the auto pinging of connected transponder to monitor its position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_u_s_b_l_add35be34cb17e729ff7a53959e4dfb69}{Disable\+Auto\+Ping}} ()
+\begin{DoxyCompactList}\small\item\em A method to diable the autp pinging funtion. \end{DoxyCompactList}\item 
+std\+::map$<$ uint64\+\_\+t, \mbox{\hyperlink{structsf_1_1_beacon_info}{Beacon\+Info}} $>$ \& \mbox{\hyperlink{classsf_1_1_u_s_b_l_aa4232ec6bad693d2f7b72f2303623fbe}{get\+Beacon\+Info}} ()
+\begin{DoxyCompactList}\small\item\em A method to get the current information about the acoustic beacons. \end{DoxyCompactList}\item 
+Comm\+Type \mbox{\hyperlink{classsf_1_1_u_s_b_l_aa68c82929db9e7cee1fde73e24d60a8d}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the comm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_acoustic_modem}{sf\+::\+Acoustic\+Modem}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_acoustic_modem_ae7884970dfc87b6d963f67bedcfed8d2}{Acoustic\+Modem}} (std\+::string unique\+Name, uint64\+\_\+t device\+Id, Scalar min\+Vertical\+FOVDeg, Scalar max\+Vertical\+FOVDeg, Scalar operating\+Range)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_acoustic_modem_a6a641255b311f78c53bfba9024fe41e9}{\texorpdfstring{$\sim$}{\string~}\+Acoustic\+Modem}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_acoustic_modem_aabebe604047f9486b2c60b5bd53cd405}{Send\+Message}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&data) override
+\begin{DoxyCompactList}\small\item\em A method used to send a message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_acoustic_modem_a0ce632026d48ae70ae785515d2afb6e0}{Update\+Position}} (Vector3 pos, bool absolute, std\+::string reference\+Frame=std\+::string("{}"{}))
+\begin{DoxyCompactList}\small\item\em A method used to update position of the modem based on measurements from \doxylink{classsf_1_1_u_s_b_l}{USBL} or another device. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_acoustic_modem_a9e5760e2246479f70754077afebc44a2}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the comm device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_acoustic_modem_ad21316b1036c5c047e70a60e2e8031ad}{set\+Occlusion\+Test}} (bool enabled)
+\begin{DoxyCompactList}\small\item\em A method to set if occlusion test should be enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_acoustic_modem_a860018a04d7717880cef01e6f5823efa}{get\+Position}} (Vector3 \&pos, std\+::string \&reference\+Frame)
+\begin{DoxyCompactList}\small\item\em A method to retrieve the position of the device in the designated reference frame. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_acoustic_modem_a43db2936233e01602cd953acfcaa349d}{get\+Occlusion\+Test}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if occlusion testing is enabled for the modem device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_comm}{sf\+::\+Comm}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_comm_a7f4e2757e33f710dab0c8763506680df}{Comm}} (std\+::string unique\+Name, uint64\+\_\+t device\+Id)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_comm_ad5f457ba1a9400ba5805bcf212525115}{\texorpdfstring{$\sim$}{\string~}\+Comm}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_aac849bdbb8af38cbb8d2f122e245577e}{Connect}} (uint64\+\_\+t device\+Id)
+\begin{DoxyCompactList}\small\item\em A method to set the connected device id. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_comm_a13a353a93254656ef8ddf7c9c76a698f}{Send\+Message}} (const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Methods used to send a message. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structsf_1_1_comm_data_frame}{Comm\+Data\+Frame}} $>$ \mbox{\hyperlink{classsf_1_1_comm_af85b194242d2d2a0f88e2b1907337c82}{Read\+Message}} ()
+\begin{DoxyCompactList}\small\item\em A method to read received data frames. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a8e74fa4bb501a24dceac081b7cdc6cb2}{Attach\+To\+World}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the comm device to the world origin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a30834a1697e858bb9bfa1788476d4a5e}{Attach\+To\+Static}} (\mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the comm device to a static body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a53f8d3c3581436706b817c471300c69a}{Attach\+To\+Solid}} (\mbox{\hyperlink{classsf_1_1_moving_entity}{Moving\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the comm device to a rigid body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_af622ff3ab67a78fd77b79b8671d3190d}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method that updates the comm state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a1dbea58632304cba9cd8bd754fe7a009}{Mark\+Data\+Old}} ()
+\begin{DoxyCompactList}\small\item\em A method used to mark data as old. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_comm_a8ba8e41e545cedc2d2558562c9476cd8}{is\+New\+Data\+Available}} ()
+\begin{DoxyCompactList}\small\item\em A method to check if new data is available. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_comm_a6b83d4df23f3f5b16f820f019eeb556c}{is\+Renderable}} ()
+\begin{DoxyCompactList}\small\item\em A method informing if the comm is renderable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a2d1b06ecc4dd674f0d913df247189ba4}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method to set if the comm is renderable. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_a0c99eee15ddf7157c3a974f88ba0c9f1}{get\+Rx\+Buffer\+Count}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the number of messages in the rx buffer. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_a02d48a9e07bc7c951046261abeb8448e}{get\+Tx\+Buffer\+Count}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the number of messages in the tx buffer. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_comm_a529f18de74ff2efaec144e95f47245ba}{get\+Device\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the current comm device frame in world. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_a834283be114a3a1c5507663e28cb40b8}{get\+Device\+Id}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the device node id. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_aba2e9cd490995176ad8363d34a07f823}{get\+Connected\+Id}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the conneted device node id. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_comm_a82ecbf7fc864f9d0cea2fef93c0facb5}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the comm name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_u_s_b_l}{sf\+::\+USBL}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classsf_1_1_u_s_b_l_ae6b395c6a3f0c78b05f762d88471a5e8}{Internal\+Update}} (Scalar dt) override
+\begin{DoxyCompactList}\small\item\em A method performing internal comm state update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_comm}{sf\+::\+Comm}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_comm_af4ec3a4249791d6cace7e14455b53fd9}{Message\+Received}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structsf_1_1_comm_data_frame}{Comm\+Data\+Frame}} $>$ message)
+\begin{DoxyCompactList}\small\item\em A method used for data reception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_acoustic_modem}{sf\+::\+Acoustic\+Modem}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classsf_1_1_acoustic_modem}{Acoustic\+Modem}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_acoustic_modem_ab1defcf24b336b895289e7be925cef0f}{get\+Node}} (uint64\+\_\+t device\+Id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_u_s_b_l}{sf\+::\+USBL}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_u_s_b_l_ab96bf014670913803818d09f665c28fb}{ping}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_u_s_b_l_a0a8e84a3006a31d053922e7db9e6cee5}{ping\+Rate}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_u_s_b_l_a1898ce134d87588308acd0e9486aeb5b}{ping\+Time}}
+\item 
+std\+::map$<$ uint64\+\_\+t, \mbox{\hyperlink{structsf_1_1_beacon_info}{Beacon\+Info}} $>$ \mbox{\hyperlink{classsf_1_1_u_s_b_l_a85bf5f922490a857a677d1c88fa6bd40}{beacons}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_u_s_b_l_ad4ecd1958182bd0b38ca7a7e947c146e}{noise}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_comm}{sf\+::\+Comm}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_comm_a49c7dd4cb95abcffbcdff8a3049862fb}{new\+Data\+Available}}
+\item 
+std\+::deque$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structsf_1_1_comm_data_frame}{Comm\+Data\+Frame}} $>$ $>$ \mbox{\hyperlink{classsf_1_1_comm_a590e507048846e149b7903f617c44140}{tx\+Buffer}}
+\item 
+std\+::deque$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structsf_1_1_comm_data_frame}{Comm\+Data\+Frame}} $>$ $>$ \mbox{\hyperlink{classsf_1_1_comm_ad445fbbf2fd458621089a29c6834d5bd}{rx\+Buffer}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_a091aeac9b1742bf25465e22455657ca8}{tx\+Seq}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_u_s_b_l}{sf\+::\+USBL}}}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::random\+\_\+device \mbox{\hyperlink{classsf_1_1_u_s_b_l_a8408ae662127a2e28a5a9995fbe8a844}{random\+Device}}
+\item 
+static std\+::mt19937 \mbox{\hyperlink{classsf_1_1_u_s_b_l_a75bed4e0ceede1d201960000684e9cc5}{random\+Generator}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a realistic \doxylink{classsf_1_1_u_s_b_l}{USBL} model. 
+
+Definition at line \mbox{\hyperlink{_u_s_b_l_real_8h_source_l00034}{34}} of file \mbox{\hyperlink{_u_s_b_l_real_8h_source}{USBLReal.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_u_s_b_l_real_a9fb201c38f4ba240e55dc82999fda24c}\label{classsf_1_1_u_s_b_l_real_a9fb201c38f4ba240e55dc82999fda24c} 
+\index{sf::USBLReal@{sf::USBLReal}!USBLReal@{USBLReal}}
+\index{USBLReal@{USBLReal}!sf::USBLReal@{sf::USBLReal}}
+\doxysubsubsection{\texorpdfstring{USBLReal()}{USBLReal()}}
+{\footnotesize\ttfamily sf\+::\+USBLReal\+::\+USBLReal (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{uint64\+\_\+t}]{device\+Id,  }\item[{Scalar}]{min\+Vertical\+FOVDeg,  }\item[{Scalar}]{max\+Vertical\+FOVDeg,  }\item[{Scalar}]{operating\+Range,  }\item[{Scalar}]{carrier\+Frequency,  }\item[{Scalar}]{baseline }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the comm device \\
+\hline
+{\em device\+Id} & an identification code of the device \\
+\hline
+{\em min\+Vertical\+FOVDeg} & the minimum vertical angle of radiation pattern \mbox{[}deg\mbox{]} \\
+\hline
+{\em max\+Vertical\+FOVDeg} & the maximum vertical angle of radiation pattern \mbox{[}deg\mbox{]} \\
+\hline
+{\em operating\+Range} & the operating range \mbox{[}m\mbox{]} \\
+\hline
+{\em carrier\+Frequency} & the base frequency of the signal \mbox{[}Hz\mbox{]} \\
+\hline
+{\em baseline} & the distance between transducers forming one pair \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_u_s_b_l_real_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{_u_s_b_l_real_8cpp_source}{USBLReal.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_u_s_b_l_real_a34a56b774f2b2086f519d9d4a983d1a8}\label{classsf_1_1_u_s_b_l_real_a34a56b774f2b2086f519d9d4a983d1a8} 
+\index{sf::USBLReal@{sf::USBLReal}!ProcessMessages@{ProcessMessages}}
+\index{ProcessMessages@{ProcessMessages}!sf::USBLReal@{sf::USBLReal}}
+\doxysubsubsection{\texorpdfstring{ProcessMessages()}{ProcessMessages()}}
+{\footnotesize\ttfamily void sf\+::\+USBLReal\+::\+Process\+Messages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that processes all messages in the rx buffer. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_acoustic_modem_a86b37d45afc4edaea0404d3af691bc21}{sf\+::\+Acoustic\+Modem}}.
+
+
+
+Definition at line \mbox{\hyperlink{_u_s_b_l_real_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_u_s_b_l_real_8cpp_source}{USBLReal.\+cpp}}.
+
+\Hypertarget{classsf_1_1_u_s_b_l_real_a786a483174f4b10df1cccc402f1296f4}\label{classsf_1_1_u_s_b_l_real_a786a483174f4b10df1cccc402f1296f4} 
+\index{sf::USBLReal@{sf::USBLReal}!setNoise@{setNoise}}
+\index{setNoise@{setNoise}!sf::USBLReal@{sf::USBLReal}}
+\doxysubsubsection{\texorpdfstring{setNoise()}{setNoise()}}
+{\footnotesize\ttfamily void sf\+::\+USBLReal\+::set\+Noise (\begin{DoxyParamCaption}\item[{Scalar}]{time\+Dev,  }\item[{Scalar}]{sound\+Velocity\+Dev,  }\item[{Scalar}]{phase\+Dev,  }\item[{Scalar}]{baseline\+Error,  }\item[{Scalar}]{depth\+Dev }\end{DoxyParamCaption})}
+
+
+
+A method used to set the noise characteristics of the device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+Dev} & standard deviation of the TOF measurement \mbox{[}s\mbox{]} \\
+\hline
+{\em sound\+Velocity\+Dev} & standard deviation of the sound velocity in water \mbox{[}m/s\mbox{]} \\
+\hline
+{\em phase\+Dev} & standard deviation of the phase measurement \mbox{[}1\mbox{]} \\
+\hline
+{\em baseline\+Error} & the error in the distance between transducers forming a pair \mbox{[}m\mbox{]} \\
+\hline
+{\em depth\+Dev} & standard deviation of the depth measurement \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_u_s_b_l_real_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_u_s_b_l_real_8cpp_source}{USBLReal.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/comms/USBLReal.\+h\item 
+Library/src/comms/USBLReal.\+cpp\end{DoxyCompactItemize}

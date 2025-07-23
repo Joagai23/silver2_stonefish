@@ -1,0 +1,182 @@
+\doxysection{sf\+::Jet Class Reference}
+\hypertarget{classsf_1_1_jet}{}\label{classsf_1_1_jet}\index{sf::Jet@{sf::Jet}}
+
+
+\doxylink{classsf_1_1_jet}{Jet} velocity field class.  
+
+
+
+
+{\ttfamily \#include $<$Jet.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Jet\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classsf_1_1_jet__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Jet\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classsf_1_1_jet__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_jet_a5d1ac5993186828f31ca904e9c84386b}{Jet}} (const Vector3 \&point, const Vector3 \&direction, Scalar radius, Scalar outlet\+Velocity)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_jet_a05d1cb963d2e0d57784bcc0694d7b893}{Get\+Velocity\+At\+Point}} (const Vector3 \&p) const
+\begin{DoxyCompactList}\small\item\em A method returning velocity at a specified point. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_jet_ab29ac4ec8c96fcc9394beeced5ce27a1}{Render}} (\mbox{\hyperlink{structsf_1_1_velocity_field_u_b_o}{Velocity\+Field\+UBO}} \&ubo)
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the jet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_jet_af0dc67fc0aa7632cb099d3820817b2c7}{set\+Outlet\+Velocity}} (Scalar x)
+\begin{DoxyCompactList}\small\item\em A method to change the flow velocity. \end{DoxyCompactList}\item 
+Velocity\+Field\+Type \mbox{\hyperlink{classsf_1_1_jet_a74677e9f544157e98b68ee604adb4b6c}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the velocity field. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_velocity_field}{sf\+::\+Velocity\+Field}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_velocity_field_a5be71a296be6a288c9f0d1f91ad1e448}{Velocity\+Field}} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_velocity_field_a1ae27c357c2e581907faf7e20c04398b}{\texorpdfstring{$\sim$}{\string~}\+Velocity\+Field}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_velocity_field_abbdc4a0dcb517e4db3a66c0fab573406}{set\+Enabled}} (bool en)
+\begin{DoxyCompactList}\small\item\em A method to enable/disable the velocity field. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_velocity_field_ad07f3cf555ba9fd5352fe93e6078b4df}{is\+Enabled}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the velocity field is enabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classsf_1_1_jet}{Jet} velocity field class. 
+
+Class implements a velocity field coming from a water jet. The flow velocity is specified at the centre of the jet outlet. The closer to the outlet boundary the slower the flow (zero at boudary). 
+
+Definition at line \mbox{\hyperlink{_jet_8h_source_l00039}{39}} of file \mbox{\hyperlink{_jet_8h_source}{Jet.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_jet_a5d1ac5993186828f31ca904e9c84386b}\label{classsf_1_1_jet_a5d1ac5993186828f31ca904e9c84386b} 
+\index{sf::Jet@{sf::Jet}!Jet@{Jet}}
+\index{Jet@{Jet}!sf::Jet@{sf::Jet}}
+\doxysubsubsection{\texorpdfstring{Jet()}{Jet()}}
+{\footnotesize\ttfamily sf\+::\+Jet\+::\+Jet (\begin{DoxyParamCaption}\item[{const Vector3 \&}]{point,  }\item[{const Vector3 \&}]{direction,  }\item[{Scalar}]{radius,  }\item[{Scalar}]{outlet\+Velocity }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & the center of the jet in the world frame \mbox{[}m\mbox{]} \\
+\hline
+{\em direction} & the direction of the jet axis in the world frame \\
+\hline
+{\em radius} & the radius of the jet outlet \mbox{[}m\mbox{]} \\
+\hline
+{\em outlet\+Velocity} & the velocity at the outlet \mbox{[}m/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_jet_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{_jet_8cpp_source}{Jet.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_jet_a74677e9f544157e98b68ee604adb4b6c}\label{classsf_1_1_jet_a74677e9f544157e98b68ee604adb4b6c} 
+\index{sf::Jet@{sf::Jet}!getType@{getType}}
+\index{getType@{getType}!sf::Jet@{sf::Jet}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Velocity\+Field\+Type sf\+::\+Jet\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the velocity field. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_velocity_field_acb8f5ebb4e5e69352bd360c2b91a41fd}{sf\+::\+Velocity\+Field}}.
+
+
+
+Definition at line \mbox{\hyperlink{_jet_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{_jet_8cpp_source}{Jet.\+cpp}}.
+
+\Hypertarget{classsf_1_1_jet_a05d1cb963d2e0d57784bcc0694d7b893}\label{classsf_1_1_jet_a05d1cb963d2e0d57784bcc0694d7b893} 
+\index{sf::Jet@{sf::Jet}!GetVelocityAtPoint@{GetVelocityAtPoint}}
+\index{GetVelocityAtPoint@{GetVelocityAtPoint}!sf::Jet@{sf::Jet}}
+\doxysubsubsection{\texorpdfstring{GetVelocityAtPoint()}{GetVelocityAtPoint()}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Jet\+::\+Get\+Velocity\+At\+Point (\begin{DoxyParamCaption}\item[{const Vector3 \&}]{p }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning velocity at a specified point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & a point at which the velocity is requested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+velocity \mbox{[}m/s\mbox{]} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_velocity_field_a506c9739c250415a13eeade791208c42}{sf\+::\+Velocity\+Field}}.
+
+
+
+Definition at line \mbox{\hyperlink{_jet_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_jet_8cpp_source}{Jet.\+cpp}}.
+
+\Hypertarget{classsf_1_1_jet_ab29ac4ec8c96fcc9394beeced5ce27a1}\label{classsf_1_1_jet_ab29ac4ec8c96fcc9394beeced5ce27a1} 
+\index{sf::Jet@{sf::Jet}!Render@{Render}}
+\index{Render@{Render}!sf::Jet@{sf::Jet}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Jet\+::\+Render (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_velocity_field_u_b_o}{Velocity\+Field\+UBO}} \&}]{ubo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the jet. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_velocity_field_a0cf06f25180093e0fe39c1da9c40a53c}{sf\+::\+Velocity\+Field}}.
+
+
+
+Definition at line \mbox{\hyperlink{_jet_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_jet_8cpp_source}{Jet.\+cpp}}.
+
+\Hypertarget{classsf_1_1_jet_af0dc67fc0aa7632cb099d3820817b2c7}\label{classsf_1_1_jet_af0dc67fc0aa7632cb099d3820817b2c7} 
+\index{sf::Jet@{sf::Jet}!setOutletVelocity@{setOutletVelocity}}
+\index{setOutletVelocity@{setOutletVelocity}!sf::Jet@{sf::Jet}}
+\doxysubsubsection{\texorpdfstring{setOutletVelocity()}{setOutletVelocity()}}
+{\footnotesize\ttfamily void sf\+::\+Jet\+::set\+Outlet\+Velocity (\begin{DoxyParamCaption}\item[{Scalar}]{x }\end{DoxyParamCaption})}
+
+
+
+A method to change the flow velocity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & new outlet velocity \mbox{[}m/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_jet_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_jet_8cpp_source}{Jet.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/entities/forcefields/Jet.\+h\item 
+Library/src/entities/forcefields/Jet.\+cpp\end{DoxyCompactItemize}

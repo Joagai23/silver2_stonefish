@@ -1,0 +1,147 @@
+\doxysection{Optical\+Flow\+Camera.\+cpp}
+\hypertarget{_optical_flow_camera_8cpp_source}{}\label{_optical_flow_camera_8cpp_source}\index{Library/src/sensors/vision/OpticalFlowCamera.cpp@{Library/src/sensors/vision/OpticalFlowCamera.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ OpticalFlowCamera.cpp}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 08/02/24.}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}sensors/vision/OpticalFlowCamera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}core/GraphicalSimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLOpticalFlowCamera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00033}00033\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00036}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_aed216288c29cfb9e666ee6b94a3a4fd2}{00036}}\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_aed216288c29cfb9e666ee6b94a3a4fd2}{OpticalFlowCamera::OpticalFlowCamera}}(std::string\ uniqueName,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ resolutionX,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ resolutionY,\ Scalar\ hFOVDeg,\ Scalar\ frequency,\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00037}00037\ \ \ \ \ Scalar\ minDistance,\ Scalar\ maxDistance)\ :\ \mbox{\hyperlink{classsf_1_1_camera}{Camera}}(uniqueName,\ resolutionX,\ resolutionY,\ hFOVDeg,\ frequency)}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00039}00039\ \ \ \ \ depthRange\ =\ glm::vec2((GLfloat)minDistance,\ (GLfloat)maxDistance);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00040}00040\ \ \ \ \ noiseStdDev\ =\ glm::vec2(0.f);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00041}00041\ \ \ \ \ displayMaxVelocity\ =\ resolutionX/2.f;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00042}00042\ \ \ \ \ newDataCallback\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00043}00043\ \ \ \ \ flowData\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00044}00044\ \ \ \ \ displayData\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00045}00045\ \ \ \ \ glCamera\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00048}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_a960a48af4748f52731df8f08671242f7}{00048}}\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_a960a48af4748f52731df8f08671242f7}{OpticalFlowCamera::\string~OpticalFlowCamera}}()}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00050}00050\ \ \ \ \ glCamera\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00053}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_adeb3fd6c4017c9f41b19a8ac1980ea50}{00053}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_adeb3fd6c4017c9f41b19a8ac1980ea50}{OpticalFlowCamera::setNoise}}(\textcolor{keywordtype}{float}\ velocityXStdDev,\ \textcolor{keywordtype}{float}\ velocityYStdDev)}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00054}00054\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00055}00055\ \ \ \ \ noiseStdDev.x\ =\ velocityXStdDev\ >\ 0.f\ ?\ velocityXStdDev\ :\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00056}00056\ \ \ \ \ noiseStdDev.y\ =\ velocityYStdDev\ >\ 0.f\ ?\ velocityYStdDev\ :\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{if}(glCamera\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ glCamera-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a8ce1137b2cb2e1a9787f08887141cfdd}{setNoise}}(noiseStdDev);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00061}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_a28980536e3d82de48813da3bb53d777c}{00061}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_a28980536e3d82de48813da3bb53d777c}{OpticalFlowCamera::setDisplaySettings}}(GLfloat\ maxVelocity)}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00062}00062\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00063}00063\ \ \ \ \ displayMaxVelocity\ =\ glm::abs(maxVelocity);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}(glCamera\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ glCamera-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_ae09851273fb33fe5dd1dceb2753e8e0d}{setMaxVelocity}}(displayMaxVelocity);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00068}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_a48aff00ffff8a5afc2471b00e3e90848}{00068}}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_a48aff00ffff8a5afc2471b00e3e90848}{OpticalFlowCamera::getImageDataPointer}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00069}00069\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{return}\ flowData;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00073}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_a16b6a1105b4d6e24e219d9102d404919}{00073}}\ GLubyte*\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_a16b6a1105b4d6e24e219d9102d404919}{OpticalFlowCamera::getDisplayDataPointer}}()}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{keywordflow}{return}\ displayData;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00078}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_a929404b0c230a83002433e512c57d931}{00078}}\ VisionSensorType\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_a929404b0c230a83002433e512c57d931}{OpticalFlowCamera::getVisionSensorType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00079}00079\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{return}\ VisionSensorType::OPTICAL\_FLOW\_CAMERA;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00083}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_aa54580b10ba59d9bc3b64cfd7fd32e3f}{00083}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_aa54580b10ba59d9bc3b64cfd7fd32e3f}{OpticalFlowCamera::getOpenGLView}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00084}00084\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{return}\ glCamera;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00088}00088\ \textcolor{keywordtype}{void}\ OpticalFlowCamera::InitGraphics()}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00089}00089\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00090}00090\ \ \ \ \ glCamera\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera}{OpenGLOpticalFlowCamera}}(glm::vec3(0,0,0),\ glm::vec3(0,0,1.f),\ glm::vec3(0,-\/1.f,0),\ 0,\ 0,\ resX,\ resY,\ (GLfloat)fovH,\ depthRange,\ freq\ <\ Scalar(0));}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00091}00091\ \ \ \ \ glCamera-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a8ce1137b2cb2e1a9787f08887141cfdd}{setNoise}}(noiseStdDev);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00092}00092\ \ \ \ \ glCamera-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_ae09851273fb33fe5dd1dceb2753e8e0d}{setMaxVelocity}}(displayMaxVelocity);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00093}00093\ \ \ \ \ glCamera-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_ab95889fbd7f4995cd55169076bbcba99}{setCamera}}(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_camera_a0a5420ed6151ff87c2b19b8bdab2378c}{UpdateTransform}}();}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00095}00095\ \ \ \ \ glCamera-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a5e0c9efe2f5ec2a8e215acc201e0b021}{UpdateTransform}}();}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00096}00096\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_abd711692d2cfe0f1b5d6b52552d64cb2}{InternalUpdate}}(0);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00097}00097\ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>AddView(glCamera);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ w,\ h;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_camera_a4799622b0a6d8e248194f1f2ee6abd66}{getResolution}}(w,\ h);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00101}00101\ \ \ \ \ displayData\ =\ \textcolor{keyword}{new}\ GLubyte[w*h*3];}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00104}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_ac38bd492bd7459d2f6042c5d98f3016d}{00104}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_ac38bd492bd7459d2f6042c5d98f3016d}{OpticalFlowCamera::SetupCamera}}(\textcolor{keyword}{const}\ Vector3\&\ eye,\ \textcolor{keyword}{const}\ Vector3\&\ dir,\ \textcolor{keyword}{const}\ Vector3\&\ up)}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00105}00105\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00106}00106\ \ \ \ \ glm::vec3\ eye\_\ =\ glm::vec3((GLfloat)eye.x(),\ (GLfloat)eye.y(),\ (GLfloat)eye.z());}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00107}00107\ \ \ \ \ glm::vec3\ dir\_\ =\ glm::vec3((GLfloat)dir.x(),\ (GLfloat)dir.y(),\ (GLfloat)dir.z());}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00108}00108\ \ \ \ \ glm::vec3\ up\_\ =\ glm::vec3((GLfloat)up.x(),\ (GLfloat)up.y(),\ (GLfloat)up.z());}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00109}00109\ \ \ \ \ glCamera-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_adc559a2a8e5f42a4b0a5d6d2aefb8101}{SetupCamera}}(eye\_,\ dir\_,\ up\_);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00112}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_abc6bcc7859f588ce3080e75d6d9695fb}{00112}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_abc6bcc7859f588ce3080e75d6d9695fb}{OpticalFlowCamera::InstallNewDataHandler}}(std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classsf_1_1_optical_flow_camera}{OpticalFlowCamera}}*)>\ callback)}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00113}00113\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00114}00114\ \ \ \ \ newDataCallback\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00117}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_ad7ffa153a956ce1a66cacff006080f65}{00117}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_ad7ffa153a956ce1a66cacff006080f65}{OpticalFlowCamera::NewDataReady}}(\textcolor{keywordtype}{void}*\ data,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}(newDataCallback\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00120}00120\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ w,\ h;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_camera_a4799622b0a6d8e248194f1f2ee6abd66}{getResolution}}(w,\ h);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(displayData,\ data,\ w*h*3);}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ flowData\ =\ (GLfloat*)data;}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ newDataCallback(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ flowData\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00133}00133\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00134}00134\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00136}\mbox{\hyperlink{classsf_1_1_optical_flow_camera_abd711692d2cfe0f1b5d6b52552d64cb2}{00136}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_optical_flow_camera_abd711692d2cfe0f1b5d6b52552d64cb2}{OpticalFlowCamera::InternalUpdate}}(Scalar\ dt)}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00137}00137\ \{}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00138}00138\ \ \ \ \ glCamera-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a5daa491bb552d570bd0e585ad78cb656}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00139}00139\ \}}
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_optical_flow_camera_8cpp_source_l00141}00141\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,11 @@
+<map id="sf::JointActuator" name="sf::JointActuator">
+<area shape="rect" id="Node000001" title="An abstract class representing a joint actuator." alt="" coords="43,79,168,104"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_motor.html" title="A class representing a motor." alt="" coords="15,152,94,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="91,117,65,153,61,150,87,114"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_servo.html" title="A class implementing a position/velocity servo motor." alt="" coords="118,152,197,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="124,114,151,150,147,153,120,117"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_actuator.html" title="An abstract class representing any actuator." alt="" coords="57,5,153,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,44,108,79,103,79,103,44"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_d_c_motor.html" title="A class representing a model of a DC motor." alt="" coords="5,225,104,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="57,191,57,225,52,225,52,191"/>
+</map>

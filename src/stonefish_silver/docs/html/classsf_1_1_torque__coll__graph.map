@@ -1,0 +1,32 @@
+<map id="sf::Torque" name="sf::Torque">
+<area shape="rect" id="Node000001" title="A class representing a torque sensor." alt="" coords="132,532,216,557"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_joint_sensor.html" title="An abstract class representing a sensor attached to a joint." alt="" coords="117,457,231,483"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,497,177,532,171,532,171,497"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_scalar_sensor.html" title="An abstract class representing a scalar sensor." alt="" coords="11,369,137,395"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,402,162,455,158,459,96,406"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1_sensor.html" title="An abstract class representing a sensor." alt="" coords="31,267,117,292"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="77,306,77,369,71,369,71,306"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_featherstone_entity.html" title="A class that implements simplified creation of multi&#45;body trees, using Roy Featherstone&#39;s algorithm." alt="" coords="5,217,169,243"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="118,250,131,265,154,318,168,373,175,423,177,457,171,457,169,423,163,374,149,320,126,268,114,253"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1_entity.html" title="An abstract class representing a simulation entity." alt="" coords="21,80,100,105"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="68,118,88,217,82,218,63,119"/>
+<area shape="rect" id="Node000009" href="$classsf_1_1_moving_entity.html" title="An abstract class representing a moving rigid body." alt="" coords="105,168,232,193"/>
+<area shape="poly" id="edge9_Node000009_Node000006" title=" " alt="" coords="88,112,156,166,152,170,84,116"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1_joint.html" title="An abstract class implementing a general joint." alt="" coords="235,369,305,395"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="249,406,189,459,186,455,245,402"/>
+<area shape="rect" id="Node000008" href="$classsf_1_1_solid_entity.html" title="An abstract class representing a rigid body." alt="" coords="239,267,349,292"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="291,306,275,370,270,369,285,305"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="196,199,281,265,278,269,193,204"/>
+<area shape="rect" id="Node000010" href="$structsf_1_1_material.html" title="A structure holding material properties." alt="" coords="124,80,219,105"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="173,119,172,168,166,167,168,119"/>
+<area shape="rect" id="Node000011" href="$classsf_1_1_open_g_l_ocean_particles.html" title="A class implementing a particle system simulating underwater snow effect." alt="" coords="243,80,431,105"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="303,114,193,170,190,165,301,109"/>
+<area shape="rect" id="Node000012" href="$classsf_1_1_open_g_l_particles.html" title="An abstract class implementing a general particle system." alt="" coords="263,5,410,31"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="339,45,339,80,334,80,334,45"/>
+<area shape="rect" id="Node000013" href="$structsf_1_1_mesh.html" title="A structure containing mesh data." alt="" coords="256,168,332,193"/>
+<area shape="poly" id="edge13_Node000008_Node000013" title=" " alt="" coords="297,207,297,267,291,267,291,207"/>
+<area shape="rect" id="Node000014" href="$structsf_1_1_body_physics_settings.html" title="A structure defining the physics computation settings for the body." alt="" coords="357,168,533,193"/>
+<area shape="poly" id="edge14_Node000008_Node000014" title=" " alt="" coords="422,204,365,245,320,269,318,264,362,240,419,200"/>
+<area shape="rect" id="Node000015" href="$structsf_1_1_renderable.html" title="A structure that represents a renderable object." alt="" coords="557,168,671,193"/>
+<area shape="poly" id="edge15_Node000008_Node000015" title=" " alt="" coords="571,200,435,245,344,269,342,264,433,240,569,195"/>
+</map>

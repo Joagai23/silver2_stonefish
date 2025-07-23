@@ -1,0 +1,65 @@
+\doxysection{Compass.\+cpp}
+\hypertarget{_compass_8cpp_source}{}\label{_compass_8cpp_source}\index{Library/src/sensors/scalar/Compass.cpp@{Library/src/sensors/scalar/Compass.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Compass.cpp}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 02/11/2017.}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2017-\/2025\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}sensors/scalar/Compass.h"{}}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}sensors/Sample.h"{}}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00030}00030\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00033}\mbox{\hyperlink{classsf_1_1_compass_a516e9593e0b5d121b38b5d17c697d96c}{00033}}\ \mbox{\hyperlink{classsf_1_1_compass_a516e9593e0b5d121b38b5d17c697d96c}{Compass::Compass}}(std::string\ uniqueName,\ Scalar\ frequency,\ \textcolor{keywordtype}{int}\ historyLength)\ :\ \mbox{\hyperlink{classsf_1_1_link_sensor}{LinkSensor}}(uniqueName,\ frequency,\ historyLength)}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00035}00035\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Heading"{}},\ QuantityType::ANGLE));}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00038}\mbox{\hyperlink{classsf_1_1_compass_adaef0bf2a7a2d5db30944d90f789cb8a}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_compass_adaef0bf2a7a2d5db30944d90f789cb8a}{Compass::InternalUpdate}}(Scalar\ dt)}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//get\ angles}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00041}00041\ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{yaw}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{pitch}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{roll}};}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_link_sensor_a5e16f6535744918e0aa39262d80112b7}{getSensorFrame}}().getBasis().getEulerYPR(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{yaw}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{pitch}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{roll}});}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00043}00043\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//record\ sample}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}\{std::vector<Scalar>(\{\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{yaw}}\})\};}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00046}00046\ \ \ \ \ AddSampleToHistory(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}});}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00049}\mbox{\hyperlink{classsf_1_1_compass_aa5da3bf8a29dcf487d7f57d3893e8d14}{00049}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_compass_aa5da3bf8a29dcf487d7f57d3893e8d14}{Compass::setNoise}}(Scalar\ headingStdDev)}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00050}00050\ \{}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00051}00051\ \ \ \ \ channels[0].setStdDev(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{headingStdDev}},\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}})));}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00054}\mbox{\hyperlink{classsf_1_1_compass_a4291f1577ac4499405b5609e4cee0fa0}{00054}}\ ScalarSensorType\ \mbox{\hyperlink{classsf_1_1_compass_a4291f1577ac4499405b5609e4cee0fa0}{Compass::getScalarSensorType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00055}00055\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{return}\ ScalarSensorType::COMPASS;}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_compass_8cpp_source_l00059}00059\ \}}
+
+\end{DoxyCode}

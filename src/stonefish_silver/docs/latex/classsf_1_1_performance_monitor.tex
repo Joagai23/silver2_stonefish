@@ -1,0 +1,204 @@
+\doxysection{sf\+::Performance\+Monitor Class Reference}
+\hypertarget{classsf_1_1_performance_monitor}{}\label{classsf_1_1_performance_monitor}\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_performance_monitor_afbcdf144dd8ceeb9eb65279b836ca62e}{Performance\+Monitor}} (size\+\_\+t average\+Max\+Count)
+\item 
+void \mbox{\hyperlink{classsf_1_1_performance_monitor_a32b008f8c04c772f3c211ce2d6607f57}{Simulation\+Started}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_performance_monitor_a0d0a6864b0efeb9a35a0428ff2635644}{Simulation\+Finished}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_performance_monitor_a9c1d10bebd9375b19aa8cb3ac36f00cc}{Physics\+Started}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_performance_monitor_a704fdf07362d99f8fa18c5b110286c16}{Physics\+Finished}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_performance_monitor_a2a47773a25f608336b838be1e2e3550a}{Hydrodynamics\+Started}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_performance_monitor_a8e2ad074abf59ee3fecac700b8faf232}{Hydrodynamics\+Finished}} ()
+\item 
+double \mbox{\hyperlink{classsf_1_1_performance_monitor_a91d431fbe84ef72807dbdaebcc74b18e}{get\+Simulation\+Time}} ()
+\item 
+double \mbox{\hyperlink{classsf_1_1_performance_monitor_a7ffc88283b4fb4ae20b5554431393d37}{get\+Physics\+Time}} ()
+\item 
+double \mbox{\hyperlink{classsf_1_1_performance_monitor_a648fbfb7c8d930509eb13f616d7a8465}{get\+Physics\+Time\+Average}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classsf_1_1_performance_monitor_a8cd26f012ec293e66f805e239aaae275}{get\+Physics\+Time\+History}} (size\+\_\+t len)
+\item 
+double \mbox{\hyperlink{classsf_1_1_performance_monitor_afbd708d6218eda971081ff59dd4758e7}{get\+Hydrodynamics\+Time}} ()
+\item 
+double \mbox{\hyperlink{classsf_1_1_performance_monitor_a9447cc1723961bb957890037a31d5235}{get\+Hydrodynamics\+Time\+Average}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classsf_1_1_performance_monitor_af2a7d28e597e6927f7b7efb9aa073763}{get\+Hydrodynamics\+Time\+History}} (size\+\_\+t len)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8h_source_l00036}{36}} of file \mbox{\hyperlink{_performance_monitor_8h_source}{Performance\+Monitor.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_performance_monitor_afbcdf144dd8ceeb9eb65279b836ca62e}\label{classsf_1_1_performance_monitor_afbcdf144dd8ceeb9eb65279b836ca62e} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!PerformanceMonitor@{PerformanceMonitor}}
+\index{PerformanceMonitor@{PerformanceMonitor}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{PerformanceMonitor()}{PerformanceMonitor()}}
+{\footnotesize\ttfamily sf\+::\+Performance\+Monitor\+::\+Performance\+Monitor (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{average\+Max\+Count }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_aa38320ceba8726d09ba5c67170ba61a0}\label{classsf_1_1_performance_monitor_aa38320ceba8726d09ba5c67170ba61a0} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!````~PerformanceMonitor@{\texorpdfstring{$\sim$}{\string~}PerformanceMonitor}}
+\index{````~PerformanceMonitor@{\texorpdfstring{$\sim$}{\string~}PerformanceMonitor}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PerformanceMonitor()}{\string~PerformanceMonitor()}}
+{\footnotesize\ttfamily sf\+::\+Performance\+Monitor\+::\texorpdfstring{$\sim$}{\string~}\+Performance\+Monitor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_performance_monitor_afbd708d6218eda971081ff59dd4758e7}\label{classsf_1_1_performance_monitor_afbd708d6218eda971081ff59dd4758e7} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!getHydrodynamicsTime@{getHydrodynamicsTime}}
+\index{getHydrodynamicsTime@{getHydrodynamicsTime}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{getHydrodynamicsTime()}{getHydrodynamicsTime()}}
+{\footnotesize\ttfamily double sf\+::\+Performance\+Monitor\+::get\+Hydrodynamics\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a9447cc1723961bb957890037a31d5235}\label{classsf_1_1_performance_monitor_a9447cc1723961bb957890037a31d5235} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!getHydrodynamicsTimeAverage@{getHydrodynamicsTimeAverage}}
+\index{getHydrodynamicsTimeAverage@{getHydrodynamicsTimeAverage}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{getHydrodynamicsTimeAverage()}{getHydrodynamicsTimeAverage()}}
+{\footnotesize\ttfamily double sf\+::\+Performance\+Monitor\+::get\+Hydrodynamics\+Time\+Average (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00129}{129}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_af2a7d28e597e6927f7b7efb9aa073763}\label{classsf_1_1_performance_monitor_af2a7d28e597e6927f7b7efb9aa073763} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!getHydrodynamicsTimeHistory@{getHydrodynamicsTimeHistory}}
+\index{getHydrodynamicsTimeHistory@{getHydrodynamicsTimeHistory}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{getHydrodynamicsTimeHistory()}{getHydrodynamicsTimeHistory()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ sf\+::\+Performance\+Monitor\+::get\+Hydrodynamics\+Time\+History (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8h_source_l00059}{59}} of file \mbox{\hyperlink{_performance_monitor_8h_source}{Performance\+Monitor.\+h}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a7ffc88283b4fb4ae20b5554431393d37}\label{classsf_1_1_performance_monitor_a7ffc88283b4fb4ae20b5554431393d37} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!getPhysicsTime@{getPhysicsTime}}
+\index{getPhysicsTime@{getPhysicsTime}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{getPhysicsTime()}{getPhysicsTime()}}
+{\footnotesize\ttfamily double sf\+::\+Performance\+Monitor\+::get\+Physics\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a648fbfb7c8d930509eb13f616d7a8465}\label{classsf_1_1_performance_monitor_a648fbfb7c8d930509eb13f616d7a8465} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!getPhysicsTimeAverage@{getPhysicsTimeAverage}}
+\index{getPhysicsTimeAverage@{getPhysicsTimeAverage}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{getPhysicsTimeAverage()}{getPhysicsTimeAverage()}}
+{\footnotesize\ttfamily double sf\+::\+Performance\+Monitor\+::get\+Physics\+Time\+Average (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a8cd26f012ec293e66f805e239aaae275}\label{classsf_1_1_performance_monitor_a8cd26f012ec293e66f805e239aaae275} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!getPhysicsTimeHistory@{getPhysicsTimeHistory}}
+\index{getPhysicsTimeHistory@{getPhysicsTimeHistory}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{getPhysicsTimeHistory()}{getPhysicsTimeHistory()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ sf\+::\+Performance\+Monitor\+::get\+Physics\+Time\+History (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8h_source_l00055}{55}} of file \mbox{\hyperlink{_performance_monitor_8h_source}{Performance\+Monitor.\+h}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a91d431fbe84ef72807dbdaebcc74b18e}\label{classsf_1_1_performance_monitor_a91d431fbe84ef72807dbdaebcc74b18e} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!getSimulationTime@{getSimulationTime}}
+\index{getSimulationTime@{getSimulationTime}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{getSimulationTime()}{getSimulationTime()}}
+{\footnotesize\ttfamily double sf\+::\+Performance\+Monitor\+::get\+Simulation\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a8e2ad074abf59ee3fecac700b8faf232}\label{classsf_1_1_performance_monitor_a8e2ad074abf59ee3fecac700b8faf232} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!HydrodynamicsFinished@{HydrodynamicsFinished}}
+\index{HydrodynamicsFinished@{HydrodynamicsFinished}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{HydrodynamicsFinished()}{HydrodynamicsFinished()}}
+{\footnotesize\ttfamily void sf\+::\+Performance\+Monitor\+::\+Hydrodynamics\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a2a47773a25f608336b838be1e2e3550a}\label{classsf_1_1_performance_monitor_a2a47773a25f608336b838be1e2e3550a} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!HydrodynamicsStarted@{HydrodynamicsStarted}}
+\index{HydrodynamicsStarted@{HydrodynamicsStarted}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{HydrodynamicsStarted()}{HydrodynamicsStarted()}}
+{\footnotesize\ttfamily void sf\+::\+Performance\+Monitor\+::\+Hydrodynamics\+Started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a704fdf07362d99f8fa18c5b110286c16}\label{classsf_1_1_performance_monitor_a704fdf07362d99f8fa18c5b110286c16} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!PhysicsFinished@{PhysicsFinished}}
+\index{PhysicsFinished@{PhysicsFinished}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{PhysicsFinished()}{PhysicsFinished()}}
+{\footnotesize\ttfamily void sf\+::\+Performance\+Monitor\+::\+Physics\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a9c1d10bebd9375b19aa8cb3ac36f00cc}\label{classsf_1_1_performance_monitor_a9c1d10bebd9375b19aa8cb3ac36f00cc} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!PhysicsStarted@{PhysicsStarted}}
+\index{PhysicsStarted@{PhysicsStarted}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{PhysicsStarted()}{PhysicsStarted()}}
+{\footnotesize\ttfamily void sf\+::\+Performance\+Monitor\+::\+Physics\+Started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a0d0a6864b0efeb9a35a0428ff2635644}\label{classsf_1_1_performance_monitor_a0d0a6864b0efeb9a35a0428ff2635644} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!SimulationFinished@{SimulationFinished}}
+\index{SimulationFinished@{SimulationFinished}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{SimulationFinished()}{SimulationFinished()}}
+{\footnotesize\ttfamily void sf\+::\+Performance\+Monitor\+::\+Simulation\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+\Hypertarget{classsf_1_1_performance_monitor_a32b008f8c04c772f3c211ce2d6607f57}\label{classsf_1_1_performance_monitor_a32b008f8c04c772f3c211ce2d6607f57} 
+\index{sf::PerformanceMonitor@{sf::PerformanceMonitor}!SimulationStarted@{SimulationStarted}}
+\index{SimulationStarted@{SimulationStarted}!sf::PerformanceMonitor@{sf::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{SimulationStarted()}{SimulationStarted()}}
+{\footnotesize\ttfamily void sf\+::\+Performance\+Monitor\+::\+Simulation\+Started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_performance_monitor_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_performance_monitor_8cpp_source}{Performance\+Monitor.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/utils/Performance\+Monitor.\+h\item 
+Library/src/utils/Performance\+Monitor.\+cpp\end{DoxyCompactItemize}

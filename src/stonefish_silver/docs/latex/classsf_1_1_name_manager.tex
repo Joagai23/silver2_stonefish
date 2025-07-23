@@ -1,0 +1,126 @@
+\doxysection{sf\+::Name\+Manager Class Reference}
+\hypertarget{classsf_1_1_name_manager}{}\label{classsf_1_1_name_manager}\index{sf::NameManager@{sf::NameManager}}
+
+
+A class used to manage unique names of objects in the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Name\+Manager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_name_manager_a206484e46ae41fb636e3ceec1c8998fd}{Name\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_name_manager_aa169889d457ef6aa4d663872fc1bc82f}{\texorpdfstring{$\sim$}{\string~}\+Name\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_name_manager_a36ae9187c00acc414625e85dacf8f044}{Add\+Name}} (std\+::string proposed\+Name)
+\begin{DoxyCompactList}\small\item\em A method used to add new names to the pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_name_manager_a47c7981bc9413d48fda75e4470210dd3}{Remove\+Name}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em A method used to remove names from the pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_name_manager_a0e7309c55f6dbbc1d4e0d73ebd7b7400}{Clear\+Names}} ()
+\begin{DoxyCompactList}\small\item\em A method used to clear the pool of names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class used to manage unique names of objects in the simulation. 
+
+Definition at line \mbox{\hyperlink{_name_manager_8h_source_l00034}{34}} of file \mbox{\hyperlink{_name_manager_8h_source}{Name\+Manager.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_name_manager_a206484e46ae41fb636e3ceec1c8998fd}\label{classsf_1_1_name_manager_a206484e46ae41fb636e3ceec1c8998fd} 
+\index{sf::NameManager@{sf::NameManager}!NameManager@{NameManager}}
+\index{NameManager@{NameManager}!sf::NameManager@{sf::NameManager}}
+\doxysubsubsection{\texorpdfstring{NameManager()}{NameManager()}}
+{\footnotesize\ttfamily sf\+::\+Name\+Manager\+::\+Name\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_name_manager_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{_name_manager_8cpp_source}{Name\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_name_manager_aa169889d457ef6aa4d663872fc1bc82f}\label{classsf_1_1_name_manager_aa169889d457ef6aa4d663872fc1bc82f} 
+\index{sf::NameManager@{sf::NameManager}!````~NameManager@{\texorpdfstring{$\sim$}{\string~}NameManager}}
+\index{````~NameManager@{\texorpdfstring{$\sim$}{\string~}NameManager}!sf::NameManager@{sf::NameManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}NameManager()}{\string~NameManager()}}
+{\footnotesize\ttfamily sf\+::\+Name\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Name\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_name_manager_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{_name_manager_8cpp_source}{Name\+Manager.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_name_manager_a36ae9187c00acc414625e85dacf8f044}\label{classsf_1_1_name_manager_a36ae9187c00acc414625e85dacf8f044} 
+\index{sf::NameManager@{sf::NameManager}!AddName@{AddName}}
+\index{AddName@{AddName}!sf::NameManager@{sf::NameManager}}
+\doxysubsubsection{\texorpdfstring{AddName()}{AddName()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Name\+Manager\+::\+Add\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{proposed\+Name }\end{DoxyParamCaption})}
+
+
+
+A method used to add new names to the pool. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em proposed\+Name} & a name proposed by the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a unique name 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_name_manager_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_name_manager_8cpp_source}{Name\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_name_manager_a0e7309c55f6dbbc1d4e0d73ebd7b7400}\label{classsf_1_1_name_manager_a0e7309c55f6dbbc1d4e0d73ebd7b7400} 
+\index{sf::NameManager@{sf::NameManager}!ClearNames@{ClearNames}}
+\index{ClearNames@{ClearNames}!sf::NameManager@{sf::NameManager}}
+\doxysubsubsection{\texorpdfstring{ClearNames()}{ClearNames()}}
+{\footnotesize\ttfamily void sf\+::\+Name\+Manager\+::\+Clear\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method used to clear the pool of names. 
+
+
+
+Definition at line \mbox{\hyperlink{_name_manager_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_name_manager_8cpp_source}{Name\+Manager.\+cpp}}.
+
+\Hypertarget{classsf_1_1_name_manager_a47c7981bc9413d48fda75e4470210dd3}\label{classsf_1_1_name_manager_a47c7981bc9413d48fda75e4470210dd3} 
+\index{sf::NameManager@{sf::NameManager}!RemoveName@{RemoveName}}
+\index{RemoveName@{RemoveName}!sf::NameManager@{sf::NameManager}}
+\doxysubsubsection{\texorpdfstring{RemoveName()}{RemoveName()}}
+{\footnotesize\ttfamily void sf\+::\+Name\+Manager\+::\+Remove\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+A method used to remove names from the pool. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name to remove \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_name_manager_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_name_manager_8cpp_source}{Name\+Manager.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/core/Name\+Manager.\+h\item 
+Library/src/core/Name\+Manager.\+cpp\end{DoxyCompactItemize}

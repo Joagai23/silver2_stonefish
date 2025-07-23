@@ -1,0 +1,189 @@
+\doxysection{Open\+GLLight.\+cpp}
+\hypertarget{_open_g_l_light_8cpp_source}{}\label{_open_g_l_light_8cpp_source}\index{Library/src/graphics/OpenGLLight.cpp@{Library/src/graphics/OpenGLLight.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ OpenGLLight.cpp}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 12/12/12.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2012-\/2018\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLLight.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLState.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}graphics/GLSLShader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLRealCamera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLOcean.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}entities/forcefields/Ocean.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00037}00037\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00040}00040\ GLuint\ OpenGLLight::spotShadowArrayTex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00041}00041\ GLuint\ OpenGLLight::spotDepthSampler\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00042}00042\ GLuint\ OpenGLLight::spotShadowSampler\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00043}00043\ OpenGLCamera*\ OpenGLLight::activeView\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00045}\mbox{\hyperlink{classsf_1_1_open_g_l_light_afe05370cc1cf95fbcd477fa009f6d277}{00045}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_afe05370cc1cf95fbcd477fa009f6d277}{OpenGLLight::OpenGLLight}}(glm::vec3\ position,\ GLfloat\ radius,\ glm::vec3\ c,\ GLfloat\ lum)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00046}00046\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00047}00047\ \ \ \ \ pos\ =\ tempPos\ =\ position;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00048}00048\ \ \ \ \ R\ =\ glm::max(0.01f,\ radius);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00049}00049\ \ \ \ \ active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00050}00050\ \ \ \ \ sourceObject\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00053}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a1c6f10e61e91e3dc5293c75e43832693}{00053}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a1c6f10e61e91e3dc5293c75e43832693}{OpenGLLight::\string~OpenGLLight}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00054}00054\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00057}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a53080b8146b5ef47e9a2d8e881cbf2da}{00057}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a53080b8146b5ef47e9a2d8e881cbf2da}{OpenGLLight::isActive}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00058}00058\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{return}\ active;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00062}\mbox{\hyperlink{classsf_1_1_open_g_l_light_ae841ac487ae3d0abe83a92f9c5327ea8}{00062}}\ glm::vec4\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_ae841ac487ae3d0abe83a92f9c5327ea8}{OpenGLLight::getColorLi}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00063}00063\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{return}\ colorLi;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00067}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a20bc0143f05f335eff096a11b701b9b0}{00067}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a20bc0143f05f335eff096a11b701b9b0}{OpenGLLight::getPosition}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00068}00068\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{return}\ pos;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00072}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a930d30f7815d8b0370b7ea524af195ab}{00072}}\ GLfloat\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a930d30f7815d8b0370b7ea524af195ab}{OpenGLLight::getSourceRadius}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00073}00073\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{return}\ R;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00077}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a5cd6bf0841d073a6537fa2887fe21ce3}{00077}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a5cd6bf0841d073a6537fa2887fe21ce3}{OpenGLLight::getSourceObject}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00078}00078\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{return}\ sourceObject;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00082}\mbox{\hyperlink{classsf_1_1_open_g_l_light_ae21dd6d012eeac0c64bd019efb314258}{00082}}\ glm::mat4\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_ae21dd6d012eeac0c64bd019efb314258}{OpenGLLight::getTransform}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00083}00083\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::translate(pos);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00087}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a0eec4da4a5e163c53ad4723628f3c077}{00087}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a0eec4da4a5e163c53ad4723628f3c077}{OpenGLLight::operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light}{OpenGLLight}}\&\ l)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00088}00088\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})\mbox{\hyperlink{classsf_1_1_open_g_l_light_a328e1ec7f14a4324ff35c83376caf3bb}{getType}}()\ <\ (int)l.\mbox{\hyperlink{classsf_1_1_open_g_l_light_a328e1ec7f14a4324ff35c83376caf3bb}{getType}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00092}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a4789d8d2e2296c449c5128b146152a7f}{00092}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a4789d8d2e2296c449c5128b146152a7f}{OpenGLLight::UpdatePosition}}(glm::vec3\ p)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00093}00093\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00094}00094\ \ \ \ \ tempPos\ =\ p;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00097}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a9289619c55bc5c28b990ade0fba807ec}{00097}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a9289619c55bc5c28b990ade0fba807ec}{OpenGLLight::UpdateTransform}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00098}00098\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00099}00099\ \ \ \ \ pos\ =\ tempPos;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00102}\mbox{\hyperlink{classsf_1_1_open_g_l_light_aa61776ab236ed23a6d4ae3fc0d4c25d0}{00102}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_aa61776ab236ed23a6d4ae3fc0d4c25d0}{OpenGLLight::SwitchOn}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00103}00103\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00104}00104\ \ \ \ \ active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00107}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a73a5ef1aea67b980651f7bf408ae0b59}{00107}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a73a5ef1aea67b980651f7bf408ae0b59}{OpenGLLight::SwitchOff}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00108}00108\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00109}00109\ \ \ \ \ active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00112}\mbox{\hyperlink{classsf_1_1_open_g_l_light_afdf236df23c03a79374950355c66cd03}{00112}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_afdf236df23c03a79374950355c66cd03}{OpenGLLight::InitShadowmap}}(GLint\ shadowmapLayer)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00113}00113\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00115}00115\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00116}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a5acc89515b7f87e996a71b2eaf61eef3}{00116}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a5acc89515b7f87e996a71b2eaf61eef3}{OpenGLLight::BakeShadowmap}}(\mbox{\hyperlink{classsf_1_1_open_g_l_pipeline}{OpenGLPipeline}}*\ pipe)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00117}00117\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00120}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a3efc232506b0590e6b3062290fd75d28}{00120}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a3efc232506b0590e6b3062290fd75d28}{OpenGLLight::ShowShadowMap}}(glm::vec4\ rect)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00121}00121\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00125}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a11256c35b95d8e56167fd53257e63f7a}{00125}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a11256c35b95d8e56167fd53257e63f7a}{OpenGLLight::Init}}(std::vector<OpenGLLight*>\&\ lights)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00126}00126\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{if}(lights.size()\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00129}00129\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//Count\ spotlights}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ numOfSpotLights\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i\ <\ lights.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(lights[i]-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_light_a328e1ec7f14a4324ff35c83376caf3bb}{getType}}()\ ==\ LightType::SPOT)\ ++numOfSpotLights;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//Generate\ shadowmap\ array}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00136}00136\ \ \ \ \ glGenTextures(1,\ \&spotShadowArrayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00137}00137\ \ \ \ \ OpenGLState::BindTexture(TEX\_BASE,\ GL\_TEXTURE\_2D\_ARRAY,\ spotShadowArrayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00138}00138\ \ \ \ \ glTexImage3D(GL\_TEXTURE\_2D\_ARRAY,\ 0,\ GL\_DEPTH\_COMPONENT32F,\ SPOT\_LIGHT\_SHADOWMAP\_SIZE,\ SPOT\_LIGHT\_SHADOWMAP\_SIZE,\ numOfSpotLights,\ 0,\ GL\_DEPTH\_COMPONENT,\ GL\_FLOAT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00139}00139\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_BASE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00140}00140\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00141}00141\ \ \ \ \ \textcolor{comment}{//Generate\ samplers}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00142}00142\ \ \ \ \ glGenSamplers(1,\ \&spotDepthSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00143}00143\ \ \ \ \ glSamplerParameteri(spotDepthSampler,\ GL\_TEXTURE\_MAG\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00144}00144\ \ \ \ \ glSamplerParameteri(spotDepthSampler,\ GL\_TEXTURE\_MIN\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00145}00145\ \ \ \ \ glSamplerParameteri(spotDepthSampler,\ GL\_TEXTURE\_WRAP\_S,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00146}00146\ \ \ \ \ glSamplerParameteri(spotDepthSampler,\ GL\_TEXTURE\_WRAP\_T,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00147}00147\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00148}00148\ \ \ \ \ glGenSamplers(1,\ \&spotShadowSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00149}00149\ \ \ \ \ glSamplerParameteri(spotShadowSampler,\ GL\_TEXTURE\_MAG\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00150}00150\ \ \ \ \ glSamplerParameteri(spotShadowSampler,\ GL\_TEXTURE\_MIN\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00151}00151\ \ \ \ \ glSamplerParameteri(spotShadowSampler,\ GL\_TEXTURE\_WRAP\_S,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00152}00152\ \ \ \ \ glSamplerParameteri(spotShadowSampler,\ GL\_TEXTURE\_WRAP\_T,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00153}00153\ \ \ \ \ glSamplerParameteri(spotShadowSampler,\ GL\_TEXTURE\_COMPARE\_MODE,\ GL\_COMPARE\_REF\_TO\_TEXTURE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00154}00154\ \ \ \ \ glSamplerParameteri(spotShadowSampler,\ GL\_TEXTURE\_COMPARE\_FUNC,\ GL\_LEQUAL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00155}00155\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//Initialize\ lights\ shadow\ FBOs}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00157}00157\ \ \ \ \ numOfSpotLights\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00158}00158\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i\ <\ lights.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(lights[i]-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_light_a328e1ec7f14a4324ff35c83376caf3bb}{getType}}()\ ==\ LightType::SPOT)\ lights[i]-\/>InitShadowmap(numOfSpotLights++);\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00161}00161\ \ \ \ \ \textcolor{comment}{//Bind\ textures\ and\ samplers}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00162}00162\ \ \ \ \ OpenGLState::BindTexture(TEX\_SPOT\_SHADOW,\ GL\_TEXTURE\_2D\_ARRAY,\ spotShadowArrayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00163}00163\ \ \ \ \ glBindSampler(TEX\_SPOT\_SHADOW,\ spotShadowSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00164}00164\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00165}00165\ \ \ \ \ OpenGLState::BindTexture(TEX\_SPOT\_DEPTH,\ GL\_TEXTURE\_2D\_ARRAY,\ spotShadowArrayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00166}00166\ \ \ \ \ glBindSampler(TEX\_SPOT\_DEPTH,\ spotDepthSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00167}00167\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00169}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a7daca8deb33ab8bbd51272db1aacf499}{00169}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a7daca8deb33ab8bbd51272db1aacf499}{OpenGLLight::Destroy}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00170}00170\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{keywordflow}{if}(spotShadowArrayTex\ !=\ 0)\ glDeleteTextures(1,\ \&spotShadowArrayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{if}(spotDepthSampler\ !=\ 0)\ glDeleteSamplers(1,\ \&spotDepthSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00173}00173\ \ \ \ \ \textcolor{keywordflow}{if}(spotShadowSampler\ !=\ 0)\ glDeleteSamplers(1,\ \&spotShadowSampler);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00174}00174\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00176}\mbox{\hyperlink{classsf_1_1_open_g_l_light_a30e17e63ecc036e2730e323d85d93164}{00176}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_light_a30e17e63ecc036e2730e323d85d93164}{OpenGLLight::SetCamera}}(\mbox{\hyperlink{classsf_1_1_open_g_l_camera}{OpenGLCamera}}*\ view)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00177}00177\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00178}00178\ \ \ \ \ activeView\ =\ view;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00179}00179\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00181}00181\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_light_8cpp_source_l00184}00184\ }
+
+\end{DoxyCode}

@@ -1,0 +1,664 @@
+\doxysection{sf\+::IMGUI Class Reference}
+\hypertarget{classsf_1_1_i_m_g_u_i}{}\label{classsf_1_1_i_m_g_u_i}\index{sf::IMGUI@{sf::IMGUI}}
+
+
+A class implementing an immidiate mode graphical used interface.  
+
+
+
+
+{\ttfamily \#include $<$IMGUI.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a8cafbd810f199c4b8ac8415924321610}{IMGUI}} (GLint window\+Width, GLint window\+Height, GLfloat hue=0.\+52f)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_i_m_g_u_i_aeb4474b2fed5f09c3482533bc8e8921e}{\texorpdfstring{$\sim$}{\string~}\+IMGUI}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a6ecc4148ab8f9b9609ce14b366508837}{Resize}} (GLint window\+Width, GLint window\+Height)
+\begin{DoxyCompactList}\small\item\em A method used to resize the interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a497b3d58f226c428049f82d02ad4d93a}{Generate\+Background}} ()
+\begin{DoxyCompactList}\small\item\em A method that generates blurred interface background. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_aaf5fe4ab651871e0ab4b8e1109ebaef4}{Begin}} ()
+\begin{DoxyCompactList}\small\item\em A method that starts rendering the GUI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a24753628e533f5addbdad8dfcbaa2415}{End}} ()
+\begin{DoxyCompactList}\small\item\em A method that finishes rendering the GUI. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a0ca2f46d40ed27904f55031d072e55f2}{is\+Any\+Active}} ()
+\begin{DoxyCompactList}\small\item\em A method that informs if any widget is currently active. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a59e1957cad868bd57e0422f29d62e527}{get\+Window\+Height}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the width of the GUI. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a058af954003f0cc8a6b9438eec940e9d}{get\+Window\+Width}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the height of the GUI. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a0d2738cf21a67c48407a9e3b631aeec5}{get\+Translucent\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the id of a background texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a0d0ae65e222cd5360329e5b2efc7a96c}{Mouse\+Down}} (int x, int y, bool left\+Button)
+\begin{DoxyCompactList}\small\item\em A method servicing the mouse down event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_aa7f0ee3fb23aefc7f7bc9296152b0962}{Mouse\+Up}} (int x, int y, bool left\+Button)
+\begin{DoxyCompactList}\small\item\em A method servicing the mouse up event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_aa2ea94c4548403da75b484eb293fa8fb}{Mouse\+Move}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em A method servicing the mouse move event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_aac87cd7c4eacb48cc237eb0e7a650626}{Key\+Down}} (SDL\+\_\+\+Keycode key)
+\begin{DoxyCompactList}\small\item\em A method servicing the keyboard key down event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a8ccc9922726f7e7a818740a268742c17}{Key\+Up}} (SDL\+\_\+\+Keycode key)
+\begin{DoxyCompactList}\small\item\em A method servicing the keyboard key up event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a58873ff17d6c117e63c0b19f639b5904}{Do\+Panel}} (GLfloat x, GLfloat y, GLfloat w, GLfloat h)
+\begin{DoxyCompactList}\small\item\em A method used to create a panel widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a10bc892eacf9d99672830c0bb467b1b7}{Do\+Label}} (GLfloat x, GLfloat y, const std\+::string \&text, glm\+::vec4 color=glm\+::vec4(-\/1.f), GLfloat scale=1.f)
+\begin{DoxyCompactList}\small\item\em A method used to create a label widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_aba93aa40d953a7e229039209f26abc96}{Do\+Progress\+Bar}} (GLfloat x, GLfloat y, GLfloat w, Scalar progress, const std\+::string \&title)
+\begin{DoxyCompactList}\small\item\em A method used to create a progress bar widget. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_adf62a2eb78eaf096d2e716be87661616}{Do\+Button}} (\mbox{\hyperlink{classsf_1_1_uid}{Uid}} id, GLfloat x, GLfloat y, GLfloat w, GLfloat h, const std\+::string \&title)
+\begin{DoxyCompactList}\small\item\em A method used to create the button widget. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_ab76c04722dc1e5a5b77ac5a10cacb5df}{Do\+Slider}} (\mbox{\hyperlink{classsf_1_1_uid}{Uid}} id, GLfloat x, GLfloat y, GLfloat w, Scalar min, Scalar max, Scalar value, const std\+::string \&title, unsigned int decimal\+Places=2)
+\begin{DoxyCompactList}\small\item\em A method used to create a slider widget. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a05d1dce55910b479a88a84e1d36b0c29}{Do\+Check\+Box}} (\mbox{\hyperlink{classsf_1_1_uid}{Uid}} id, GLfloat x, GLfloat y, GLfloat w, bool value, const std\+::string \&title)
+\begin{DoxyCompactList}\small\item\em A method used to create a checkbox widget. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a9b46c66d391a498543d453946e3bf233}{Do\+Combo\+Box}} (\mbox{\hyperlink{classsf_1_1_uid}{Uid}} id, GLfloat x, GLfloat y, GLfloat w, const std\+::vector$<$ std\+::string $>$ \&options, unsigned int value, const std\+::string \&title)
+\begin{DoxyCompactList}\small\item\em A method used to create a combo box. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a36f8cab6d3370b8772bc81c3910d3be4}{Do\+Time\+Plot}} (\mbox{\hyperlink{classsf_1_1_uid}{Uid}} id, GLfloat x, GLfloat y, GLfloat w, GLfloat h, \mbox{\hyperlink{classsf_1_1_scalar_sensor}{Scalar\+Sensor}} \texorpdfstring{$\ast$}{*}sens, std\+::vector$<$ unsigned short $>$ \&dims, const std\+::string \&title, Scalar fixed\+Range\mbox{[}2\mbox{]}=NULL)
+\begin{DoxyCompactList}\small\item\em A method used to create a time plot widget for a sensor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a5f36a01de29cdc35953c94a1bf2ee8f1}{Do\+Time\+Plot}} (\mbox{\hyperlink{classsf_1_1_uid}{Uid}} id, GLfloat x, GLfloat y, GLfloat w, GLfloat h, std\+::vector$<$ std\+::vector$<$ GLfloat $>$ $>$ \&data, const std\+::string \&title, Scalar fixed\+Range\mbox{[}2\mbox{]}=NULL)
+\begin{DoxyCompactList}\small\item\em A method used to create a time plot widget for and arbitrary array od data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_i_m_g_u_i_a476d9da48be08fcd6c9b3fd553194ae2}{Do\+XYPlot}} (\mbox{\hyperlink{classsf_1_1_uid}{Uid}} id, GLfloat x, GLfloat y, GLfloat w, GLfloat h, \mbox{\hyperlink{classsf_1_1_scalar_sensor}{Scalar\+Sensor}} \texorpdfstring{$\ast$}{*}sensX, unsigned short dimX, \mbox{\hyperlink{classsf_1_1_scalar_sensor}{Scalar\+Sensor}} \texorpdfstring{$\ast$}{*}sensY, unsigned short dimY, const std\+::string \&title)
+\begin{DoxyCompactList}\small\item\em A method used to create a XY plot widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing an immidiate mode graphical used interface. 
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8h_source_l00066}{66}} of file \mbox{\hyperlink{_i_m_g_u_i_8h_source}{IMGUI.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_i_m_g_u_i_a8cafbd810f199c4b8ac8415924321610}\label{classsf_1_1_i_m_g_u_i_a8cafbd810f199c4b8ac8415924321610} 
+\index{sf::IMGUI@{sf::IMGUI}!IMGUI@{IMGUI}}
+\index{IMGUI@{IMGUI}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{IMGUI()}{IMGUI()}}
+{\footnotesize\ttfamily sf\+::\+IMGUI\+::\+IMGUI (\begin{DoxyParamCaption}\item[{GLint}]{window\+Width,  }\item[{GLint}]{window\+Height,  }\item[{GLfloat}]{hue = {\ttfamily 0.52f} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window\+Width} & the width of the program window \\
+\hline
+{\em window\+Height} & the height of the program window \\
+\hline
+{\em hue} & the hue used to generate colors of the interface \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_aeb4474b2fed5f09c3482533bc8e8921e}\label{classsf_1_1_i_m_g_u_i_aeb4474b2fed5f09c3482533bc8e8921e} 
+\index{sf::IMGUI@{sf::IMGUI}!````~IMGUI@{\texorpdfstring{$\sim$}{\string~}IMGUI}}
+\index{````~IMGUI@{\texorpdfstring{$\sim$}{\string~}IMGUI}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IMGUI()}{\string~IMGUI()}}
+{\footnotesize\ttfamily sf\+::\+IMGUI\+::\texorpdfstring{$\sim$}{\string~}\+IMGUI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_i_m_g_u_i_aaf5fe4ab651871e0ab4b8e1109ebaef4}\label{classsf_1_1_i_m_g_u_i_aaf5fe4ab651871e0ab4b8e1109ebaef4} 
+\index{sf::IMGUI@{sf::IMGUI}!Begin@{Begin}}
+\index{Begin@{Begin}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{Begin()}{Begin()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that starts rendering the GUI. 
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00271}{271}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_adf62a2eb78eaf096d2e716be87661616}\label{classsf_1_1_i_m_g_u_i_adf62a2eb78eaf096d2e716be87661616} 
+\index{sf::IMGUI@{sf::IMGUI}!DoButton@{DoButton}}
+\index{DoButton@{DoButton}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoButton()}{DoButton()}}
+{\footnotesize\ttfamily bool sf\+::\+IMGUI\+::\+Do\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_uid}{Uid}}}]{id,  }\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{w,  }\item[{GLfloat}]{h,  }\item[{const std\+::string \&}]{title }\end{DoxyParamCaption})}
+
+
+
+A method used to create the button widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & a \doxylink{classsf_1_1_uid}{Uid} structure \\
+\hline
+{\em x} & the x coordinate of the button origin \\
+\hline
+{\em y} & the y coordinate of the button origin \\
+\hline
+{\em w} & the width of the button \\
+\hline
+{\em h} & the height of the button \\
+\hline
+{\em title} & the title string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+button status 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00515}{515}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a05d1dce55910b479a88a84e1d36b0c29}\label{classsf_1_1_i_m_g_u_i_a05d1dce55910b479a88a84e1d36b0c29} 
+\index{sf::IMGUI@{sf::IMGUI}!DoCheckBox@{DoCheckBox}}
+\index{DoCheckBox@{DoCheckBox}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoCheckBox()}{DoCheckBox()}}
+{\footnotesize\ttfamily bool sf\+::\+IMGUI\+::\+Do\+Check\+Box (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_uid}{Uid}}}]{id,  }\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{w,  }\item[{bool}]{value,  }\item[{const std\+::string \&}]{title }\end{DoxyParamCaption})}
+
+
+
+A method used to create a checkbox widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & a \doxylink{classsf_1_1_uid}{Uid} structure \\
+\hline
+{\em x} & the x coordinate of the checkbox origin \\
+\hline
+{\em y} & the y coordinate of the checkbox origin \\
+\hline
+{\em w} & the width of the checkbox \\
+\hline
+{\em value} & the current value of the checkbox \\
+\hline
+{\em title} & the title string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new checkbox status 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00641}{641}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a9b46c66d391a498543d453946e3bf233}\label{classsf_1_1_i_m_g_u_i_a9b46c66d391a498543d453946e3bf233} 
+\index{sf::IMGUI@{sf::IMGUI}!DoComboBox@{DoComboBox}}
+\index{DoComboBox@{DoComboBox}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoComboBox()}{DoComboBox()}}
+{\footnotesize\ttfamily unsigned int sf\+::\+IMGUI\+::\+Do\+Combo\+Box (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_uid}{Uid}}}]{id,  }\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{w,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{options,  }\item[{unsigned int}]{value,  }\item[{const std\+::string \&}]{title }\end{DoxyParamCaption})}
+
+
+
+A method used to create a combo box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & a \doxylink{classsf_1_1_uid}{Uid} structure \\
+\hline
+{\em x} & the x coordinate of the combobox origin \\
+\hline
+{\em y} & the y coordinate of the combobox origin \\
+\hline
+{\em w} & the width of the combobox \\
+\hline
+{\em options} & a list of items of the combobox \\
+\hline
+{\em value} & the current value of the combobox \\
+\hline
+{\em title} & the title string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new combobox value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00685}{685}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a10bc892eacf9d99672830c0bb467b1b7}\label{classsf_1_1_i_m_g_u_i_a10bc892eacf9d99672830c0bb467b1b7} 
+\index{sf::IMGUI@{sf::IMGUI}!DoLabel@{DoLabel}}
+\index{DoLabel@{DoLabel}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoLabel()}{DoLabel()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Do\+Label (\begin{DoxyParamCaption}\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{const std\+::string \&}]{text,  }\item[{glm\+::vec4}]{color = {\ttfamily glm\+:\+:vec4(-\/1.f)},  }\item[{GLfloat}]{scale = {\ttfamily 1.f} }\end{DoxyParamCaption})}
+
+
+
+A method used to create a label widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x coordinate of the label origin \\
+\hline
+{\em y} & the y coordinate of the label origin \\
+\hline
+{\em text} & the string \\
+\hline
+{\em color} & the color of the text \\
+\hline
+{\em scale} & the font scaling factor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00507}{507}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a58873ff17d6c117e63c0b19f639b5904}\label{classsf_1_1_i_m_g_u_i_a58873ff17d6c117e63c0b19f639b5904} 
+\index{sf::IMGUI@{sf::IMGUI}!DoPanel@{DoPanel}}
+\index{DoPanel@{DoPanel}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoPanel()}{DoPanel()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Do\+Panel (\begin{DoxyParamCaption}\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{w,  }\item[{GLfloat}]{h }\end{DoxyParamCaption})}
+
+
+
+A method used to create a panel widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x coordinate of the panel origin \\
+\hline
+{\em y} & the y coordinate of the panel origin \\
+\hline
+{\em w} & the width of the panel \\
+\hline
+{\em h} & the height of the panel \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00502}{502}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_aba93aa40d953a7e229039209f26abc96}\label{classsf_1_1_i_m_g_u_i_aba93aa40d953a7e229039209f26abc96} 
+\index{sf::IMGUI@{sf::IMGUI}!DoProgressBar@{DoProgressBar}}
+\index{DoProgressBar@{DoProgressBar}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoProgressBar()}{DoProgressBar()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Do\+Progress\+Bar (\begin{DoxyParamCaption}\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{w,  }\item[{Scalar}]{progress,  }\item[{const std\+::string \&}]{title }\end{DoxyParamCaption})}
+
+
+
+A method used to create a progress bar widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x coordinate of the progress bar origin \\
+\hline
+{\em y} & the y coordinate of the progress bar origin \\
+\hline
+{\em w} & the width of the progress bar \\
+\hline
+{\em progress} & the value of the progress \\
+\hline
+{\em title} & the title string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00616}{616}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_ab76c04722dc1e5a5b77ac5a10cacb5df}\label{classsf_1_1_i_m_g_u_i_ab76c04722dc1e5a5b77ac5a10cacb5df} 
+\index{sf::IMGUI@{sf::IMGUI}!DoSlider@{DoSlider}}
+\index{DoSlider@{DoSlider}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoSlider()}{DoSlider()}}
+{\footnotesize\ttfamily Scalar sf\+::\+IMGUI\+::\+Do\+Slider (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_uid}{Uid}}}]{id,  }\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{w,  }\item[{Scalar}]{min,  }\item[{Scalar}]{max,  }\item[{Scalar}]{value,  }\item[{const std\+::string \&}]{title,  }\item[{unsigned int}]{decimal\+Places = {\ttfamily 2} }\end{DoxyParamCaption})}
+
+
+
+A method used to create a slider widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & an \doxylink{classsf_1_1_uid}{Uid} structure \\
+\hline
+{\em x} & the x coordinate of the slider origin \\
+\hline
+{\em y} & the y coordinate of the slider origin \\
+\hline
+{\em w} & the width of the slider \\
+\hline
+{\em min} & the minimum value of the slider \\
+\hline
+{\em max} & the maximum value of the slider \\
+\hline
+{\em value} & the current value of the slider \\
+\hline
+{\em title} & the title string \\
+\hline
+{\em decimal\+Places} & a display precision of the current slider value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00551}{551}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a36f8cab6d3370b8772bc81c3910d3be4}\label{classsf_1_1_i_m_g_u_i_a36f8cab6d3370b8772bc81c3910d3be4} 
+\index{sf::IMGUI@{sf::IMGUI}!DoTimePlot@{DoTimePlot}}
+\index{DoTimePlot@{DoTimePlot}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoTimePlot()}{DoTimePlot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool sf\+::\+IMGUI\+::\+Do\+Time\+Plot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_uid}{Uid}}}]{id,  }\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{w,  }\item[{GLfloat}]{h,  }\item[{\mbox{\hyperlink{classsf_1_1_scalar_sensor}{Scalar\+Sensor}} \texorpdfstring{$\ast$}{*}}]{sens,  }\item[{std\+::vector$<$ unsigned short $>$ \&}]{dims,  }\item[{const std\+::string \&}]{title,  }\item[{Scalar}]{fixed\+Range\mbox{[}2\mbox{]} = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+
+
+A method used to create a time plot widget for a sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & a \doxylink{classsf_1_1_uid}{Uid} structure \\
+\hline
+{\em x} & the x coordinate of the plot origin \\
+\hline
+{\em y} & the y coordinate of the plot origin \\
+\hline
+{\em w} & the width of the plot \\
+\hline
+{\em h} & the height of the plot \\
+\hline
+{\em sens} & a pointer to the sensor used as source of data \\
+\hline
+{\em dims} & a list of dimensions selected from all sensor dimensions \\
+\hline
+{\em title} & the title string \\
+\hline
+{\em fixed\+Range} & a range of the Y axis (if NULL the plot adjusts automatically) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00808}{808}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a5f36a01de29cdc35953c94a1bf2ee8f1}\label{classsf_1_1_i_m_g_u_i_a5f36a01de29cdc35953c94a1bf2ee8f1} 
+\index{sf::IMGUI@{sf::IMGUI}!DoTimePlot@{DoTimePlot}}
+\index{DoTimePlot@{DoTimePlot}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoTimePlot()}{DoTimePlot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool sf\+::\+IMGUI\+::\+Do\+Time\+Plot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_uid}{Uid}}}]{id,  }\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{w,  }\item[{GLfloat}]{h,  }\item[{std\+::vector$<$ std\+::vector$<$ GLfloat $>$ $>$ \&}]{data,  }\item[{const std\+::string \&}]{title,  }\item[{Scalar}]{fixed\+Range\mbox{[}2\mbox{]} = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+
+
+A method used to create a time plot widget for and arbitrary array od data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & a \doxylink{classsf_1_1_uid}{Uid} structure \\
+\hline
+{\em x} & the x coordinate of the plot origin \\
+\hline
+{\em y} & the y coordinate of the plot origin \\
+\hline
+{\em w} & the width of the plot \\
+\hline
+{\em h} & the height of the plot \\
+\hline
+{\em data} & a reference to the vector of vectors of data points \\
+\hline
+{\em title} & the title string \\
+\hline
+{\em fixed\+Range} & a range of the Y axis (if NULL the plot adjusts automatically) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00966}{966}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a476d9da48be08fcd6c9b3fd553194ae2}\label{classsf_1_1_i_m_g_u_i_a476d9da48be08fcd6c9b3fd553194ae2} 
+\index{sf::IMGUI@{sf::IMGUI}!DoXYPlot@{DoXYPlot}}
+\index{DoXYPlot@{DoXYPlot}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{DoXYPlot()}{DoXYPlot()}}
+{\footnotesize\ttfamily bool sf\+::\+IMGUI\+::\+Do\+XYPlot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_uid}{Uid}}}]{id,  }\item[{GLfloat}]{x,  }\item[{GLfloat}]{y,  }\item[{GLfloat}]{w,  }\item[{GLfloat}]{h,  }\item[{\mbox{\hyperlink{classsf_1_1_scalar_sensor}{Scalar\+Sensor}} \texorpdfstring{$\ast$}{*}}]{sensX,  }\item[{unsigned short}]{dimX,  }\item[{\mbox{\hyperlink{classsf_1_1_scalar_sensor}{Scalar\+Sensor}} \texorpdfstring{$\ast$}{*}}]{sensY,  }\item[{unsigned short}]{dimY,  }\item[{const std\+::string \&}]{title }\end{DoxyParamCaption})}
+
+
+
+A method used to create a XY plot widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & a \doxylink{classsf_1_1_uid}{Uid} structure \\
+\hline
+{\em x} & the x coordinate of the plot origin \\
+\hline
+{\em y} & the y coordinate of the plot origin \\
+\hline
+{\em w} & the width of the plot \\
+\hline
+{\em h} & the height of the plot \\
+\hline
+{\em sensX} & a pointer to the sensor used as source of data for X axis \\
+\hline
+{\em dimX} & the id of the sensor dimension used as data source \\
+\hline
+{\em sensY} & a pointer to the sensor used as source of data for Y axis \\
+\hline
+{\em dimY} & the id of the sensor dimension used as data source \\
+\hline
+{\em title} & a pointer to the XY plot title \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l01117}{1117}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a24753628e533f5addbdad8dfcbaa2415}\label{classsf_1_1_i_m_g_u_i_a24753628e533f5addbdad8dfcbaa2415} 
+\index{sf::IMGUI@{sf::IMGUI}!End@{End}}
+\index{End@{End}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{End()}{End()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that finishes rendering the GUI. 
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00286}{286}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a497b3d58f226c428049f82d02ad4d93a}\label{classsf_1_1_i_m_g_u_i_a497b3d58f226c428049f82d02ad4d93a} 
+\index{sf::IMGUI@{sf::IMGUI}!GenerateBackground@{GenerateBackground}}
+\index{GenerateBackground@{GenerateBackground}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{GenerateBackground()}{GenerateBackground()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Generate\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that generates blurred interface background. 
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00242}{242}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a0d2738cf21a67c48407a9e3b631aeec5}\label{classsf_1_1_i_m_g_u_i_a0d2738cf21a67c48407a9e3b631aeec5} 
+\index{sf::IMGUI@{sf::IMGUI}!getTranslucentTexture@{getTranslucentTexture}}
+\index{getTranslucentTexture@{getTranslucentTexture}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{getTranslucentTexture()}{getTranslucentTexture()}}
+{\footnotesize\ttfamily GLuint sf\+::\+IMGUI\+::get\+Translucent\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the id of a background texture. 
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00237}{237}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a59e1957cad868bd57e0422f29d62e527}\label{classsf_1_1_i_m_g_u_i_a59e1957cad868bd57e0422f29d62e527} 
+\index{sf::IMGUI@{sf::IMGUI}!getWindowHeight@{getWindowHeight}}
+\index{getWindowHeight@{getWindowHeight}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{getWindowHeight()}{getWindowHeight()}}
+{\footnotesize\ttfamily int sf\+::\+IMGUI\+::get\+Window\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the width of the GUI. 
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00227}{227}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a058af954003f0cc8a6b9438eec940e9d}\label{classsf_1_1_i_m_g_u_i_a058af954003f0cc8a6b9438eec940e9d} 
+\index{sf::IMGUI@{sf::IMGUI}!getWindowWidth@{getWindowWidth}}
+\index{getWindowWidth@{getWindowWidth}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{getWindowWidth()}{getWindowWidth()}}
+{\footnotesize\ttfamily int sf\+::\+IMGUI\+::get\+Window\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the height of the GUI. 
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00232}{232}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a0ca2f46d40ed27904f55031d072e55f2}\label{classsf_1_1_i_m_g_u_i_a0ca2f46d40ed27904f55031d072e55f2} 
+\index{sf::IMGUI@{sf::IMGUI}!isAnyActive@{isAnyActive}}
+\index{isAnyActive@{isAnyActive}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{isAnyActive()}{isAnyActive()}}
+{\footnotesize\ttfamily bool sf\+::\+IMGUI\+::is\+Any\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that informs if any widget is currently active. 
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00202}{202}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_aac87cd7c4eacb48cc237eb0e7a650626}\label{classsf_1_1_i_m_g_u_i_aac87cd7c4eacb48cc237eb0e7a650626} 
+\index{sf::IMGUI@{sf::IMGUI}!KeyDown@{KeyDown}}
+\index{KeyDown@{KeyDown}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{KeyDown()}{KeyDown()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Key\+Down (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Keycode}]{key }\end{DoxyParamCaption})}
+
+
+
+A method servicing the keyboard key down event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the code of the pressed key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00356}{356}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a8ccc9922726f7e7a818740a268742c17}\label{classsf_1_1_i_m_g_u_i_a8ccc9922726f7e7a818740a268742c17} 
+\index{sf::IMGUI@{sf::IMGUI}!KeyUp@{KeyUp}}
+\index{KeyUp@{KeyUp}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{KeyUp()}{KeyUp()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Key\+Up (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Keycode}]{key }\end{DoxyParamCaption})}
+
+
+
+A method servicing the keyboard key up event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the code of the released key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00360}{360}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a0d0ae65e222cd5360329e5b2efc7a96c}\label{classsf_1_1_i_m_g_u_i_a0d0ae65e222cd5360329e5b2efc7a96c} 
+\index{sf::IMGUI@{sf::IMGUI}!MouseDown@{MouseDown}}
+\index{MouseDown@{MouseDown}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{MouseDown()}{MouseDown()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Mouse\+Down (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{bool}]{left\+Button }\end{DoxyParamCaption})}
+
+
+
+A method servicing the mouse down event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & coordinate \\
+\hline
+{\em y} & coordinate \\
+\hline
+{\em left\+Button} & a flag designating if left button was pressed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00328}{328}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_aa2ea94c4548403da75b484eb293fa8fb}\label{classsf_1_1_i_m_g_u_i_aa2ea94c4548403da75b484eb293fa8fb} 
+\index{sf::IMGUI@{sf::IMGUI}!MouseMove@{MouseMove}}
+\index{MouseMove@{MouseMove}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{MouseMove()}{MouseMove()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Mouse\+Move (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+A method servicing the mouse move event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & coordinate \\
+\hline
+{\em y} & coordinate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00350}{350}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_aa7f0ee3fb23aefc7f7bc9296152b0962}\label{classsf_1_1_i_m_g_u_i_aa7f0ee3fb23aefc7f7bc9296152b0962} 
+\index{sf::IMGUI@{sf::IMGUI}!MouseUp@{MouseUp}}
+\index{MouseUp@{MouseUp}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{MouseUp()}{MouseUp()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Mouse\+Up (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{bool}]{left\+Button }\end{DoxyParamCaption})}
+
+
+
+A method servicing the mouse up event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & coordinate \\
+\hline
+{\em y} & coordinate \\
+\hline
+{\em left\+Button} & a flag designating if left button was released \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00339}{339}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+\Hypertarget{classsf_1_1_i_m_g_u_i_a6ecc4148ab8f9b9609ce14b366508837}\label{classsf_1_1_i_m_g_u_i_a6ecc4148ab8f9b9609ce14b366508837} 
+\index{sf::IMGUI@{sf::IMGUI}!Resize@{Resize}}
+\index{Resize@{Resize}!sf::IMGUI@{sf::IMGUI}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily void sf\+::\+IMGUI\+::\+Resize (\begin{DoxyParamCaption}\item[{GLint}]{window\+Width,  }\item[{GLint}]{window\+Height }\end{DoxyParamCaption})}
+
+
+
+A method used to resize the interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window\+Width} & the new width of the program window \\
+\hline
+{\em window\+Height} & the new height of the program window \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_i_m_g_u_i_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_i_m_g_u_i_8cpp_source}{IMGUI.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/graphics/IMGUI.\+h\item 
+Library/src/graphics/IMGUI.\+cpp\end{DoxyCompactItemize}

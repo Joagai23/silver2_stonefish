@@ -1,0 +1,147 @@
+\doxysection{Force\+Torque.\+cpp}
+\hypertarget{_force_torque_8cpp_source}{}\label{_force_torque_8cpp_source}\index{Library/src/sensors/scalar/ForceTorque.cpp@{Library/src/sensors/scalar/ForceTorque.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ ForceTorque.cpp}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 30/10/2017.}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2017-\/2025\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}sensors/scalar/ForceTorque.h"{}}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}entities/SolidEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}entities/FeatherstoneEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}sensors/Sample.h"{}}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}joints/Joint.h"{}}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00033}00033\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00036}\mbox{\hyperlink{classsf_1_1_force_torque_ac793bec8ccb120c39bd658c9bbf9f6a9}{00036}}\ \mbox{\hyperlink{classsf_1_1_force_torque_ac793bec8ccb120c39bd658c9bbf9f6a9}{ForceTorque::ForceTorque}}(std::string\ uniqueName,\ \mbox{\hyperlink{classsf_1_1_solid_entity}{SolidEntity}}*\ attachment,\ \textcolor{keyword}{const}\ Transform\&\ origin,\ Scalar\ frequency,\ \textcolor{keywordtype}{int}\ historyLength)\ :\ \mbox{\hyperlink{classsf_1_1_joint_sensor}{JointSensor}}(uniqueName,\ frequency,\ historyLength)}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00038}00038\ \ \ \ \ attach\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{attachment}};}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00039}00039\ \ \ \ \ o2s\ =\ origin;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00040}00040\ \ \ \ \ lastFrame\ =\ Transform::getIdentity();}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00041}00041\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00042}00042\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Force\ X"{}},\ QuantityType::FORCE));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00043}00043\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Force\ Y"{}},\ QuantityType::FORCE));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00044}00044\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Force\ Z"{}},\ QuantityType::FORCE));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00045}00045\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Torque\ X"{}},\ QuantityType::TORQUE));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00046}00046\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Torque\ Y"{}},\ QuantityType::TORQUE));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00047}00047\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Torque\ Z"{}},\ QuantityType::TORQUE));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00050}\mbox{\hyperlink{classsf_1_1_force_torque_ae09275661b8cbd3ab7c716be256ee13e}{00050}}\ \mbox{\hyperlink{classsf_1_1_force_torque_ac793bec8ccb120c39bd658c9bbf9f6a9}{ForceTorque::ForceTorque}}(std::string\ uniqueName,\ \textcolor{keyword}{const}\ Transform\&\ origin,\ Scalar\ frequency,\ \textcolor{keywordtype}{int}\ historyLength)\ :}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_force_torque}{ForceTorque}}(uniqueName,\ NULL,\ origin,\ frequency,\ historyLength)}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00055}\mbox{\hyperlink{classsf_1_1_force_torque_ad234ebfe0967736f44f23125a676284f}{00055}}\ Transform\ \mbox{\hyperlink{classsf_1_1_force_torque_ad234ebfe0967736f44f23125a676284f}{ForceTorque::getSensorFrame}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00056}00056\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{return}\ lastFrame;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00060}\mbox{\hyperlink{classsf_1_1_force_torque_aa92eab1b39017fa1eed3e84131f45ab7}{00060}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_force_torque_aa92eab1b39017fa1eed3e84131f45ab7}{ForceTorque::InternalUpdate}}(Scalar\ dt)}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00061}00061\ \{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{if}(j\ !=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{NULL}}\ \&\&\ attach\ !=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{NULL}})}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ Vector3\ force(j-\/>\mbox{\hyperlink{classsf_1_1_joint_a2e20e7189e6ce99978a62386f400463c}{getFeedback}}(0),\ j-\/>\mbox{\hyperlink{classsf_1_1_joint_a2e20e7189e6ce99978a62386f400463c}{getFeedback}}(1),\ j-\/>\mbox{\hyperlink{classsf_1_1_joint_a2e20e7189e6ce99978a62386f400463c}{getFeedback}}(2));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ Vector3\ torque(j-\/>\mbox{\hyperlink{classsf_1_1_joint_a2e20e7189e6ce99978a62386f400463c}{getFeedback}}(3),\ j-\/>\mbox{\hyperlink{classsf_1_1_joint_a2e20e7189e6ce99978a62386f400463c}{getFeedback}}(4),\ j-\/>\mbox{\hyperlink{classsf_1_1_joint_a2e20e7189e6ce99978a62386f400463c}{getFeedback}}(5));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00066}00066\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(j-\/>\mbox{\hyperlink{classsf_1_1_joint_a48665d430fe612b05626b9d605881115}{isMultibodyJoint}}())}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ force\ /=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dt}};}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ torque\ /=\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{dt}};}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00072}00072\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ lastFrame\ =\ attach-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{getOTransform}}()\ *\ o2s;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ Matrix3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{toSensor}}\ =\ lastFrame.getBasis().inverse();}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ force\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{toSensor}}\ *\ force;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ torque\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{toSensor}}\ *\ torque;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00077}00077\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}\{std::vector<Scalar>(\{force.getX(),\ force.getY(),\ force.getZ(),\ torque.getX(),\ torque.getY(),\ torque.getZ()\})\};}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ AddSampleToHistory(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}});}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00082}00082\ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ Vector3\ force,\ torque;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{childId}}\ =\ fe-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_ae924f9b3e65211e570cf263aec90a219}{getJointFeedback}}(jId,\ force,\ torque);}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ lastFrame\ =\ fe-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_ae3e538fcb895972074d80cbedb784010}{getLink}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{childId}}).solid-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a4340885ad6ffd1c39d04b516e9960282}{getCG2OTransform}}()\ *\ o2s;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ Matrix3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{toSensor}}\ =\ lastFrame.getBasis().inverse();}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ force\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{toSensor}}\ *\ force;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ torque\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{toSensor}}\ *\ torque;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ lastFrame\ =\ fe-\/>\mbox{\hyperlink{classsf_1_1_featherstone_entity_ae3e538fcb895972074d80cbedb784010}{getLink}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{childId}}).solid-\/>\mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{getCGTransform}}()\ *\ lastFrame;\ \textcolor{comment}{//From\ local\ to\ global}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}\{std::vector<Scalar>(\{force.getX(),\ force.getY(),\ force.getZ(),\ torque.getX(),\ torque.getY(),\ torque.getZ()\})\};}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ AddSampleToHistory(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}});}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00096}\mbox{\hyperlink{classsf_1_1_force_torque_a05c17aebd88da127715ddd849f1a4eaf}{00096}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_force_torque_a05c17aebd88da127715ddd849f1a4eaf}{ForceTorque::setRange}}(\textcolor{keyword}{const}\ Vector3\&\ forceMax,\ \textcolor{keyword}{const}\ Vector3\&\ torqueMax)}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00097}00097\ \{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00098}00098\ \ \ \ \ channels[0].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{forceMax}}.getX(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00099}00099\ \ \ \ \ channels[1].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{forceMax}}.getY(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00100}00100\ \ \ \ \ channels[2].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{forceMax}}.getZ(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00101}00101\ \ \ \ \ channels[0].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{forceMax}}.getX(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00102}00102\ \ \ \ \ channels[1].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{forceMax}}.getY(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00103}00103\ \ \ \ \ channels[2].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{forceMax}}.getZ(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00104}00104\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00105}00105\ \ \ \ \ channels[3].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{torqueMax}}.getX(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00106}00106\ \ \ \ \ channels[4].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{torqueMax}}.getY(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00107}00107\ \ \ \ \ channels[5].rangeMin\ =\ -\/\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{torqueMax}}.getZ(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00108}00108\ \ \ \ \ channels[3].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{torqueMax}}.getX(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00109}00109\ \ \ \ \ channels[4].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{torqueMax}}.getY(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00110}00110\ \ \ \ \ channels[5].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{torqueMax}}.getZ(),\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00111}00111\ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00112}00112\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00113}\mbox{\hyperlink{classsf_1_1_force_torque_a27cbf49f4fda5f118e3e97d488805395}{00113}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_force_torque_a27cbf49f4fda5f118e3e97d488805395}{ForceTorque::setNoise}}(Scalar\ forceStdDev,\ Scalar\ torqueStdDev)}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00114}00114\ \{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00115}00115\ \ \ \ \ channels[0].setStdDev(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{forceStdDev}},\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}})));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00116}00116\ \ \ \ \ channels[1].setStdDev(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{forceStdDev}},\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}})));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00117}00117\ \ \ \ \ channels[2].setStdDev(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{forceStdDev}},\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}})));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00118}00118\ \ \ \ \ channels[3].setStdDev(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{torqueStdDev}},\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}})));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00119}00119\ \ \ \ \ channels[4].setStdDev(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{torqueStdDev}},\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}})));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00120}00120\ \ \ \ \ channels[5].setStdDev(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{torqueStdDev}},\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}})));}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00121}00121\ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00122}00122\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00123}\mbox{\hyperlink{classsf_1_1_force_torque_a8c21a2e1d93907ab9127fda2763d1203}{00123}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_force_torque_a8c21a2e1d93907ab9127fda2763d1203}{ForceTorque::Render}}()}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00125}00125\ \ \ \ \ std::vector<Renderable>\ items\ =\ \mbox{\hyperlink{classsf_1_1_sensor_a6e4955d7a77bbba84c2bdfb9a57c8388}{Sensor::Render}}();}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_sensor_a7ed0e8bb0e676260491b2460d7b66b6c}{isRenderable}}())}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00127}00127\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::SENSOR\_CS;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(lastFrame);}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00132}00132\ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00134}00134\ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00136}\mbox{\hyperlink{classsf_1_1_force_torque_a8d36cece694398386fc6540f20be0f82}{00136}}\ ScalarSensorType\ \mbox{\hyperlink{classsf_1_1_force_torque_a8d36cece694398386fc6540f20be0f82}{ForceTorque::getScalarSensorType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00137}00137\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{return}\ ScalarSensorType::FT;}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00139}00139\ \}}
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_force_torque_8cpp_source_l00141}00141\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,218 @@
+\doxysection{sf\+::Featherstone\+Joint Struct Reference}
+\hypertarget{structsf_1_1_featherstone_joint}{}\label{structsf_1_1_featherstone_joint}\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+
+
+A structure holding data of a single multibody joint.  
+
+
+
+
+{\ttfamily \#include $<$Featherstone\+Entity.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structsf_1_1_featherstone_joint_a4420d60d3dcede6a1bbcf01d5f6deb90}{Featherstone\+Joint}} (std\+::string n, bt\+Multibody\+Link\+::e\+Featherstone\+Joint\+Type t, unsigned int p, unsigned int c)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{structsf_1_1_featherstone_joint_ab131559b80405fdf839d5b624f56db98}{name}}
+\item 
+bt\+Multibody\+Link\+::e\+Featherstone\+Joint\+Type \mbox{\hyperlink{structsf_1_1_featherstone_joint_a807ff4a9e6416ddd41cbd65d62917569}{type}}
+\item 
+bt\+Multi\+Body\+Joint\+Feedback \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsf_1_1_featherstone_joint_a3858e340e017fad73b5e5b0107a5c2f1}{feedback}}
+\item 
+bt\+Multi\+Body\+Joint\+Limit\+Constraint \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsf_1_1_featherstone_joint_a0f1b37c22d03338a29e1ec6d4cb1cf11}{limit}}
+\item 
+bt\+Multi\+Body\+Joint\+Motor \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsf_1_1_featherstone_joint_a985ded6ced87e86f0f4eb6104b244b4a}{motor}}
+\item 
+unsigned int \mbox{\hyperlink{structsf_1_1_featherstone_joint_ad2d573879e9178cbf3ab81fb8105ba0d}{parent}}
+\item 
+unsigned int \mbox{\hyperlink{structsf_1_1_featherstone_joint_ae29fbe920373c6d655fbdbdda6286b4c}{child}}
+\item 
+Vector3 \mbox{\hyperlink{structsf_1_1_featherstone_joint_a8c2fe5bc6e32dc606e66cdc49aeef22f}{axis\+In\+Child}}
+\item 
+Vector3 \mbox{\hyperlink{structsf_1_1_featherstone_joint_ac5a2f71e6a8d1e9afaf60d4b1972e056}{pivot\+In\+Child}}
+\item 
+Scalar \mbox{\hyperlink{structsf_1_1_featherstone_joint_a5c50c90bb6521538fd2cf3bae5ecd633}{sig\+Damping}}
+\item 
+Scalar \mbox{\hyperlink{structsf_1_1_featherstone_joint_a542a035c941fcf865df3825dfbb745c6}{vel\+Damping}}
+\item 
+Scalar \mbox{\hyperlink{structsf_1_1_featherstone_joint_a54a78bf6743d28981f76e927164dda12}{lower\+Limit}}
+\item 
+Scalar \mbox{\hyperlink{structsf_1_1_featherstone_joint_a6ce7abac78b6308e2b182e8d5ab1e6e9}{upper\+Limit}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A structure holding data of a single multibody joint. 
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00056}{56}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structsf_1_1_featherstone_joint_a4420d60d3dcede6a1bbcf01d5f6deb90}\label{structsf_1_1_featherstone_joint_a4420d60d3dcede6a1bbcf01d5f6deb90} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!FeatherstoneJoint@{FeatherstoneJoint}}
+\index{FeatherstoneJoint@{FeatherstoneJoint}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{FeatherstoneJoint()}{FeatherstoneJoint()}}
+{\footnotesize\ttfamily sf\+::\+Featherstone\+Joint\+::\+Featherstone\+Joint (\begin{DoxyParamCaption}\item[{std\+::string}]{n,  }\item[{bt\+Multibody\+Link\+::e\+Featherstone\+Joint\+Type}]{t,  }\item[{unsigned int}]{p,  }\item[{unsigned int}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & the name of the joint \\
+\hline
+{\em t} & the type of the joint \\
+\hline
+{\em p} & the id of the parent link \\
+\hline
+{\em c} & the id of the child link \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00065}{65}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structsf_1_1_featherstone_joint_a8c2fe5bc6e32dc606e66cdc49aeef22f}\label{structsf_1_1_featherstone_joint_a8c2fe5bc6e32dc606e66cdc49aeef22f} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!axisInChild@{axisInChild}}
+\index{axisInChild@{axisInChild}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{axisInChild}{axisInChild}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Featherstone\+Joint\+::axis\+In\+Child}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00076}{76}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_ae29fbe920373c6d655fbdbdda6286b4c}\label{structsf_1_1_featherstone_joint_ae29fbe920373c6d655fbdbdda6286b4c} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!child@{child}}
+\index{child@{child}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{child}{child}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Featherstone\+Joint\+::child}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00075}{75}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_a3858e340e017fad73b5e5b0107a5c2f1}\label{structsf_1_1_featherstone_joint_a3858e340e017fad73b5e5b0107a5c2f1} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!feedback@{feedback}}
+\index{feedback@{feedback}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{feedback}{feedback}}
+{\footnotesize\ttfamily bt\+Multi\+Body\+Joint\+Feedback\texorpdfstring{$\ast$}{*} sf\+::\+Featherstone\+Joint\+::feedback}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00070}{70}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_a0f1b37c22d03338a29e1ec6d4cb1cf11}\label{structsf_1_1_featherstone_joint_a0f1b37c22d03338a29e1ec6d4cb1cf11} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!limit@{limit}}
+\index{limit@{limit}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{limit}{limit}}
+{\footnotesize\ttfamily bt\+Multi\+Body\+Joint\+Limit\+Constraint\texorpdfstring{$\ast$}{*} sf\+::\+Featherstone\+Joint\+::limit}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00071}{71}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_a54a78bf6743d28981f76e927164dda12}\label{structsf_1_1_featherstone_joint_a54a78bf6743d28981f76e927164dda12} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!lowerLimit@{lowerLimit}}
+\index{lowerLimit@{lowerLimit}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{lowerLimit}{lowerLimit}}
+{\footnotesize\ttfamily Scalar sf\+::\+Featherstone\+Joint\+::lower\+Limit}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00080}{80}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_a985ded6ced87e86f0f4eb6104b244b4a}\label{structsf_1_1_featherstone_joint_a985ded6ced87e86f0f4eb6104b244b4a} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!motor@{motor}}
+\index{motor@{motor}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{motor}{motor}}
+{\footnotesize\ttfamily bt\+Multi\+Body\+Joint\+Motor\texorpdfstring{$\ast$}{*} sf\+::\+Featherstone\+Joint\+::motor}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00072}{72}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_ab131559b80405fdf839d5b624f56db98}\label{structsf_1_1_featherstone_joint_ab131559b80405fdf839d5b624f56db98} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!name@{name}}
+\index{name@{name}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Featherstone\+Joint\+::name}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00068}{68}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_ad2d573879e9178cbf3ab81fb8105ba0d}\label{structsf_1_1_featherstone_joint_ad2d573879e9178cbf3ab81fb8105ba0d} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!parent@{parent}}
+\index{parent@{parent}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Featherstone\+Joint\+::parent}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00074}{74}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_ac5a2f71e6a8d1e9afaf60d4b1972e056}\label{structsf_1_1_featherstone_joint_ac5a2f71e6a8d1e9afaf60d4b1972e056} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!pivotInChild@{pivotInChild}}
+\index{pivotInChild@{pivotInChild}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{pivotInChild}{pivotInChild}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Featherstone\+Joint\+::pivot\+In\+Child}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00077}{77}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_a5c50c90bb6521538fd2cf3bae5ecd633}\label{structsf_1_1_featherstone_joint_a5c50c90bb6521538fd2cf3bae5ecd633} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!sigDamping@{sigDamping}}
+\index{sigDamping@{sigDamping}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{sigDamping}{sigDamping}}
+{\footnotesize\ttfamily Scalar sf\+::\+Featherstone\+Joint\+::sig\+Damping}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00078}{78}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_a807ff4a9e6416ddd41cbd65d62917569}\label{structsf_1_1_featherstone_joint_a807ff4a9e6416ddd41cbd65d62917569} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!type@{type}}
+\index{type@{type}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily bt\+Multibody\+Link\+::e\+Featherstone\+Joint\+Type sf\+::\+Featherstone\+Joint\+::type}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00069}{69}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_a6ce7abac78b6308e2b182e8d5ab1e6e9}\label{structsf_1_1_featherstone_joint_a6ce7abac78b6308e2b182e8d5ab1e6e9} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!upperLimit@{upperLimit}}
+\index{upperLimit@{upperLimit}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{upperLimit}{upperLimit}}
+{\footnotesize\ttfamily Scalar sf\+::\+Featherstone\+Joint\+::upper\+Limit}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00081}{81}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+\Hypertarget{structsf_1_1_featherstone_joint_a542a035c941fcf865df3825dfbb745c6}\label{structsf_1_1_featherstone_joint_a542a035c941fcf865df3825dfbb745c6} 
+\index{sf::FeatherstoneJoint@{sf::FeatherstoneJoint}!velDamping@{velDamping}}
+\index{velDamping@{velDamping}!sf::FeatherstoneJoint@{sf::FeatherstoneJoint}}
+\doxysubsubsection{\texorpdfstring{velDamping}{velDamping}}
+{\footnotesize\ttfamily Scalar sf\+::\+Featherstone\+Joint\+::vel\+Damping}
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00079}{79}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/entities/Featherstone\+Entity.\+h\end{DoxyCompactItemize}

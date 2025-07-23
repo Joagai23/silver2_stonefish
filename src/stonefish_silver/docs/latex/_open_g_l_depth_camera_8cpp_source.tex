@@ -1,0 +1,392 @@
+\doxysection{Open\+GLDepth\+Camera.\+cpp}
+\hypertarget{_open_g_l_depth_camera_8cpp_source}{}\label{_open_g_l_depth_camera_8cpp_source}\index{Library/src/graphics/OpenGLDepthCamera.cpp@{Library/src/graphics/OpenGLDepthCamera.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ OpenGLDepthCamera.cpp}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 04/05/18.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2018-\/2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLDepthCamera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}core/GraphicalSimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}entities/SolidEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}sensors/vision/Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLState.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/GLSLShader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00036}00036\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00039}00039\ GLSLShader**\ OpenGLDepthCamera::depthCameraOutputShader\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00040}00040\ GLSLShader*\ OpenGLDepthCamera::depthVisualizeShader\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00042}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a8e867bddb2a3d6039208f20c31b6874b}{00042}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a8e867bddb2a3d6039208f20c31b6874b}{OpenGLDepthCamera::OpenGLDepthCamera}}(glm::vec3\ eyePosition,\ glm::vec3\ direction,\ glm::vec3\ cameraUp,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLint\ originX,\ GLint\ originY,\ GLint\ width,\ GLint\ height,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLfloat\ horizontalFOVDeg,\ GLfloat\ minDepth,\ GLfloat\ maxDepth,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ continuousUpdate,\ \textcolor{keywordtype}{bool}\ useRanges,\ GLfloat\ verticalFOVDeg)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00046}00046\ \ :\ \mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}(originX,\ originY,\ width,\ height),\ randDist(0.f,\ 1.f)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00048}00048\ \ \ \ \ \_needsUpdate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00049}00049\ \ \ \ \ continuous\ =\ continuousUpdate;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00050}00050\ \ \ \ \ newData\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00051}00051\ \ \ \ \ camera\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00052}00052\ \ \ \ \ noiseDepth\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00053}00053\ \ \ \ \ idx\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00054}00054\ \ \ \ \ range.x\ =\ minDepth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00055}00055\ \ \ \ \ range.y\ =\ maxDepth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00056}00056\ \ \ \ \ usesRanges\ =\ useRanges;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00057}00057\ \ \ \ \ linearDepthPBO\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00058}00058\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7fbc1a8cc7aee343fab91264bf37518c}{SetupCamera}}(eyePosition,\ direction,\ cameraUp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7c5a3dc98bcb3ff1e0da4a856aeef7b3}{UpdateTransform}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00062}00062\ \ \ \ \ fov.x\ =\ horizontalFOVDeg/180.f*M\_PI;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00063}00063\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}(verticalFOVDeg\ >\ 0.f)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ fov.y\ =\ verticalFOVDeg/180.f*M\_PI;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ projection[0]\ =\ glm::vec4(range.x/(range.x*tanf(fov.x/2.f)),\ 0.f,\ 0.f,\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ projection[1]\ =\ glm::vec4(0.f,\ range.x/(range.x*tanf(fov.y/2.f)),\ 0.f,\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ projection[2]\ =\ glm::vec4(0.f,\ 0.f,\ -\/(range.y\ +\ range.x)/(range.y-\/range.x),\ -\/1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ projection[3]\ =\ glm::vec4(0.f,\ 0.f,\ -\/2.f*range.y*range.x/(range.y-\/range.x),\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ fov.y\ =\ 2.f\ *\ atanf(\ (GLfloat)viewportHeight/(GLfloat)viewportWidth\ *\ tanf(fov.x/2.f)\ );}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ projection\ =\ glm::perspectiveFov(fov.y,\ (GLfloat)viewportWidth,\ (GLfloat)viewportHeight,\ range.x,\ range.y);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00077}00077\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//Render\ depth}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00079}00079\ \ \ \ \ glGenTextures(1,\ \&renderDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00080}00080\ \ \ \ \ OpenGLState::BindTexture(TEX\_BASE,\ GL\_TEXTURE\_2D,\ renderDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00081}00081\ \ \ \ \ glTexImage2D(GL\_TEXTURE\_2D,\ 0,\ GL\_DEPTH\_COMPONENT32F,\ viewportWidth,\ viewportHeight,\ 0,\ GL\_DEPTH\_COMPONENT,\ GL\_FLOAT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00082}00082\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_MIN\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00083}00083\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_MAG\_FILTER,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00084}00084\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_WRAP\_S,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00085}00085\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_WRAP\_T,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00086}00086\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_BASE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00088}00088\ \ \ \ \ glGenFramebuffers(1,\ \&renderFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00089}00089\ \ \ \ \ OpenGLState::BindFramebuffer(renderFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00090}00090\ \ \ \ \ glFramebufferTexture(GL\_FRAMEBUFFER,\ GL\_DEPTH\_ATTACHMENT,\ renderDepthTex,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00091}00091\ \ \ \ \ glReadBuffer(GL\_NONE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00092}00092\ \ \ \ \ glDrawBuffer(GL\_NONE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00093}00093\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00094}00094\ \ \ \ \ GLenum\ status\ =\ glCheckFramebufferStatus(GL\_FRAMEBUFFER);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ GL\_FRAMEBUFFER\_COMPLETE)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ cError(\textcolor{stringliteral}{"{}Depth\ Render\ FBO\ initialization\ failed!"{}});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00097}00097\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//Linear\ depth}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00099}00099\ \ \ \ \ glGenTextures(1,\ \&linearDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00100}00100\ \ \ \ \ OpenGLState::BindTexture(TEX\_BASE,\ GL\_TEXTURE\_2D,\ linearDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00101}00101\ \ \ \ \ glTexImage2D(GL\_TEXTURE\_2D,\ 0,\ GL\_R32F,\ viewportWidth,\ viewportHeight,\ 0,\ GL\_RED,\ GL\_FLOAT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00102}00102\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,GL\_TEXTURE\_MIN\_FILTER,GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00103}00103\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,GL\_TEXTURE\_MAG\_FILTER,GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00104}00104\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_WRAP\_S,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00105}00105\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_WRAP\_T,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00106}00106\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_BASE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00108}00108\ \ \ \ \ glGenFramebuffers(1,\ \&linearDepthFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00109}00109\ \ \ \ \ OpenGLState::BindFramebuffer(linearDepthFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00110}00110\ \ \ \ \ glFramebufferTexture(GL\_FRAMEBUFFER,\ GL\_COLOR\_ATTACHMENT0,\ linearDepthTex,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00112}00112\ \ \ \ \ status\ =\ glCheckFramebufferStatus(GL\_FRAMEBUFFER);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ GL\_FRAMEBUFFER\_COMPLETE)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ cError(\textcolor{stringliteral}{"{}Linear\ Depth\ FBO\ initialization\ failed!"{}});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00115}00115\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00116}00116\ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00117}00117\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00119}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a8a88d803b8d3b9886c21b7b1306297ee}{00119}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a8a88d803b8d3b9886c21b7b1306297ee}{OpenGLDepthCamera::\string~OpenGLDepthCamera}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00120}00120\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00121}00121\ \ \ \ \ glDeleteTextures(1,\ \&renderDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00122}00122\ \ \ \ \ glDeleteFramebuffers(1,\ \&renderFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00123}00123\ \ \ \ \ glDeleteTextures(1,\ \&linearDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00124}00124\ \ \ \ \ glDeleteFramebuffers(1,\ \&linearDepthFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{if}(camera\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00127}00127\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&linearDepthPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00132}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a572716197dc19bcb35086d920e131c38}{00132}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7fbc1a8cc7aee343fab91264bf37518c}{OpenGLDepthCamera::SetupCamera}}(glm::vec3\ \_eye,\ glm::vec3\ \_dir,\ glm::vec3\ \_up)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00133}00133\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00134}00134\ \ \ \ \ tempDir\ =\ \_dir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00135}00135\ \ \ \ \ tempEye\ =\ \_eye;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00136}00136\ \ \ \ \ tempUp\ =\ \_up;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00137}00137\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00139}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7c5a3dc98bcb3ff1e0da4a856aeef7b3}{00139}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7c5a3dc98bcb3ff1e0da4a856aeef7b3}{OpenGLDepthCamera::UpdateTransform}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00140}00140\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00141}00141\ \ \ \ \ eye\ =\ tempEye;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00142}00142\ \ \ \ \ dir\ =\ tempDir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00143}00143\ \ \ \ \ up\ =\ tempUp;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00144}00144\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7fbc1a8cc7aee343fab91264bf37518c}{SetupCamera}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//Inform\ camera\ to\ run\ callback}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00147}00147\ \ \ \ \ \textcolor{keywordflow}{if}(newData)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00148}00148\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ linearDepthPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ GLfloat*\ src\ =\ (GLfloat*)glMapBuffer(GL\_PIXEL\_PACK\_BUFFER,\ GL\_READ\_ONLY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(src)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ camera-\/>\mbox{\hyperlink{classsf_1_1_camera_a2573a5fa3ff14b022cae3e93be5e781a}{NewDataReady}}(src,\ idx);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ glUnmapBuffer(GL\_PIXEL\_PACK\_BUFFER);\ \textcolor{comment}{//Release\ pointer\ to\ the\ mapped\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ newData\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00158}00158\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00159}00159\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00161}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7fbc1a8cc7aee343fab91264bf37518c}{00161}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7fbc1a8cc7aee343fab91264bf37518c}{OpenGLDepthCamera::SetupCamera}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00162}00162\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00163}00163\ \ \ \ \ cameraTransform\ =\ glm::lookAt(eye,\ eye+dir,\ up);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00164}00164\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00166}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_aa7f31309c34e74392dd25dee04ebb8b2}{00166}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_aa7f31309c34e74392dd25dee04ebb8b2}{OpenGLDepthCamera::GetEyePosition}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00167}00167\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{keywordflow}{return}\ eye;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00169}00169\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00171}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a77c24d284abccbade8f7f2cbe3fabda1}{00171}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a77c24d284abccbade8f7f2cbe3fabda1}{OpenGLDepthCamera::GetLookingDirection}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00172}00172\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00173}00173\ \ \ \ \ \textcolor{keywordflow}{return}\ dir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00174}00174\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00176}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_ad3746a458e1d765f3dde17f46276820b}{00176}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_ad3746a458e1d765f3dde17f46276820b}{OpenGLDepthCamera::GetUpDirection}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00177}00177\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{return}\ up;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00179}00179\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00181}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_add696e1334311b65e0628bfb5cf0f983}{00181}}\ glm::mat4\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_add696e1334311b65e0628bfb5cf0f983}{OpenGLDepthCamera::GetProjectionMatrix}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00182}00182\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{return}\ projection;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00184}00184\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00186}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_aa50fd184f7d4346dd12038ae8e30aae8}{00186}}\ glm::mat4\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_aa50fd184f7d4346dd12038ae8e30aae8}{OpenGLDepthCamera::GetViewMatrix}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00187}00187\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00188}00188\ \ \ \ \ \textcolor{keywordflow}{return}\ cameraTransform;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00189}00189\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00191}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7b18c0bc9de876919dfd6fcd63a5ae9d}{00191}}\ GLfloat\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7b18c0bc9de876919dfd6fcd63a5ae9d}{OpenGLDepthCamera::GetNearClip}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00192}00192\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{keywordflow}{return}\ range.x;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00194}00194\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00196}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_ae2ef5d94d02c43064fad98cf9e9edcc1}{00196}}\ GLfloat\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_ae2ef5d94d02c43064fad98cf9e9edcc1}{OpenGLDepthCamera::GetFarClip}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00197}00197\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00198}00198\ \ \ \ \ \textcolor{keywordflow}{return}\ range.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00199}00199\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00201}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7e55d387c064c67c1ef25fc6d0607a2e}{00201}}\ GLfloat\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a7e55d387c064c67c1ef25fc6d0607a2e}{OpenGLDepthCamera::GetFOVX}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00202}00202\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00203}00203\ \ \ \ \ \textcolor{keywordflow}{return}\ fov.x;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00204}00204\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00206}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a08c1b074dce6e68b3be903732fc200b3}{00206}}\ GLfloat\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a08c1b074dce6e68b3be903732fc200b3}{OpenGLDepthCamera::GetFOVY}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00207}00207\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00208}00208\ \ \ \ \ \textcolor{keywordflow}{return}\ fov.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00209}00209\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00211}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a451ed694d22d3d431b26be191c386fca}{00211}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a451ed694d22d3d431b26be191c386fca}{OpenGLDepthCamera::Update}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00212}00212\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00213}00213\ \ \ \ \ \_needsUpdate\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00216}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a1dd46ae6ccdd5b354bcaa1e936e8ded2}{00216}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a1dd46ae6ccdd5b354bcaa1e936e8ded2}{OpenGLDepthCamera::needsUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00217}00217\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00218}00218\ \ \ \ \ \textcolor{keywordflow}{if}(\_needsUpdate)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00219}00219\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \_needsUpdate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ enabled;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00222}00222\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00223}00223\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00225}00225\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00227}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a5cd9da9003a67b951d49abb4d2c098ed}{00227}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a5cd9da9003a67b951d49abb4d2c098ed}{OpenGLDepthCamera::setCamera}}(\mbox{\hyperlink{classsf_1_1_camera}{Camera}}*\ cam,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00228}00228\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00229}00229\ \ \ \ \ camera\ =\ cam;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00230}00230\ \ \ \ \ idx\ =\ index;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00232}00232\ \ \ \ \ glGenBuffers(1,\ \&linearDepthPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00233}00233\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ linearDepthPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00234}00234\ \ \ \ \ glBufferData(GL\_PIXEL\_PACK\_BUFFER,\ viewportWidth\ *\ viewportHeight\ *\ \textcolor{keyword}{sizeof}(GLfloat),\ 0,\ GL\_STREAM\_READ);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00235}00235\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00236}00236\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00238}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a9672532d386843d451417d3037a11e5e}{00238}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a9672532d386843d451417d3037a11e5e}{OpenGLDepthCamera::setNoise}}(GLfloat\ depthStdDev)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00239}00239\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00240}00240\ \ \ \ \ noiseDepth\ =\ depthStdDev;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00241}00241\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00243}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a50ac9a6c7ef8899e07e44b5e6441a157}{00243}}\ ViewType\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a50ac9a6c7ef8899e07e44b5e6441a157}{OpenGLDepthCamera::getType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00244}00244\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00245}00245\ \ \ \ \ \textcolor{keywordflow}{return}\ ViewType::DEPTH\_CAMERA;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00246}00246\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00248}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a5318337e5cb84cf56c00536170c3c8bd}{00248}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a5318337e5cb84cf56c00536170c3c8bd}{OpenGLDepthCamera::ComputeOutput}}(std::vector<Renderable>\&\ objects)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00249}00249\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00250}00250\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_content}{OpenGLContent}}*\ content\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00251}00251\ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a45edb1a33bec329dbabf74e3f2a179fa}{SetCurrentView}}(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00252}00252\ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_acd2ecbd33d26d7be1c52b0edaf882489}{SetDrawingMode}}(DrawingMode::SHADOW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00253}00253\ \ \ \ \ OpenGLState::BindFramebuffer(renderFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00254}00254\ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ viewportWidth,\ viewportHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00255}00255\ \ \ \ \ glClear(GL\_DEPTH\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00256}00256\ \ \ \ \ glDisable(GL\_DEPTH\_CLAMP);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00257}00257\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ h=0;\ h<objects.size();\ ++h)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00258}00258\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(objects[h].type\ !=\ RenderableType::SOLID)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a52aacc2393c8e0481c250267cc2f514d}{DrawObject}}(objects[h].objectId,\ -\/1,\ objects[h].model);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00262}00262\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00263}00263\ \ \ \ \ glEnable(GL\_DEPTH\_CLAMP);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00264}00264\ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00265}00265\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00267}00267\ \textcolor{keywordtype}{void}\ OpenGLDepthCamera::LinearizeDepth()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00268}00268\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00269}00269\ \ \ \ \ OpenGLState::BindFramebuffer(linearDepthFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00270}00270\ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ viewportWidth,\ viewportHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00271}00271\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ renderDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00272}00272\ \ \ \ \ depthCameraOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00273}00273\ \ \ \ \ depthCameraOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}texDepth"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00274}00274\ \ \ \ \ depthCameraOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}rangeInfo"{}},\ glm::vec4(range.x,\ range.y,\ range.x*range.y,\ range.x-\/range.y));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00275}00275\ \ \ \ \ depthCameraOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}noiseSeed"{}},\ glm::vec3(randDist(randGen),\ randDist(randGen),\ randDist(randGen)));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00276}00276\ \ \ \ \ depthCameraOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}noiseStddev"{}},\ noiseDepth);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00277}00277\ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>DrawSAQ();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00278}00278\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00279}00279\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00280}00280\ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00281}00281\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00282}00282\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00283}00283\ \textcolor{keywordtype}{void}\ OpenGLDepthCamera::Depth2LinearRanges()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00284}00284\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00285}00285\ \ \ \ \ glm::mat4\ proj\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_add696e1334311b65e0628bfb5cf0f983}{GetProjectionMatrix}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00286}00286\ \ \ \ \ glm::vec4\ projInfo(}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2.0f/proj[0].x,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2.0f/proj[1].y,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/(1.f-\/proj[0].z)/proj[0].x,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/(1.f+proj[1].z)/proj[1].y}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00292}00292\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00293}00293\ \ \ \ \ OpenGLState::BindFramebuffer(linearDepthFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00294}00294\ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ viewportWidth,\ viewportHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00295}00295\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ renderDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00296}00296\ \ \ \ \ depthCameraOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00297}00297\ \ \ \ \ depthCameraOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}projInfo"{}},\ projInfo);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00298}00298\ \ \ \ \ depthCameraOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}rangeInfo"{}},\ glm::vec4(range.x,\ range.y,\ range.x*range.y,\ range.x-\/range.y));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00299}00299\ \ \ \ \ depthCameraOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}texDepth"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00300}00300\ \ \ \ \ ((GraphicalSimulationApp*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>DrawSAQ();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00301}00301\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00302}00302\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00303}00303\ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00304}00304\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00306}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a418a9dbb937d7b6643fe193e6bcd603d}{00306}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a418a9dbb937d7b6643fe193e6bcd603d}{OpenGLDepthCamera::DrawLDR}}(GLuint\ destinationFBO,\ \textcolor{keywordtype}{bool}\ updated)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00307}00307\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00308}00308\ \ \ \ \ \textcolor{comment}{//Check\ if\ there\ is\ a\ need\ to\ display\ image\ on\ screen}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00309}00309\ \ \ \ \ \textcolor{keywordtype}{bool}\ display\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00310}00310\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ dispX,\ dispY;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00311}00311\ \ \ \ \ GLfloat\ dispScale;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00312}00312\ \ \ \ \ \textcolor{keywordflow}{if}(camera\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ display\ =\ camera-\/>\mbox{\hyperlink{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1}{getDisplayOnScreen}}(dispX,\ dispY,\ dispScale);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00314}00314\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00315}00315\ \ \ \ \ \textcolor{comment}{//Draw\ on\ screen}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{keywordflow}{if}(display)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00317}00317\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(usesRanges)\ Depth2LinearRanges();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ LinearizeDepth();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowHeight\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getWindowHeight();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Bind\ depth\ texture}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ linearDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \textcolor{comment}{//LDR\ drawing}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(destinationFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ OpenGLState::Viewport(dispX,\ windowHeight-\/viewportHeight*dispScale-\/dispY,\ viewportWidth*dispScale,\ viewportHeight*dispScale);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ depthVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ depthVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}texLinearDepth"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ depthVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}range"{}},\ range);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>DrawSAQ();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Unbind\ textures}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00336}00336\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00337}00337\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00338}00338\ \ \ \ \ \textcolor{comment}{//Copy\ texture\ to\ camera\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00339}00339\ \ \ \ \ \textcolor{keywordflow}{if}(camera\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ updated)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00340}00340\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!display)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(usesRanges)\ Depth2LinearRanges();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ LinearizeDepth();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ linearDepthTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ linearDepthPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ glGetTexImage(GL\_TEXTURE\_2D,\ 0,\ GL\_RED,\ GL\_FLOAT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ newData\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00353}00353\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00354}00354\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00357}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a9f6eee54131fba18be5556c9d58ef930}{00357}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a9f6eee54131fba18be5556c9d58ef930}{OpenGLDepthCamera::Init}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00358}00358\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00359}00359\ \ \ \ \ depthCameraOutputShader\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}*[2];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00360}00360\ \ \ \ \ depthCameraOutputShader[0]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(\textcolor{stringliteral}{"{}depthCameraOutput.frag"{}});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00361}00361\ \ \ \ \ depthCameraOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}rangeInfo"{}},\ ParameterType::VEC4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00362}00362\ \ \ \ \ depthCameraOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}texDepth"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00363}00363\ \ \ \ \ depthCameraOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}noiseSeed"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00364}00364\ \ \ \ \ depthCameraOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}noiseStddev"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00365}00365\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00366}00366\ \ \ \ \ depthCameraOutputShader[1]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(\textcolor{stringliteral}{"{}depthCameraOutput2.frag"{}});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00367}00367\ \ \ \ \ depthCameraOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}projInfo"{}},\ ParameterType::VEC4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00368}00368\ \ \ \ \ depthCameraOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}rangeInfo"{}},\ ParameterType::VEC4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00369}00369\ \ \ \ \ depthCameraOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}texDepth"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00370}00370\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00371}00371\ \ \ \ \ depthVisualizeShader\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(\textcolor{stringliteral}{"{}depthVisualize.frag"{}});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00372}00372\ \ \ \ \ depthVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}range"{}},\ ParameterType::VEC2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00373}00373\ \ \ \ \ depthVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}texLinearDepth"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00374}00374\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00376}\mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a8be8850d5afb7ef2d7e39d7bcc213bd0}{00376}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera_a8be8850d5afb7ef2d7e39d7bcc213bd0}{OpenGLDepthCamera::Destroy}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00377}00377\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00378}00378\ \ \ \ \ \textcolor{keywordflow}{if}(depthCameraOutputShader\ !=\ \textcolor{keyword}{nullptr})\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00379}00379\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(depthCameraOutputShader[0]\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{delete}\ depthCameraOutputShader[0];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(depthCameraOutputShader[1]\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{delete}\ depthCameraOutputShader[1];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ []\ depthCameraOutputShader;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00383}00383\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00384}00384\ \ \ \ \ \textcolor{keywordflow}{if}(depthVisualizeShader\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{delete}\ depthVisualizeShader;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00385}00385\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00386}00386\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_depth_camera_8cpp_source_l00387}00387\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,312 @@
+\doxysection{sf\+::Unit\+System Class Reference}
+\hypertarget{classsf_1_1_unit_system}{}\label{classsf_1_1_unit_system}\index{sf::UnitSystem@{sf::UnitSystem}}
+
+
+A utility class used to convert between unit systems.  
+
+
+
+
+{\ttfamily \#include $<$Unit\+System.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classsf_1_1_unit_system_ab12d2eb0b7fb356a5735a16b8a5c74b0}\label{classsf_1_1_unit_system_ab12d2eb0b7fb356a5735a16b8a5c74b0} 
+{\bfseries Unit\+System} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_aaa66ba0cbf74e5074d9a4f6d9cbe15cf}{Length}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_afeebe2c19b2acaa8520ee93accf100a8}{Mass}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\item 
+static Vector3 \mbox{\hyperlink{classsf_1_1_unit_system_a1044524b4e58df24278235228ac8e50c}{Inertia}} (Unit\+Systems from, Unit\+Systems to, const Vector3 \&value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_a093bb723dd0c0eb6336d858c40182363}{Angle}} (bool deg\+To\+Rad, Scalar value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_a388d6a1b4da6138c35ee3b1b4c0aaa37}{Density}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_ac0bcd7855523ca205d8ee942b670ad34}{Volume}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_ac567d10410c54698b29e9b465ea633c7}{Area}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_ad84fea7caea973a994009eb7a99be58a}{Pressure}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\item 
+static Vector3 \mbox{\hyperlink{classsf_1_1_unit_system_a1f9424f36d06f67920138a86565c32ba}{Position}} (Unit\+Systems from, Unit\+Systems to, const Vector3 \&value)
+\item 
+static Vector3 \mbox{\hyperlink{classsf_1_1_unit_system_a37beb239c011be1466d378f779766fb3}{Orientation}} (bool deg\+To\+Rad, const Vector3 \&value)
+\item 
+static Transform \mbox{\hyperlink{classsf_1_1_unit_system_aec591c4c9ff76b85278f8c363458780a}{Transformation}} (Unit\+Systems from, Unit\+Systems to, const Transform \&value)
+\item 
+static Vector3 \mbox{\hyperlink{classsf_1_1_unit_system_afd1b441ca4c911aa7e6907cdb8c648f2}{Velocity}} (Unit\+Systems from, Unit\+Systems to, const Vector3 \&value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_a675cf892bc0e3227377351bcfb76bbff}{Velocity}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\item 
+static Vector3 \mbox{\hyperlink{classsf_1_1_unit_system_a92150500d46752e42aa92dff99c0fe33}{Acceleration}} (Unit\+Systems from, Unit\+Systems to, const Vector3 \&value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_a16ce40d18b3db4129d568c0e3cb38d3d}{Acceleration}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\item 
+static Vector3 \mbox{\hyperlink{classsf_1_1_unit_system_acc8ff409abdc524d024245e71c9f8bec}{Angular\+Velocity}} (bool deg\+To\+Rad, const Vector3 \&value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_afb304611cfd8174866d580943e244df4}{Angular\+Velocity}} (bool deg\+To\+Rad, Scalar value)
+\item 
+static Vector3 \mbox{\hyperlink{classsf_1_1_unit_system_a09b3fd7fb3441d5ae6fcf1de973610b6}{Angular\+Acceleration}} (bool deg\+To\+Rad, const Vector3 \&value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_aabc6c8792a9ebf3febfa5bac5e1d89c2}{Angular\+Acceleration}} (bool deg\+To\+Rad, Scalar value)
+\item 
+static Vector3 \mbox{\hyperlink{classsf_1_1_unit_system_a3147c6019e40b24bb87a43f3b394b7ff}{Force}} (Unit\+Systems from, Unit\+Systems to, const Vector3 \&value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_a3e8c6a97ff1f27e10dd061a4c8c770f5}{Force}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\item 
+static Vector3 \mbox{\hyperlink{classsf_1_1_unit_system_a29836aec41a93968c883ec427384f312}{Torque}} (Unit\+Systems from, Unit\+Systems to, const Vector3 \&value)
+\item 
+static Scalar \mbox{\hyperlink{classsf_1_1_unit_system_ae14a8558df27d9e3e9cb551a60ce4b45}{Torque}} (Unit\+Systems from, Unit\+Systems to, Scalar value)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A utility class used to convert between unit systems. 
+
+Definition at line \mbox{\hyperlink{_unit_system_8h_source_l00040}{40}} of file \mbox{\hyperlink{_unit_system_8h_source}{Unit\+System.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_unit_system_a92150500d46752e42aa92dff99c0fe33}\label{classsf_1_1_unit_system_a92150500d46752e42aa92dff99c0fe33} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Acceleration@{Acceleration}}
+\index{Acceleration@{Acceleration}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Acceleration()}{Acceleration()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Unit\+System\+::\+Acceleration (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{const Vector3 \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a16ce40d18b3db4129d568c0e3cb38d3d}\label{classsf_1_1_unit_system_a16ce40d18b3db4129d568c0e3cb38d3d} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Acceleration@{Acceleration}}
+\index{Acceleration@{Acceleration}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Acceleration()}{Acceleration()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Acceleration (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00143}{143}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a093bb723dd0c0eb6336d858c40182363}\label{classsf_1_1_unit_system_a093bb723dd0c0eb6336d858c40182363} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Angle@{Angle}}
+\index{Angle@{Angle}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Angle()}{Angle()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Angle (\begin{DoxyParamCaption}\item[{bool}]{deg\+To\+Rad,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a09b3fd7fb3441d5ae6fcf1de973610b6}\label{classsf_1_1_unit_system_a09b3fd7fb3441d5ae6fcf1de973610b6} 
+\index{sf::UnitSystem@{sf::UnitSystem}!AngularAcceleration@{AngularAcceleration}}
+\index{AngularAcceleration@{AngularAcceleration}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{AngularAcceleration()}{AngularAcceleration()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Unit\+System\+::\+Angular\+Acceleration (\begin{DoxyParamCaption}\item[{bool}]{deg\+To\+Rad,  }\item[{const Vector3 \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00158}{158}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_aabc6c8792a9ebf3febfa5bac5e1d89c2}\label{classsf_1_1_unit_system_aabc6c8792a9ebf3febfa5bac5e1d89c2} 
+\index{sf::UnitSystem@{sf::UnitSystem}!AngularAcceleration@{AngularAcceleration}}
+\index{AngularAcceleration@{AngularAcceleration}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{AngularAcceleration()}{AngularAcceleration()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Angular\+Acceleration (\begin{DoxyParamCaption}\item[{bool}]{deg\+To\+Rad,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00163}{163}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_acc8ff409abdc524d024245e71c9f8bec}\label{classsf_1_1_unit_system_acc8ff409abdc524d024245e71c9f8bec} 
+\index{sf::UnitSystem@{sf::UnitSystem}!AngularVelocity@{AngularVelocity}}
+\index{AngularVelocity@{AngularVelocity}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{AngularVelocity()}{AngularVelocity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Unit\+System\+::\+Angular\+Velocity (\begin{DoxyParamCaption}\item[{bool}]{deg\+To\+Rad,  }\item[{const Vector3 \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_afb304611cfd8174866d580943e244df4}\label{classsf_1_1_unit_system_afb304611cfd8174866d580943e244df4} 
+\index{sf::UnitSystem@{sf::UnitSystem}!AngularVelocity@{AngularVelocity}}
+\index{AngularVelocity@{AngularVelocity}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{AngularVelocity()}{AngularVelocity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Angular\+Velocity (\begin{DoxyParamCaption}\item[{bool}]{deg\+To\+Rad,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00153}{153}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_ac567d10410c54698b29e9b465ea633c7}\label{classsf_1_1_unit_system_ac567d10410c54698b29e9b465ea633c7} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Area@{Area}}
+\index{Area@{Area}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Area()}{Area()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Area (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a388d6a1b4da6138c35ee3b1b4c0aaa37}\label{classsf_1_1_unit_system_a388d6a1b4da6138c35ee3b1b4c0aaa37} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Density@{Density}}
+\index{Density@{Density}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Density()}{Density()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Density (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a3147c6019e40b24bb87a43f3b394b7ff}\label{classsf_1_1_unit_system_a3147c6019e40b24bb87a43f3b394b7ff} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Force@{Force}}
+\index{Force@{Force}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Force()}{Force()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Unit\+System\+::\+Force (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{const Vector3 \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a3e8c6a97ff1f27e10dd061a4c8c770f5}\label{classsf_1_1_unit_system_a3e8c6a97ff1f27e10dd061a4c8c770f5} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Force@{Force}}
+\index{Force@{Force}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Force()}{Force()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Force (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00173}{173}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a1044524b4e58df24278235228ac8e50c}\label{classsf_1_1_unit_system_a1044524b4e58df24278235228ac8e50c} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Inertia@{Inertia}}
+\index{Inertia@{Inertia}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Inertia()}{Inertia()}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Unit\+System\+::\+Inertia (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{const Vector3 \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_aaa66ba0cbf74e5074d9a4f6d9cbe15cf}\label{classsf_1_1_unit_system_aaa66ba0cbf74e5074d9a4f6d9cbe15cf} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Length@{Length}}
+\index{Length@{Length}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Length()}{Length()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Length (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_afeebe2c19b2acaa8520ee93accf100a8}\label{classsf_1_1_unit_system_afeebe2c19b2acaa8520ee93accf100a8} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Mass@{Mass}}
+\index{Mass@{Mass}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Mass()}{Mass()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Mass (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a37beb239c011be1466d378f779766fb3}\label{classsf_1_1_unit_system_a37beb239c011be1466d378f779766fb3} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Orientation@{Orientation}}
+\index{Orientation@{Orientation}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Orientation()}{Orientation()}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Unit\+System\+::\+Orientation (\begin{DoxyParamCaption}\item[{bool}]{deg\+To\+Rad,  }\item[{const Vector3 \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a1f9424f36d06f67920138a86565c32ba}\label{classsf_1_1_unit_system_a1f9424f36d06f67920138a86565c32ba} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Position@{Position}}
+\index{Position@{Position}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Position()}{Position()}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Unit\+System\+::\+Position (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{const Vector3 \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_ad84fea7caea973a994009eb7a99be58a}\label{classsf_1_1_unit_system_ad84fea7caea973a994009eb7a99be58a} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Pressure@{Pressure}}
+\index{Pressure@{Pressure}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Pressure()}{Pressure()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Pressure (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a29836aec41a93968c883ec427384f312}\label{classsf_1_1_unit_system_a29836aec41a93968c883ec427384f312} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Torque@{Torque}}
+\index{Torque@{Torque}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Torque()}{Torque()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Unit\+System\+::\+Torque (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{const Vector3 \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_ae14a8558df27d9e3e9cb551a60ce4b45}\label{classsf_1_1_unit_system_ae14a8558df27d9e3e9cb551a60ce4b45} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Torque@{Torque}}
+\index{Torque@{Torque}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Torque()}{Torque()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Torque (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00183}{183}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_aec591c4c9ff76b85278f8c363458780a}\label{classsf_1_1_unit_system_aec591c4c9ff76b85278f8c363458780a} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Transformation@{Transformation}}
+\index{Transformation@{Transformation}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Transformation()}{Transformation()}}
+{\footnotesize\ttfamily Transform sf\+::\+Unit\+System\+::\+Transformation (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{const Transform \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_afd1b441ca4c911aa7e6907cdb8c648f2}\label{classsf_1_1_unit_system_afd1b441ca4c911aa7e6907cdb8c648f2} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Velocity@{Velocity}}
+\index{Velocity@{Velocity}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Velocity()}{Velocity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Unit\+System\+::\+Velocity (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{const Vector3 \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00128}{128}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_a675cf892bc0e3227377351bcfb76bbff}\label{classsf_1_1_unit_system_a675cf892bc0e3227377351bcfb76bbff} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Velocity@{Velocity}}
+\index{Velocity@{Velocity}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Velocity()}{Velocity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Velocity (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00133}{133}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+\Hypertarget{classsf_1_1_unit_system_ac0bcd7855523ca205d8ee942b670ad34}\label{classsf_1_1_unit_system_ac0bcd7855523ca205d8ee942b670ad34} 
+\index{sf::UnitSystem@{sf::UnitSystem}!Volume@{Volume}}
+\index{Volume@{Volume}!sf::UnitSystem@{sf::UnitSystem}}
+\doxysubsubsection{\texorpdfstring{Volume()}{Volume()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Unit\+System\+::\+Volume (\begin{DoxyParamCaption}\item[{Unit\+Systems}]{from,  }\item[{Unit\+Systems}]{to,  }\item[{Scalar}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_unit_system_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{_unit_system_8cpp_source}{Unit\+System.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/utils/Unit\+System.\+h\item 
+Library/src/utils/Unit\+System.\+cpp\end{DoxyCompactItemize}

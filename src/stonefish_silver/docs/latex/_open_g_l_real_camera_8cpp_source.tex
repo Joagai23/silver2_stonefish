@@ -1,0 +1,259 @@
+\doxysection{Open\+GLReal\+Camera.\+cpp}
+\hypertarget{_open_g_l_real_camera_8cpp_source}{}\label{_open_g_l_real_camera_8cpp_source}\index{Library/src/graphics/OpenGLRealCamera.cpp@{Library/src/graphics/OpenGLRealCamera.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ OpenGLRealCamera.cpp}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 12/12/12.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2012-\/2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLRealCamera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}core/GraphicalSimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}sensors/vision/ColorCamera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLState.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}graphics/GLSLShader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00035}00035\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00038}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_afe3dad14728af79d75cc3ab18b63cba6}{00038}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_afe3dad14728af79d75cc3ab18b63cba6}{OpenGLRealCamera::OpenGLRealCamera}}(glm::vec3\ eyePosition,\ glm::vec3\ direction,\ glm::vec3\ cameraUp,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLint\ x,\ GLint\ y,\ GLint\ width,\ GLint\ height,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLfloat\ horizontalFovDeg,\ glm::vec2\ range,\ \textcolor{keywordtype}{bool}\ continuousUpdate)\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_open_g_l_camera}{OpenGLCamera}}(x,\ y,\ width,\ height,\ range)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00043}00043\ \ \ \ \ \_needsUpdate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00044}00044\ \ \ \ \ newData\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00045}00045\ \ \ \ \ continuous\ =\ continuousUpdate;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00046}00046\ \ \ \ \ camera\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00047}00047\ \ \ \ \ cameraFBO\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00048}00048\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//Setup\ view}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_afa747fbde1dca4840dd74571223ab8cc}{SetupCamera}}(eyePosition,\ direction,\ cameraUp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//Setup\ projection}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00052}00052\ \ \ \ \ fovx\ =\ horizontalFovDeg/180.f\ *\ M\_PI;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00053}00053\ \ \ \ \ GLfloat\ fovy\ =\ 2.f\ *\ atanf(\ (GLfloat)viewportHeight/(GLfloat)viewportWidth\ *\ tanf(fovx/2.f)\ );}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00054}00054\ \ \ \ \ projection\ =\ glm::perspectiveFov(fovy,\ (GLfloat)viewportWidth,\ (GLfloat)viewportHeight,\ near,\ far);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00056}00056\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a2326e223dce28f3742c02befc612aebb}{UpdateTransform}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00059}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_ab935194d1d98bb8c8cc03f2dc71b1275}{00059}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_ab935194d1d98bb8c8cc03f2dc71b1275}{OpenGLRealCamera::\string~OpenGLRealCamera}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00060}00060\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{if}(camera\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ glDeleteFramebuffers(1,\ \&cameraFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&cameraPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ glDeleteTextures(2,\ cameraColorTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00069}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a2218ddfb0b06e8a8858c60006d6e236a}{00069}}\ ViewType\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a2218ddfb0b06e8a8858c60006d6e236a}{OpenGLRealCamera::getType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00070}00070\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{return}\ ViewType::CAMERA;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00074}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_ad9dbbc22fcaa88ea0f81789c60c3a9cb}{00074}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_ad9dbbc22fcaa88ea0f81789c60c3a9cb}{OpenGLRealCamera::Update}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00075}00075\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00076}00076\ \ \ \ \ \_needsUpdate\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00079}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_aa66a4ed323875293b6d40b431bb9d51d}{00079}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_aa66a4ed323875293b6d40b431bb9d51d}{OpenGLRealCamera::needsUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00080}00080\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{if}(\_needsUpdate)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00082}00082\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \_needsUpdate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ enabled;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00090}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a2b9e2d2b11cc695fc053bb8da5b7912a}{00090}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a2b9e2d2b11cc695fc053bb8da5b7912a}{OpenGLRealCamera::setCamera}}(\mbox{\hyperlink{classsf_1_1_color_camera}{ColorCamera}}*\ cam)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00091}00091\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//Connect\ with\ camera\ sensor}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00093}00093\ \ \ \ \ camera\ =\ cam;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00094}00094\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//Generate\ buffers}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00096}00096\ \ \ \ \ cameraColorTex[0]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ glm::uvec3((GLuint)viewportWidth,\ (GLuint)viewportHeight,\ 0),\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RGB8,\ GL\_RGB,\ GL\_UNSIGNED\_BYTE,\ NULL,\ sf::FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00098}00098\ \ \ \ \ cameraColorTex[1]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ glm::uvec3((GLuint)viewportWidth,\ (GLuint)viewportHeight,\ 0),\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RGB8,\ GL\_RGB,\ GL\_UNSIGNED\_BYTE,\ NULL,\ sf::FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00100}00100\ \ \ \ \ std::vector<FBOTexture>\ textures;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00101}00101\ \ \ \ \ textures.push\_back(\mbox{\hyperlink{structsf_1_1_f_b_o_texture}{FBOTexture}}(GL\_COLOR\_ATTACHMENT0,\ GL\_TEXTURE\_2D,\ cameraColorTex[0]));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00102}00102\ \ \ \ \ textures.push\_back(\mbox{\hyperlink{structsf_1_1_f_b_o_texture}{FBOTexture}}(GL\_COLOR\_ATTACHMENT1,\ GL\_TEXTURE\_2D,\ cameraColorTex[1]));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00103}00103\ \ \ \ \ cameraFBO\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a96b9148e3657e1a454ba336741c349cb}{OpenGLContent::GenerateFramebuffer}}(textures);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00104}00104\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00105}00105\ \ \ \ \ glGenBuffers(1,\ \&cameraPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00106}00106\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ cameraPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00107}00107\ \ \ \ \ glBufferData(GL\_PIXEL\_PACK\_BUFFER,\ viewportWidth\ *\ viewportHeight\ *\ 3,\ 0,\ GL\_STREAM\_READ);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00108}00108\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00109}00109\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00111}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_af966ff01172fc7a2f9e4b0991672aa04}{00111}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_af966ff01172fc7a2f9e4b0991672aa04}{OpenGLRealCamera::GetEyePosition}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00112}00112\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{return}\ eye;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00116}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_ac84adb5063cf2e52c21233b08f26aa82}{00116}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_ac84adb5063cf2e52c21233b08f26aa82}{OpenGLRealCamera::GetLookingDirection}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00117}00117\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{return}\ dir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00119}00119\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00121}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a4e6130b1eea9b8473129f7af37f3b694}{00121}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a4e6130b1eea9b8473129f7af37f3b694}{OpenGLRealCamera::GetUpDirection}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00122}00122\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{return}\ up;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00124}00124\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00126}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_aed2a1d9818608134a9e42ad467945d1e}{00126}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_afa747fbde1dca4840dd74571223ab8cc}{OpenGLRealCamera::SetupCamera}}(glm::vec3\ \_eye,\ glm::vec3\ \_dir,\ glm::vec3\ \_up)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00127}00127\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00128}00128\ \ \ \ \ tempDir\ =\ \_dir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00129}00129\ \ \ \ \ tempEye\ =\ \_eye;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00130}00130\ \ \ \ \ tempUp\ =\ \_up;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00131}00131\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00133}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a2326e223dce28f3742c02befc612aebb}{00133}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a2326e223dce28f3742c02befc612aebb}{OpenGLRealCamera::UpdateTransform}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00134}00134\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00135}00135\ \ \ \ \ eye\ =\ tempEye;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00136}00136\ \ \ \ \ dir\ =\ tempDir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00137}00137\ \ \ \ \ up\ =\ tempUp;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00138}00138\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_afa747fbde1dca4840dd74571223ab8cc}{SetupCamera}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00139}00139\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00140}00140\ \ \ \ \ viewUBOData.VP\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ae135ed129bec62a71b790dd07b990d02}{GetProjectionMatrix}}()\ *\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a46e13bc84d8e33ef04b1938a7d3f993a}{GetViewMatrix}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00141}00141\ \ \ \ \ viewUBOData.eye\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_af966ff01172fc7a2f9e4b0991672aa04}{GetEyePosition}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00142}00142\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_view_a26325a55c76b871a7a9a68a4b8c039cc}{ExtractFrustumFromVP}}(viewUBOData.frustum,\ viewUBOData.VP);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//Inform\ camera\ to\ run\ callback}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00145}00145\ \ \ \ \ \textcolor{keywordflow}{if}(newData)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00146}00146\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ cameraPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ GLubyte*\ src\ =\ (GLubyte*)glMapBuffer(GL\_PIXEL\_PACK\_BUFFER,\ GL\_READ\_ONLY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(src)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ camera-\/>\mbox{\hyperlink{classsf_1_1_color_camera_aed9e9522353c4c142a117af9889835d2}{NewDataReady}}(src);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ glUnmapBuffer(GL\_PIXEL\_PACK\_BUFFER);\ \textcolor{comment}{//Release\ pointer\ to\ the\ mapped\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ newData\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00156}00156\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00157}00157\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00159}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_afa747fbde1dca4840dd74571223ab8cc}{00159}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_afa747fbde1dca4840dd74571223ab8cc}{OpenGLRealCamera::SetupCamera}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00160}00160\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00161}00161\ \ \ \ \ cameraTransform\ =\ glm::lookAt(eye,\ eye+dir,\ up);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00162}00162\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00164}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a46e13bc84d8e33ef04b1938a7d3f993a}{00164}}\ glm::mat4\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_a46e13bc84d8e33ef04b1938a7d3f993a}{OpenGLRealCamera::GetViewMatrix}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00165}00165\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordflow}{return}\ cameraTransform;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00167}00167\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00169}\mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_aee2b5b9201e33add14c335fb7a410adb}{00169}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_real_camera_aee2b5b9201e33add14c335fb7a410adb}{OpenGLRealCamera::DrawLDR}}(GLuint\ destinationFBO,\ \textcolor{keywordtype}{bool}\ updated)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00170}00170\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{keywordflow}{if}(camera\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ updated)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00172}00172\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a9f69340110ca14e4e6ffa4454d6280ea}{OpenGLCamera::DrawLDR}}(cameraFBO,\ updated);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(cameraFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ viewportWidth,\ viewportHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ glDrawBuffer(GL\_COLOR\_ATTACHMENT1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ cameraColorTex[0]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ flipShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ flipShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}texSource"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent()-\/>DrawSAQ();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ cameraColorTex[1]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ cameraPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ glGetTexImage(GL\_TEXTURE\_2D,\ 0,\ GL\_RGB,\ GL\_UNSIGNED\_BYTE,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ newData\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00192}00192\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{comment}{//Check\ if\ there\ is\ a\ need\ to\ display\ image\ on\ screen}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00194}00194\ \ \ \ \ \textcolor{keywordtype}{bool}\ display\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00195}00195\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ dispX,\ dispY;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00196}00196\ \ \ \ \ GLfloat\ dispScale;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00197}00197\ \ \ \ \ \textcolor{keywordflow}{if}(camera\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ display\ =\ camera-\/>\mbox{\hyperlink{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1}{getDisplayOnScreen}}(dispX,\ dispY,\ dispScale);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00199}00199\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{comment}{//Draw\ on\ screen}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00201}00201\ \ \ \ \ \textcolor{keywordflow}{if}(display)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00202}00202\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_content}{OpenGLContent}}*\ content\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowHeight\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getWindowHeight();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowWidth\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getWindowWidth();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(destinationFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ OpenGLState::DisableCullFace();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ windowWidth,\ windowHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a235f5774c3e89aeaf59cf52e32289548}{SetViewportSize}}(windowWidth,\ windowHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a2185c75674108e8727e05247e79af2f5}{DrawTexturedQuad}}(dispX,\ dispY,\ viewportWidth*dispScale,\ viewportHeight*dispScale,\ cameraColorTex[0]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ OpenGLState::EnableCullFace();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00213}00213\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00216}00216\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00219}00219\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00220}00220\ \textcolor{comment}{float\ computeEV100(float\ aperture,\ float\ shutterTime\ ,\ float\ ISO)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00221}00221\ \textcolor{comment}{\{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00222}00222\ \textcolor{comment}{\ \ \ \ //EV\ number\ is\ defined\ as:}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00223}00223\ \textcolor{comment}{\ \ \ \ //\ 2\string^\ EV\_s\ =\ N\ \string^2\ /\ t\ \ \ \ and\ \ \ \ \ EV\_s\ =\ EV\_100\ +\ log2\ (\ S\ /100)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00224}00224\ \textcolor{comment}{\ \ \ \ //\ This\ gives}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00225}00225\ \textcolor{comment}{\ \ \ \ //\ EV\_s\ =\ log2\ (\ N\ \string^2\ /\ t\ )}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00226}00226\ \textcolor{comment}{\ \ \ \ //\ EV\_100\ +\ log2\ (\ S\ /100)\ =\ log2\ (\ N\ \string^2\ /\ t\ )}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00227}00227\ \textcolor{comment}{\ \ \ \ //\ EV\_100\ =\ log2\ (\ N\ \string^2\ /\ t\ )\ -\/\ log2\ (\ S\ /100)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00228}00228\ \textcolor{comment}{\ \ \ \ //\ EV\_100\ =\ log2\ (\ N\ \string^2\ /\ t\ .\ 100\ /\ S\ )}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00229}00229\ \textcolor{comment}{\ \ \ \ return\ log2(aperture*aperture/shutterTime*100.0/ISO);}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00230}00230\ \textcolor{comment}{\}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00231}00231\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00232}00232\ \textcolor{comment}{float\ computeEV100FromAvgLuminance(float\ avgLuminance)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00233}00233\ \textcolor{comment}{\{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00234}00234\ \textcolor{comment}{\ \ \ \ //\ We\ later\ use\ the\ middle\ gray\ at\ 12.7\%\ in\ order\ to\ have}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00235}00235\ \textcolor{comment}{\ \ \ \ //\ a\ middle\ gray\ at\ 18\%\ with\ a\ sqrt\ (2)\ room\ for\ specular\ highlights}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00236}00236\ \textcolor{comment}{\ \ \ \ //\ But\ here\ we\ deal\ with\ the\ spot\ meter\ measuring\ the\ middle\ gray}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00237}00237\ \textcolor{comment}{\ \ \ \ //\ which\ is\ fixed\ at\ 12.5\ for\ matching\ standard\ camera}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00238}00238\ \textcolor{comment}{\ \ \ \ //\ constructor\ settings\ (\ i\ .\ e\ .\ calibration\ constant\ K\ =\ 12.5)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00239}00239\ \textcolor{comment}{\ \ \ \ //\ Reference:\ http://en.wikipedia.org/wiki/Film\_speed}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00240}00240\ \textcolor{comment}{\ \ \ \ return\ log2(avgLuminance*100.0/12.5);}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00241}00241\ \textcolor{comment}{\}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00242}00242\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00243}00243\ \textcolor{comment}{float\ convertEV100ToExposure(float\ EV100)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00244}00244\ \textcolor{comment}{\{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00245}00245\ \textcolor{comment}{\ \ \ \ //\ Compute\ the\ maximum\ luminance\ possible\ with\ H\_sbs\ sensitivity}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00246}00246\ \textcolor{comment}{\ \ \ \ //\ maxLum\ =\ 78\ /\ (\ S\ *\ q\ )\ *\ N\ \string^2\ /\ t}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00247}00247\ \textcolor{comment}{\ \ \ \ //\ \ \ \ \ \ \ \ =\ 78\ /\ (\ S\ *\ q\ )\ *\ 2\string^\ EV\_100}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00248}00248\ \textcolor{comment}{\ \ \ \ //\ \ \ \ \ \ \ \ =\ 78\ /\ (100\ *\ 0.65)\ *\ 2\string^\ EV\_100}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00249}00249\ \textcolor{comment}{\ \ \ \ //\ \ \ \ \ \ \ \ =\ 1.2\ *\ 2\string^\ EV}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00250}00250\ \textcolor{comment}{\ \ \ \ //\ Reference:\ http://en.wikipedia.org/wiki/Film\_speed}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00251}00251\ \textcolor{comment}{\ \ \ \ float\ maxLuminance\ =\ 1.2*pow(2.0,\ EV100);}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00252}00252\ \textcolor{comment}{\ \ \ \ return\ 1.0/maxLuminance;}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_real_camera_8cpp_source_l00253}00253\ \textcolor{comment}{\}*/}}
+
+\end{DoxyCode}

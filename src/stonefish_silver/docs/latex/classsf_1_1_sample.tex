@@ -1,0 +1,185 @@
+\doxysection{sf\+::Sample Class Reference}
+\hypertarget{classsf_1_1_sample}{}\label{classsf_1_1_sample}\index{sf::Sample@{sf::Sample}}
+
+
+A class representing a single measurement.  
+
+
+
+
+{\ttfamily \#include $<$Sample.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_sample_a44142b7bbffddf595045d67fc5ca6d73}{Sample}} (const std\+::vector$<$ Scalar $>$ \&data, bool invalid=false, uint64\+\_\+t index=0)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_sample_af9336fa86c3f9018da1ef6e8e3ed5704}{Sample}} (const \mbox{\hyperlink{classsf_1_1_sample}{Sample}} \&other, uint64\+\_\+t index=0)
+\begin{DoxyCompactList}\small\item\em A copy constructor. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_sample_a3ed7eed28044b7b610df4c8ff03a84f0}{get\+Timestamp}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the timestamp of the sample. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_sample_ac65775cbe4f99d3845d821b97131ddbc}{get\+Value}} (size\+\_\+t dimension) const
+\begin{DoxyCompactList}\small\item\em A method returning a value of the single dimension of the measurement. \end{DoxyCompactList}\item 
+std\+::vector$<$ Scalar $>$ \mbox{\hyperlink{classsf_1_1_sample_a260fb4a4a872aee80f2fc82a41bb14ec}{get\+Data}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the full data of the measurement. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classsf_1_1_sample_a919a98271ffc9ebd8cc0ed73d2f80ad4}{get\+Num\+Of\+Dimensions}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the number of dimensions of the measurement. \end{DoxyCompactList}\item 
+Scalar \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_sample_a80a81e9431ce6bdc056560c96cca180c}{get\+Data\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the sample data. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classsf_1_1_sample_a3463a245daead6b0e94f92fc78f7b14a}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the id of the sample. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a single measurement. 
+
+Definition at line \mbox{\hyperlink{_sample_8h_source_l00034}{34}} of file \mbox{\hyperlink{_sample_8h_source}{Sample.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_sample_a44142b7bbffddf595045d67fc5ca6d73}\label{classsf_1_1_sample_a44142b7bbffddf595045d67fc5ca6d73} 
+\index{sf::Sample@{sf::Sample}!Sample@{Sample}}
+\index{Sample@{Sample}!sf::Sample@{sf::Sample}}
+\doxysubsubsection{\texorpdfstring{Sample()}{Sample()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily sf\+::\+Sample\+::\+Sample (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Scalar $>$ \&}]{data,  }\item[{bool}]{invalid = {\ttfamily false},  }\item[{uint64\+\_\+t}]{index = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & a vector of values of the measurement \\
+\hline
+{\em invalid} & a flag to mark if it is and invalid output \\
+\hline
+{\em index} & a number specifying the id of the sample \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_sample_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_sample_8cpp_source}{Sample.\+cpp}}.
+
+\Hypertarget{classsf_1_1_sample_af9336fa86c3f9018da1ef6e8e3ed5704}\label{classsf_1_1_sample_af9336fa86c3f9018da1ef6e8e3ed5704} 
+\index{sf::Sample@{sf::Sample}!Sample@{Sample}}
+\index{Sample@{Sample}!sf::Sample@{sf::Sample}}
+\doxysubsubsection{\texorpdfstring{Sample()}{Sample()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily sf\+::\+Sample\+::\+Sample (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsf_1_1_sample}{Sample}} \&}]{other,  }\item[{uint64\+\_\+t}]{index = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+A copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & a reference to a sample object \\
+\hline
+{\em index} & a number specifying the id of the sample \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_sample_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{_sample_8cpp_source}{Sample.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_sample_a260fb4a4a872aee80f2fc82a41bb14ec}\label{classsf_1_1_sample_a260fb4a4a872aee80f2fc82a41bb14ec} 
+\index{sf::Sample@{sf::Sample}!getData@{getData}}
+\index{getData@{getData}!sf::Sample@{sf::Sample}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily std\+::vector$<$ Scalar $>$ sf\+::\+Sample\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the full data of the measurement. 
+
+
+
+Definition at line \mbox{\hyperlink{_sample_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{_sample_8cpp_source}{Sample.\+cpp}}.
+
+\Hypertarget{classsf_1_1_sample_a80a81e9431ce6bdc056560c96cca180c}\label{classsf_1_1_sample_a80a81e9431ce6bdc056560c96cca180c} 
+\index{sf::Sample@{sf::Sample}!getDataPointer@{getDataPointer}}
+\index{getDataPointer@{getDataPointer}!sf::Sample@{sf::Sample}}
+\doxysubsubsection{\texorpdfstring{getDataPointer()}{getDataPointer()}}
+{\footnotesize\ttfamily Scalar \texorpdfstring{$\ast$}{*} sf\+::\+Sample\+::get\+Data\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the sample data. 
+
+
+
+Definition at line \mbox{\hyperlink{_sample_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_sample_8cpp_source}{Sample.\+cpp}}.
+
+\Hypertarget{classsf_1_1_sample_a3463a245daead6b0e94f92fc78f7b14a}\label{classsf_1_1_sample_a3463a245daead6b0e94f92fc78f7b14a} 
+\index{sf::Sample@{sf::Sample}!getId@{getId}}
+\index{getId@{getId}!sf::Sample@{sf::Sample}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily uint64\+\_\+t sf\+::\+Sample\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the id of the sample. 
+
+
+
+Definition at line \mbox{\hyperlink{_sample_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_sample_8cpp_source}{Sample.\+cpp}}.
+
+\Hypertarget{classsf_1_1_sample_a919a98271ffc9ebd8cc0ed73d2f80ad4}\label{classsf_1_1_sample_a919a98271ffc9ebd8cc0ed73d2f80ad4} 
+\index{sf::Sample@{sf::Sample}!getNumOfDimensions@{getNumOfDimensions}}
+\index{getNumOfDimensions@{getNumOfDimensions}!sf::Sample@{sf::Sample}}
+\doxysubsubsection{\texorpdfstring{getNumOfDimensions()}{getNumOfDimensions()}}
+{\footnotesize\ttfamily size\+\_\+t sf\+::\+Sample\+::get\+Num\+Of\+Dimensions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the number of dimensions of the measurement. 
+
+
+
+Definition at line \mbox{\hyperlink{_sample_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_sample_8cpp_source}{Sample.\+cpp}}.
+
+\Hypertarget{classsf_1_1_sample_a3ed7eed28044b7b610df4c8ff03a84f0}\label{classsf_1_1_sample_a3ed7eed28044b7b610df4c8ff03a84f0} 
+\index{sf::Sample@{sf::Sample}!getTimestamp@{getTimestamp}}
+\index{getTimestamp@{getTimestamp}!sf::Sample@{sf::Sample}}
+\doxysubsubsection{\texorpdfstring{getTimestamp()}{getTimestamp()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Sample\+::get\+Timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the timestamp of the sample. 
+
+
+
+Definition at line \mbox{\hyperlink{_sample_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_sample_8cpp_source}{Sample.\+cpp}}.
+
+\Hypertarget{classsf_1_1_sample_ac65775cbe4f99d3845d821b97131ddbc}\label{classsf_1_1_sample_ac65775cbe4f99d3845d821b97131ddbc} 
+\index{sf::Sample@{sf::Sample}!getValue@{getValue}}
+\index{getValue@{getValue}!sf::Sample@{sf::Sample}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Sample\+::get\+Value (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dimension }\end{DoxyParamCaption}) const}
+
+
+
+A method returning a value of the single dimension of the measurement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dimension} & the index of the dimension \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of the measurement for the dimension 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_sample_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_sample_8cpp_source}{Sample.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/sensors/Sample.\+h\item 
+Library/src/sensors/Sample.\+cpp\end{DoxyCompactItemize}

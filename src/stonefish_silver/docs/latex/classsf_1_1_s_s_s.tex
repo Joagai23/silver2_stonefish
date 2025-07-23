@@ -1,0 +1,570 @@
+\doxysection{sf\+::SSS Class Reference}
+\hypertarget{classsf_1_1_s_s_s}{}\label{classsf_1_1_s_s_s}\index{sf::SSS@{sf::SSS}}
+
+
+A class representing a side-\/scan sonar.  
+
+
+
+
+{\ttfamily \#include $<$SSS.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::SSS\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classsf_1_1_s_s_s__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::SSS\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classsf_1_1_s_s_s__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_s_s_s_a12498a0c3ab378323af7d08203334e98}{SSS}} (std\+::string unique\+Name, unsigned int num\+Of\+Bins, unsigned int num\+Of\+Lines, Scalar vertical\+Beam\+Width\+Deg, Scalar horizontal\+Beam\+Width\+Deg, Scalar vertical\+Tilt\+Deg, Scalar min\+Range, Scalar max\+Range, Color\+Map cm, Scalar frequency=Scalar(-\/1))
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_s_s_s_abf09f245bd7355409da66f8865e2af14}{\texorpdfstring{$\sim$}{\string~}\+SSS}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_s_s_s_a9854144ff2a4aad0d049df627d31c46f}{Internal\+Update}} (Scalar dt) override
+\begin{DoxyCompactList}\small\item\em A method performing internal sensor state update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_s_s_s_a226eb73bd4c73484d0d82e3ca5202a43}{Setup\+Camera}} (const Vector3 \&eye, const Vector3 \&dir, const Vector3 \&up) override
+\begin{DoxyCompactList}\small\item\em A method used to setup the Open\+GL sonar transformation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_s_s_s_a67dae37506209b5f92b54c4980020e62}{New\+Data\+Ready}} (void \texorpdfstring{$\ast$}{*}data, unsigned int index=0) override
+\begin{DoxyCompactList}\small\item\em A method used to inform about new data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_s_s_s_ada2b6fdb1c4a60b9f0d38587aceae04a}{Install\+New\+Data\+Handler}} (std\+::function$<$ void(\mbox{\hyperlink{classsf_1_1_s_s_s}{SSS}} \texorpdfstring{$\ast$}{*})$>$ callback)
+\begin{DoxyCompactList}\small\item\em A method used to set a callback function called when new data is available. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_s_s_s_ab1a234e93c7258467bbc101b1ea7eb3c}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the sonar dummy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_s_s_s_a24c7919054ea757f9ac910f51c747cd6}{set\+Range\+Min}} (Scalar r)
+\begin{DoxyCompactList}\small\item\em A method setting the minimum range of the sonar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_s_s_s_aa654e8fc059235cbcd3c861827699135}{set\+Range\+Max}} (Scalar r)
+\begin{DoxyCompactList}\small\item\em A method setting the minimum range of the sonar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_s_s_s_a98803fba79c73ce00bc3a654dfafff9e}{set\+Gain}} (Scalar g)
+\begin{DoxyCompactList}\small\item\em A method setting the gain of the sonar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_s_s_s_a14cada69b642ac5914a8e249eec12417}{set\+Noise}} (float multiplicative\+Std\+Dev, float additive\+Std\+Dev)
+\begin{DoxyCompactList}\small\item\em A method setting the noise characteristics of the sensor. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_s_s_s_a6c6e94c3b6dc3884a691655cdc85ede8}{get\+Range\+Min}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the minimum range of the sonar. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_s_s_s_a94f1e3690081f6ad84565553dc35adfb}{get\+Range\+Max}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the maximum range of the sonar. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_s_s_s_a1a27dcd32a1811a6616ea9877961d000}{get\+Gain}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the gain of the sonar. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_s_s_s_a7e1c73ecfb73bd2566dce514a816d82c}{get\+Image\+Data\+Pointer}} (unsigned int index=0)
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the sonar data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_s_s_s_ac1c3d77cc66678d8e9a224c702855551}{get\+Display\+Resolution}} (unsigned int \&x, unsigned int \&y) const
+\begin{DoxyCompactList}\small\item\em A method returning the resolution of the simulated display image. \end{DoxyCompactList}\item 
+GLubyte \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_s_s_s_a6b6bbb2512e2ba6ed969fb84110ffbd1}{get\+Display\+Data\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the visualisation image data. \end{DoxyCompactList}\item 
+Vision\+Sensor\+Type \mbox{\hyperlink{classsf_1_1_s_s_s_a0139fb97bb3d4baa7bbdb8ebdd947539}{get\+Vision\+Sensor\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em A method returning the type of the vision sensor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_s_s_s_abdee853afcabee3640325750989e1892}{get\+Open\+GLView}} () const override
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the underlaying \doxylink{classsf_1_1_open_g_l_view}{Open\+GLView} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_camera}{sf\+::\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_camera_aeb5eb620ca22f28797cbbe4b326bf502}{Camera}} (std\+::string unique\+Name, unsigned int resolutionX, unsigned int resolutionY, Scalar horiz\+FOVDeg, Scalar frequency)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_camera_aad088fd0fd4251cd01241b2830ddb12d}{\texorpdfstring{$\sim$}{\string~}\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_camera_a0a5420ed6151ff87c2b19b8bdab2378c}{Update\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em A method updating the transform of the camera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_camera_a36dd144db3efbefa984b66386252bbfb}{set\+Display\+On\+Screen}} (bool display, unsigned int x, unsigned int y, float scale)
+\begin{DoxyCompactList}\small\item\em A method to set if the camera image should be displayed in the main window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1}{get\+Display\+On\+Screen}} (unsigned int \&x, unsigned int \&y, float \&scale) const
+\begin{DoxyCompactList}\small\item\em A method informing if the camera image should be displayed in the main window. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_camera_ad37850eb7a5ed736ca040a82c12b6670}{get\+Horizontal\+FOV}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the horizontal field of view of the camera \mbox{[}deg\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_camera_a4799622b0a6d8e248194f1f2ee6abd66}{get\+Resolution}} (unsigned int \&x, unsigned int \&y) const
+\begin{DoxyCompactList}\small\item\em A method returning the resolution of the camera image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_vision_sensor}{sf\+::\+Vision\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_vision_sensor_af41022e651cd70b6b35f2db1df41865a}{Vision\+Sensor}} (std\+::string unique\+Name, Scalar frequency)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_vision_sensor_a02d14bd65e0336c75b45ec7191db92c2}{\texorpdfstring{$\sim$}{\string~}\+Vision\+Sensor}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_a3322f3d63ea68552af2e200f64f096cc}{Attach\+To\+World}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the sensor to the world frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_a684221c5df06d848939b698215e43a5f}{Attach\+To\+Static}} (\mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the sensor to a static body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_aec472750b0b3152244ee876d25b4b078}{Attach\+To\+Solid}} (\mbox{\hyperlink{classsf_1_1_moving_entity}{Moving\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the sensor to a moving body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_a7704e51003f026485516c6eda975bde8}{set\+Relative\+Sensor\+Frame}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to set the sensor frame in the body frame. \end{DoxyCompactList}\item 
+Sensor\+Type \mbox{\hyperlink{classsf_1_1_vision_sensor_a3731ddd51f7409f5552e63dcf70ba1a6}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em A method returning the type of the sensor. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_vision_sensor_a6c72f9b87b43148b0414171cb79d9d99}{get\+Sensor\+Frame}} () const override
+\begin{DoxyCompactList}\small\item\em A method returning the sensor measurement frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_vision_sensor_aeccae84ef012884a1e1d959be668002b}{get\+Sensor\+Velocity}} (Vector3 \&linear, Vector3 \&angular) const override
+\begin{DoxyCompactList}\small\item\em A method returning the velocity of the sensor measurement frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_sensor}{sf\+::\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_sensor_a4fa5066daa661b490da39847a33f7f9e}{Sensor}} (std\+::string unique\+Name, Scalar frequency)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_sensor_a3cbf4a52d00e960c54f2e48fe65a8d9e}{\texorpdfstring{$\sim$}{\string~}\+Sensor}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_sensor_a21e4c9bec38f3ef1be7f118b49dd0ac4}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em A method that resets the sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a98d2a4098ed80b201ff5bbd6806d4186}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method that updates the sensor readings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a0ea8c6219ae2902d628173d3e6f15598}{Mark\+Data\+Old}} ()
+\begin{DoxyCompactList}\small\item\em A method used to mark data as old. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_sensor_a3c5344ec8a22c66287ef5fd7cbb713b5}{is\+New\+Data\+Available}} () const
+\begin{DoxyCompactList}\small\item\em A method to check if new data is available. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a8ee40c7aac3f5bbe96ed518f9154a461}{set\+Update\+Frequency}} (Scalar f)
+\begin{DoxyCompactList}\small\item\em A method to set the sampling rate of the sensor. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_sensor_a23907adaf9595dd7c090f6ed45221b92}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the sensor\textquotesingle{}s name. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_sensor_ae901e626d7d21bef292270913595feb6}{get\+Update\+Frequency}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the sampling rate of the sensor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_sensor_a75ad0f90629cf1abcbb5037019bd1bc8}{is\+Enabled}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the sensor is enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_sensor_a7ed0e8bb0e676260491b2460d7b66b6c}{is\+Renderable}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the sensor is renderable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a74a5a0831e01e07013ba8b9320b3fd08}{set\+Enabled}} (bool en)
+\begin{DoxyCompactList}\small\item\em A method to set if the sensor is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_afbfa0a29c2630172237d3676cc7d8a31}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method to set if the sensor is renderable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_sensor_a0e76030532c4d10f55413d561289a8a1}{set\+Visual}} (const std\+::string \&mesh\+Filename, Scalar scale, const std\+::string \&look)
+\begin{DoxyCompactList}\small\item\em A method to set the visual representation of the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_camera}{sf\+::\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_camera_ab8b158c60f72076580bad8c51a6ecaa9}{fovH}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_camera_a30e888edd85e4a1cfb857f2607692a3a}{resX}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_camera_a490a60e4b4c6931f2c23ee948c736d44}{resY}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_camera_a5f5f3133294014d64a7827643383c2d7}{screenX}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_camera_af91bbeb274a51c8aab99166ba5bc0cf6}{screenY}}
+\item 
+float \mbox{\hyperlink{classsf_1_1_camera_a0bbd8c0ff96c1a41925996ef92322f0c}{screen\+Scale}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_camera_a1c5843ccc96af10481d7ca4e1ffb5462}{screen}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_sensor}{sf\+::\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_sensor_a43d8bcedc897b7918cc4f019986057a0}{freq}}
+\item 
+SDL\+\_\+mutex \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_sensor_a32f058239946917dfa6c2c0becf924aa}{update\+Mutex}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_sensor}{sf\+::\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::random\+\_\+device \mbox{\hyperlink{classsf_1_1_sensor_aaae6aef349de11ef7cdbf211688ff04d}{random\+Device}}
+\item 
+static std\+::mt19937 \mbox{\hyperlink{classsf_1_1_sensor_afc04af9b6666291829b792963ee558ad}{random\+Generator}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a side-\/scan sonar. 
+
+Definition at line \mbox{\hyperlink{_s_s_s_8h_source_l00038}{38}} of file \mbox{\hyperlink{_s_s_s_8h_source}{SSS.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_s_s_s_a12498a0c3ab378323af7d08203334e98}\label{classsf_1_1_s_s_s_a12498a0c3ab378323af7d08203334e98} 
+\index{sf::SSS@{sf::SSS}!SSS@{SSS}}
+\index{SSS@{SSS}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{SSS()}{SSS()}}
+{\footnotesize\ttfamily sf\+::\+SSS\+::\+SSS (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{unsigned int}]{num\+Of\+Bins,  }\item[{unsigned int}]{num\+Of\+Lines,  }\item[{Scalar}]{vertical\+Beam\+Width\+Deg,  }\item[{Scalar}]{horizontal\+Beam\+Width\+Deg,  }\item[{Scalar}]{vertical\+Tilt\+Deg,  }\item[{Scalar}]{min\+Range,  }\item[{Scalar}]{max\+Range,  }\item[{Color\+Map}]{cm,  }\item[{Scalar}]{frequency = {\ttfamily Scalar(-\/1)} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the sensor \\
+\hline
+{\em num\+Of\+Bins} & the number of the range bins in the sonar image \\
+\hline
+{\em num\+Of\+Lines} & the length of the waterfall display memory \\
+\hline
+{\em vertical\+Beam\+Width\+Deg} & the vertical width of the beam \mbox{[}deg\mbox{]} \\
+\hline
+{\em horizontal\+Beam\+Width\+Deg} & the horizontal width of the beam \mbox{[}deg\mbox{]} \\
+\hline
+{\em vertical\+Tilt\+Deg} & the angle between the horizon and the transducer axis \mbox{[}deg\mbox{]} \\
+\hline
+{\em min\+Range} & the minimum measured range \mbox{[}m\mbox{]} \\
+\hline
+{\em max\+Range} & the maximum measured range \mbox{[}m\mbox{]} \\
+\hline
+{\em cm} & the color map used to display sonar data \\
+\hline
+{\em frequency} & the sampling frequency of the sensor \mbox{[}Hz\mbox{]} (-\/1 if updated based on maximum range) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_abf09f245bd7355409da66f8865e2af14}\label{classsf_1_1_s_s_s_abf09f245bd7355409da66f8865e2af14} 
+\index{sf::SSS@{sf::SSS}!````~SSS@{\texorpdfstring{$\sim$}{\string~}SSS}}
+\index{````~SSS@{\texorpdfstring{$\sim$}{\string~}SSS}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SSS()}{\string~SSS()}}
+{\footnotesize\ttfamily sf\+::\+SSS\+::\texorpdfstring{$\sim$}{\string~}\+SSS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_s_s_s_a6b6bbb2512e2ba6ed969fb84110ffbd1}\label{classsf_1_1_s_s_s_a6b6bbb2512e2ba6ed969fb84110ffbd1} 
+\index{sf::SSS@{sf::SSS}!getDisplayDataPointer@{getDisplayDataPointer}}
+\index{getDisplayDataPointer@{getDisplayDataPointer}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{getDisplayDataPointer()}{getDisplayDataPointer()}}
+{\footnotesize\ttfamily GLubyte \texorpdfstring{$\ast$}{*} sf\+::\+SSS\+::get\+Display\+Data\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the visualisation image data. 
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_ac1c3d77cc66678d8e9a224c702855551}\label{classsf_1_1_s_s_s_ac1c3d77cc66678d8e9a224c702855551} 
+\index{sf::SSS@{sf::SSS}!getDisplayResolution@{getDisplayResolution}}
+\index{getDisplayResolution@{getDisplayResolution}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{getDisplayResolution()}{getDisplayResolution()}}
+{\footnotesize\ttfamily void sf\+::\+SSS\+::get\+Display\+Resolution (\begin{DoxyParamCaption}\item[{unsigned int \&}]{x,  }\item[{unsigned int \&}]{y }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the resolution of the simulated display image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & a reference to a variable that will store the horizontal resolution \mbox{[}pix\mbox{]} \\
+\hline
+{\em y} & a reference to a variable that will store the vertical resolution \mbox{[}pix\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a1a27dcd32a1811a6616ea9877961d000}\label{classsf_1_1_s_s_s_a1a27dcd32a1811a6616ea9877961d000} 
+\index{sf::SSS@{sf::SSS}!getGain@{getGain}}
+\index{getGain@{getGain}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{getGain()}{getGain()}}
+{\footnotesize\ttfamily Scalar sf\+::\+SSS\+::get\+Gain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the gain of the sonar. 
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a7e1c73ecfb73bd2566dce514a816d82c}\label{classsf_1_1_s_s_s_a7e1c73ecfb73bd2566dce514a816d82c} 
+\index{sf::SSS@{sf::SSS}!getImageDataPointer@{getImageDataPointer}}
+\index{getImageDataPointer@{getImageDataPointer}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{getImageDataPointer()}{getImageDataPointer()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} sf\+::\+SSS\+::get\+Image\+Data\+Pointer (\begin{DoxyParamCaption}\item[{unsigned int}]{index = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning a pointer to the sonar data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the Open\+GL camera (here sonar) for which the data pointer is requested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the image data buffer 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_camera_ab192f82ec45eda0c4b4854c59f453191}{sf\+::\+Camera}}.
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_abdee853afcabee3640325750989e1892}\label{classsf_1_1_s_s_s_abdee853afcabee3640325750989e1892} 
+\index{sf::SSS@{sf::SSS}!getOpenGLView@{getOpenGLView}}
+\index{getOpenGLView@{getOpenGLView}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{getOpenGLView()}{getOpenGLView()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*} sf\+::\+SSS\+::get\+Open\+GLView (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method returning a pointer to the underlaying \doxylink{classsf_1_1_open_g_l_view}{Open\+GLView} object. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_vision_sensor_a78651f227d3eaac69eb697eb59be46c6}{sf\+::\+Vision\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a94f1e3690081f6ad84565553dc35adfb}\label{classsf_1_1_s_s_s_a94f1e3690081f6ad84565553dc35adfb} 
+\index{sf::SSS@{sf::SSS}!getRangeMax@{getRangeMax}}
+\index{getRangeMax@{getRangeMax}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{getRangeMax()}{getRangeMax()}}
+{\footnotesize\ttfamily Scalar sf\+::\+SSS\+::get\+Range\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the maximum range of the sonar. 
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a6c6e94c3b6dc3884a691655cdc85ede8}\label{classsf_1_1_s_s_s_a6c6e94c3b6dc3884a691655cdc85ede8} 
+\index{sf::SSS@{sf::SSS}!getRangeMin@{getRangeMin}}
+\index{getRangeMin@{getRangeMin}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{getRangeMin()}{getRangeMin()}}
+{\footnotesize\ttfamily Scalar sf\+::\+SSS\+::get\+Range\+Min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the minimum range of the sonar. 
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a0139fb97bb3d4baa7bbdb8ebdd947539}\label{classsf_1_1_s_s_s_a0139fb97bb3d4baa7bbdb8ebdd947539} 
+\index{sf::SSS@{sf::SSS}!getVisionSensorType@{getVisionSensorType}}
+\index{getVisionSensorType@{getVisionSensorType}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{getVisionSensorType()}{getVisionSensorType()}}
+{\footnotesize\ttfamily Vision\+Sensor\+Type sf\+::\+SSS\+::get\+Vision\+Sensor\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method returning the type of the vision sensor. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_vision_sensor_a53bac3b4f357e545a33a379a8e70f379}{sf\+::\+Vision\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00119}{119}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_ada2b6fdb1c4a60b9f0d38587aceae04a}\label{classsf_1_1_s_s_s_ada2b6fdb1c4a60b9f0d38587aceae04a} 
+\index{sf::SSS@{sf::SSS}!InstallNewDataHandler@{InstallNewDataHandler}}
+\index{InstallNewDataHandler@{InstallNewDataHandler}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{InstallNewDataHandler()}{InstallNewDataHandler()}}
+{\footnotesize\ttfamily void sf\+::\+SSS\+::\+Install\+New\+Data\+Handler (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(\mbox{\hyperlink{classsf_1_1_s_s_s}{SSS}} \texorpdfstring{$\ast$}{*})$>$}]{callback }\end{DoxyParamCaption})}
+
+
+
+A method used to set a callback function called when new data is available. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & a function to be called \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00154}{154}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a9854144ff2a4aad0d049df627d31c46f}\label{classsf_1_1_s_s_s_a9854144ff2a4aad0d049df627d31c46f} 
+\index{sf::SSS@{sf::SSS}!InternalUpdate@{InternalUpdate}}
+\index{InternalUpdate@{InternalUpdate}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{InternalUpdate()}{InternalUpdate()}}
+{\footnotesize\ttfamily void sf\+::\+SSS\+::\+Internal\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method performing internal sensor state update. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & the step time of the simulation \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_vision_sensor_a91ebad0fc4a9a53d95ffd1ce6b34e5b3}{sf\+::\+Vision\+Sensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a67dae37506209b5f92b54c4980020e62}\label{classsf_1_1_s_s_s_a67dae37506209b5f92b54c4980020e62} 
+\index{sf::SSS@{sf::SSS}!NewDataReady@{NewDataReady}}
+\index{NewDataReady@{NewDataReady}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{NewDataReady()}{NewDataReady()}}
+{\footnotesize\ttfamily void sf\+::\+SSS\+::\+New\+Data\+Ready (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{data,  }\item[{unsigned int}]{index = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method used to inform about new data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the Open\+GL camera (here sonar) uploading the data \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_camera_a2573a5fa3ff14b022cae3e93be5e781a}{sf\+::\+Camera}}.
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00159}{159}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_ab1a234e93c7258467bbc101b1ea7eb3c}\label{classsf_1_1_s_s_s_ab1a234e93c7258467bbc101b1ea7eb3c} 
+\index{sf::SSS@{sf::SSS}!Render@{Render}}
+\index{Render@{Render}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+SSS\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the sonar dummy. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_camera_a103f1cf1257b72583a8dc7e181249843}{sf\+::\+Camera}}.
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a98803fba79c73ce00bc3a654dfafff9e}\label{classsf_1_1_s_s_s_a98803fba79c73ce00bc3a654dfafff9e} 
+\index{sf::SSS@{sf::SSS}!setGain@{setGain}}
+\index{setGain@{setGain}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{setGain()}{setGain()}}
+{\footnotesize\ttfamily void sf\+::\+SSS\+::set\+Gain (\begin{DoxyParamCaption}\item[{Scalar}]{g }\end{DoxyParamCaption})}
+
+
+
+A method setting the gain of the sonar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & gain factor \mbox{[}1\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a14cada69b642ac5914a8e249eec12417}\label{classsf_1_1_s_s_s_a14cada69b642ac5914a8e249eec12417} 
+\index{sf::SSS@{sf::SSS}!setNoise@{setNoise}}
+\index{setNoise@{setNoise}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{setNoise()}{setNoise()}}
+{\footnotesize\ttfamily void sf\+::\+SSS\+::set\+Noise (\begin{DoxyParamCaption}\item[{float}]{multiplicative\+Std\+Dev,  }\item[{float}]{additive\+Std\+Dev }\end{DoxyParamCaption})}
+
+
+
+A method setting the noise characteristics of the sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em multiplicative\+Std\+Dev} & the standard deviation of the multiplicative noise \\
+\hline
+{\em additive\+Std\+Dev} & the standard deviation of the additive noise \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_aa654e8fc059235cbcd3c861827699135}\label{classsf_1_1_s_s_s_aa654e8fc059235cbcd3c861827699135} 
+\index{sf::SSS@{sf::SSS}!setRangeMax@{setRangeMax}}
+\index{setRangeMax@{setRangeMax}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{setRangeMax()}{setRangeMax()}}
+{\footnotesize\ttfamily void sf\+::\+SSS\+::set\+Range\+Max (\begin{DoxyParamCaption}\item[{Scalar}]{r }\end{DoxyParamCaption})}
+
+
+
+A method setting the minimum range of the sonar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & range \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a24c7919054ea757f9ac910f51c747cd6}\label{classsf_1_1_s_s_s_a24c7919054ea757f9ac910f51c747cd6} 
+\index{sf::SSS@{sf::SSS}!setRangeMin@{setRangeMin}}
+\index{setRangeMin@{setRangeMin}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{setRangeMin()}{setRangeMin()}}
+{\footnotesize\ttfamily void sf\+::\+SSS\+::set\+Range\+Min (\begin{DoxyParamCaption}\item[{Scalar}]{r }\end{DoxyParamCaption})}
+
+
+
+A method setting the minimum range of the sonar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & range \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+\Hypertarget{classsf_1_1_s_s_s_a226eb73bd4c73484d0d82e3ca5202a43}\label{classsf_1_1_s_s_s_a226eb73bd4c73484d0d82e3ca5202a43} 
+\index{sf::SSS@{sf::SSS}!SetupCamera@{SetupCamera}}
+\index{SetupCamera@{SetupCamera}!sf::SSS@{sf::SSS}}
+\doxysubsubsection{\texorpdfstring{SetupCamera()}{SetupCamera()}}
+{\footnotesize\ttfamily void sf\+::\+SSS\+::\+Setup\+Camera (\begin{DoxyParamCaption}\item[{const Vector3 \&}]{eye,  }\item[{const Vector3 \&}]{dir,  }\item[{const Vector3 \&}]{up }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method used to setup the Open\+GL sonar transformation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eye} & the position of the sonar eye \mbox{[}m\mbox{]} \\
+\hline
+{\em dir} & a unit vector parallel to the central axis of the sonar \\
+\hline
+{\em up} & a unit vector perpendicular to the sonar scanning plane \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_camera_a634bfc5cc912f01b7f5c2bd9a1b8ea35}{sf\+::\+Camera}}.
+
+
+
+Definition at line \mbox{\hyperlink{_s_s_s_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_s_s_s_8cpp_source}{SSS.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/sensors/vision/SSS.\+h\item 
+Library/src/sensors/vision/SSS.\+cpp\end{DoxyCompactItemize}

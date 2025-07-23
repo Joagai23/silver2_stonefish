@@ -1,0 +1,446 @@
+\doxysection{sf\+::Atmosphere Class Reference}
+\hypertarget{classsf_1_1_atmosphere}{}\label{classsf_1_1_atmosphere}\index{sf::Atmosphere@{sf::Atmosphere}}
+
+
+A class representing the atmosphere.  
+
+
+
+
+{\ttfamily \#include $<$Atmosphere.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Atmosphere\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classsf_1_1_atmosphere__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Atmosphere\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classsf_1_1_atmosphere__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_atmosphere_a5d6c57dc97c39adfa079756e8ea2e9bd}{Atmosphere}} (std\+::string unique\+Name, \mbox{\hyperlink{structsf_1_1_fluid}{Fluid}} g)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_atmosphere_abd8489f53b8bd34e60e7280210597d96}{\texorpdfstring{$\sim$}{\string~}\+Atmosphere}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_atmosphere_af24292dfa94afe2dba56ce82a2aedb90}{Init\+Graphics}} (const \mbox{\hyperlink{structsf_1_1_render_settings}{Render\+Settings}} \&s)
+\begin{DoxyCompactList}\small\item\em A method implementing graphics initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_atmosphere_a4f8e22d57a9656968e003b2067b6f291}{Set\+Sun\+Position}} (Scalar longitude\+Deg, Scalar latitude\+Deg, std\+::tm \&utc)
+\begin{DoxyCompactList}\small\item\em A method used to set the position of the sun in the sky. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_atmosphere_a4e9858cebbdcc873959934ca059162e2}{Set\+Sun\+Position}} (Scalar azimuth\+Deg, Scalar elevation\+Deg)
+\begin{DoxyCompactList}\small\item\em A method used to set the position of the sun in the sky. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_atmosphere_aa782de494e28ef738088136d18a7190d}{Set\+Conditions}} (Scalar temperature, Scalar pressure, Scalar humidity)
+\begin{DoxyCompactList}\small\item\em A method used to set the atmospheric conditions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_atmosphere_a599d94320e1064e7322cec986c31b203}{Add\+Velocity\+Field}} (\mbox{\hyperlink{classsf_1_1_velocity_field}{Velocity\+Field}} \texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em A method used to add a velocity field to the atmosphere. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_atmosphere_af4264569b88f6fdd42f3260b7a43b04d}{Apply\+Fluid\+Forces}} (bt\+Dynamics\+World \texorpdfstring{$\ast$}{*}world, bt\+Collision\+Object \texorpdfstring{$\ast$}{*}co, bool recompute)
+\begin{DoxyCompactList}\small\item\em A method running the aerodynamics computation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_atmosphere_a658833e10055ea3fc69490fb2ce80077}{Get\+Sun\+Position}} (Scalar \&azimuth\+Deg, Scalar \&elevation\+Deg)
+\begin{DoxyCompactList}\small\item\em A method returning the position of the sun in the sky. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_atmosphere_a4d9adb9a7238554f3a20ecf88b2e4adc}{Get\+Sun\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em A method returning sun directional vector. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_atmosphere_afc0c2749a79166fee85b90dc9c6232d3}{Get\+Fluid\+Velocity}} (const Vector3 \&point) const
+\begin{DoxyCompactList}\small\item\em A method returning the air velocity. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_atmosphere_a9efcf7efdcd4edbd1f3b10a0d2391019}{Get\+Fluid\+Velocity}} (const glm\+::vec3 \&point) const
+\item 
+bool \mbox{\hyperlink{classsf_1_1_atmosphere_af9c30583dc8ed6c97ff407ddde17bb46}{Is\+Inside\+Fluid}} (const Vector3 \&point) const
+\begin{DoxyCompactList}\small\item\em A method checking if a point is inside atmosphere. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsf_1_1_fluid}{Fluid}} \mbox{\hyperlink{classsf_1_1_atmosphere_af33a0a9b0c94734ad2e8dfd8ed8f4aa7}{get\+Gas}} () const
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the gas filling the atmosphere. \end{DoxyCompactList}\item 
+Forcefield\+Type \mbox{\hyperlink{classsf_1_1_atmosphere_ab9ba65b2b0ca82759262eff76937c26a}{get\+Forcefield\+Type}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the type of the force field. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere}{Open\+GLAtmosphere}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_atmosphere_ad11561b288d0af9338fea0fba0c08df0}{get\+Open\+GLAtmosphere}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the Open\+GL atmosphere object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_forcefield_entity}{sf\+::\+Forcefield\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_forcefield_entity_abcedda131ba9146285b2b9b3954fe12f}{Forcefield\+Entity}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_forcefield_entity_af4c60be886f3c80cbd9289b5b9bc3973}{\texorpdfstring{$\sim$}{\string~}\+Forcefield\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_forcefield_entity_a01d002a16e0240e204e87ff2b56ff90d}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A method used to add the force field to the simulation. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_forcefield_entity_abcdf18028e2dca5f1453a290ea886595}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the force field. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_forcefield_entity_a1befb1bd41ee843679748b20f38915a9}{get\+AABB}} (Vector3 \&min, Vector3 \&max)
+\begin{DoxyCompactList}\small\item\em A method returning the extents of the force field axis alligned bounding box. \end{DoxyCompactList}\item 
+bt\+Pair\+Caching\+Ghost\+Object \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_forcefield_entity_a2751460d6ad7bb513a3b95cacf520ff2}{get\+Ghost}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the pair caching object for the force field. \end{DoxyCompactList}\item 
+Entity\+Type \mbox{\hyperlink{classsf_1_1_forcefield_entity_ac3ff5ea2a10d941039b258d9e9442c72}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_entity}{sf\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_entity_a89127a850fa48fe25fbf6f5a355f7f9c}{Entity}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_entity_a4b728d6d4ff242dc0b4f116822cccd33}{\texorpdfstring{$\sim$}{\string~}\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_entity_a5b92af995ae80397f64cb97fe3d6a866}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method used to set if the entity should be renderable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_entity_a1560e090759bc9491609e38b69ff1033}{is\+Renderable}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the entity is renderable. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classsf_1_1_atmosphere_a257e4eb74aa8567a38f2f3631d20ee51}{Julian\+Day}} (std\+::tm \&tm)
+\begin{DoxyCompactList}\small\item\em A static method to compute Julian day form time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_forcefield_entity}{sf\+::\+Forcefield\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Pair\+Caching\+Ghost\+Object \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_forcefield_entity_a0eb7dda9bb89f6afe1a4a026759a6a91}{ghost}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing the atmosphere. 
+
+Definition at line \mbox{\hyperlink{_atmosphere_8h_source_l00041}{41}} of file \mbox{\hyperlink{_atmosphere_8h_source}{Atmosphere.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_atmosphere_a5d6c57dc97c39adfa079756e8ea2e9bd}\label{classsf_1_1_atmosphere_a5d6c57dc97c39adfa079756e8ea2e9bd} 
+\index{sf::Atmosphere@{sf::Atmosphere}!Atmosphere@{Atmosphere}}
+\index{Atmosphere@{Atmosphere}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{Atmosphere()}{Atmosphere()}}
+{\footnotesize\ttfamily sf\+::\+Atmosphere\+::\+Atmosphere (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{\mbox{\hyperlink{structsf_1_1_fluid}{Fluid}}}]{g }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & the name for the atmosphere \\
+\hline
+{\em f} & a pointer to the gas filling the atmosphere (normally air) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_abd8489f53b8bd34e60e7280210597d96}\label{classsf_1_1_atmosphere_abd8489f53b8bd34e60e7280210597d96} 
+\index{sf::Atmosphere@{sf::Atmosphere}!````~Atmosphere@{\texorpdfstring{$\sim$}{\string~}Atmosphere}}
+\index{````~Atmosphere@{\texorpdfstring{$\sim$}{\string~}Atmosphere}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Atmosphere()}{\string~Atmosphere()}}
+{\footnotesize\ttfamily sf\+::\+Atmosphere\+::\texorpdfstring{$\sim$}{\string~}\+Atmosphere (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_atmosphere_a599d94320e1064e7322cec986c31b203}\label{classsf_1_1_atmosphere_a599d94320e1064e7322cec986c31b203} 
+\index{sf::Atmosphere@{sf::Atmosphere}!AddVelocityField@{AddVelocityField}}
+\index{AddVelocityField@{AddVelocityField}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{AddVelocityField()}{AddVelocityField()}}
+{\footnotesize\ttfamily void sf\+::\+Atmosphere\+::\+Add\+Velocity\+Field (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_velocity_field}{Velocity\+Field}} \texorpdfstring{$\ast$}{*}}]{field }\end{DoxyParamCaption})}
+
+
+
+A method used to add a velocity field to the atmosphere. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & a pointer to a velocity field object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_af4264569b88f6fdd42f3260b7a43b04d}\label{classsf_1_1_atmosphere_af4264569b88f6fdd42f3260b7a43b04d} 
+\index{sf::Atmosphere@{sf::Atmosphere}!ApplyFluidForces@{ApplyFluidForces}}
+\index{ApplyFluidForces@{ApplyFluidForces}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{ApplyFluidForces()}{ApplyFluidForces()}}
+{\footnotesize\ttfamily void sf\+::\+Atmosphere\+::\+Apply\+Fluid\+Forces (\begin{DoxyParamCaption}\item[{bt\+Dynamics\+World \texorpdfstring{$\ast$}{*}}]{world,  }\item[{bt\+Collision\+Object \texorpdfstring{$\ast$}{*}}]{co,  }\item[{bool}]{recompute }\end{DoxyParamCaption})}
+
+
+
+A method running the aerodynamics computation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & a pointer to the dynamics world \\
+\hline
+{\em co} & a pointer to the collision object \\
+\hline
+{\em recompute} & a flag deciding if hydrodynamic forces need to be recomputed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_a9efcf7efdcd4edbd1f3b10a0d2391019}\label{classsf_1_1_atmosphere_a9efcf7efdcd4edbd1f3b10a0d2391019} 
+\index{sf::Atmosphere@{sf::Atmosphere}!GetFluidVelocity@{GetFluidVelocity}}
+\index{GetFluidVelocity@{GetFluidVelocity}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{GetFluidVelocity()}{GetFluidVelocity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Atmosphere\+::\+Get\+Fluid\+Velocity (\begin{DoxyParamCaption}\item[{const glm\+::vec3 \&}]{point }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00154}{154}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_afc0c2749a79166fee85b90dc9c6232d3}\label{classsf_1_1_atmosphere_afc0c2749a79166fee85b90dc9c6232d3} 
+\index{sf::Atmosphere@{sf::Atmosphere}!GetFluidVelocity@{GetFluidVelocity}}
+\index{GetFluidVelocity@{GetFluidVelocity}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{GetFluidVelocity()}{GetFluidVelocity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Atmosphere\+::\+Get\+Fluid\+Velocity (\begin{DoxyParamCaption}\item[{const Vector3 \&}]{point }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the air velocity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & the point in the atmosphere where the velocity should be measured \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+air velocity at specified point \mbox{[}m/s\mbox{]} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_ab9ba65b2b0ca82759262eff76937c26a}\label{classsf_1_1_atmosphere_ab9ba65b2b0ca82759262eff76937c26a} 
+\index{sf::Atmosphere@{sf::Atmosphere}!getForcefieldType@{getForcefieldType}}
+\index{getForcefieldType@{getForcefieldType}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{getForcefieldType()}{getForcefieldType()}}
+{\footnotesize\ttfamily Forcefield\+Type sf\+::\+Atmosphere\+::get\+Forcefield\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the force field. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_forcefield_entity_a1ea816ca298fc7bf97b390e40c79412f}{sf\+::\+Forcefield\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_af33a0a9b0c94734ad2e8dfd8ed8f4aa7}\label{classsf_1_1_atmosphere_af33a0a9b0c94734ad2e8dfd8ed8f4aa7} 
+\index{sf::Atmosphere@{sf::Atmosphere}!getGas@{getGas}}
+\index{getGas@{getGas}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{getGas()}{getGas()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_fluid}{Fluid}} sf\+::\+Atmosphere\+::get\+Gas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning a pointer to the gas filling the atmosphere. 
+
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_ad11561b288d0af9338fea0fba0c08df0}\label{classsf_1_1_atmosphere_ad11561b288d0af9338fea0fba0c08df0} 
+\index{sf::Atmosphere@{sf::Atmosphere}!getOpenGLAtmosphere@{getOpenGLAtmosphere}}
+\index{getOpenGLAtmosphere@{getOpenGLAtmosphere}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{getOpenGLAtmosphere()}{getOpenGLAtmosphere()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_open_g_l_atmosphere}{Open\+GLAtmosphere}} \texorpdfstring{$\ast$}{*} sf\+::\+Atmosphere\+::get\+Open\+GLAtmosphere (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the Open\+GL atmosphere object. 
+
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_a4d9adb9a7238554f3a20ecf88b2e4adc}\label{classsf_1_1_atmosphere_a4d9adb9a7238554f3a20ecf88b2e4adc} 
+\index{sf::Atmosphere@{sf::Atmosphere}!GetSunDirection@{GetSunDirection}}
+\index{GetSunDirection@{GetSunDirection}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{GetSunDirection()}{GetSunDirection()}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Atmosphere\+::\+Get\+Sun\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning sun directional vector. 
+
+\begin{DoxyReturn}{Returns}
+sun directional vector 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00135}{135}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_a658833e10055ea3fc69490fb2ce80077}\label{classsf_1_1_atmosphere_a658833e10055ea3fc69490fb2ce80077} 
+\index{sf::Atmosphere@{sf::Atmosphere}!GetSunPosition@{GetSunPosition}}
+\index{GetSunPosition@{GetSunPosition}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{GetSunPosition()}{GetSunPosition()}}
+{\footnotesize\ttfamily void sf\+::\+Atmosphere\+::\+Get\+Sun\+Position (\begin{DoxyParamCaption}\item[{Scalar \&}]{azimuth\+Deg,  }\item[{Scalar \&}]{elevation\+Deg }\end{DoxyParamCaption})}
+
+
+
+A method returning the position of the sun in the sky. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em azimuth\+Deg} & a reference to the variable that will store the azimuth of the sun \mbox{[}deg\mbox{]} \\
+\hline
+{\em elevation\+Deg} & a reference to the variable that will store the elevation of the sun \mbox{[}deg\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_af24292dfa94afe2dba56ce82a2aedb90}\label{classsf_1_1_atmosphere_af24292dfa94afe2dba56ce82a2aedb90} 
+\index{sf::Atmosphere@{sf::Atmosphere}!InitGraphics@{InitGraphics}}
+\index{InitGraphics@{InitGraphics}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{InitGraphics()}{InitGraphics()}}
+{\footnotesize\ttfamily void sf\+::\+Atmosphere\+::\+Init\+Graphics (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structsf_1_1_render_settings}{Render\+Settings}} \&}]{s }\end{DoxyParamCaption})}
+
+
+
+A method implementing graphics initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & a reference to a structure containing the render settings \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_af9c30583dc8ed6c97ff407ddde17bb46}\label{classsf_1_1_atmosphere_af9c30583dc8ed6c97ff407ddde17bb46} 
+\index{sf::Atmosphere@{sf::Atmosphere}!IsInsideFluid@{IsInsideFluid}}
+\index{IsInsideFluid@{IsInsideFluid}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{IsInsideFluid()}{IsInsideFluid()}}
+{\footnotesize\ttfamily bool sf\+::\+Atmosphere\+::\+Is\+Inside\+Fluid (\begin{DoxyParamCaption}\item[{const Vector3 \&}]{point }\end{DoxyParamCaption}) const}
+
+
+
+A method checking if a point is inside atmosphere. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & the position of a point to be checked \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+is the point inside atmosphere? 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00159}{159}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_a257e4eb74aa8567a38f2f3631d20ee51}\label{classsf_1_1_atmosphere_a257e4eb74aa8567a38f2f3631d20ee51} 
+\index{sf::Atmosphere@{sf::Atmosphere}!JulianDay@{JulianDay}}
+\index{JulianDay@{JulianDay}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{JulianDay()}{JulianDay()}}
+{\footnotesize\ttfamily int sf\+::\+Atmosphere\+::\+Julian\+Day (\begin{DoxyParamCaption}\item[{std\+::tm \&}]{tm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to compute Julian day form time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tm} & a reference to a structure containing UTC time \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00198}{198}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_aa782de494e28ef738088136d18a7190d}\label{classsf_1_1_atmosphere_aa782de494e28ef738088136d18a7190d} 
+\index{sf::Atmosphere@{sf::Atmosphere}!SetConditions@{SetConditions}}
+\index{SetConditions@{SetConditions}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{SetConditions()}{SetConditions()}}
+{\footnotesize\ttfamily void sf\+::\+Atmosphere\+::\+Set\+Conditions (\begin{DoxyParamCaption}\item[{Scalar}]{temperature,  }\item[{Scalar}]{pressure,  }\item[{Scalar}]{humidity }\end{DoxyParamCaption})}
+
+
+
+A method used to set the atmospheric conditions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temperature} & the air temperature at sea level \mbox{[}degC\mbox{]} \\
+\hline
+{\em pressure} & the air pressure at sea level \mbox{[}Pa\mbox{]} \\
+\hline
+{\em humidity} & the air relative humidity at sea level \mbox{[}0-\/1\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_a4e9858cebbdcc873959934ca059162e2}\label{classsf_1_1_atmosphere_a4e9858cebbdcc873959934ca059162e2} 
+\index{sf::Atmosphere@{sf::Atmosphere}!SetSunPosition@{SetSunPosition}}
+\index{SetSunPosition@{SetSunPosition}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{SetSunPosition()}{SetSunPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void sf\+::\+Atmosphere\+::\+Set\+Sun\+Position (\begin{DoxyParamCaption}\item[{Scalar}]{azimuth\+Deg,  }\item[{Scalar}]{elevation\+Deg }\end{DoxyParamCaption})}
+
+
+
+A method used to set the position of the sun in the sky. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em azimuth\+Deg} & the sun azimuth \mbox{[}deg\mbox{]} \\
+\hline
+{\em elevation\+Deg} & the sun elevation \mbox{[}deg\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+\Hypertarget{classsf_1_1_atmosphere_a4f8e22d57a9656968e003b2067b6f291}\label{classsf_1_1_atmosphere_a4f8e22d57a9656968e003b2067b6f291} 
+\index{sf::Atmosphere@{sf::Atmosphere}!SetSunPosition@{SetSunPosition}}
+\index{SetSunPosition@{SetSunPosition}!sf::Atmosphere@{sf::Atmosphere}}
+\doxysubsubsection{\texorpdfstring{SetSunPosition()}{SetSunPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void sf\+::\+Atmosphere\+::\+Set\+Sun\+Position (\begin{DoxyParamCaption}\item[{Scalar}]{longitude\+Deg,  }\item[{Scalar}]{latitude\+Deg,  }\item[{std\+::tm \&}]{utc }\end{DoxyParamCaption})}
+
+
+
+A method used to set the position of the sun in the sky. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em longitude\+Deg} & the home longitude \mbox{[}deg\mbox{]} \\
+\hline
+{\em latitude\+Deg} & the home latitude \mbox{[}deg\mbox{]} \\
+\hline
+{\em utc} & the UTC time at home \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_atmosphere_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_atmosphere_8cpp_source}{Atmosphere.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/entities/forcefields/Atmosphere.\+h\item 
+Library/src/entities/forcefields/Atmosphere.\+cpp\end{DoxyCompactItemize}

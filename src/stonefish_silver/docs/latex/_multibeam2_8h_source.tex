@@ -1,0 +1,111 @@
+\doxysection{Multibeam2.\+h}
+\hypertarget{_multibeam2_8h_source}{}\label{_multibeam2_8h_source}\index{Library/include/sensors/vision/Multibeam2.h@{Library/include/sensors/vision/Multibeam2.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00019}00019\ \textcolor{comment}{//\ \ Multibeam2.h}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieślak\ on\ 21/01/2019.}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2019\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_Multibeam2\_\_}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_Multibeam2\_\_}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}sensors/vision/Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLDataStructs.h"{}}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ MULTIBEAM\_MAX\_SINGLE\_FOV\ 30.0}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00035}00035\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{class\ }OpenGLDepthCamera;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00038}00038\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00040}\mbox{\hyperlink{structsf_1_1_cam_data}{00040}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_cam_data}{CamData}}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_depth_camera}{OpenGLDepthCamera}}*\ cam;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ GLfloat\ fovH;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ dataOffset;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00046}00046\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00047}00047\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00049}\mbox{\hyperlink{classsf_1_1_multibeam2}{00049}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_multibeam2}{Multibeam2}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classsf_1_1_camera}{Camera}}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_multibeam2}{Multibeam2}}(std::string\ uniqueName,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ horizontalRes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ verticalRes,\ Scalar\ horizontalFOVDeg,\ Scalar\ verticalFOVDeg,}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ minRange,\ Scalar\ maxRange,\ Scalar\ frequency\ =\ Scalar(-\/1));}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_multibeam2_a9e8c49becde64bf9d59f8d0d49e10090}{\string~Multibeam2}}();}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_multibeam2_aa1badb6a1678e5c882383356d16d748b}{InternalUpdate}}(Scalar\ dt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_multibeam2_ae53137b22a82235af21f618e20ea9e67}{UpdateTransform}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_multibeam2_aafa156d0f42011e3e69e7db23dda98d9}{SetupCamera}}(\textcolor{keyword}{const}\ Vector3\&\ eye,\ \textcolor{keyword}{const}\ Vector3\&\ dir,\ \textcolor{keyword}{const}\ Vector3\&\ up)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_multibeam2_aafa156d0f42011e3e69e7db23dda98d9}{SetupCamera}}(\textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keyword}{const}\ Vector3\&\ eye,\ \textcolor{keyword}{const}\ Vector3\&\ dir,\ \textcolor{keyword}{const}\ Vector3\&\ up);}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_multibeam2_a3522e32a5a86fa3aea769677cc957ae0}{NewDataReady}}(\textcolor{keywordtype}{void}*\ data,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index\ =\ 0)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_multibeam2_a2fa3bcb0dde9e45dc9678a72d67c84e0}{InstallNewDataHandler}}(std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classsf_1_1_multibeam2}{Multibeam2}}*)>\ callback);}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_multibeam2_a3b4b7347d6262476c455cde75cf2dbdc}{Render}}();}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00111}00111\ \ \ \ \ \ \ \ \ glm::vec2\ \mbox{\hyperlink{classsf_1_1_multibeam2_a002a6139a95758d4974baf758c713aea}{getRangeLimits}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_multibeam2_aa51b2ec2796b0c2d758d8c2ebd7e3c67}{getVerticalFOV}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00115}00115\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classsf_1_1_multibeam2_a0260b2007bc94b2bc8547b78d0ed73e3}{getImageDataPointer}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ \mbox{\hyperlink{classsf_1_1_multibeam2_ab7fdeaaa6693dc98620506e004f31ca7}{getRangeDataPointer}}();}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ VisionSensorType\ \mbox{\hyperlink{classsf_1_1_multibeam2_a983e3d2e17b92b23195d0a7be0eb3991}{getVisionSensorType}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ \mbox{\hyperlink{classsf_1_1_multibeam2_a32851807e4ff3bd44d82c283b3413ab6}{getOpenGLView}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00132}00132\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ InitGraphics();}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ std::vector<CamData>\ cameras;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ GLfloat*\ imageData;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ GLfloat*\ rangeData;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ Scalar\ fovV;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ glm::vec2\ range;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00140}00140\ \ \ \ \ \ \ \ \ std::function<void(\mbox{\hyperlink{classsf_1_1_multibeam2}{Multibeam2}}*)>\ newDataCallback;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dataCounter;}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00142}00142\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00147}00147\ \}}
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_multibeam2_8h_source_l00149}00149\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,301 @@
+\doxysection{sf\+::Open\+GLFlat\+Ocean Class Reference}
+\hypertarget{classsf_1_1_open_g_l_flat_ocean}{}\label{classsf_1_1_open_g_l_flat_ocean}\index{sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}}
+
+
+A class implementing flat ocean in Open\+GL.  
+
+
+
+
+{\ttfamily \#include $<$Open\+GLFlat\+Ocean.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Open\+GLFlat\+Ocean\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classsf_1_1_open_g_l_flat_ocean__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Open\+GLFlat\+Ocean\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{classsf_1_1_open_g_l_flat_ocean__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_flat_ocean_a358960b5aa20b17d34dba038fb11e1d6}{Open\+GLFlat\+Ocean}} (GLfloat size)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_flat_ocean_a71f1953b53cd2bc3d2e0378f114fd201}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLFlat\+Ocean}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_flat_ocean_a29240b7f855066a8ef354e5f3e9b4c27}{Update\+Surface}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view) override
+\begin{DoxyCompactList}\small\item\em A method that updates the wave mesh. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_flat_ocean_a37267434ba647ff1e70741fb606e3144}{Draw\+Surface}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view) override
+\begin{DoxyCompactList}\small\item\em A method that draws the surface of the ocean. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_flat_ocean_ab8861d768081c04152162055e2ba1512}{Draw\+Surface\+Temperature}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view) override
+\begin{DoxyCompactList}\small\item\em A method that draws the surface of the ocean as thermal image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_flat_ocean_a224d2d8c4c64c36dce0ae3d4f15002f9}{Draw\+Backsurface}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view) override
+\begin{DoxyCompactList}\small\item\em A method that draws the surface of the ocean, seen from underwater. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_flat_ocean_acff6ada9cef8ebb007d281e22fa542dc}{Draw\+Underwater\+Mask}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view) override
+\begin{DoxyCompactList}\small\item\em A method that generates the stencil mask. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_open_g_l_ocean}{sf\+::\+Open\+GLOcean}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_ad193ff40e865ee26a4722dde8f58264e}{Open\+GLOcean}} (GLfloat size)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a878987df61e81f5ff6290f0f25c6d0c1}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLOcean}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_ae5393b532370d71301a653ef5a00d691}{Simulate}} (GLfloat dt)
+\begin{DoxyCompactList}\small\item\em A method that simulates wave propagation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a019a6429ea4d8c742dc150edfdc39faa}{Draw\+Background}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view)
+\begin{DoxyCompactList}\small\item\em A method that draws the distant background of the ocean. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a4c8c8145c10c39310affcfefc8143175}{Draw\+Particles}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view)
+\begin{DoxyCompactList}\small\item\em A method that draws underwater particles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_aeea028b71fcd3885c0b1a81589ccb71c}{Draw\+Particles\+Id}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view, GLushort id)
+\begin{DoxyCompactList}\small\item\em A method that draws underwater particles id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_ae7ddbe5bf2a0ec514327016c2039bc48}{Draw\+Velocity\+Field}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view, GLfloat velocity\+Max)
+\begin{DoxyCompactList}\small\item\em A method that draw water velocity field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a69ff356fd208f38d94c7d2afd7d2fab6}{Apply\+Special\+Effects}} (\mbox{\hyperlink{classsf_1_1_open_g_l_camera}{Open\+GLCamera}} \texorpdfstring{$\ast$}{*}cam)
+\begin{DoxyCompactList}\small\item\em A method that draws the underwater bloom and blur effects (scattering). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a3ec6602771ce9d8ac7eebde76e78cc8b}{Show\+Spectrum}} (glm\+::vec2 viewport\+Size, glm\+::vec4 rect)
+\begin{DoxyCompactList}\small\item\em A method that drawsd the spectrum of waves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a217164caa8c67a0075ea4da08a554e23}{Show\+Texture}} (int id, glm\+::vec4 rect)
+\begin{DoxyCompactList}\small\item\em A method used to display a specified texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_aaf070e090fabaeda8038adaf90a62a5e}{Update\+Ocean\+Currents\+Data}} (const \mbox{\hyperlink{structsf_1_1_ocean_currents_u_b_o}{Ocean\+Currents\+UBO}} \&data)
+\begin{DoxyCompactList}\small\item\em A method that updates ocean currents information. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_particles}{Open\+GLOcean\+Particles}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a2bdd4245f7326dd15f20e0f6f69262c4}{Allocate\+Particles}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view)
+\begin{DoxyCompactList}\small\item\em A method to allocate a particle system for a view. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a2b4b397515c50112b81dcabd05fd6d29}{Assign\+Particles}} (\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}view, \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_particles}{Open\+GLOcean\+Particles}} \texorpdfstring{$\ast$}{*}particles)
+\begin{DoxyCompactList}\small\item\em A method to assign particle system to a view. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a2477f6a3457932c545e9e2e59df55bb6}{set\+Water\+Type}} (GLfloat t)
+\begin{DoxyCompactList}\small\item\em A method to set the type of ocean water. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a7bebb7ceda5c0ab735133b773419b8d7}{set\+Water\+Temperature}} (GLfloat t)
+\begin{DoxyCompactList}\small\item\em A method to set the temperature of the water. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_ac89a580de71968ff21e7556e9cb2c947}{get\+Water\+Temperature}} ()
+\begin{DoxyCompactList}\small\item\em A method to get the temperature of the water. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_aa855b12b0fd4a39ca98861545c60dcf3}{set\+Particles}} (bool enabled)
+\begin{DoxyCompactList}\small\item\em A method to set if the particles should be rendered. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_af1542c2ac89a3b7547df43d75c6822a1}{get\+Particles\+Enabled}} ()
+\begin{DoxyCompactList}\small\item\em A method returning informing if the particles are enabled. \end{DoxyCompactList}\item 
+virtual GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a8f5954b3795d6b4ee4d0cb4c8551794b}{Compute\+Wave\+Height}} (GLfloat x, GLfloat y)
+\begin{DoxyCompactList}\small\item\em A method to get wave height at a specified coordinate. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a3ffa4949dcad75a4787171371ad1c7c4}{get\+Wave\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the id of the wave texture. \end{DoxyCompactList}\item 
+glm\+::vec4 \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_ac182c5f77173e03f723dc9cd6214be5a}{get\+Wave\+Grid\+Sizes}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the vector of wave grid sizes. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_acf956412f9aaac8656f19a780532e222}{get\+Light\+Attenuation}} ()
+\begin{DoxyCompactList}\small\item\em A method returning calculated light attenuation coefficient. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a23e8858c9ed46583f67d223736b1e681}{get\+Light\+Scattering}} ()
+\begin{DoxyCompactList}\small\item\em A method calculating Henyey-\/\+Greenstein scattering factor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_open_g_l_ocean}{sf\+::\+Open\+GLOcean}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_aefde3ccaf8a35426d8719e260e6874cc}{Initialize\+Simulation}} ()
+\item 
+float \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a9dc45ce100739118ac2923a4c021030c}{sqr}} (float x)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_open_g_l_ocean}{sf\+::\+Open\+GLOcean}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ \mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_particles}{Open\+GLOcean\+Particles}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_af2b5690fee1d330defdee7a6581dae2c}{ocean\+Particles}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a34b975c2872ddc1d410eda47af14b2d3}{absorption}} \mbox{[}64\mbox{]}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a4da7662279f2304fc9986b1f3b7aec84}{scattering}} \mbox{[}64\mbox{]}
+\item 
+\mbox{\hyperlink{structsf_1_1_ocean_currents_u_b_o}{Ocean\+Currents\+UBO}} \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a77b0bef38dd36eab157c8cca318c2524}{ocean\+Currents\+UBOData}}
+\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a9ce6ad891fe772a553cae9f8171132ec}{ocean\+Size}}
+\item 
+\mbox{\hyperlink{structsf_1_1_ocean_params}{Ocean\+Params}} \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a674d560f544ce43e70c23acf8343b6ef}{params}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_aa15b6068325969c3f9740d746fc5cc25}{light\+Absorption}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a850aa6b313a099fedbd9e2220afdd015}{light\+Scattering}}
+\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a90d36d0e0ecbcc9a9b5528a6e578108f}{water\+Temperature}}
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a9770cbb7eea81982fc4981fc87066406}{ocean\+Shaders}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_abb93d50cdce9193df3206eee271633a5}{ocean\+FBOs}} \mbox{[}3\mbox{]}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_aaace3badf02860a2b91389e839e34866}{ocean\+Textures}} \mbox{[}6\mbox{]}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_ac60304111d139b1fc068c81cc23a4caa}{ocean\+Currents\+UBO}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing flat ocean in Open\+GL. 
+
+Definition at line \mbox{\hyperlink{_open_g_l_flat_ocean_8h_source_l00034}{34}} of file \mbox{\hyperlink{_open_g_l_flat_ocean_8h_source}{Open\+GLFlat\+Ocean.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_open_g_l_flat_ocean_a358960b5aa20b17d34dba038fb11e1d6}\label{classsf_1_1_open_g_l_flat_ocean_a358960b5aa20b17d34dba038fb11e1d6} 
+\index{sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}!OpenGLFlatOcean@{OpenGLFlatOcean}}
+\index{OpenGLFlatOcean@{OpenGLFlatOcean}!sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}}
+\doxysubsubsection{\texorpdfstring{OpenGLFlatOcean()}{OpenGLFlatOcean()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLFlat\+Ocean\+::\+Open\+GLFlat\+Ocean (\begin{DoxyParamCaption}\item[{GLfloat}]{size }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & the size of the ocean surface mesh \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source}{Open\+GLFlat\+Ocean.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_flat_ocean_a71f1953b53cd2bc3d2e0378f114fd201}\label{classsf_1_1_open_g_l_flat_ocean_a71f1953b53cd2bc3d2e0378f114fd201} 
+\index{sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}!````~OpenGLFlatOcean@{\texorpdfstring{$\sim$}{\string~}OpenGLFlatOcean}}
+\index{````~OpenGLFlatOcean@{\texorpdfstring{$\sim$}{\string~}OpenGLFlatOcean}!sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLFlatOcean()}{\string~OpenGLFlatOcean()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLFlat\+Ocean\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLFlat\+Ocean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source}{Open\+GLFlat\+Ocean.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_open_g_l_flat_ocean_a224d2d8c4c64c36dce0ae3d4f15002f9}\label{classsf_1_1_open_g_l_flat_ocean_a224d2d8c4c64c36dce0ae3d4f15002f9} 
+\index{sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}!DrawBacksurface@{DrawBacksurface}}
+\index{DrawBacksurface@{DrawBacksurface}!sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}}
+\doxysubsubsection{\texorpdfstring{DrawBacksurface()}{DrawBacksurface()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLFlat\+Ocean\+::\+Draw\+Backsurface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that draws the surface of the ocean, seen from underwater. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & a pointer to the active view \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a75579ed9570903af5015058202eac1d7}{sf\+::\+Open\+GLOcean}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source_l00246}{246}} of file \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source}{Open\+GLFlat\+Ocean.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_flat_ocean_a37267434ba647ff1e70741fb606e3144}\label{classsf_1_1_open_g_l_flat_ocean_a37267434ba647ff1e70741fb606e3144} 
+\index{sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}!DrawSurface@{DrawSurface}}
+\index{DrawSurface@{DrawSurface}!sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}}
+\doxysubsubsection{\texorpdfstring{DrawSurface()}{DrawSurface()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLFlat\+Ocean\+::\+Draw\+Surface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that draws the surface of the ocean. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & a pointer to the active view \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a0124b7c47a99f7defbb35586af0b07b0}{sf\+::\+Open\+GLOcean}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source_l00190}{190}} of file \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source}{Open\+GLFlat\+Ocean.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_flat_ocean_ab8861d768081c04152162055e2ba1512}\label{classsf_1_1_open_g_l_flat_ocean_ab8861d768081c04152162055e2ba1512} 
+\index{sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}!DrawSurfaceTemperature@{DrawSurfaceTemperature}}
+\index{DrawSurfaceTemperature@{DrawSurfaceTemperature}!sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}}
+\doxysubsubsection{\texorpdfstring{DrawSurfaceTemperature()}{DrawSurfaceTemperature()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLFlat\+Ocean\+::\+Draw\+Surface\+Temperature (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that draws the surface of the ocean as thermal image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & a pointer to the active view \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_ae86f2003c61b59220ab3d8b3497bbb13}{sf\+::\+Open\+GLOcean}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source_l00217}{217}} of file \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source}{Open\+GLFlat\+Ocean.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_flat_ocean_acff6ada9cef8ebb007d281e22fa542dc}\label{classsf_1_1_open_g_l_flat_ocean_acff6ada9cef8ebb007d281e22fa542dc} 
+\index{sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}!DrawUnderwaterMask@{DrawUnderwaterMask}}
+\index{DrawUnderwaterMask@{DrawUnderwaterMask}!sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}}
+\doxysubsubsection{\texorpdfstring{DrawUnderwaterMask()}{DrawUnderwaterMask()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLFlat\+Ocean\+::\+Draw\+Underwater\+Mask (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that generates the stencil mask. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & a pointer to the active view \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a58bf64007ba2276d343a54b1f6d032d6}{sf\+::\+Open\+GLOcean}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source_l00275}{275}} of file \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source}{Open\+GLFlat\+Ocean.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_flat_ocean_a29240b7f855066a8ef354e5f3e9b4c27}\label{classsf_1_1_open_g_l_flat_ocean_a29240b7f855066a8ef354e5f3e9b4c27} 
+\index{sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}!UpdateSurface@{UpdateSurface}}
+\index{UpdateSurface@{UpdateSurface}!sf::OpenGLFlatOcean@{sf::OpenGLFlatOcean}}
+\doxysubsubsection{\texorpdfstring{UpdateSurface()}{UpdateSurface()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLFlat\+Ocean\+::\+Update\+Surface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_open_g_l_view}{Open\+GLView}} \texorpdfstring{$\ast$}{*}}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that updates the wave mesh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & a pointer to the active view \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_ocean_a799c715f0b310f36aa1c6a6cf5e3d7a8}{sf\+::\+Open\+GLOcean}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source_l00186}{186}} of file \mbox{\hyperlink{_open_g_l_flat_ocean_8cpp_source}{Open\+GLFlat\+Ocean.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/graphics/Open\+GLFlat\+Ocean.\+h\item 
+Library/src/graphics/Open\+GLFlat\+Ocean.\+cpp\end{DoxyCompactItemize}

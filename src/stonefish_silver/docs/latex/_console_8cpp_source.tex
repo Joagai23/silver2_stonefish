@@ -1,0 +1,169 @@
+\doxysection{Console.\+cpp}
+\hypertarget{_console_8cpp_source}{}\label{_console_8cpp_source}\index{Library/src/core/Console.cpp@{Library/src/core/Console.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Console.cpp}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 24/05/2014.}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2014-\/2021\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}core/Console.h"{}}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00030}00030\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00032}00032\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00033}\mbox{\hyperlink{classsf_1_1_console_a8c01f720331b31083476f8b81014b893}{00033}}\ \mbox{\hyperlink{classsf_1_1_console_a8c01f720331b31083476f8b81014b893}{Console::Console}}(\textcolor{keywordtype}{bool}\ useStdout)}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00035}00035\ \ \ \ \ stdoutEnabled\ =\ useStdout;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00036}00036\ \ \ \ \ lines\ =\ std::vector<ConsoleMessage>(0);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00037}00037\ \ \ \ \ linesMutex\ =\ SDL\_CreateMutex();}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00040}\mbox{\hyperlink{classsf_1_1_console_a487f867c1bc6fa7c77076228984f6665}{00040}}\ \mbox{\hyperlink{classsf_1_1_console_a487f867c1bc6fa7c77076228984f6665}{Console::\string~Console}}()}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00042}00042\ \ \ \ \ lines.clear();}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00043}00043\ \ \ \ \ SDL\_DestroyMutex(linesMutex);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00046}\mbox{\hyperlink{classsf_1_1_console_a947cc063ee9a88a03274755f162fd578}{00046}}\ SDL\_mutex*\ \mbox{\hyperlink{classsf_1_1_console_a947cc063ee9a88a03274755f162fd578}{Console::getLinesMutex}}()}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{return}\ linesMutex;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00051}\mbox{\hyperlink{classsf_1_1_console_a414c7f08c82b6d5289b8c9275f6ce2ba}{00051}}\ std::vector<ConsoleMessage>\ \mbox{\hyperlink{classsf_1_1_console_a414c7f08c82b6d5289b8c9275f6ce2ba}{Console::getLines}}()}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{return}\ lines;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00056}\mbox{\hyperlink{classsf_1_1_console_a5591cf8d5f9f1529642dedb733adf4b0}{00056}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_console_a5591cf8d5f9f1529642dedb733adf4b0}{Console::Print}}(MessageType\ t,\ std::string\ format,\ ...)}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00057}00057\ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00058}00058\ \ \ \ \ va\_list\ args;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[4096];}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00060}00060\ \ \ \ \ va\_start(args,\ format);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00061}00061\ \ \ \ \ vsnprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ format.c\_str(),\ args);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00062}00062\ \ \ \ \ va\_end(args);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00063}00063\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}(stdoutEnabled)}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00066}00066\ \textcolor{preprocessor}{\#ifdef\ COLOR\_CONSOLE}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(t)}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::INFO:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[INFO]\ \%s\(\backslash\)n"{}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::WARNING:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)033[33m[WARN]\ \%s\(\backslash\)033[0m\(\backslash\)n"{}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::ERROR:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)033[31m[ERROR]\ \%s\(\backslash\)033[0m\(\backslash\)n"{}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::CRITICAL:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)033[1;31m[CRITICAL]\ \%s\(\backslash\)033[0m\(\backslash\)n"{}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00086}00086\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(t)}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::INFO:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[INFO]\ \%s\(\backslash\)n"{}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::WARNING:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[WARN]\ \%s\(\backslash\)n"{}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::ERROR:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[ERROR]\ \%s\(\backslash\)n"{}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::CRITICAL:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[CRITICAL]\ \%s\(\backslash\)n"{}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00106}00106\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00109}00109\ \ \ \ \ \mbox{\hyperlink{structsf_1_1_console_message}{ConsoleMessage}}\ msg;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00110}00110\ \ \ \ \ msg.type\ =\ t;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00111}00111\ \ \ \ \ msg.text\ =\ std::string(buffer);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00112}00112\ \ \ \ \ SDL\_LockMutex(linesMutex);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00113}00113\ \ \ \ \ lines.push\_back(msg);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00114}00114\ \ \ \ \ SDL\_UnlockMutex(linesMutex);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00117}\mbox{\hyperlink{classsf_1_1_console_aa933b511ded2b10ed1188d7b99ad87a2}{00117}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_console_aa933b511ded2b10ed1188d7b99ad87a2}{Console::AppendMessage}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_console_message}{ConsoleMessage}}\&\ msg)}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00119}00119\ \ \ \ \ SDL\_LockMutex(linesMutex);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00120}00120\ \ \ \ \ lines.push\_back(msg);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00121}00121\ \ \ \ \ SDL\_UnlockMutex(linesMutex);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00123}00123\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00124}\mbox{\hyperlink{classsf_1_1_console_a47010cdd7c212c02b82b25aaabc518ff}{00124}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_console_a47010cdd7c212c02b82b25aaabc518ff}{Console::Clear}}()}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00125}00125\ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00126}00126\ \ \ \ \ SDL\_LockMutex(linesMutex);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00127}00127\ \ \ \ \ lines.clear();}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00128}00128\ \ \ \ \ SDL\_UnlockMutex(linesMutex);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00129}00129\ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00131}\mbox{\hyperlink{classsf_1_1_console_afa3703971bd4fd34831f868d56fdbbe2}{00131}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_console_afa3703971bd4fd34831f868d56fdbbe2}{Console::SaveToFile}}(std::string\ filename)}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00132}00132\ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00133}00133\ \ \ \ \ std::ofstream\ outFile(filename);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00134}00134\ \ \ \ \ \textcolor{keywordflow}{if}(outFile.is\_open())}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00135}00135\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ SDL\_LockMutex(linesMutex);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<lines.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(lines[i].type)}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::INFO:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outFile\ <<\ \textcolor{stringliteral}{"{}[INFO]\ "{}}\ <<\ lines[i].text\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::WARNING:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outFile\ <<\ \textcolor{stringliteral}{"{}[WARN]\ "{}}\ <<\ lines[i].text\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::ERROR:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outFile\ <<\ \textcolor{stringliteral}{"{}[ERROR]\ "{}}\ <<\ lines[i].text\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MessageType::CRITICAL:}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outFile\ <<\ \textcolor{stringliteral}{"{}[CRITICAL]\ "{}}\ <<\ lines[i].text\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ SDL\_UnlockMutex(linesMutex);}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ outFile.close();}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00158}00158\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00159}00159\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00161}00161\ \}}
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_console_8cpp_source_l00163}00163\ \}}
+
+\end{DoxyCode}

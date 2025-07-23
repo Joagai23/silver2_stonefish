@@ -1,0 +1,148 @@
+\doxysection{sf\+::Rotor\+Dynamics Class Reference}
+\hypertarget{classsf_1_1_rotor_dynamics}{}\label{classsf_1_1_rotor_dynamics}\index{sf::RotorDynamics@{sf::RotorDynamics}}
+
+
+An abstract class representing a mathematical model of rotor dynamics.  
+
+
+
+
+{\ttfamily \#include $<$Actuator\+Dynamics.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Rotor\+Dynamics\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_rotor_dynamics__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_rotor_dynamics_a23d107d402a037a9e8a0ed951f203769}{Rotor\+Dynamics}} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual Scalar \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a9452710a5b3ae0a4a4451f3c9b4fee46}{Update}} (Scalar dt, Scalar sp)=0
+\begin{DoxyCompactList}\small\item\em A method that updates the model. \end{DoxyCompactList}\item 
+virtual Rotor\+Dynamics\+Type \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a9e649c97f25b9f1458b59f41faf9b657}{get\+Type}} ()=0
+\begin{DoxyCompactList}\small\item\em A method returning the model type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a0c11fecf4953816b757e33bf757fb9a4}{set\+Output\+Limit}} (Scalar limit)
+\begin{DoxyCompactList}\small\item\em A method used to set the limit of output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_rotor_dynamics_ad15d7f9dea79b0ef1ffcfb4ddb85560a}{last\+Output}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a3e8c33b07f84188e50ed331db544bb6a}{output\+Limit}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class representing a mathematical model of rotor dynamics. 
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00038}{38}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_rotor_dynamics_a23d107d402a037a9e8a0ed951f203769}\label{classsf_1_1_rotor_dynamics_a23d107d402a037a9e8a0ed951f203769} 
+\index{sf::RotorDynamics@{sf::RotorDynamics}!RotorDynamics@{RotorDynamics}}
+\index{RotorDynamics@{RotorDynamics}!sf::RotorDynamics@{sf::RotorDynamics}}
+\doxysubsubsection{\texorpdfstring{RotorDynamics()}{RotorDynamics()}}
+{\footnotesize\ttfamily sf\+::\+Rotor\+Dynamics\+::\+Rotor\+Dynamics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00042}{42}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_rotor_dynamics_a9e649c97f25b9f1458b59f41faf9b657}\label{classsf_1_1_rotor_dynamics_a9e649c97f25b9f1458b59f41faf9b657} 
+\index{sf::RotorDynamics@{sf::RotorDynamics}!getType@{getType}}
+\index{getType@{getType}!sf::RotorDynamics@{sf::RotorDynamics}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual Rotor\+Dynamics\+Type sf\+::\+Rotor\+Dynamics\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method returning the model type. 
+
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_zero_order_ac3f557d947dd36582693c1b79ba54232}{sf\+::\+Zero\+Order}}, \mbox{\hyperlink{classsf_1_1_first_order_a60e299e7132eddf060d880774a627d40}{sf\+::\+First\+Order}}, \mbox{\hyperlink{classsf_1_1_yoerger_a897cc5c92ea6f897a40bf7f5f7ee1d18}{sf\+::\+Yoerger}}, \mbox{\hyperlink{classsf_1_1_bessa_adf96c3f54f7d444a0bba31fa325493d3}{sf\+::\+Bessa}}, and \mbox{\hyperlink{classsf_1_1_mechanical_p_i_a1561d973544edd3656782315d5c5db89}{sf\+::\+Mechanical\+PI}}.
+
+\Hypertarget{classsf_1_1_rotor_dynamics_a0c11fecf4953816b757e33bf757fb9a4}\label{classsf_1_1_rotor_dynamics_a0c11fecf4953816b757e33bf757fb9a4} 
+\index{sf::RotorDynamics@{sf::RotorDynamics}!setOutputLimit@{setOutputLimit}}
+\index{setOutputLimit@{setOutputLimit}!sf::RotorDynamics@{sf::RotorDynamics}}
+\doxysubsubsection{\texorpdfstring{setOutputLimit()}{setOutputLimit()}}
+{\footnotesize\ttfamily void sf\+::\+Rotor\+Dynamics\+::set\+Output\+Limit (\begin{DoxyParamCaption}\item[{Scalar}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A method used to set the limit of output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & the absolute limit of the output \mbox{[}rad/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00059}{59}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+\Hypertarget{classsf_1_1_rotor_dynamics_a9452710a5b3ae0a4a4451f3c9b4fee46}\label{classsf_1_1_rotor_dynamics_a9452710a5b3ae0a4a4451f3c9b4fee46} 
+\index{sf::RotorDynamics@{sf::RotorDynamics}!Update@{Update}}
+\index{Update@{Update}!sf::RotorDynamics@{sf::RotorDynamics}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily virtual Scalar sf\+::\+Rotor\+Dynamics\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt,  }\item[{Scalar}]{sp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A method that updates the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & simulation time step \mbox{[}s\mbox{]} \\
+\hline
+{\em sp} & desired rotor angular velocity \mbox{[}rad/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classsf_1_1_zero_order_a4f49eebf4a57c576ae3b38fe1f289974}{sf\+::\+Zero\+Order}}, \mbox{\hyperlink{classsf_1_1_first_order_a543168392bf5c72af333f10f186c2aa7}{sf\+::\+First\+Order}}, \mbox{\hyperlink{classsf_1_1_yoerger_a1c768bdd8cf61de0325201f53a2de83e}{sf\+::\+Yoerger}}, \mbox{\hyperlink{classsf_1_1_bessa_a76d92ebd74116baf9a034d5e4be1c3a2}{sf\+::\+Bessa}}, and \mbox{\hyperlink{classsf_1_1_mechanical_p_i_ae745acb1de1f8cb6bc3e16c645bc5624}{sf\+::\+Mechanical\+PI}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_rotor_dynamics_ad15d7f9dea79b0ef1ffcfb4ddb85560a}\label{classsf_1_1_rotor_dynamics_ad15d7f9dea79b0ef1ffcfb4ddb85560a} 
+\index{sf::RotorDynamics@{sf::RotorDynamics}!lastOutput@{lastOutput}}
+\index{lastOutput@{lastOutput}!sf::RotorDynamics@{sf::RotorDynamics}}
+\doxysubsubsection{\texorpdfstring{lastOutput}{lastOutput}}
+{\footnotesize\ttfamily Scalar sf\+::\+Rotor\+Dynamics\+::last\+Output\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00065}{65}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+\Hypertarget{classsf_1_1_rotor_dynamics_a3e8c33b07f84188e50ed331db544bb6a}\label{classsf_1_1_rotor_dynamics_a3e8c33b07f84188e50ed331db544bb6a} 
+\index{sf::RotorDynamics@{sf::RotorDynamics}!outputLimit@{outputLimit}}
+\index{outputLimit@{outputLimit}!sf::RotorDynamics@{sf::RotorDynamics}}
+\doxysubsubsection{\texorpdfstring{outputLimit}{outputLimit}}
+{\footnotesize\ttfamily Scalar sf\+::\+Rotor\+Dynamics\+::output\+Limit\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00066}{66}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Actuator\+Dynamics.\+h\end{DoxyCompactItemize}

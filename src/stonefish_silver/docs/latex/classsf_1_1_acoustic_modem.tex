@@ -1,0 +1,381 @@
+\doxysection{sf\+::Acoustic\+Modem Class Reference}
+\hypertarget{classsf_1_1_acoustic_modem}{}\label{classsf_1_1_acoustic_modem}\index{sf::AcousticModem@{sf::AcousticModem}}
+
+
+An abstract class representing an acoustic modem.  
+
+
+
+
+{\ttfamily \#include $<$Acoustic\+Modem.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Acoustic\+Modem\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{classsf_1_1_acoustic_modem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Acoustic\+Modem\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classsf_1_1_acoustic_modem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_acoustic_modem_ae7884970dfc87b6d963f67bedcfed8d2}{Acoustic\+Modem}} (std\+::string unique\+Name, uint64\+\_\+t device\+Id, Scalar min\+Vertical\+FOVDeg, Scalar max\+Vertical\+FOVDeg, Scalar operating\+Range)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_acoustic_modem_a6a641255b311f78c53bfba9024fe41e9}{\texorpdfstring{$\sim$}{\string~}\+Acoustic\+Modem}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_acoustic_modem_aabebe604047f9486b2c60b5bd53cd405}{Send\+Message}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&data) override
+\begin{DoxyCompactList}\small\item\em A method used to send a message. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_acoustic_modem_a86b37d45afc4edaea0404d3af691bc21}{Process\+Messages}} () override
+\begin{DoxyCompactList}\small\item\em A method that processes all messages in the rx buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_acoustic_modem_a0ce632026d48ae70ae785515d2afb6e0}{Update\+Position}} (Vector3 pos, bool absolute, std\+::string reference\+Frame=std\+::string("{}"{}))
+\begin{DoxyCompactList}\small\item\em A method used to update position of the modem based on measurements from \doxylink{classsf_1_1_u_s_b_l}{USBL} or another device. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_acoustic_modem_a9e5760e2246479f70754077afebc44a2}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the comm device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_acoustic_modem_ad21316b1036c5c047e70a60e2e8031ad}{set\+Occlusion\+Test}} (bool enabled)
+\begin{DoxyCompactList}\small\item\em A method to set if occlusion test should be enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_acoustic_modem_a860018a04d7717880cef01e6f5823efa}{get\+Position}} (Vector3 \&pos, std\+::string \&reference\+Frame)
+\begin{DoxyCompactList}\small\item\em A method to retrieve the position of the device in the designated reference frame. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_acoustic_modem_a43db2936233e01602cd953acfcaa349d}{get\+Occlusion\+Test}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if occlusion testing is enabled for the modem device. \end{DoxyCompactList}\item 
+virtual Comm\+Type \mbox{\hyperlink{classsf_1_1_acoustic_modem_a563239c9cd64c266114efb2d90ff2bf4}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the comm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_comm}{sf\+::\+Comm}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_comm_a7f4e2757e33f710dab0c8763506680df}{Comm}} (std\+::string unique\+Name, uint64\+\_\+t device\+Id)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_comm_ad5f457ba1a9400ba5805bcf212525115}{\texorpdfstring{$\sim$}{\string~}\+Comm}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_aac849bdbb8af38cbb8d2f122e245577e}{Connect}} (uint64\+\_\+t device\+Id)
+\begin{DoxyCompactList}\small\item\em A method to set the connected device id. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_comm_a13a353a93254656ef8ddf7c9c76a698f}{Send\+Message}} (const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Methods used to send a message. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structsf_1_1_comm_data_frame}{Comm\+Data\+Frame}} $>$ \mbox{\hyperlink{classsf_1_1_comm_af85b194242d2d2a0f88e2b1907337c82}{Read\+Message}} ()
+\begin{DoxyCompactList}\small\item\em A method to read received data frames. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a8e74fa4bb501a24dceac081b7cdc6cb2}{Attach\+To\+World}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the comm device to the world origin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a30834a1697e858bb9bfa1788476d4a5e}{Attach\+To\+Static}} (\mbox{\hyperlink{classsf_1_1_static_entity}{Static\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the comm device to a static body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a53f8d3c3581436706b817c471300c69a}{Attach\+To\+Solid}} (\mbox{\hyperlink{classsf_1_1_moving_entity}{Moving\+Entity}} \texorpdfstring{$\ast$}{*}body, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to attach the comm device to a rigid body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_af622ff3ab67a78fd77b79b8671d3190d}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method that updates the comm state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a1dbea58632304cba9cd8bd754fe7a009}{Mark\+Data\+Old}} ()
+\begin{DoxyCompactList}\small\item\em A method used to mark data as old. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_comm_a8ba8e41e545cedc2d2558562c9476cd8}{is\+New\+Data\+Available}} ()
+\begin{DoxyCompactList}\small\item\em A method to check if new data is available. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_comm_a6b83d4df23f3f5b16f820f019eeb556c}{is\+Renderable}} ()
+\begin{DoxyCompactList}\small\item\em A method informing if the comm is renderable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_comm_a2d1b06ecc4dd674f0d913df247189ba4}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method to set if the comm is renderable. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_a0c99eee15ddf7157c3a974f88ba0c9f1}{get\+Rx\+Buffer\+Count}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the number of messages in the rx buffer. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_a02d48a9e07bc7c951046261abeb8448e}{get\+Tx\+Buffer\+Count}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the number of messages in the tx buffer. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_comm_a529f18de74ff2efaec144e95f47245ba}{get\+Device\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the current comm device frame in world. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_a834283be114a3a1c5507663e28cb40b8}{get\+Device\+Id}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the device node id. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_aba2e9cd490995176ad8363d34a07f823}{get\+Connected\+Id}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the conneted device node id. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_comm_a82ecbf7fc864f9d0cea2fef93c0facb5}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the comm name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_acoustic_modem_a3965afef735b7fb68194a8cec4eb84e8}{Internal\+Update}} (Scalar dt) override
+\begin{DoxyCompactList}\small\item\em A method performing internal comm state update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_comm}{sf\+::\+Comm}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_comm_af4ec3a4249791d6cace7e14455b53fd9}{Message\+Received}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structsf_1_1_comm_data_frame}{Comm\+Data\+Frame}} $>$ message)
+\begin{DoxyCompactList}\small\item\em A method used for data reception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classsf_1_1_acoustic_modem}{Acoustic\+Modem}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_acoustic_modem_ab1defcf24b336b895289e7be925cef0f}{get\+Node}} (uint64\+\_\+t device\+Id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_comm}{sf\+::\+Comm}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_comm_a49c7dd4cb95abcffbcdff8a3049862fb}{new\+Data\+Available}}
+\item 
+std\+::deque$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structsf_1_1_comm_data_frame}{Comm\+Data\+Frame}} $>$ $>$ \mbox{\hyperlink{classsf_1_1_comm_a590e507048846e149b7903f617c44140}{tx\+Buffer}}
+\item 
+std\+::deque$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structsf_1_1_comm_data_frame}{Comm\+Data\+Frame}} $>$ $>$ \mbox{\hyperlink{classsf_1_1_comm_ad445fbbf2fd458621089a29c6834d5bd}{rx\+Buffer}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classsf_1_1_comm_a091aeac9b1742bf25465e22455657ca8}{tx\+Seq}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class representing an acoustic modem. 
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8h_source_l00041}{41}} of file \mbox{\hyperlink{_acoustic_modem_8h_source}{Acoustic\+Modem.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_acoustic_modem_ae7884970dfc87b6d963f67bedcfed8d2}\label{classsf_1_1_acoustic_modem_ae7884970dfc87b6d963f67bedcfed8d2} 
+\index{sf::AcousticModem@{sf::AcousticModem}!AcousticModem@{AcousticModem}}
+\index{AcousticModem@{AcousticModem}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{AcousticModem()}{AcousticModem()}}
+{\footnotesize\ttfamily sf\+::\+Acoustic\+Modem\+::\+Acoustic\+Modem (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{uint64\+\_\+t}]{device\+Id,  }\item[{Scalar}]{min\+Vertical\+FOVDeg,  }\item[{Scalar}]{max\+Vertical\+FOVDeg,  }\item[{Scalar}]{operating\+Range }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the comm device \\
+\hline
+{\em device\+Id} & an identification code of the device \\
+\hline
+{\em min\+Vertical\+FOVDeg} & the minimum vertical angle of radiation pattern \mbox{[}deg\mbox{]} \\
+\hline
+{\em max\+Vertical\+FOVDeg} & the maximum vertical angle of radiation pattern \mbox{[}deg\mbox{]} \\
+\hline
+{\em operating\+Range} & the operating range \mbox{[}m\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_a6a641255b311f78c53bfba9024fe41e9}\label{classsf_1_1_acoustic_modem_a6a641255b311f78c53bfba9024fe41e9} 
+\index{sf::AcousticModem@{sf::AcousticModem}!````~AcousticModem@{\texorpdfstring{$\sim$}{\string~}AcousticModem}}
+\index{````~AcousticModem@{\texorpdfstring{$\sim$}{\string~}AcousticModem}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AcousticModem()}{\string~AcousticModem()}}
+{\footnotesize\ttfamily sf\+::\+Acoustic\+Modem\+::\texorpdfstring{$\sim$}{\string~}\+Acoustic\+Modem (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_acoustic_modem_ab1defcf24b336b895289e7be925cef0f}\label{classsf_1_1_acoustic_modem_ab1defcf24b336b895289e7be925cef0f} 
+\index{sf::AcousticModem@{sf::AcousticModem}!getNode@{getNode}}
+\index{getNode@{getNode}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{getNode()}{getNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_acoustic_modem}{Acoustic\+Modem}} \texorpdfstring{$\ast$}{*} sf\+::\+Acoustic\+Modem\+::get\+Node (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{device\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_a43db2936233e01602cd953acfcaa349d}\label{classsf_1_1_acoustic_modem_a43db2936233e01602cd953acfcaa349d} 
+\index{sf::AcousticModem@{sf::AcousticModem}!getOcclusionTest@{getOcclusionTest}}
+\index{getOcclusionTest@{getOcclusionTest}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{getOcclusionTest()}{getOcclusionTest()}}
+{\footnotesize\ttfamily bool sf\+::\+Acoustic\+Modem\+::get\+Occlusion\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method informing if occlusion testing is enabled for the modem device. 
+
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00154}{154}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_a860018a04d7717880cef01e6f5823efa}\label{classsf_1_1_acoustic_modem_a860018a04d7717880cef01e6f5823efa} 
+\index{sf::AcousticModem@{sf::AcousticModem}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily void sf\+::\+Acoustic\+Modem\+::get\+Position (\begin{DoxyParamCaption}\item[{Vector3 \&}]{pos,  }\item[{std\+::string \&}]{reference\+Frame }\end{DoxyParamCaption})}
+
+
+
+A method to retrieve the position of the device in the designated reference frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & a pointer to the position vector \\
+\hline
+{\em reference\+Frame} & a pointer to the name of the reference frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00159}{159}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_a563239c9cd64c266114efb2d90ff2bf4}\label{classsf_1_1_acoustic_modem_a563239c9cd64c266114efb2d90ff2bf4} 
+\index{sf::AcousticModem@{sf::AcousticModem}!getType@{getType}}
+\index{getType@{getType}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Comm\+Type sf\+::\+Acoustic\+Modem\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the comm. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_comm_ad334b67d75e79bd8ad59cbfa2eb27d53}{sf\+::\+Comm}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_u_s_b_l_aa68c82929db9e7cee1fde73e24d60a8d}{sf\+::\+USBL}}.
+
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_a3965afef735b7fb68194a8cec4eb84e8}\label{classsf_1_1_acoustic_modem_a3965afef735b7fb68194a8cec4eb84e8} 
+\index{sf::AcousticModem@{sf::AcousticModem}!InternalUpdate@{InternalUpdate}}
+\index{InternalUpdate@{InternalUpdate}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{InternalUpdate()}{InternalUpdate()}}
+{\footnotesize\ttfamily void sf\+::\+Acoustic\+Modem\+::\+Internal\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+A method performing internal comm state update. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & the step time of the simulation \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_comm_a7639e61adae4eeede8f45016dcd0ed98}{sf\+::\+Comm}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_u_s_b_l_ae6b395c6a3f0c78b05f762d88471a5e8}{sf\+::\+USBL}}.
+
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00243}{243}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_a86b37d45afc4edaea0404d3af691bc21}\label{classsf_1_1_acoustic_modem_a86b37d45afc4edaea0404d3af691bc21} 
+\index{sf::AcousticModem@{sf::AcousticModem}!ProcessMessages@{ProcessMessages}}
+\index{ProcessMessages@{ProcessMessages}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{ProcessMessages()}{ProcessMessages()}}
+{\footnotesize\ttfamily void sf\+::\+Acoustic\+Modem\+::\+Process\+Messages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that processes all messages in the rx buffer. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_comm_a63bc9d55dac76964f0a7e96145fac23b}{sf\+::\+Comm}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_u_s_b_l_real_a34a56b774f2b2086f519d9d4a983d1a8}{sf\+::\+USBLReal}}, and \mbox{\hyperlink{classsf_1_1_u_s_b_l_simple_a368b042903b58ed33bc7af60d0e4a53b}{sf\+::\+USBLSimple}}.
+
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00210}{210}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_a9e5760e2246479f70754077afebc44a2}\label{classsf_1_1_acoustic_modem_a9e5760e2246479f70754077afebc44a2} 
+\index{sf::AcousticModem@{sf::AcousticModem}!Render@{Render}}
+\index{Render@{Render}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Acoustic\+Modem\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the comm device. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_comm_ab0adde2a8278db84d1b024d9fdb8ed96}{sf\+::\+Comm}}.
+
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00294}{294}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_aabebe604047f9486b2c60b5bd53cd405}\label{classsf_1_1_acoustic_modem_aabebe604047f9486b2c60b5bd53cd405} 
+\index{sf::AcousticModem@{sf::AcousticModem}!SendMessage@{SendMessage}}
+\index{SendMessage@{SendMessage}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{SendMessage()}{SendMessage()}}
+{\footnotesize\ttfamily void sf\+::\+Acoustic\+Modem\+::\+Send\+Message (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method used to send a message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & the data to be sent \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classsf_1_1_comm}{sf\+::\+Comm}}.
+
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_ad21316b1036c5c047e70a60e2e8031ad}\label{classsf_1_1_acoustic_modem_ad21316b1036c5c047e70a60e2e8031ad} 
+\index{sf::AcousticModem@{sf::AcousticModem}!setOcclusionTest@{setOcclusionTest}}
+\index{setOcclusionTest@{setOcclusionTest}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{setOcclusionTest()}{setOcclusionTest()}}
+{\footnotesize\ttfamily void sf\+::\+Acoustic\+Modem\+::set\+Occlusion\+Test (\begin{DoxyParamCaption}\item[{bool}]{enabled }\end{DoxyParamCaption})}
+
+
+
+A method to set if occlusion test should be enabled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enabled} & a flag to indicate if the occusion test should be enabled \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+\Hypertarget{classsf_1_1_acoustic_modem_a0ce632026d48ae70ae785515d2afb6e0}\label{classsf_1_1_acoustic_modem_a0ce632026d48ae70ae785515d2afb6e0} 
+\index{sf::AcousticModem@{sf::AcousticModem}!UpdatePosition@{UpdatePosition}}
+\index{UpdatePosition@{UpdatePosition}!sf::AcousticModem@{sf::AcousticModem}}
+\doxysubsubsection{\texorpdfstring{UpdatePosition()}{UpdatePosition()}}
+{\footnotesize\ttfamily void sf\+::\+Acoustic\+Modem\+::\+Update\+Position (\begin{DoxyParamCaption}\item[{Vector3}]{pos,  }\item[{bool}]{absolute,  }\item[{std\+::string}]{reference\+Frame = {\ttfamily std\+:\+:string("{}"{})} }\end{DoxyParamCaption})}
+
+
+
+A method used to update position of the modem based on measurements from \doxylink{classsf_1_1_u_s_b_l}{USBL} or another device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & Cartesian position \mbox{[}m\mbox{]} \\
+\hline
+{\em absolute} & a flag to indicate if the position is absolute \\
+\hline
+{\em reference\+Frame} & name of the frame that the position is defined in \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_acoustic_modem_8cpp_source_l00284}{284}} of file \mbox{\hyperlink{_acoustic_modem_8cpp_source}{Acoustic\+Modem.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/comms/Acoustic\+Modem.\+h\item 
+Library/src/comms/Acoustic\+Modem.\+cpp\end{DoxyCompactItemize}

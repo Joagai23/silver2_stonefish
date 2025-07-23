@@ -1,0 +1,73 @@
+\doxysection{Console\+Simulation\+App.\+h}
+\hypertarget{_console_simulation_app_8h_source}{}\label{_console_simulation_app_8h_source}\index{Library/include/core/ConsoleSimulationApp.h@{Library/include/core/ConsoleSimulationApp.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00019}00019\ \textcolor{comment}{//\ \ ConsoleSimulationApp.h}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 11/28/12.}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2018-\/2025\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_ConsoleSimulationApp\_\_}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_ConsoleSimulationApp\_\_}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_thread.h>}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00032}00032\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{class\ }Console;}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00035}00035\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00037}\mbox{\hyperlink{classsf_1_1_console_simulation_app}{00037}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_console_simulation_app}{ConsoleSimulationApp}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classsf_1_1_simulation_app}{SimulationApp}}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_console_simulation_app}{ConsoleSimulationApp}}(std::string\ title,\ std::string\ dataDirPath,\ \mbox{\hyperlink{classsf_1_1_simulation_manager}{SimulationManager}}*\ sim);}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classsf_1_1_console_simulation_app_a571684cc49175a4d58be4c1162b6a351}{\string~ConsoleSimulationApp}}();}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_console_simulation_app_aa13c1abb1dfc7b37ad190181fe7249b1}{StartSimulation}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_console_simulation_app_a00f5a97cdd91ee9d6f4c9ee078b297cb}{StopSimulation}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_console_simulation_app_ad48d112e061348e069fb8a3e751ee0e6}{ResumeSimulation}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_console_simulation_app_a8f1fa6eb52c475715017a15b6e6e2323}{hasGraphics}}();}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Init();}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ LoopInternal();}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ SDL\_Thread*\ simulationThread;}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ RunSimulation(\textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00070}00070\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00071}00071\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00073}\mbox{\hyperlink{structsf_1_1_console_simulation_thread_data}{00073}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_console_simulation_thread_data}{ConsoleSimulationThreadData}}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00074}00074\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_console_simulation_app}{ConsoleSimulationApp}}\&\ app;}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00076}00076\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_console_simulation_app_8h_source_l00079}00079\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

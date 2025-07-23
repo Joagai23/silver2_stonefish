@@ -1,0 +1,153 @@
+\doxysection{sf\+::Interpolated\+Thrust Class Reference}
+\hypertarget{classsf_1_1_interpolated_thrust}{}\label{classsf_1_1_interpolated_thrust}\index{sf::InterpolatedThrust@{sf::InterpolatedThrust}}
+
+
+A class representing a model based on linear interpolation of data points.  
+
+
+
+
+{\ttfamily \#include $<$Actuator\+Dynamics.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Interpolated\+Thrust\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{classsf_1_1_interpolated_thrust__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Interpolated\+Thrust\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{classsf_1_1_interpolated_thrust__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_interpolated_thrust_ad3a74c34bf0a543045951879ac07e0d1}{Interpolated\+Thrust}} (const std\+::vector$<$ Scalar $>$ \&in, const std\+::vector$<$ Scalar $>$ \&out)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+std\+::pair$<$ Scalar, Scalar $>$ \mbox{\hyperlink{classsf_1_1_interpolated_thrust_ad067c3552a768a6c0eb524d3923fcc12}{Update}} (Scalar input) override
+\begin{DoxyCompactList}\small\item\em A method computing the model output. \end{DoxyCompactList}\item 
+Thrust\+Model\+Type \mbox{\hyperlink{classsf_1_1_interpolated_thrust_a3dd39f91a7d90df1b6cae324da3304b6}{get\+Type}} () override
+\begin{DoxyCompactList}\small\item\em A method returning the type of the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ Scalar $>$ \mbox{\hyperlink{classsf_1_1_interpolated_thrust_a767942d61b9901d134c68ebbde7b9448}{input\+Values}}
+\item 
+std\+::vector$<$ Scalar $>$ \mbox{\hyperlink{classsf_1_1_interpolated_thrust_a74911b83b47012dc5326f7c61bc54855}{output\+Values}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a model based on linear interpolation of data points. 
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00368}{368}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_interpolated_thrust_ad3a74c34bf0a543045951879ac07e0d1}\label{classsf_1_1_interpolated_thrust_ad3a74c34bf0a543045951879ac07e0d1} 
+\index{sf::InterpolatedThrust@{sf::InterpolatedThrust}!InterpolatedThrust@{InterpolatedThrust}}
+\index{InterpolatedThrust@{InterpolatedThrust}!sf::InterpolatedThrust@{sf::InterpolatedThrust}}
+\doxysubsubsection{\texorpdfstring{InterpolatedThrust()}{InterpolatedThrust()}}
+{\footnotesize\ttfamily sf\+::\+Interpolated\+Thrust\+::\+Interpolated\+Thrust (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Scalar $>$ \&}]{in,  }\item[{const std\+::vector$<$ Scalar $>$ \&}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & list of angular velocity data points \\
+\hline
+{\em out} & list of thrust data points \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00376}{376}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_interpolated_thrust_a3dd39f91a7d90df1b6cae324da3304b6}\label{classsf_1_1_interpolated_thrust_a3dd39f91a7d90df1b6cae324da3304b6} 
+\index{sf::InterpolatedThrust@{sf::InterpolatedThrust}!getType@{getType}}
+\index{getType@{getType}!sf::InterpolatedThrust@{sf::InterpolatedThrust}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Thrust\+Model\+Type sf\+::\+Interpolated\+Thrust\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method returning the type of the model. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_thrust_model_a62baf590095efe43eb08e0b33738ce95}{sf\+::\+Thrust\+Model}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00420}{420}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+\Hypertarget{classsf_1_1_interpolated_thrust_ad067c3552a768a6c0eb524d3923fcc12}\label{classsf_1_1_interpolated_thrust_ad067c3552a768a6c0eb524d3923fcc12} 
+\index{sf::InterpolatedThrust@{sf::InterpolatedThrust}!Update@{Update}}
+\index{Update@{Update}!sf::InterpolatedThrust@{sf::InterpolatedThrust}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily std\+::pair$<$ Scalar, Scalar $>$ sf\+::\+Interpolated\+Thrust\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method computing the model output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the input to the model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pair of thrust and torque computed by the model 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_thrust_model_a399a720780ff0087aceef43a9ad288be}{sf\+::\+Thrust\+Model}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00391}{391}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_interpolated_thrust_a767942d61b9901d134c68ebbde7b9448}\label{classsf_1_1_interpolated_thrust_a767942d61b9901d134c68ebbde7b9448} 
+\index{sf::InterpolatedThrust@{sf::InterpolatedThrust}!inputValues@{inputValues}}
+\index{inputValues@{inputValues}!sf::InterpolatedThrust@{sf::InterpolatedThrust}}
+\doxysubsubsection{\texorpdfstring{inputValues}{inputValues}}
+{\footnotesize\ttfamily std\+::vector$<$Scalar$>$ sf\+::\+Interpolated\+Thrust\+::input\+Values\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00426}{426}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+\Hypertarget{classsf_1_1_interpolated_thrust_a74911b83b47012dc5326f7c61bc54855}\label{classsf_1_1_interpolated_thrust_a74911b83b47012dc5326f7c61bc54855} 
+\index{sf::InterpolatedThrust@{sf::InterpolatedThrust}!outputValues@{outputValues}}
+\index{outputValues@{outputValues}!sf::InterpolatedThrust@{sf::InterpolatedThrust}}
+\doxysubsubsection{\texorpdfstring{outputValues}{outputValues}}
+{\footnotesize\ttfamily std\+::vector$<$Scalar$>$ sf\+::\+Interpolated\+Thrust\+::output\+Values\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00426}{426}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Actuator\+Dynamics.\+h\end{DoxyCompactItemize}

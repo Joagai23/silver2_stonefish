@@ -1,0 +1,20 @@
+<map id="sf::OpenGLSSS" name="sf::OpenGLSSS">
+<area shape="rect" id="Node000001" title="A class representing a side&#45;scan sonar (SSS)." alt="" coords="214,363,330,388"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1_open_g_l_sonar.html" title="An abstract class representing a sonar view." alt="" coords="46,273,175,298"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,302,252,360,250,365,142,307"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1_open_g_l_view.html" title="An abstract class representing an OpenGL view." alt="" coords="5,168,128,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="74,206,88,246,103,271,99,274,83,248,69,207"/>
+<area shape="rect" id="Node000004" href="$structsf_1_1_view_u_b_o.html" title=" " alt="" coords="15,80,118,105"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="69,119,69,167,64,167,64,119"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1_g_l_s_l_shader.html" title="A class representing a single GLSL shader." alt="" coords="183,168,302,193"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="253,206,256,217,269,300,274,362,269,363,263,301,251,218,248,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="171,196,135,206,114,219,108,231,106,245,110,272,104,273,101,245,103,230,110,216,133,201,169,191"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1_s_s_s.html" title="A class representing a side&#45;scan sonar." alt="" coords="426,273,491,298"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="423,306,298,365,295,360,421,301"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1_camera.html" title="An abstract class representing a camera type sensor." alt="" coords="413,168,505,193"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="461,207,461,272,456,272,456,207"/>
+<area shape="rect" id="Node000008" href="$classsf_1_1_vision_sensor.html" title="An abstract class representing a vision sensor." alt="" coords="396,80,521,105"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="461,119,461,167,456,167,456,119"/>
+<area shape="rect" id="Node000009" href="$classsf_1_1_sensor.html" title="An abstract class representing a sensor." alt="" coords="416,5,501,31"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="461,45,461,80,456,80,456,45"/>
+</map>

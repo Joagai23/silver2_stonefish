@@ -1,0 +1,90 @@
+\doxysection{USBL.\+cpp}
+\hypertarget{_u_s_b_l_8cpp_source}{}\label{_u_s_b_l_8cpp_source}\index{Library/src/comms/USBL.cpp@{Library/src/comms/USBL.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ USBL.cpp}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieślak\ on\ 25/02/2020.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2020\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}comms/USBL.h"{}}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00028}00028\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00029}00029\ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00030}00030\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00031}00031\ std::random\_device\ USBL::randomDevice;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00032}00032\ std::mt19937\ USBL::randomGenerator(randomDevice());}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00033}00033\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00034}\mbox{\hyperlink{classsf_1_1_u_s_b_l_ab7dd68c18f5f8aab88e5cc9b16fae17f}{00034}}\ \mbox{\hyperlink{classsf_1_1_u_s_b_l_ab7dd68c18f5f8aab88e5cc9b16fae17f}{USBL::USBL}}(std::string\ uniqueName,\ uint64\_t\ deviceId,\ Scalar\ minVerticalFOVDeg,\ Scalar\ maxVerticalFOVDeg,\ Scalar\ operatingRange)}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_acoustic_modem}{AcousticModem}}(uniqueName,\ deviceId,\ minVerticalFOVDeg,\ maxVerticalFOVDeg,\ operatingRange)}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00037}00037\ \ \ \ \ ping\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00038}00038\ \ \ \ \ noise\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00040}00040\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00041}\mbox{\hyperlink{classsf_1_1_u_s_b_l_aa4232ec6bad693d2f7b72f2303623fbe}{00041}}\ std::map<uint64\_t,\ BeaconInfo>\&\ \mbox{\hyperlink{classsf_1_1_u_s_b_l_aa4232ec6bad693d2f7b72f2303623fbe}{USBL::getBeaconInfo}}()}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{return}\ beacons;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00046}\mbox{\hyperlink{classsf_1_1_u_s_b_l_aa68c82929db9e7cee1fde73e24d60a8d}{00046}}\ CommType\ \mbox{\hyperlink{classsf_1_1_u_s_b_l_aa68c82929db9e7cee1fde73e24d60a8d}{USBL::getType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00047}00047\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{return}\ CommType::USBL;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00051}\mbox{\hyperlink{classsf_1_1_u_s_b_l_a2348b175c7f9dc74c545e8aa0bc22589}{00051}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_u_s_b_l_a2348b175c7f9dc74c545e8aa0bc22589}{USBL::EnableAutoPing}}(Scalar\ rate)}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{if}(rate\ >\ Scalar(0))}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ pingTime\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ pingRate\ =\ rate;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ ping\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00060}00060\ \ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00061}\mbox{\hyperlink{classsf_1_1_u_s_b_l_add35be34cb17e729ff7a53959e4dfb69}{00061}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_u_s_b_l_add35be34cb17e729ff7a53959e4dfb69}{USBL::DisableAutoPing}}()}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00062}00062\ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00063}00063\ \ \ \ \ ping\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00066}\mbox{\hyperlink{classsf_1_1_u_s_b_l_ae6b395c6a3f0c78b05f762d88471a5e8}{00066}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_u_s_b_l_ae6b395c6a3f0c78b05f762d88471a5e8}{USBL::InternalUpdate}}(Scalar\ dt)}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_acoustic_modem_a3965afef735b7fb68194a8cec4eb84e8}{AcousticModem::InternalUpdate}}(dt);}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00069}00069\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//Auto\ pinging\ with\ fixed\ rate}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{if}(ping\ \&\&\ pingRate\ >\ Scalar(0))}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ pingTime\ +=\ dt;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ Scalar\ invRate\ =\ Scalar(1)/pingRate;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(pingTime\ >=\ invRate)}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_comm_a13a353a93254656ef8ddf7c9c76a698f}{Comm::SendMessage}}(\textcolor{stringliteral}{"{}PING"{}});}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ pingTime\ -\/=\ invRate;}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_u_s_b_l_8cpp_source_l00084}00084\ \}}
+
+\end{DoxyCode}

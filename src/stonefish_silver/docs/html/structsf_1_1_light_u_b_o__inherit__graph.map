@@ -1,0 +1,7 @@
+<map id="sf::LightUBO" name="sf::LightUBO">
+<area shape="rect" id="Node000001" title="A structure representing a generic light in the Lights UBO." alt="" coords="100,5,203,31"/>
+<area shape="rect" id="Node000002" href="$structsf_1_1_point_light_u_b_o.html" title="A structure representing point light in the Lights UBO." alt="" coords="5,79,140,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,42,87,80,84,76,127,38"/>
+<area shape="rect" id="Node000003" href="$structsf_1_1_spot_light_u_b_o.html" title="A structure representing a spot light in the Ligths UBO (std140 aligned)." alt="" coords="165,79,295,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,38,219,76,215,80,172,42"/>
+</map>

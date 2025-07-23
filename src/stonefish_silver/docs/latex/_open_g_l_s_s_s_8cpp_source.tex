@@ -1,0 +1,410 @@
+\doxysection{Open\+GLSSS.\+cpp}
+\hypertarget{_open_g_l_s_s_s_8cpp_source}{}\label{_open_g_l_s_s_s_8cpp_source}\index{Library/src/graphics/OpenGLSSS.cpp@{Library/src/graphics/OpenGLSSS.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ OpenGLSSS.cpp}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 20/06/20.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2020-\/2021\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLSSS.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/GraphicalSimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}core/MaterialManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}entities/SolidEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}sensors/vision/SSS.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLState.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}graphics/GLSLShader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#define\ SSS\_VRES\_FACTOR\ 0.2f}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#define\ SSS\_HRES\_FACTOR\ 100.f}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00042}00042\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00043}00043\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00045}\mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a6ae5f2c7fab70edc4b3448e5c868fab0}{00045}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a6ae5f2c7fab70edc4b3448e5c868fab0}{OpenGLSSS::OpenGLSSS}}(glm::vec3\ centerPosition,\ glm::vec3\ direction,\ glm::vec3\ forward,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLfloat\ verticalBeamWidthDeg,\ GLfloat\ horizontalBeamWidthDeg,\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLuint\ numOfBins,\ GLuint\ numOfLines,\ GLfloat\ verticalTiltDeg,\ glm::vec2\ range\_)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00048}00048\ :\ \mbox{\hyperlink{classsf_1_1_open_g_l_sonar}{OpenGLSonar}}(centerPosition,\ direction,\ forward,\ glm::uvec2(numOfBins,\ numOfLines),\ range\_)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//SSS\ specs}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00051}00051\ \ \ \ \ sonar\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00052}00052\ \ \ \ \ tilt\ =\ glm::radians(verticalTiltDeg);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00053}00053\ \ \ \ \ fov.x\ =\ glm::radians(verticalBeamWidthDeg);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00054}00054\ \ \ \ \ fov.y\ =\ glm::radians(horizontalBeamWidthDeg);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00055}00055\ \ \ \ \ nBeamSamples.x\ =\ glm::min((GLuint)ceilf(verticalBeamWidthDeg\ *\ (GLfloat)numOfBins/2.f\ *\ SSS\_VRES\_FACTOR),\ (GLuint)2048);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00056}00056\ \ \ \ \ nBeamSamples.y\ =\ glm::min((GLuint)ceilf(horizontalBeamWidthDeg\ *\ SSS\_HRES\_FACTOR),\ (GLuint)2048);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00057}00057\ \ \ \ \ noise\ =\ glm::vec2(0.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a0e148d10edbf07316bda2af42d13998f}{UpdateTransform}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00059}00059\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//Setup\ matrices}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00061}00061\ \ \ \ \ GLfloat\ near\ =\ range.x\ *\ glm::cos(glm::max(fov.x/2.f,\ fov.y/2.f));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00062}00062\ \ \ \ \ GLfloat\ far\ =\ range.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00063}00063\ \ \ \ \ projection\ =\ glm::perspective(fov.y,\ tanf(fov.x/2.f)/tanf(fov.y/2.f),\ near,\ far);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00064}00064\ \ \ \ \ GLfloat\ offsetAngle\ =\ M\_PI\_2\ -\/\ tilt;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00065}00065\ \ \ \ \ views[0]\ =\ glm::rotate(-\/offsetAngle,\ glm::vec3(0.f,1.f,0.f));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00066}00066\ \ \ \ \ views[1]\ =\ glm::rotate(offsetAngle,\ glm::vec3(0.f,1.f,0.f));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//Allocate\ resources}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00069}00069\ \ \ \ \ inputRangeIntensityTex\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D\_ARRAY,\ glm::uvec3(nBeamSamples.x,\ nBeamSamples.y,\ 2),}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RG32F,\ GL\_RG,\ GL\_FLOAT,\ NULL,\ FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00071}00071\ \ \ \ \ glGenRenderbuffers(1,\ \&inputDepthRBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00072}00072\ \ \ \ \ glBindRenderbuffer(GL\_RENDERBUFFER,\ inputDepthRBO);\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00073}00073\ \ \ \ \ glRenderbufferStorage(GL\_RENDERBUFFER,\ GL\_DEPTH\_COMPONENT32F,\ nBeamSamples.x,\ nBeamSamples.y);\ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00074}00074\ \ \ \ \ glBindRenderbuffer(GL\_RENDERBUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00076}00076\ \ \ \ \ glGenFramebuffers(1,\ \&renderFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00077}00077\ \ \ \ \ OpenGLState::BindFramebuffer(renderFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00078}00078\ \ \ \ \ glFramebufferRenderbuffer(GL\_FRAMEBUFFER,\ GL\_DEPTH\_ATTACHMENT,\ GL\_RENDERBUFFER,\ inputDepthRBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00079}00079\ \ \ \ \ glFramebufferTextureLayer(GL\_FRAMEBUFFER,\ GL\_COLOR\_ATTACHMENT0,\ inputRangeIntensityTex,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00080}00080\ \ \ \ \ glFramebufferTextureLayer(GL\_FRAMEBUFFER,\ GL\_COLOR\_ATTACHMENT1,\ inputRangeIntensityTex,\ 0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00081}00081\ \ \ \ \ GLenum\ status\ =\ glCheckFramebufferStatus(GL\_FRAMEBUFFER);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ GL\_FRAMEBUFFER\_COMPLETE)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ cError(\textcolor{stringliteral}{"{}Sonar\ input\ FBO\ initialization\ failed!"{}});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//Output\ shader:\ sonar\ range\ data}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//a.\ Histograms\ for\ vertical\ beam\ FOV}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00087}00087\ \ \ \ \ outputTex[0]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D\_ARRAY,\ glm::uvec3(nBeamSamples.x,\ viewportWidth/2,\ 2),\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RG32F,\ GL\_RG,\ GL\_FLOAT,\ NULL,\ FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//b.\ Waterfall\ output\ (ping-\/pong)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00090}00090\ \ \ \ \ outputTex[1]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ glm::uvec3(viewportWidth,\ viewportHeight,\ 1),\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_R8,\ GL\_RED,\ GL\_UNSIGNED\_BYTE,\ NULL,\ FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00092}00092\ \ \ \ \ outputTex[2]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ glm::uvec3(viewportWidth,\ viewportHeight,\ 1),\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_R8,\ GL\_RED,\ GL\_UNSIGNED\_BYTE,\ NULL,\ FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00094}00094\ \ \ \ \ pingpong\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//Visualisation\ shader:\ sonar\ data\ color\ mapped}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00096}00096\ \ \ \ \ glGenTextures(1,\ \&displayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00097}00097\ \ \ \ \ OpenGLState::BindTexture(TEX\_BASE,\ GL\_TEXTURE\_2D,\ displayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00098}00098\ \ \ \ \ glPixelStorei(GL\_PACK\_ALIGNMENT,\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00099}00099\ \ \ \ \ glTexImage2D(GL\_TEXTURE\_2D,\ 0,\ GL\_RGB8,\ viewportWidth,\ viewportHeight,\ 0,\ GL\_RGB,\ GL\_UNSIGNED\_BYTE,\ NULL);\ \textcolor{comment}{//RGB\ image}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00100}00100\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_MIN\_FILTER,\ GL\_LINEAR);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00101}00101\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_MAG\_FILTER,\ GL\_LINEAR);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00102}00102\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_WRAP\_S,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00103}00103\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_WRAP\_T,\ GL\_CLAMP\_TO\_EDGE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00104}00104\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_BASE);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00105}00105\ \ \ \ \ std::vector<FBOTexture>\ textures;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00106}00106\ \ \ \ \ textures.push\_back(\mbox{\hyperlink{structsf_1_1_f_b_o_texture}{FBOTexture}}(GL\_COLOR\_ATTACHMENT0,\ GL\_TEXTURE\_2D,\ displayTex));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00107}00107\ \ \ \ \ displayFBO\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a96b9148e3657e1a454ba336741c349cb}{OpenGLContent::GenerateFramebuffer}}(textures);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00108}00108\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//Display\ quad}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00110}00110\ \ \ \ \ GLfloat\ quadData[4][4];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00111}00111\ \ \ \ \ quadData[0][0]\ =\ -\/1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00112}00112\ \ \ \ \ quadData[0][1]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00113}00113\ \ \ \ \ quadData[0][2]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00114}00114\ \ \ \ \ quadData[0][3]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00115}00115\ \ \ \ \ quadData[1][0]\ =\ -\/1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00116}00116\ \ \ \ \ quadData[1][1]\ =\ -\/1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00117}00117\ \ \ \ \ quadData[1][2]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00118}00118\ \ \ \ \ quadData[1][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00119}00119\ \ \ \ \ quadData[2][0]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00120}00120\ \ \ \ \ quadData[2][1]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00121}00121\ \ \ \ \ quadData[2][2]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00122}00122\ \ \ \ \ quadData[2][3]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00123}00123\ \ \ \ \ quadData[3][0]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00124}00124\ \ \ \ \ quadData[3][1]\ =\ -\/1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00125}00125\ \ \ \ \ quadData[3][2]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00126}00126\ \ \ \ \ quadData[3][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00127}00127\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00128}00128\ \ \ \ \ glGenVertexArrays(1,\ \&displayVAO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00129}00129\ \ \ \ \ OpenGLState::BindVertexArray(displayVAO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00130}00130\ \ \ \ \ glEnableVertexAttribArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00131}00131\ \ \ \ \ glGenBuffers(1,\ \&displayVBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00132}00132\ \ \ \ \ glBindBuffer(GL\_ARRAY\_BUFFER,\ displayVBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00133}00133\ \ \ \ \ glBufferData(GL\_ARRAY\_BUFFER,\ \textcolor{keyword}{sizeof}(quadData),\ quadData,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00134}00134\ \ \ \ \ glVertexAttribPointer(0,\ 4,\ GL\_FLOAT,\ GL\_FALSE,\ 4*\textcolor{keyword}{sizeof}(GLfloat),\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00135}00135\ \ \ \ \ glBindBuffer(GL\_ARRAY\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00136}00136\ \ \ \ \ OpenGLState::BindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{comment}{//Load\ output\ shader}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00139}00139\ \ \ \ \ std::string\ header\ =\ \textcolor{stringliteral}{"{}\#version\ 430\(\backslash\)n\#define\ N\_HALF\_BINS\ "{}}\ +\ std::to\_string(viewportWidth/2)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ \textcolor{stringliteral}{"{}\(\backslash\)n\#define\ N\_HORI\_BEAM\_SAMPLES\ "{}}\ +\ std::to\_string(nBeamSamples.y)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ \textcolor{stringliteral}{"{}\(\backslash\)n\#define\ N\_VERT\_BEAM\_SAMPLES\ "{}}\ +\ std::to\_string(nBeamSamples.x)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};\ ;\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00142}00142\ \ \ \ \ std::vector<GLSLSource>\ sources;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00143}00143\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_COMPUTE\_SHADER,\ \textcolor{stringliteral}{"{}sonarOutput2.comp"{}},\ header));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00144}00144\ \ \ \ \ sonarOutputShader[0]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00145}00145\ \ \ \ \ sonarOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}sonarInput"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00146}00146\ \ \ \ \ sonarOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}sonarHist"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00147}00147\ \ \ \ \ sonarOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}range"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00149}00149\ \ \ \ \ sonarOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00150}00150\ \ \ \ \ sonarOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}sonarInput"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00151}00151\ \ \ \ \ sonarOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}sonarHist"{}},\ TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00152}00152\ \ \ \ \ sonarOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}range"{}},\ glm::vec3(range.x,\ range.y,\ 2*(range.y-\/range.x)/(GLfloat)viewportWidth));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00153}00153\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00155}00155\ \ \ \ \ sources.clear();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00156}00156\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_COMPUTE\_SHADER,\ \textcolor{stringliteral}{"{}sonarLine.comp"{}},\ header));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00157}00157\ \ \ \ \ sonarOutputShader[1]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00158}00158\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}sonarHist"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00159}00159\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}sonarOutput"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00160}00160\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}noiseSeed"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00161}00161\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}noiseStddev"{}},\ ParameterType::VEC2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00162}00162\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}gain"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00163}00163\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}vfov"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00164}00164\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}tilt"{}},\ ParameterType::FLOAT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00165}00165\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00166}00166\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}sonarHist"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00167}00167\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}sonarOutput"{}},\ TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00168}00168\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}gain"{}},\ gain);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00169}00169\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}vfov"{}},\ fov.x);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00170}00170\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}tilt"{}},\ tilt);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00171}00171\ \ \ \ \ OpenGLState::UseProgram(0);\ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00173}00173\ \ \ \ \ sources.clear();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00174}00174\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_COMPUTE\_SHADER,\ \textcolor{stringliteral}{"{}sonarShift.comp"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00175}00175\ \ \ \ \ sonarShiftShader\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00176}00176\ \ \ \ \ sonarShiftShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}sonarOutputIn"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00177}00177\ \ \ \ \ sonarShiftShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}sonarOutputOut"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00178}00178\ \ \ \ \ sonarShiftShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00179}00179\ \ \ \ \ sonarShiftShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}sonarOutputIn"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00180}00180\ \ \ \ \ sonarShiftShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}sonarOutputOut"{}},\ TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00181}00181\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00182}00182\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00184}\mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a6b60cd616c1d90bc1441e17ec980a08f}{00184}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a6b60cd616c1d90bc1441e17ec980a08f}{OpenGLSSS::\string~OpenGLSSS}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00185}00185\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00186}00186\ \ \ \ \ \textcolor{keyword}{delete}\ sonarOutputShader[0];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{delete}\ sonarOutputShader[1];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00188}00188\ \ \ \ \ \textcolor{keyword}{delete}\ sonarShiftShader;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00189}00189\ \ \ \ \ glDeleteTextures(3,\ outputTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00190}00190\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00192}\mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a0e148d10edbf07316bda2af42d13998f}{00192}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a0e148d10edbf07316bda2af42d13998f}{OpenGLSSS::UpdateTransform}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00193}00193\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00194}00194\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_sonar_ab89adc5f25d513ae805110939fc6800a}{OpenGLSonar::UpdateTransform}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordflow}{if}(sonar\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00199}00199\ \ \ \ \ \textcolor{comment}{//Update\ settings\ if\ necessary}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{keywordtype}{bool}\ updateProjection\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00201}00201\ \ \ \ \ glm::vec3\ rangeGain((GLfloat)sonar-\/>\mbox{\hyperlink{classsf_1_1_s_s_s_a6c6e94c3b6dc3884a691655cdc85ede8}{getRangeMin}}(),\ (GLfloat)sonar-\/>\mbox{\hyperlink{classsf_1_1_s_s_s_a94f1e3690081f6ad84565553dc35adfb}{getRangeMax}}(),\ (GLfloat)sonar-\/>\mbox{\hyperlink{classsf_1_1_s_s_s_a1a27dcd32a1811a6616ea9877961d000}{getGain}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00202}00202\ \ \ \ \ \textcolor{keywordflow}{if}(rangeGain.x\ !=\ range.x)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00203}00203\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ range.x\ =\ rangeGain.x;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ updateProjection\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ settingsUpdated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00207}00207\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00208}00208\ \ \ \ \ \textcolor{keywordflow}{if}(rangeGain.y\ !=\ range.y)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00209}00209\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ range.y\ =\ rangeGain.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ updateProjection\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ settingsUpdated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00213}00213\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00214}00214\ \ \ \ \ \textcolor{keywordflow}{if}(rangeGain.z\ !=\ gain)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00215}00215\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ gain\ =\ rangeGain.z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \textcolor{comment}{//settingsUpdated\ =\ true;}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00218}00218\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00219}00219\ \ \ \ \ \textcolor{keywordflow}{if}(updateProjection)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00220}00220\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ GLfloat\ near\ =\ range.x/2.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ GLfloat\ far\ =\ range.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ projection[0]\ =\ glm::vec4(near/(near*tanf(fov.x/2.f)),\ 0.f,\ 0.f,\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ projection[1]\ =\ glm::vec4(0.f,\ near/(near*tanf(fov.y/2.f)),\ 0.f,\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ projection[2]\ =\ glm::vec4(0.f,\ 0.f,\ -\/(far\ +\ near)/(far-\/near),\ -\/1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ projection[3]\ =\ glm::vec4(0.f,\ 0.f,\ -\/2.f*far*near/(far-\/near),\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00227}00227\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00229}00229\ \ \ \ \ \textcolor{comment}{//Inform\ sonar\ to\ run\ callback}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00230}00230\ \ \ \ \ \textcolor{keywordflow}{if}(newData)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00231}00231\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ displayPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ GLubyte*\ src\ =\ (GLubyte*)glMapBuffer(GL\_PIXEL\_PACK\_BUFFER,\ GL\_READ\_ONLY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(src)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ sonar-\/>\mbox{\hyperlink{classsf_1_1_s_s_s_a67dae37506209b5f92b54c4980020e62}{NewDataReady}}(src,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ glUnmapBuffer(GL\_PIXEL\_PACK\_BUFFER);\ \textcolor{comment}{//Release\ pointer\ to\ the\ mapped\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ outputPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ src\ =\ (GLubyte*)glMapBuffer(GL\_PIXEL\_PACK\_BUFFER,\ GL\_READ\_ONLY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(src)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ sonar-\/>\mbox{\hyperlink{classsf_1_1_s_s_s_a67dae37506209b5f92b54c4980020e62}{NewDataReady}}(src,\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ glUnmapBuffer(GL\_PIXEL\_PACK\_BUFFER);\ \textcolor{comment}{//Release\ pointer\ to\ the\ mapped\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ newData\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00249}00249\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00250}00250\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00252}\mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a98dd5ab07ae6573158f5008c25a06ded}{00252}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a98dd5ab07ae6573158f5008c25a06ded}{OpenGLSSS::setNoise}}(glm::vec2\ signalStdDev)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00253}00253\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00254}00254\ \ \ \ \ noise\ =\ signalStdDev;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00255}00255\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00257}\mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a9e26ba180f6eba140d8620436e660728}{00257}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a9e26ba180f6eba140d8620436e660728}{OpenGLSSS::setSonar}}(\mbox{\hyperlink{classsf_1_1_s_s_s}{SSS}}*\ s)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00258}00258\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00259}00259\ \ \ \ \ sonar\ =\ s;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00261}00261\ \ \ \ \ glGenBuffers(1,\ \&outputPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00262}00262\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ outputPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00263}00263\ \ \ \ \ glBufferData(GL\_PIXEL\_PACK\_BUFFER,\ viewportWidth\ *\ viewportHeight,\ 0,\ GL\_STREAM\_READ);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00264}00264\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00266}00266\ \ \ \ \ glGenBuffers(1,\ \&displayPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00267}00267\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ displayPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00268}00268\ \ \ \ \ glBufferData(GL\_PIXEL\_PACK\_BUFFER,\ viewportWidth\ *\ viewportHeight\ *\ 3,\ 0,\ GL\_STREAM\_READ);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00269}00269\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00270}00270\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00272}\mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a57ec786f5d6b99c8bb9662b258a99ec2}{00272}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_a57ec786f5d6b99c8bb9662b258a99ec2}{OpenGLSSS::ComputeOutput}}(std::vector<Renderable>\&\ objects)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00273}00273\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00274}00274\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_content}{OpenGLContent}}*\ content\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00275}00275\ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_acd2ecbd33d26d7be1c52b0edaf882489}{SetDrawingMode}}(DrawingMode::RAW);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00276}00276\ \ \ \ \ \textcolor{comment}{//Generate\ sonar\ input}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00277}00277\ \ \ \ \ OpenGLState::BindFramebuffer(renderFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00278}00278\ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ nBeamSamples.x,\ nBeamSamples.y);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00279}00279\ \ \ \ \ glDisable(GL\_DEPTH\_CLAMP);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00280}00280\ \ \ \ \ sonarInputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00281}00281\ \ \ \ \ sonarInputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}eyePos"{}},\ \mbox{\hyperlink{classsf_1_1_open_g_l_sonar_abcbf106e7427376e8bc1c57a4f69580c}{GetEyePosition}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00282}00282\ \ \ \ \ sonarInputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00283}00283\ \ \ \ \ sonarInputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}eyePos"{}},\ \mbox{\hyperlink{classsf_1_1_open_g_l_sonar_abcbf106e7427376e8bc1c57a4f69580c}{GetEyePosition}}());}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00284}00284\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}*\ shader;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<2;\ ++i)\ \textcolor{comment}{//For\ each\ of\ the\ sonar\ views}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00286}00286\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Compute\ matrices}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ glm::mat4\ VP\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_sonar_acc80cf09b943fc38ccdece0cc5508e52}{GetProjectionMatrix}}()\ *\ views[i]\ *\ \mbox{\hyperlink{classsf_1_1_open_g_l_sonar_a2a5a54202e47384706ef40f45c89750d}{GetViewMatrix}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Clear\ color\ and\ depth\ for\ particular\ framebuffer\ layer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ glDrawBuffer(GL\_COLOR\_ATTACHMENT0\ +\ (GLuint)i);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT\ |\ GL\_DEPTH\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Draw\ objects}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ h=0;\ h<objects.size();\ ++h)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(objects[h].type\ !=\ RenderableType::SOLID)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_object}{Object}}\&\ obj\ =\ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a6d9eff1abcd608fb54d4116f5d81b446}{getObject}}(objects[h].objectId);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_look}{Look}}\&\ look\ =\ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a64199d7be907875a22669ca2902baf93}{getLook}}(objects[h].lookId);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ glm::mat4\ M\ =\ objects[h].model;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_material}{Material}}\ mat\ =\ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_a335e766c2e5e0b6527e19b636fcddb5a}{getMaterialManager}}()-\/>\mbox{\hyperlink{classsf_1_1_material_manager_ae8efb251d0124fc5ff1a79082dfa0464}{getMaterial}}(objects[h].materialName);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ normalMapping\ =\ obj.texturable\ \&\&\ (look.normalMap\ >\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ shader\ =\ normalMapping\ ?\ sonarInputShader[1]\ :\ sonarInputShader[0];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ shader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ shader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}MVP"{}},\ VP\ *\ M);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ shader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}M"{}},\ M);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ shader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}N"{}},\ glm::mat3(glm::transpose(glm::inverse(M))));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ shader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}restitution"{}},\ (GLfloat)mat.restitution);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(normalMapping)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_MAT\_NORMAL,\ GL\_TEXTURE\_2D,\ look.normalMap);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a52aacc2393c8e0481c250267cc2f514d}{DrawObject}}(objects[h].objectId,\ objects[h].lookId,\ objects[h].model);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00312}00312\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00313}00313\ \ \ \ \ glEnable(GL\_DEPTH\_CLAMP);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00314}00314\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_MAT\_NORMAL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00315}00315\ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00316}00316\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00317}00317\ \ \ \ \ \textcolor{comment}{//Compute\ sonar\ output\ histogram}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00318}00318\ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS1,\ inputRangeIntensityTex,\ 0,\ GL\_TRUE,\ 0,\ GL\_READ\_ONLY,\ GL\_RG32F);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00319}00319\ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS2,\ outputTex[0],\ 0,\ GL\_TRUE,\ 0,\ GL\_WRITE\_ONLY,\ GL\_RG32F);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00320}00320\ \ \ \ \ sonarOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00321}00321\ \ \ \ \ \textcolor{keywordflow}{if}(settingsUpdated)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00322}00322\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ sonarOutputShader[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}range"{}},\ glm::vec3(range.x,\ range.y,\ 2*(range.y-\/range.x)/(GLfloat)viewportWidth));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ settingsUpdated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00325}00325\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00326}00326\ \ \ \ \ glMemoryBarrier(GL\_FRAMEBUFFER\_BARRIER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00327}00327\ \ \ \ \ glDispatchCompute((GLuint)ceilf(nBeamSamples.x/64.f),\ 2,\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00328}00328\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00329}00329\ \ \ \ \ \textcolor{comment}{//Shift\ old\ sonar\ output}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00330}00330\ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS1,\ outputTex[pingpong\ +\ 1],\ 0,\ GL\_FALSE,\ 0,\ GL\_READ\_ONLY,\ GL\_R8);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00331}00331\ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS2,\ outputTex[1-\/pingpong\ +\ 1],\ 0,\ GL\_FALSE,\ 0,\ GL\_WRITE\_ONLY,\ GL\_R8);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00332}00332\ \ \ \ \ sonarShiftShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00333}00333\ \ \ \ \ glDispatchCompute((GLuint)ceilf(viewportWidth/16.f),\ (GLuint)ceilf(viewportHeight/16.f),\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00334}00334\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00335}00335\ \ \ \ \ \textcolor{comment}{//Postprocess\ sonar\ output}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00336}00336\ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS1,\ outputTex[0],\ 0,\ GL\_TRUE,\ 0,\ GL\_READ\_ONLY,\ GL\_RG32F);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00337}00337\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00338}00338\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}noiseSeed"{}},\ glm::vec3(randDist(randGen),\ randDist(randGen),\ randDist(randGen)));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00339}00339\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}noiseStddev"{}},\ noise);\ \textcolor{comment}{//\ Multiplicative,\ additive\ (0.01f,\ 0.02f)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00340}00340\ \ \ \ \ sonarOutputShader[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}gain"{}},\ gain);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00341}00341\ \ \ \ \ glMemoryBarrier(GL\_SHADER\_IMAGE\_ACCESS\_BARRIER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00342}00342\ \ \ \ \ glDispatchCompute((GLuint)ceilf(viewportWidth/2.f/64.f),\ 2,\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00343}00343\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00344}00344\ \ \ \ \ OpenGLState::BindFramebuffer(displayFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00345}00345\ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ viewportWidth,\ viewportHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00346}00346\ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00347}00347\ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS2,\ GL\_TEXTURE\_2D,\ outputTex[1-\/pingpong\ +\ 1]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00348}00348\ \ \ \ \ sonarVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00349}00349\ \ \ \ \ sonarVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}texSonarData"{}},\ TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00350}00350\ \ \ \ \ sonarVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}colorMap"{}},\ \textcolor{keyword}{static\_cast<}GLint\textcolor{keyword}{>}(cMap));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00351}00351\ \ \ \ \ glMemoryBarrier(GL\_SHADER\_IMAGE\_ACCESS\_BARRIER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00352}00352\ \ \ \ \ OpenGLState::BindVertexArray(displayVAO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00353}00353\ \ \ \ \ glDrawArrays(GL\_TRIANGLE\_STRIP,\ 0,\ 4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00354}00354\ \ \ \ \ OpenGLState::BindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00355}00355\ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00356}00356\ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00357}00357\ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00359}00359\ \ \ \ \ ++pingpong;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00360}00360\ \ \ \ \ \textcolor{keywordflow}{if}(pingpong\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ pingpong\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00362}00362\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00364}\mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_ac8473715e6e84599fb772d751b4821ff}{00364}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s_ac8473715e6e84599fb772d751b4821ff}{OpenGLSSS::DrawLDR}}(GLuint\ destinationFBO,\ \textcolor{keywordtype}{bool}\ updated)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00365}00365\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00366}00366\ \ \ \ \ \textcolor{comment}{//Check\ if\ there\ is\ a\ need\ to\ display\ image\ on\ screen}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00367}00367\ \ \ \ \ \textcolor{keywordtype}{bool}\ display\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00368}00368\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ dispX,\ dispY;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00369}00369\ \ \ \ \ GLfloat\ dispScale;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00370}00370\ \ \ \ \ \textcolor{keywordflow}{if}(sonar\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ display\ =\ sonar-\/>\mbox{\hyperlink{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1}{getDisplayOnScreen}}(dispX,\ dispY,\ dispScale);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00372}00372\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00373}00373\ \ \ \ \ \textcolor{comment}{//Draw\ on\ screen}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00374}00374\ \ \ \ \ \textcolor{keywordflow}{if}(display)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00375}00375\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_content}{OpenGLContent}}*\ content\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowHeight\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getWindowHeight();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowWidth\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getWindowWidth();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(destinationFBO);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a235f5774c3e89aeaf59cf52e32289548}{SetViewportSize}}(windowWidth,\ windowHeight);\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ windowWidth,\ windowHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ OpenGLState::DisableCullFace();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a2185c75674108e8727e05247e79af2f5}{DrawTexturedQuad}}(dispX,\ dispY+viewportHeight*dispScale,\ viewportWidth*dispScale,\ -\/viewportHeight*dispScale,\ displayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ OpenGLState::EnableCullFace();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00386}00386\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00387}00387\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00388}00388\ \ \ \ \ \textcolor{comment}{//Copy\ texture\ to\ sonar\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00389}00389\ \ \ \ \ \textcolor{keywordflow}{if}(sonar\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ updated)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00390}00390\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ outputTex[pingpong+1]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ outputPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ glGetTexImage(GL\_TEXTURE\_2D,\ 0,\ GL\_RED,\ GL\_UNSIGNED\_BYTE,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ displayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ displayPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ glGetTexImage(GL\_TEXTURE\_2D,\ 0,\ GL\_RGB,\ GL\_UNSIGNED\_BYTE,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ newData\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00401}00401\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00402}00402\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00403}00403\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_s_s_s_8cpp_source_l00404}00404\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,130 @@
+\doxysection{sf\+::Filtered\+Collision\+Dispatcher Class Reference}
+\hypertarget{classsf_1_1_filtered_collision_dispatcher}{}\label{classsf_1_1_filtered_collision_dispatcher}\index{sf::FilteredCollisionDispatcher@{sf::FilteredCollisionDispatcher}}
+
+
+A class implementing a custom collision dispatcher object.  
+
+
+
+
+{\ttfamily \#include $<$Filtered\+Collision\+Dispatcher.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Filtered\+Collision\+Dispatcher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classsf_1_1_filtered_collision_dispatcher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Filtered\+Collision\+Dispatcher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classsf_1_1_filtered_collision_dispatcher__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_filtered_collision_dispatcher_abfe15f3245d1a9b60c9d8d20b0d2a958}{Filtered\+Collision\+Dispatcher}} (bt\+Collision\+Configuration \texorpdfstring{$\ast$}{*}collision\+Configuration, bool inclusive\+Mode)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_filtered_collision_dispatcher_a068a652620c5921fc891201e36532397}{needs\+Collision}} (const bt\+Collision\+Object \texorpdfstring{$\ast$}{*}body0, const bt\+Collision\+Object \texorpdfstring{$\ast$}{*}body1)
+\begin{DoxyCompactList}\small\item\em A method that informs if two collision objects can collide. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_filtered_collision_dispatcher_afcc6c115373dd844116b97a6d87a0fcb}{my\+Near\+Callback}} (bt\+Broadphase\+Pair \&collision\+Pair, bt\+Collision\+Dispatcher \&dispatcher, const bt\+Dispatcher\+Info \&dispatch\+Info)
+\begin{DoxyCompactList}\small\item\em A method calling the collision computation algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class implementing a custom collision dispatcher object. 
+
+Definition at line \mbox{\hyperlink{_filtered_collision_dispatcher_8h_source_l00034}{34}} of file \mbox{\hyperlink{_filtered_collision_dispatcher_8h_source}{Filtered\+Collision\+Dispatcher.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_filtered_collision_dispatcher_abfe15f3245d1a9b60c9d8d20b0d2a958}\label{classsf_1_1_filtered_collision_dispatcher_abfe15f3245d1a9b60c9d8d20b0d2a958} 
+\index{sf::FilteredCollisionDispatcher@{sf::FilteredCollisionDispatcher}!FilteredCollisionDispatcher@{FilteredCollisionDispatcher}}
+\index{FilteredCollisionDispatcher@{FilteredCollisionDispatcher}!sf::FilteredCollisionDispatcher@{sf::FilteredCollisionDispatcher}}
+\doxysubsubsection{\texorpdfstring{FilteredCollisionDispatcher()}{FilteredCollisionDispatcher()}}
+{\footnotesize\ttfamily sf\+::\+Filtered\+Collision\+Dispatcher\+::\+Filtered\+Collision\+Dispatcher (\begin{DoxyParamCaption}\item[{bt\+Collision\+Configuration \texorpdfstring{$\ast$}{*}}]{collision\+Configuration,  }\item[{bool}]{inclusive\+Mode }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em collision\+Configuration} & a pointer to the collision configuration structure \\
+\hline
+{\em inclusive\+Mode} & a flag that selects the mode of collision detection \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_filtered_collision_dispatcher_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_filtered_collision_dispatcher_8cpp_source}{Filtered\+Collision\+Dispatcher.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_filtered_collision_dispatcher_afcc6c115373dd844116b97a6d87a0fcb}\label{classsf_1_1_filtered_collision_dispatcher_afcc6c115373dd844116b97a6d87a0fcb} 
+\index{sf::FilteredCollisionDispatcher@{sf::FilteredCollisionDispatcher}!myNearCallback@{myNearCallback}}
+\index{myNearCallback@{myNearCallback}!sf::FilteredCollisionDispatcher@{sf::FilteredCollisionDispatcher}}
+\doxysubsubsection{\texorpdfstring{myNearCallback()}{myNearCallback()}}
+{\footnotesize\ttfamily void sf\+::\+Filtered\+Collision\+Dispatcher\+::my\+Near\+Callback (\begin{DoxyParamCaption}\item[{bt\+Broadphase\+Pair \&}]{collision\+Pair,  }\item[{bt\+Collision\+Dispatcher \&}]{dispatcher,  }\item[{const bt\+Dispatcher\+Info \&}]{dispatch\+Info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A method calling the collision computation algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em collision\+Pair} & a reference to a collision pair info structure \\
+\hline
+{\em dispatcher} & a reference to the collision dispatcher \\
+\hline
+{\em dispatch\+Info} & a reference to the collision dispatcher info structure \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_filtered_collision_dispatcher_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_filtered_collision_dispatcher_8cpp_source}{Filtered\+Collision\+Dispatcher.\+cpp}}.
+
+\Hypertarget{classsf_1_1_filtered_collision_dispatcher_a068a652620c5921fc891201e36532397}\label{classsf_1_1_filtered_collision_dispatcher_a068a652620c5921fc891201e36532397} 
+\index{sf::FilteredCollisionDispatcher@{sf::FilteredCollisionDispatcher}!needsCollision@{needsCollision}}
+\index{needsCollision@{needsCollision}!sf::FilteredCollisionDispatcher@{sf::FilteredCollisionDispatcher}}
+\doxysubsubsection{\texorpdfstring{needsCollision()}{needsCollision()}}
+{\footnotesize\ttfamily bool sf\+::\+Filtered\+Collision\+Dispatcher\+::needs\+Collision (\begin{DoxyParamCaption}\item[{const bt\+Collision\+Object \texorpdfstring{$\ast$}{*}}]{body0,  }\item[{const bt\+Collision\+Object \texorpdfstring{$\ast$}{*}}]{body1 }\end{DoxyParamCaption})}
+
+
+
+A method that informs if two collision objects can collide. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body0} & a pointer to the first collision object \\
+\hline
+{\em body1} & a pointer to the second collision object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+can given objects collide? 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_filtered_collision_dispatcher_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{_filtered_collision_dispatcher_8cpp_source}{Filtered\+Collision\+Dispatcher.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/core/Filtered\+Collision\+Dispatcher.\+h\item 
+Library/src/core/Filtered\+Collision\+Dispatcher.\+cpp\end{DoxyCompactItemize}

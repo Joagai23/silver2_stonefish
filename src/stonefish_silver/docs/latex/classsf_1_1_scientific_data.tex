@@ -1,0 +1,227 @@
+\doxysection{sf\+::Scientific\+Data Class Reference}
+\hypertarget{classsf_1_1_scientific_data}{}\label{classsf_1_1_scientific_data}\index{sf::ScientificData@{sf::ScientificData}}
+
+
+A class representing scientific data structure.  
+
+
+
+
+{\ttfamily \#include $<$Scientific\+File\+Util.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_scientific_data_aee52b0d203066b6a6f9d673dde3965a9}{Scientific\+Data}} (const std\+::string \&filepath)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_scientific_data_ac39c257a2fe64211d567984bc1c2a24a}{\texorpdfstring{$\sim$}{\string~}\+Scientific\+Data}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_scientific_data_af478dd1c8d69f707405915576ba4ce0a}{add\+Item}} (\mbox{\hyperlink{structsf_1_1_scientific_data_item}{Scientific\+Data\+Item}} \texorpdfstring{$\ast$}{*}it)
+\begin{DoxyCompactList}\small\item\em A method to add a data item to the list. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structsf_1_1_scientific_data_item}{Scientific\+Data\+Item}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_scientific_data_a20ebc6f46f8bd4a1241699a7dd10e0c9}{get\+Item}} (std\+::string name) const
+\begin{DoxyCompactList}\small\item\em A method returning a data item. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structsf_1_1_scientific_data_item}{Scientific\+Data\+Item}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_scientific_data_a0e822ea3bd6c220cb0c9a8a72fe27d1c}{get\+Item}} (unsigned int index) const
+\begin{DoxyCompactList}\small\item\em A method returning a data item. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_scientific_data_a19731a86aa9d413355076de2aebbac80}{get\+Items\+Count}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the total number of items. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_scientific_data_a1a31112ae1f74f65776d5e5564bcb5b6}{get\+Scalar}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em A method to get value of a single scalar data item. \end{DoxyCompactList}\item 
+bt\+Vector\+Xu \mbox{\hyperlink{classsf_1_1_scientific_data_a5c490894ceb1101bd7fc0f94edeac23d}{get\+Vector}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em A method to get value of a vector data item. \end{DoxyCompactList}\item 
+bt\+Matrix\+Xu \mbox{\hyperlink{classsf_1_1_scientific_data_a4b9fff0b779ade2ce95136b582d9838a}{get\+Matrix}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em A method to get value of a matrix data item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing scientific data structure. 
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8h_source_l00071}{71}} of file \mbox{\hyperlink{_scientific_file_util_8h_source}{Scientific\+File\+Util.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_scientific_data_aee52b0d203066b6a6f9d673dde3965a9}\label{classsf_1_1_scientific_data_aee52b0d203066b6a6f9d673dde3965a9} 
+\index{sf::ScientificData@{sf::ScientificData}!ScientificData@{ScientificData}}
+\index{ScientificData@{ScientificData}!sf::ScientificData@{sf::ScientificData}}
+\doxysubsubsection{\texorpdfstring{ScientificData()}{ScientificData()}}
+{\footnotesize\ttfamily sf\+::\+Scientific\+Data\+::\+Scientific\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & the path of the output file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_scientific_file_util_8cpp_source}{Scientific\+File\+Util.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scientific_data_ac39c257a2fe64211d567984bc1c2a24a}\label{classsf_1_1_scientific_data_ac39c257a2fe64211d567984bc1c2a24a} 
+\index{sf::ScientificData@{sf::ScientificData}!````~ScientificData@{\texorpdfstring{$\sim$}{\string~}ScientificData}}
+\index{````~ScientificData@{\texorpdfstring{$\sim$}{\string~}ScientificData}!sf::ScientificData@{sf::ScientificData}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ScientificData()}{\string~ScientificData()}}
+{\footnotesize\ttfamily sf\+::\+Scientific\+Data\+::\texorpdfstring{$\sim$}{\string~}\+Scientific\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_scientific_file_util_8cpp_source}{Scientific\+File\+Util.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_scientific_data_af478dd1c8d69f707405915576ba4ce0a}\label{classsf_1_1_scientific_data_af478dd1c8d69f707405915576ba4ce0a} 
+\index{sf::ScientificData@{sf::ScientificData}!addItem@{addItem}}
+\index{addItem@{addItem}!sf::ScientificData@{sf::ScientificData}}
+\doxysubsubsection{\texorpdfstring{addItem()}{addItem()}}
+{\footnotesize\ttfamily void sf\+::\+Scientific\+Data\+::add\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_scientific_data_item}{Scientific\+Data\+Item}} \texorpdfstring{$\ast$}{*}}]{it }\end{DoxyParamCaption})}
+
+
+
+A method to add a data item to the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & a pointer to a data item \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_scientific_file_util_8cpp_source}{Scientific\+File\+Util.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scientific_data_a20ebc6f46f8bd4a1241699a7dd10e0c9}\label{classsf_1_1_scientific_data_a20ebc6f46f8bd4a1241699a7dd10e0c9} 
+\index{sf::ScientificData@{sf::ScientificData}!getItem@{getItem}}
+\index{getItem@{getItem}!sf::ScientificData@{sf::ScientificData}}
+\doxysubsubsection{\texorpdfstring{getItem()}{getItem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structsf_1_1_scientific_data_item}{Scientific\+Data\+Item}} \texorpdfstring{$\ast$}{*} sf\+::\+Scientific\+Data\+::get\+Item (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption}) const}
+
+
+
+A method returning a data item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the data item 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_scientific_file_util_8cpp_source}{Scientific\+File\+Util.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scientific_data_a0e822ea3bd6c220cb0c9a8a72fe27d1c}\label{classsf_1_1_scientific_data_a0e822ea3bd6c220cb0c9a8a72fe27d1c} 
+\index{sf::ScientificData@{sf::ScientificData}!getItem@{getItem}}
+\index{getItem@{getItem}!sf::ScientificData@{sf::ScientificData}}
+\doxysubsubsection{\texorpdfstring{getItem()}{getItem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structsf_1_1_scientific_data_item}{Scientific\+Data\+Item}} \texorpdfstring{$\ast$}{*} sf\+::\+Scientific\+Data\+::get\+Item (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+A method returning a data item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the data item on the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the data item 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_scientific_file_util_8cpp_source}{Scientific\+File\+Util.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scientific_data_a19731a86aa9d413355076de2aebbac80}\label{classsf_1_1_scientific_data_a19731a86aa9d413355076de2aebbac80} 
+\index{sf::ScientificData@{sf::ScientificData}!getItemsCount@{getItemsCount}}
+\index{getItemsCount@{getItemsCount}!sf::ScientificData@{sf::ScientificData}}
+\doxysubsubsection{\texorpdfstring{getItemsCount()}{getItemsCount()}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Scientific\+Data\+::get\+Items\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the total number of items. 
+
+
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_scientific_file_util_8cpp_source}{Scientific\+File\+Util.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scientific_data_a4b9fff0b779ade2ce95136b582d9838a}\label{classsf_1_1_scientific_data_a4b9fff0b779ade2ce95136b582d9838a} 
+\index{sf::ScientificData@{sf::ScientificData}!getMatrix@{getMatrix}}
+\index{getMatrix@{getMatrix}!sf::ScientificData@{sf::ScientificData}}
+\doxysubsubsection{\texorpdfstring{getMatrix()}{getMatrix()}}
+{\footnotesize\ttfamily bt\+Matrix\+Xu sf\+::\+Scientific\+Data\+::get\+Matrix (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+A method to get value of a matrix data item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the data item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_scientific_file_util_8cpp_source}{Scientific\+File\+Util.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scientific_data_a1a31112ae1f74f65776d5e5564bcb5b6}\label{classsf_1_1_scientific_data_a1a31112ae1f74f65776d5e5564bcb5b6} 
+\index{sf::ScientificData@{sf::ScientificData}!getScalar@{getScalar}}
+\index{getScalar@{getScalar}!sf::ScientificData@{sf::ScientificData}}
+\doxysubsubsection{\texorpdfstring{getScalar()}{getScalar()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Scientific\+Data\+::get\+Scalar (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+A method to get value of a single scalar data item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the data item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_scientific_file_util_8cpp_source}{Scientific\+File\+Util.\+cpp}}.
+
+\Hypertarget{classsf_1_1_scientific_data_a5c490894ceb1101bd7fc0f94edeac23d}\label{classsf_1_1_scientific_data_a5c490894ceb1101bd7fc0f94edeac23d} 
+\index{sf::ScientificData@{sf::ScientificData}!getVector@{getVector}}
+\index{getVector@{getVector}!sf::ScientificData@{sf::ScientificData}}
+\doxysubsubsection{\texorpdfstring{getVector()}{getVector()}}
+{\footnotesize\ttfamily bt\+Vector\+Xu sf\+::\+Scientific\+Data\+::get\+Vector (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+A method to get value of a vector data item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the data item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_scientific_file_util_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{_scientific_file_util_8cpp_source}{Scientific\+File\+Util.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/utils/Scientific\+File\+Util.\+h\item 
+Library/src/utils/Scientific\+File\+Util.\+cpp\end{DoxyCompactItemize}

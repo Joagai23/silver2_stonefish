@@ -1,0 +1,422 @@
+\doxysection{sf\+::Box Class Reference}
+\hypertarget{classsf_1_1_box}{}\label{classsf_1_1_box}\index{sf::Box@{sf::Box}}
+
+
+A class representing a box-\/shaped rigid body.  
+
+
+
+
+{\ttfamily \#include $<$Box.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Box\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classsf_1_1_box__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Box\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_box__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_box_a4aded5150168121bf4b6404ab411ece2}{Box}} (std\+::string unique\+Name, \mbox{\hyperlink{structsf_1_1_body_physics_settings}{Body\+Physics\+Settings}} phy, const Vector3 \&dimensions, const Transform \&origin, std\+::string material, std\+::string look, Scalar thickness=Scalar(-\/1), unsigned int uv\+Mode=0)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+Solid\+Type \mbox{\hyperlink{classsf_1_1_box_aef6631aff7780763dfff9f1a399082a7}{get\+Solid\+Type}} ()
+\begin{DoxyCompactList}\small\item\em A method that returns the type of body. \end{DoxyCompactList}\item 
+bt\+Collision\+Shape \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_box_ade27aebaa17059d4138135d237f4c706}{Build\+Collision\+Shape}} ()
+\begin{DoxyCompactList}\small\item\em A method that returns the collision shape for the box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_solid_entity}{sf\+::\+Solid\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_solid_entity_a7c3502d9a3cd464d3f81984a45f9df60}{Solid\+Entity}} (std\+::string unique\+Name, \mbox{\hyperlink{structsf_1_1_body_physics_settings}{Body\+Physics\+Settings}} phy, std\+::string material, std\+::string look, Scalar thickness)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_solid_entity_a15104ad82b263ff3510a4d0a3f766b05}{\texorpdfstring{$\sim$}{\string~}\+Solid\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a547c4a5cbc391fbf255c82d0d4a9c1ab}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A method adding the body to the simulation manager. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_afcc70274ed3e0457fdbd6c0c3d47ef48}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method adding the body to the simulation manager. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a98295b91d309042394d048c404d4264a}{Remove\+From\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A method removing the body from the simulation manager. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a06341ebc962fbf7647039875448d4458}{Update\+Acceleration}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method updating the acceleration of the body. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_solid_entity_a3d7bdff4905f432c9314781978f007d3}{Compute\+Hydrodynamic\+Forces}} (\mbox{\hyperlink{structsf_1_1_hydrodynamics_settings}{Hydrodynamics\+Settings}} settings, \mbox{\hyperlink{classsf_1_1_ocean}{Ocean}} \texorpdfstring{$\ast$}{*}ocn)
+\begin{DoxyCompactList}\small\item\em A method that computes fluid dynamics based on selected settings. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_solid_entity_a31fbc4e2a743d4c58ef5e8183ebd4f01}{Compute\+Aerodynamic\+Forces}} (\mbox{\hyperlink{classsf_1_1_atmosphere}{Atmosphere}} \texorpdfstring{$\ast$}{*}atm)
+\begin{DoxyCompactList}\small\item\em A method that computes aerodynamics. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a59635fef57e11f72361fa1a6b368d52f}{Correct\+Aerodynamic\+Forces}} (\mbox{\hyperlink{classsf_1_1_atmosphere}{Atmosphere}} \texorpdfstring{$\ast$}{*}atm, Vector3 \&\+\_\+\+Fda, Vector3 \&\+\_\+\+Tda)
+\begin{DoxyCompactList}\small\item\em A method that corrects damping forces based on geometry shape approximation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a53e7f01530aa5f223a3a593affcab0c4}{Apply\+Central\+Force}} (const Vector3 \&force)
+\begin{DoxyCompactList}\small\item\em A method which applies given force to the body CG. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a1dbd1013fa148de2c448ff39a1f26864}{Apply\+Torque}} (const Vector3 \&torque)
+\begin{DoxyCompactList}\small\item\em A method which applies given torque to the body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_aafe9bdf1dce6022690b76a220a49988c}{Apply\+Gravity}} (const Vector3 \&g)
+\begin{DoxyCompactList}\small\item\em A method which applies gravity to the body. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_solid_entity_a47eba9beecfe80b490b0550db7253329}{Apply\+Hydrodynamic\+Forces}} ()
+\begin{DoxyCompactList}\small\item\em A method which applies precomputed hydrodynamic forces to the body. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_solid_entity_a1ff4d9a4d6c91904f7ca33daca03d04e}{Apply\+Aerodynamic\+Forces}} ()
+\begin{DoxyCompactList}\small\item\em A method which applies precomputed aerodynamic forces to the body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a1e46f0d49b56580253b00dc226901796}{Scale\+Physical\+Properties\+To\+Arbitrary\+Mass}} (Scalar mass)
+\begin{DoxyCompactList}\small\item\em A method used to scale the inertia of the body by comparing actual and given mass. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_solid_entity_ab5214614fdfd17f0a71e4674a23604bd}{Set\+Arbitrary\+Physical\+Properties}} (Scalar mass, const Vector3 \&inertia, const Transform \&CG)
+\begin{DoxyCompactList}\small\item\em A method used to set arbitrary physical properties of the body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a45b029f0d9b417a0b73d348f08e9b348}{Set\+Contact\+Properties}} (bool soft, Scalar stiffness=Scalar(0), Scalar damping=Scalar(0))
+\begin{DoxyCompactList}\small\item\em A method used to enable compliant contact and set the contact response. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a879803a06aedf53098a65e9a8a90da53}{Set\+Hydrodynamic\+Coefficients}} (const Vector3 \&Cd, const Vector3 \&Cf)
+\begin{DoxyCompactList}\small\item\em A method used to set hydrodynamic coeffcients. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_ad45e05ece2de8de9f722017384bf333f}{set\+CGTransform}} (const Transform \&trans)
+\begin{DoxyCompactList}\small\item\em A method to set the body pose in the world frame. \end{DoxyCompactList}\item 
+Entity\+Type \mbox{\hyperlink{classsf_1_1_solid_entity_aa97dda3fa468fe698d6398e5a6cb736b}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the entity. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_ab0026e92dae4a8b237d2b1937e72b97d}{get\+CG2\+GTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the transformation from the CG frame to the graphics mesh origin. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a5c06e07d55e5e72bfdb2b8849bacf498}{get\+CG2\+CTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the transformation from the CG frame to the physics mesh origin. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a4340885ad6ffd1c39d04b516e9960282}{get\+CG2\+OTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the transformation from the CG frame to the body origin. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a61091dd44180a327e60c3c6064e14ef5}{get\+CB}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the position of the CB in the CG frame. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_ac775999888eee8b8a909ff95ea0b08d4}{get\+O2\+CTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the transformation from body origin to the physics mesh origin. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a1b01d2c29b19c15e197d80c9891f5a1b}{get\+O2\+GTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the transformation from body origin to the graphics mesh origin. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a2f33a35c1cfa3ea31f722cfb1d86ce64}{get\+O2\+HTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the transformation from body origin to the geometry approximation origin. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a57d1b2e35c735a26f88f77abe654a74f}{get\+CGTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the pose of the body in the world frame. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a819147b814dc96d20cf53535ab974872}{get\+GTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the pose of the graphics mesh in the world frame (rendering). \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_ac8754a3b59a8ef51134aaab8cdc7864e}{get\+CTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the pose of the physics mesh in the world frame (hydrodynamics). \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_af198b9096358a3d3bb1b013775b92587}{get\+HTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the pose of the hydro proxy origin in the world frame. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_abafe2491c92afd4a91f263bd9ccc9ce2}{get\+OTransform}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the pose of the body origin in the world frame. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a2800e9aa22c9cfdeca9f64bbcad87e74}{get\+Linear\+Velocity}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the linear velocity of the body. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a2903b0ab642364d0496ddfafea045bc7}{get\+Linear\+Velocity\+In\+Local\+Point}} (const Vector3 \&rel\+Pos) const
+\begin{DoxyCompactList}\small\item\em A method returning the linear velocity of the body at the given point. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_ad71d7839ac6517de93ebf0d83e5145de}{get\+Angular\+Velocity}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the angular velocity of the body. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_afee89b6709464f952a4501fc0b1e8452}{get\+Linear\+Acceleration}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the linear acceleration of the body. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a7e3d432956bc2d92b1d0122b390c3d16}{get\+Angular\+Acceleration}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the angular acceleration of the body. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a11d0355fe1e3386b34cbb3cb6601920d}{get\+Applied\+Force}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the force applied to the body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a27cf81f629f13f4eb6969273e3d86ca8}{get\+Hydrodynamic\+Forces}} (Vector3 \&Fb, Vector3 \&Tb, Vector3 \&Fd, Vector3 \&Td, Vector3 \&Ff, Vector3 \&Tf)
+\begin{DoxyCompactList}\small\item\em A method returning the hydrodynamic forces computed for the body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a697df2e35bc12209f4686ee73fc777f1}{get\+Hydrodynamic\+Coefficients}} (Vector3 \&Cd, Vector3 \&Cf) const
+\begin{DoxyCompactList}\small\item\em A method returning the hydrodynamic coefficents for the body. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_a5010d2cb065becc753573f5b0c3d3063}{get\+Wetted\+Surface}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the wetted surface area of the body. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_afbb89cf2f5e6e3669e71357cc3406dea}{get\+Submerged\+Volume}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the submerged volume of the body. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_acf18d57d1ee8a3fdd6afaa90e1802fd8}{get\+Mass}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the mass of the body. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a0f0029da17b52e63c138a2e2a4adc164}{get\+Inertia}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the inertia of the body. \end{DoxyCompactList}\item 
+virtual Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_aff6d0d62e19cac4e06a66bdd227f5346}{get\+Augmented\+Mass}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the mass or the sum of mass and added mass (depending on type of body). \end{DoxyCompactList}\item 
+virtual Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_ab5f7b1516cd8bf8fff0eff15d3bc26f5}{get\+Augmented\+Inertia}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the inertia or the sum of inertia and added mass (depending on type of body). \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a708e192f5311428f37d53242ad7f13bb}{get\+Added\+Mass}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the hydrodynamic added mass (diagonal elements). \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a31792619e0d2eed90c7fa30d3a475ea9}{get\+Added\+Inertia}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the hydrodynamic added inertia (diagonal elements). \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_a481eee4281db6057c7ab4414938d2e3b}{get\+Volume}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the volume of the body. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_a45ed465beca5f6ef4b3c4d356caaa134}{get\+Surface}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the surface area of the body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a9a992939812ea246728aa338387f0c9d}{get\+Geometry\+Approx}} (Geometry\+Approx\+Type \&type, std\+::vector$<$ Scalar $>$ \&params) const
+\begin{DoxyCompactList}\small\item\em A method returning the parameters of the approximation of body shape. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_solid_entity_abe006b614914fcf640f6a35a42ce695c}{get\+Physics\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the physics mesh. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ Vector3 $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_solid_entity_a48a2546dbd45bf0523c6adfb42a8971e}{get\+Mesh\+Vertices}} () const
+\begin{DoxyCompactList}\small\item\em A method that returns a copy of all physics mesh vertices in body origin frame. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_solid_entity_a518eb4bacd1ca0207fc654682fe68834}{is\+Buoyant}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the body is using buoyancy computation. \end{DoxyCompactList}\item 
+Body\+Physics\+Mode \mbox{\hyperlink{classsf_1_1_solid_entity_a8c39ad6649c31a3bd63f1e7990ee6c87}{get\+Body\+Physics\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em A method informing what kind of physics computations are performed for the body. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_solid_entity_a6625c316dcbdb20799c917513395ad5d}{Build\+Graphical\+Object}} ()
+\begin{DoxyCompactList}\small\item\em A method used to build the graphical representation of the body. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_solid_entity_a4d9a8f4b585123841bde0046bd48675c}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the elements that should be rendered. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_ac8b39b6a3289609bf981edeb6ce54dc1}{get\+AABB}} (Vector3 \&min, Vector3 \&max)
+\begin{DoxyCompactList}\small\item\em A method returning the extents of the body axis alligned bounding box. \end{DoxyCompactList}\item 
+void {\bfseries set\+Display\+Coord\+Sys} (bool enabled)
+\begin{DoxyCompactList}\small\item\em A method used to set if the body CG should be rendered. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_solid_entity_a07826e01a62864b61caa37809787899a}{get\+Physical\+Object}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the index of the physical object used in rendering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_moving_entity}{sf\+::\+Moving\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_moving_entity_a80c53bd5bbe4a89ceaa5dc0b938cba1b}{Moving\+Entity}} (std\+::string unique\+Name, std\+::string material, std\+::string look)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_moving_entity_a949e6bd7fe43e55624aa90e96dbe2cd2}{\texorpdfstring{$\sim$}{\string~}\+Moving\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_moving_entity_a7aa67e40eb5e529e567c8872bc097957}{set\+Linear\+Acceleration}} (Vector3 a)
+\begin{DoxyCompactList}\small\item\em A method setting the linear acceleration of the body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_moving_entity_a87a42db1a87153199549afbffc0af11a}{set\+Angular\+Acceleration}} (Vector3 epsilon)
+\begin{DoxyCompactList}\small\item\em A method setting the angular acceleration of the body. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsf_1_1_material}{Material}} \mbox{\hyperlink{classsf_1_1_moving_entity_ae740632e74b4344722f6a54728799da6}{get\+Material}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the material of the body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_moving_entity_a75e4a8007e64bad5ee62aa67323b641d}{set\+Look}} (int new\+Look\+Id)
+\begin{DoxyCompactList}\small\item\em A method used to change the rendering style of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_moving_entity_a58490e56a4b5a76dffe60dc0a1652b1f}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set display mode used for the body. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_moving_entity_ad0eb58e51012d214c1d26e2b856c91b3}{get\+Look}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the index of the graphical material used in rendering. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_moving_entity_aaa6513c61615456722d9c3cc5df5c071}{get\+Graphical\+Object}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the index of the graphical object used in rendering. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_particles}{Open\+GLOcean\+Particles}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_moving_entity_a3234eaa3d9f02fdf1b9cfe8eb84dd73d}{get\+Ocean\+Particles}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the associated particles system. \end{DoxyCompactList}\item 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_moving_entity_a3f46a9f4012e6ccc4d2086fec6a75146}{get\+Rigid\+Body}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the rigid body associated with the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_entity}{sf\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_entity_a89127a850fa48fe25fbf6f5a355f7f9c}{Entity}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_entity_a4b728d6d4ff242dc0b4f116822cccd33}{\texorpdfstring{$\sim$}{\string~}\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_entity_a5b92af995ae80397f64cb97fe3d6a866}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method used to set if the entity should be renderable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_entity_a1560e090759bc9491609e38b69ff1033}{is\+Renderable}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the entity is renderable. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_solid_entity}{sf\+::\+Solid\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_solid_entity_ade798feefe939f16a32d2d1cf9238580}{Correct\+Hydrodynamic\+Forces}} (\mbox{\hyperlink{classsf_1_1_ocean}{Ocean}} \texorpdfstring{$\ast$}{*}ocn, Vector3 \&\+\_\+\+Fdq, Vector3 \&\+\_\+\+Tdq, Vector3 \&\+\_\+\+Fdf, Vector3 \&\+\_\+\+Tdf, const Vector3 \&fd\+Cd, const Vector3 \&fd\+Cf, const Transform \&T\+\_\+O)
+\begin{DoxyCompactList}\small\item\em A method that corrects damping forces based on geometry approximation. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_solid_entity_aca17bb485bead86d14be4f4a97172f66}{Compute\+Hydrodynamic\+Forces\+Surface}} (const \mbox{\hyperlink{structsf_1_1_hydrodynamics_settings}{Hydrodynamics\+Settings}} \&settings, const \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh, \mbox{\hyperlink{classsf_1_1_ocean}{Ocean}} \texorpdfstring{$\ast$}{*}liquid, const Transform \&T\+\_\+\+CG, const Transform \&T\+\_\+C, const Vector3 \&linearV, const Vector3 \&angularV, Vector3 \&\+\_\+\+Fb, Vector3 \&\+\_\+\+Tb, Vector3 \&\+\_\+\+Fdq, Vector3 \&\+\_\+\+Tdq, Vector3 \&\+\_\+\+Fdf, Vector3 \&\+\_\+\+Tdf, Scalar \&\+\_\+\+Swet, Scalar \&\+\_\+\+Vsub, \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} \&debug)
+\begin{DoxyCompactList}\small\item\em A static method that computes fluid dynamics when a body is crossing the fluid surface. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_solid_entity_ae51826999e47166d3c3d44e5865698a5}{Compute\+Hydrodynamic\+Forces\+Submerged}} (const \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh, \mbox{\hyperlink{classsf_1_1_ocean}{Ocean}} \texorpdfstring{$\ast$}{*}liquid, const Transform \&T\+\_\+\+CG, const Transform \&T\+\_\+C, const Vector3 \&linearV, const Vector3 \&angularV, Vector3 \&\+\_\+\+Fdq, Vector3 \&\+\_\+\+Tdq, Vector3 \&\+\_\+\+Fdf, Vector3 \&\+\_\+\+Tdf)
+\begin{DoxyCompactList}\small\item\em A static method that computes fluid dynamics when a body is completely submerged. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_solid_entity_a2caf643c8d6ea1a983f8af9189e070d0}{Compute\+Aerodynamic\+Forces}} (const \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh, \mbox{\hyperlink{classsf_1_1_atmosphere}{Atmosphere}} \texorpdfstring{$\ast$}{*}atm, const Transform \&T\+\_\+\+CG, const Transform \&T\+\_\+C, const Vector3 \&linearV, const Vector3 \&angularV, Vector3 \&\+\_\+\+Fda, Vector3 \&\+\_\+\+Tda)
+\begin{DoxyCompactList}\small\item\em A static method that computes aerodynamics for a body. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_solid_entity}{sf\+::\+Solid\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+Body\+Fluid\+Position \mbox{\hyperlink{classsf_1_1_solid_entity_a32e5f9b612a17e7ecf6c54762cb0f0ba}{Check\+Body\+Fluid\+Position}} (\mbox{\hyperlink{classsf_1_1_ocean}{Ocean}} \texorpdfstring{$\ast$}{*}ocn)
+\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a88af43bd9dc51d8537de21639ebfa5f4}{Compute\+Fluid\+Dynamics\+Approx}} (Geometry\+Approx\+Type t)
+\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a8168fd0b25a54b30847d879d4cf49990}{Compute\+Spherical\+Approx}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_abf6b9f92dc1c9580b4c85ac6429cba98}{Compute\+Cylindrical\+Approx}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_a87aa37ddc897e61dc48c753ec64e339d}{Compute\+Ellipsoidal\+Approx}} ()
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_a39a06e40245fd505cf4ec5503b6f524d}{Lamb\+KFactor}} (Scalar r1, Scalar r2)
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_solid_entity_aa3b39c8885080f9c7875bf5635e7b9c8}{Build\+Rigid\+Body}} (bt\+Dynamics\+World \texorpdfstring{$\ast$}{*}world)
+\item 
+void \mbox{\hyperlink{classsf_1_1_solid_entity_acfb2e7f0c92bffe29601266be0f1c803}{Build\+Multibody\+Link\+Collider}} (bt\+Multi\+Body \texorpdfstring{$\ast$}{*}mb, unsigned int child, bt\+Multi\+Body\+Dynamics\+World \texorpdfstring{$\ast$}{*}world)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_solid_entity}{sf\+::\+Solid\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Multi\+Body\+Link\+Collider \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_solid_entity_aa5f67e9fbac312acbc2bf84b3ba5858f}{multibody\+Collider}}
+\item 
+\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_solid_entity_a7d94af06c65c8e7f4a4eff9d7e4132aa}{phy\+Mesh}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_aed9c77bf7f0c9a107c0adbe7b419c893}{thick}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_ab67c77869036474897c66003f8206afc}{volume}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_a16eb823425ec66d24ca51e2529b9c8ae}{surface}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_a1b52c22988f488b429f272bd49e0d4a4}{mass}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a66445bbc5b88cd11284f026be0b4de27}{Ipri}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_ac087c4f52d31f9948dbb2537db3ce7d8}{contactK}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_a2757120ece8ef3bd16d990cccdf959a6}{contactD}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a590055358d635d2e557653d03d3ce8d0}{T\+\_\+\+CG2C}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_ad79d26ae7171e961afb066d7d3fdd23f}{T\+\_\+\+CG2G}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_adf50f22178742779af74c163e334bd80}{T\+\_\+\+CG2O}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a1d7de6ab67fb6dcb93fa658c17461213}{P\+\_\+\+CB}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a2d1845b6492f6b44c18b504f1be8240d}{T\+\_\+\+O2G}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_ac0023087360c94ee063b299655051593}{T\+\_\+\+O2C}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a672dc6c2d569b751a91ddf39b230e527}{T\+\_\+\+O2H}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a7d0306ebdc287c0c7bd0c11c8a198d9e}{a\+Mass}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_ab9c2e6c00cb7aac079f5eb174327f33f}{aI}}
+\item 
+Geometry\+Approx\+Type \mbox{\hyperlink{classsf_1_1_solid_entity_a49e123019b91fed8ee93a9bebaf1b880}{fd\+Approx\+Type}}
+\item 
+std\+::vector$<$ Scalar $>$ \mbox{\hyperlink{classsf_1_1_solid_entity_ac3fcc2f3e65f78dc40bb466d2dc62a50}{fd\+Approx\+Params}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a68a6eb5d5d4026a4da61e1a1891ff15e}{fd\+Cd}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a5c026351814594567e865fdcbcf21d68}{fd\+Cf}}
+\item 
+Transform \mbox{\hyperlink{classsf_1_1_solid_entity_a04b0cd4cd14159d64c216075a1f2fad7}{T\+\_\+\+CG2H}}
+\item 
+\mbox{\hyperlink{structsf_1_1_body_physics_settings}{Body\+Physics\+Settings}} \mbox{\hyperlink{classsf_1_1_solid_entity_a53e127044880e09c4852198960705618}{phy}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_aacd9eafc9c7769ae9fe18d7188d9ede5}{Fb}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a48bcf0bbd8d165db97615034776fb6f4}{Tb}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_adde43cf3cc01f360231761ca52ac40e7}{Fdq}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_ad059c832ca7ecfb3b5d0906ea4965c0d}{Tdq}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_addde6af80ae4a995726314491469125a}{Fdf}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a0a89bdbaa9d02420e4f8f1b3cd4457bc}{Tdf}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_aca315a314da023aebe16f06a98a74dc4}{Swet}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_solid_entity_a7228ce616d6dc91ed11e810c93d8a94e}{Vsub}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a7c9f58ec2061ecca43d4a18d678b094c}{Fda}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_ac854228e43f87e00c5e3f5edde79572c}{Tda}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_a25a961c1d8a11b5b88891cbbbcc097ed}{lastV}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_solid_entity_aec462393361b16a9df497cb21717e400}{last\+Omega}}
+\item 
+int \mbox{\hyperlink{classsf_1_1_solid_entity_af61e58fa1059c59ae90d36ac13fbbe14}{phy\+Object\+Id}}
+\item 
+\mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} \mbox{\hyperlink{classsf_1_1_solid_entity_aa94ce5adbd3ab01cc227ce9221c402b6}{submerged}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_moving_entity}{sf\+::\+Moving\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_moving_entity_a92b58fa011479b71e707562c44c256a7}{rigid\+Body}}
+\item 
+\mbox{\hyperlink{structsf_1_1_material}{Material}} \mbox{\hyperlink{classsf_1_1_moving_entity_a8d3fd64d6165882f9420eb9fb5a1bac9}{mat}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_moving_entity_af6f60933e1e7c06a8f57a26f2a6ffaf5}{filtered\+Linear\+Vel}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_moving_entity_a5bb27693b8a9a598d2d8ff5128dbc570}{filtered\+Angular\+Vel}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_moving_entity_a67ef5b239f59223f80b000d8c331525e}{linear\+Acc}}
+\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_moving_entity_ae05edc5a0bbfa08af31c2493769e475e}{angular\+Acc}}
+\item 
+int \mbox{\hyperlink{classsf_1_1_moving_entity_abac29a84df7b9d5939a6fb184b52d672}{look\+Id}}
+\item 
+int \mbox{\hyperlink{classsf_1_1_moving_entity_aa7aace2031463b07c550b37ce62efd4b}{gra\+Object\+Id}}
+\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_moving_entity_ae7144ee8ed3dc800513b542c7444fed6}{dm}}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_ocean_particles}{Open\+GLOcean\+Particles}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_moving_entity_ad2e96dcfdc2d1981d1bfce7c66c527a2}{particles}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a box-\/shaped rigid body. 
+
+Definition at line \mbox{\hyperlink{_box_8h_source_l00034}{34}} of file \mbox{\hyperlink{_box_8h_source}{Box.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_box_a4aded5150168121bf4b6404ab411ece2}\label{classsf_1_1_box_a4aded5150168121bf4b6404ab411ece2} 
+\index{sf::Box@{sf::Box}!Box@{Box}}
+\index{Box@{Box}!sf::Box@{sf::Box}}
+\doxysubsubsection{\texorpdfstring{Box()}{Box()}}
+{\footnotesize\ttfamily sf\+::\+Box\+::\+Box (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{\mbox{\hyperlink{structsf_1_1_body_physics_settings}{Body\+Physics\+Settings}}}]{phy,  }\item[{const Vector3 \&}]{dimensions,  }\item[{const Transform \&}]{origin,  }\item[{std\+::string}]{material,  }\item[{std\+::string}]{look,  }\item[{Scalar}]{thickness = {\ttfamily Scalar(-\/1)},  }\item[{unsigned int}]{uv\+Mode = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the box \\
+\hline
+{\em phy} & the specific settings of the physics computation for the body \\
+\hline
+{\em dimensions} & a vector of box dimensions (side lengths) \\
+\hline
+{\em origin} & a transformation of the physical mesh (graphical is the same for box) \\
+\hline
+{\em material} & the name of the material the box is made of \\
+\hline
+{\em look} & the name of the graphical material used for rendering \\
+\hline
+{\em thickness} & defines the thickness of the box walls, if positive the box is treated as shell \\
+\hline
+{\em uv\+Mode} & texture coordinates generation mode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_box_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_box_8cpp_source}{Box.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_box_ade27aebaa17059d4138135d237f4c706}\label{classsf_1_1_box_ade27aebaa17059d4138135d237f4c706} 
+\index{sf::Box@{sf::Box}!BuildCollisionShape@{BuildCollisionShape}}
+\index{BuildCollisionShape@{BuildCollisionShape}!sf::Box@{sf::Box}}
+\doxysubsubsection{\texorpdfstring{BuildCollisionShape()}{BuildCollisionShape()}}
+{\footnotesize\ttfamily bt\+Collision\+Shape \texorpdfstring{$\ast$}{*} sf\+::\+Box\+::\+Build\+Collision\+Shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that returns the collision shape for the box. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_solid_entity_ace20a34a8286e5eaea67e92cd89cdcbd}{sf\+::\+Solid\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_box_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{_box_8cpp_source}{Box.\+cpp}}.
+
+\Hypertarget{classsf_1_1_box_aef6631aff7780763dfff9f1a399082a7}\label{classsf_1_1_box_aef6631aff7780763dfff9f1a399082a7} 
+\index{sf::Box@{sf::Box}!getSolidType@{getSolidType}}
+\index{getSolidType@{getSolidType}!sf::Box@{sf::Box}}
+\doxysubsubsection{\texorpdfstring{getSolidType()}{getSolidType()}}
+{\footnotesize\ttfamily Solid\+Type sf\+::\+Box\+::get\+Solid\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that returns the type of body. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_solid_entity_a03f0385dcb6bf0ff167c8be64c6f24e7}{sf\+::\+Solid\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_box_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{_box_8cpp_source}{Box.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/entities/solids/Box.\+h\item 
+Library/src/entities/solids/Box.\+cpp\end{DoxyCompactItemize}

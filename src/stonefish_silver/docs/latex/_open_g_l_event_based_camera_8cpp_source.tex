@@ -1,0 +1,394 @@
+\doxysection{Open\+GLEvent\+Based\+Camera.\+cpp}
+\hypertarget{_open_g_l_event_based_camera_8cpp_source}{}\label{_open_g_l_event_based_camera_8cpp_source}\index{Library/src/graphics/OpenGLEventBasedCamera.cpp@{Library/src/graphics/OpenGLEventBasedCamera.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ OpenGLEventBasedCamera.cpp}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 19/03/24.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLEventBasedCamera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}core/GraphicalSimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}sensors/vision/EventBasedCamera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLState.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}graphics/GLSLShader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPipeline.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00035}00035\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00038}00038\ GLSLShader**\ OpenGLEventBasedCamera::eventOutputShaders\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00039}00039\ GLSLShader*\ OpenGLEventBasedCamera::eventVisualizeShader\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00041}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a415c59fc83554ad9ce86661623bcacd6}{00041}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a415c59fc83554ad9ce86661623bcacd6}{OpenGLEventBasedCamera::OpenGLEventBasedCamera}}(glm::vec3\ eyePosition,\ glm::vec3\ direction,\ glm::vec3\ cameraUp,}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLint\ x,\ GLint\ y,\ GLint\ width,\ GLint\ height,\ GLfloat\ horizontalFovDeg,\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ range,\ glm::vec2\ C,\ uint32\_t\ Tr,\ \textcolor{keywordtype}{bool}\ continuousUpdate)\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classsf_1_1_open_g_l_camera}{OpenGLCamera}}(x,\ y,\ width,\ height,\ range),\ randDist(0.f,\ 1.f)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00045}00045\ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00046}00046\ \ \ \ \ \_needsUpdate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00047}00047\ \ \ \ \ newData\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00048}00048\ \ \ \ \ initialized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00049}00049\ \ \ \ \ lastSimTime\ =\ -\/1.f;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00050}00050\ \ \ \ \ continuous\ =\ continuousUpdate;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00051}00051\ \ \ \ \ camera\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00052}00052\ \ \ \ \ C\_\ =\ C;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00053}00053\ \ \ \ \ Tr\_\ =\ Tr;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00054}00054\ \ \ \ \ sigmaC\_\ =\ glm::vec2(0.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00055}00055\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Allocate\ necessary\ textures}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ -\/-\/>\ Logarithm\ of\ luminance}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00058}00058\ \ \ \ \ renderLogLumTex\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ glm::uvec3(viewportWidth,\ viewportHeight,\ 0),\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_R32F,\ GL\_RED,\ GL\_FLOAT,\ NULL,\ FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ -\/-\/>\ Events\ (R\ -\/>\ pos\ x\ |\ pos\ y\ in\ px,\ G\ -\/>\ timestamp\ in\ ns,\ with\ polarization)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00061}00061\ \ \ \ \ maxNumEvents\ =\ viewportWidth\ *\ viewportHeight\ *\ 10;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00062}00062\ \ \ \ \ glm::uvec3\ maxTextureSize\ =\ OpenGLState::GetMaxTextureSize();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00063}00063\ \ \ \ \ glm::uvec3\ eventsTextureSize;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}(maxNumEvents\ >\ maxTextureSize.x)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ eventsTextureSize.x\ =\ maxTextureSize.x;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ eventsTextureSize.y\ =\ maxNumEvents/maxTextureSize.x\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ eventsTextureSize.z\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ maxNumEvents\ =\ eventsTextureSize.x\ *\ eventsTextureSize.y;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ eventsTextureSize.x\ =\ maxNumEvents;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ eventsTextureSize.y\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ eventsTextureSize.z\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00077}00077\ \ \ \ \ renderEventTex[0]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ eventsTextureSize,\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RG32I,\ GL\_RG\_INTEGER,\ GL\_INT,\ NULL,\ FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ -\/-\/>\ Last\ event\ timestamp\ (in\ ns,\ with\ polarization)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00080}00080\ \ \ \ \ renderEventTex[1]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ glm::uvec3(viewportWidth,\ viewportHeight,\ 0),\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_R32I,\ GL\_RED\_INTEGER,\ GL\_INT,\ NULL,\ FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ -\/-\/>\ Crossings}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00083}00083\ \ \ \ \ renderEventTex[2]\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ glm::uvec3(viewportWidth,\ viewportHeight,\ 0),\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_R32F,\ GL\_RED,\ GL\_FLOAT,\ NULL,\ FilteringMode::NEAREST,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ Allocate\ buffer\ to\ store\ the\ event\ counter}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00086}00086\ \ \ \ \ GLuint\ zero\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00087}00087\ \ \ \ \ glGenBuffers(1,\ \&renderEventCounter);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00088}00088\ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ renderEventCounter);\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00089}00089\ \ \ \ \ glBufferData(GL\_ATOMIC\_COUNTER\_BUFFER,\ \textcolor{keyword}{sizeof}(GLuint),\ \&zero,\ GL\_STREAM\_READ);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00090}00090\ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ Event\ display}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00093}00093\ \ \ \ \ displayTex\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{OpenGLContent::GenerateTexture}}(GL\_TEXTURE\_2D,\ glm::uvec3(viewportWidth,\ viewportHeight,\ 0),\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RGB8,\ GL\_RGB,\ GL\_UNSIGNED\_BYTE,\ NULL,\ FilteringMode::BILINEAR,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00095}00095\ \ \ \ \ std::vector<FBOTexture>\ fboTextures;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00096}00096\ \ \ \ \ fboTextures.push\_back(\mbox{\hyperlink{structsf_1_1_f_b_o_texture}{FBOTexture}}(GL\_COLOR\_ATTACHMENT0,\ GL\_TEXTURE\_2D,\ displayTex));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00097}00097\ \ \ \ \ displayFBO\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a96b9148e3657e1a454ba336741c349cb}{OpenGLContent::GenerateFramebuffer}}(fboTextures);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ Setup\ view}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a9a851e29b4cae12749334b125f755cbf}{SetupCamera}}(eyePosition,\ direction,\ cameraUp);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ Setup\ projection}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00102}00102\ \ \ \ \ fovx\ =\ horizontalFovDeg/180.f\ *\ M\_PI;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00103}00103\ \ \ \ \ GLfloat\ fovy\ =\ 2.f\ *\ atanf(\ (GLfloat)viewportHeight/(GLfloat)viewportWidth\ *\ tanf(fovx/2.f)\ );}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00104}00104\ \ \ \ \ projection\ =\ glm::perspectiveFov(fovy,\ (GLfloat)viewportWidth,\ (GLfloat)viewportHeight,\ near,\ far);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_ab3bfdf4bdb7f3da07e6dc02301ba3e49}{UpdateTransform}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00109}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_aabd013a77a40313fe1085b5136e4f423}{00109}}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_aabd013a77a40313fe1085b5136e4f423}{OpenGLEventBasedCamera::\string~OpenGLEventBasedCamera}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00110}00110\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00111}00111\ \ \ \ \ glDeleteTextures(1,\ \&renderLogLumTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00112}00112\ \ \ \ \ glDeleteTextures(3,\ renderEventTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00113}00113\ \ \ \ \ glDeleteBuffers(1,\ \&renderEventCounter);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00114}00114\ \ \ \ \ glDeleteFramebuffers(1,\ \&displayFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00115}00115\ \ \ \ \ glDeleteTextures(1,\ \&displayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{if}(camera\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&outputPBO);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00119}00119\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00121}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a339bd1f1eec5a9342ca9e3a646c6f71d}{00121}}\ ViewType\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a339bd1f1eec5a9342ca9e3a646c6f71d}{OpenGLEventBasedCamera::getType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00122}00122\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{return}\ ViewType::EVENT\_BASED\_CAMERA;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00124}00124\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00126}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a80961751eb9db88f49da902127ae7b4e}{00126}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a80961751eb9db88f49da902127ae7b4e}{OpenGLEventBasedCamera::Update}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00127}00127\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00128}00128\ \ \ \ \ \_needsUpdate\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00129}00129\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00131}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a39955fbef126c8fa493e50c9dd2a80b8}{00131}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a39955fbef126c8fa493e50c9dd2a80b8}{OpenGLEventBasedCamera::needsUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00132}00132\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{keywordflow}{if}(\_needsUpdate)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00134}00134\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \_needsUpdate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ enabled;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00140}00140\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00142}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a60a7389e89743d57c8b1b99ce2f398b3}{00142}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a60a7389e89743d57c8b1b99ce2f398b3}{OpenGLEventBasedCamera::setCamera}}(\mbox{\hyperlink{classsf_1_1_event_based_camera}{EventBasedCamera}}*\ cam)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00143}00143\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//Connect\ with\ camera\ sensor}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00145}00145\ \ \ \ \ camera\ =\ cam;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00146}00146\ \ \ \ \ glGenBuffers(1,\ \&outputPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00147}00147\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ outputPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00148}00148\ \ \ \ \ glBufferData(GL\_PIXEL\_PACK\_BUFFER,\ maxNumEvents\ *\ 2\ *\ \textcolor{keyword}{sizeof}(GLint),\ 0,\ GL\_STREAM\_READ);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00149}00149\ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00150}00150\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00152}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_adf0ab24138409752c5def0ff42cbf57a}{00152}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_adf0ab24138409752c5def0ff42cbf57a}{OpenGLEventBasedCamera::setNoise}}(glm::vec2\ sigmaC)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00153}00153\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00154}00154\ \ \ \ \ sigmaC\_\ =\ sigmaC;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00155}00155\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00157}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_afb6ca30cba8410c4bcad919c37ca3b1d}{00157}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_afb6ca30cba8410c4bcad919c37ca3b1d}{OpenGLEventBasedCamera::GetEyePosition}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00158}00158\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00159}00159\ \ \ \ \ \textcolor{keywordflow}{return}\ eye;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00160}00160\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00162}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a810a2a57e84cbebe380d6e36f99d6042}{00162}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a810a2a57e84cbebe380d6e36f99d6042}{OpenGLEventBasedCamera::GetLookingDirection}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00163}00163\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{return}\ dir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00165}00165\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00167}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_aa8f0f0d5b5487465b21b5060b19ea5c3}{00167}}\ glm::vec3\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_aa8f0f0d5b5487465b21b5060b19ea5c3}{OpenGLEventBasedCamera::GetUpDirection}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00168}00168\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00169}00169\ \ \ \ \ \textcolor{keywordflow}{return}\ up;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00170}00170\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00172}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a5d983cb53cae9807bdad6d97405bd14b}{00172}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a9a851e29b4cae12749334b125f755cbf}{OpenGLEventBasedCamera::SetupCamera}}(glm::vec3\ \_eye,\ glm::vec3\ \_dir,\ glm::vec3\ \_up)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00173}00173\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00174}00174\ \ \ \ \ tempDir\ =\ \_dir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00175}00175\ \ \ \ \ tempEye\ =\ \_eye;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00176}00176\ \ \ \ \ tempUp\ =\ \_up;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00177}00177\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00179}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_ab3bfdf4bdb7f3da07e6dc02301ba3e49}{00179}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_ab3bfdf4bdb7f3da07e6dc02301ba3e49}{OpenGLEventBasedCamera::UpdateTransform}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00180}00180\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00181}00181\ \ \ \ \ eye\ =\ tempEye;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00182}00182\ \ \ \ \ dir\ =\ tempDir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00183}00183\ \ \ \ \ up\ =\ tempUp;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00184}00184\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a9a851e29b4cae12749334b125f755cbf}{SetupCamera}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00185}00185\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00186}00186\ \ \ \ \ viewUBOData.VP\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_camera_ae135ed129bec62a71b790dd07b990d02}{GetProjectionMatrix}}()\ *\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a6ca6beca8e9277ace38b8a0dead6b051}{GetViewMatrix}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00187}00187\ \ \ \ \ viewUBOData.eye\ =\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_afb6ca30cba8410c4bcad919c37ca3b1d}{GetEyePosition}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00188}00188\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_view_a26325a55c76b871a7a9a68a4b8c039cc}{ExtractFrustumFromVP}}(viewUBOData.frustum,\ viewUBOData.VP);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00190}00190\ \ \ \ \ \textcolor{comment}{//Inform\ camera\ to\ run\ callback}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00191}00191\ \ \ \ \ \textcolor{keywordflow}{if}(newData)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00192}00192\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ renderEventCounter);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ GLuint*\ pEventCounter\ =\ (GLuint*)glMapBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ GL\_READ\_ONLY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ GLuint\ lastEventCount\ =\ *pEventCounter;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ glUnmapBuffer(GL\_ATOMIC\_COUNTER\_BUFFER);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ outputPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ GLint*\ src\ =\ (GLint*)glMapBuffer(GL\_PIXEL\_PACK\_BUFFER,\ GL\_READ\_ONLY);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(src)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ camera-\/>\mbox{\hyperlink{classsf_1_1_event_based_camera_accad2678ae415b2615442b8ed1543655}{NewDataReady}}(src,\ lastEventCount);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ glUnmapBuffer(GL\_PIXEL\_PACK\_BUFFER);\ \textcolor{comment}{//Release\ pointer\ to\ the\ mapped\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ newData\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00208}00208\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00209}00209\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00211}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a9a851e29b4cae12749334b125f755cbf}{00211}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a9a851e29b4cae12749334b125f755cbf}{OpenGLEventBasedCamera::SetupCamera}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00212}00212\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00213}00213\ \ \ \ \ cameraTransform\ =\ glm::lookAt(eye,\ eye+dir,\ up);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00216}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a6ca6beca8e9277ace38b8a0dead6b051}{00216}}\ glm::mat4\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a6ca6beca8e9277ace38b8a0dead6b051}{OpenGLEventBasedCamera::GetViewMatrix}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00217}00217\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00218}00218\ \ \ \ \ \textcolor{keywordflow}{return}\ cameraTransform;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00219}00219\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00221}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_ac0233e208baab7cb306a7aef1e6c59b5}{00221}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_ac0233e208baab7cb306a7aef1e6c59b5}{OpenGLEventBasedCamera::ComputeOutput}}(\textcolor{keywordtype}{double}\ simTime)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00222}00222\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00223}00223\ \ \ \ \ \textcolor{keywordflow}{if}(initialized)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00224}00224\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reset\ event\ counter}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ GLuint\ zero\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ renderEventCounter);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ glBufferSubData(GL\_ATOMIC\_COUNTER\_BUFFER,\ 0,\ \textcolor{keyword}{sizeof}(GLuint),\ \&zero);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_ATOMIC\_COUNTER\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compute\ events}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ glBindBufferBase(GL\_ATOMIC\_COUNTER\_BUFFER,\ 0,\ renderEventCounter);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS1,\ renderColorTex[lastActiveRenderColorBuffer],\ 0,\ GL\_FALSE,\ 0,\ GL\_READ\_ONLY,\ GL\_RGBA32F);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS2,\ renderLogLumTex,\ 0,\ GL\_FALSE,\ 0,\ GL\_READ\_WRITE,\ GL\_R32F);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS3,\ renderEventTex[0],\ 0,\ GL\_FALSE,\ 0,\ GL\_WRITE\_ONLY,\ GL\_RG32I);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS4,\ renderEventTex[1],\ 0,\ GL\_FALSE,\ 0,\ GL\_READ\_WRITE,\ GL\_R32I);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS5,\ renderEventTex[2],\ 0,\ GL\_FALSE,\ 0,\ GL\_READ\_WRITE,\ GL\_R32F);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}currColor"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}logLum"{}},\ TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}events"{}},\ TEX\_POSTPROCESS3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}eventTimes"{}},\ TEX\_POSTPROCESS4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}crossings"{}},\ TEX\_POSTPROCESS5);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ Scalar\ dt\ =\ simTime\ -\/\ lastSimTime;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}dT"{}},\ (int32\_t)round(dt*1e9));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}Tr"{}},\ Tr\_);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}C"{}},\ C\_);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}sigmaC"{}},\ sigmaC\_);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}seed"{}},\ glm::vec3(randDist(randGen),\ randDist(randGen),\ randDist(randGen)));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ glMemoryBarrier(GL\_FRAMEBUFFER\_BARRIER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ glDispatchCompute((GLuint)ceilf(viewportWidth/16.f),\ (GLuint)ceilf(viewportHeight/16.f),\ 1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ glMemoryBarrier(GL\_SHADER\_IMAGE\_ACCESS\_BARRIER\_BIT\ |\ GL\_ATOMIC\_COUNTER\_BARRIER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00253}00253\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00254}00254\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00255}00255\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compute\ logarithm\ of\ luminance\ of\ the\ first\ frame\ (initialization)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS1,\ renderColorTex[lastActiveRenderColorBuffer],\ 0,\ GL\_FALSE,\ 0,\ GL\_READ\_ONLY,\ GL\_RGBA32F);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS2,\ renderLogLumTex,\ 0,\ GL\_FALSE,\ 0,\ GL\_WRITE\_ONLY,\ GL\_R32F);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS4,\ renderEventTex[1],\ 0,\ GL\_FALSE,\ 0,\ GL\_WRITE\_ONLY,\ GL\_R32I);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ glBindImageTexture(TEX\_POSTPROCESS5,\ renderEventTex[2],\ 0,\ GL\_FALSE,\ 0,\ GL\_WRITE\_ONLY,\ GL\_R32F);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ eventOutputShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ eventOutputShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}currColor"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ eventOutputShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}logLum"{}},\ TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ eventOutputShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}eventTimes"{}},\ TEX\_POSTPROCESS4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ eventOutputShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}crossings"{}},\ TEX\_POSTPROCESS5);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ glMemoryBarrier(GL\_FRAMEBUFFER\_BARRIER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ glDispatchCompute((GLuint)ceilf(viewportWidth/16.f),\ (GLuint)ceilf(viewportHeight/16.f),\ 1);\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ glMemoryBarrier(GL\_SHADER\_IMAGE\_ACCESS\_BARRIER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ initialized\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00271}00271\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00272}00272\ \ \ \ \ lastSimTime\ =\ simTime;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00273}00273\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00275}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_af6067f39857f23ae504a7adc95ded126}{00275}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_af6067f39857f23ae504a7adc95ded126}{OpenGLEventBasedCamera::DrawLDR}}(GLuint\ destinationFBO,\ \textcolor{keywordtype}{bool}\ updated)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00276}00276\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00277}00277\ \ \ \ \ \textcolor{comment}{//Check\ if\ there\ is\ a\ need\ to\ display\ image\ on\ screen}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00278}00278\ \ \ \ \ \textcolor{keywordtype}{bool}\ display\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00279}00279\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ dispX,\ dispY;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00280}00280\ \ \ \ \ GLfloat\ dispScale;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00281}00281\ \ \ \ \ \textcolor{keywordflow}{if}(camera\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ display\ =\ camera-\/>\mbox{\hyperlink{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1}{getDisplayOnScreen}}(dispX,\ dispY,\ dispScale);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00283}00283\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00284}00284\ \ \ \ \ \textcolor{comment}{//Draw\ on\ screen}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{if}(display)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00286}00286\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ color\ image}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_camera_a9f69340110ca14e4e6ffa4454d6280ea}{OpenGLCamera::DrawLDR}}(displayFBO,\ updated);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Overlay\ event\ information}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_content}{OpenGLContent}}*\ content\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getGLPipeline()-\/>getContent();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowHeight\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getWindowHeight();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowWidth\ =\ ((\mbox{\hyperlink{classsf_1_1_graphical_simulation_app}{GraphicalSimulationApp}}*)\mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}())-\/>getWindowWidth();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ glm::vec4\ rect((GLfloat)dispX,\ (GLfloat)dispY,\ viewportWidth*dispScale,\ viewportHeight*dispScale);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ rect.y\ =\ windowHeight-\/rect.y-\/rect.w;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ rect.x\ /=\ windowWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ rect.y\ /=\ windowHeight;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ rect.z\ /=\ windowWidth;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ rect.w\ /=\ windowHeight;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ displayTex);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS2,\ GL\_TEXTURE\_2D,\ renderEventTex[1]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(destinationFBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a235f5774c3e89aeaf59cf52e32289548}{SetViewportSize}}(windowWidth,\ windowHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ OpenGLState::Viewport(0,\ 0,\ windowWidth,\ windowHeight);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ OpenGLState::DisableCullFace();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ eventVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aae87e59596abc0d53ee0cbdcc51663fd}{Use}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ eventVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}rect"{}},\ rect);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ eventVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}texCamera"{}},\ TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ eventVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_ac4196a72f3bba97505242233ad82c25f}{SetUniform}}(\textcolor{stringliteral}{"{}texEventTimes"{}},\ TEX\_POSTPROCESS2);\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ content-\/>\mbox{\hyperlink{classsf_1_1_open_g_l_content_a6513dcdb004b4b24e7c11632c7c590c2}{BindBaseVertexArray}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ glDrawArrays(GL\_TRIANGLES,\ 0,\ 6);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ OpenGLState::BindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ OpenGLState::UseProgram(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ OpenGLState::EnableCullFace();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ OpenGLState::BindFramebuffer(0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00322}00322\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00323}00323\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00324}00324\ \ \ \ \ \textcolor{comment}{//Copy\ data\ to\ camera\ buffer}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00325}00325\ \ \ \ \ \textcolor{keywordflow}{if}(camera\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ updated)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00326}00326\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ OpenGLState::BindTexture(TEX\_POSTPROCESS1,\ GL\_TEXTURE\_2D,\ renderEventTex[0]);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ outputPBO);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ glGetTexImage(GL\_TEXTURE\_2D,\ 0,\ GL\_RG\_INTEGER,\ GL\_INT,\ NULL);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_PIXEL\_PACK\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ OpenGLState::UnbindTexture(TEX\_POSTPROCESS1);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ newData\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00333}00333\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00334}00334\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00336}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a45eb178782a396e4ea0631d2e05807d0}{00336}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a45eb178782a396e4ea0631d2e05807d0}{OpenGLEventBasedCamera::Init}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00337}00337\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00338}00338\ \ \ \ \ glm::uvec3\ maxTextureSize\ =\ OpenGLState::GetMaxTextureSize();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00340}00340\ \ \ \ \ eventOutputShaders\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}*[2];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00342}00342\ \ \ \ \ std::vector<GLSLSource>\ sources;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00343}00343\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_COMPUTE\_SHADER,\ \textcolor{stringliteral}{"{}eventInit.comp"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00344}00344\ \ \ \ \ eventOutputShaders[0]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00345}00345\ \ \ \ \ eventOutputShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}currColor"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00346}00346\ \ \ \ \ eventOutputShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}logLum"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00347}00347\ \ \ \ \ eventOutputShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}eventTimes"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00348}00348\ \ \ \ \ eventOutputShaders[0]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}crossings"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00349}00349\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00350}00350\ \ \ \ \ sources.clear();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00351}00351\ \ \ \ \ std::string\ header\ =\ \textcolor{stringliteral}{"{}\#version\ 430\(\backslash\)n\#define\ MAX\_TEXTURE\_WIDTH\ "{}}\ +\ std::to\_string(maxTextureSize.x)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00352}00352\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_COMPUTE\_SHADER,\ \textcolor{stringliteral}{"{}event.comp"{}},\ header));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00353}00353\ \ \ \ \ eventOutputShaders[1]\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00354}00354\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}currColor"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00355}00355\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}logLum"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00356}00356\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}events"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00357}00357\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}eventTimes"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00358}00358\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}crossings"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00359}00359\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}dT"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00360}00360\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}Tr"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00361}00361\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}C"{}},\ ParameterType::VEC2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00362}00362\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}sigmaC"{}},\ ParameterType::VEC2);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00363}00363\ \ \ \ \ eventOutputShaders[1]-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}seed"{}},\ ParameterType::VEC3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00366}00366\ \ \ \ \ sources.clear();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00367}00367\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_VERTEX\_SHADER,\ \textcolor{stringliteral}{"{}texQuad.vert"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00368}00368\ \ \ \ \ sources.push\_back(\mbox{\hyperlink{structsf_1_1_g_l_s_l_source}{GLSLSource}}(GL\_FRAGMENT\_SHADER,\ \textcolor{stringliteral}{"{}eventVisualize.frag"{}}));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00369}00369\ \ \ \ \ eventVisualizeShader\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}(sources);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00370}00370\ \ \ \ \ eventVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}rect"{}},\ ParameterType::VEC4);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00371}00371\ \ \ \ \ eventVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}texCamera"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00372}00372\ \ \ \ \ eventVisualizeShader-\/>\mbox{\hyperlink{classsf_1_1_g_l_s_l_shader_aa7cf259ce0a57c309175433262bb5b83}{AddUniform}}(\textcolor{stringliteral}{"{}texEventTimes"{}},\ ParameterType::INT);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00373}00373\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00375}\mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a489c81fb62c375181a720795151bcfc0}{00375}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_event_based_camera_a489c81fb62c375181a720795151bcfc0}{OpenGLEventBasedCamera::Destroy}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00376}00376\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00377}00377\ \ \ \ \ \textcolor{keywordflow}{if}(eventOutputShaders\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00378}00378\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(eventOutputShaders[0]\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{delete}\ eventOutputShaders[0];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(eventOutputShaders[1]\ !=\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{delete}\ eventOutputShaders[1];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ []\ eventOutputShaders;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00382}00382\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00383}00383\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00384}00384\ \ \ \ \ \textcolor{keywordflow}{if}(eventVisualizeShader\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ eventVisualizeShader;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00386}00386\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_event_based_camera_8cpp_source_l00388}00388\ \}}
+
+\end{DoxyCode}

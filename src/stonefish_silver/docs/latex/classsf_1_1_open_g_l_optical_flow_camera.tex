@@ -1,0 +1,952 @@
+\doxysection{sf\+::Open\+GLOptical\+Flow\+Camera Class Reference}
+\hypertarget{classsf_1_1_open_g_l_optical_flow_camera}{}\label{classsf_1_1_open_g_l_optical_flow_camera}\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+
+
+A class representing a depth camera.  
+
+
+
+
+{\ttfamily \#include $<$Open\+GLOptical\+Flow\+Camera.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Open\+GLOptical\+Flow\+Camera\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{classsf_1_1_open_g_l_optical_flow_camera__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Open\+GLOptical\+Flow\+Camera\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_open_g_l_optical_flow_camera__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_aa387fcb790b5f24813cd0339abfd38d2}{Open\+GLOptical\+Flow\+Camera}} (glm\+::vec3 eye\+Position, glm\+::vec3 direction, glm\+::vec3 camera\+Up, GLint originX, GLint originY, GLint width, GLint height, GLfloat horizontal\+FOVDeg, glm\+::vec2 range, bool continuous\+Update)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_afbbbeee6a0bc7f7354d01afcfe73f412}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLOptical\+Flow\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_ad1abfe0f2a5eeac5eead31869103da7a}{Compute\+Output}} (std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \&objects)
+\begin{DoxyCompactList}\small\item\em A method that computes simulated depth data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a6c0f585dd42fe41f590cc0a090ee5169}{Draw\+LDR}} (GLuint destination\+FBO, bool updated)
+\begin{DoxyCompactList}\small\item\em A method to render the low dynamic range (final) image to the screen. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_aad9ca3a842e3da996e810b2fce82cf17}{Get\+Eye\+Position}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the eye position. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a80193fc49961bfef7ad41011562bf919}{Get\+Looking\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em A method returning a unit vector parallel to the optical axis of the camera. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a89e2f386d885179c18081e3fcddfe6f2}{Get\+Up\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em A method returning a unit vector pointing to the top edge of the image. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a1219abf2784d7f1ef551762775f274f2}{Get\+Projection\+Matrix}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the projection matrix. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a2f4a9ecbe295110ae6139cd2fdda2866}{Get\+View\+Matrix}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the view matrix. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a271cf34d7920c97479295b142146db29}{Get\+FOVX}} () const
+\begin{DoxyCompactList}\small\item\em A method that returns the horizontal field of view. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_ae600046103c5fd277f05f0b2bb3159ca}{Get\+FOVY}} () const
+\begin{DoxyCompactList}\small\item\em A method that returns the vertical field of view. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a86d35433ac4ce8b47b7a9674bb53c797}{Get\+Near\+Clip}} () const
+\begin{DoxyCompactList}\small\item\em A method that returns the far clip plane distance. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_aa3c1872fa2eed26322895f0c2ae31581}{Get\+Far\+Clip}} () const
+\begin{DoxyCompactList}\small\item\em A method that returns the far clip plane distance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_adc559a2a8e5f42a4b0a5d6d2aefb8101}{Setup\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em A method that sets up the camera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_afecec8104b20ab80d45ce0b5d293bfd8}{Setup\+Camera}} (glm\+::vec3 eye, glm\+::vec3 dir, glm\+::vec3 up)
+\begin{DoxyCompactList}\small\item\em A method used to set up the camera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a5e0c9efe2f5ec2a8e215acc201e0b021}{Update\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em A method that updates camera world transform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a5daa491bb552d570bd0e585ad78cb656}{Update}} ()
+\begin{DoxyCompactList}\small\item\em A method that flags the camera as needing update. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a0363a6a8546f7053f80315ab2a5cb6f0}{needs\+Update}} ()
+\begin{DoxyCompactList}\small\item\em A method that informs if the camera needs update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_ab95889fbd7f4995cd55169076bbcba99}{set\+Camera}} (\mbox{\hyperlink{classsf_1_1_camera}{Camera}} \texorpdfstring{$\ast$}{*}cam, unsigned int index=0)
+\begin{DoxyCompactList}\small\item\em A method to set a pointer to a camera sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a8ce1137b2cb2e1a9787f08887141cfdd}{set\+Noise}} (glm\+::vec2 vel\+Std\+Dev)
+\begin{DoxyCompactList}\small\item\em A method to set the noise properties of the optical flow camera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_ae09851273fb33fe5dd1dceb2753e8e0d}{set\+Max\+Velocity}} (GLfloat v)
+\begin{DoxyCompactList}\small\item\em A method to set the maximum velocity for the color mapped image. \end{DoxyCompactList}\item 
+View\+Type \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a6b43ca2ea5310d41ba09cdb4f23fc159}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em A method returning the type of the view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_open_g_l_view}{sf\+::\+Open\+GLView}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_open_g_l_view_a7370ff61aa8c4a8695e2d5728675e5bd}{Open\+GLView}} (GLint originX, GLint originY, GLint width, GLint height)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_open_g_l_view_a5b4b34ee2d8bc7dc0b82b3bc818a71a2}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLView}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_view_a21fc921521be07cb3bf94ead40eebcee}{Get\+Log\+Depth\+Constant}} () const
+\begin{DoxyCompactList}\small\item\em A method that return logarithmic depth constant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_view_a8414ca27c24bba6d03ef6dbbe781bfd7}{Set\+Viewport}} ()
+\begin{DoxyCompactList}\small\item\em A method that sets the current viewport. \end{DoxyCompactList}\item 
+GLint \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_view_ac53cf3b78d408ed133ab753e7e09a39b}{Get\+Viewport}} () const
+\begin{DoxyCompactList}\small\item\em A method that returns the viewport origin and size. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_view_a74ac244cc20a3b2eccea2b8465651b6e}{get\+Render\+FBO}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the rendering framebuffer of the view. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structsf_1_1_view_u_b_o}{View\+UBO}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_view_af543f29936865c8188fe72734b7bd9fa}{get\+View\+UBOData}} () const
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the view UBO data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_open_g_l_view_a6a04b2231d2137085090262c67be8f8f}{set\+Enabled}} (bool en)
+\begin{DoxyCompactList}\small\item\em A method to set if the view is enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_view_a8087553841ae91b68c51985af0a7dec7}{is\+Enabled}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a flag saying if the view is enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_view_a6eab8c460b0fad02e9ff6888c7d9a62e}{is\+Continuous}} ()
+\begin{DoxyCompactList}\small\item\em A method saying if the view works in continuous update mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a70bc5257fcee335d294a235420f2b40a}{Init}} ()
+\begin{DoxyCompactList}\small\item\em A static method to load shaders. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_acdf051d849559acb55a12ec7a2d5852f}{Destroy}} ()
+\begin{DoxyCompactList}\small\item\em A static method to destroy shaders. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_open_g_l_view}{sf\+::\+Open\+GLView}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classsf_1_1_open_g_l_view_a26325a55c76b871a7a9a68a4b8c039cc}{Extract\+Frustum\+From\+VP}} (glm\+::vec4 frustum\mbox{[}6\mbox{]}, const glm\+::mat4 \&VP)
+\begin{DoxyCompactList}\small\item\em A method extracting frustium planes from the view-\/projection matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_camera}{Camera}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a7b01f4dc2d8e87f7d2660a6d1bdd96bf}{camera}}
+\item 
+glm\+::mat4 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a59ca49eb0a9c5122d00a94a964e07c35}{camera\+Transform}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_adc179418b764be6dfd0a608c43016175}{eye}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a8d49c9ccd71e497d56d18d2a115d9467}{dir}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a9816e6c80ec34099eb132aa31ad54e1e}{up}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a52ac4d60b47f5e3b393c1fe826b61866}{temp\+Eye}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_ab3069552326fb07cba156519dd7048ff}{temp\+Dir}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_afa55c89e5ac844c43cecf80caa2f60d0}{temp\+Up}}
+\item 
+glm\+::mat4 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a955f534e64a4c0b99720235364382426}{projection}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a79bbf4791ef7052bbe5d0676095a0914}{fov}}
+\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a7e31681c699a8d65cc46e4e9a5495971}{focal\+Length}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a459fa6ea61f164024e66646af23c7f4b}{\+\_\+needs\+Update}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a221779e1084f3c81d2a555f98d13b56c}{new\+Data}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a6d1bf67b154355bab7b902fb45a51a6d}{range}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a6b5de8f42fb5700f5113ae66cb50892b}{noise\+Vel}}
+\item 
+GLfloat \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a0d55bb507aaff3a4114e91176528ba51}{max\+Vel}}
+\item 
+std\+::default\+\_\+random\+\_\+engine \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a12eb02f5ba37f66dbf814696b43bcd33}{rand\+Gen}}
+\item 
+std\+::uniform\+\_\+real\+\_\+distribution$<$ float $>$ \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_aea7a1309884a5014efeb0496a90599fa}{rand\+Dist}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a82fa2b3862504097f44e18f3df68b974}{render\+Depth\+Tex}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a4817ecdb2a995c946422b8c8d0a4ab22}{render\+Flow\+Tex}} \mbox{[}2\mbox{]}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a06e53168558bb5e8c93b50529587a590}{display\+Flow\+Tex}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a959262e6bdc95b26d19d94476e77ffad}{output\+PBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a5b1720dc9a7336bad887300b4bd9deeb}{display\+PBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a4840cc5eb991f594f3fa8c0d3cf4703b}{display\+FBO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a2f07fa93803bb5d3efb202425f6990ee}{display\+VAO}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a03250df9d4650dd29f73926cfb19b4dd}{display\+VBO}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_open_g_l_view}{sf\+::\+Open\+GLView}}}
+\begin{DoxyCompactItemize}
+\item 
+GLint \mbox{\hyperlink{classsf_1_1_open_g_l_view_aac467a72d089b6d45bb190ae07f6d168}{originX}}
+\item 
+GLint \mbox{\hyperlink{classsf_1_1_open_g_l_view_ab060c0ba1a37f954b543235790f8e429}{originY}}
+\item 
+GLint \mbox{\hyperlink{classsf_1_1_open_g_l_view_a0cb353f9ab0088418c44edda979300e4}{viewport\+Width}}
+\item 
+GLint \mbox{\hyperlink{classsf_1_1_open_g_l_view_a5c79f3a7fa27b4bb2a789f294c4dda66}{viewport\+Height}}
+\item 
+GLuint \mbox{\hyperlink{classsf_1_1_open_g_l_view_a6e67b08a51dd9b592d9f3f4ee1ac1676}{render\+FBO}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_view_a0cab9ce33e19db36dd9b7e6731f0987c}{enabled}}
+\item 
+bool \mbox{\hyperlink{classsf_1_1_open_g_l_view_a4720968df6af181fb58f67379f01f547}{continuous}}
+\item 
+\mbox{\hyperlink{structsf_1_1_view_u_b_o}{View\+UBO}} \mbox{\hyperlink{classsf_1_1_open_g_l_view_a61f092bf5e131bc7cfa56aff810ca3c4}{view\+UBOData}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a4b31a06bfeab55e78e4080ea0bccfe98}{optical\+Flow\+Camera\+Output\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a7363cf33126b1f9262e24a5940d5371a}{optical\+Flow\+Visualize\+Shader}} = nullptr
+\item 
+static \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_open_g_l_optical_flow_camera_a0f008366f6be34afce8ad26490f9c092}{flip\+Shader}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a depth camera. 
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00039}{39}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_aa387fcb790b5f24813cd0339abfd38d2}\label{classsf_1_1_open_g_l_optical_flow_camera_aa387fcb790b5f24813cd0339abfd38d2} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!OpenGLOpticalFlowCamera@{OpenGLOpticalFlowCamera}}
+\index{OpenGLOpticalFlowCamera@{OpenGLOpticalFlowCamera}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{OpenGLOpticalFlowCamera()}{OpenGLOpticalFlowCamera()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Open\+GLOptical\+Flow\+Camera (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{eye\+Position,  }\item[{glm\+::vec3}]{direction,  }\item[{glm\+::vec3}]{camera\+Up,  }\item[{GLint}]{originX,  }\item[{GLint}]{originY,  }\item[{GLint}]{width,  }\item[{GLint}]{height,  }\item[{GLfloat}]{horizontal\+FOVDeg,  }\item[{glm\+::vec2}]{range,  }\item[{bool}]{continuous\+Update }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eye\+Position} & the position of the camera eye in world space \mbox{[}m\mbox{]} \\
+\hline
+{\em direction} & a unit vector parallel to the camera optical axis \\
+\hline
+{\em camera\+Up} & a unit vector pointing to the top edge of the image \\
+\hline
+{\em originX} & the x coordinate of the view origin in the program window \\
+\hline
+{\em originY} & the y coordinate of the view origin in the program window \\
+\hline
+{\em width} & the width of the view \\
+\hline
+{\em height} & the height of the view \\
+\hline
+{\em horizontal\+Fov\+Deg} & the horizontal field of view of the camera \mbox{[}deg\mbox{]} \\
+\hline
+{\em range} & the minimum and maximum rendering distance of the camera \mbox{[}m\mbox{]} \\
+\hline
+{\em continuous\+Update} & a flag indicating if the depth camera has to be always updated \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_afbbbeee6a0bc7f7354d01afcfe73f412}\label{classsf_1_1_open_g_l_optical_flow_camera_afbbbeee6a0bc7f7354d01afcfe73f412} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!````~OpenGLOpticalFlowCamera@{\texorpdfstring{$\sim$}{\string~}OpenGLOpticalFlowCamera}}
+\index{````~OpenGLOpticalFlowCamera@{\texorpdfstring{$\sim$}{\string~}OpenGLOpticalFlowCamera}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLOpticalFlowCamera()}{\string~OpenGLOpticalFlowCamera()}}
+{\footnotesize\ttfamily sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLOptical\+Flow\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_ad1abfe0f2a5eeac5eead31869103da7a}\label{classsf_1_1_open_g_l_optical_flow_camera_ad1abfe0f2a5eeac5eead31869103da7a} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!ComputeOutput@{ComputeOutput}}
+\index{ComputeOutput@{ComputeOutput}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{ComputeOutput()}{ComputeOutput()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Compute\+Output (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \&}]{objects }\end{DoxyParamCaption})}
+
+
+
+A method that computes simulated depth data. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00264}{264}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_acdf051d849559acb55a12ec7a2d5852f}\label{classsf_1_1_open_g_l_optical_flow_camera_acdf051d849559acb55a12ec7a2d5852f} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{Destroy()}{Destroy()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to destroy shaders. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00400}{400}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a6c0f585dd42fe41f590cc0a090ee5169}\label{classsf_1_1_open_g_l_optical_flow_camera_a6c0f585dd42fe41f590cc0a090ee5169} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!DrawLDR@{DrawLDR}}
+\index{DrawLDR@{DrawLDR}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{DrawLDR()}{DrawLDR()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Draw\+LDR (\begin{DoxyParamCaption}\item[{GLuint}]{destination\+FBO,  }\item[{bool}]{updated }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method to render the low dynamic range (final) image to the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em destination\+FBO} & the id of the framebuffer used as the destination for rendering \\
+\hline
+{\em updated} & a flag indicating if view content was updated \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_a667d02f6f69b5aab922905d564643be9}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00335}{335}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_aad9ca3a842e3da996e810b2fce82cf17}\label{classsf_1_1_open_g_l_optical_flow_camera_aad9ca3a842e3da996e810b2fce82cf17} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!GetEyePosition@{GetEyePosition}}
+\index{GetEyePosition@{GetEyePosition}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{GetEyePosition()}{GetEyePosition()}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Get\+Eye\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the eye position. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_a3004c25e0ea08a246baaa7e4de0b8e08}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00173}{173}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_aa3c1872fa2eed26322895f0c2ae31581}\label{classsf_1_1_open_g_l_optical_flow_camera_aa3c1872fa2eed26322895f0c2ae31581} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!GetFarClip@{GetFarClip}}
+\index{GetFarClip@{GetFarClip}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{GetFarClip()}{GetFarClip()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Get\+Far\+Clip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that returns the far clip plane distance. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_a89362c254b59e32c9ac4bdb13e32a771}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00213}{213}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a271cf34d7920c97479295b142146db29}\label{classsf_1_1_open_g_l_optical_flow_camera_a271cf34d7920c97479295b142146db29} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!GetFOVX@{GetFOVX}}
+\index{GetFOVX@{GetFOVX}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{GetFOVX()}{GetFOVX()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Get\+FOVX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that returns the horizontal field of view. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_ae7a38a684fdadc61ed766a7e25c6a6f9}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00198}{198}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_ae600046103c5fd277f05f0b2bb3159ca}\label{classsf_1_1_open_g_l_optical_flow_camera_ae600046103c5fd277f05f0b2bb3159ca} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!GetFOVY@{GetFOVY}}
+\index{GetFOVY@{GetFOVY}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{GetFOVY()}{GetFOVY()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Get\+FOVY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that returns the vertical field of view. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_ae631bc18744031bfd238b99014b21f34}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00203}{203}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a80193fc49961bfef7ad41011562bf919}\label{classsf_1_1_open_g_l_optical_flow_camera_a80193fc49961bfef7ad41011562bf919} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!GetLookingDirection@{GetLookingDirection}}
+\index{GetLookingDirection@{GetLookingDirection}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{GetLookingDirection()}{GetLookingDirection()}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Get\+Looking\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning a unit vector parallel to the optical axis of the camera. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_af014795803f1871aefee3be8f850ef91}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a86d35433ac4ce8b47b7a9674bb53c797}\label{classsf_1_1_open_g_l_optical_flow_camera_a86d35433ac4ce8b47b7a9674bb53c797} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!GetNearClip@{GetNearClip}}
+\index{GetNearClip@{GetNearClip}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{GetNearClip()}{GetNearClip()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Get\+Near\+Clip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that returns the far clip plane distance. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_a9e4c128860f2b1d08d431ebdb52697c5}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00208}{208}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a1219abf2784d7f1ef551762775f274f2}\label{classsf_1_1_open_g_l_optical_flow_camera_a1219abf2784d7f1ef551762775f274f2} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!GetProjectionMatrix@{GetProjectionMatrix}}
+\index{GetProjectionMatrix@{GetProjectionMatrix}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{GetProjectionMatrix()}{GetProjectionMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Get\+Projection\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the projection matrix. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_aae95d77fc472462ec4a38ccd4921b82b}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00188}{188}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a6b43ca2ea5310d41ba09cdb4f23fc159}\label{classsf_1_1_open_g_l_optical_flow_camera_a6b43ca2ea5310d41ba09cdb4f23fc159} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!getType@{getType}}
+\index{getType@{getType}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily View\+Type sf\+::\+Open\+GLOptical\+Flow\+Camera\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method returning the type of the view. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_ac795a316a072da2b4190abf841e2d8bc}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00259}{259}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a89e2f386d885179c18081e3fcddfe6f2}\label{classsf_1_1_open_g_l_optical_flow_camera_a89e2f386d885179c18081e3fcddfe6f2} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!GetUpDirection@{GetUpDirection}}
+\index{GetUpDirection@{GetUpDirection}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{GetUpDirection()}{GetUpDirection()}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Get\+Up\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning a unit vector pointing to the top edge of the image. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_a5ff43bff477d57cc34f56fd3cb1f34f2}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00183}{183}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a2f4a9ecbe295110ae6139cd2fdda2866}\label{classsf_1_1_open_g_l_optical_flow_camera_a2f4a9ecbe295110ae6139cd2fdda2866} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!GetViewMatrix@{GetViewMatrix}}
+\index{GetViewMatrix@{GetViewMatrix}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{GetViewMatrix()}{GetViewMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Get\+View\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the view matrix. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_ae89743f88dbc6b53c0308c4d2d94c030}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00193}{193}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a70bc5257fcee335d294a235420f2b40a}\label{classsf_1_1_open_g_l_optical_flow_camera_a70bc5257fcee335d294a235420f2b40a} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!Init@{Init}}
+\index{Init@{Init}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A static method to load shaders. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00375}{375}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a0363a6a8546f7053f80315ab2a5cb6f0}\label{classsf_1_1_open_g_l_optical_flow_camera_a0363a6a8546f7053f80315ab2a5cb6f0} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!needsUpdate@{needsUpdate}}
+\index{needsUpdate@{needsUpdate}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{needsUpdate()}{needsUpdate()}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLOptical\+Flow\+Camera\+::needs\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that informs if the camera needs update. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_abb9c6cd942de9272f9a688b2a9d44eaf}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00223}{223}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_ab95889fbd7f4995cd55169076bbcba99}\label{classsf_1_1_open_g_l_optical_flow_camera_ab95889fbd7f4995cd55169076bbcba99} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!setCamera@{setCamera}}
+\index{setCamera@{setCamera}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{setCamera()}{setCamera()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::set\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_camera}{Camera}} \texorpdfstring{$\ast$}{*}}]{cam,  }\item[{unsigned int}]{index = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+A method to set a pointer to a camera sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cam} & a pointer to a camera sensor \\
+\hline
+{\em index} & the id of the Open\+GL depth camera \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_ae09851273fb33fe5dd1dceb2753e8e0d}\label{classsf_1_1_open_g_l_optical_flow_camera_ae09851273fb33fe5dd1dceb2753e8e0d} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!setMaxVelocity@{setMaxVelocity}}
+\index{setMaxVelocity@{setMaxVelocity}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{setMaxVelocity()}{setMaxVelocity()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::set\+Max\+Velocity (\begin{DoxyParamCaption}\item[{GLfloat}]{v }\end{DoxyParamCaption})}
+
+
+
+A method to set the maximum velocity for the color mapped image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & velocity magnitude \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00254}{254}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a8ce1137b2cb2e1a9787f08887141cfdd}\label{classsf_1_1_open_g_l_optical_flow_camera_a8ce1137b2cb2e1a9787f08887141cfdd} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!setNoise@{setNoise}}
+\index{setNoise@{setNoise}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{setNoise()}{setNoise()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::set\+Noise (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{vel\+Std\+Dev }\end{DoxyParamCaption})}
+
+
+
+A method to set the noise properties of the optical flow camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vel\+Std\+Dev} & the standard deviation of the pixel velocity measurement \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00249}{249}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_adc559a2a8e5f42a4b0a5d6d2aefb8101}\label{classsf_1_1_open_g_l_optical_flow_camera_adc559a2a8e5f42a4b0a5d6d2aefb8101} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!SetupCamera@{SetupCamera}}
+\index{SetupCamera@{SetupCamera}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{SetupCamera()}{SetupCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Setup\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that sets up the camera. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_afecec8104b20ab80d45ce0b5d293bfd8}\label{classsf_1_1_open_g_l_optical_flow_camera_afecec8104b20ab80d45ce0b5d293bfd8} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!SetupCamera@{SetupCamera}}
+\index{SetupCamera@{SetupCamera}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{SetupCamera()}{SetupCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Setup\+Camera (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{eye,  }\item[{glm\+::vec3}]{dir,  }\item[{glm\+::vec3}]{up }\end{DoxyParamCaption})}
+
+
+
+A method used to set up the camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eye} & the position of the camera \mbox{[}m\mbox{]} \\
+\hline
+{\em dir} & a unit vector parallel to the camera optical axis \\
+\hline
+{\em up} & a unit vector pointing to the top edge of the image \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a5daa491bb552d570bd0e585ad78cb656}\label{classsf_1_1_open_g_l_optical_flow_camera_a5daa491bb552d570bd0e585ad78cb656} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!Update@{Update}}
+\index{Update@{Update}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method that flags the camera as needing update. 
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a5e0c9efe2f5ec2a8e215acc201e0b021}\label{classsf_1_1_open_g_l_optical_flow_camera_a5e0c9efe2f5ec2a8e215acc201e0b021} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!UpdateTransform@{UpdateTransform}}
+\index{UpdateTransform@{UpdateTransform}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{UpdateTransform()}{UpdateTransform()}}
+{\footnotesize\ttfamily void sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+Update\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method that updates camera world transform. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_open_g_l_view_a957e6d117ce82c4a6bd05ea639e6a9a1}{sf\+::\+Open\+GLView}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8cpp_source}{Open\+GLOptical\+Flow\+Camera.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a459fa6ea61f164024e66646af23c7f4b}\label{classsf_1_1_open_g_l_optical_flow_camera_a459fa6ea61f164024e66646af23c7f4b} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!\_needsUpdate@{\_needsUpdate}}
+\index{\_needsUpdate@{\_needsUpdate}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{\_needsUpdate}{\_needsUpdate}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLOptical\+Flow\+Camera\+::\+\_\+needs\+Update\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00162}{162}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a7b01f4dc2d8e87f7d2660a6d1bdd96bf}\label{classsf_1_1_open_g_l_optical_flow_camera_a7b01f4dc2d8e87f7d2660a6d1bdd96bf} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!camera@{camera}}
+\index{camera@{camera}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{camera}{camera}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_camera}{Camera}}\texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLOptical\+Flow\+Camera\+::camera\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00151}{151}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a59ca49eb0a9c5122d00a94a964e07c35}\label{classsf_1_1_open_g_l_optical_flow_camera_a59ca49eb0a9c5122d00a94a964e07c35} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!cameraTransform@{cameraTransform}}
+\index{cameraTransform@{cameraTransform}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{cameraTransform}{cameraTransform}}
+{\footnotesize\ttfamily glm\+::mat4 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::camera\+Transform\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00152}{152}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a8d49c9ccd71e497d56d18d2a115d9467}\label{classsf_1_1_open_g_l_optical_flow_camera_a8d49c9ccd71e497d56d18d2a115d9467} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!dir@{dir}}
+\index{dir@{dir}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{dir}{dir}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::dir\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00154}{154}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a4840cc5eb991f594f3fa8c0d3cf4703b}\label{classsf_1_1_open_g_l_optical_flow_camera_a4840cc5eb991f594f3fa8c0d3cf4703b} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!displayFBO@{displayFBO}}
+\index{displayFBO@{displayFBO}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{displayFBO}{displayFBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLOptical\+Flow\+Camera\+::display\+FBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00174}{174}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a06e53168558bb5e8c93b50529587a590}\label{classsf_1_1_open_g_l_optical_flow_camera_a06e53168558bb5e8c93b50529587a590} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!displayFlowTex@{displayFlowTex}}
+\index{displayFlowTex@{displayFlowTex}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{displayFlowTex}{displayFlowTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLOptical\+Flow\+Camera\+::display\+Flow\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00171}{171}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a5b1720dc9a7336bad887300b4bd9deeb}\label{classsf_1_1_open_g_l_optical_flow_camera_a5b1720dc9a7336bad887300b4bd9deeb} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!displayPBO@{displayPBO}}
+\index{displayPBO@{displayPBO}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{displayPBO}{displayPBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLOptical\+Flow\+Camera\+::display\+PBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00173}{173}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a2f07fa93803bb5d3efb202425f6990ee}\label{classsf_1_1_open_g_l_optical_flow_camera_a2f07fa93803bb5d3efb202425f6990ee} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!displayVAO@{displayVAO}}
+\index{displayVAO@{displayVAO}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{displayVAO}{displayVAO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLOptical\+Flow\+Camera\+::display\+VAO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00175}{175}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a03250df9d4650dd29f73926cfb19b4dd}\label{classsf_1_1_open_g_l_optical_flow_camera_a03250df9d4650dd29f73926cfb19b4dd} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!displayVBO@{displayVBO}}
+\index{displayVBO@{displayVBO}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{displayVBO}{displayVBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLOptical\+Flow\+Camera\+::display\+VBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00176}{176}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_adc179418b764be6dfd0a608c43016175}\label{classsf_1_1_open_g_l_optical_flow_camera_adc179418b764be6dfd0a608c43016175} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!eye@{eye}}
+\index{eye@{eye}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{eye}{eye}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::eye\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00153}{153}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a0f008366f6be34afce8ad26490f9c092}\label{classsf_1_1_open_g_l_optical_flow_camera_a0f008366f6be34afce8ad26490f9c092} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!flipShader@{flipShader}}
+\index{flipShader@{flipShader}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{flipShader}{flipShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLOptical\+Flow\+Camera\+::flip\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00179}{179}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a7e31681c699a8d65cc46e4e9a5495971}\label{classsf_1_1_open_g_l_optical_flow_camera_a7e31681c699a8d65cc46e4e9a5495971} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!focalLength@{focalLength}}
+\index{focalLength@{focalLength}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{focalLength}{focalLength}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLOptical\+Flow\+Camera\+::focal\+Length\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00161}{161}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a79bbf4791ef7052bbe5d0676095a0914}\label{classsf_1_1_open_g_l_optical_flow_camera_a79bbf4791ef7052bbe5d0676095a0914} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!fov@{fov}}
+\index{fov@{fov}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{fov}{fov}}
+{\footnotesize\ttfamily glm\+::vec2 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::fov\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00160}{160}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a0d55bb507aaff3a4114e91176528ba51}\label{classsf_1_1_open_g_l_optical_flow_camera_a0d55bb507aaff3a4114e91176528ba51} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!maxVel@{maxVel}}
+\index{maxVel@{maxVel}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{maxVel}{maxVel}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Open\+GLOptical\+Flow\+Camera\+::max\+Vel\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00166}{166}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a221779e1084f3c81d2a555f98d13b56c}\label{classsf_1_1_open_g_l_optical_flow_camera_a221779e1084f3c81d2a555f98d13b56c} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!newData@{newData}}
+\index{newData@{newData}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{newData}{newData}}
+{\footnotesize\ttfamily bool sf\+::\+Open\+GLOptical\+Flow\+Camera\+::new\+Data\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00163}{163}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a6b5de8f42fb5700f5113ae66cb50892b}\label{classsf_1_1_open_g_l_optical_flow_camera_a6b5de8f42fb5700f5113ae66cb50892b} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!noiseVel@{noiseVel}}
+\index{noiseVel@{noiseVel}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{noiseVel}{noiseVel}}
+{\footnotesize\ttfamily glm\+::vec2 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::noise\+Vel\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00165}{165}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a4b31a06bfeab55e78e4080ea0bccfe98}\label{classsf_1_1_open_g_l_optical_flow_camera_a4b31a06bfeab55e78e4080ea0bccfe98} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!opticalFlowCameraOutputShader@{opticalFlowCameraOutputShader}}
+\index{opticalFlowCameraOutputShader@{opticalFlowCameraOutputShader}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{opticalFlowCameraOutputShader}{opticalFlowCameraOutputShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLOptical\+Flow\+Camera\+::optical\+Flow\+Camera\+Output\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00177}{177}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a7363cf33126b1f9262e24a5940d5371a}\label{classsf_1_1_open_g_l_optical_flow_camera_a7363cf33126b1f9262e24a5940d5371a} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!opticalFlowVisualizeShader@{opticalFlowVisualizeShader}}
+\index{opticalFlowVisualizeShader@{opticalFlowVisualizeShader}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{opticalFlowVisualizeShader}{opticalFlowVisualizeShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}} \texorpdfstring{$\ast$}{*} sf\+::\+Open\+GLOptical\+Flow\+Camera\+::optical\+Flow\+Visualize\+Shader = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00178}{178}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a959262e6bdc95b26d19d94476e77ffad}\label{classsf_1_1_open_g_l_optical_flow_camera_a959262e6bdc95b26d19d94476e77ffad} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!outputPBO@{outputPBO}}
+\index{outputPBO@{outputPBO}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{outputPBO}{outputPBO}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLOptical\+Flow\+Camera\+::output\+PBO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00172}{172}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a955f534e64a4c0b99720235364382426}\label{classsf_1_1_open_g_l_optical_flow_camera_a955f534e64a4c0b99720235364382426} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!projection@{projection}}
+\index{projection@{projection}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{projection}{projection}}
+{\footnotesize\ttfamily glm\+::mat4 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::projection\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00159}{159}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_aea7a1309884a5014efeb0496a90599fa}\label{classsf_1_1_open_g_l_optical_flow_camera_aea7a1309884a5014efeb0496a90599fa} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!randDist@{randDist}}
+\index{randDist@{randDist}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{randDist}{randDist}}
+{\footnotesize\ttfamily std\+::uniform\+\_\+real\+\_\+distribution$<$float$>$ sf\+::\+Open\+GLOptical\+Flow\+Camera\+::rand\+Dist\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00168}{168}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a12eb02f5ba37f66dbf814696b43bcd33}\label{classsf_1_1_open_g_l_optical_flow_camera_a12eb02f5ba37f66dbf814696b43bcd33} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!randGen@{randGen}}
+\index{randGen@{randGen}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{randGen}{randGen}}
+{\footnotesize\ttfamily std\+::default\+\_\+random\+\_\+engine sf\+::\+Open\+GLOptical\+Flow\+Camera\+::rand\+Gen\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00167}{167}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a6d1bf67b154355bab7b902fb45a51a6d}\label{classsf_1_1_open_g_l_optical_flow_camera_a6d1bf67b154355bab7b902fb45a51a6d} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!range@{range}}
+\index{range@{range}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{range}{range}}
+{\footnotesize\ttfamily glm\+::vec2 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::range\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00164}{164}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a82fa2b3862504097f44e18f3df68b974}\label{classsf_1_1_open_g_l_optical_flow_camera_a82fa2b3862504097f44e18f3df68b974} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!renderDepthTex@{renderDepthTex}}
+\index{renderDepthTex@{renderDepthTex}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{renderDepthTex}{renderDepthTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLOptical\+Flow\+Camera\+::render\+Depth\+Tex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00169}{169}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a4817ecdb2a995c946422b8c8d0a4ab22}\label{classsf_1_1_open_g_l_optical_flow_camera_a4817ecdb2a995c946422b8c8d0a4ab22} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!renderFlowTex@{renderFlowTex}}
+\index{renderFlowTex@{renderFlowTex}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{renderFlowTex}{renderFlowTex}}
+{\footnotesize\ttfamily GLuint sf\+::\+Open\+GLOptical\+Flow\+Camera\+::render\+Flow\+Tex\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00170}{170}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_ab3069552326fb07cba156519dd7048ff}\label{classsf_1_1_open_g_l_optical_flow_camera_ab3069552326fb07cba156519dd7048ff} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!tempDir@{tempDir}}
+\index{tempDir@{tempDir}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{tempDir}{tempDir}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::temp\+Dir\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00157}{157}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a52ac4d60b47f5e3b393c1fe826b61866}\label{classsf_1_1_open_g_l_optical_flow_camera_a52ac4d60b47f5e3b393c1fe826b61866} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!tempEye@{tempEye}}
+\index{tempEye@{tempEye}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{tempEye}{tempEye}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::temp\+Eye\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00156}{156}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_afa55c89e5ac844c43cecf80caa2f60d0}\label{classsf_1_1_open_g_l_optical_flow_camera_afa55c89e5ac844c43cecf80caa2f60d0} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!tempUp@{tempUp}}
+\index{tempUp@{tempUp}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{tempUp}{tempUp}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::temp\+Up\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00158}{158}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+\Hypertarget{classsf_1_1_open_g_l_optical_flow_camera_a9816e6c80ec34099eb132aa31ad54e1e}\label{classsf_1_1_open_g_l_optical_flow_camera_a9816e6c80ec34099eb132aa31ad54e1e} 
+\index{sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}!up@{up}}
+\index{up@{up}!sf::OpenGLOpticalFlowCamera@{sf::OpenGLOpticalFlowCamera}}
+\doxysubsubsection{\texorpdfstring{up}{up}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Open\+GLOptical\+Flow\+Camera\+::up\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source_l00155}{155}} of file \mbox{\hyperlink{_open_g_l_optical_flow_camera_8h_source}{Open\+GLOptical\+Flow\+Camera.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/graphics/Open\+GLOptical\+Flow\+Camera.\+h\item 
+Library/src/graphics/Open\+GLOptical\+Flow\+Camera.\+cpp\end{DoxyCompactItemize}

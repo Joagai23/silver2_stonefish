@@ -1,0 +1,216 @@
+\doxysection{sf\+::Joint\+Actuator Class Reference}
+\hypertarget{classsf_1_1_joint_actuator}{}\label{classsf_1_1_joint_actuator}\index{sf::JointActuator@{sf::JointActuator}}
+
+
+An abstract class representing a joint actuator.  
+
+
+
+
+{\ttfamily \#include $<$Joint\+Actuator.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Joint\+Actuator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classsf_1_1_joint_actuator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Joint\+Actuator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsf_1_1_joint_actuator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_joint_actuator_aa5b611903e340b4214d0cd83a5dbcd6e}{Joint\+Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_joint_actuator_a9cf03f5ea09353353adc7b1146dfcdd5}{Attach\+To\+Joint}} (\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*}multibody, unsigned int joint\+Id)
+\begin{DoxyCompactList}\small\item\em A method used to attach the actuator to the specified joint of a rigid multibody. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_joint_actuator_ac954665cee9439e801da37c9fd1d1a5a}{Attach\+To\+Joint}} (\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*}joint)
+\begin{DoxyCompactList}\small\item\em A method used to attach the actuator to a discrete joint. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_joint_actuator_a7bdca161b0958f08eecf596dc62c9ae1}{get\+Joint\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the joint that the actuator is driving. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_actuator_a0bdcfb3e2bad01b7e3524efcea3dd646}{Actuator}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_actuator_ab1702a858f2c750da3259d8b3d574268}{\texorpdfstring{$\sim$}{\string~}\+Actuator}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsf_1_1_actuator_afe9be563b1e1819330bb61386d443b62}{Update}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method used to update the internal state of the actuator. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_actuator_a10c5e76c82bb29f60d2f8d199c9c47b0}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_afe4e4fcdb0e13f9efbc665994e77d145}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set display mode used for the actuator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a7e3ae31d3cfed62d68a0445b7a03f026}{set\+Watchdog}} (Scalar timeout)
+\begin{DoxyCompactList}\small\item\em A method used to set the watchdog timeout. \end{DoxyCompactList}\item 
+virtual Actuator\+Type \mbox{\hyperlink{classsf_1_1_actuator_a3b1831e870e2b800590271823d034c88}{get\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em A method returning the type of the actuator. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_actuator_a3a074b11358493cb251139c475507d2d}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the actuator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_actuator_a5a9f92ec272791761aed0661aa792000}{fe}}
+\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_joint_actuator_a913da21fc3b74a75dcf4bee1b363e4fb}{j\+Id}}
+\item 
+\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_joint_actuator_a6addf28cc11d43cf03a733e30f2c60d9}{j}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+Display\+Mode \mbox{\hyperlink{classsf_1_1_actuator_a1ca99e4bb5c8efa1670fdd09f1d52ead}{dm}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classsf_1_1_actuator}{sf\+::\+Actuator}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classsf_1_1_actuator_a468c6522181db81891bf535df9497b5a}{Watchdog\+Timeout}} ()
+\item 
+void \mbox{\hyperlink{classsf_1_1_actuator_a86dec171a3761123d92363a71b716385}{Reset\+Watchdog}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class representing a joint actuator. 
+
+Definition at line \mbox{\hyperlink{_joint_actuator_8h_source_l00037}{37}} of file \mbox{\hyperlink{_joint_actuator_8h_source}{Joint\+Actuator.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_joint_actuator_aa5b611903e340b4214d0cd83a5dbcd6e}\label{classsf_1_1_joint_actuator_aa5b611903e340b4214d0cd83a5dbcd6e} 
+\index{sf::JointActuator@{sf::JointActuator}!JointActuator@{JointActuator}}
+\index{JointActuator@{JointActuator}!sf::JointActuator@{sf::JointActuator}}
+\doxysubsubsection{\texorpdfstring{JointActuator()}{JointActuator()}}
+{\footnotesize\ttfamily sf\+::\+Joint\+Actuator\+::\+Joint\+Actuator (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the actuator. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_joint_actuator_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_joint_actuator_8cpp_source}{Joint\+Actuator.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_joint_actuator_a9cf03f5ea09353353adc7b1146dfcdd5}\label{classsf_1_1_joint_actuator_a9cf03f5ea09353353adc7b1146dfcdd5} 
+\index{sf::JointActuator@{sf::JointActuator}!AttachToJoint@{AttachToJoint}}
+\index{AttachToJoint@{AttachToJoint}!sf::JointActuator@{sf::JointActuator}}
+\doxysubsubsection{\texorpdfstring{AttachToJoint()}{AttachToJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void sf\+::\+Joint\+Actuator\+::\+Attach\+To\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}} \texorpdfstring{$\ast$}{*}}]{multibody,  }\item[{unsigned int}]{joint\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to attach the actuator to the specified joint of a rigid multibody. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em multibody} & a pointer to the multibody \\
+\hline
+{\em joint\+Id} & the index of the multibody joint to be actuated \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_servo_aca7b935fb584743b46484c94a4760457}{sf\+::\+Servo}}.
+
+
+
+Definition at line \mbox{\hyperlink{_joint_actuator_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{_joint_actuator_8cpp_source}{Joint\+Actuator.\+cpp}}.
+
+\Hypertarget{classsf_1_1_joint_actuator_ac954665cee9439e801da37c9fd1d1a5a}\label{classsf_1_1_joint_actuator_ac954665cee9439e801da37c9fd1d1a5a} 
+\index{sf::JointActuator@{sf::JointActuator}!AttachToJoint@{AttachToJoint}}
+\index{AttachToJoint@{AttachToJoint}!sf::JointActuator@{sf::JointActuator}}
+\doxysubsubsection{\texorpdfstring{AttachToJoint()}{AttachToJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void sf\+::\+Joint\+Actuator\+::\+Attach\+To\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_joint}{Joint}} \texorpdfstring{$\ast$}{*}}]{joint }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to attach the actuator to a discrete joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em joint} & a pointer to a joint object \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classsf_1_1_servo_add05dead7575b933b156d4e9a997e3aa}{sf\+::\+Servo}}.
+
+
+
+Definition at line \mbox{\hyperlink{_joint_actuator_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_joint_actuator_8cpp_source}{Joint\+Actuator.\+cpp}}.
+
+\Hypertarget{classsf_1_1_joint_actuator_a7bdca161b0958f08eecf596dc62c9ae1}\label{classsf_1_1_joint_actuator_a7bdca161b0958f08eecf596dc62c9ae1} 
+\index{sf::JointActuator@{sf::JointActuator}!getJointName@{getJointName}}
+\index{getJointName@{getJointName}!sf::JointActuator@{sf::JointActuator}}
+\doxysubsubsection{\texorpdfstring{getJointName()}{getJointName()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Joint\+Actuator\+::get\+Joint\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method returning the name of the joint that the actuator is driving. 
+
+
+
+Definition at line \mbox{\hyperlink{_joint_actuator_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_joint_actuator_8cpp_source}{Joint\+Actuator.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsf_1_1_joint_actuator_a5a9f92ec272791761aed0661aa792000}\label{classsf_1_1_joint_actuator_a5a9f92ec272791761aed0661aa792000} 
+\index{sf::JointActuator@{sf::JointActuator}!fe@{fe}}
+\index{fe@{fe}!sf::JointActuator@{sf::JointActuator}}
+\doxysubsubsection{\texorpdfstring{fe}{fe}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_featherstone_entity}{Featherstone\+Entity}}\texorpdfstring{$\ast$}{*} sf\+::\+Joint\+Actuator\+::fe\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_joint_actuator_8h_source_l00063}{63}} of file \mbox{\hyperlink{_joint_actuator_8h_source}{Joint\+Actuator.\+h}}.
+
+\Hypertarget{classsf_1_1_joint_actuator_a6addf28cc11d43cf03a733e30f2c60d9}\label{classsf_1_1_joint_actuator_a6addf28cc11d43cf03a733e30f2c60d9} 
+\index{sf::JointActuator@{sf::JointActuator}!j@{j}}
+\index{j@{j}!sf::JointActuator@{sf::JointActuator}}
+\doxysubsubsection{\texorpdfstring{j}{j}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_joint}{Joint}}\texorpdfstring{$\ast$}{*} sf\+::\+Joint\+Actuator\+::j\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_joint_actuator_8h_source_l00065}{65}} of file \mbox{\hyperlink{_joint_actuator_8h_source}{Joint\+Actuator.\+h}}.
+
+\Hypertarget{classsf_1_1_joint_actuator_a913da21fc3b74a75dcf4bee1b363e4fb}\label{classsf_1_1_joint_actuator_a913da21fc3b74a75dcf4bee1b363e4fb} 
+\index{sf::JointActuator@{sf::JointActuator}!jId@{jId}}
+\index{jId@{jId}!sf::JointActuator@{sf::JointActuator}}
+\doxysubsubsection{\texorpdfstring{jId}{jId}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Joint\+Actuator\+::j\+Id\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_joint_actuator_8h_source_l00064}{64}} of file \mbox{\hyperlink{_joint_actuator_8h_source}{Joint\+Actuator.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Joint\+Actuator.\+h\item 
+Library/src/actuators/Joint\+Actuator.\+cpp\end{DoxyCompactItemize}

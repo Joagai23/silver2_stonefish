@@ -1,0 +1,113 @@
+\doxysection{SSS.\+h}
+\hypertarget{_s_s_s_8h_source}{}\label{_s_s_s_8h_source}\index{Library/include/sensors/vision/SSS.h@{Library/include/sensors/vision/SSS.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00019}00019\ \textcolor{comment}{//\ \ SSS.h}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 20/06/20.}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2020\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_SSS\_\_}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_SSS\_\_}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}sensors/vision/Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLDataStructs.h"{}}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00033}00033\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{class\ }OpenGLSSS;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00036}00036\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00038}\mbox{\hyperlink{classsf_1_1_s_s_s}{00038}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_s_s_s}{SSS}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classsf_1_1_camera}{Camera}}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_s_s_s}{SSS}}(std::string\ uniqueName,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ numOfBins,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ numOfLines,\ Scalar\ verticalBeamWidthDeg,}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ horizontalBeamWidthDeg,\ Scalar\ verticalTiltDeg,\ Scalar\ minRange,\ Scalar\ maxRange,\ ColorMap\ cm,\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar\ frequency\ =\ Scalar(-\/1));}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00057}00057\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_s_s_s_abf09f245bd7355409da66f8865e2af14}{\string~SSS}}();}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_s_s_s_a9854144ff2a4aad0d049df627d31c46f}{InternalUpdate}}(Scalar\ dt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_s_s_s_a226eb73bd4c73484d0d82e3ca5202a43}{SetupCamera}}(\textcolor{keyword}{const}\ Vector3\&\ eye,\ \textcolor{keyword}{const}\ Vector3\&\ dir,\ \textcolor{keyword}{const}\ Vector3\&\ up)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_s_s_s_a67dae37506209b5f92b54c4980020e62}{NewDataReady}}(\textcolor{keywordtype}{void}*\ data,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index\ =\ 0)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_s_s_s_ada2b6fdb1c4a60b9f0d38587aceae04a}{InstallNewDataHandler}}(std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classsf_1_1_s_s_s}{SSS}}*)>\ callback);}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_s_s_s_ab1a234e93c7258467bbc101b1ea7eb3c}{Render}}();}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_s_s_s_a24c7919054ea757f9ac910f51c747cd6}{setRangeMin}}(Scalar\ r);}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_s_s_s_aa654e8fc059235cbcd3c861827699135}{setRangeMax}}(Scalar\ r);}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_s_s_s_a98803fba79c73ce00bc3a654dfafff9e}{setGain}}(Scalar\ g);}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_s_s_s_a14cada69b642ac5914a8e249eec12417}{setNoise}}(\textcolor{keywordtype}{float}\ multiplicativeStdDev,\ \textcolor{keywordtype}{float}\ additiveStdDev);}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_s_s_s_a6c6e94c3b6dc3884a691655cdc85ede8}{getRangeMin}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00119}00119\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_s_s_s_a94f1e3690081f6ad84565553dc35adfb}{getRangeMax}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_s_s_s_a1a27dcd32a1811a6616ea9877961d000}{getGain}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classsf_1_1_s_s_s_a7e1c73ecfb73bd2566dce514a816d82c}{getImageDataPointer}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_s_s_s_ac1c3d77cc66678d8e9a224c702855551}{getDisplayResolution}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ x,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ GLubyte*\ \mbox{\hyperlink{classsf_1_1_s_s_s_a6b6bbb2512e2ba6ed969fb84110ffbd1}{getDisplayDataPointer}}();}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00140}00140\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00142}00142\ \ \ \ \ \ \ \ \ VisionSensorType\ \mbox{\hyperlink{classsf_1_1_s_s_s_a0139fb97bb3d4baa7bbdb8ebdd947539}{getVisionSensorType}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00145}00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ \mbox{\hyperlink{classsf_1_1_s_s_s_abdee853afcabee3640325750989e1892}{getOpenGLView}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00147}00147\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ InitGraphics();}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00149}00149\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00150}00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_s_s_s}{OpenGLSSS}}*\ glSSS;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00151}00151\ \ \ \ \ \ \ \ \ GLubyte*\ sonarData;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00152}00152\ \ \ \ \ \ \ \ \ GLubyte*\ displayData;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00153}00153\ \ \ \ \ \ \ \ \ glm::vec2\ range;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00154}00154\ \ \ \ \ \ \ \ \ glm::vec2\ noise;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00155}00155\ \ \ \ \ \ \ \ \ Scalar\ gain;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ Scalar\ fovV;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ Scalar\ tilt;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ ColorMap\ cMap;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ std::function<void(\mbox{\hyperlink{classsf_1_1_s_s_s}{SSS}}*)>\ newDataCallback;}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00160}00160\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00161}00161\ \}}
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_s_s_s_8h_source_l00163}00163\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

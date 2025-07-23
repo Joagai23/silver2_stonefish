@@ -1,0 +1,303 @@
+\doxysection{Open\+GLContent.\+h}
+\hypertarget{_open_g_l_content_8h_source}{}\label{_open_g_l_content_8h_source}\index{Library/include/graphics/OpenGLContent.h@{Library/include/graphics/OpenGLContent.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00019}00019\ \textcolor{comment}{//\ \ OpenGLContent.h}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 5/06/2017.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2017-\/2024\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_\_Stonefish\_OpenGLContent\_\_}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_\_Stonefish\_OpenGLContent\_\_}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLDataStructs.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}graphics/GLSLShader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}core/NameManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLPointLight.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLSpotLight.h"{}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00036}00036\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{class\ }OpenGLView;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{enum\ class}\ FilteringMode\ \{NEAREST,\ BILINEAR,\ BILINEAR\_MIPMAP,\ TRILINEAR\};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00044}\mbox{\hyperlink{structsf_1_1_f_b_o_texture}{00044}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_f_b_o_texture}{FBOTexture}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ GLenum\ attach;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ GLenum\ target;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ GLuint\ tex;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ GLint\ lvl;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ GLint\ z;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_f_b_o_texture}{FBOTexture}}(GLenum\ attachment,\ GLenum\ target,\ GLuint\ texture,\ GLint\ level\ =\ 0,\ GLint\ zoffset\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ :\ attach(attachment),\ target(target),\ tex(texture),\ lvl(level),\ z(zoffset)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00054}00054\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00055}00055\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00056}00056\ \textcolor{preprocessor}{\ \ \ \ \#pragma\ pack(1)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00058}\mbox{\hyperlink{structsf_1_1_lights_u_b_o}{00058}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_lights_u_b_o}{LightsUBO}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00059}00059\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_point_light_u_b_o}{PointLightUBO}}\ pointLights[MAX\_POINT\_LIGHTS];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_spot_light_u_b_o}{SpotLightUBO}}\ spotLights[MAX\_SPOT\_LIGHTS];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ GLint\ numPointLights;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ GLint\ numSpotLights;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00064}00064\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00066}\mbox{\hyperlink{structsf_1_1_velocity_field_u_b_o}{00066}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_velocity_field_u_b_o}{VelocityFieldUBO}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ glm::vec4\ posR;\ \ \ \textcolor{comment}{//Position\ and\ orifice\ radius}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ glm::vec4\ dirV;\ \ \ \textcolor{comment}{//Direction\ and\ velocity\ value}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ glm::vec3\ params;\ \textcolor{comment}{//Additional\ params}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ GLuint\ type;\ \ \ \ \ \ \textcolor{comment}{//Type\ of\ velocity\ field}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00072}00072\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00073}00073\ \textcolor{preprocessor}{\ \ \ \ \#pragma\ pack(0)}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00076}\mbox{\hyperlink{structsf_1_1_material_shader}{00076}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsf_1_1_material_shader}{MaterialShader}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ std::string\ shadingAlgorithm;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ std::array<GLSLShader*,\ 8>\ shaders;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_material_shader}{MaterialShader}}()}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ shadingAlgorithm\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_material_shader}{MaterialShader}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_material_shader}{MaterialShader}}\ \&obj)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ shadingAlgorithm\ =\ obj.shadingAlgorithm;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<shaders.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shaders[i]\ =\ obj.shaders[i];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00092}00092\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00095}\mbox{\hyperlink{classsf_1_1_open_g_l_content}{00095}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsf_1_1_open_g_l_content}{OpenGLContent}}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_content_aab020dd1de7e9fafce5eedacb1c501c4}{OpenGLContent}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00102}00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a7adec1ba8640304955025a7638491470}{\string~OpenGLContent}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_aad124c18301b0f6ec6042469280a06f9}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a78dd30f69087c00c5569cf88c01ce8ee}{DestroyContent}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a235f5774c3e89aeaf59cf52e32289548}{SetViewportSize}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_acd6837f0206ecebabd602c23b95efbab}{SetProjectionMatrix}}(glm::mat4\ P);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a70e446eee57bcb6837cb1f2fb6e8c69a}{SetViewMatrix}}(glm::mat4\ V);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ glm::mat4\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a8f2555cbc8901562e9fe82ff757e3138}{GetViewMatrix}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_acd2ecbd33d26d7be1c52b0edaf882489}{SetDrawingMode}}(DrawingMode\ m);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a45edb1a33bec329dbabf74e3f2a179fa}{SetCurrentView}}(\mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ v);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a6513dcdb004b4b24e7c11632c7c590c2}{BindBaseVertexArray}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a2421a35943fe8d903d5235f82c11d391}{DrawSAQ}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00149}00149\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a920cbfd5267387ece9aff4f21d76635a}{DrawTexturedSAQ}}(GLuint\ texture,\ glm::vec4\ color\ =\ glm::vec4(1.f));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a2185c75674108e8727e05247e79af2f5}{DrawTexturedQuad}}(GLfloat\ x,\ GLfloat\ y,\ GLfloat\ width,\ GLfloat\ height,\ GLuint\ texture,\ glm::vec4\ color\ =\ glm::vec4(1.f));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00167}00167\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a2185c75674108e8727e05247e79af2f5}{DrawTexturedQuad}}(GLfloat\ x,\ GLfloat\ y,\ GLfloat\ width,\ GLfloat\ height,\ GLuint\ texture,\ GLint\ z,\ \textcolor{keywordtype}{bool}\ array\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00179}00179\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_acc130ed416811ac1fa3dde37196c02d4}{DrawCubemapCross}}(GLuint\ texture);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00185}00185\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a48ccd63b7f6607f6c94711905d0c4679}{DrawCoordSystem}}(glm::mat4\ M,\ GLfloat\ size);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00192}00192\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a7b303b8fc8cde9d5ba06deee942085e2}{DrawEllipsoid}}(glm::mat4\ M,\ glm::vec3\ radii,\ glm::vec4\ color);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00200}00200\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_aaba73f01cb8aa550224683fef900e334}{DrawCylinder}}(glm::mat4\ M,\ glm::vec3\ dims,\ glm::vec4\ color);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00208}00208\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a24925185438bf0e78ca952f46afdd973}{DrawPrimitives}}(PrimitiveType\ type,\ std::vector<glm::vec3>\&\ vertices,\ glm::vec4\ color,\ glm::mat4\ M\ =\ glm::mat4(1.f));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00217}00217\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a52aacc2393c8e0481c250267cc2f514d}{DrawObject}}(\textcolor{keywordtype}{int}\ objectId,\ \textcolor{keywordtype}{int}\ lookId,\ \textcolor{keyword}{const}\ glm::mat4\&\ M);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_aecc69f18e49799447e3d09c5be30ae03}{DrawLightSource}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ lightId);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a12ce3771a479e5e6aa8ea0309e627220}{AddView}}(\mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ view);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00237}00237\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a06c838bdf819b8de052bf10c448b8d2b}{AddLight}}(\mbox{\hyperlink{classsf_1_1_open_g_l_light}{OpenGLLight}}*\ light);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00243}00243\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00249}00249\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a4409cb13d46d3fb15982b9d1155ed8c9}{BuildObject}}(\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ mesh);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00250}00250\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00261}00261\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a639337556eaebd2424a3c8e01b59e5bc}{CreateSimpleLook}}(\textcolor{keyword}{const}\ std::string\&\ name,\ glm::vec3\ rgbColor,\ GLfloat\ specular,\ GLfloat\ shininess,\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLfloat\ reflectivity\ =\ 0.f,\ \textcolor{keyword}{const}\ std::string\&\ albedoTexturePath\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00263}00263\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00277}00277\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_ac995f1fe3fd943bd85de1243c1d993ad}{CreatePhysicalLook}}(\textcolor{keyword}{const}\ std::string\&\ name,\ glm::vec3\ rgbColor,\ GLfloat\ roughness,\ GLfloat\ metalness\ =\ 0.f,\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLfloat\ reflectivity\ =\ 0.f,\ \textcolor{keyword}{const}\ std::string\&\ albedoTexturePath\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ normalMapPath\ =\ \textcolor{stringliteral}{"{}"{}},\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ temperatureMapPath\ =\ \textcolor{stringliteral}{"{}"{}},\ glm::vec2\ temperatureRange\ =\ glm::vec2(20.f));}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00280}00280\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a9947edb34f08da9e0fc402bf97ce3e74}{UseLook}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_look}{Look}}\&\ look,\ \textcolor{keywordtype}{bool}\ texturable,\ \textcolor{keyword}{const}\ glm::mat4\&\ M);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00288}00288\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00294}00294\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_view}{OpenGLView}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_aab5e30b3cb2a934dd99b40b791b32753}{getView}}(\textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00295}00295\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a4918ab5479acb81ae2027523b9a283ae}{getViewsCount}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00298}00298\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00304}00304\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_open_g_l_light}{OpenGLLight}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_ad0e6be4f3e820bc5c9f8831b7714340d}{getLight}}(\textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00305}00305\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00307}00307\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_afce258462f092d3726dd3e3056d3a8e2}{getLightsCount}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00308}00308\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00310}00310\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a4bb8f1b71ce5676c35b6dc8519342063}{SetupLights}}();}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00311}00311\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00317}00317\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a77c0377aa9491448109e271d035f967d}{getLookId}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_object}{Object}}\&\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a6d9eff1abcd608fb54d4116f5d81b446}{getObject}}(\textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00329}00329\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structsf_1_1_look}{Look}}\&\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a64199d7be907875a22669ca2902baf93}{getLook}}(\textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00330}00330\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00340}00340\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ GLuint\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a3891203aab9ceba191a870069f63edd7}{LoadTexture}}(\textcolor{keyword}{const}\ std::string\&\ filename,\ \textcolor{keywordtype}{bool}\ srgb\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ alpha\ =\ \textcolor{keyword}{false},\ GLfloat\ anisotropy\ =\ 0.f,\ \textcolor{keywordtype}{bool}\ internal\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00341}00341\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ GLuint\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a7387e1ca39671b3f3786637089b5b809}{LoadInternalTexture}}(\textcolor{keyword}{const}\ std::string\&\ filename,\ \textcolor{keywordtype}{bool}\ srgb\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ alpha\ =\ \textcolor{keyword}{false},\ GLfloat\ anisotropy\ =\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00351}00351\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ GLuint\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a53b29cf7a3b1e832e5473e1f0d80470d}{GenerateTexture}}(GLenum\ target,\ glm::uvec3\ dimensions,\ GLenum\ internalFormat,\ GLenum\ format,\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLenum\ type,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data,\ FilteringMode\ fm,\ \textcolor{keywordtype}{bool}\ repeat,\ \textcolor{keywordtype}{bool}\ anisotropy\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00373}00373\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ GLuint\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a96b9148e3657e1a454ba336741c349cb}{GenerateFramebuffer}}(\textcolor{keyword}{const}\ std::vector<FBOTexture>\&\ textures);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00382}00382\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_aa1848874b692968ddc5bdd3e80c57470}{LoadMesh}}(\textcolor{keyword}{const}\ std::string\&\ filename,\ GLfloat\ scale,\ \textcolor{keywordtype}{bool}\ smooth);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00383}00383\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00385}00385\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00390}00390\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a2b421871c85dfedbee37beb3aee2290e}{BuildPlane}}(GLfloat\ halfExtents,\ GLfloat\ uvScale\ =\ 1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00391}00391\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00399}00399\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a9d11cb25cdf60fd53f92e302bd1604fe}{BuildBox}}(glm::vec3\ halfExtents,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ subdivisions\ =\ 3,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ uvMode\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00400}00400\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00407}00407\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_ac4397533ddc31a82afcb2a323dcb664b}{BuildSphere}}(GLfloat\ radius,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ subdivisions\ =\ 3);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00408}00408\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00410}00410\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00416}00416\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a026b0bb13c1d9a4afc74d66b74064066}{BuildCylinder}}(GLfloat\ radius,\ GLfloat\ height,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ slices\ =\ 24);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00417}00417\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00426}00426\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a928f928c070ec02b9e1a91d84ac4bcea}{BuildTorus}}(GLfloat\ majorRadius,\ GLfloat\ minorRadius,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ majorSlices\ =\ 48,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ minorSlices\ =\ 24);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00427}00427\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00438}00438\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a80ddbdde60968773dc602e90f8cdb8a4}{BuildWing}}(GLfloat\ baseChordLength,\ GLfloat\ tipChordLength,\ GLfloat\ maxCamber,\ GLfloat\ maxCamberPos,\ GLfloat\ profileThickness,\ GLfloat\ wingLength);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00439}00439\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00451}00451\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a30d91c1d72f1e1c2cad8940ed1451955}{BuildTerrain}}(GLfloat*\ heightfield,\ \textcolor{keywordtype}{int}\ sizeX,\ \textcolor{keywordtype}{int}\ sizeY,\ GLfloat\ scaleX,\ GLfloat\ scaleY,\ GLfloat\ maxHeight,\ GLfloat\ uvScale\ =\ 1.f);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00452}00452\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00454}00454\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00458}00458\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a11cea72197d596a0c39977bc3702544e}{TransformMesh}}(\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ mesh,\ \textcolor{keyword}{const}\ Transform\&\ T);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00459}00459\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_aecf51ea0ba9eeb5d169cbcc4a12b7fcc}{CheckAndRepairFaceVertexOrder}}(\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ mesh);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00465}00465\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00470}00470\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a0519f666ecf672bbf4d2fab1be11d69a}{SmoothNormals}}(\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ mesh);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00471}00471\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00476}00476\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a325aef52c476a81d47f260ece8ae1917}{ComputeTangents}}(\mbox{\hyperlink{structsf_1_1_texturable_mesh}{TexturableMesh}}*\ mesh);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00477}00477\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00479}00479\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00482}00482\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ GLfloat\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a7f725690800968326bd030c0faa53127}{ComputeAverageFaceArea}}(\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ mesh);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00483}00483\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00485}00485\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00489}00489\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a8ebc4d1bf1dde1554286d3b4f510bf27}{Subdivide}}(\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ mesh,\ \textcolor{keywordtype}{bool}\ icoMode\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00490}00490\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00496}00496\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_accfc09d1a001597d8baae5f80a2d6a81}{Refine}}(\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ mesh,\ GLfloat\ sizeThreshold);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00497}00497\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00504}00504\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a0006036ee5434cc3e87398ac19928e79}{AABB}}(\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ mesh,\ glm::vec3\&\ min,\ glm::vec3\&\ max);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00505}00505\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00507}00507\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00512}00512\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_open_g_l_content_a0fe725d356a1523edcea16bec31b56b3}{AABS}}(\mbox{\hyperlink{structsf_1_1_mesh}{Mesh}}*\ mesh,\ GLfloat\&\ bsRadius,\ glm::vec3\&\ bsCenterOffset);}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00513}00513\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00514}00514\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00515}00515\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Modes}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00516}00516\ \ \ \ \ \ \ \ \ DrawingMode\ mode;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00517}00517\ \ \ \ \ \ \ \ \ GLfloat\ maxAnisotropy;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00518}00518\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00519}00519\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Data}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00520}00520\ \ \ \ \ \ \ \ \ std::vector<OpenGLView*>\ views;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00521}00521\ \ \ \ \ \ \ \ \ std::vector<OpenGLLight*>\ lights;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00522}00522\ \ \ \ \ \ \ \ \ std::vector<Object>\ objects;\ \textcolor{comment}{//VBAs}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00523}00523\ \ \ \ \ \ \ \ \ std::vector<Look>\ looks;\ \textcolor{comment}{//OpenGL\ materials}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00524}00524\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_name_manager}{NameManager}}\ lookNameManager;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00525}00525\ \ \ \ \ \ \ \ \ std::string\ currentLookName;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00526}00526\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ currentTexturable;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00527}00527\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentShaderMode;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00528}00528\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00529}00529\ \ \ \ \ \ \ \ \ glm::vec3\ eyePos;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00530}00530\ \ \ \ \ \ \ \ \ glm::vec3\ viewDir;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00531}00531\ \ \ \ \ \ \ \ \ glm::mat4\ view;\ \textcolor{comment}{//Current\ view\ matrix;}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00532}00532\ \ \ \ \ \ \ \ \ glm::mat4\ projection;\ \textcolor{comment}{//Current\ projection\ matrix}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00533}00533\ \ \ \ \ \ \ \ \ glm::mat4\ viewProjection;\ \textcolor{comment}{//Current\ view-\/projection\ matrix}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00534}00534\ \ \ \ \ \ \ \ \ glm::vec2\ viewportSize;\ \textcolor{comment}{//Current\ view-\/port\ size}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00535}00535\ \ \ \ \ \ \ \ \ GLfloat\ FC;\ \textcolor{comment}{//Current\ logarithmic\ depth\ buffer\ constant}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00536}00536\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00537}00537\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Standard\ objects}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00538}00538\ \ \ \ \ \ \ \ \ GLuint\ baseVertexArray;\ \textcolor{comment}{//base\ VAO}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00539}00539\ \ \ \ \ \ \ \ \ GLuint\ cubeBuf;\ \textcolor{comment}{//cubemap\ cross\ VBO}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00540}00540\ \ \ \ \ \ \ \ \ GLuint\ csBuf[2];\ \textcolor{comment}{//vertex\ data\ for\ drawing\ coord\ systems}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00541}00541\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_object}{Object}}\ ellipsoid;\ \textcolor{comment}{//used\ for\ approximating\ fluid\ dynamics\ coeffs}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00542}00542\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_object}{Object}}\ cylinder;\ \textcolor{comment}{//used\ for\ approximating\ fluid\ dynamics\ coeffs}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00543}00543\ \ \ \ \ \ \ \ \ GLuint\ lightsUBO;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00544}00544\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_lights_u_b_o}{LightsUBO}}\ lightsUBOData;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00545}00545\ \ \ \ \ \ \ \ \ GLuint\ viewUBO;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00546}00546\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00547}00547\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Shaders}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00548}00548\ \ \ \ \ \ \ \ \ std::map<std::string,\ GLSLShader*>\ basicShaders;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00549}00549\ \ \ \ \ \ \ \ \ std::vector<MaterialShader>\ materialShaders;}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00550}00550\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsf_1_1_g_l_s_l_shader}{GLSLShader}}*\ lightSourceShader[2];}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00551}00551\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00552}00552\ \}}
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00553}00553\ }
+\DoxyCodeLine{\Hypertarget{_open_g_l_content_8h_source_l00554}00554\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

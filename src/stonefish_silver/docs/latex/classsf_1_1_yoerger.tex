@@ -1,0 +1,137 @@
+\doxysection{sf\+::Yoerger Class Reference}
+\hypertarget{classsf_1_1_yoerger}{}\label{classsf_1_1_yoerger}\index{sf::Yoerger@{sf::Yoerger}}
+
+
+A class representing the \doxylink{classsf_1_1_yoerger}{Yoerger} dynamics model.  
+
+
+
+
+{\ttfamily \#include $<$Actuator\+Dynamics.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Yoerger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classsf_1_1_yoerger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Yoerger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classsf_1_1_yoerger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_yoerger_ad821559008513e51e3bc96475ca1b3cd}{Yoerger}} (Scalar alpha, Scalar beta)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_yoerger_a1c768bdd8cf61de0325201f53a2de83e}{Update}} (Scalar dt, Scalar sp) override
+\begin{DoxyCompactList}\small\item\em A method that updates the model. \end{DoxyCompactList}\item 
+Rotor\+Dynamics\+Type \mbox{\hyperlink{classsf_1_1_yoerger_a897cc5c92ea6f897a40bf7f5f7ee1d18}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the model type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_rotor_dynamics}{sf\+::\+Rotor\+Dynamics}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_rotor_dynamics_a23d107d402a037a9e8a0ed951f203769}{Rotor\+Dynamics}} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a0c11fecf4953816b757e33bf757fb9a4}{set\+Output\+Limit}} (Scalar limit)
+\begin{DoxyCompactList}\small\item\em A method used to set the limit of output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classsf_1_1_rotor_dynamics}{sf\+::\+Rotor\+Dynamics}}}
+\begin{DoxyCompactItemize}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_rotor_dynamics_ad15d7f9dea79b0ef1ffcfb4ddb85560a}{last\+Output}}
+\item 
+Scalar \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a3e8c33b07f84188e50ed331db544bb6a}{output\+Limit}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing the \doxylink{classsf_1_1_yoerger}{Yoerger} dynamics model. 
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00128}{128}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_yoerger_ad821559008513e51e3bc96475ca1b3cd}\label{classsf_1_1_yoerger_ad821559008513e51e3bc96475ca1b3cd} 
+\index{sf::Yoerger@{sf::Yoerger}!Yoerger@{Yoerger}}
+\index{Yoerger@{Yoerger}!sf::Yoerger@{sf::Yoerger}}
+\doxysubsubsection{\texorpdfstring{Yoerger()}{Yoerger()}}
+{\footnotesize\ttfamily sf\+::\+Yoerger\+::\+Yoerger (\begin{DoxyParamCaption}\item[{Scalar}]{alpha,  }\item[{Scalar}]{beta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alpha} & \\
+\hline
+{\em beta} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00136}{136}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_yoerger_a897cc5c92ea6f897a40bf7f5f7ee1d18}\label{classsf_1_1_yoerger_a897cc5c92ea6f897a40bf7f5f7ee1d18} 
+\index{sf::Yoerger@{sf::Yoerger}!getType@{getType}}
+\index{getType@{getType}!sf::Yoerger@{sf::Yoerger}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Rotor\+Dynamics\+Type sf\+::\+Yoerger\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+A method returning the model type. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a9e649c97f25b9f1458b59f41faf9b657}{sf\+::\+Rotor\+Dynamics}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00154}{154}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+\Hypertarget{classsf_1_1_yoerger_a1c768bdd8cf61de0325201f53a2de83e}\label{classsf_1_1_yoerger_a1c768bdd8cf61de0325201f53a2de83e} 
+\index{sf::Yoerger@{sf::Yoerger}!Update@{Update}}
+\index{Update@{Update}!sf::Yoerger@{sf::Yoerger}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Yoerger\+::\+Update (\begin{DoxyParamCaption}\item[{Scalar}]{dt,  }\item[{Scalar}]{sp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method that updates the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & simulation time step \mbox{[}s\mbox{]} \\
+\hline
+{\em sp} & desired rotor angular velocity \mbox{[}rad/s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_rotor_dynamics_a9452710a5b3ae0a4a4451f3c9b4fee46}{sf\+::\+Rotor\+Dynamics}}.
+
+
+
+Definition at line \mbox{\hyperlink{_actuator_dynamics_8h_source_l00145}{145}} of file \mbox{\hyperlink{_actuator_dynamics_8h_source}{Actuator\+Dynamics.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/actuators/Actuator\+Dynamics.\+h\end{DoxyCompactItemize}

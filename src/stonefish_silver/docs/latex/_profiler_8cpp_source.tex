@@ -1,0 +1,141 @@
+\doxysection{Profiler.\+cpp}
+\hypertarget{_profiler_8cpp_source}{}\label{_profiler_8cpp_source}\index{Library/src/sensors/scalar/Profiler.cpp@{Library/src/sensors/scalar/Profiler.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Profiler.cpp}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 31/07/2018.}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2018-\/2025\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}sensors/scalar/Profiler.h"{}}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}BulletCollision/NarrowPhaseCollision/btRaycastCallback.h"{}}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}core/SimulationApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}core/SimulationManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}utils/UnitSystem.h"{}}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}sensors/Sample.h"{}}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}graphics/OpenGLContent.h"{}}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00035}00035\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00038}\mbox{\hyperlink{classsf_1_1_profiler_a39da2ab4379d81b85c70131ca9dca7d9}{00038}}\ \mbox{\hyperlink{classsf_1_1_profiler_a39da2ab4379d81b85c70131ca9dca7d9}{Profiler::Profiler}}(std::string\ uniqueName,\ Scalar\ angleRangeDeg,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ angleSteps,\ Scalar\ frequency,\ \textcolor{keywordtype}{int}\ historyLength)\ :\ \mbox{\hyperlink{classsf_1_1_link_sensor}{LinkSensor}}(uniqueName,\ frequency,\ historyLength)}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00040}00040\ \ \ \ \ angRange\ =\ UnitSystem::Angle(\textcolor{keyword}{true},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angleRangeDeg}});}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00041}00041\ \ \ \ \ angSteps\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{angleSteps}};}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00042}00042\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Angle"{}},\ QuantityType::ANGLE));}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00043}00043\ \ \ \ \ channels.push\_back(\mbox{\hyperlink{structsf_1_1_sensor_channel}{SensorChannel}}(\textcolor{stringliteral}{"{}Distance"{}},\ QuantityType::LENGTH));}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00044}00044\ \ \ \ \ channels[1].rangeMin\ =\ Scalar(0);}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00045}00045\ \ \ \ \ channels[1].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}};}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00046}00046\ \ \ \ \ currentAngStep\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00047}00047\ \ \ \ \ distance\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00048}00048\ \ \ \ \ clockwise\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00050}00050\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00051}\mbox{\hyperlink{classsf_1_1_profiler_ac013d62d3f4e87ab97991a798b631d26}{00051}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_profiler_ac013d62d3f4e87ab97991a798b631d26}{Profiler::InternalUpdate}}(Scalar\ dt)}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00053}00053\ \ \ \ \ Transform\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{profTrans}}\ =\ \mbox{\hyperlink{classsf_1_1_link_sensor_a5e16f6535744918e0aa39262d80112b7}{getSensorFrame}}();}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00054}00054\ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{currentAngle}}\ =\ currentAngStep/(Scalar)angSteps\ *\ angRange\ -\/\ Scalar(0.5)\ *\ angRange;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00055}00055\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//Simulate\ 1\ beam\ rotating\ profiler}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00057}00057\ \ \ \ \ Vector3\ dir\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{profTrans}}.getBasis().getColumn(0)\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btCos}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{currentAngle}})\ +\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{profTrans}}.getBasis().getColumn(1)\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btSin}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{currentAngle}});}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00058}00058\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{from}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{profTrans}}.getOrigin()\ +\ dir\ *\ channels[1].rangeMin;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00059}00059\ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{to}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{profTrans}}.getOrigin()\ +\ dir\ *\ channels[1].rangeMax;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00060}00060\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00061}00061\ \ \ \ \ btCollisionWorld::ClosestRayResultCallback\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{from}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{to}});}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}.m\_collisionFilterGroup\ =\ MASK\_DYNAMIC;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}.m\_collisionFilterMask\ =\ MASK\_STATIC\ |\ MASK\_DYNAMIC\ |\ MASK\_ANIMATED\_COLLIDING;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_simulation_app_a2e37177b00ee5e72a2791befb8c8c729}{SimulationApp::getApp}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_app_abc31c1dd2fa61330c1b8d6730c94f1ae}{getSimulationManager}}()-\/>\mbox{\hyperlink{classsf_1_1_simulation_manager_a85874bbc029b20de51ad22a06f00d42c}{getDynamicsWorld}}()-\/>rayTest(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{from}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{to}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}});}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}.hasHit())}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ Vector3\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{p}}\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{from}}.lerp(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{to}},\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{closest}}.m\_closestHitFraction);}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ distance\ =\ (\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{p}}\ -\/\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{profTrans}}.getOrigin()).\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{length}}();}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ distance\ =\ channels[1].rangeMax;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00073}00073\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//Record\ sample}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_sample}{Sample}}\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}}\{std::vector<Scalar>(\{\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{currentAngle}},\ distance\})\};}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00076}00076\ \ \ \ \ AddSampleToHistory(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{s}});}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00077}00077\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//Rotate\ beam}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{if}(clockwise)}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(currentAngStep\ ==\ angSteps)}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/currentAngStep;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ clockwise\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ ++currentAngStep;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(currentAngStep\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ ++currentAngStep;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ clockwise\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/currentAngStep;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00101}\mbox{\hyperlink{classsf_1_1_profiler_a39a2b94a6fb00ac58568b3f9d50a7be3}{00101}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_profiler_a39a2b94a6fb00ac58568b3f9d50a7be3}{Profiler::Render}}()}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00102}00102\ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00103}00103\ \ \ \ \ std::vector<Renderable>\ items\ =\ \mbox{\hyperlink{classsf_1_1_sensor_a6e4955d7a77bbba84c2bdfb9a57c8388}{Sensor::Render}}();}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_sensor_a7ed0e8bb0e676260491b2460d7b66b6c}{isRenderable}}())}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00105}00105\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ Scalar\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{currentAngle}}\ =\ currentAngStep/(Scalar)angSteps\ *\ angRange\ -\/\ Scalar(0.5)\ *\ angRange;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ Vector3(1,\ 0,\ 0)\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btCos}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{currentAngle}})\ +\ Vector3(0,\ 1,\ 0)\ *\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btSin}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{currentAngle}});}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::SENSOR\_LINES;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(\mbox{\hyperlink{classsf_1_1_link_sensor_a5e16f6535744918e0aa39262d80112b7}{getSensorFrame}}());}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0,0,0));}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(dir.x()*distance,\ dir.y()*distance,\ dir.z()*distance));}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00115}00115\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00117}00117\ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00119}\mbox{\hyperlink{classsf_1_1_profiler_a45081db61cdc1cc1d6616e5a6056b05c}{00119}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_profiler_a45081db61cdc1cc1d6616e5a6056b05c}{Profiler::setRange}}(Scalar\ rangeMin,\ Scalar\ rangeMax)}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00120}00120\ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00121}00121\ \ \ \ \ channels[1].rangeMin\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(rangeMin,\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00122}00122\ \ \ \ \ channels[1].rangeMax\ =\ \mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(rangeMax,\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}}));}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00125}\mbox{\hyperlink{classsf_1_1_profiler_a418e9148f60dbad1771d0386d33808b0}{00125}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_profiler_a418e9148f60dbad1771d0386d33808b0}{Profiler::setNoise}}(Scalar\ rangeStdDev)}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00126}00126\ \{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00127}00127\ \ \ \ \ channels[1].setStdDev(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{btClamped}}(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{rangeStdDev}},\ Scalar(0),\ Scalar(\mbox{\hyperlink{classsf_1_1_scalar_sensor_a0cf7bf0eaeda03b8c1bbbace0ba2363d}{BT\_LARGE\_FLOAT}})));}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00130}\mbox{\hyperlink{classsf_1_1_profiler_a0201fe1d6a263c9c24391cf5aa6de98f}{00130}}\ ScalarSensorType\ \mbox{\hyperlink{classsf_1_1_profiler_a0201fe1d6a263c9c24391cf5aa6de98f}{Profiler::getScalarSensorType}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00131}00131\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{return}\ ScalarSensorType::PROFILER;}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_profiler_8cpp_source_l00135}00135\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,1133 @@
+\doxysection{sf\+::Featherstone\+Entity Class Reference}
+\hypertarget{classsf_1_1_featherstone_entity}{}\label{classsf_1_1_featherstone_entity}\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+
+
+A class that implements simplified creation of multi-\/body trees, using Roy Featherstone\textquotesingle{}s algorithm.  
+
+
+
+
+{\ttfamily \#include $<$Featherstone\+Entity.\+h$>$}
+
+
+
+Inheritance diagram for sf\+::Featherstone\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{classsf_1_1_featherstone_entity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Featherstone\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{classsf_1_1_featherstone_entity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_featherstone_entity_aff74927df67f26339162aa307c5c4fd4}{Featherstone\+Entity}} (std\+::string unique\+Name, unsigned int total\+Num\+Of\+Links, \mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}base\+Solid, bool fixed\+Base=false)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_featherstone_entity_a341779f4d14fbe2662cca65bcf98354a}{\texorpdfstring{$\sim$}{\string~}\+Featherstone\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_adb24e527e0148c80740d9696bb625d6c}{Add\+Link}} (\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}solid, const Transform \&transform)
+\begin{DoxyCompactList}\small\item\em A method to define a new multibody link. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_featherstone_entity_ae682636a68bb8d67361a2d280b1c281b}{Add\+Revolute\+Joint}} (std\+::string name, unsigned int parent, unsigned int child, const Vector3 \&pivot, const Vector3 \&axis, bool collide=false)
+\begin{DoxyCompactList}\small\item\em A method to define a new revolute joint. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_featherstone_entity_ae3b86c12996c42770f16d9efe6fc8e6e}{Add\+Prismatic\+Joint}} (std\+::string name, unsigned int parent, unsigned int child, const Vector3 \&axis, bool collide=false)
+\begin{DoxyCompactList}\small\item\em A method to define a new prismatic joint. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsf_1_1_featherstone_entity_a1c00b821ca287195cc4986ffae782c71}{Add\+Fixed\+Joint}} (std\+::string name, unsigned int parent, unsigned int child, const Vector3 \&pivot)
+\begin{DoxyCompactList}\small\item\em A method to define a new fixed joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a6f1dad1fe9f43e2455569a292967d54e}{Add\+Joint\+Motor}} (unsigned int index, Scalar max\+Force\+Torque)
+\begin{DoxyCompactList}\small\item\em A Method to add a joint motor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a2feb6fcf5a2b70942c61c892482948f9}{Add\+Joint\+Limit}} (unsigned int index, Scalar lower, Scalar upper)
+\begin{DoxyCompactList}\small\item\em A method to add limits to the joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a7f2701c9372e0eeff143b1fc9ced6a91}{Motor\+Position\+Setpoint}} (unsigned int index, Scalar pos, Scalar kp)
+\begin{DoxyCompactList}\small\item\em A method to change the setpoint of the joint motor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a35f5fdbe1c1f9a1b60cb20ba4f73a137}{Motor\+Velocity\+Setpoint}} (unsigned int index, Scalar vel, Scalar kd)
+\begin{DoxyCompactList}\small\item\em A method to change the setpoint of the joint motor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a98588792e08aa6d55f9ebd8ca2b0e562}{Drive\+Joint}} (unsigned int index, Scalar force\+Torque)
+\begin{DoxyCompactList}\small\item\em A method used to apply direct force or torque to the joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_ae3f79818236ef8642bc7dc56a34785cf}{Apply\+Gravity}} (const Vector3 \&g)
+\begin{DoxyCompactList}\small\item\em A method to apply gravity to the multibody. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_aa911aed67614dab3d838f77a2b70881b}{Apply\+Damping}} ()
+\begin{DoxyCompactList}\small\item\em A method to apply damping to the multibody. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a9c9ffcdcf15c9b1e8ceb5066746e326b}{Add\+Link\+Force}} (unsigned int index, const Vector3 \&F)
+\begin{DoxyCompactList}\small\item\em A method to add a force acting directly on a link. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a361cce643e22ab046d026cd3b59ede19}{Add\+Link\+Torque}} (unsigned int index, const Vector3 \&tau)
+\begin{DoxyCompactList}\small\item\em A method to add a torque acting directly on a link. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_aecdcc410d2b552c248f6d04876ddb3b6}{Update\+Acceleration}} (Scalar dt)
+\begin{DoxyCompactList}\small\item\em A method used to compute accelerations of the links. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_aa6526ba61ec718d400330eb3228ba95d}{set\+Joint\+IC}} (unsigned int index, Scalar position, Scalar velocity)
+\begin{DoxyCompactList}\small\item\em A method used to set the initial conditions for a joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a2fe619f2ff227392bef5c5f9633aa8a2}{set\+Joint\+Damping}} (unsigned int index, Scalar constant\+Factor, Scalar viscous\+Factor)
+\begin{DoxyCompactList}\small\item\em A method used to set damping characteristics of the joint. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsf_1_1_featherstone_joint}{Featherstone\+Joint}} \mbox{\hyperlink{classsf_1_1_featherstone_entity_aa6825652986dfe22bf13cf1e0616f044}{get\+Joint}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the structure containing joint information. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_featherstone_entity_aecfd9feeb7e3a378faa23693bb1597e7}{get\+Joint\+Name}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the name of the joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a4cb96c42bb87effbb48ba82c4f190640}{get\+Joint\+Position}} (unsigned int index, Scalar \&position, bt\+Multibody\+Link\+::e\+Featherstone\+Joint\+Type \&joint\+Type)
+\begin{DoxyCompactList}\small\item\em A method returning the position of the joint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_ad7cec1d2049508598df422ef65ab611d}{get\+Joint\+Velocity}} (unsigned int index, Scalar \&velocity, bt\+Multibody\+Link\+::e\+Featherstone\+Joint\+Type \&joint\+Type)
+\begin{DoxyCompactList}\small\item\em A method returning the velocity of the joint. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_featherstone_entity_a43949a1ec7740043e8dcbee87c355f14}{get\+Joint\+Torque}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the value of the directly applied torque. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_ade858031a9746358b8d90e8770b0281c}{set\+Max\+Motor\+Force\+Torque}} (unsigned int index, Scalar maxT)
+\begin{DoxyCompactList}\small\item\em A method to change the maximum force/torque produced by the joint motor. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classsf_1_1_featherstone_entity_a4d52619066383164ca32de8addbe7b4c}{get\+Motor\+Force\+Torque}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the force or torque generated by the joint motor. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_featherstone_entity_a0e995bafdcf55cdd83226b5e687d6fff}{get\+Joint\+Axis}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the axis of the joint. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_featherstone_entity_ae924f9b3e65211e570cf263aec90a219}{get\+Joint\+Feedback}} (unsigned int index, Vector3 \&force, Vector3 \&torque)
+\begin{DoxyCompactList}\small\item\em A method returning the joint feedback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_ab6040ab32e8c9b914543718ef1cc5c65}{set\+Base\+Transform}} (const Transform \&trans)
+\begin{DoxyCompactList}\small\item\em A method used to set the position of the multibody in the world frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a843e2e0cc1688721722988210da09035}{set\+Base\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method used to set if the multibody base should be rendered. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsf_1_1_featherstone_link}{Featherstone\+Link}} \mbox{\hyperlink{classsf_1_1_featherstone_entity_ae3e538fcb895972074d80cbedb784010}{get\+Link}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the structure containing link information. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{classsf_1_1_featherstone_entity_a76863ff330dd16bc6ff103c49a6f4611}{get\+Link\+Transform}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the world frame position of the link. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_featherstone_entity_a2d6685509f4c99be73eaf59ded21c479}{get\+Link\+Linear\+Velocity}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the linear velocity of the link. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{classsf_1_1_featherstone_entity_a492d4461f7c299ba228296bb8575942e}{get\+Link\+Angular\+Velocity}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em A method returning the angular velocity of the link. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_featherstone_entity_ac41389c6c9530a73612968eae049a88d}{get\+Num\+Of\+Joints}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the number of joints. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_featherstone_entity_a500991935bf1d208f15f8da8a176817b}{get\+Num\+Of\+Moving\+Joints}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the number of mobile joints. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classsf_1_1_featherstone_entity_a1954d80b51f181072b620b50c301780b}{get\+Num\+Of\+Links}} ()
+\begin{DoxyCompactList}\small\item\em A method returning the number of multibody links. \end{DoxyCompactList}\item 
+bt\+Multi\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsf_1_1_featherstone_entity_a0501aca2e21733f148e1f5f0c4e0e567}{get\+Multi\+Body}} ()
+\begin{DoxyCompactList}\small\item\em A method returning a pointer to the Bullet multibody object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a229f52dd49553e3e5078ea3eed878b0e}{set\+Self\+Collision}} (bool enabled)
+\begin{DoxyCompactList}\small\item\em A method used to set if self collision is enabled for the whole multibody. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_featherstone_entity_ad81a1aaa3d4c34feeadf69efd7a5966a}{has\+Self\+Collision}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the self collisions are enabled for the whole multibody. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_adf74ac2cb05485932782e69dffabe74e}{set\+Display\+Mode}} (Display\+Mode m)
+\begin{DoxyCompactList}\small\item\em A method used to set the display mode of the links. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_abadfa96c3eee2e33baaf69a069035912}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A method used to add the multibody to the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_ab8083d6d9e2e2facbce317086e8839f2}{Add\+To\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm, const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to add the multibody to the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_afbb90c39e19b58fafee16d2724a1f903}{Remove\+From\+Simulation}} (\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em A method used to remove the multibody from the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_ad72c9ae332927568dab11d4d5e9ae9f5}{Respawn}} (const Transform \&origin)
+\begin{DoxyCompactList}\small\item\em A method used to respawn the multibody at new position. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ \mbox{\hyperlink{classsf_1_1_featherstone_entity_a703d9937e38cbba7a8199663988ffd2f}{Render}} ()
+\begin{DoxyCompactList}\small\item\em A method implementing the rendering of the multibody. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_featherstone_entity_a8b18611f80d63cddad86203878537a8d}{get\+AABB}} (Vector3 \&min, Vector3 \&max)
+\begin{DoxyCompactList}\small\item\em A method returning the extents of the body axis alligned bounding box. \end{DoxyCompactList}\item 
+Entity\+Type \mbox{\hyperlink{classsf_1_1_featherstone_entity_a06396d8d9d0331f23e3b91e64202c978}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the type of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classsf_1_1_entity}{sf\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsf_1_1_entity_a89127a850fa48fe25fbf6f5a355f7f9c}{Entity}} (std\+::string unique\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsf_1_1_entity_a4b728d6d4ff242dc0b4f116822cccd33}{\texorpdfstring{$\sim$}{\string~}\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsf_1_1_entity_a5b92af995ae80397f64cb97fe3d6a866}{set\+Renderable}} (bool render)
+\begin{DoxyCompactList}\small\item\em A method used to set if the entity should be renderable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsf_1_1_entity_a1560e090759bc9491609e38b69ff1033}{is\+Renderable}} () const
+\begin{DoxyCompactList}\small\item\em A method informing if the entity is renderable. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classsf_1_1_entity_a395484b911347b88d1e79e0e72820370}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em A method returning the name of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that implements simplified creation of multi-\/body trees, using Roy Featherstone\textquotesingle{}s algorithm. 
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8h_source_l00085}{85}} of file \mbox{\hyperlink{_featherstone_entity_8h_source}{Featherstone\+Entity.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsf_1_1_featherstone_entity_aff74927df67f26339162aa307c5c4fd4}\label{classsf_1_1_featherstone_entity_aff74927df67f26339162aa307c5c4fd4} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!FeatherstoneEntity@{FeatherstoneEntity}}
+\index{FeatherstoneEntity@{FeatherstoneEntity}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{FeatherstoneEntity()}{FeatherstoneEntity()}}
+{\footnotesize\ttfamily sf\+::\+Featherstone\+Entity\+::\+Featherstone\+Entity (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{unsigned int}]{total\+Num\+Of\+Links,  }\item[{\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}}]{base\+Solid,  }\item[{bool}]{fixed\+Base = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & a name for the multibody \\
+\hline
+{\em total\+Num\+Of\+Links} & a number of links of the multibody \\
+\hline
+{\em base\+Solid} & a pointer to the rigid body constituting the base of the multibody \\
+\hline
+{\em fixed\+Base} & a flag to designate if the multibody is fixed to the world or mobile \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a341779f4d14fbe2662cca65bcf98354a}\label{classsf_1_1_featherstone_entity_a341779f4d14fbe2662cca65bcf98354a} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!````~FeatherstoneEntity@{\texorpdfstring{$\sim$}{\string~}FeatherstoneEntity}}
+\index{````~FeatherstoneEntity@{\texorpdfstring{$\sim$}{\string~}FeatherstoneEntity}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}FeatherstoneEntity()}{\string~FeatherstoneEntity()}}
+{\footnotesize\ttfamily sf\+::\+Featherstone\+Entity\+::\texorpdfstring{$\sim$}{\string~}\+Featherstone\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsf_1_1_featherstone_entity_a1c00b821ca287195cc4986ffae782c71}\label{classsf_1_1_featherstone_entity_a1c00b821ca287195cc4986ffae782c71} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddFixedJoint@{AddFixedJoint}}
+\index{AddFixedJoint@{AddFixedJoint}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddFixedJoint()}{AddFixedJoint()}}
+{\footnotesize\ttfamily int sf\+::\+Featherstone\+Entity\+::\+Add\+Fixed\+Joint (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{unsigned int}]{parent,  }\item[{unsigned int}]{child,  }\item[{const Vector3 \&}]{pivot }\end{DoxyParamCaption})}
+
+
+
+A method to define a new fixed joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name for the joint \\
+\hline
+{\em parent} & an id of the parent link \\
+\hline
+{\em child} & an id of the child link \\
+\hline
+{\em pivot} & the position of the joint pivot point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+id of the joint 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00522}{522}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a2feb6fcf5a2b70942c61c892482948f9}\label{classsf_1_1_featherstone_entity_a2feb6fcf5a2b70942c61c892482948f9} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddJointLimit@{AddJointLimit}}
+\index{AddJointLimit@{AddJointLimit}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddJointLimit()}{AddJointLimit()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Add\+Joint\+Limit (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar}]{lower,  }\item[{Scalar}]{upper }\end{DoxyParamCaption})}
+
+
+
+A method to add limits to the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the joint \\
+\hline
+{\em lower} & the lower limit of the joint (\mbox{[}m\mbox{]} or \mbox{[}rad\mbox{]}) \\
+\hline
+{\em upper} & the upper limit of the joint (\mbox{[}m\mbox{]} or \mbox{[}rad\mbox{]}) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00557}{557}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a6f1dad1fe9f43e2455569a292967d54e}\label{classsf_1_1_featherstone_entity_a6f1dad1fe9f43e2455569a292967d54e} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddJointMotor@{AddJointMotor}}
+\index{AddJointMotor@{AddJointMotor}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddJointMotor()}{AddJointMotor()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Add\+Joint\+Motor (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar}]{max\+Force\+Torque }\end{DoxyParamCaption})}
+
+
+
+A Method to add a joint motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the joint \\
+\hline
+{\em max\+Force\+Torque} & the maximum value of the force \mbox{[}N\mbox{]} or torque \mbox{[}Nm\mbox{]} generated by the motor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00570}{570}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_adb24e527e0148c80740d9696bb625d6c}\label{classsf_1_1_featherstone_entity_adb24e527e0148c80740d9696bb625d6c} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddLink@{AddLink}}
+\index{AddLink@{AddLink}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddLink()}{AddLink()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Add\+Link (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_solid_entity}{Solid\+Entity}} \texorpdfstring{$\ast$}{*}}]{solid,  }\item[{const Transform \&}]{transform }\end{DoxyParamCaption})}
+
+
+
+A method to define a new multibody link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em solid} & a pointer to a rigid body \\
+\hline
+{\em transform} & a position of the rigid body in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00427}{427}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a9c9ffcdcf15c9b1e8ceb5066746e326b}\label{classsf_1_1_featherstone_entity_a9c9ffcdcf15c9b1e8ceb5066746e326b} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddLinkForce@{AddLinkForce}}
+\index{AddLinkForce@{AddLinkForce}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddLinkForce()}{AddLinkForce()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Add\+Link\+Force (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{const Vector3 \&}]{F }\end{DoxyParamCaption})}
+
+
+
+A method to add a force acting directly on a link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the link \\
+\hline
+{\em F} & the value of the force \mbox{[}N\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00675}{675}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a361cce643e22ab046d026cd3b59ede19}\label{classsf_1_1_featherstone_entity_a361cce643e22ab046d026cd3b59ede19} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddLinkTorque@{AddLinkTorque}}
+\index{AddLinkTorque@{AddLinkTorque}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddLinkTorque()}{AddLinkTorque()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Add\+Link\+Torque (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{const Vector3 \&}]{tau }\end{DoxyParamCaption})}
+
+
+
+A method to add a torque acting directly on a link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the link \\
+\hline
+{\em tau} & the value of the torque \mbox{[}Nm\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00686}{686}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ae3b86c12996c42770f16d9efe6fc8e6e}\label{classsf_1_1_featherstone_entity_ae3b86c12996c42770f16d9efe6fc8e6e} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddPrismaticJoint@{AddPrismaticJoint}}
+\index{AddPrismaticJoint@{AddPrismaticJoint}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddPrismaticJoint()}{AddPrismaticJoint()}}
+{\footnotesize\ttfamily int sf\+::\+Featherstone\+Entity\+::\+Add\+Prismatic\+Joint (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{unsigned int}]{parent,  }\item[{unsigned int}]{child,  }\item[{const Vector3 \&}]{axis,  }\item[{bool}]{collide = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+A method to define a new prismatic joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name for the joint \\
+\hline
+{\em parent} & an id of the parent link \\
+\hline
+{\em child} & an id of the child link \\
+\hline
+{\em axis} & the axis of the joint \\
+\hline
+{\em collide} & a flag to decide if the links conneted by the joint should collide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+id of the joint 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00486}{486}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ae682636a68bb8d67361a2d280b1c281b}\label{classsf_1_1_featherstone_entity_ae682636a68bb8d67361a2d280b1c281b} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddRevoluteJoint@{AddRevoluteJoint}}
+\index{AddRevoluteJoint@{AddRevoluteJoint}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddRevoluteJoint()}{AddRevoluteJoint()}}
+{\footnotesize\ttfamily int sf\+::\+Featherstone\+Entity\+::\+Add\+Revolute\+Joint (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{unsigned int}]{parent,  }\item[{unsigned int}]{child,  }\item[{const Vector3 \&}]{pivot,  }\item[{const Vector3 \&}]{axis,  }\item[{bool}]{collide = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+A method to define a new revolute joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a name for the joint \\
+\hline
+{\em parent} & an id of the parent link \\
+\hline
+{\em child} & an id of the child link \\
+\hline
+{\em pivot} & the position of the joint pivot point \\
+\hline
+{\em axis} & the axis of the joint \\
+\hline
+{\em collide} & a flag to decide if the links connected by the joint should collide \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+id of the joint 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00450}{450}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_abadfa96c3eee2e33baaf69a069035912}\label{classsf_1_1_featherstone_entity_abadfa96c3eee2e33baaf69a069035912} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddToSimulation@{AddToSimulation}}
+\index{AddToSimulation@{AddToSimulation}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddToSimulation()}{AddToSimulation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Add\+To\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method used to add the multibody to the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & a pointer to the simulation manager \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_entity_a2f625f494d182ad8418104accceabd93}{sf\+::\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ab8083d6d9e2e2facbce317086e8839f2}\label{classsf_1_1_featherstone_entity_ab8083d6d9e2e2facbce317086e8839f2} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!AddToSimulation@{AddToSimulation}}
+\index{AddToSimulation@{AddToSimulation}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{AddToSimulation()}{AddToSimulation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Add\+To\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sm,  }\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method used to add the multibody to the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & a pointer to the simulation manager \\
+\hline
+{\em origin} & the transformation of the multibody base in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_aa911aed67614dab3d838f77a2b70881b}\label{classsf_1_1_featherstone_entity_aa911aed67614dab3d838f77a2b70881b} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!ApplyDamping@{ApplyDamping}}
+\index{ApplyDamping@{ApplyDamping}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{ApplyDamping()}{ApplyDamping()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Apply\+Damping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method to apply damping to the multibody. 
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00658}{658}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ae3f79818236ef8642bc7dc56a34785cf}\label{classsf_1_1_featherstone_entity_ae3f79818236ef8642bc7dc56a34785cf} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!ApplyGravity@{ApplyGravity}}
+\index{ApplyGravity@{ApplyGravity}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{ApplyGravity()}{ApplyGravity()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Apply\+Gravity (\begin{DoxyParamCaption}\item[{const Vector3 \&}]{g }\end{DoxyParamCaption})}
+
+
+
+A method to apply gravity to the multibody. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & the gravity acceleration vector \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00631}{631}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a98588792e08aa6d55f9ebd8ca2b0e562}\label{classsf_1_1_featherstone_entity_a98588792e08aa6d55f9ebd8ca2b0e562} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!DriveJoint@{DriveJoint}}
+\index{DriveJoint@{DriveJoint}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{DriveJoint()}{DriveJoint()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Drive\+Joint (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar}]{force\+Torque }\end{DoxyParamCaption})}
+
+
+
+A method used to apply direct force or torque to the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the joint \\
+\hline
+{\em force\+Torque} & the value of the applied force \mbox{[}N\mbox{]} or torque \mbox{[}Nm\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00611}{611}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a8b18611f80d63cddad86203878537a8d}\label{classsf_1_1_featherstone_entity_a8b18611f80d63cddad86203878537a8d} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getAABB@{getAABB}}
+\index{getAABB@{getAABB}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getAABB()}{getAABB()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::get\+AABB (\begin{DoxyParamCaption}\item[{Vector3 \&}]{min,  }\item[{Vector3 \&}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the extents of the body axis alligned bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & a point located at the minimum coordinate corner \\
+\hline
+{\em max} & a point located at the maximum coordinate corner \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classsf_1_1_entity_a989d883e8c21f924558d7ab5da044931}{sf\+::\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_aa6825652986dfe22bf13cf1e0616f044}\label{classsf_1_1_featherstone_entity_aa6825652986dfe22bf13cf1e0616f044} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getJoint@{getJoint}}
+\index{getJoint@{getJoint}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getJoint()}{getJoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_featherstone_joint}{Featherstone\+Joint}} sf\+::\+Featherstone\+Entity\+::get\+Joint (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the structure containing joint information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a structure containing joint information 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00238}{238}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a0e995bafdcf55cdd83226b5e687d6fff}\label{classsf_1_1_featherstone_entity_a0e995bafdcf55cdd83226b5e687d6fff} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getJointAxis@{getJointAxis}}
+\index{getJointAxis@{getJointAxis}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getJointAxis()}{getJointAxis()}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Featherstone\+Entity\+::get\+Joint\+Axis (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the axis of the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a unit vector parallel to the joint axis 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00356}{356}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ae924f9b3e65211e570cf263aec90a219}\label{classsf_1_1_featherstone_entity_ae924f9b3e65211e570cf263aec90a219} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getJointFeedback@{getJointFeedback}}
+\index{getJointFeedback@{getJointFeedback}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getJointFeedback()}{getJointFeedback()}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Featherstone\+Entity\+::get\+Joint\+Feedback (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Vector3 \&}]{force,  }\item[{Vector3 \&}]{torque }\end{DoxyParamCaption})}
+
+
+
+A method returning the joint feedback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+{\em force} & a reference to a variable that will store the forces acting on the joint \mbox{[}N\mbox{]} \\
+\hline
+{\em torque} & a reference to a variable that will store the torques acting on the joint \mbox{[}Nm\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00332}{332}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_aecfd9feeb7e3a378faa23693bb1597e7}\label{classsf_1_1_featherstone_entity_aecfd9feeb7e3a378faa23693bb1597e7} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getJointName@{getJointName}}
+\index{getJointName@{getJointName}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getJointName()}{getJointName()}}
+{\footnotesize\ttfamily std\+::string sf\+::\+Featherstone\+Entity\+::get\+Joint\+Name (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the name of the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the name of the joint 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00243}{243}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a4cb96c42bb87effbb48ba82c4f190640}\label{classsf_1_1_featherstone_entity_a4cb96c42bb87effbb48ba82c4f190640} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getJointPosition@{getJointPosition}}
+\index{getJointPosition@{getJointPosition}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getJointPosition()}{getJointPosition()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::get\+Joint\+Position (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar \&}]{position,  }\item[{bt\+Multibody\+Link\+::e\+Featherstone\+Joint\+Type \&}]{joint\+Type }\end{DoxyParamCaption})}
+
+
+
+A method returning the position of the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+{\em position} & a reference to the variable which will store the position \\
+\hline
+{\em joint\+Type} & a reference to a variable which will store the type of the joint \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00251}{251}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a43949a1ec7740043e8dcbee87c355f14}\label{classsf_1_1_featherstone_entity_a43949a1ec7740043e8dcbee87c355f14} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getJointTorque@{getJointTorque}}
+\index{getJointTorque@{getJointTorque}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getJointTorque()}{getJointTorque()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Featherstone\+Entity\+::get\+Joint\+Torque (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the value of the directly applied torque. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the sum of the directly applied torque 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00305}{305}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ad7cec1d2049508598df422ef65ab611d}\label{classsf_1_1_featherstone_entity_ad7cec1d2049508598df422ef65ab611d} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getJointVelocity@{getJointVelocity}}
+\index{getJointVelocity@{getJointVelocity}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getJointVelocity()}{getJointVelocity()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::get\+Joint\+Velocity (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar \&}]{velocity,  }\item[{bt\+Multibody\+Link\+::e\+Featherstone\+Joint\+Type \&}]{joint\+Type }\end{DoxyParamCaption})}
+
+
+
+A method returning the velocity of the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+{\em velocity} & a reference to the variable which will store the velocity \\
+\hline
+{\em joint\+Type} & a reference to a variable which will store the type of the joint \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00278}{278}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ae3e538fcb895972074d80cbedb784010}\label{classsf_1_1_featherstone_entity_ae3e538fcb895972074d80cbedb784010} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getLink@{getLink}}
+\index{getLink@{getLink}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getLink()}{getLink()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsf_1_1_featherstone_link}{Featherstone\+Link}} sf\+::\+Featherstone\+Entity\+::get\+Link (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the structure containing link information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a structure containing link information 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00373}{373}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a492d4461f7c299ba228296bb8575942e}\label{classsf_1_1_featherstone_entity_a492d4461f7c299ba228296bb8575942e} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getLinkAngularVelocity@{getLinkAngularVelocity}}
+\index{getLinkAngularVelocity@{getLinkAngularVelocity}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getLinkAngularVelocity()}{getLinkAngularVelocity()}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Featherstone\+Entity\+::get\+Link\+Angular\+Velocity (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the angular velocity of the link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angular velocity of the link \mbox{[}rad/s\mbox{]} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00397}{397}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a2d6685509f4c99be73eaf59ded21c479}\label{classsf_1_1_featherstone_entity_a2d6685509f4c99be73eaf59ded21c479} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getLinkLinearVelocity@{getLinkLinearVelocity}}
+\index{getLinkLinearVelocity@{getLinkLinearVelocity}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getLinkLinearVelocity()}{getLinkLinearVelocity()}}
+{\footnotesize\ttfamily Vector3 sf\+::\+Featherstone\+Entity\+::get\+Link\+Linear\+Velocity (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the linear velocity of the link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the linear velocity of the link \mbox{[}m/s\mbox{]} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00389}{389}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a76863ff330dd16bc6ff103c49a6f4611}\label{classsf_1_1_featherstone_entity_a76863ff330dd16bc6ff103c49a6f4611} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getLinkTransform@{getLinkTransform}}
+\index{getLinkTransform@{getLinkTransform}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getLinkTransform()}{getLinkTransform()}}
+{\footnotesize\ttfamily Transform sf\+::\+Featherstone\+Entity\+::get\+Link\+Transform (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the world frame position of the link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a position of the link in the world frame 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00378}{378}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a4d52619066383164ca32de8addbe7b4c}\label{classsf_1_1_featherstone_entity_a4d52619066383164ca32de8addbe7b4c} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getMotorForceTorque@{getMotorForceTorque}}
+\index{getMotorForceTorque@{getMotorForceTorque}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getMotorForceTorque()}{getMotorForceTorque()}}
+{\footnotesize\ttfamily Scalar sf\+::\+Featherstone\+Entity\+::get\+Motor\+Force\+Torque (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+A method returning the force or torque generated by the joint motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of the force \mbox{[}N\mbox{]} or torque \mbox{[}Nm\mbox{]} generated by the joint motor 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00324}{324}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a0501aca2e21733f148e1f5f0c4e0e567}\label{classsf_1_1_featherstone_entity_a0501aca2e21733f148e1f5f0c4e0e567} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getMultiBody@{getMultiBody}}
+\index{getMultiBody@{getMultiBody}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getMultiBody()}{getMultiBody()}}
+{\footnotesize\ttfamily bt\+Multi\+Body \texorpdfstring{$\ast$}{*} sf\+::\+Featherstone\+Entity\+::get\+Multi\+Body (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning a pointer to the Bullet multibody object. 
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00368}{368}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ac41389c6c9530a73612968eae049a88d}\label{classsf_1_1_featherstone_entity_ac41389c6c9530a73612968eae049a88d} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getNumOfJoints@{getNumOfJoints}}
+\index{getNumOfJoints@{getNumOfJoints}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getNumOfJoints()}{getNumOfJoints()}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Featherstone\+Entity\+::get\+Num\+Of\+Joints (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the number of joints. 
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00410}{410}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a1954d80b51f181072b620b50c301780b}\label{classsf_1_1_featherstone_entity_a1954d80b51f181072b620b50c301780b} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getNumOfLinks@{getNumOfLinks}}
+\index{getNumOfLinks@{getNumOfLinks}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getNumOfLinks()}{getNumOfLinks()}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Featherstone\+Entity\+::get\+Num\+Of\+Links (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the number of multibody links. 
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00405}{405}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a500991935bf1d208f15f8da8a176817b}\label{classsf_1_1_featherstone_entity_a500991935bf1d208f15f8da8a176817b} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getNumOfMovingJoints@{getNumOfMovingJoints}}
+\index{getNumOfMovingJoints@{getNumOfMovingJoints}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getNumOfMovingJoints()}{getNumOfMovingJoints()}}
+{\footnotesize\ttfamily unsigned int sf\+::\+Featherstone\+Entity\+::get\+Num\+Of\+Moving\+Joints (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A method returning the number of mobile joints. 
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00415}{415}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a06396d8d9d0331f23e3b91e64202c978}\label{classsf_1_1_featherstone_entity_a06396d8d9d0331f23e3b91e64202c978} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!getType@{getType}}
+\index{getType@{getType}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Entity\+Type sf\+::\+Featherstone\+Entity\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method returning the type of the entity. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_entity_aba0c0ef819595be1aab5a6d9ba7c0c91}{sf\+::\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ad81a1aaa3d4c34feeadf69efd7a5966a}\label{classsf_1_1_featherstone_entity_ad81a1aaa3d4c34feeadf69efd7a5966a} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!hasSelfCollision@{hasSelfCollision}}
+\index{hasSelfCollision@{hasSelfCollision}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{hasSelfCollision()}{hasSelfCollision()}}
+{\footnotesize\ttfamily bool sf\+::\+Featherstone\+Entity\+::has\+Self\+Collision (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A method informing if the self collisions are enabled for the whole multibody. 
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a7f2701c9372e0eeff143b1fc9ced6a91}\label{classsf_1_1_featherstone_entity_a7f2701c9372e0eeff143b1fc9ced6a91} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!MotorPositionSetpoint@{MotorPositionSetpoint}}
+\index{MotorPositionSetpoint@{MotorPositionSetpoint}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{MotorPositionSetpoint()}{MotorPositionSetpoint()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Motor\+Position\+Setpoint (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar}]{pos,  }\item[{Scalar}]{kp }\end{DoxyParamCaption})}
+
+
+
+A method to change the setpoint of the joint motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the joint \\
+\hline
+{\em pos} & the setpoint of position of the joint (\mbox{[}m\mbox{]} or \mbox{[}rad\mbox{]}) \\
+\hline
+{\em kp} & the position control gain \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00586}{586}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a35f5fdbe1c1f9a1b60cb20ba4f73a137}\label{classsf_1_1_featherstone_entity_a35f5fdbe1c1f9a1b60cb20ba4f73a137} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!MotorVelocitySetpoint@{MotorVelocitySetpoint}}
+\index{MotorVelocitySetpoint@{MotorVelocitySetpoint}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{MotorVelocitySetpoint()}{MotorVelocitySetpoint()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Motor\+Velocity\+Setpoint (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar}]{vel,  }\item[{Scalar}]{kd }\end{DoxyParamCaption})}
+
+
+
+A method to change the setpoint of the joint motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the joint \\
+\hline
+{\em vel} & the setpoint of velocity of the joint (\mbox{[}m/s\mbox{]} or \mbox{[}rad/s\mbox{]}) \\
+\hline
+{\em kd} & the velocity control gain \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00600}{600}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_afbb90c39e19b58fafee16d2724a1f903}\label{classsf_1_1_featherstone_entity_afbb90c39e19b58fafee16d2724a1f903} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!RemoveFromSimulation@{RemoveFromSimulation}}
+\index{RemoveFromSimulation@{RemoveFromSimulation}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{RemoveFromSimulation()}{RemoveFromSimulation()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Remove\+From\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_simulation_manager}{Simulation\+Manager}} \texorpdfstring{$\ast$}{*}}]{sm }\end{DoxyParamCaption})}
+
+
+
+A method used to remove the multibody from the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & a pointer to the simulation manager \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00129}{129}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a703d9937e38cbba7a8199663988ffd2f}\label{classsf_1_1_featherstone_entity_a703d9937e38cbba7a8199663988ffd2f} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!Render@{Render}}
+\index{Render@{Render}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}} $>$ sf\+::\+Featherstone\+Entity\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A method implementing the rendering of the multibody. 
+
+
+
+Implements \mbox{\hyperlink{classsf_1_1_entity_a8c40136ba3685b83f1a86532536f7b19}{sf\+::\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00703}{703}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ad72c9ae332927568dab11d4d5e9ae9f5}\label{classsf_1_1_featherstone_entity_ad72c9ae332927568dab11d4d5e9ae9f5} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!Respawn@{Respawn}}
+\index{Respawn@{Respawn}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{Respawn()}{Respawn()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Respawn (\begin{DoxyParamCaption}\item[{const Transform \&}]{origin }\end{DoxyParamCaption})}
+
+
+
+A method used to respawn the multibody at new position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & the transformation of the multibody base in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a843e2e0cc1688721722988210da09035}\label{classsf_1_1_featherstone_entity_a843e2e0cc1688721722988210da09035} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!setBaseRenderable@{setBaseRenderable}}
+\index{setBaseRenderable@{setBaseRenderable}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{setBaseRenderable()}{setBaseRenderable()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::set\+Base\+Renderable (\begin{DoxyParamCaption}\item[{bool}]{render }\end{DoxyParamCaption})}
+
+
+
+A method used to set if the multibody base should be rendered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em render} & a flag to set if the base should be rendered \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ab6040ab32e8c9b914543718ef1cc5c65}\label{classsf_1_1_featherstone_entity_ab6040ab32e8c9b914543718ef1cc5c65} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!setBaseTransform@{setBaseTransform}}
+\index{setBaseTransform@{setBaseTransform}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{setBaseTransform()}{setBaseTransform()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::set\+Base\+Transform (\begin{DoxyParamCaption}\item[{const Transform \&}]{trans }\end{DoxyParamCaption})}
+
+
+
+A method used to set the position of the multibody in the world frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trans} & the transformation of the multibody base in the world frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_adf74ac2cb05485932782e69dffabe74e}\label{classsf_1_1_featherstone_entity_adf74ac2cb05485932782e69dffabe74e} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!setDisplayMode@{setDisplayMode}}
+\index{setDisplayMode@{setDisplayMode}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{setDisplayMode()}{setDisplayMode()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::set\+Display\+Mode (\begin{DoxyParamCaption}\item[{Display\+Mode}]{m }\end{DoxyParamCaption})}
+
+
+
+A method used to set the display mode of the links. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & a flag that defines the display style. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a2fe619f2ff227392bef5c5f9633aa8a2}\label{classsf_1_1_featherstone_entity_a2fe619f2ff227392bef5c5f9633aa8a2} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!setJointDamping@{setJointDamping}}
+\index{setJointDamping@{setJointDamping}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{setJointDamping()}{setJointDamping()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::set\+Joint\+Damping (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar}]{constant\+Factor,  }\item[{Scalar}]{viscous\+Factor }\end{DoxyParamCaption})}
+
+
+
+A method used to set damping characteristics of the joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+{\em constant\+Factor} & the value of the constant damping force \mbox{[}N\mbox{]} or torque \mbox{[}Nm\mbox{]} \\
+\hline
+{\em viscous\+Factor} & the value of the damping factor multiplied by velocity \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00216}{216}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_aa6526ba61ec718d400330eb3228ba95d}\label{classsf_1_1_featherstone_entity_aa6526ba61ec718d400330eb3228ba95d} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!setJointIC@{setJointIC}}
+\index{setJointIC@{setJointIC}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{setJointIC()}{setJointIC()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::set\+Joint\+IC (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar}]{position,  }\item[{Scalar}]{velocity }\end{DoxyParamCaption})}
+
+
+
+A method used to set the initial conditions for a joint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an id of the joint \\
+\hline
+{\em position} & the initial position (\mbox{[}m\mbox{]} or \mbox{[}rad\mbox{]}) \\
+\hline
+{\em velocity} & the initial velocity (\mbox{[}m/s\mbox{]} or \mbox{[}rad/s\mbox{]}) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00194}{194}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_ade858031a9746358b8d90e8770b0281c}\label{classsf_1_1_featherstone_entity_ade858031a9746358b8d90e8770b0281c} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!setMaxMotorForceTorque@{setMaxMotorForceTorque}}
+\index{setMaxMotorForceTorque@{setMaxMotorForceTorque}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{setMaxMotorForceTorque()}{setMaxMotorForceTorque()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::set\+Max\+Motor\+Force\+Torque (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Scalar}]{maxT }\end{DoxyParamCaption})}
+
+
+
+A method to change the maximum force/torque produced by the joint motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the id of the joint \\
+\hline
+{\em tau} & the maximum value of the applied force \mbox{[}N\mbox{]} or torque \mbox{[}Nm\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00313}{313}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_a229f52dd49553e3e5078ea3eed878b0e}\label{classsf_1_1_featherstone_entity_a229f52dd49553e3e5078ea3eed878b0e} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!setSelfCollision@{setSelfCollision}}
+\index{setSelfCollision@{setSelfCollision}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{setSelfCollision()}{setSelfCollision()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::set\+Self\+Collision (\begin{DoxyParamCaption}\item[{bool}]{enabled }\end{DoxyParamCaption})}
+
+
+
+A method used to set if self collision is enabled for the whole multibody. 
+
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+\Hypertarget{classsf_1_1_featherstone_entity_aecdcc410d2b552c248f6d04876ddb3b6}\label{classsf_1_1_featherstone_entity_aecdcc410d2b552c248f6d04876ddb3b6} 
+\index{sf::FeatherstoneEntity@{sf::FeatherstoneEntity}!UpdateAcceleration@{UpdateAcceleration}}
+\index{UpdateAcceleration@{UpdateAcceleration}!sf::FeatherstoneEntity@{sf::FeatherstoneEntity}}
+\doxysubsubsection{\texorpdfstring{UpdateAcceleration()}{UpdateAcceleration()}}
+{\footnotesize\ttfamily void sf\+::\+Featherstone\+Entity\+::\+Update\+Acceleration (\begin{DoxyParamCaption}\item[{Scalar}]{dt }\end{DoxyParamCaption})}
+
+
+
+A method used to compute accelerations of the links. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & a step time of the simulation \mbox{[}s\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_featherstone_entity_8cpp_source_l00697}{697}} of file \mbox{\hyperlink{_featherstone_entity_8cpp_source}{Featherstone\+Entity.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/entities/Featherstone\+Entity.\+h\item 
+Library/src/entities/Featherstone\+Entity.\+cpp\end{DoxyCompactItemize}

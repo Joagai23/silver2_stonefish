@@ -1,0 +1,130 @@
+\doxysection{Camera.\+cpp}
+\hypertarget{_camera_8cpp_source}{}\label{_camera_8cpp_source}\index{Library/src/sensors/vision/Camera.cpp@{Library/src/sensors/vision/Camera.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00001}00001\ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ file\ is\ a\ part\ of\ Stonefish.}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00004}00004\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00005}00005\ \textcolor{comment}{\ \ \ \ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00006}00006\ \textcolor{comment}{\ \ \ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00007}00007\ \textcolor{comment}{\ \ \ \ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00009}00009\ \textcolor{comment}{\ \ \ \ Stonefish\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00010}00010\ \textcolor{comment}{\ \ \ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00016}00016\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ Camera.cpp}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ Stonefish}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ Created\ by\ Patryk\ Cieslak\ on\ 4/7/17.}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ Copyright\ (c)\ 2017-\/2019\ Patryk\ Cieslak.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}sensors/vision/Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}entities/SolidEntity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00030}00030\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00033}\mbox{\hyperlink{classsf_1_1_camera_aeb5eb620ca22f28797cbbe4b326bf502}{00033}}\ \mbox{\hyperlink{classsf_1_1_camera_aeb5eb620ca22f28797cbbe4b326bf502}{Camera::Camera}}(std::string\ uniqueName,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ resolutionX,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ resolutionY,\ Scalar\ horizFOVDeg,\ Scalar\ frequency)\ :\ \mbox{\hyperlink{classsf_1_1_vision_sensor}{VisionSensor}}(uniqueName,\ frequency)}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00035}00035\ \ \ \ \ fovH\ =\ horizFOVDeg\ <=\ Scalar(0)\ ?\ Scalar(90)\ :\ (horizFOVDeg\ >\ Scalar(360)\ ?\ Scalar(360)\ :\ horizFOVDeg);}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00036}00036\ \ \ \ \ resX\ =\ resolutionX\ >\ 0\ ?\ (resolutionX\ +\ resolutionX\ \%\ 2)\ :\ 2;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00037}00037\ \ \ \ \ resY\ =\ resolutionY\ >\ 0\ ?\ (resolutionY\ +\ resolutionY\ \%\ 2)\ :\ 2;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_camera_a36dd144db3efbefa984b66386252bbfb}{setDisplayOnScreen}}(\textcolor{keyword}{false},\ 0,\ 0,\ 1.f);}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00040}00040\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00041}\mbox{\hyperlink{classsf_1_1_camera_aad088fd0fd4251cd01241b2830ddb12d}{00041}}\ \mbox{\hyperlink{classsf_1_1_camera_aad088fd0fd4251cd01241b2830ddb12d}{Camera::\string~Camera}}()}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00045}\mbox{\hyperlink{classsf_1_1_camera_ad37850eb7a5ed736ca040a82c12b6670}{00045}}\ Scalar\ \mbox{\hyperlink{classsf_1_1_camera_ad37850eb7a5ed736ca040a82c12b6670}{Camera::getHorizontalFOV}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00046}00046\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{return}\ fovH;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00050}\mbox{\hyperlink{classsf_1_1_camera_a4799622b0a6d8e248194f1f2ee6abd66}{00050}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_camera_a4799622b0a6d8e248194f1f2ee6abd66}{Camera::getResolution}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ x,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ y)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00051}00051\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00052}00052\ \ \ \ \ x\ =\ resX;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00053}00053\ \ \ \ \ y\ =\ resY;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00056}\mbox{\hyperlink{classsf_1_1_camera_a36dd144db3efbefa984b66386252bbfb}{00056}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_camera_a36dd144db3efbefa984b66386252bbfb}{Camera::setDisplayOnScreen}}(\textcolor{keywordtype}{bool}\ display,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{float}\ scale)}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00057}00057\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00058}00058\ \ \ \ \ screen\ =\ display;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00059}00059\ \ \ \ \ screenX\ =\ x;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00060}00060\ \ \ \ \ screenY\ =\ y;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00061}00061\ \ \ \ \ screenScale\ =\ scale;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00064}\mbox{\hyperlink{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1}{00064}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsf_1_1_camera_aa3d3ba777d01168fb2d15697793c48e1}{Camera::getDisplayOnScreen}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ x,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ y,\ \textcolor{keywordtype}{float}\&\ scale)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00065}00065\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00066}00066\ \ \ \ \ x\ =\ screenX;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00067}00067\ \ \ \ \ y\ =\ screenY;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00068}00068\ \ \ \ \ scale\ =\ screenScale;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{return}\ screen;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00072}\mbox{\hyperlink{classsf_1_1_camera_a0a5420ed6151ff87c2b19b8bdab2378c}{00072}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsf_1_1_camera_a0a5420ed6151ff87c2b19b8bdab2378c}{Camera::UpdateTransform}}()}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00073}00073\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00074}00074\ \ \ \ \ Transform\ cameraTransform\ =\ \mbox{\hyperlink{classsf_1_1_vision_sensor_a6c72f9b87b43148b0414171cb79d9d99}{getSensorFrame}}();}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00075}00075\ \ \ \ \ Vector3\ eyePosition\ =\ cameraTransform.getOrigin();\ \textcolor{comment}{//O}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00076}00076\ \ \ \ \ Vector3\ direction\ =\ cameraTransform.getBasis().getColumn(2);\ \textcolor{comment}{//Z}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00077}00077\ \ \ \ \ Vector3\ cameraUp\ =\ -\/cameraTransform.getBasis().getColumn(1);\ \textcolor{comment}{//-\/Y}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00078}00078\ \ \ \ \ \mbox{\hyperlink{classsf_1_1_camera_a634bfc5cc912f01b7f5c2bd9a1b8ea35}{SetupCamera}}(eyePosition,\ direction,\ cameraUp);}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00081}\mbox{\hyperlink{classsf_1_1_camera_a103f1cf1257b72583a8dc7e181249843}{00081}}\ std::vector<Renderable>\ \mbox{\hyperlink{classsf_1_1_camera_a103f1cf1257b72583a8dc7e181249843}{Camera::Render}}()}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00082}00082\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00083}00083\ \ \ \ \ std::vector<Renderable>\ items\ =\ \mbox{\hyperlink{classsf_1_1_sensor_a6e4955d7a77bbba84c2bdfb9a57c8388}{Sensor::Render}}();}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classsf_1_1_sensor_a7ed0e8bb0e676260491b2460d7b66b6c}{isRenderable}}())}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsf_1_1_renderable}{Renderable}}\ item;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ item.model\ =\ glMatrixFromTransform(\mbox{\hyperlink{classsf_1_1_vision_sensor_a6c72f9b87b43148b0414171cb79d9d99}{getSensorFrame}}());}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ item.type\ =\ RenderableType::SENSOR\_LINES;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Create\ camera\ dummy}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ GLfloat\ iconSize\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ GLfloat\ x\ =\ iconSize*tanf(fovH/360.f*M\_PI);}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ GLfloat\ aspect\ =\ (GLfloat)resX/(GLfloat)resY;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ GLfloat\ y\ =\ x/aspect;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0,0,0));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(x,\ -\/y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0,0,0));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(x,\ \ y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0,0,0));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(-\/x,\ -\/y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0,0,0));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(-\/x,\ \ y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(x,\ -\/y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(x,\ y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(x,\ y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(-\/x,\ y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(-\/x,\ y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(-\/x,\ -\/y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(-\/x,\ -\/y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(x,\ -\/y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(-\/0.5f*x,\ -\/y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0.f,\ -\/1.5f*y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0.f,\ -\/1.5f*y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ item.points.push\_back(glm::vec3(0.5f*x,\ -\/y,\ iconSize));}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ items.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_camera_8cpp_source_l00124}00124\ \}}
+
+\end{DoxyCode}

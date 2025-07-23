@@ -1,0 +1,220 @@
+\doxysection{sf\+::Texturable\+Mesh Struct Reference}
+\hypertarget{structsf_1_1_texturable_mesh}{}\label{structsf_1_1_texturable_mesh}\index{sf::TexturableMesh@{sf::TexturableMesh}}
+
+
+Inheritance diagram for sf\+::Texturable\+Mesh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{structsf_1_1_texturable_mesh__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for sf\+::Texturable\+Mesh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{structsf_1_1_texturable_mesh__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structsf_1_1_texturable_mesh_a7ba062b08b8b32d8eca3f448214ef7fd}{is\+Texturable}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{structsf_1_1_texturable_mesh_acd9beb01dadcd57243d08b5106a4384f}{get\+Num\+Of\+Vertices}} () const
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsf_1_1_texturable_mesh_a012ad99d572a2e72ed7c616a931ffc57}{get\+Vertex\+Data\+Pointer}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{structsf_1_1_texturable_mesh_adaaff68b024fde48a6094f93c55caf64}{get\+Vertex\+Size}} () const
+\item 
+glm\+::vec3 \mbox{\hyperlink{structsf_1_1_texturable_mesh_add0db6f48d1ae35de04aff7a058c576a}{get\+Vertex\+Pos}} (size\+\_\+t vertex\+ID) const
+\item 
+glm\+::vec3 \mbox{\hyperlink{structsf_1_1_texturable_mesh_a56d5f3bceab5cf3d00115acd9672b75e}{get\+Vertex\+Pos}} (size\+\_\+t face\+ID, unsigned short index) const
+\item 
+glm\+::vec3 \mbox{\hyperlink{structsf_1_1_texturable_mesh_a06741dd074924ff6a280a2c647966eb7}{Compute\+Face\+Normal}} (size\+\_\+t face\+ID) const
+\item 
+GLfloat \mbox{\hyperlink{structsf_1_1_texturable_mesh_a3a790dbc18773a428effa567b20654ba}{Compute\+Face\+Area}} (size\+\_\+t face\+ID) const
+\item 
+void \mbox{\hyperlink{structsf_1_1_texturable_mesh_a6caf835eb4299cfdd8ff5173cbb603d0}{Compute\+Face\+Tangent}} (size\+\_\+t face\+ID, glm\+::vec3 \&tangent) const
+\item 
+void \mbox{\hyperlink{structsf_1_1_texturable_mesh_af7797fc502a1c65410ec4d5715995118}{Join\+Mesh}} (\mbox{\hyperlink{structsf_1_1_texturable_mesh}{Texturable\+Mesh}} \texorpdfstring{$\ast$}{*}mesh)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsf_1_1_mesh_a700a260d2b836bf78e2c5b15f4e59ad2}{get\+Face\+Data\+Pointer}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_texturable_vertex}{Texturable\+Vertex}} $>$ \mbox{\hyperlink{structsf_1_1_texturable_mesh_ae31837513af0fccf2cf5afddcbe1972f}{vertices}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structsf_1_1_face}{Face}} $>$ \mbox{\hyperlink{structsf_1_1_mesh_a876f47d5accc035e491239ff3f887c11}{faces}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00247}{247}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structsf_1_1_texturable_mesh_a3a790dbc18773a428effa567b20654ba}\label{structsf_1_1_texturable_mesh_a3a790dbc18773a428effa567b20654ba} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!ComputeFaceArea@{ComputeFaceArea}}
+\index{ComputeFaceArea@{ComputeFaceArea}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{ComputeFaceArea()}{ComputeFaceArea()}}
+{\footnotesize\ttfamily GLfloat sf\+::\+Texturable\+Mesh\+::\+Compute\+Face\+Area (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{face\+ID }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00276}{276}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+\Hypertarget{structsf_1_1_texturable_mesh_a06741dd074924ff6a280a2c647966eb7}\label{structsf_1_1_texturable_mesh_a06741dd074924ff6a280a2c647966eb7} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!ComputeFaceNormal@{ComputeFaceNormal}}
+\index{ComputeFaceNormal@{ComputeFaceNormal}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{ComputeFaceNormal()}{ComputeFaceNormal()}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Texturable\+Mesh\+::\+Compute\+Face\+Normal (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{face\+ID }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00269}{269}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+\Hypertarget{structsf_1_1_texturable_mesh_a6caf835eb4299cfdd8ff5173cbb603d0}\label{structsf_1_1_texturable_mesh_a6caf835eb4299cfdd8ff5173cbb603d0} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!ComputeFaceTangent@{ComputeFaceTangent}}
+\index{ComputeFaceTangent@{ComputeFaceTangent}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{ComputeFaceTangent()}{ComputeFaceTangent()}}
+{\footnotesize\ttfamily void sf\+::\+Texturable\+Mesh\+::\+Compute\+Face\+Tangent (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{face\+ID,  }\item[{glm\+::vec3 \&}]{tangent }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00283}{283}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+\Hypertarget{structsf_1_1_texturable_mesh_acd9beb01dadcd57243d08b5106a4384f}\label{structsf_1_1_texturable_mesh_acd9beb01dadcd57243d08b5106a4384f} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!getNumOfVertices@{getNumOfVertices}}
+\index{getNumOfVertices@{getNumOfVertices}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{getNumOfVertices()}{getNumOfVertices()}}
+{\footnotesize\ttfamily size\+\_\+t sf\+::\+Texturable\+Mesh\+::get\+Num\+Of\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00253}{253}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+\Hypertarget{structsf_1_1_texturable_mesh_a012ad99d572a2e72ed7c616a931ffc57}\label{structsf_1_1_texturable_mesh_a012ad99d572a2e72ed7c616a931ffc57} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!getVertexDataPointer@{getVertexDataPointer}}
+\index{getVertexDataPointer@{getVertexDataPointer}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{getVertexDataPointer()}{getVertexDataPointer()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} sf\+::\+Texturable\+Mesh\+::get\+Vertex\+Data\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00255}{255}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+\Hypertarget{structsf_1_1_texturable_mesh_a56d5f3bceab5cf3d00115acd9672b75e}\label{structsf_1_1_texturable_mesh_a56d5f3bceab5cf3d00115acd9672b75e} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!getVertexPos@{getVertexPos}}
+\index{getVertexPos@{getVertexPos}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{getVertexPos()}{getVertexPos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Texturable\+Mesh\+::get\+Vertex\+Pos (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{face\+ID,  }\item[{unsigned short}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00264}{264}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+\Hypertarget{structsf_1_1_texturable_mesh_add0db6f48d1ae35de04aff7a058c576a}\label{structsf_1_1_texturable_mesh_add0db6f48d1ae35de04aff7a058c576a} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!getVertexPos@{getVertexPos}}
+\index{getVertexPos@{getVertexPos}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{getVertexPos()}{getVertexPos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily glm\+::vec3 sf\+::\+Texturable\+Mesh\+::get\+Vertex\+Pos (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{vertex\+ID }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00259}{259}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+\Hypertarget{structsf_1_1_texturable_mesh_adaaff68b024fde48a6094f93c55caf64}\label{structsf_1_1_texturable_mesh_adaaff68b024fde48a6094f93c55caf64} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!getVertexSize@{getVertexSize}}
+\index{getVertexSize@{getVertexSize}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{getVertexSize()}{getVertexSize()}}
+{\footnotesize\ttfamily size\+\_\+t sf\+::\+Texturable\+Mesh\+::get\+Vertex\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00257}{257}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+\Hypertarget{structsf_1_1_texturable_mesh_a7ba062b08b8b32d8eca3f448214ef7fd}\label{structsf_1_1_texturable_mesh_a7ba062b08b8b32d8eca3f448214ef7fd} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!isTexturable@{isTexturable}}
+\index{isTexturable@{isTexturable}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{isTexturable()}{isTexturable()}}
+{\footnotesize\ttfamily bool sf\+::\+Texturable\+Mesh\+::is\+Texturable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{structsf_1_1_mesh}{sf\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00251}{251}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+\Hypertarget{structsf_1_1_texturable_mesh_af7797fc502a1c65410ec4d5715995118}\label{structsf_1_1_texturable_mesh_af7797fc502a1c65410ec4d5715995118} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!JoinMesh@{JoinMesh}}
+\index{JoinMesh@{JoinMesh}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{JoinMesh()}{JoinMesh()}}
+{\footnotesize\ttfamily void sf\+::\+Texturable\+Mesh\+::\+Join\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsf_1_1_texturable_mesh}{Texturable\+Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00301}{301}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structsf_1_1_texturable_mesh_ae31837513af0fccf2cf5afddcbe1972f}\label{structsf_1_1_texturable_mesh_ae31837513af0fccf2cf5afddcbe1972f} 
+\index{sf::TexturableMesh@{sf::TexturableMesh}!vertices@{vertices}}
+\index{vertices@{vertices}!sf::TexturableMesh@{sf::TexturableMesh}}
+\doxysubsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structsf_1_1_texturable_vertex}{Texturable\+Vertex}}$>$ sf\+::\+Texturable\+Mesh\+::vertices}
+
+
+
+Definition at line \mbox{\hyperlink{_open_g_l_data_structs_8h_source_l00249}{249}} of file \mbox{\hyperlink{_open_g_l_data_structs_8h_source}{Open\+GLData\+Structs.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Library/include/graphics/Open\+GLData\+Structs.\+h\end{DoxyCompactItemize}

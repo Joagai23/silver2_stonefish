@@ -1,7 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classsf_1_1_open_g_l_ocean.html" title="A class implementing ocean simulation in OpenGL." alt="" coords="5,31,139,56"/>
-<area shape="rect" id="Node000001" href="$classsf_1_1_open_g_l_flat_ocean.html" title="A class implementing flat ocean in OpenGL." alt="" coords="189,5,347,31"/>
-<area shape="poly" id="edge56_Node000000_Node000001" title=" " alt="" coords="152,30,188,26,189,31,152,36"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_open_g_l_real_ocean.html" title="A class implementing reallistic deformed ocean in OpenGL." alt="" coords="187,55,349,80"/>
-<area shape="poly" id="edge57_Node000000_Node000002" title=" " alt="" coords="153,50,187,55,186,60,152,56"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="sf::VisionSensor" name="sf::VisionSensor">
-<area shape="rect" id="Node000001" title="An abstract class representing a vision sensor." alt="" coords="5,79,131,104"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_sensor.html" title="An abstract class representing a sensor." alt="" coords="25,5,111,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,44,71,79,65,79,65,44"/>
-</map>

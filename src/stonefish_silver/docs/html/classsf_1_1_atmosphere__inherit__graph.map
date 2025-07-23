@@ -1,7 +1,0 @@
-<map id="sf::Atmosphere" name="sf::Atmosphere">
-<area shape="rect" id="Node000001" title="A class representing the atmosphere." alt="" coords="17,152,137,177"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_forcefield_entity.html" title="An abstract class representing some kind of a force field." alt="" coords="5,79,148,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,118,79,152,74,152,74,118"/>
-<area shape="rect" id="Node000003" href="$classsf_1_1_entity.html" title="An abstract class representing a simulation entity." alt="" coords="37,5,116,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="79,44,79,79,74,79,74,44"/>
-</map>

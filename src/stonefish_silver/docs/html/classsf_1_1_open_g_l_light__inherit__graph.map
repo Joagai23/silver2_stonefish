@@ -1,7 +1,0 @@
-<map id="sf::OpenGLLight" name="sf::OpenGLLight">
-<area shape="rect" id="Node000001" title="An abstract class implementing an OpenGL light." alt="" coords="111,5,235,31"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_open_g_l_point_light.html" title="A class implementing an OpenGL point light (shadow not supported)." alt="" coords="5,79,163,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,41,100,81,97,76,147,37"/>
-<area shape="rect" id="Node000003" href="$classsf_1_1_open_g_l_spot_light.html" title="A class implementing an OpenGL spot light with shadow." alt="" coords="187,79,341,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,37,251,76,248,81,197,41"/>
-</map>

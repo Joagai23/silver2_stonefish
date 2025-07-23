@@ -1,7 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classsf_1_1_robot.html" title="A class implementing a robotic system composed of a dynamic rigid&#45;body tree, actuators and sensors." alt="" coords="5,31,84,56"/>
-<area shape="rect" id="Node000001" href="$classsf_1_1_featherstone_robot.html" title="A class implementing a robotic system composed of a dynamic rigid&#45;body tree, actuators and sensors." alt="" coords="132,5,296,31"/>
-<area shape="poly" id="edge71_Node000000_Node000001" title=" " alt="" coords="97,33,131,28,132,33,98,38"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_general_robot.html" title="A class implementing a robotic system composed of a dynamic rigid&#45;body chain/tree/loop,..." alt="" coords="149,55,279,80"/>
-<area shape="poly" id="edge72_Node000000_Node000002" title=" " alt="" coords="98,48,149,55,148,61,97,53"/>
-</map>

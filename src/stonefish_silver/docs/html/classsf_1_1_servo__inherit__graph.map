@@ -1,7 +1,0 @@
-<map id="sf::Servo" name="sf::Servo">
-<area shape="rect" id="Node000001" title="A class implementing a position/velocity servo motor." alt="" coords="29,152,107,177"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_joint_actuator.html" title="An abstract class representing a joint actuator." alt="" coords="5,79,131,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,118,71,152,65,152,65,118"/>
-<area shape="rect" id="Node000003" href="$classsf_1_1_actuator.html" title="An abstract class representing any actuator." alt="" coords="20,5,116,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="71,44,71,79,65,79,65,44"/>
-</map>

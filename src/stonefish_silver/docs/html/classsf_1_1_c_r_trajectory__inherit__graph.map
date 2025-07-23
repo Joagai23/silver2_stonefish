@@ -1,7 +1,0 @@
-<map id="sf::CRTrajectory" name="sf::CRTrajectory">
-<area shape="rect" id="Node000001" title="A class representing a Catmull&#45;Rom trajectory." alt="" coords="10,152,133,177"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_p_w_l_trajectory.html" title="A class representing a piece&#45;wise linear trajectory." alt="" coords="5,79,137,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,118,74,152,69,152,69,118"/>
-<area shape="rect" id="Node000003" href="$classsf_1_1_trajectory.html" title="An abstract class representing a trajectory (time parametrized path)." alt="" coords="19,5,124,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="74,44,74,79,69,79,69,44"/>
-</map>

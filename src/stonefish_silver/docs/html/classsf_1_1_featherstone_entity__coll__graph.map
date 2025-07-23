@@ -1,5 +1,0 @@
-<map id="sf::FeatherstoneEntity" name="sf::FeatherstoneEntity">
-<area shape="rect" id="Node000001" title="A class that implements simplified creation of multi&#45;body trees, using Roy Featherstone&#39;s algorithm." alt="" coords="5,79,169,104"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_entity.html" title="An abstract class representing a simulation entity." alt="" coords="48,5,127,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,44,90,79,85,79,85,44"/>
-</map>

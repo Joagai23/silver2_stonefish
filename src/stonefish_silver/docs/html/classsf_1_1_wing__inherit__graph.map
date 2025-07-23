@@ -1,9 +1,0 @@
-<map id="sf::Wing" name="sf::Wing">
-<area shape="rect" id="Node000001" title="A class representing a wing&#45;shaped rigid body. The profile of the wing is generated based on 4&#45;digit ..." alt="" coords="31,225,106,251"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_solid_entity.html" title="An abstract class representing a rigid body." alt="" coords="13,152,124,177"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,191,71,225,66,225,66,191"/>
-<area shape="rect" id="Node000003" href="$classsf_1_1_moving_entity.html" title="An abstract class representing a moving rigid body." alt="" coords="5,79,132,104"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="71,118,71,152,66,152,66,118"/>
-<area shape="rect" id="Node000004" href="$classsf_1_1_entity.html" title="An abstract class representing a simulation entity." alt="" coords="29,5,108,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="71,44,71,79,66,79,66,44"/>
-</map>

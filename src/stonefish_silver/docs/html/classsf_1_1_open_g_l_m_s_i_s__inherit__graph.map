@@ -1,7 +1,0 @@
-<map id="sf::OpenGLMSIS" name="sf::OpenGLMSIS">
-<area shape="rect" id="Node000001" title="A class representing a mechanical scanning imaging sonar (MSIS)." alt="" coords="8,152,132,177"/>
-<area shape="rect" id="Node000002" href="$classsf_1_1_open_g_l_sonar.html" title="An abstract class representing a sonar view." alt="" coords="5,79,135,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,118,73,152,67,152,67,118"/>
-<area shape="rect" id="Node000003" href="$classsf_1_1_open_g_l_view.html" title="An abstract class representing an OpenGL view." alt="" coords="9,5,131,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="73,44,73,79,67,79,67,44"/>
-</map>

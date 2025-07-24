@@ -1,21 +1,5 @@
-
 <?xml version="1.0"?>
 <scenario>
-    <!-- Physical materials -->
-    <materials>
-        <material name="LightAluminium" density="100.0" restitution="0.8"/>
-    </materials>
-    
-    <!-- Graphical materials -->
-    <looks>
-        <look name="Silver" rgb="1.0 1.0 1.0" roughness="1.0" texture="silver_uv.png"/>
-    </looks>
-
-    <!--
-        TO DO:
-            - Change Joint Type to Revolute
-    -->
-
     <!-- Robot Definition -->
     <robot name="$(arg silver_robot)" fixed="false" self_collisions="false">     
         <!-- Main Body -->
@@ -27,6 +11,7 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="1.0"/>
         </base_link>
         
         <!-- Leg 0 -->
@@ -38,6 +23,7 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
         </link>
         <joint name="Joint_L0_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -46,8 +32,9 @@
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
         <actuator name="Servo_L0_Coxa" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="20.0"/>
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
             <joint name="Joint_L0_Coxa"/>
+            <initial position="0.75"/>
         </actuator>
         <!-- Femur L0 -->
         <link name="Femur_L0" type="model" physics="submerged">
@@ -57,6 +44,7 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
         </link>
         <joint name="Joint_L0_Femur" type="revolute">
             <parent name="Coxa_L0"/>
@@ -65,8 +53,9 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L0_Femur" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="20.0"/>
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
             <joint name="Joint_L0_Femur"/>
+            <initial position="0.8"/>
         </actuator>
         <!-- Tibia L0 -->
         <link name="Tibia_L0" type="model" physics="submerged">
@@ -76,6 +65,7 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
         </link>
         <joint name="Joint_L0_Tibia" type="revolute">
             <parent name="Femur_L0"/>
@@ -84,8 +74,9 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L0_Tibia" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="20.0"/>
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
             <joint name="Joint_L0_Tibia"/>
+            <initial position="-2.3"/>
         </actuator>
 
         <!-- Leg 1 -->
@@ -97,13 +88,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
         </link>
-        <joint name="Joint_L1_Coxa" type="fixed">
+        <joint name="Joint_L1_Coxa" type="revolute">
             <parent name="MainBody"/>
             <child name="Coxa_L1"/>
             <origin xyz="1.62 -0.15 0.28" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
+        <actuator name="Servo_L1_Coxa" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L1_Coxa"/>
+            <initial position="0.0"/>
+        </actuator>
         <!-- Femur L1 -->
         <link name="Femur_L1" type="model" physics="submerged">
             <physical>
@@ -112,13 +109,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
         </link>
-        <joint name="Joint_L1_Femur" type="fixed">
+        <joint name="Joint_L1_Femur" type="revolute">
             <parent name="Coxa_L1"/>
             <child name="Femur_L1"/>
             <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L1_Femur" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L1_Femur"/>
+            <initial position="0.8"/>
+        </actuator>
         <!-- Tibia L1 -->
         <link name="Tibia_L1" type="model" physics="submerged">
             <physical>
@@ -127,13 +130,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
         </link>
-        <joint name="Joint_L1_Tibia" type="fixed">
+        <joint name="Joint_L1_Tibia" type="revolute">
             <parent name="Femur_L1"/>
             <child name="Tibia_L1"/>
             <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L1_Tibia" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L1_Tibia"/>
+            <initial position="-2.3"/>
+        </actuator>
 
         <!-- Leg 2 -->
         <!-- Coxa L2 -->
@@ -144,13 +153,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
         </link>
-        <joint name="Joint_L2_Coxa" type="fixed">
+        <joint name="Joint_L2_Coxa" type="revolute">
             <parent name="MainBody"/>
             <child name="Coxa_L2"/>
             <origin xyz="1.62 -1.27 0.28" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
+        <actuator name="Servo_L2_Coxa" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L2_Coxa"/>
+            <initial position="-0.75"/>
+        </actuator>
         <!-- Femur L2 -->
         <link name="Femur_L2" type="model" physics="submerged">
             <physical>
@@ -159,13 +174,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
         </link>
-        <joint name="Joint_L2_Femur" type="fixed">
+        <joint name="Joint_L2_Femur" type="revolute">
             <parent name="Coxa_L2"/>
             <child name="Femur_L2"/>
             <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L2_Femur" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L2_Femur"/>
+            <initial position="0.8"/>
+        </actuator>
         <!-- Tibia L2 -->
         <link name="Tibia_L2" type="model" physics="submerged">
             <physical>
@@ -174,13 +195,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
         </link>
-        <joint name="Joint_L2_Tibia" type="fixed">
+        <joint name="Joint_L2_Tibia" type="revolute">
             <parent name="Femur_L2"/>
             <child name="Tibia_L2"/>
             <origin xyz="1.85 -0.03 0.23" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L2_Tibia" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L2_Tibia"/>
+            <initial position="-2.3"/>
+        </actuator>
 
         <!-- Leg 3 -->
         <!-- Coxa L3 -->
@@ -191,13 +218,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
         </link>
-        <joint name="Joint_L3_Coxa" type="fixed">
+        <joint name="Joint_L3_Coxa" type="revolute">
             <parent name="MainBody"/>
             <child name="Coxa_L3"/>
             <origin xyz="-1.62 0.98 0.28" rpy="0.0 0.0 3.14"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
+        <actuator name="Servo_L3_Coxa" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L3_Coxa"/>
+            <initial position="-0.75"/>
+        </actuator>
         <!-- Femur L3 -->
         <link name="Femur_L3" type="model" physics="submerged">
             <physical>
@@ -206,13 +239,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
         </link>
-        <joint name="Joint_L3_Femur" type="fixed">
+        <joint name="Joint_L3_Femur" type="revolute">
             <parent name="Coxa_L3"/>
             <child name="Femur_L3"/>
             <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L3_Femur" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L3_Femur"/>
+            <initial position="0.8"/>
+        </actuator>
         <!-- Tibia L3 -->
         <link name="Tibia_L3" type="model" physics="submerged">
             <physical>
@@ -221,13 +260,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
         </link>
-        <joint name="Joint_L3_Tibia" type="fixed">
+        <joint name="Joint_L3_Tibia" type="revolute">
             <parent name="Femur_L3"/>
             <child name="Tibia_L3"/>
             <origin xyz="1.85 -0.03 0.23" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L3_Tibia" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L3_Tibia"/>
+            <initial position="-2.3"/>
+        </actuator>
 
         <!-- Leg 4 -->
         <!-- Coxa L4 -->
@@ -238,13 +283,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
         </link>
-        <joint name="Joint_L4_Coxa" type="fixed">
+        <joint name="Joint_L4_Coxa" type="revolute">
             <parent name="MainBody"/>
             <child name="Coxa_L4"/>
             <origin xyz="-1.62 -0.15 0.28" rpy="0.0 0.0 3.14"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
+        <actuator name="Servo_L4_Coxa" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L4_Coxa"/>
+            <initial position="0.0"/>
+        </actuator>
         <!-- Femur L4 -->
         <link name="Femur_L4" type="model" physics="submerged">
             <physical>
@@ -253,13 +304,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
         </link>
-        <joint name="Joint_L4_Femur" type="fixed">
+        <joint name="Joint_L4_Femur" type="revolute">
             <parent name="Coxa_L4"/>
             <child name="Femur_L4"/>
             <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L4_Femur" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L4_Femur"/>
+            <initial position="0.8"/>
+        </actuator>
         <!-- Tibia L4 -->
         <link name="Tibia_L4" type="model" physics="submerged">
             <physical>
@@ -268,13 +325,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
         </link>
-        <joint name="Joint_L4_Tibia" type="fixed">
+        <joint name="Joint_L4_Tibia" type="revolute">
             <parent name="Femur_L4"/>
             <child name="Tibia_L4"/>
             <origin xyz="1.85 -0.03 0.23" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L4_Tibia" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L4_Tibia"/>
+            <initial position="-2.3"/>
+        </actuator>
 
         <!-- Leg 5 -->
         <!-- Coxa L5 -->
@@ -285,13 +348,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
         </link>
-        <joint name="Joint_L5_Coxa" type="fixed">
+        <joint name="Joint_L5_Coxa" type="revolute">
             <parent name="MainBody"/>
             <child name="Coxa_L5"/>
             <origin xyz="-1.62 -1.27 0.28" rpy="0.0 0.0 3.14"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
+        <actuator name="Servo_L5_Coxa" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L5_Coxa"/>
+            <initial position="0.75"/>
+        </actuator>
         <!-- Femur L5 -->
         <link name="Femur_L5" type="model" physics="submerged">
             <physical>
@@ -300,13 +369,19 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
         </link>
-        <joint name="Joint_L5_Femur" type="fixed">
+        <joint name="Joint_L5_Femur" type="revolute">
             <parent name="Coxa_L5"/>
             <child name="Femur_L5"/>
             <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L5_Femur" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L5_Femur"/>
+            <initial position="0.8"/>
+        </actuator>
         <!-- Tibia L5 -->
         <link name="Tibia_L5" type="model" physics="submerged">
             <physical>
@@ -315,15 +390,21 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
         </link>
-        <joint name="Joint_L5_Tibia" type="fixed">
+        <joint name="Joint_L5_Tibia" type="revolute">
             <parent name="Femur_L5"/>
             <child name="Tibia_L5"/>
             <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <actuator name="Servo_L5_Tibia" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <joint name="Joint_L5_Tibia"/>
+            <initial position="-2.3"/>
+        </actuator>
 
-        <ros_publisher servos="/my_joint_state"/>
-        <ros_subscriber servos="/my_joint_setpoints"/>
+        <ros_publisher servos="/joint_state"/>
+        <ros_subscriber servos="/joint_setpoints"/>
     </robot>
 </scenario>

@@ -11,7 +11,7 @@
             </physical>
             <material name="LightAluminium"/>
             <look name="Silver"/>
-            <mass value="1.0"/>
+            <mass value="$(arg main_body_mass)"/>
         </base_link>
         
         <!-- Leg 0 -->
@@ -32,7 +32,7 @@
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
         <actuator name="Servo_L0_Coxa" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L0_Coxa"/>
             <initial position="0.75"/>
         </actuator>
@@ -53,7 +53,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L0_Femur" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L0_Femur"/>
             <initial position="0.8"/>
         </actuator>
@@ -74,7 +74,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L0_Tibia" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L0_Tibia"/>
             <initial position="-2.3"/>
         </actuator>
@@ -97,7 +97,7 @@
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
         <actuator name="Servo_L1_Coxa" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L1_Coxa"/>
             <initial position="0.0"/>
         </actuator>
@@ -118,7 +118,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L1_Femur" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L1_Femur"/>
             <initial position="0.8"/>
         </actuator>
@@ -139,7 +139,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L1_Tibia" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L1_Tibia"/>
             <initial position="-2.3"/>
         </actuator>
@@ -162,7 +162,7 @@
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
         <actuator name="Servo_L2_Coxa" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L2_Coxa"/>
             <initial position="-0.75"/>
         </actuator>
@@ -183,7 +183,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L2_Femur" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L2_Femur"/>
             <initial position="0.8"/>
         </actuator>
@@ -204,7 +204,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L2_Tibia" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L2_Tibia"/>
             <initial position="-2.3"/>
         </actuator>
@@ -227,7 +227,7 @@
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
         <actuator name="Servo_L3_Coxa" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L3_Coxa"/>
             <initial position="-0.75"/>
         </actuator>
@@ -248,7 +248,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L3_Femur" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L3_Femur"/>
             <initial position="0.8"/>
         </actuator>
@@ -269,7 +269,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L3_Tibia" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L3_Tibia"/>
             <initial position="-2.3"/>
         </actuator>
@@ -292,7 +292,7 @@
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
         <actuator name="Servo_L4_Coxa" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L4_Coxa"/>
             <initial position="0.0"/>
         </actuator>
@@ -313,7 +313,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L4_Femur" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L4_Femur"/>
             <initial position="0.8"/>
         </actuator>
@@ -334,7 +334,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L4_Tibia" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L4_Tibia"/>
             <initial position="-2.3"/>
         </actuator>
@@ -357,7 +357,7 @@
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
         <actuator name="Servo_L5_Coxa" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L5_Coxa"/>
             <initial position="0.75"/>
         </actuator>
@@ -378,7 +378,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L5_Femur" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L5_Femur"/>
             <initial position="0.8"/>
         </actuator>
@@ -399,7 +399,7 @@
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L5_Tibia" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="100.0" max_velocity="0.1"/>
+            <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L5_Tibia"/>
             <initial position="-2.3"/>
         </actuator>

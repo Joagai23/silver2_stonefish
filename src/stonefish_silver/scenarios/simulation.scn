@@ -61,5 +61,9 @@
     <!-- Create SILVER2 Robot -->
     <include file="$(find stonefish_silver)/scenarios/robot.scn">
         <arg name="silver_robot" value="SILVER2"/>
+        <arg name="main_body_mass" value="140.0"/>
+        <arg name="servo_max_torque" value="500.0"/>
+        <arg name="servo_pos_gain" value="0.5"/>
+        <arg name="servo_max_vel" value="0.15"/>
     </include>
 </scenario>

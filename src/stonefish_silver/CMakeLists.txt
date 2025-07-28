@@ -23,5 +23,14 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}/
 )
 
+# Install Python modules
+ament_python_install_package(${PROJECT_NAME})
+
+# Install the locomotion controller script
+install(PROGRAMS
+  scripts/cmd_vel_control_rotation.py scripts/robot.py scripts/robot_def.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 # This command is crucial for ROS2 packages
 ament_package()

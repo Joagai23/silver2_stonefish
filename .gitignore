@@ -19,3 +19,6 @@ install
 log
 
 .vscode
+
+# Python virtual environment
+/venv

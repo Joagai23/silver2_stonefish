@@ -1,0 +1,162 @@
+# Global parameters applied to all nodes loaded from this file
+/**:
+  ros__parameters:
+    use_sim_time: true
+
+# Specific parameters for controller_manager
+controller_manager:
+  ros__parameters:
+    update_rate: 30
+    # use_sim_time: true  # <-- REMOVED/COMMENTED OUT from here
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    forward_velocity_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    forward_effort_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    joint_trajectory_position_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    pid_position_controller:
+      type: position_controllers/JointGroupPositionController
+      
+
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - coxa_joint_0
+      - femur_joint_0
+      - tibia_joint_0
+      - coxa_joint_1
+      - femur_joint_1
+      - tibia_joint_1
+      - coxa_joint_2
+      - femur_joint_2
+      - tibia_joint_2
+      - coxa_joint_3
+      - femur_joint_3
+      - tibia_joint_3
+      - coxa_joint_4
+      - femur_joint_4
+      - tibia_joint_4
+      - coxa_joint_5
+      - femur_joint_5
+      - tibia_joint_5
+
+    interface_name: position
+
+forward_velocity_controller:
+  ros__parameters:
+    joints:
+      - coxa_joint_0
+      - femur_joint_0
+      - tibia_joint_0
+      - coxa_joint_1
+      - femur_joint_1
+      - tibia_joint_1
+      - coxa_joint_2
+      - femur_joint_2
+      - tibia_joint_2
+      - coxa_joint_3
+      - femur_joint_3
+      - tibia_joint_3
+      - coxa_joint_4
+      - femur_joint_4
+      - tibia_joint_4
+      - coxa_joint_5
+      - femur_joint_5
+      - tibia_joint_5
+
+    interface_name: velocity
+
+forward_effort_controller:
+  ros__parameters:
+    joints:
+      - coxa_joint_0
+      - femur_joint_0
+      - tibia_joint_0
+      - coxa_joint_1
+      - femur_joint_1
+      - tibia_joint_1
+      - coxa_joint_2
+      - femur_joint_2
+      - tibia_joint_2
+      - coxa_joint_3
+      - femur_joint_3
+      - tibia_joint_3
+      - coxa_joint_4
+      - femur_joint_4
+      - tibia_joint_4
+      - coxa_joint_5
+      - femur_joint_5
+      - tibia_joint_5
+
+    interface_name: effort     
+
+joint_trajectory_position_controller:
+  ros__parameters:
+    joints:
+      - coxa_joint_0
+      - femur_joint_0
+      - tibia_joint_0
+      - coxa_joint_1
+      - femur_joint_1
+      - tibia_joint_1
+      - coxa_joint_2
+      - femur_joint_2
+      - tibia_joint_2
+      - coxa_joint_3
+      - femur_joint_3
+      - tibia_joint_3
+      - coxa_joint_4
+      - femur_joint_4
+      - tibia_joint_4
+      - coxa_joint_5
+      - femur_joint_5
+      - tibia_joint_5
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      #- velocity
+      #- effort
+
+pid_position_controller:
+  ros__parameters:
+    joints:
+      - coxa_joint_0
+      - femur_joint_0
+      - tibia_joint_0
+      - coxa_joint_1
+      - femur_joint_1
+      - tibia_joint_1
+      - coxa_joint_2
+      - femur_joint_2
+      - tibia_joint_2
+      - coxa_joint_3
+      - femur_joint_3
+      - tibia_joint_3
+      - coxa_joint_4
+      - femur_joint_4
+      - tibia_joint_4
+      - coxa_joint_5
+      - femur_joint_5
+      - tibia_joint_5
+
+    action_monitor_rate: 20.0 # Defaults to 20
+
+    allow_partial_joints_goal: false # Defaults to false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      stopped_velocity_tolerance: 0.01 # Defaults to 0.01
+      goal_time: 0.0 # Defaults to 0.0 (start immediately)

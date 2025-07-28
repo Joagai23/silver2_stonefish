@@ -1,15 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(stonefish_silver)
 
-# Set C++ standard
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 # Find necessary ROS2 and Stonefish packages
-find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
 find_package(stonefish_ros2 REQUIRED)
-find_package(ament_index_cpp REQUIRED)
 find_package(Stonefish REQUIRED) # This is for the core Stonefish library
 
 # Install the launch directory

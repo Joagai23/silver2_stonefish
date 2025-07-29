@@ -55,7 +55,7 @@ class OmnidirectionalGaitController(Node):
 
         self.joint_state_subscriber = self.create_subscription(JointState, '/joint_states', self.joint_state_subscriber_callback, 10)
         self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
-        self.pid_pos_publisher = self.create_publisher(Float64MultiArray, '/pid_position_controller/commands', 10)
+        self.pid_pos_publisher = self.create_publisher(Float64MultiArray, '/position_controller', 10)
 
     def joint_state_subscriber_callback(self, msg):
         joint_position_dict = dict(zip(msg.name, msg.position))
@@ -69,6 +69,8 @@ class OmnidirectionalGaitController(Node):
         self.latest_cmd = msg
 
     def change_configuration_loop(self, Q_target):
+        print("Current Q: ", self.Q_current)
+        print("Target Q: ", Q_target)
         Q_cc, _, Admiss_cc, nstep_cc, ctrl_timestep = self.robot.change_configuration(Q_target, self.Q_current)
         if not all(Admiss_cc):
             self.get_logger().warn("Configuration change outside workspace")
@@ -79,6 +81,7 @@ class OmnidirectionalGaitController(Node):
                 break
             msg = Float64MultiArray()
             msg.data = Q_cc[:, i].tolist()
+            # Change from Array to Joint State goes here
             self.pid_pos_publisher.publish(msg)
             time.sleep(ctrl_timestep)
 
@@ -144,6 +147,7 @@ class OmnidirectionalGaitController(Node):
                     break
                 msg = Float64MultiArray()
                 msg.data = Q_omni[:, step].tolist()
+                # Change from Array to Joint State goes here
                 self.pid_pos_publisher.publish(msg)
                 time.sleep(ctrl_timestep)
 

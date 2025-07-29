@@ -3,15 +3,15 @@
     <!-- Robot Definition -->
     <robot name="$(arg robot_name)" fixed="false" self_collisions="false">     
         <!-- Main Body -->
-        <world_transform xyz="0.0 0.0 -1.5" rpy="0.0 0.0 0.0"/>
+        <world_transform xyz="0.0 0.0 -4.5" rpy="0.0 0.0 0.0"/>
         <base_link name="MainBody" type="model" physics="submerged">
             <physical>
                 <mesh filename="Body.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="$(arg main_body_mass)"/>
         </base_link>
         
         <!-- Leg 0 -->
@@ -20,10 +20,10 @@
             <physical>
                 <mesh filename="Coxa.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.301"/>
         </link>
         <joint name="Joint_L0_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -41,10 +41,10 @@
             <physical>
                 <mesh filename="Femur.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.501"/>
         </link>
         <joint name="Joint_L0_Femur" type="revolute">
             <parent name="Coxa_L0"/>
@@ -62,10 +62,10 @@
             <physical>
                 <mesh filename="Tibia.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.401"/>
         </link>
         <joint name="Joint_L0_Tibia" type="revolute">
             <parent name="Femur_L0"/>
@@ -85,10 +85,10 @@
             <physical>
                 <mesh filename="Coxa.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.301"/>
         </link>
         <joint name="Joint_L1_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -106,10 +106,10 @@
             <physical>
                 <mesh filename="Femur.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.501"/>
         </link>
         <joint name="Joint_L1_Femur" type="revolute">
             <parent name="Coxa_L1"/>
@@ -127,10 +127,10 @@
             <physical>
                 <mesh filename="Tibia.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.401"/>
         </link>
         <joint name="Joint_L1_Tibia" type="revolute">
             <parent name="Femur_L1"/>
@@ -150,10 +150,10 @@
             <physical>
                 <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.301"/>
         </link>
         <joint name="Joint_L2_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -171,10 +171,10 @@
             <physical>
                 <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.501"/>
         </link>
         <joint name="Joint_L2_Femur" type="revolute">
             <parent name="Coxa_L2"/>
@@ -192,10 +192,10 @@
             <physical>
                 <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.401"/>
         </link>
         <joint name="Joint_L2_Tibia" type="revolute">
             <parent name="Femur_L2"/>
@@ -215,10 +215,10 @@
             <physical>
                 <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.301"/>
         </link>
         <joint name="Joint_L3_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -236,10 +236,10 @@
             <physical>
                 <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.501"/>
         </link>
         <joint name="Joint_L3_Femur" type="revolute">
             <parent name="Coxa_L3"/>
@@ -257,10 +257,10 @@
             <physical>
                 <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.401"/>
         </link>
         <joint name="Joint_L3_Tibia" type="revolute">
             <parent name="Femur_L3"/>
@@ -280,10 +280,10 @@
             <physical>
                 <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.301"/>
         </link>
         <joint name="Joint_L4_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -301,10 +301,10 @@
             <physical>
                 <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.501"/>
         </link>
         <joint name="Joint_L4_Femur" type="revolute">
             <parent name="Coxa_L4"/>
@@ -322,10 +322,10 @@
             <physical>
                 <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.401"/>
         </link>
         <joint name="Joint_L4_Tibia" type="revolute">
             <parent name="Femur_L4"/>
@@ -345,10 +345,10 @@
             <physical>
                 <mesh filename="Coxa.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.301"/>
         </link>
         <joint name="Joint_L5_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -366,10 +366,10 @@
             <physical>
                 <mesh filename="Femur.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.501"/>
         </link>
         <joint name="Joint_L5_Femur" type="revolute">
             <parent name="Coxa_L5"/>
@@ -387,10 +387,10 @@
             <physical>
                 <mesh filename="Tibia.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <thickness value="0.005"/>
             </physical>
-            <material name="LightAluminium"/>
+            <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="0.401"/>
         </link>
         <joint name="Joint_L5_Tibia" type="revolute">
             <parent name="Femur_L5"/>
@@ -406,6 +406,6 @@
 
         <!-- Rename publisher to "/joint_states" to mimic "ros2_control" functionality-->
         <ros_publisher servos="/joint_states"/>
-        <ros_subscriber servos="/$(arg robot_name)/joint_setpoints"/>
+        <ros_subscriber servos="/joint_setpoints"/>
     </robot>
 </scenario>

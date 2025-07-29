@@ -1,10 +1,9 @@
 from launch_ros.substitutions import FindPackageShare
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, RegisterEventHandler
+from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import PathJoinSubstitution
 from launch_ros.actions import Node
-from launch.event_handlers import OnProcessExit
 
 def generate_launch_description():
 
@@ -27,13 +26,6 @@ def generate_launch_description():
         }.items()
     )
 
-    # PID Position Controller
-    pid_position_controller_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["pid_position_controller", "--controller-manager", "/controller_manager"],
-    )
-
     # Locomotion Controller Node
     locomotion_node = Node(
         package="stonefish_silver",
@@ -44,6 +36,5 @@ def generate_launch_description():
 
     return LaunchDescription([
         stonefish_sim_launch,
-        pid_position_controller_spawner,
-        locomotion_node
+        #locomotion_node
     ])

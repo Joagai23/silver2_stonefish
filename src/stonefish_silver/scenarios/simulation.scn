@@ -2,19 +2,26 @@
 <scenario> 
     <!-- Physical materials -->
     <materials>
-        <material name="LightAluminium" density="10.0" restitution="0.8"/>
-        <material name="Steel" density="7891.0" restitution="0.9"/>
-        <friction_table>
-            <friction material1="LightAluminium" material2="LightAluminium" static="0.7" dynamic="0.5"/>
-            <friction material1="Steel" material2="Steel" static="0.4" dynamic="0.2"/>
-            <friction material1="LightAluminium" material2="Steel" static="0.6" dynamic="0.4"/>
-        </friction_table>
-    </materials>
+		<material name="Neutral" density="1000.0" restitution="0.1"/>
+		<material name="Rock" density="3000.0" restitution="0.8"/>
+		<material name="Fiberglass" density="1500.0" restitution="0.3"/>
+		<material name="Aluminium" density="2710.0" restitution="0.5"/>
+		<friction_table>
+			<friction material1="Neutral" material2="Neutral" static="0.5" dynamic="0.2"/>
+			<friction material1="Neutral" material2="Rock" static="0.2" dynamic="0.1"/>
+			<friction material1="Neutral" material2="Fiberglass" static="0.5" dynamic="0.2"/>
+			<friction material1="Neutral" material2="Aluminium" static="0.1" dynamic="0.02"/>
+			<friction material1="Rock" material2="Rock" static="0.9" dynamic="0.7"/>
+			<friction material1="Rock" material2="Fiberglass" static="0.6" dynamic="0.4"/>
+			<friction material1="Rock" material2="Aluminium" static="0.6" dynamic="0.3"/>
+			<friction material1="Fiberglass" material2="Fiberglass" static="0.5" dynamic="0.2"/>
+			<friction material1="Fiberglass" material2="Aluminium" static="0.5" dynamic="0.2"/>
+			<friction material1="Aluminium" material2="Aluminium" static="0.8" dynamic="0.5"/>
+		</friction_table>
+	</materials>
     
     <!-- Graphical materials -->
     <looks>
-        <look name="Gray" gray="0.5" roughness="0.3" metalness="0.2"/>
-        <look name="Red" rgb="1.0 0.0 0.0" roughness="0.1"/>
         <look name="Sand" rgb="0.7 0.7 0.5" roughness="0.9" normal_map="sand_normal.png"/>
         <look name="Silver" rgb="1.0 1.0 1.0" roughness="1.0" texture="silver_uv.png"/>
     </looks>
@@ -22,46 +29,44 @@
     <!-- Create environment -->
     <environment> 
         <ned latitude="40.0" longitude="3.0"/>
-        <!--
+        
         <ocean>
-            <water density="1031.0" jerlov="0.2" temperature="15.0"/>
+            <water density="1.0" jerlov="0.2" temperature="15.0"/>
             <waves height="0.0"/>
             <particles enabled="true"/>
         </ocean>
-        -->
+        
         <atmosphere>
             <sun azimuth="45.0" elevation="90.0"/>
         </atmosphere>
     </environment>
 
-
-    <!-- Create lights-->
+    <!-- Create lights -->
     <light name="Omni">
         <specs radius="0.2" illuminance="10000.0"/>
         <color rgb="0.2 0.3 1.0"/>
         <world_transform xyz="1.0 5.0 -10.0" rpy="0.0 0.0 0.0"/>
     </light>
 
-    <!-- Create terrain-->
+    <!-- Create terrain -->
     <static name="Seabed" type="terrain">
         <height_map filename="terrain.png"/>
         <dimensions scalex="1.0" scaley="1.0" height="5.0"/>
-        <material name="Steel"/>
+        <material name="Rock"/>
         <look name="Sand" uv_scale="5.0"/>
         <world_transform xyz="0.0 0.0 15.0" rpy="0.0 0.0 0.0"/>
     </static>
 
-    <!-- Create hard-surface terrain -->
+    <!-- Create hard-surface terrain 
     <static name="Floor" type="plane">
-        <material name="Steel"/>
+        <material name="Rock"/>
         <look name="Gray"/>
         <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-    </static>
+    </static>-->
 
     <!-- Create SILVER2 Robot -->
     <include file="$(find stonefish_silver)/scenarios/robot.scn">
         <arg name="robot_name" value="silver2"/>
-        <arg name="main_body_mass" value="140.0"/>
         <arg name="servo_max_torque" value="500.0"/>
         <arg name="servo_pos_gain" value="0.5"/>
         <arg name="servo_max_vel" value="0.15"/>

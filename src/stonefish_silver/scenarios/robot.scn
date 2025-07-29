@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <scenario>
     <!-- Robot Definition -->
-    <robot name="$(arg silver_robot)" fixed="false" self_collisions="false">     
+    <robot name="$(arg robot_name)" fixed="false" self_collisions="false">     
         <!-- Main Body -->
         <world_transform xyz="0.0 0.0 -1.5" rpy="0.0 0.0 0.0"/>
         <base_link name="MainBody" type="model" physics="submerged">
@@ -404,7 +404,8 @@
             <initial position="-2.3"/>
         </actuator>
 
-        <ros_publisher servos="/joint_state"/>
-        <ros_subscriber servos="/joint_setpoints"/>
+        <!-- Rename publisher to "/joint_states" to mimic "ros2_control" functionality-->
+        <ros_publisher servos="/joint_states"/>
+        <ros_subscriber servos="/$(arg robot_name)/joint_setpoints"/>
     </robot>
 </scenario>

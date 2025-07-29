@@ -20,33 +20,18 @@ def generate_launch_description():
         launch_arguments = {
             'simulation_data' : PathJoinSubstitution([FindPackageShare('stonefish_silver'), 'data']),
             'scenario_desc' : PathJoinSubstitution([FindPackageShare('stonefish_silver'), 'scenarios', 'simulation.scn']),
-            'simulation_rate' : '500.0',
+            'simulation_rate' : '100.0',
             'window_res_x' : '1200',
             'window_res_y' : '900',
             'rendering_quality' : 'high'
         }.items()
     )
 
-    # Joint State Broadcaster Spawner (Might not be needed)
-    joint_state_broadcaster_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
-    )
-
-    # PID Position Controller Spawner
+    # PID Position Controller
     pid_position_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["pid_position_controller", "--controller-manager", "/controller_manager"],
-    )
-
-    # Delay the PID controller until the joint_state_broadcaster is running
-    delayed_pid_controller = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=joint_state_broadcaster_spawner,
-            on_exit=[pid_position_controller_spawner],
-        )
     )
 
     # Locomotion Controller Node
@@ -59,7 +44,6 @@ def generate_launch_description():
 
     return LaunchDescription([
         stonefish_sim_launch,
-        joint_state_broadcaster_spawner,
-        delayed_pid_controller,
+        pid_position_controller_spawner,
         locomotion_node
     ])

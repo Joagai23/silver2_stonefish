@@ -45,12 +45,12 @@ class OmnidirectionalGaitController(Node):
         self.Q_current = robot.static_poses_pos['dragon']
 
         self.joint_order = [
-            'coxa_joint_0', 'femur_joint_0', 'tibia_joint_0',
-            'coxa_joint_1', 'femur_joint_1', 'tibia_joint_1',
-            'coxa_joint_2', 'femur_joint_2', 'tibia_joint_2',
-            'coxa_joint_3', 'femur_joint_3', 'tibia_joint_3',
-            'coxa_joint_4', 'femur_joint_4', 'tibia_joint_4',
-            'coxa_joint_5', 'femur_joint_5', 'tibia_joint_5'
+            'silver2/Joint_L0_Coxa', 'silver2/Joint_L0_Femur', 'silver2/Joint_L0_Tibia',
+            'silver2/Joint_L1_Coxa', 'silver2/Joint_L1_Femur', 'silver2/Joint_L1_Tibia',
+            'silver2/Joint_L2_Coxa', 'silver2/Joint_L2_Femur', 'silver2/Joint_L2_Tibia',
+            'silver2/Joint_L3_Coxa', 'silver2/Joint_L3_Femur', 'silver2/Joint_L3_Tibia',
+            'silver2/Joint_L4_Coxa', 'silver2/Joint_L4_Femur', 'silver2/Joint_L4_Tibia',
+            'silver2/Joint_L5_Coxa', 'silver2/Joint_L5_Femur', 'silver2/Joint_L5_Tibia',
         ]
 
         self.joint_state_subscriber = self.create_subscription(JointState, '/joint_states', self.joint_state_subscriber_callback, 10)

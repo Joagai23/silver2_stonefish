@@ -3,27 +3,31 @@
     <!-- Robot Definition -->
     <robot name="$(arg robot_name)" fixed="false" self_collisions="false">     
         <!-- Main Body -->
-        <world_transform xyz="0.0 0.0 -4.5" rpy="0.0 0.0 0.0"/>
-        <base_link name="MainBody" type="model" physics="submerged">
+        <world_transform xyz="0.0 0.0 -1.5" rpy="0.0 0.0 0.0"/>
+        <base_link name="MainBody" type="model" physics="surface">
             <physical>
                 <mesh filename="Body.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="140.0"/>
+            <inertia xyz="2.91 4.58 5.40"/>
+            <cg xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </base_link>
-        
+
+
         <!-- Leg 0 -->
         <!-- Coxa L0 -->
-        <link name="Coxa_L0" type="model" physics="submerged">
+        <link name="Coxa_L0" type="model" physics="surface">
             <physical>
                 <mesh filename="Coxa.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
+            <inertia xyz="0.075 0.075 0.0875"/>
         </link>
         <joint name="Joint_L0_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -37,14 +41,15 @@
             <initial position="0.75"/>
         </actuator>
         <!-- Femur L0 -->
-        <link name="Femur_L0" type="model" physics="submerged">
+        <link name="Femur_L0" type="model" physics="surface">
             <physical>
                 <mesh filename="Femur.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L0_Femur" type="revolute">
             <parent name="Coxa_L0"/>
@@ -58,14 +63,15 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L0 -->
-        <link name="Tibia_L0" type="model" physics="submerged">
+        <link name="Tibia_L0" type="model" physics="surface">
             <physical>
                 <mesh filename="Tibia.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L0_Tibia" type="revolute">
             <parent name="Femur_L0"/>
@@ -81,14 +87,15 @@
 
         <!-- Leg 1 -->
         <!-- Coxa L1 -->
-        <link name="Coxa_L1" type="model" physics="submerged">
+        <link name="Coxa_L1" type="model" physics="surface">
             <physical>
                 <mesh filename="Coxa.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
+            <inertia xyz="0.075 0.075 0.0875"/>
         </link>
         <joint name="Joint_L1_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -102,14 +109,15 @@
             <initial position="0.0"/>
         </actuator>
         <!-- Femur L1 -->
-        <link name="Femur_L1" type="model" physics="submerged">
+        <link name="Femur_L1" type="model" physics="surface">
             <physical>
                 <mesh filename="Femur.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L1_Femur" type="revolute">
             <parent name="Coxa_L1"/>
@@ -123,14 +131,15 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L1 -->
-        <link name="Tibia_L1" type="model" physics="submerged">
+        <link name="Tibia_L1" type="model" physics="surface">
             <physical>
                 <mesh filename="Tibia.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L1_Tibia" type="revolute">
             <parent name="Femur_L1"/>
@@ -146,14 +155,15 @@
 
         <!-- Leg 2 -->
         <!-- Coxa L2 -->
-        <link name="Coxa_L2" type="model" physics="submerged">
+        <link name="Coxa_L2" type="model" physics="surface">
             <physical>
                 <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
+            <inertia xyz="0.075 0.075 0.0875"/>
         </link>
         <joint name="Joint_L2_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -167,14 +177,15 @@
             <initial position="-0.75"/>
         </actuator>
         <!-- Femur L2 -->
-        <link name="Femur_L2" type="model" physics="submerged">
+        <link name="Femur_L2" type="model" physics="surface">
             <physical>
                 <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L2_Femur" type="revolute">
             <parent name="Coxa_L2"/>
@@ -188,14 +199,15 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L2 -->
-        <link name="Tibia_L2" type="model" physics="submerged">
+        <link name="Tibia_L2" type="model" physics="surface">
             <physical>
                 <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L2_Tibia" type="revolute">
             <parent name="Femur_L2"/>
@@ -211,14 +223,15 @@
 
         <!-- Leg 3 -->
         <!-- Coxa L3 -->
-        <link name="Coxa_L3" type="model" physics="submerged">
+        <link name="Coxa_L3" type="model" physics="surface">
             <physical>
                 <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
+            <inertia xyz="0.075 0.075 0.0875"/>
         </link>
         <joint name="Joint_L3_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -232,14 +245,15 @@
             <initial position="-0.75"/>
         </actuator>
         <!-- Femur L3 -->
-        <link name="Femur_L3" type="model" physics="submerged">
+        <link name="Femur_L3" type="model" physics="surface">
             <physical>
                 <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L3_Femur" type="revolute">
             <parent name="Coxa_L3"/>
@@ -253,14 +267,15 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L3 -->
-        <link name="Tibia_L3" type="model" physics="submerged">
+        <link name="Tibia_L3" type="model" physics="surface">
             <physical>
                 <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L3_Tibia" type="revolute">
             <parent name="Femur_L3"/>
@@ -276,14 +291,15 @@
 
         <!-- Leg 4 -->
         <!-- Coxa L4 -->
-        <link name="Coxa_L4" type="model" physics="submerged">
+        <link name="Coxa_L4" type="model" physics="surface">
             <physical>
                 <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
+            <inertia xyz="0.075 0.075 0.0875"/>
         </link>
         <joint name="Joint_L4_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -297,14 +313,15 @@
             <initial position="0.0"/>
         </actuator>
         <!-- Femur L4 -->
-        <link name="Femur_L4" type="model" physics="submerged">
+        <link name="Femur_L4" type="model" physics="surface">
             <physical>
                 <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L4_Femur" type="revolute">
             <parent name="Coxa_L4"/>
@@ -318,14 +335,15 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L4 -->
-        <link name="Tibia_L4" type="model" physics="submerged">
+        <link name="Tibia_L4" type="model" physics="surface">
             <physical>
                 <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L4_Tibia" type="revolute">
             <parent name="Femur_L4"/>
@@ -341,14 +359,15 @@
 
         <!-- Leg 5 -->
         <!-- Coxa L5 -->
-        <link name="Coxa_L5" type="model" physics="submerged">
+        <link name="Coxa_L5" type="model" physics="surface">
             <physical>
                 <mesh filename="Coxa.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.301"/>
+            <inertia xyz="0.075 0.075 0.0875"/> 
         </link>
         <joint name="Joint_L5_Coxa" type="revolute">
             <parent name="MainBody"/>
@@ -362,14 +381,15 @@
             <initial position="0.75"/>
         </actuator>
         <!-- Femur L5 -->
-        <link name="Femur_L5" type="model" physics="submerged">
+        <link name="Femur_L5" type="model" physics="surface">
             <physical>
                 <mesh filename="Femur.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.501"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L5_Femur" type="revolute">
             <parent name="Coxa_L5"/>
@@ -383,14 +403,15 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L5 -->
-        <link name="Tibia_L5" type="model" physics="submerged">
+        <link name="Tibia_L5" type="model" physics="surface">
             <physical>
                 <mesh filename="Tibia.obj" scale="1.0"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <thickness value="0.005"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
+            <mass value="0.401"/>
+            <inertia xyz="0.1 0.05 0.1"/>
         </link>
         <joint name="Joint_L5_Tibia" type="revolute">
             <parent name="Femur_L5"/>

@@ -29,13 +29,11 @@
     <!-- Create environment -->
     <environment> 
         <ned latitude="40.0" longitude="3.0"/>
-        
         <ocean>
-            <water density="1.0" jerlov="0.2" temperature="15.0"/>
+            <water density="1035.0" jerlov="0.2" temperature="15.0"/>
             <waves height="0.0"/>
             <particles enabled="true"/>
         </ocean>
-        
         <atmosphere>
             <sun azimuth="45.0" elevation="90.0"/>
         </atmosphere>

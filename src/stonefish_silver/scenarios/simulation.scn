@@ -52,19 +52,15 @@
         <dimensions scalex="1.0" scaley="1.0" height="5.0"/>
         <material name="Rock"/>
         <look name="Sand" uv_scale="5.0"/>
-        <world_transform xyz="0.0 0.0 15.0" rpy="0.0 0.0 0.0"/>
+        <world_transform xyz="0.0 0.0 12.5" rpy="0.0 0.0 0.0"/>
     </static>
-
-    <!-- Create hard-surface terrain 
-    <static name="Floor" type="plane">
-        <material name="Rock"/>
-        <look name="Gray"/>
-        <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-    </static>-->
 
     <!-- Create SILVER2 Robot -->
     <include file="$(find stonefish_silver)/scenarios/robot.scn">
+        <!-- Instantiation params -->
         <arg name="robot_name" value="silver2"/>
+        <arg name="robot_pos" value="0.0 0.0 0.0"/>
+        <!-- Servomotor params-->
         <arg name="servo_max_torque" value="500.0"/>
         <arg name="servo_pos_gain" value="0.5"/>
         <arg name="servo_max_vel" value="0.15"/>

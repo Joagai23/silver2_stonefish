@@ -53,9 +53,19 @@ class OmnidirectionalGaitController(Node):
             'silver2/Joint_L5_Coxa', 'silver2/Joint_L5_Femur', 'silver2/Joint_L5_Tibia',
         ]
 
+        # Initial State Test v2.0
+        self.clean_hardcoded_order = [
+            0.75, 0.8, 2.3, 
+            0.0, 0.8, 2.3,
+            -0.75, 0.8, 2.3, 
+            -0.75, 0.8, 2.3,
+            0.0, 0.8, 2.3, 
+            0.75, 0.8, 2.3,
+        ]
+
         self.joint_state_subscriber = self.create_subscription(JointState, '/joint_states', self.joint_state_subscriber_callback, 10)
         self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
-        self.pid_pos_publisher = self.create_publisher(Float64MultiArray, '/position_controller', 10)
+        self.pid_pos_publisher = self.create_publisher(Float64MultiArray, '/joint_setpoints', 10)
 
     def joint_state_subscriber_callback(self, msg):
         joint_position_dict = dict(zip(msg.name, msg.position))
@@ -66,12 +76,14 @@ class OmnidirectionalGaitController(Node):
                 self.get_logger().warn(f"Joint {joint_name} not found in message")
 
     def cmd_vel_callback(self, msg):
+        self.get_logger().warn("CMD VEL CALLBACK!")
         self.latest_cmd = msg
 
     def change_configuration_loop(self, Q_target):
-        print("Current Q: ", self.Q_current)
-        print("Target Q: ", Q_target)
-        Q_cc, _, Admiss_cc, nstep_cc, ctrl_timestep = self.robot.change_configuration(Q_target, self.Q_current)
+        # print("Current Q: ", self.Q_current)
+        self.get_logger().warn(f"Current Q: {self.clean_hardcoded_order}")
+        self.get_logger().warn(f"Target Q: {Q_target}")
+        Q_cc, _, Admiss_cc, nstep_cc, ctrl_timestep = self.robot.change_configuration(Q_target, self.clean_hardcoded_order)
         if not all(Admiss_cc):
             self.get_logger().warn("Configuration change outside workspace")
             return

@@ -76,13 +76,13 @@
         <joint name="Joint_L0_Tibia" type="revolute">
             <parent name="Femur_L0"/>
             <child name="Tibia_L0"/>
-            <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
+            <origin xyz="1.85 -0.04 0.23" rpy="0.0 1.70 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L0_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L0_Tibia"/>
-            <initial position="-2.3"/>
+            <initial position="2.3"/>
         </actuator>
 
         <!-- Leg 1 -->
@@ -144,13 +144,13 @@
         <joint name="Joint_L1_Tibia" type="revolute">
             <parent name="Femur_L1"/>
             <child name="Tibia_L1"/>
-            <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
+            <origin xyz="1.85 -0.04 0.23" rpy="0.0 1.70 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L1_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L1_Tibia"/>
-            <initial position="-2.3"/>
+            <initial position="2.3"/>
         </actuator>
 
         <!-- Leg 2 -->
@@ -212,13 +212,13 @@
         <joint name="Joint_L2_Tibia" type="revolute">
             <parent name="Femur_L2"/>
             <child name="Tibia_L2"/>
-            <origin xyz="1.85 -0.03 0.23" rpy="0.0 0.0 0.0"/>
+            <origin xyz="1.85 -0.03 0.23" rpy="0.0 1.70 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L2_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L2_Tibia"/>
-            <initial position="-2.3"/>
+            <initial position="2.3"/>
         </actuator>
 
         <!-- Leg 3 -->
@@ -280,13 +280,13 @@
         <joint name="Joint_L3_Tibia" type="revolute">
             <parent name="Femur_L3"/>
             <child name="Tibia_L3"/>
-            <origin xyz="1.85 -0.03 0.23" rpy="0.0 0.0 0.0"/>
+            <origin xyz="1.85 -0.03 0.23" rpy="0.0 1.70 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L3_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L3_Tibia"/>
-            <initial position="-2.3"/>
+            <initial position="2.3"/>
         </actuator>
 
         <!-- Leg 4 -->
@@ -348,13 +348,13 @@
         <joint name="Joint_L4_Tibia" type="revolute">
             <parent name="Femur_L4"/>
             <child name="Tibia_L4"/>
-            <origin xyz="1.85 -0.03 0.23" rpy="0.0 0.0 0.0"/>
+            <origin xyz="1.85 -0.03 0.23" rpy="0.0 1.70 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L4_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L4_Tibia"/>
-            <initial position="-2.3"/>
+            <initial position="2.3"/>
         </actuator>
 
         <!-- Leg 5 -->
@@ -416,13 +416,13 @@
         <joint name="Joint_L5_Tibia" type="revolute">
             <parent name="Femur_L5"/>
             <child name="Tibia_L5"/>
-            <origin xyz="1.85 -0.04 0.23" rpy="0.0 0.0 0.0"/>
+            <origin xyz="1.85 -0.04 0.23" rpy="0.0 1.70 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
         <actuator name="Servo_L5_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
             <joint name="Joint_L5_Tibia"/>
-            <initial position="-2.3"/>
+            <initial position="2.3"/>
         </actuator>
 
         <!-- Rename publisher to "/joint_states" to mimic "ros2_control" functionality-->

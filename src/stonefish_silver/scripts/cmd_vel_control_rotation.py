@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Author: Giacomo Picardi (modified for cmd_vel integration)
+# Maintainer: Jorge Aguirregomezcorta Aina (modified for Stonefish Simulator)
 
 import os, sys, time, signal
 import numpy as np
@@ -53,19 +54,13 @@ class OmnidirectionalGaitController(Node):
             'silver2/Joint_L5_Coxa', 'silver2/Joint_L5_Femur', 'silver2/Joint_L5_Tibia',
         ]
 
-        # Initial State Test v2.0
-        self.clean_hardcoded_order = [
-            0.75, 0.8, 2.3, 
-            0.0, 0.8, 2.3,
-            -0.75, 0.8, 2.3, 
-            -0.75, 0.8, 2.3,
-            0.0, 0.8, 2.3, 
-            0.75, 0.8, 2.3,
-        ]
-
         self.joint_state_subscriber = self.create_subscription(JointState, '/joint_states', self.joint_state_subscriber_callback, 10)
         self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
-        self.pid_pos_publisher = self.create_publisher(Float64MultiArray, '/joint_setpoints', 10)
+        self.pid_pos_publisher = self.create_publisher(JointState, '/joint_setpoints', 10)
+        self.timestep = 0.1
+
+        # Fix Tibia Offset (Stonefish Only)
+        self.tibia_zero_pos = 2.3
 
     def joint_state_subscriber_callback(self, msg):
         joint_position_dict = dict(zip(msg.name, msg.position))
@@ -80,10 +75,9 @@ class OmnidirectionalGaitController(Node):
         self.latest_cmd = msg
 
     def change_configuration_loop(self, Q_target):
-        # print("Current Q: ", self.Q_current)
-        self.get_logger().warn(f"Current Q: {self.clean_hardcoded_order}")
+        self.get_logger().warn(f"Current Q: {self.Q_current}")
         self.get_logger().warn(f"Target Q: {Q_target}")
-        Q_cc, _, Admiss_cc, nstep_cc, ctrl_timestep = self.robot.change_configuration(Q_target, self.clean_hardcoded_order)
+        Q_cc, _, Admiss_cc, nstep_cc, ctrl_timestep = self.robot.change_configuration(Q_target, self.Q_current)
         if not all(Admiss_cc):
             self.get_logger().warn("Configuration change outside workspace")
             return
@@ -94,8 +88,7 @@ class OmnidirectionalGaitController(Node):
             msg = Float64MultiArray()
             msg.data = Q_cc[:, i].tolist()
             # Change from Array to Joint State goes here
-            self.pid_pos_publisher.publish(msg)
-            time.sleep(ctrl_timestep)
+            self.publish_joint_setpoint(msg.data, ctrl_timestep)
 
     def omni_loop(self):
         i = 0
@@ -160,10 +153,51 @@ class OmnidirectionalGaitController(Node):
                 msg = Float64MultiArray()
                 msg.data = Q_omni[:, step].tolist()
                 # Change from Array to Joint State goes here
-                self.pid_pos_publisher.publish(msg)
-                time.sleep(ctrl_timestep)
-
+                self.publish_joint_setpoint(msg.data, ctrl_timestep)
+                
             i += 1
+
+    # Create ROS2 JointState Message using Position Array
+    def publish_joint_setpoint(self, pos_array, timestep):
+        self.get_logger().warn(f"Current Q: {self.Q_current}")
+        self.get_logger().warn(f"Position Array: {pos_array}")
+        # Safety check
+        if len(pos_array) != len(self.joint_order):
+            self.get_logger().error(
+                f"Failed to convert message: "
+                f"The number of joint names ({len(self.joint_order)}) does not match "
+                f"the number of received positions ({len(pos_array)})."
+            )
+        
+        # Symmetrically flip Tibia values
+        starting_pos = 2 # Tibia Joint L0
+        step = 3 # Jump from LN -> LN+1
+        modified_pos_array = self.symmetric_difference(pos_array, starting_pos, step, self.tibia_zero_pos)
+        self.get_logger().warn(f"Modified Array: {modified_pos_array}")
+        # Create and populate Joint State
+        joint_state_msg = JointState()
+        joint_state_msg.name = self.joint_order
+        joint_state_msg.position = modified_pos_array
+        joint_state_msg.velocity = []
+        joint_state_msg.effort = []
+
+        # Publish and Wait
+        self.pid_pos_publisher.publish(joint_state_msg)
+        time.sleep(self.timestep)
+
+    # Apply a Symmetric Offset for all Tibia Values
+    def symmetric_difference(self, input_array, starting_pos, step, original_value) -> list:
+        
+        # Create array copy
+        modified_array = list(input_array)
+
+        # Iterate through copy starting at "starting_pos" with a step of "step"
+        for i in range(starting_pos, len(modified_array), step):
+            array_value = modified_array[i]
+            difference = original_value - array_value
+            modified_array[i] = original_value + difference
+        
+        return modified_array
 
 if __name__ == '__main__':
     rclpy.init()

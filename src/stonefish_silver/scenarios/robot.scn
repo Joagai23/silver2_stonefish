@@ -4,24 +4,23 @@
     <robot name="$(arg robot_name)" fixed="false" self_collisions="false">     
         <!-- Main Body -->
         <world_transform xyz="$(arg robot_pos)" rpy="0.0 0.0 0.0"/>
-        <base_link name="MainBody" type="model" physics="surface">
+        <base_link name="MainBody" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Body.obj" scale="1.0"/>
+                <mesh filename="Body.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
             <look name="Silver"/>
-            <mass value="140.0"/>
+            <mass value="10.0"/>
             <inertia xyz="2.91 4.58 5.40"/>
             <cg xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </base_link>
 
-
         <!-- Leg 0 -->
         <!-- Coxa L0 -->
-        <link name="Coxa_L0" type="model" physics="surface">
+        <link name="Coxa_L0" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Coxa.obj" scale="1.0"/>
+                <mesh filename="Coxa.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -41,9 +40,9 @@
             <initial position="0.75"/>
         </actuator>
         <!-- Femur L0 -->
-        <link name="Femur_L0" type="model" physics="surface">
+        <link name="Femur_L0" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Femur.obj" scale="1.0"/>
+                <mesh filename="Femur.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -63,9 +62,9 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L0 -->
-        <link name="Tibia_L0" type="model" physics="surface">
+        <link name="Tibia_L0" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Tibia.obj" scale="1.0"/>
+                <mesh filename="Tibia.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -87,9 +86,9 @@
 
         <!-- Leg 1 -->
         <!-- Coxa L1 -->
-        <link name="Coxa_L1" type="model" physics="surface">
+        <link name="Coxa_L1" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Coxa.obj" scale="1.0"/>
+                <mesh filename="Coxa.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -109,9 +108,9 @@
             <initial position="0.0"/>
         </actuator>
         <!-- Femur L1 -->
-        <link name="Femur_L1" type="model" physics="surface">
+        <link name="Femur_L1" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Femur.obj" scale="1.0"/>
+                <mesh filename="Femur.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -131,9 +130,9 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L1 -->
-        <link name="Tibia_L1" type="model" physics="surface">
+        <link name="Tibia_L1" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Tibia.obj" scale="1.0"/>
+                <mesh filename="Tibia.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -155,9 +154,9 @@
 
         <!-- Leg 2 -->
         <!-- Coxa L2 -->
-        <link name="Coxa_L2" type="model" physics="surface">
+        <link name="Coxa_L2" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+                <mesh filename="Coxa_Mirrored.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -177,9 +176,9 @@
             <initial position="-0.75"/>
         </actuator>
         <!-- Femur L2 -->
-        <link name="Femur_L2" type="model" physics="surface">
+        <link name="Femur_L2" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+                <mesh filename="Femur_Mirrored.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -199,9 +198,9 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L2 -->
-        <link name="Tibia_L2" type="model" physics="surface">
+        <link name="Tibia_L2" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+                <mesh filename="Tibia_Mirrored.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -223,9 +222,9 @@
 
         <!-- Leg 3 -->
         <!-- Coxa L3 -->
-        <link name="Coxa_L3" type="model" physics="surface">
+        <link name="Coxa_L3" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+                <mesh filename="Coxa_Mirrored.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -245,9 +244,9 @@
             <initial position="-0.75"/>
         </actuator>
         <!-- Femur L3 -->
-        <link name="Femur_L3" type="model" physics="surface">
+        <link name="Femur_L3" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+                <mesh filename="Femur_Mirrored.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -267,9 +266,9 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L3 -->
-        <link name="Tibia_L3" type="model" physics="surface">
+        <link name="Tibia_L3" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+                <mesh filename="Tibia_Mirrored.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -291,9 +290,9 @@
 
         <!-- Leg 4 -->
         <!-- Coxa L4 -->
-        <link name="Coxa_L4" type="model" physics="surface">
+        <link name="Coxa_L4" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+                <mesh filename="Coxa_Mirrored.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -313,9 +312,9 @@
             <initial position="0.0"/>
         </actuator>
         <!-- Femur L4 -->
-        <link name="Femur_L4" type="model" physics="surface">
+        <link name="Femur_L4" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+                <mesh filename="Femur_Mirrored.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -335,9 +334,9 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L4 -->
-        <link name="Tibia_L4" type="model" physics="surface">
+        <link name="Tibia_L4" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+                <mesh filename="Tibia_Mirrored.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -359,9 +358,9 @@
 
         <!-- Leg 5 -->
         <!-- Coxa L5 -->
-        <link name="Coxa_L5" type="model" physics="surface">
+        <link name="Coxa_L5" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Coxa.obj" scale="1.0"/>
+                <mesh filename="Coxa.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -381,9 +380,9 @@
             <initial position="0.75"/>
         </actuator>
         <!-- Femur L5 -->
-        <link name="Femur_L5" type="model" physics="surface">
+        <link name="Femur_L5" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Femur.obj" scale="1.0"/>
+                <mesh filename="Femur.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>
@@ -403,9 +402,9 @@
             <initial position="0.8"/>
         </actuator>
         <!-- Tibia L5 -->
-        <link name="Tibia_L5" type="model" physics="surface">
+        <link name="Tibia_L5" type="model" physics="surface" buoyant="true">
             <physical>
-                <mesh filename="Tibia.obj" scale="1.0"/>
+                <mesh filename="Tibia.obj" scale="1.0" convex="true"/>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </physical>
             <material name="Fiberglass"/>

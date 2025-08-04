@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<scenario>
+    <!-- Robot Definition -->
+    <robot name="$(arg robot_name)" fixed="false" self_collisions="false">
+        <world_transform xyz="$(arg robot_pos)" rpy="0.0 0.0 0.0"/>
+		<!-- Main Body -->
+        <base_link name="Main_Body" type="model" physics="submerged">
+			<physical>
+				<mesh filename="Body.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<thickness value="0.005"/>
+			</physical>
+			<visual>
+				<mesh filename="Body.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </base_link>
+
+		<!-- Leg 0 -->
+		<!-- Coxa L0 -->
+		<link name="Coxa_L0" type="model" physics="surface">
+			<physical>
+				<mesh filename="Coxa.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Coxa.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L0_Coxa" type="revolute">
+            <parent name="Main_Body"/>
+            <child name="Coxa_L0"/>
+            <origin xyz="1.62 0.98 0.28" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+
+		<!-- Leg 1 -->
+		<!-- Coxa L1 -->
+		<link name="Coxa_L1" type="model" physics="surface">
+			<physical>
+				<mesh filename="Coxa.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Coxa.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L1_Coxa" type="revolute">
+            <parent name="Main_Body"/>
+            <child name="Coxa_L1"/>
+            <origin xyz="1.62 -0.15 0.28" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+
+		<!-- Leg 2 -->
+		<!-- Coxa L2 -->
+		<link name="Coxa_L2" type="model" physics="surface">
+			<physical>
+				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L2_Coxa" type="revolute">
+            <parent name="Main_Body"/>
+            <child name="Coxa_L2"/>
+            <origin xyz="1.62 -1.27 0.28" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+
+		<!-- Leg 3 -->
+		<!-- Coxa L3 -->
+		<link name="Coxa_L3" type="model" physics="surface">
+			<physical>
+				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L3_Coxa" type="revolute">
+            <parent name="Main_Body"/>
+            <child name="Coxa_L3"/>
+            <origin xyz="-1.62 0.98 0.28" rpy="0.0 0.0 3.14"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+
+		<!-- Leg 4 -->
+		<!-- Coxa L4 -->
+		<link name="Coxa_L4" type="model" physics="surface">
+			<physical>
+				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L4_Coxa" type="revolute">
+            <parent name="Main_Body"/>
+            <child name="Coxa_L4"/>
+            <origin xyz="-1.62 -0.15 0.28" rpy="0.0 0.0 3.14"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+
+		<!-- Leg 5 -->
+		<!-- Coxa L5 -->
+		<link name="Coxa_L5" type="model" physics="surface">
+			<physical>
+				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L5_Coxa" type="revolute">
+            <parent name="Main_Body"/>
+            <child name="Coxa_L5"/>
+            <origin xyz="-1.62 -1.27 0.28" rpy="0.0 0.0 3.14"/>
+            <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+    </robot>
+</scenario>

@@ -36,5 +36,5 @@ def generate_launch_description():
 
     return LaunchDescription([
         stonefish_sim_launch,
-        locomotion_node
+        #locomotion_node
     ])

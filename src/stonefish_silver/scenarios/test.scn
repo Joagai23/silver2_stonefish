@@ -40,6 +40,46 @@
             <origin xyz="1.62 0.98 0.28" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
+		<!-- Femur L0 -->
+		<link name="Femur_L0" type="model" physics="surface">
+			<physical>
+				<mesh filename="Femur.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Femur.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L0_Femur" type="revolute">
+            <parent name="Coxa_L0"/>
+            <child name="Femur_L0"/>
+            <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+		<!-- Tibia L0 -->
+		<link name="Tibia_L0" type="model" physics="surface">
+			<physical>
+				<mesh filename="Tibia.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Tibia.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L0_Tibia" type="revolute">
+            <parent name="Femur_L0"/>
+            <child name="Tibia_L0"/>
+            <origin xyz="1.85 -0.04 0.23" rpy="0.0 1.70 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
 
 		<!-- Leg 1 -->
 		<!-- Coxa L1 -->
@@ -61,6 +101,46 @@
             <child name="Coxa_L1"/>
             <origin xyz="1.62 -0.15 0.28" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+		<!-- Femur L1 -->
+		<link name="Femur_L1" type="model" physics="surface">
+			<physical>
+				<mesh filename="Femur.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Femur.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L1_Femur" type="revolute">
+            <parent name="Coxa_L1"/>
+            <child name="Femur_L1"/>
+            <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+		<!-- Tibia L1 -->
+		<link name="Tibia_L1" type="model" physics="surface">
+			<physical>
+				<mesh filename="Tibia.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Tibia.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L1_Tibia" type="revolute">
+            <parent name="Femur_L1"/>
+            <child name="Tibia_L1"/>
+            <origin xyz="1.85 -0.04 0.23" rpy="0.0 1.70 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
         </joint>
 
 		<!-- Leg 2 -->
@@ -84,6 +164,46 @@
             <origin xyz="1.62 -1.27 0.28" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
+		<!-- Femur L2 -->
+		<link name="Femur_L2" type="model" physics="surface">
+			<physical>
+				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L2_Femur" type="revolute">
+            <parent name="Coxa_L2"/>
+            <child name="Femur_L2"/>
+            <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+		<!-- Tibia L2 -->
+		<link name="Tibia_L2" type="model" physics="surface">
+			<physical>
+				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L2_Tibia" type="revolute">
+            <parent name="Femur_L2"/>
+            <child name="Tibia_L2"/>
+            <origin xyz="1.85 -0.03 0.23" rpy="0.0 1.70 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
 
 		<!-- Leg 3 -->
 		<!-- Coxa L3 -->
@@ -105,6 +225,46 @@
             <child name="Coxa_L3"/>
             <origin xyz="-1.62 0.98 0.28" rpy="0.0 0.0 3.14"/>
             <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+		<!-- Femur L3 -->
+		<link name="Femur_L3" type="model" physics="surface">
+			<physical>
+				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L3_Femur" type="revolute">
+            <parent name="Coxa_L3"/>
+            <child name="Femur_L3"/>
+            <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+		<!-- Tibia L3 -->
+		<link name="Tibia_L3" type="model" physics="surface">
+			<physical>
+				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L3_Tibia" type="revolute">
+            <parent name="Femur_L3"/>
+            <child name="Tibia_L3"/>
+            <origin xyz="1.85 -0.03 0.23" rpy="0.0 1.70 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
         </joint>
 
 		<!-- Leg 4 -->
@@ -128,16 +288,56 @@
             <origin xyz="-1.62 -0.15 0.28" rpy="0.0 0.0 3.14"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
+		<!-- Femur L4 -->
+		<link name="Femur_L4" type="model" physics="surface">
+			<physical>
+				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L4_Femur" type="revolute">
+            <parent name="Coxa_L4"/>
+            <child name="Femur_L4"/>
+            <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+		<!-- Tibia L4 -->
+		<link name="Tibia_L4" type="model" physics="surface">
+			<physical>
+				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L4_Tibia" type="revolute">
+            <parent name="Femur_L4"/>
+            <child name="Tibia_L4"/>
+            <origin xyz="1.85 -0.03 0.23" rpy="0.0 1.70 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
 
 		<!-- Leg 5 -->
 		<!-- Coxa L5 -->
 		<link name="Coxa_L5" type="model" physics="surface">
 			<physical>
-				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Coxa.obj" scale="1.0"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Coxa.obj" scale="1.0"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="Fiberglass"/>
@@ -149,6 +349,46 @@
             <child name="Coxa_L5"/>
             <origin xyz="-1.62 -1.27 0.28" rpy="0.0 0.0 3.14"/>
             <axis xyz="0.0 0.0 1.0"/>
+        </joint>
+		<!-- Femur L5 -->
+		<link name="Femur_L5" type="model" physics="surface">
+			<physical>
+				<mesh filename="Femur.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Femur.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L5_Femur" type="revolute">
+            <parent name="Coxa_L5"/>
+            <child name="Femur_L5"/>
+            <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
+        </joint>
+		<!-- Tibia L5 -->
+		<link name="Tibia_L5" type="model" physics="surface">
+			<physical>
+				<mesh filename="Tibia.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="Tibia.obj" scale="1.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Fiberglass"/>
+			<look name="Silver"/>
+			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</link>
+		<joint name="Joint_L5_Tibia" type="revolute">
+            <parent name="Femur_L5"/>
+            <child name="Tibia_L5"/>
+            <origin xyz="1.85 -0.04 0.23" rpy="0.0 1.70 0.0"/>
+            <axis xyz="0.0 1.0 0.0"/>
         </joint>
     </robot>
 </scenario>

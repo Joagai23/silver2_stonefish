@@ -71,12 +71,9 @@ class OmnidirectionalGaitController(Node):
                 self.get_logger().warn(f"Joint {joint_name} not found in message")
 
     def cmd_vel_callback(self, msg):
-        self.get_logger().warn("CMD VEL CALLBACK!")
         self.latest_cmd = msg
 
     def change_configuration_loop(self, Q_target):
-        self.get_logger().warn(f"Current Q: {self.Q_current}")
-        self.get_logger().warn(f"Target Q: {Q_target}")
         Q_cc, _, Admiss_cc, nstep_cc, ctrl_timestep = self.robot.change_configuration(Q_target, self.Q_current)
         if not all(Admiss_cc):
             self.get_logger().warn("Configuration change outside workspace")
@@ -159,8 +156,6 @@ class OmnidirectionalGaitController(Node):
 
     # Create ROS2 JointState Message using Position Array
     def publish_joint_setpoint(self, pos_array, timestep):
-        self.get_logger().warn(f"Current Q: {self.Q_current}")
-        self.get_logger().warn(f"Position Array: {pos_array}")
         # Safety check
         if len(pos_array) != len(self.joint_order):
             self.get_logger().error(
@@ -173,7 +168,6 @@ class OmnidirectionalGaitController(Node):
         starting_pos = 2 # Tibia Joint L0
         step = 3 # Jump from LN -> LN+1
         modified_pos_array = self.symmetric_difference(pos_array, starting_pos, step, self.tibia_zero_pos)
-        self.get_logger().warn(f"Modified Array: {modified_pos_array}")
         # Create and populate Joint State
         joint_state_msg = JointState()
         joint_state_msg.name = self.joint_order

@@ -1,3 +1,6 @@
+![Silver2 Stonefish](./media/silver2_stonefish.png)
+
+---
 # Silver2 Stonefish Simulation
 Welcome to the Silver2 hexapod underwater simulation! This guide provides step-by-step instructions for launching the Stonefish-ROS 2 simulation and controlling the robot's movements using your keyboard.
 

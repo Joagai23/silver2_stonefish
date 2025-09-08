@@ -160,12 +160,7 @@ class OmnidirectionalGaitController(Node):
                 f"The number of joint names ({len(self.joint_order)}) does not match "
                 f"the number of received positions ({len(pos_array)})."
             )
-        
-        # Symmetrically flip Tibia values
-        starting_pos = 2 # Tibia Joint L0
-        step = 3 # Jump from LN -> LN+1
-        #modified_pos_array = self.symmetric_difference(pos_array, starting_pos, step, self.tibia_zero_pos)
-        # Create and populate Joint State
+    
         joint_state_msg = JointState()
         joint_state_msg.name = self.joint_order
         joint_state_msg.position = pos_array
@@ -175,20 +170,6 @@ class OmnidirectionalGaitController(Node):
         # Publish and Wait
         self.pid_pos_publisher.publish(joint_state_msg)
         time.sleep(self.timestep)
-
-    # Apply a Symmetric Offset for all Tibia Values
-    def symmetric_difference(self, input_array, starting_pos, step, original_value) -> list:
-        
-        # Create array copy
-        modified_array = list(input_array)
-
-        # Iterate through copy starting at "starting_pos" with a step of "step"
-        for i in range(starting_pos, len(modified_array), step):
-            array_value = modified_array[i]
-            difference = original_value - array_value
-            modified_array[i] = original_value + difference
-        
-        return modified_array
 
 if __name__ == '__main__':
     rclpy.init()

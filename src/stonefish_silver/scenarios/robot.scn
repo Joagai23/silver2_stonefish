@@ -6,12 +6,12 @@
 		<!-- Main Body -->
         <base_link name="Main_Body" type="model" physics="submerged">
 			<physical>
-				<mesh filename="Body.obj" scale="1.0"/>
+				<mesh filename="Body.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 				<thickness value="0.005"/>
 			</physical>
 			<visual>
-				<mesh filename="Body.obj" scale="1.0"/>
+				<mesh filename="Body.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg body_material)"/>
@@ -23,11 +23,11 @@
 		<!-- Coxa L0 -->
 		<link name="Coxa_L0" type="model" physics="surface">
 			<physical>
-				<mesh filename="Coxa.obj" scale="1.0"/>
+				<mesh filename="Coxa.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Coxa.obj" scale="1.0"/>
+				<mesh filename="Coxa.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -37,7 +37,7 @@
 		<joint name="Joint_L0_Coxa" type="revolute">
             <parent name="Main_Body"/>
             <child name="Coxa_L0"/>
-            <origin xyz="1.62 0.98 0.28" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.324 0.196 0.056" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
 		<actuator name="Servo_L0_Coxa" type="servo">
@@ -48,11 +48,11 @@
 		<!-- Femur L0 -->
 		<link name="Femur_L0" type="model" physics="surface">
 			<physical>
-				<mesh filename="Femur.obj" scale="1.0"/>
+				<mesh filename="Femur.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Femur.obj" scale="1.0"/>
+				<mesh filename="Femur.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -62,7 +62,7 @@
 		<joint name="Joint_L0_Femur" type="revolute">
             <parent name="Coxa_L0"/>
             <child name="Femur_L0"/>
-            <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.11 0.002 0.14" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L0_Femur" type="servo">
@@ -73,11 +73,11 @@
 		<!-- Tibia L0 -->
 		<link name="Tibia_L0" type="model" physics="surface">
 			<physical>
-				<mesh filename="Tibia.obj" scale="1.0"/>
+				<mesh filename="Tibia.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Tibia.obj" scale="1.0"/>
+				<mesh filename="Tibia.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -87,8 +87,8 @@
 		<joint name="Joint_L0_Tibia" type="revolute">
             <parent name="Femur_L0"/>
             <child name="Tibia_L0"/>
-            <origin xyz="1.85 -0.04 0.23" rpy="0.0 1.70 0.0"/>
-            <axis xyz="0.0 1.0 0.0"/>
+            <origin xyz="0.37 -0.008 0.046" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 -1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L0_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
@@ -100,11 +100,11 @@
 		<!-- Coxa L1 -->
 		<link name="Coxa_L1" type="model" physics="surface">
 			<physical>
-				<mesh filename="Coxa.obj" scale="1.0"/>
+				<mesh filename="Coxa.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Coxa.obj" scale="1.0"/>
+				<mesh filename="Coxa.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -114,7 +114,7 @@
 		<joint name="Joint_L1_Coxa" type="revolute">
             <parent name="Main_Body"/>
             <child name="Coxa_L1"/>
-            <origin xyz="1.62 -0.15 0.28" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.324 -0.03 0.056" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
 		<actuator name="Servo_L1_Coxa" type="servo">
@@ -125,11 +125,11 @@
 		<!-- Femur L1 -->
 		<link name="Femur_L1" type="model" physics="surface">
 			<physical>
-				<mesh filename="Femur.obj" scale="1.0"/>
+				<mesh filename="Femur.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Femur.obj" scale="1.0"/>
+				<mesh filename="Femur.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -139,7 +139,7 @@
 		<joint name="Joint_L1_Femur" type="revolute">
             <parent name="Coxa_L1"/>
             <child name="Femur_L1"/>
-            <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.11 0.002 0.14" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L1_Femur" type="servo">
@@ -150,11 +150,11 @@
 		<!-- Tibia L1 -->
 		<link name="Tibia_L1" type="model" physics="surface">
 			<physical>
-				<mesh filename="Tibia.obj" scale="1.0"/>
+				<mesh filename="Tibia.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Tibia.obj" scale="1.0"/>
+				<mesh filename="Tibia.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -164,8 +164,8 @@
 		<joint name="Joint_L1_Tibia" type="revolute">
             <parent name="Femur_L1"/>
             <child name="Tibia_L1"/>
-            <origin xyz="1.85 -0.04 0.23" rpy="0.0 1.70 0.0"/>
-            <axis xyz="0.0 1.0 0.0"/>
+            <origin xyz="0.37 -0.008 0.046" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 -1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L1_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
@@ -177,11 +177,11 @@
 		<!-- Coxa L2 -->
 		<link name="Coxa_L2" type="model" physics="surface">
 			<physical>
-				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Coxa_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Coxa_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -191,7 +191,7 @@
 		<joint name="Joint_L2_Coxa" type="revolute">
             <parent name="Main_Body"/>
             <child name="Coxa_L2"/>
-            <origin xyz="1.62 -1.27 0.28" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.324 -0.254 0.056" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
 		<actuator name="Servo_L2_Coxa" type="servo">
@@ -202,11 +202,11 @@
 		<!-- Femur L2 -->
 		<link name="Femur_L2" type="model" physics="surface">
 			<physical>
-				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Femur_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Femur_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -216,7 +216,7 @@
 		<joint name="Joint_L2_Femur" type="revolute">
             <parent name="Coxa_L2"/>
             <child name="Femur_L2"/>
-            <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.11 0.01 0.14" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L2_Femur" type="servo">
@@ -227,11 +227,11 @@
 		<!-- Tibia L2 -->
 		<link name="Tibia_L2" type="model" physics="surface">
 			<physical>
-				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Tibia_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Tibia_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -241,8 +241,8 @@
 		<joint name="Joint_L2_Tibia" type="revolute">
             <parent name="Femur_L2"/>
             <child name="Tibia_L2"/>
-            <origin xyz="1.85 -0.03 0.23" rpy="0.0 1.70 0.0"/>
-            <axis xyz="0.0 1.0 0.0"/>
+            <origin xyz="0.37 -0.006 0.046" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 -1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L2_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
@@ -254,11 +254,11 @@
 		<!-- Coxa L3 -->
 		<link name="Coxa_L3" type="model" physics="surface">
 			<physical>
-				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Coxa_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Coxa_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -268,7 +268,7 @@
 		<joint name="Joint_L3_Coxa" type="revolute">
             <parent name="Main_Body"/>
             <child name="Coxa_L3"/>
-            <origin xyz="-1.62 0.98 0.28" rpy="0.0 0.0 3.14"/>
+            <origin xyz="-0.324 0.196 0.056" rpy="0.0 0.0 3.14"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
 		<actuator name="Servo_L3_Coxa" type="servo">
@@ -279,11 +279,11 @@
 		<!-- Femur L3 -->
 		<link name="Femur_L3" type="model" physics="surface">
 			<physical>
-				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Femur_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Femur_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -293,7 +293,7 @@
 		<joint name="Joint_L3_Femur" type="revolute">
             <parent name="Coxa_L3"/>
             <child name="Femur_L3"/>
-            <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.11 0.01 0.14" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L3_Femur" type="servo">
@@ -304,11 +304,11 @@
 		<!-- Tibia L3 -->
 		<link name="Tibia_L3" type="model" physics="surface">
 			<physical>
-				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Tibia_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Tibia_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -318,8 +318,8 @@
 		<joint name="Joint_L3_Tibia" type="revolute">
             <parent name="Femur_L3"/>
             <child name="Tibia_L3"/>
-            <origin xyz="1.85 -0.03 0.23" rpy="0.0 1.70 0.0"/>
-            <axis xyz="0.0 1.0 0.0"/>
+            <origin xyz="0.37 -0.006 0.046" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 -1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L3_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
@@ -331,11 +331,11 @@
 		<!-- Coxa L4 -->
 		<link name="Coxa_L4" type="model" physics="surface">
 			<physical>
-				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Coxa_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Coxa_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Coxa_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -345,7 +345,7 @@
 		<joint name="Joint_L4_Coxa" type="revolute">
             <parent name="Main_Body"/>
             <child name="Coxa_L4"/>
-            <origin xyz="-1.62 -0.15 0.28" rpy="0.0 0.0 3.14"/>
+            <origin xyz="-0.324 -0.03 0.056" rpy="0.0 0.0 3.14"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
 		<actuator name="Servo_L4_Coxa" type="servo">
@@ -356,11 +356,11 @@
 		<!-- Femur L4 -->
 		<link name="Femur_L4" type="model" physics="surface">
 			<physical>
-				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Femur_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Femur_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Femur_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -370,7 +370,7 @@
 		<joint name="Joint_L4_Femur" type="revolute">
             <parent name="Coxa_L4"/>
             <child name="Femur_L4"/>
-            <origin xyz="0.55 0.05 0.7" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.11 0.01 0.14" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L4_Femur" type="servo">
@@ -381,11 +381,11 @@
 		<!-- Tibia L4 -->
 		<link name="Tibia_L4" type="model" physics="surface">
 			<physical>
-				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Tibia_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Tibia_Mirrored.obj" scale="1.0"/>
+				<mesh filename="Tibia_Mirrored.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -395,8 +395,8 @@
 		<joint name="Joint_L4_Tibia" type="revolute">
             <parent name="Femur_L4"/>
             <child name="Tibia_L4"/>
-            <origin xyz="1.85 -0.03 0.23" rpy="0.0 1.70 0.0"/>
-            <axis xyz="0.0 1.0 0.0"/>
+            <origin xyz="0.37 -0.006 0.046" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 -1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L4_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
@@ -408,11 +408,11 @@
 		<!-- Coxa L5 -->
 		<link name="Coxa_L5" type="model" physics="surface">
 			<physical>
-				<mesh filename="Coxa.obj" scale="1.0"/>
+				<mesh filename="Coxa.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Coxa.obj" scale="1.0"/>
+				<mesh filename="Coxa.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -422,7 +422,7 @@
 		<joint name="Joint_L5_Coxa" type="revolute">
             <parent name="Main_Body"/>
             <child name="Coxa_L5"/>
-            <origin xyz="-1.62 -1.27 0.28" rpy="0.0 0.0 3.14"/>
+            <origin xyz="-0.324 -0.254 0.056" rpy="0.0 0.0 3.14"/>
             <axis xyz="0.0 0.0 1.0"/>
         </joint>
 		<actuator name="Servo_L5_Coxa" type="servo">
@@ -433,11 +433,11 @@
 		<!-- Femur L5 -->
 		<link name="Femur_L5" type="model" physics="surface">
 			<physical>
-				<mesh filename="Femur.obj" scale="1.0"/>
+				<mesh filename="Femur.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Femur.obj" scale="1.0"/>
+				<mesh filename="Femur.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -447,7 +447,7 @@
 		<joint name="Joint_L5_Femur" type="revolute">
             <parent name="Coxa_L5"/>
             <child name="Femur_L5"/>
-            <origin xyz="0.55 0.01 0.7" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.11 0.002 0.14" rpy="0.0 0.0 0.0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L5_Femur" type="servo">
@@ -458,11 +458,11 @@
 		<!-- Tibia L5 -->
 		<link name="Tibia_L5" type="model" physics="surface">
 			<physical>
-				<mesh filename="Tibia.obj" scale="1.0"/>
+				<mesh filename="Tibia.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</physical>
 			<visual>
-				<mesh filename="Tibia.obj" scale="1.0"/>
+				<mesh filename="Tibia.obj" scale="0.2"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
@@ -472,8 +472,8 @@
 		<joint name="Joint_L5_Tibia" type="revolute">
             <parent name="Femur_L5"/>
             <child name="Tibia_L5"/>
-            <origin xyz="1.85 -0.04 0.23" rpy="0.0 1.70 0.0"/>
-            <axis xyz="0.0 1.0 0.0"/>
+            <origin xyz="0.37 -0.008 0.046" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 -1.0 0.0"/>
         </joint>
 		<actuator name="Servo_L5_Tibia" type="servo">
             <controller position_gain="$(arg servo_pos_gain)" velocity_gain="1.0" max_torque="$(arg servo_max_torque)" max_velocity="$(arg servo_max_vel)"/>
@@ -483,6 +483,6 @@
 
 		<!-- Rename publisher to "/joint_states" to mimic "ros2_control" functionality-->
         <ros_publisher servos="/joint_states"/>
-        <ros_subscriber servos="/joint_setpoints"/>
+        <ros_subscriber servos="/joint_command"/>
     </robot>
 </scenario>

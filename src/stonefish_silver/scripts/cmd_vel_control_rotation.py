@@ -56,11 +56,8 @@ class OmnidirectionalGaitController(Node):
 
         self.joint_state_subscriber = self.create_subscription(JointState, '/joint_states', self.joint_state_subscriber_callback, 10)
         self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
-        self.pid_pos_publisher = self.create_publisher(JointState, '/joint_setpoints', 10)
-        self.timestep = 0.1
-
-        # Fix Tibia Offset (Stonefish Only)
-        self.tibia_zero_pos = 2.3
+        self.pid_pos_publisher = self.create_publisher(JointState, '/joint_command', 10)
+        self.timestep = 0.06
 
     def joint_state_subscriber_callback(self, msg):
         joint_position_dict = dict(zip(msg.name, msg.position))
@@ -167,11 +164,11 @@ class OmnidirectionalGaitController(Node):
         # Symmetrically flip Tibia values
         starting_pos = 2 # Tibia Joint L0
         step = 3 # Jump from LN -> LN+1
-        modified_pos_array = self.symmetric_difference(pos_array, starting_pos, step, self.tibia_zero_pos)
+        #modified_pos_array = self.symmetric_difference(pos_array, starting_pos, step, self.tibia_zero_pos)
         # Create and populate Joint State
         joint_state_msg = JointState()
         joint_state_msg.name = self.joint_order
-        joint_state_msg.position = modified_pos_array
+        joint_state_msg.position = pos_array
         joint_state_msg.velocity = []
         joint_state_msg.effort = []
 

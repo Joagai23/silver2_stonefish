@@ -482,7 +482,7 @@
         </actuator>
 
 		<!-- Rename publisher to "/joint_states" to mimic "ros2_control" functionality-->
-        <ros_publisher servos="/joint_states"/>
-        <ros_subscriber servos="/joint_command"/>
+        <ros_publisher servos="/joint_states_stonefish"/>
+        <ros_subscriber servos="/joint_command_stonefish"/>
     </robot>
 </scenario>

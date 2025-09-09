@@ -80,7 +80,7 @@
         <arg name="leg_material" value="Neutral"/>
         <!-- Servomotor params -->
         <arg name="servo_max_torque" value="12500.0"/>
-        <arg name="servo_pos_gain" value="0.5"/>
-        <arg name="servo_max_vel" value="0.15"/>
+        <arg name="servo_pos_gain" value="1.00"/>
+        <arg name="servo_max_vel" value="0.50"/>
     </include>
 </scenario>

@@ -54,10 +54,9 @@ class OmnidirectionalGaitController(Node):
             'silver2/Joint_L5_Coxa', 'silver2/Joint_L5_Femur', 'silver2/Joint_L5_Tibia',
         ]
 
-        self.joint_state_subscriber = self.create_subscription(JointState, '/joint_states', self.joint_state_subscriber_callback, 10)
+        self.joint_state_subscriber = self.create_subscription(JointState, '/joint_states_stonefish', self.joint_state_subscriber_callback, 10)
         self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
-        self.pid_pos_publisher = self.create_publisher(JointState, '/joint_command', 10)
-        self.timestep = 0.06
+        self.pid_pos_publisher = self.create_publisher(JointState, '/joint_command_stonefish', 10)
 
     def joint_state_subscriber_callback(self, msg):
         joint_position_dict = dict(zip(msg.name, msg.position))
@@ -169,7 +168,7 @@ class OmnidirectionalGaitController(Node):
 
         # Publish and Wait
         self.pid_pos_publisher.publish(joint_state_msg)
-        time.sleep(self.timestep)
+        time.sleep(timestep)
 
 if __name__ == '__main__':
     rclpy.init()

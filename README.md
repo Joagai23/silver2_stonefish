@@ -1,53 +1,101 @@
-![Silver2 Stonefish](./media/silver2_stonefish.png)
+<div align="center">
+
+<img src="media/WizardCrabLogo.png" alt="SILVER2 Mascot" width="180"/>
+
+# SILVER2 - Stonefish Simulation
+
+**Fast and lightweight simulation of the SILVER2 robot using Stonefish.**
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![ROS 2](https://img.shields.io/badge/ROS_2-Jazzy-22314E.svg)](https://docs.ros.org/en/jazzy/)
+[![Stonefish](https://img.shields.io/badge/Simulator-Stonefish-orange.svg)](https://stonefish.readthedocs.io/)
+
+</div>
 
 ---
-# Silver2 Stonefish Simulation
-Welcome to the Silver2 hexapod underwater simulation! This guide provides step-by-step instructions for launching the Stonefish-ROS 2 simulation and controlling the robot's movements using your keyboard.
 
-The setup involves three main components:
-1. **Stonefish:** The core C++ underwater physics simulator.
-2. **Stonefish ROS 2:** The ROS 2 wrapper that connects Stonefish to the ROS 2 ecosystem.
-3. **Stonefish Silver:** The custom ROS 2 package containing the robot-specific configurations, models, and control nodes.
+## 🌊 Overview
+
+This repository contains the **Stonefish** simulation environment for the **SILVER2** seabed exploration robot. 
+
+Stonefish is a lightweight, C++ based simulator designed specifically for underwater robotics. It provides a stable and fast physics environment ideal for testing high-level control strategies and acoustic sensors without the overhead of heavier graphics engines.
+
+![Silver2 Stonefish](media/silver2_stonefish.png)
+
+---
+## 🚀 Key Features
+
+* **High Performance:** Lightweight physics engine capable of running faster than real-time on modest hardware.
+* **ROS 2 Compatibility:** Sensors and actuators are integrated with ROS 2 Jazzy for seamless control and data bridging.
+* **Hydrodynamics:** Built-in underwater physics handling buoyancy and drag for rigid bodies.
+
+---
+
+## 🎥 Gallery
+
+### Gait Controller Simulation
+Demonstration of the robot's locomotion controller running within the Stonefish environment.
+
+![Silver2 Stonefish Animation](media/silver2_stonefish.gif)
+
+---
+
+## 🛠️ Installation & Usage
 
 ### 1. Prerequisites
-Before you begin, ensure your system has the following dependencies enabled.
-- [ROS 2 Jazzy Desktop](https://docs.ros.org/en/jazzy/Installation.html)
-- [Stonefish Simulator v1.5](https://anvilproject.org/guides/content/creating-links)
-- A configured Python virtual environment (```venv```) with all required libraries. A requirements file is [included](./requirements.txt) in the repository.
+Ensure your system has the following dependencies:
+* [ROS 2 Jazzy Desktop](https://docs.ros.org/en/jazzy/Installation.html)
+* [Stonefish Simulator v1.5](https://stonefish.readthedocs.io/)
+* A configured Python virtual environment (`venv`) with required libraries (see [`requirements.txt`](requirements.txt)).
 
-### 2. Launch the Stonefish Simulation
-Now, we will set up the ROS 2 workspace that contains the simulator's ROS wrapper and our custom robot package.
-```
+### 2. Launch the Simulation
+This sets up the ROS 2 workspace containing the simulator's ROS wrapper and the custom robot package.
+
+```bash
 # Navigate to your cloned repository
 cd ~/PathToWorkspace/silver2_stonefish
 
-# Source the ROS 2 environment and the workspace
+# Source ROS 2 and the workspace
 source /opt/ros/jazzy/setup.bash
 source install/setup.bash
 
-# Activate your Python virtual environment
+# Activate Python virtual environment
 source venv/bin/activate
 
 # Launch the simulation
 ros2 launch stonefish_silver silver_simulation.launch.py
 ```
-Leave this terminal and the simulation running. It is now hosting the Stonefish simulation underwater world.
 
-### 3. Control the robot with your keyboard
-To actually drive the robot, you need to run a second program that translates your keystrokes into velocity commands.
-1. **Open a second, separate terminal.**
-2. **Run the Setup Commands for the Controller:** Just like before, you need to set up the environment in this new terminal. Copy and paste the entire block below.
+### 3. Control the Robot
+To drive the robot, open a **second terminal** to run the teleoperation node.
 
-    ```
-    # Source the ROS 2 environment
-    source /opt/ros/jazzy/setup.bash
+```bash
+# Source ROS 2
+source /opt/ros/jazzy/setup.bash
 
-    # Run the keyboard teleop node
-    ros2 run teleop_twist_keyboard teleop_twist_keyboard
-    ```
-3. **Drive the Robot:** The terminal will now display instructions for controlling the robot. Make sure this second terminal window is active (clicked on) and use the keys (e.g., ```i```, ```j```, ```k```, ```l```) to move the robot around in the simulation.
+# Run the keyboard teleop node
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+Use keys ```i```, ```j```, ```k```, ```l``` to move the robot.
 
-You have now successfully launched and are controlling the Silver2 hexapod!
+---
 
-### Functionality Demonstration
-![Silver2 Stonefish Gait Controller Simulation](media/silver2_stonefish.gif)
+## 🦀 The SILVER2 Project
+
+SILVER2 is a bio-inspired robot designed for low-impact seabed interaction. This Stonefish environment is part of a larger ecosystem of simulation tools.
+
+**Check out our other simulators:**
+* **Isaac Sim Repo:** [Joagai23/silver2_isaacsim](https://github.com/Joagai23/silver2_isaacsim)
+* **Gazebo Repo:** [Joagai23/silver2_gz](https://github.com/Joagai23/silver2_gz)
+
+### Acknowledgements
+The project is carried out within the framework of the activities of the Spanish Government through the “Severo Ochoa Centre of Excellence” granted to ICM-CSIC (CEX2024-001494-S) and the Research Unit Tecnoterra (ICM-CSIC/UPC).
+
+This project is supported by the Horizon Europe [**MERLIN Project**](https://merlin-project.org/) [grant number GAP-01189796] and [**Blue Project**](https://www.blue-project.eu/) [grant number 101061354].
+
+<div align="center">
+
+
+<img src="media/WizardCrabLogo.png" width="80"/>
+
+<sub><i>"Magic happens at the bottom of the sea."</i></sub> </div>

@@ -15,9 +15,16 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg body_material)"/>
+			<mass value="$(arg body_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </base_link>
+		<sensor name="Odometry" rate="50.0" type="odometry">
+			<history samples="1"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<link name="Main_Body"/>
+			<ros_publisher topic="/silver2/pose"/>
+		</sensor>
 
 		<!-- Leg 0 -->
 		<!-- Coxa L0 -->
@@ -31,6 +38,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg coxa_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -56,6 +64,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg femur_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -81,6 +90,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg tibia_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -108,6 +118,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg coxa_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -133,6 +144,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg femur_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -158,6 +170,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg tibia_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -185,6 +198,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg coxa_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -210,6 +224,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg femur_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -235,6 +250,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg tibia_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -262,6 +278,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg coxa_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -287,6 +304,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg femur_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -312,6 +330,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg tibia_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -339,6 +358,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg coxa_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -364,6 +384,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg femur_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -389,6 +410,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg tibia_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -416,6 +438,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg coxa_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -441,6 +464,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg femur_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>
@@ -466,6 +490,7 @@
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			</visual>
 			<material name="$(arg leg_material)"/>
+			<mass value="$(arg tibia_mass)"/>
 			<look name="Silver"/>
 			<world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		</link>

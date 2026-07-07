@@ -22,3 +22,5 @@ log
 
 # Python virtual environment
 /venv
+/data
+*.pyc

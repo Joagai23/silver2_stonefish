@@ -2,8 +2,6 @@
 <scenario> 
     <!-- Physical materials -->
     <materials>
-        <!-- If Neutral < 1268.5 Then the Robot will have Neutral Buoyancy -->
-        <!-- Else If Neutral >= 1268.5 Then the Robot will have Negative Buoyancy -->
 		<material name="Neutral" density="1300.0" restitution="0.1"/>
 		<material name="Rock" density="3000.0" restitution="0.8"/>
 		<material name="Fiberglass" density="1500.0" restitution="0.3"/>
@@ -17,9 +15,9 @@
 		</friction_table>
 	</materials>
     
-    <!-- Graphical materials -->
+    <!-- Graphical materials normal_map="sand_normal.png-->
     <looks>
-        <look name="Sand" rgb="0.7 0.7 0.5" roughness="0.9" normal_map="sand_normal.png"/>
+        <look name="Sand" rgb="0.7 0.7 0.5" roughness="0.9"/>
         <look name="Silver" rgb="1.0 1.0 1.0" roughness="1.0" texture="silver_uv.png"/>
     </looks>
     
@@ -51,35 +49,35 @@
         <world_transform xyz="1.0 5.0 -10.0" rpy="0.0 0.0 0.0"/>
     </light>
 
-    <!-- Create terrain -->
+    <!-- Create terrain 
     <static name="Seabed" type="terrain">
         <height_map filename="terrain.png"/>
         <dimensions scalex="0.2" scaley="0.2" height="1.0"/>
         <material name="Rock"/>
         <look name="Sand" uv_scale="5.0"/>
         <world_transform xyz="0.0 0.0 2.5" rpy="0.0 0.0 0.0"/>
+    </static>-->
+
+    <static name="Plane" type="plane">
+        <material name="Rock"/>
+        <look name="Sand"/>
+        <world_transform xyz="0.0 0.0 2.5" rpy="0.0 0.0 0.0"/>
     </static>
 
     <!-- Instantiate Silver2 Robot -->
-    <!-- 
-        All parameters consider the way Stonefish builds its physics system.
-        As the volume of the robot is calculated from its geometry,
-            the other parameters have to adjust to it. 
-        For that reason, the materials applied to the objects have such
-            values to successfully achieve a slighly negative buoyant state. 
-        Moreover, all these previous considerations, which affect the weight
-            of the robot, end up being directly proportional to the torque
-            of the servomotors. Which ends up having such high values.
-    -->
     <include file="$(find stonefish_silver)/scenarios/robot.scn">
         <!-- Instantiation params -->
         <arg name="robot_name" value="silver2"/>
-        <arg name="robot_pos" value="0.0 0.0 -0.3"/>
+        <arg name="robot_pos" value="0.0 0.0 0.0"/>
         <!-- Physics params-->
-        <arg name="body_material" value="Fiberglass"/>
+        <arg name="body_material" value="Neutral"/>
         <arg name="leg_material" value="Neutral"/>
+        <arg name="body_mass" value="50.0"/>
+        <arg name="coxa_mass" value="0.3"/>
+        <arg name="femur_mass" value="0.5"/>
+        <arg name="tibia_mass" value="0.4"/>
         <!-- Servomotor params -->
-        <arg name="servo_max_torque" value="12500.0"/>
+        <arg name="servo_max_torque" value="250.0"/>
         <arg name="servo_pos_gain" value="1.00"/>
         <arg name="servo_max_vel" value="0.50"/>
     </include>
